@@ -1,0 +1,2 @@
+class CommentFeedsController < ApplicationController
+end

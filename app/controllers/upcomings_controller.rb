@@ -1,0 +1,2 @@
+class UpcomingsController < ApplicationController
+end
