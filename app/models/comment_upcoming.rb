@@ -1,2 +1,0 @@
-class CommentUpcoming < ApplicationRecord
-end

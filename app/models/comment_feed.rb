@@ -1,2 +1,0 @@
-class CommentFeed < ApplicationRecord
-end

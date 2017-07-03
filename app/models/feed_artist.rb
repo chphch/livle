@@ -1,0 +1,2 @@
+class FeedArtist < ApplicationRecord
+end

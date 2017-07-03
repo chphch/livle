@@ -1,0 +1,2 @@
+module CurationVideosHelper
+end

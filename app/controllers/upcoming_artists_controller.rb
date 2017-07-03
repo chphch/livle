@@ -1,0 +1,2 @@
+class UpcomingArtistsController < ApplicationController
+end

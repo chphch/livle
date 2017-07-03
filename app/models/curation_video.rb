@@ -1,0 +1,2 @@
+class CurationVideo < ApplicationRecord
+end

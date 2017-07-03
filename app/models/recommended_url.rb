@@ -1,0 +1,2 @@
+class RecommendedUrl < ApplicationRecord
+end

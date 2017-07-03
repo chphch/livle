@@ -1,0 +1,2 @@
+module CurationLikesHelper
+end

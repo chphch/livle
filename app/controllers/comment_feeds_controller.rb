@@ -1,2 +1,0 @@
-class CommentFeedsController < ApplicationController
-end

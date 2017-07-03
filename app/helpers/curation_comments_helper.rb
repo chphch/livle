@@ -1,0 +1,2 @@
+module CurationCommentsHelper
+end

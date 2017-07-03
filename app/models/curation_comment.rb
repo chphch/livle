@@ -1,0 +1,2 @@
+class CurationComment < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class FeedArtistsController < ApplicationController
+end

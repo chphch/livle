@@ -1,0 +1,2 @@
+class FeedCommentsController < ApplicationController
+end

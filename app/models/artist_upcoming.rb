@@ -1,2 +1,0 @@
-class ArtistUpcoming < ApplicationRecord
-end

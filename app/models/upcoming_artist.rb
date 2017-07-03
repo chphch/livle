@@ -1,0 +1,2 @@
+class UpcomingArtist < ApplicationRecord
+end

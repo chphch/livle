@@ -1,0 +1,2 @@
+class FeedComment < ApplicationRecord
+end

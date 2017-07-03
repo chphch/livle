@@ -1,0 +1,2 @@
+module RecommendedUrlsHelper
+end

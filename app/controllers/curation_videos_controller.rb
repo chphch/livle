@@ -1,0 +1,2 @@
+class CurationVideosController < ApplicationController
+end

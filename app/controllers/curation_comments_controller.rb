@@ -1,0 +1,2 @@
+class CurationCommentsController < ApplicationController
+end
