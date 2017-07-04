@@ -1,2 +1,3 @@
 class CurationVideosController < ApplicationController
+
 end

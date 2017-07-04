@@ -1,2 +1,3 @@
 class FeedArtistsController < ApplicationController
+
 end

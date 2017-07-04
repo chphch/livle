@@ -1,2 +1,3 @@
 class FeedLikesController < ApplicationController
+
 end

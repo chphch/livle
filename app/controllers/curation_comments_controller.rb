@@ -1,2 +1,3 @@
 class CurationCommentsController < ApplicationController
+
 end

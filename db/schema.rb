@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703072507) do
+ActiveRecord::Schema.define(version: 20170703115704) do
 
   create_table "artist_upcomings", force: :cascade do |t|
     t.integer "upcoming_id"
@@ -46,10 +46,67 @@ ActiveRecord::Schema.define(version: 20170703072507) do
     t.index ["user_id"], name: "index_comment_upcomings_on_user_id"
   end
 
+  create_table "curation_comments", force: :cascade do |t|
+    t.integer "feed_id"
+    t.integer "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_curation_comments_on_feed_id"
+    t.index ["user_id"], name: "index_curation_comments_on_user_id"
+  end
+
+  create_table "curation_likes", force: :cascade do |t|
+    t.integer "curation_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curation_id"], name: "index_curation_likes_on_curation_id"
+    t.index ["user_id"], name: "index_curation_likes_on_user_id"
+  end
+
+  create_table "curation_videos", force: :cascade do |t|
+    t.integer "curation_id"
+    t.integer "artist_id"
+    t.string "youtube_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_curation_videos_on_artist_id"
+    t.index ["curation_id"], name: "index_curation_videos_on_curation_id"
+  end
+
   create_table "curations", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "feed_artists", force: :cascade do |t|
+    t.integer "feed_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_feed_artists_on_artist_id"
+    t.index ["feed_id"], name: "index_feed_artists_on_feed_id"
+  end
+
+  create_table "feed_comments", force: :cascade do |t|
+    t.integer "feed_id"
+    t.integer "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_feed_comments_on_feed_id"
+    t.index ["user_id"], name: "index_feed_comments_on_user_id"
+  end
+
+  create_table "feed_likes", force: :cascade do |t|
+    t.integer "feed_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_feed_likes_on_feed_id"
+    t.index ["user_id"], name: "index_feed_likes_on_user_id"
   end
 
   create_table "feeds", force: :cascade do |t|
@@ -62,6 +119,33 @@ ActiveRecord::Schema.define(version: 20170703072507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
+  create_table "recommended_urls", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.boolean "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recommended_urls_on_user_id"
+  end
+
+  create_table "upcoming_artists", force: :cascade do |t|
+    t.integer "upcoming_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_upcoming_artists_on_artist_id"
+    t.index ["upcoming_id"], name: "index_upcoming_artists_on_upcoming_id"
+  end
+
+  create_table "upcoming_comments", force: :cascade do |t|
+    t.integer "upcoming_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["upcoming_id"], name: "index_upcoming_comments_on_upcoming_id"
+    t.index ["user_id"], name: "index_upcoming_comments_on_user_id"
   end
 
   create_table "upcomings", force: :cascade do |t|
