@@ -2,27 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.testline {
-  border: 1px black solid;
-}
 .upcoming-index {
   height: 20rem;
 }
+.upcoming-index-card-thumbnail {
+}
+.upcoming-index-card-image {
+  z-index: 0;
+}
 .upcoming-index-card-title {
-  font-size: 1rem;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  font-size: 2rem;
 }
 .upcoming-index-card-date {
-  font-size: 1rem;
+  z-index: 50;
+  font-size: 2rem;
 }
 .upcoming-index-card-pick-button {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 .upcoming-index-card-pick-button {
-  font-size: 1rem;
+  font-size: 2rem;
+}
+.upcoming-index-card-row {
 }
 .upcoming-index-card-lineup {
-  font-size: 1rem;
 }
 .upcoming-index-card-dday {
-  font-size: 1rem;
 }
