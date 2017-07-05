@@ -8,37 +8,30 @@
       <img class="card-image" src="<%= image_url("image_live") %>"/>
       <div class="card-thumbnail-filter"></div>
     </div>
-    <div class="feed-info">
-      <div class="feed-info-content">
-        <%= image_tag("icon_like_white", class: "feed-info-icon") %>
-        <p class="white-content">300</p>
-      </div>
-      <div class="feed-info-content">
-        <%= image_tag("icon_share_white", class: "feed-info-icon") %>
-        <p class="white-content">300</p>
-      </div>
-      <div class="feed-info-content">
-        <%= image_tag("icon_view_white", class: "feed-info-icon") %>
-        <p class="white-content">7,452</p>
-      </div>
-    </div>
 
+    <div class="feed-info">
+      <%= image_tag("icon_like_white", class: "feed-info-icon") %>
+      <p class="white-content">300</p>
+      <%= image_tag("icon_share_white", class: "feed-info-icon") %>
+      <p class="white-content">300</p>
+      <%= image_tag("icon_view_white", class: "feed-info-icon") %>
+      <p class="white-content">7,452</p>
+    </div>
   </div>
 
   <div class="card-describe">
     <div class="row">
       <div class="col-xs-8">
-        <h3>에드쉬런(Ed Sheeran)</h3>
+        <p class="text-singer">에드쉬런(Ed Sheeran)</p>
       </div>
       <div class="col-xs-4">
         <div class="text-right">
           <%= image_tag("button_share", class: "card-button-share") %>
-          <p>공유하기</p>
         </div>
       </div>
     </div>
 
-    <p class="describe-title">Shape Of You</p>
-    <p class="describe-content">This is content</p>
+    <p class="video-title">Shape Of You</p>
+    <p class="curation-content">This is content</p>
   </div>
 </div>
