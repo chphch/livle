@@ -7,7 +7,9 @@
 </header>
 
 <section id="upcoming-lists">
-  <%= render "index_card" %>
+  <% for i in 1..5 %>
+    <%= render "index_card" %>
+  <% end %>
 </section>
 
 <nav class="bottom-nav" id="feed-nav">
