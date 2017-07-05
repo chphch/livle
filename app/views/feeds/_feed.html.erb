@@ -1,12 +1,30 @@
-<div class="feed-element">
-  <div class="row">
-    <div class="feed-title text-center">
-      <h2>LILVE's choice</h2>
+<div class="card-border">
+  <div class="card-title text-center">
+    <h2>LILVE's choice</h2>
+  </div>
+
+  <div class="card-thumbnail">
+    <div class="text-center">
+      <img class="card-image" src="<%= image_url("image_live") %>"/>
+      <div class="card-thumbnail-filter"></div>
     </div>
-    asfd
-    asdf
-    asdf
-    asdf
-    asdf
+
+  </div>
+
+  <div class="card-describe">
+    <div class="row">
+      <div class="col-xs-8">
+        <h3>에드쉬런(Ed Sheeran)</h3>
+      </div>
+      <div class="col-xs-4">
+        <div class="text-right">
+          <%= image_tag("button_share", class: "card-button-share") %>
+          <p>공유하기</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="describe-title">Shape Of You</p>
+    <p class="describe-content">This is content</p>
   </div>
 </div>

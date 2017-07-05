@@ -19,12 +19,77 @@ header {
   padding-bottom: 3%;
 }
 
-.feed-element {
-  margin-left: 8%;
-  margin-right: 8%;
+.card-border {
+  margin-left: 4%;
+  margin-right: 4%;
   margin-top: 1%;
   margin-bottom: 1%;
-  box-shadow: 0 0 120px -8px gray;
-  -moz-box-shadow: 0 0 120px -8px gray;
-  -webkit-box-shadow: 0 10px 120px -8px gray;
+  box-shadow: 0 0 120px -12px gray;
+  -moz-box-shadow: 0 0 120px -12px gray;
+  -webkit-box-shadow: 0 10px 120px -12px gray;
+}
+
+.card-title {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.card-thumbnail {
+  overflow: hidden;
+  position: relative;
+  //TODO: javascript로 elemet height 값 입력하기
+  height: 601.2px;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.card-thumbnail-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+
+.card-describe {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.card-button-share {
+  width: 21.5%;
+  height: auto;
+  padding-right: 1%;
+  padding-bottom: 3%;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+p {
+  font-size: 1.2em;
+  color: #757575;
+}
+
+.describe-title {
+  color: #757575;
+  font-size: 1.6em;
+}
+.describe-content {
+  color: #757575;
+  font-size: 1.4em;
 }
