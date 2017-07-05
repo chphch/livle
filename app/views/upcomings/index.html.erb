@@ -9,7 +9,7 @@
 </header>
 
 <section id="upcoming-lists">
-  <% for i in 1..5 %>
-    <%= render "index_card" %>
+  <% @Upcomings.each do |upcoming| %>
+    <%= render partial: "index_card", locals: {upcoming: upcoming} %>
   <% end %>
 </section>

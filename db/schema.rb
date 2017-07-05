@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703115704) do
-
-  create_table "artist_upcomings", force: :cascade do |t|
-    t.integer "upcoming_id"
-    t.integer "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_artist_upcomings_on_artist_id"
-    t.index ["upcoming_id"], name: "index_artist_upcomings_on_upcoming_id"
-  end
+ActiveRecord::Schema.define(version: 20170705181316) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -28,31 +19,13 @@ ActiveRecord::Schema.define(version: 20170703115704) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comment_feeds", force: :cascade do |t|
-    t.integer "feed_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["feed_id"], name: "index_comment_feeds_on_feed_id"
-    t.index ["user_id"], name: "index_comment_feeds_on_user_id"
-  end
-
-  create_table "comment_upcomings", force: :cascade do |t|
-    t.integer "upcoming_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["upcoming_id"], name: "index_comment_upcomings_on_upcoming_id"
-    t.index ["user_id"], name: "index_comment_upcomings_on_user_id"
-  end
-
   create_table "curation_comments", force: :cascade do |t|
-    t.integer "feed_id"
+    t.integer "curation_id"
     t.integer "user_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["feed_id"], name: "index_curation_comments_on_feed_id"
+    t.index ["curation_id"], name: "index_curation_comments_on_curation_id"
     t.index ["user_id"], name: "index_curation_comments_on_user_id"
   end
 
@@ -76,9 +49,14 @@ ActiveRecord::Schema.define(version: 20170703115704) do
   end
 
   create_table "curations", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
     t.text "content"
+    t.integer "count_share"
+    t.integer "count_view"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_curations_on_user_id"
   end
 
   create_table "feed_artists", force: :cascade do |t|
@@ -115,10 +93,16 @@ ActiveRecord::Schema.define(version: 20170703115704) do
     t.string "youtube_id"
     t.integer "count_view"
     t.integer "count_share"
-    t.boolean "is_user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
+  create_table "recent_keywords", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recent_keywords_on_user_id"
   end
 
   create_table "recommended_urls", force: :cascade do |t|
@@ -142,15 +126,24 @@ ActiveRecord::Schema.define(version: 20170703115704) do
   create_table "upcoming_comments", force: :cascade do |t|
     t.integer "upcoming_id"
     t.integer "user_id"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["upcoming_id"], name: "index_upcoming_comments_on_upcoming_id"
     t.index ["user_id"], name: "index_upcoming_comments_on_user_id"
   end
 
+  create_table "upcoming_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "upcoming_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["upcoming_id"], name: "index_upcoming_likes_on_upcoming_id"
+    t.index ["user_id"], name: "index_upcoming_likes_on_user_id"
+  end
+
   create_table "upcomings", force: :cascade do |t|
     t.string "title"
-    t.text "youtube_ids"
     t.string "place"
     t.date "start_date"
     t.date "end_date"
@@ -174,6 +167,10 @@ ActiveRecord::Schema.define(version: 20170703115704) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "token"
+    t.string "nickname"
+    t.string "profile_img"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

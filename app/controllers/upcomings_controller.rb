@@ -1,6 +1,6 @@
 class UpcomingsController < ApplicationController
   def index
-
+    @Upcomings = Upcoming.all
   end
 
   def watch
@@ -8,10 +8,6 @@ class UpcomingsController < ApplicationController
   end
 
   private
-    def calc_d_day(id)
-
-    end
-
     def share
 
     end

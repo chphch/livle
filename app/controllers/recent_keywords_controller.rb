@@ -1,0 +1,2 @@
+class RecentKeywordsController < ApplicationController
+end

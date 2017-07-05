@@ -1,0 +1,2 @@
+module RecentKeywordsHelper
+end

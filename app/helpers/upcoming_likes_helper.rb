@@ -1,0 +1,2 @@
+module UpcomingLikesHelper
+end

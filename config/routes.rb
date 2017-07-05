@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :upcoming_likes
+  resources :recent_keywords
   get 'connect/index'
 
   get 'search/index'

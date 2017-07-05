@@ -1,0 +1,2 @@
+class UpcomingLikesController < ApplicationController
+end
