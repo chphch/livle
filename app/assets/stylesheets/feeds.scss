@@ -1,3 +1,27 @@
 // Place all the styles related to the feeds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.feed-info {
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  width: 100%;
+  height: 5%;
+}
+
+.feed-info-content {
+  height: 100%;
+  display: inline-block;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.feed-info-icon {
+  height: 100%;
+  width: auto;
+  padding-right: 1%;
+}
+
+.white-content {
+}

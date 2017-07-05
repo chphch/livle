@@ -9,7 +9,9 @@
 </header>
 
 <section id="feed-lists">
-  <%= render "feed" %>
+  <% for i in 1..5 %>
+    <%= render "feed" %>
+  <% end %>
 </section>
 
 <nav class="bottom-nav" id="feed-nav">
