@@ -8,30 +8,41 @@
 .upcoming-index-card-thumbnail {
 }
 .upcoming-index-card-image {
-  z-index: 0;
 }
 .upcoming-index-card-title {
-  z-index: 90;
-  top: 0;
-  left: 0;
-  width: 10rem;
-  height: 10rem;
   position: absolute;
-  font-size: 2rem;
+  top: 43rem;
+  left: 3rem;
+  font-size: 3.5rem;
+  color: white;
+}
+.upcoming-index-card-place {
+  position: absolute;
+  top: 48rem;
+  left: 3rem;
+  font-size: 3rem;
+  color: white;
 }
 .upcoming-index-card-date {
-  z-index: 50;
-  font-size: 2rem;
+  position: absolute;
+  top: 53rem;
+  left: 3rem;
+  font-size: 2.3rem;
+  color: #757575;
 }
 .upcoming-index-card-pick-button {
-  font-size: 2rem;
-}
-.upcoming-index-card-pick-button {
-  font-size: 2rem;
+  position: absolute;
+  top: 53rem;
+  left: 77rem;
+  font-size: 3rem;
+  color: #757575;
 }
 .upcoming-index-card-row {
 }
 .upcoming-index-card-lineup {
 }
 .upcoming-index-card-dday {
+  color: #757575;
+  font-size: 3.5rem;
+  font-weight: bold;
 }
