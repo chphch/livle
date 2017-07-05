@@ -7,12 +7,11 @@ class UpcomingsController < ApplicationController
 
   end
 
-  private
-    def share
+  def share
 
-    end
+  end
 
-    def get_video(artist_name)
+  def get_video(artist_name)
 
-    end
+  end
 end
