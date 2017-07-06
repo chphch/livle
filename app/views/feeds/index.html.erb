@@ -9,8 +9,8 @@
 </header>
 
 <section id="feed-lists">
-  <% for i in 1..5 %>
-    <%= render "feed" %>
+  <% @feeds.each do |feed| %>
+    <%= render partial: "index_card", locals: {feed: feed} %>
   <% end %>
 </section>
 

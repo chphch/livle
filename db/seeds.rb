@@ -24,7 +24,7 @@ for i in 1..5
 end
 
 for i in 1..5
-  feed = Feed.create(user_id: rand(1..5), title: Faker::Demographic.race, youtube_id: "https://youtu.be/Xvjnoagk6GU", count_view: rand(1..5), count_share: rand(1..5))
+  feed = Feed.create(user_id: rand(1..5), title: Faker::Demographic.race, youtube_id: "https://youtu.be/Xvjnoagk6GU", count_view: rand(1..100), count_share: rand(1..100))
   for i in 1..5
     FeedComment.create(feed_id: feed.id, user_id: rand(1..5), content: Faker::Hacker.say_something_smart)
     FeedArtist.create(feed_id: feed.id, artist_id: rand(1..5))
