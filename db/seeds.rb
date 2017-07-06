@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 for i in 1..5
-  User.create(provider: "local", token: "", nickname: Faker::HarryPotter.character, profile_img: "image_profile.jpeg")
+  User.create(email: Faker::Cat.name + "@a.com", password: "12341234", provider: "local", token: "", nickname: Faker::HarryPotter.character, profile_img: "image_profile.jpeg")
 end
 
 for i in 1..5
@@ -17,8 +17,8 @@ end
 for i in 1..5
   curation = Curation.create(user_id: rand(1..5), title: Faker::Demographic.race, content: Faker::Hacker.say_something_smart, count_share: rand(1..100), count_view: rand(1..100))
   for i in 1..5
-    CurationVideo.create(curation: curation.id, artist_id: rand(1..5), youtube_id: "https://youtu.be/Xvjnoagk6GU")
-    CurationLike.create(curation: curation.id, user_id: rand(1..5))
+    CurationVideo.create(curation_id: curation.id, artist_id: rand(1..5), youtube_id: "https://youtu.be/Xvjnoagk6GU")
+    CurationLike.create(curation_id: curation.id, user_id: rand(1..5))
     CurationComment.create(curation_id: curation.id, user_id: rand(1..5), content: Faker::Hacker.say_something_smart)
   end
 end
