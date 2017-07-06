@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+  root 'feeds#index'
+
   resources :upcoming_likes
   resources :recent_keywords
   get 'connect/index'
 
   get 'search/index'
-
   get 'search/search'
 
-  root 'feeds#index'
   resources :recommended_urls
 
   resources :curations do
@@ -18,14 +18,14 @@ Rails.application.routes.draw do
 
   resources :artists
 
-  get 'feeds/:id/watch' => 'feeds#watch'
+  get 'feeds/:feed_id/watch' => 'feeds#watch'
   resources :feeds do
     resources :feed_artist
     resources :feed_like
     resources :feed_comment
   end
 
-  get 'upcomings/:id/watch' => 'upcomings#watch'
+  get 'upcomings/:upcoming_id/watch' => 'upcomings#watch'
   resources :upcomings do
     resources :upcoming_comment
     resources :upcoming_artist

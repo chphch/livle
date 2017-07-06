@@ -1,3 +1,9 @@
-<section id="video">
+<!-- video_id 추출하기 위한 정규식 -->
+<% video_id = @feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
 
+<section id="video">
+  <div class="watch-video">
+    <iframe class="background-video" src='https://www.youtube.com/embed/<%= video_id %>
+    ?rel=0&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
+  </div>
 </section>

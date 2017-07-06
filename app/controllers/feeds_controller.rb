@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   end
 
   def watch
-
+    @feed = Feed.find_by(id: params[:feed_id])
   end
 
   private
