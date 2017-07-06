@@ -15,7 +15,7 @@
       <%= image_tag("icon_share_white", class: "feed-info-icon") %>
       <p class="white-content"><%= feed.count_share %></p>
       <%= image_tag("icon_view_white", class: "feed-info-icon") %>
-      <p class="white-content"><%= feed.count.view %></p>
+      <p class="white-content"><%= feed.count_view %></p>
     </div>
   </div>
 
@@ -23,8 +23,8 @@
     <div class="row">
       <div class="col-xs-8">
         <p class="text-singer">
-          <% feed.artists.each do |artist| %>
-            <%= artist.name %>,
+          <% feed.feed_artists.each do |feed_artist| %>
+            <%= feed_artist.artist.name %>,
           <% end %>
         </p>
       </div>
