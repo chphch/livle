@@ -1,5 +1,9 @@
 class RecommendedUrlsController < ApplicationController
-  def create
+  def new
 
+  end
+
+  def create
+    
   end
 end

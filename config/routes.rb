@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   get 'search/index'
   get 'search/search'
 
+  resources :artists
+
   resources :curations do
     resources :curation_videos
     resources :curation_likes
     resources :curation_comments
   end
-
-  resources :artists
 
   get 'feeds/:feed_id/watch' => 'feeds#watch'
   resources :feeds do
@@ -31,10 +31,9 @@ Rails.application.routes.draw do
   get 'mypage/edit_profile'
   get 'mypage/settings'
   devise_for :users
-  resources :users do
-    resources :recent_keywords
-    resources :recommended_urls
-  end
+
+  resources :recent_keywords
+  resources :recommended_urls
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
