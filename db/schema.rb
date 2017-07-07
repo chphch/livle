@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20170705180009) do
   create_table "upcomings", force: :cascade do |t|
     t.string "title"
     t.string "place"
+    t.string "main_youtube_id"
     t.date "start_date"
     t.date "end_date"
     t.string "ticket_url"

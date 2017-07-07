@@ -1,0 +1,74 @@
+<!-- video_id 추출하기 위한 정규식 -->
+<% video_id = @upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+
+<section id="video">
+  <div class="watch-video">
+    <iframe src='https://www.youtube.com/embed/<%= video_id %>
+    ?enablejsapi=1&rel=0&controls=2&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
+
+    <div class="watch-video-filter"></div>
+    <a href="<%= url_for(:back) %>" method="get">
+      <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
+    </a>
+    <!--<div class="watch-connector-container">-->
+      <!--<div class="white-title">connector</div>-->
+      <!--<div class="white-content"><= @upcoming.user.nickname >님</div>-->
+    <!--</div>-->
+  </div>
+</section>
+
+<section id="content">
+  <div class="watch-video-info">
+    <div class="row">
+      <div class="col-xs-8">
+        <p class="black-title"><%= @upcoming.title %></p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <%= image_tag("icon_view_gray", class: "info-icon") %>
+        <p class="gray-content"><%= @upcoming.count_view %></p>
+      </div>
+    </div>
+    <div class="watch">
+      <p class="black-title"><%= @upcoming.place %></p>
+    </div>
+  </div>
+  <div class="content-container watch-video-info">
+    <div class="row">
+      <div class="col-xs-8">
+        <p class="gray-content" style="display: inline-block; margin-right: 4%;">D-<%= @upcoming.calc_d_day() %></p>
+        <p class="gray-content" style="display: inline-block;"><%= @upcoming.start_date %> - <%= @upcoming.end_date %></p>
+      </div>
+      <div class="col-xs-2 text-center">
+        <%= link_to "티켓버튼", @upcoming.ticket_url, class: "black-content" %>
+      </div>
+      <div class="col-xs-2 text-center">
+        <p class="black-content">찜버튼</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr-container">
+  <div class="watch-video-filter"></div>
+</div>
+
+<section id="line-up">
+  <div class="watch-video-info">
+    <div class="row">
+      <div class="col-xs-8">
+        <p class="black-title">LINE - UP</p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <div class="text-right">
+          <%= image_tag("icon_share_gray", class: "card-button-share") %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<section id="comment">
+  <%= render partial: "partial_views/watch_comment", locals: {comments: @upcoming.upcoming_comments} %>
+</section>

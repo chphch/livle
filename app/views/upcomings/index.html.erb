@@ -5,11 +5,13 @@
         <h1>UPCOMINGS</h1>
       </div>
     </div>
-  </div>
+  </div>  
 </header>
 
 <section id="upcoming-lists">
-  <% @Upcomings.each do |upcoming| %>
-    <%= render partial: "index_card", locals: {upcoming: upcoming} %>
+  <% @upcomings.each do |upcoming| %>
+    <a href="upcomings/<%= upcoming.id %>/watch" method="get">
+      <%= render partial: "index_card", locals: {upcoming: upcoming} %>
+    </a>
   <% end %>
 </section>

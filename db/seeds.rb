@@ -33,7 +33,8 @@ for i in 1..5
 end
 
 for i in 1..5
-  upcoming = Upcoming.create(title: Faker::Space.agency, place: Faker::Space.galaxy, start_date: Date.new(2017,rand(1..12),rand(1..12)), end_date: Date.new(2017,rand(1..12),rand(1..12)), ticket_url: 'www.naver.com', count_view: rand(1..100), count_share: rand(1..100))
+  upcoming = Upcoming.create(title: Faker::Space.agency, place: Faker::Space.galaxy, main_youtube_id: "https://youtu.be/Xvjnoagk6GU", start_date: Date.new(2017,rand(1..12),rand(1..12)), end_date: Date.new(2017,rand(1..12),rand(1..12)),
+                             ticket_url: 'www.naver.com', count_view: rand(1..100), count_share: rand(1..100))
   for i in 1..5
     UpcomingArtist.create(upcoming_id: upcoming.id, artist_id: rand(1..5))
     UpcomingComment.create(upcoming_id: upcoming.id, user_id: rand(1..5), content: Faker::Hacker.say_something_smart)

@@ -1,10 +1,10 @@
 class UpcomingsController < ApplicationController
   def index
-    @Upcomings = Upcoming.all
+    @upcomings = Upcoming.all
   end
 
   def watch
-
+    @upcoming = Upcoming.find_by(id: params[:upcoming_id])
   end
 
   def share

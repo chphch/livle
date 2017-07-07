@@ -20,13 +20,13 @@
 <section id="info">
   <div class="watch-video-info">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-xs-8">
         <%= image_tag("icon_like_gray", class: "info-icon") %>
         <p class="gray-content" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
         <%= image_tag("icon_share_gray", class: "info-icon") %>
         <p class="gray-content"><%= @feed.count_share %></p>
       </div>
-      <div class="col-xs-6 text-right">
+      <div class="col-xs-4 text-right">
         <%= image_tag("icon_view_gray", class: "info-icon") %>
         <p class="gray-content"><%= @feed.count_view %></p>
       </div>
@@ -35,13 +35,13 @@
 </section>
 
 <section id="content">
-  <div class="watch-video-info">
-    <div class="black-title">
+  <div class="content-container watch-video-info">
+    <p class="black-title">
       <% @feed.feed_artists.each do |feed_artist| %>
           <%= feed_artist.artist.name %>,
       <% end %>
-    </div>
-    <div class="gray-content"><%= @feed.title %></div>
+    </p>
+    <div class="content-container gray-content"><%= @feed.title %></div>
   </div>
 
   <!--TODO: Curation Partial View 달기-->
@@ -52,10 +52,7 @@
 </div>
 
 <section id="comment">
-  <div class="watch-video-info">
-    <div class="black-content">댓글 <%= @feed.feed_comments.size %>개</div>
-    <hr>
-  </div>
+  <%= render partial: "partial_views/watch_comment", locals: {comments: @feed.feed_comments} %>
 </section>
 
 <!-- youtube playbutton customize -->
@@ -64,6 +61,4 @@
   tag.src = "//www.youtube.com/player_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-
 </script>
