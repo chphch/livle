@@ -22,3 +22,19 @@
   display: inline-block;
   padding-right: 1%;
 }
+
+#info .info-icon {
+  display: inline-block;
+  height: 30pt;
+  width: auto;
+}
+
+#info .gray-content {
+  display: inline-block;
+  padding-left: 4%;
+}
+
+#content * {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}

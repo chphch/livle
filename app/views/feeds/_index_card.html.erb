@@ -22,7 +22,7 @@
   <div class="card-describe">
     <div class="row">
       <div class="col-xs-8">
-        <p class="text-singer">
+        <p class="black-title">
           <% feed.feed_artists.each do |feed_artist| %>
             <%= feed_artist.artist.name %>,
           <% end %>
@@ -30,7 +30,7 @@
       </div>
       <div class="col-xs-4">
         <div class="text-right">
-          <%= image_tag("button_share", class: "card-button-share") %>
+          <%= image_tag("icon_share_gray", class: "card-button-share") %>
         </div>
       </div>
     </div>

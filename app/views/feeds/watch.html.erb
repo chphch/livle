@@ -3,7 +3,67 @@
 
 <section id="video">
   <div class="watch-video">
-    <iframe class="background-video" src='https://www.youtube.com/embed/<%= video_id %>
-    ?rel=0&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
+    <iframe src='https://www.youtube.com/embed/<%= video_id %>
+    ?enablejsapi=1&rel=0&controls=2&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
+
+    <div class="watch-video-filter"></div>
+    <a href="/feeds" method="get">
+      <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
+    </a>
+    <div class="watch-connector-container">
+      <div class="white-title">connector</div>
+      <div class="white-content"><%= @feed.user.nickname %>님</div>
+    </div>
   </div>
 </section>
+
+<section id="info">
+  <div class="watch-video-info">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= image_tag("icon_like_gray", class: "info-icon") %>
+        <p class="gray-content" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
+        <%= image_tag("icon_share_gray", class: "info-icon") %>
+        <p class="gray-content"><%= @feed.count_share %></p>
+      </div>
+      <div class="col-xs-6 text-right">
+        <%= image_tag("icon_view_gray", class: "info-icon") %>
+        <p class="gray-content"><%= @feed.count_view %></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+  <div class="watch-video-info">
+    <div class="black-title">
+      <% @feed.feed_artists.each do |feed_artist| %>
+          <%= feed_artist.artist.name %>,
+      <% end %>
+    </div>
+    <div class="gray-content"><%= @feed.title %></div>
+  </div>
+
+  <!--TODO: Curation Partial View 달기-->
+</section>
+
+<div class="hr-container">
+  <div class="watch-video-filter"></div>
+</div>
+
+<section id="comment">
+  <div class="watch-video-info">
+    <div class="black-content">댓글 <%= @feed.feed_comments.size %>개</div>
+    <hr>
+  </div>
+</section>
+
+<!-- youtube playbutton customize -->
+<script>
+  var tag = document.createElement('script');
+  tag.src = "//www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+</script>
