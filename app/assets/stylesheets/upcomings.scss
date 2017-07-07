@@ -41,8 +41,20 @@
 }
 .upcoming-index-card-lineup {
 }
+
 .upcoming-index-card-dday {
   color: #757575;
   font-size: 3.5rem;
   font-weight: bold;
+}
+
+#content .info-icon {
+  display: inline-block;
+  height: 30pt;
+  width: auto;
+}
+
+#content .text-right .gray-content {
+  display: inline-block;
+  padding-left: 4%;
 }
