@@ -10,7 +10,9 @@
 
 <section id="feed-lists">
   <% @feeds.each do |feed| %>
-    <%= render partial: "index_card", locals: {feed: feed} %>
+      <a href="feeds/<%= feed.id %>/watch" method="get">
+        <%= render partial: "index_card", locals: {feed: feed} %>
+      </a>
   <% end %>
 </section>
 

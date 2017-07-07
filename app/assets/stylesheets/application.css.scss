@@ -62,6 +62,13 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 }
 
+.card-brief {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 .card-describe {
   margin-left: 5%;
   margin-right: 5%;
@@ -74,6 +81,82 @@ header {
   height: auto;
   padding-right: 1%;
   padding-bottom: 3%;
+}
+
+/// WATCH
+.watch-video {
+  position: relative;
+  width: 100%;
+  height:0;
+  padding-bottom: 56.25%;
+  -webkit-overflow-scrolling: touch;
+  overflow:hidden;
+  //-webkit-overflow-scrolling: touch;
+}
+
+.watch-video iframe,
+.watch-video object,
+.watch-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.watch-video-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.47) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.47) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.47) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.hr-container .watch-video-filter {
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.watch-video-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4%;
+}
+
+.watch-connector-container {
+  position:absolute;
+  top: 4%;
+  left: 10%;
+  width: 60%;
+}
+
+.watch-video-info {
+  padding-top: 3%;
+  padding-left: 6%;
+  padding-right: 6%;
+  width: 100%;
+}
+
+.hr-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 2%;
+}
+
+/// TEXT STYLING
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 h2 {
@@ -94,15 +177,20 @@ p {
   font-size: 1.6em;
 }
 
-.text-singer {
-  color:#000000;
+.black-title {
+  color: #000000;
   font-size: 2em;
 }
-.text-describe-title {
+.black-content {
+  color: #000000;
+  font-size: 1.6em;
+}
+
+.gray-title {
   color: #757575;
   font-size: 2em;
 }
-.text-curation-content {
+.gray-content {
   color: #757575;
   font-size: 1.6em;
 }

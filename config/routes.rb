@@ -6,25 +6,25 @@ Rails.application.routes.draw do
   get 'search/search'
 
   resources :curations do
-    resources :curation_video
-    resources :curation_like
-    resources :curation_comment
+    resources :curation_videos
+    resources :curation_likes
+    resources :curation_comments
   end
 
   resources :artists
 
-  get 'feeds/:id/watch' => 'feeds#watch'
+  get 'feeds/:feed_id/watch' => 'feeds#watch'
   resources :feeds do
-    resources :feed_artist
-    resources :feed_like
-    resources :feed_comment
+    resources :feed_artists
+    resources :feed_likes
+    resources :feed_comments
   end
 
-  get 'upcomings/:id/watch' => 'upcomings#watch'
+  get 'upcomings/:upcoming_id/watch' => 'upcomings#watch'
   resources :upcomings do
-    resources :upcoming_comment
+    resources :upcoming_comments
     resources :upcoming_likes
-    resources :upcoming_artist
+    resources :upcoming_artists
   end
 
   get 'mypage/index'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :recent_keywords
-    resources :recommended_url
+    resources :recommended_urls
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
