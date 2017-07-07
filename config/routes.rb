@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  resources :upcoming_likes
-  resources :recent_keywords
-  get 'connect/index'
-
-  get 'search/index'
-
-  get 'search/search'
-
   root 'feeds#index'
-  resources :recommended_urls
+
+  get 'connect/index'
+  get 'search/index'
+  get 'search/search'
 
   resources :curations do
     resources :curation_video
@@ -28,11 +23,13 @@ Rails.application.routes.draw do
   get 'upcomings/:id/watch' => 'upcomings#watch'
   resources :upcomings do
     resources :upcoming_comment
+    resources :upcoming_likes
     resources :upcoming_artist
   end
 
   devise_for :users
   resources :users do
+    resources :recent_keywords
     resources :recommended_url
   end
 
