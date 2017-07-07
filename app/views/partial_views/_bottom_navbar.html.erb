@@ -13,17 +13,17 @@
     </div>
   </a>
   <div class="navbar-element text-center">
-    <a href="/serach/index" method="get">
+    <a href="/search/index" method="get">
       <%= image_tag("icon_search", style: "width: 78%; height: auto; margin-bottom: -8%; margin-top: -46%;") %>
     </a>
   </div>
-  <a href="recommended_urls" method="get">
+  <a href="<%= recommended_urls_url %>" method="get">
     <div class="navbar-element text-center">
       <%= image_tag("icon_connect", style: "width:42%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">Connect</p>
     </div>
   </a>
-  <a href="/my_page">
+  <a href="/mypage/index" method="get">
     <div class="navbar-element text-center">
       <%= image_tag("icon_my_page", style: "width: 30%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">My page</p>
