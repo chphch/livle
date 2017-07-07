@@ -7,7 +7,7 @@
     ?enablejsapi=1&rel=0&controls=2&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
 
     <div class="watch-video-filter"></div>
-    <a href="/feeds" method="get">
+    <a href="<%= url_for(:back) %>" method="get">
       <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
     </a>
     <div class="watch-connector-container">
