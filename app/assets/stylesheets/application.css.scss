@@ -132,10 +132,18 @@ header {
 }
 
 .watch-connector-container {
-  position:absolute;
+  position: absolute;
   top: 4%;
   left: 10%;
   width: 60%;
+}
+
+.watch-play-button-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .watch-video-info {
@@ -155,6 +163,20 @@ header {
   width: 100%;
   height: 0;
   padding-bottom: 2%;
+}
+
+/// BOTTOM NAVBAR
+.bottom-navbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: rgba(255, 255, 255 ,0.83);
+}
+
+.navbar-element {
+  display: inline-block;
+  width: 19.6%;
+  height: auto;
 }
 
 /// TEXT STYLING

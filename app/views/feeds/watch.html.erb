@@ -14,6 +14,9 @@
       <div class="white-title">connector</div>
       <div class="white-content"><%= @feed.user.nickname %>님</div>
     </div>
+    <!--<div class="watch-play-button-container text-center">-->
+      <!--<= image_tag("icon_play_button", style: "height: 16%; width: auto; margin-top: 24%;", id: "play-button") >-->
+    <!--</div>-->
   </div>
 </section>
 
@@ -54,11 +57,3 @@
 <section id="comment">
   <%= render partial: "partial_views/watch_comment", locals: {comments: @feed.feed_comments} %>
 </section>
-
-<!-- youtube playbutton customize -->
-<script>
-  var tag = document.createElement('script');
-  tag.src = "//www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-</script>
