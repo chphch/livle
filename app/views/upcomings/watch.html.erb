@@ -66,7 +66,13 @@
     </div>
   </div>
 
-
+  <div class="upcoming-watch-lineup-container">
+    <% @upcoming.upcoming_artists.each do |artist| %>
+      <div class="upcoming-watch-artist-profile text-center" style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
+        <p class="upcoming-watch-artist-name white-title"><%= artist.artist.name %></p>
+      </div>
+    <% end %>
+  </div>
 </section>
 
 <section id="comment">
