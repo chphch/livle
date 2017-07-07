@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resources :upcoming_artist
   end
 
+  get 'mypage/index'
+  get 'mypage/edit_profile'
+  get 'mypage/settings'
   devise_for :users
   resources :users do
     resources :recent_keywords
