@@ -1,4 +1,4 @@
-$('#list-container').append('<%= j render partial: "index_card", collection: @feeds, as: :feed %>');
+$('#feed-list-container').append('<%= j render partial: "index_card", collection: @feeds, as: :feed %>');
 <% if @feeds.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
 <% else %>

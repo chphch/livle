@@ -1,6 +1,10 @@
 class UpcomingsController < ApplicationController
   def index
-    @upcomings = Upcoming.all
+    @upcomings = Upcoming.paginate(page: params[:page], per_page: 3)
+    respond_to do |format|
+      format.html
+      format.js { render 'upcomings/s_upcoming' }
+    end
   end
 
   def watch

@@ -3,7 +3,7 @@ class FeedsController < ApplicationController
     @feeds = Feed.paginate(page: params[:page], per_page: 3)
     respond_to do |format|
       format.html
-      format.js { render 'feeds/scroll_feed' }
+      format.js { render 'feeds/s_feed' }
     end
   end
 

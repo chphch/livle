@@ -1,33 +1,35 @@
 <div class="card-border">
-  <div class="card-thumbnail upcoming-index-card-thumbnail">
-    <%= image_tag "image_live", class: "card-image upcoming-index-card-image" %>
-    <div class="card-thumbnail-filter"></div>
-    <div class="upcoming-index-card-title">
-      <%= upcoming.title %>
+  <a href="upcomings/<%= upcoming.id %>/watch" method="get">
+    <div class="card-thumbnail upcoming-index-card-thumbnail">
+      <%= image_tag "image_live", class: "card-image upcoming-index-card-image" %>
+      <div class="card-thumbnail-filter"></div>
+      <div class="upcoming-index-card-title">
+        <%= upcoming.title %>
+      </div>
+      <div class="upcoming-index-card-place">
+        <%= upcoming.place %>
+      </div>
+      <div class="upcoming-index-card-date">
+        <%= upcoming.start_date %> - <%= upcoming.end_date %>
+      </div>
+      <div class="upcoming-index-card-pick-button">
+        찜버튼
+      </div>
     </div>
-    <div class="upcoming-index-card-place">
-      <%= upcoming.place %>
-    </div>
-    <div class="upcoming-index-card-date">
-      <%= upcoming.start_date %> - <%= upcoming.end_date %>
-    </div>
-    <div class="upcoming-index-card-pick-button">
-      찜버튼
-    </div>
-  </div>
 
-  <div class="card-brief">
-    <div class="row upcoming-index-card-row">
-      <div class="gray-title col-xs-8 upcoming-index-card-lineup">
-        <% upcoming.upcoming_artists.each do |upcoming_artist| %>
-          <%= upcoming_artist.artist.name %>, 
-        <% end %>
-        ...
-      </div>
-      <div class="col-xs-2"></div>
-      <div class="col-xs-2 upcoming-index-card-dday">
-        D-<%= upcoming.calc_d_day() %>
+    <div class="card-brief">
+      <div class="row upcoming-index-card-row">
+        <div class="gray-title col-xs-8 upcoming-index-card-lineup">
+          <% upcoming.upcoming_artists.each do |upcoming_artist| %>
+              <%= upcoming_artist.artist.name %>,
+          <% end %>
+          ...
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-2 upcoming-index-card-dday">
+          D-<%= upcoming.calc_d_day() %>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 </div>

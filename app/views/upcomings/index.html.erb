@@ -8,13 +8,13 @@
   </div>  
 </header>
 
-<section id="upcoming-lists">
-  <% @upcomings.each do |upcoming| %>
-    <a href="upcomings/<%= upcoming.id %>/watch" method="get">
-      <%= render partial: "index_card", locals: {upcoming: upcoming} %>
-    </a>
-  <% end %>
+<section id="upcoming-list-container">
+  <%= render partial: "index_card", collection: @upcomings, as: :upcoming %>
 </section>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @upcomings %>
+</div>
 
 <!-- Bottom Navbar -->
 <%= render partial: "partial_views/bottom_navbar" %>
