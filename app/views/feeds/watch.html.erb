@@ -3,20 +3,24 @@
 
 <section id="video">
   <div class="watch-video">
-    <iframe src='https://www.youtube.com/embed/<%= video_id %>
-    ?enablejsapi=1&rel=0&controls=2&modestbranding=1&showinfo=0&loop=1&autoplay=1&playlist=<%= video_id %>' frameborder='0' allowfullscreen></iframe>
+    <!-- Youtube Video Player -->
+    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    iv_load_policy=3&modestbranding=1&playsinline=1&loop=1&playlist=<%= video_id %>" frameborder="0"></iframe>
 
-    <div class="watch-video-filter"></div>
-    <a href="<%= url_for(:back) %>" method="get">
-      <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
-    </a>
-    <div class="watch-connector-container">
-      <div class="white-title">connector</div>
-      <div class="white-content"><%= @feed.user.nickname %>님</div>
+    <div id="youtube-player-filter">
+      <div class="watch-video-filter"></div>
+      <div class="watch-connector-container">
+        <div class="white-title">connector</div>
+        <div class="white-content"><%= @feed.user.nickname %>님</div>
+      </div>
     </div>
-    <!--<div class="watch-play-button-container text-center">-->
-      <!--<= image_tag("icon_play_button", style: "height: 16%; width: auto; margin-top: 24%;", id: "play-button") >-->
-    <!--</div>-->
+
+    <div class="watch-play-button-container text-center" id="youtube-player-controller">
+      <a href="<%= url_for(:back) %>" method="get">
+        <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
+      </a>
+      <%= image_tag("icon_play_button", style: "height: 16%; width: auto; margin-top: 24%;", id: "play-button") %>
+    </div>
   </div>
 </section>
 
@@ -57,3 +61,49 @@
 <section id="comment">
   <%= render partial: "partial_views/watch_comment", locals: {comments: @feed.feed_comments} %>
 </section>
+
+<script>
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+      events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  $('#youtube-player-controller').click(function() {
+    if(player.getPlayerState() == 1) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+    }
+  });
+
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      $('#play-button').css('visibility', 'hidden')
+      $('#youtube-player-filter').css('visibility', 'hidden')
+    }
+    else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
+      $('#play-button').css('visibility', 'visible')
+      $('#youtube-player-filter').css('visibility', 'visible')
+    }
+  }
+
+  function stopVideo() {
+    player.stopVideo();
+  }
+</script>
