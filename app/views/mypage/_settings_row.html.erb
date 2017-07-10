@@ -1,9 +1,10 @@
-<div class="row mypage-settings-row">
-  <div class="col-xs-offset-1 col-xs-10">
-    <%= tag %>
-  </div>
-  <div class="col-xs-1">
-    <div style="height:2rem;width:2rem;background-color:black">
+<%= link_to url, method: method do %>
+  <div class="row mypage-settings-row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <%= tag %>
+    </div>
+    <div class="col-xs-1">
+      <%= image_tag 'icon_arrow_right_black.png' %>
     </div>
   </div>
-</div>
+<% end %>

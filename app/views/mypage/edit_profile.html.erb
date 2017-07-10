@@ -1,26 +1,33 @@
 <header>
   <div class="row">
-    <div class="mypage-back-button">
-    </div>
-    <div class="col-xs-offset-4 col-xs-4">
-      <div class="text-center">
-        <h1>조혜민닉네임</h1>
-      </div>
+    <%= link_to mypage_index_path do %>
+      <%= image_tag 'icon_back_black.png', class: "mypage-back-button" %>
+    <% end %>
+  <div class="col-xs-offset-4 col-xs-4">
+    <div class="text-center">
+      <h1><%= current_user.nickname %></h1>
     </div>
   </div>
+  </div>
 </header>
+
 <hr>
 
 <section class="text-center">
   <div class="mypage-edit-profile-image">
+    <div>
+      <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
+    </div>
   </div>
 
   <div class="mypage-edit-profile-email">
-    atta1125@gmail.com
+    <%= current_user.email %>
+    <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
   </div>
 
   <div class="mypage-edit-profile-nickname">
-    조혜민닉네임
+    <%= current_user.nickname %>
+    <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
   </div>
   
 </section>

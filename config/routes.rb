@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   get 'mypage/index'
   get 'mypage/edit_profile'
   get 'mypage/settings'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
 
   resources :recent_keywords
   resources :recommended_urls
