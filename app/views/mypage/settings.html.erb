@@ -34,7 +34,7 @@
   <div class="row mypage-settings-background"></div>
   <hr class="mypage-settings-full-line">
 
-  <%= render partial: "settings_row", locals: {tag: "로그아웃", color: "blue", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "로그아웃", color: "blue", url: destroy_user_session_path} %>
   <hr class="mypage-settings-offset-line">
   <%= render partial: "settings_row", locals: {tag: "탈퇴하기", color: "blue", url: ""} %>
   <hr class="mypage-settings-offset-line">
