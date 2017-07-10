@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 for i in 1..5
-  User.create(email: Faker::Cat.name + "@a.com", password: "12341234", provider: "local", token: "", nickname: Faker::HarryPotter.character, profile_img: "image_profile.jpeg")
+  User.create(email: i.to_s + "@a.com", password: "12341234", provider: "local", token: "", nickname: Faker::HarryPotter.character, profile_img: "image_profile.jpeg")
 end
 
 for i in 1..5

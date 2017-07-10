@@ -24,18 +24,24 @@
   </div>
 
   <div class="row mypage-index-settings">
-    <div class="text-center col-xs-offset-2 col-xs-5">
-      프로필 설정
-    </div>
-    <div class="text-center mypage-index-gear col-xs-2">
-      톱니바퀴
-    </div>
+    <%= link_to mypage_edit_profile_path do %>
+      <div class="text-center mypage-index-edit-profile col-xs-offset-2 col-xs-5">
+        프로필 설정
+      </div>
+    <% end %>
+    <%= link_to mypage_settings_path do %>
+      <div class="text-center mypage-index-gear col-xs-2">
+        <%= image_tag 'icon_settings.png' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row text-center">
     <div class="mypage-index-pick-list">
       <div class="row">
-        <div class="col-xs-1">heart</div>
+        <div class="col-xs-1">
+          <%= image_tag 'icon_like_black_edge.png' %>
+        </div>
         <div class="col-xs-2">찜 목록</div>
       </div>
       <div class="row">
@@ -57,8 +63,10 @@
     </div>
   </div>
 
-  <div class="row">
-    heart
-    <p>마이 리스트</p>
+  <div class="row mypage-index-mylist">
+    <div class="col-xs-2 mypage-index-mylist-heart">
+      <%= image_tag 'icon_like_black_edge.png' %>
+    </div>
+    <div class="col-xs-2">마이 리스트</div>
   </div>
 </section>

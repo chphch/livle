@@ -1,7 +1,8 @@
 <header>
   <div class="row">
-    <div class="mypage-back-button">
-    </div>
+    <%= link_to mypage_index_path do %>
+      <%= image_tag 'icon_back_black.png', class: "mypage-back-button" %>
+    <% end %>
     <div class="col-xs-offset-4 col-xs-4">
       <div class="text-center">
         <h1>설정</h1>
@@ -9,33 +10,26 @@
     </div>
   </div>
 </header>
-<hr>
 
 <section>
-  <hr class="mypage-settings-full-line">
   <div class="row mypage-settings-background"></div>
-  <hr class="mypage-settings-full-line">
 
-  <%= render partial: "settings_row", locals: {tag: "프로필 설정", color: "black", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "프로필 설정", color: "black", url: "", method: ""} %>
   <hr class="mypage-settings-offset-line">
-  <%= render partial: "settings_row", locals: {tag: "비밀번호 변경", color: "black", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "비밀번호 변경", color: "black", url: edit_user_password_path, method: "GET"} %>
   <hr class="mypage-settings-offset-line">
-  <%= render partial: "settings_row", locals: {tag: "공지사항", color: "black", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "공지사항", color: "black", url: "", method: ""} %>
 
-  <hr class="mypage-settings-full-line">
   <div class="row mypage-settings-background"></div>
-  <hr class="mypage-settings-full-line">
 
+  <%= render partial: "settings_row", locals: {tag: "약관", color: "black", url: "", method: ""} %>
   <hr class="mypage-settings-offset-line">
-  <%= render partial: "settings_row", locals: {tag: "약관", color: "black", url: ""} %>
-  <%= render partial: "settings_row", locals: {tag: "개인정보처리방침", color: "black", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "개인정보처리방침", color: "black", url: "", method: ""} %>
 
-  <hr class="mypage-settings-full-line">
   <div class="row mypage-settings-background"></div>
-  <hr class="mypage-settings-full-line">
 
-  <%= render partial: "settings_row", locals: {tag: "로그아웃", color: "blue", url: destroy_user_session_path} %>
+  <%= render partial: "settings_row", locals: {tag: "로그아웃", color: "blue", url: destroy_user_session_path, method: "DELETE"} %>
   <hr class="mypage-settings-offset-line">
-  <%= render partial: "settings_row", locals: {tag: "탈퇴하기", color: "blue", url: ""} %>
+  <%= render partial: "settings_row", locals: {tag: "탈퇴하기", color: "blue", url: user_registration_path, method: "DELETE"} %>
   <hr class="mypage-settings-offset-line">
 </section>
