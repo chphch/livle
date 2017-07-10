@@ -4,10 +4,10 @@
 
 .mypage-back-button {
   position: absolute;
-  left: 7rem;
-  background-color: black;
+  top: 6rem;
+  left: 5rem;
   height: 5rem;
-  width: 5rem;
+  width: 3rem;
 }
 .mypage-index-profile-image {
   margin-top: 3rem;
@@ -37,14 +37,20 @@
     border-color: grey;
     border-radius: 1rem;
     border-style: solid;
-    padding-top: 1.6rem;
     height: 8rem;
     font-size: 3rem;
     color: grey;
   }
 }
+.mypage-index-edit-profile {
+  padding-top: 1.6rem;
+}
 .mypage-index-gear {
   margin-left: 2rem;
+  img {
+    width: 80%;
+    height: 100%;
+  }
 }
 .mypage-index-pick-list {
   margin-top: 5rem;
@@ -58,19 +64,50 @@
     margin-top: 1rem;
     div {
       display: inline-block;
+      img {
+        margin-left: 1.5rem;
+        width: 100%;
+      }
     }
   }
 }
 .mypage-index-pick-list .row:first-child {
   font-weight: bold;
 }
+.mypage-index-mylist {
+  margin-top: 3rem;
+}
+.mypage-index-mylist-heart {
+  img {
+    margin-left: 5rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}
+.mypage-index-mylist div:nth-child(2) {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-left: 3rem;
+}
 .mypage-edit-profile-image {
   margin-top: 30rem;
   display: inline-block;
-  height: 30rem;
-  width: 30rem;
+  height: 35rem;
+  width: 35rem;
   border-radius: 100%;
   border: 1rem black solid;
+  position: relative;
+  div {
+    border: 0.2rem black solid;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 7.5rem;
+    width: 11rem;
+    background-color: white;
+    padding: 1.5rem;
+  }
 }
 .mypage-edit-profile-email {
   margin-top: 10rem;
@@ -80,25 +117,31 @@
   font-size: 4rem;
   margin-top: 5rem;
 }
+.mypage-edit-pencil {
+  width: 4.5rem;
+  height: 4.5rem;
+}
 .mypage-settings-background {
   background-color: #EFEFF4;
   height: 10rem;
+  border-top: 1px grey solid;
+  border-bottom: 1px grey solid;
 }
 .mypage-settings-row {
   height: 10rem;
-  padding: 3rem 0rem;
+  padding: 2.5rem 1.5rem;
   div {
     font-size: 3.5rem;
+    img {
+      height: 7rem;
+      width: 7rem;
+    }
   }
 }
 .mypage-settings-offset-line {
   position: absolute;
   left: 10%;
   width: 90%;
-  margin: 0;
-  background-color: black;
-}
-.mypage-settings-full-line {
   margin: 0;
   background-color: black;
 }
