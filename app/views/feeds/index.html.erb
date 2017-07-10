@@ -8,16 +8,12 @@
   </div>
 </header>
 
-<section id="feed-lists">
-  <% @feeds.each do |feed| %>
-    <a href="feeds/<%= feed.id %>/watch" method="get">
-      <%= render partial: "index_card", locals: {feed: feed} %>
-    </a>
-  <% end %>
+<section id="list-container">
+  <%= render partial: "index_card", collection: @feeds, as: :feed %>
 </section>
 
 <div id="infinite-scrolling">
-  <%= will_paginate @posts %>
+  <%= will_paginate @feeds %>
 </div>
 
 <!-- Bottom Navbar -->

@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
   def index
-    @feeds = Feed.paginate(page: params[:page], per_page: 15)
+    @feeds = Feed.paginate(page: params[:page], per_page: 3)
     respond_to do |format|
       format.html
       format.js { render 'feeds/scroll_feed' }

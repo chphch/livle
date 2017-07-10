@@ -1,41 +1,43 @@
 <div class="card-border">
-  <div class="card-title text-center">
-    <h2>LILVE's choice</h2>
-  </div>
-
-  <div class="card-thumbnail">
-    <div class="text-center">
-      <img class="card-image" src="<%= image_url("image_live") %>"/>
-      <div class="card-thumbnail-filter"></div>
+  <a href="feeds/<%= feed.id %>/watch" method="get">
+    <div class="card-title text-center">
+      <h2>LILVE's choice</h2>
     </div>
 
-    <div class="feed-info">
-      <%= image_tag("icon_like_white", class: "feed-info-icon") %>
-      <p class="white-content"><%= feed.feed_likes.size %></p>
-      <%= image_tag("icon_share_white", class: "feed-info-icon") %>
-      <p class="white-content"><%= feed.count_share %></p>
-      <%= image_tag("icon_view_white", class: "feed-info-icon") %>
-      <p class="white-content"><%= feed.count_view %></p>
-    </div>
-  </div>
-
-  <div class="card-describe">
-    <div class="row">
-      <div class="col-xs-8">
-        <p class="black-title">
-          <% feed.feed_artists.each do |feed_artist| %>
-            <%= feed_artist.artist.name %>,
-          <% end %>
-        </p>
+    <div class="card-thumbnail">
+      <div class="text-center">
+        <img class="card-image" src="<%= image_url("image_live") %>"/>
+        <div class="card-thumbnail-filter"></div>
       </div>
-      <div class="col-xs-4">
-        <div class="text-right">
-          <%= image_tag("icon_share_gray", class: "card-button-share") %>
+
+      <div class="feed-info">
+        <%= image_tag("icon_like_white", class: "feed-info-icon") %>
+        <p class="white-content"><%= feed.feed_likes.size %></p>
+        <%= image_tag("icon_share_white", class: "feed-info-icon") %>
+        <p class="white-content"><%= feed.count_share %></p>
+        <%= image_tag("icon_view_white", class: "feed-info-icon") %>
+        <p class="white-content"><%= feed.count_view %></p>
+      </div>
+    </div>
+
+    <div class="card-describe">
+      <div class="row">
+        <div class="col-xs-8">
+          <p class="black-title">
+            <% feed.feed_artists.each do |feed_artist| %>
+                <%= feed_artist.artist.name %>,
+            <% end %>
+          </p>
+        </div>
+        <div class="col-xs-4">
+          <div class="text-right">
+            <%= image_tag("icon_share_gray", class: "card-button-share") %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <p class="video-title"><%= feed.title %></p>
-    <!--<p class="curation-content">This is content</p>-->
-  </div>
+      <p class="video-title"><%= feed.title %></p>
+      <!--<p class="curation-content">This is content</p>-->
+    </div>
+  </a>
 </div>
