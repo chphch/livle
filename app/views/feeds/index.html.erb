@@ -9,6 +9,10 @@
 </header>
 
 <section id="feed-list-container">
+  <% @curations.each do |curation| %>
+    <%= render partial: "curations/curation_card", locals: {curation: curation} %>
+  <% end %>
+
   <%= render partial: "index_card", collection: @feeds, as: :feed %>
 </section>
 

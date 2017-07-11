@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :artists
 
+  get 'curations/:curation_id/watch' => 'curations#watch'
   resources :curations do
     resources :curation_videos
     resources :curation_likes
