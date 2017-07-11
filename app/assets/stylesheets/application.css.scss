@@ -166,6 +166,18 @@ header {
   padding-bottom: 2%;
 }
 
+/// Comment Container
+.comment-container {
+  margin-top: 2%;
+  padding: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-top-right-radius: 5em;
+  border-bottom-right-radius: 5em;
+  border-bottom-left-radius: 5em;
+  background: #EBEBEB;
+}
+
 /// BOTTOM NAVBAR
 .bottom-navbar {
   position: fixed;
@@ -181,7 +193,6 @@ header {
 }
 
 /// TEXT STYLING
-
 a {
   text-decoration: none !important;
   color: inherit !important;
