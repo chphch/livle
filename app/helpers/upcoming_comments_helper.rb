@@ -1,2 +1,0 @@
-module UpcomingCommentsHelper
-end
