@@ -1,6 +1,8 @@
 $('#feed-list-container').append('<%= j render partial: "index_card", collection: @feeds, as: :feed %>');
-<% if @feeds.next_page %>
+$('#feed-list-container').append('<%= j render partial: "curations/curation_card", collection: @curations, as: :curation %>');
+<% if @feeds.next_page || @curations.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+  $('.pagination').replaceWith('<%= j will_paginate @curations %>');
 <% else %>
   $(window).off('scroll');
   $('.pagination').remove();
