@@ -13,6 +13,10 @@ gem 'faker'
 gem 'devise'
 # Gem For Infinite Scroll
 gem 'will_paginate'
+# Omniauth Facebook
+gem 'omniauth-facebook'
+# Figaro
+gem 'figaro'
 
 ###############################################
 
