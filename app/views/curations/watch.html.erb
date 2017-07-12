@@ -44,7 +44,7 @@
 <section id="content">
   <div class="content-container watch-video-info">
     <p class="black-title">
-      <% @curation.curation_artist.each do |curation_artist| %>
+      <% @curation.curation_artists.each do |curation_artist| %>
           <%= curation_artist.artist.name %>,
       <% end %>
     </p>
