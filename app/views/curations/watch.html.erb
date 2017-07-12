@@ -1,5 +1,5 @@
 <!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @curation.curation_videos.first.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+<% video_id = @curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
 
 <section id="video">
   <div class="watch-video">
@@ -44,8 +44,8 @@
 <section id="content">
   <div class="content-container watch-video-info">
     <p class="black-title">
-      <% @curation.curation_videos.each do |curation_video| %>
-          <%= curation_video.artist.name %>,
+      <% @curation.curation_artist.each do |curation_artist| %>
+          <%= curation_artist.artist.name %>,
       <% end %>
     </p>
     <div class="content-container gray-content"><%= @curation.title %></div>

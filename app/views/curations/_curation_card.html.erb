@@ -23,10 +23,10 @@
     <div class="card-describe">
       <div class="row">
         <div class="col-xs-8">
-          <% artist = curation.curation_videos.first.artist %>
+          <% artist = curation.curation_artists %>
           <p class="black-title">
-            <% if curation.curation_videos.size > 1 %>
-              <%= artist.name %> 및 <%= curation.curation_videos.size - 1 %>명
+            <% if curation.curation_artists.size > 1 %>
+              <%= artist.name %> 및 <%= curation.curation_artists.size - 1 %>명
             <% else %>
               <%= artist.name %>
             <% end %>
