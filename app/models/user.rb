@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :feed_comments
   has_many :upcoming_likes
   has_many :upcoming_comments
-  has_many :recommended_urls
+  has_many :connect_urls
   has_many :recent_keywords
 
   # Include default devise modules. Others available are:

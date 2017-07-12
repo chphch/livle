@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705180009) do
+ActiveRecord::Schema.define(version: 20170712063250) do
 
   create_table "artists", force: :cascade do |t|
+    t.integer "curation_id"
+    t.integer "artist_id"
     t.string "name"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artists_on_artist_id"
+    t.index ["curation_id"], name: "index_artists_on_curation_id"
+  end
+
+  create_table "connect_urls", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "feed_id"
+    t.string "video_url"
+    t.text "describe"
+    t.boolean "is_confirmed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_connect_urls_on_feed_id"
+    t.index ["user_id"], name: "index_connect_urls_on_user_id"
+  end
+
+  create_table "curation_artists", force: :cascade do |t|
+    t.integer "curation_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_curation_artists_on_artist_id"
+    t.index ["curation_id"], name: "index_curation_artists_on_curation_id"
   end
 
   create_table "curation_comments", force: :cascade do |t|
@@ -38,20 +63,11 @@ ActiveRecord::Schema.define(version: 20170705180009) do
     t.index ["user_id"], name: "index_curation_likes_on_user_id"
   end
 
-  create_table "curation_videos", force: :cascade do |t|
-    t.integer "curation_id"
-    t.integer "artist_id"
-    t.string "youtube_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_curation_videos_on_artist_id"
-    t.index ["curation_id"], name: "index_curation_videos_on_curation_id"
-  end
-
   create_table "curations", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "content"
+    t.string "youtube_id"
     t.integer "count_share"
     t.integer "count_view"
     t.datetime "created_at", null: false
@@ -100,18 +116,10 @@ ActiveRecord::Schema.define(version: 20170705180009) do
 
   create_table "recent_keywords", force: :cascade do |t|
     t.integer "user_id"
+    t.string "keyword"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recent_keywords_on_user_id"
-  end
-
-  create_table "recommended_urls", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.boolean "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_recommended_urls_on_user_id"
   end
 
   create_table "upcoming_artists", force: :cascade do |t|

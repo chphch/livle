@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CurationVideoTest < ActiveSupport::TestCase
+class ConnectUrlTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

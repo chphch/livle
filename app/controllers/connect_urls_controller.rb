@@ -1,0 +1,2 @@
+class ConnectUrlsController < ApplicationController
+end

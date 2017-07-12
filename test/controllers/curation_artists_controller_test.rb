@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RecommendedUrlTest < ActiveSupport::TestCase
+class CurationArtistsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CurationVideosControllerTest < ActionDispatch::IntegrationTest
+class CurationArtistTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

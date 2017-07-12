@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RecommendedUrlsControllerTest < ActionDispatch::IntegrationTest
+class ConnectUrlsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

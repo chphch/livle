@@ -4,6 +4,7 @@ class CreateCurations < ActiveRecord::Migration[5.1]
       t.belongs_to :user
       t.string :title
       t.text :content
+      t.string :youtube_id
       t.integer :count_share
       t.integer :count_view
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'curations/:curation_id/watch' => 'curations#watch'
   resources :curations do
-    resources :curation_videos
+    resources :curation_artists
     resources :curation_likes
     resources :curation_comments
   end
@@ -38,8 +38,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :connect_urls
   resources :recent_keywords
-  resources :recommended_urls
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
