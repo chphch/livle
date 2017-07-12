@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 20170705180009) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "provider"
-    t.string "token"
+    t.string "uid"
     t.string "nickname"
     t.string "profile_img"
     t.datetime "created_at", null: false

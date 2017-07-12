@@ -32,7 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       ## Customizable
       t.string   :provider
-      t.string   :token
+      t.string   :uid
       t.string   :nickname
       t.string   :profile_img
 

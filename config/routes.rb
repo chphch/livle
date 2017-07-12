@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'mypage/edit_profile'
   get 'mypage/settings'
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     registrations: 'users/registrations'
