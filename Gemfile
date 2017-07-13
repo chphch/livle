@@ -17,6 +17,8 @@ gem 'will_paginate'
 gem 'omniauth-facebook'
 # Figaro
 gem 'figaro'
+# Browser - detecting types of devices
+gem 'browser'
 
 ###############################################
 

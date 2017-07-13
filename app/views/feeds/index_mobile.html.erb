@@ -12,12 +12,12 @@
   <!-- Ruby Code -->
   <% f_index = 0 %>
   <% @curations.each do |curation| %>
-    <%= render partial: "curations/curation_card", locals: {curation: curation} %>
+    <%= render partial: "curations/curation_card_mobile", locals: {curation: curation} %>
     <% rand_num = rand(2) + 2 %>
     <% f_count = 0 %>
 
     <% while (f_index < @feeds.size) %>
-      <%= render partial: "index_card", locals: {feed: @feeds[f_index]} %>
+      <%= render partial: "index_card_mobile", locals: {feed: @feeds[f_index]} %>
       <% f_index += 1 %>
       <% f_count += 1 %>
 
@@ -33,4 +33,4 @@
 </div>
 
 <!-- Bottom Navbar -->
-<%= render partial: "partial_views/bottom_navbar" %>
+<%= render partial: "partial_views/bottom_navbar_mobile" %>

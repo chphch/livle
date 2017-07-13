@@ -7,21 +7,18 @@ Rails.application.routes.draw do
 
   resources :artists
 
-  get 'curations/:curation_id/watch' => 'curations#watch'
   resources :curations do
     resources :curation_artists
     resources :curation_likes
     resources :curation_comments
   end
 
-  get 'feeds/:feed_id/watch' => 'feeds#watch'
   resources :feeds do
     resources :feed_artists
     resources :feed_likes
     resources :feed_comments
   end
 
-  get 'upcomings/:upcoming_id/watch' => 'upcomings#watch'
   resources :upcomings do
     resources :upcoming_comments
     resources :upcoming_likes

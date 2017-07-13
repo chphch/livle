@@ -1,5 +1,6 @@
 class CurationsController < ApplicationController
-  def watch
-    @curation = Curation.find_by(id: params[:curation_id])
+  def show
+    @curation = Curation.find_by(id: params[:id])
+    render_by_device
   end
 end

@@ -1,4 +1,4 @@
-$('#upcoming-list-container').append('<%= j render partial: "index_card", collection: @upcomings, as: :upcoming %>');
+$('#upcoming-list-container').append('<%= j render partial: "index_card_mobile", collection: @upcomings, as: :upcoming %>');
 <% if @upcomings.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @upcomings %>');
 <% else %>

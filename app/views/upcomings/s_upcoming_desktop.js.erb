@@ -1,0 +1,7 @@
+$('#upcoming-list-container').append('<%= j render partial: "index_card_desktop", collection: @upcomings, as: :upcoming %>');
+<% if @upcomings.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @upcomings %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
