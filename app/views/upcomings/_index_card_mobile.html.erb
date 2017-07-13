@@ -19,15 +19,18 @@
 
     <div class="card-brief">
       <div class="row upcoming-index-card-row">
-        <div class="gray-title col-xs-8 upcoming-index-card-lineup">
-          <% upcoming.upcoming_artists.each do |upcoming_artist| %>
-              <%= upcoming_artist.artist.name %>,
-          <% end %>
-          ...
+        <div class="col-xs-8 upcoming-index-card-lineup">
+          <% artist = upcoming.upcoming_artists.first.artist %>
+          <p class="black-title">
+            <% if upcoming.upcoming_artists.size > 1 %>
+              <%= artist.name %> 및 <%= upcoming.upcoming_artists.size %>명
+            <% else %>
+              <%= artist.name %>
+            <% end %>
+          </p>
         </div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-2 upcoming-index-card-dday">
-          D-<%= upcoming.calc_d_day() %>
+        <div class="col-xs-4 upcoming-index-card-dday text-right">
+          <p class="gray-title">D-<%= @d_day[upcoming.id] %></p>
         </div>
       </div>
     </div>
