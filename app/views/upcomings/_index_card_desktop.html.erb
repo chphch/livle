@@ -1,5 +1,5 @@
 <div class="card-border">
-  <a href="upcomings/<%= upcoming.id %>/watch" method="get">
+  <%= link_to upcoming_path(upcoming.id) do %>
     <div class="card-thumbnail upcoming-index-card-thumbnail">
       <%= image_tag "image_live", class: "card-image upcoming-index-card-image" %>
       <div class="card-thumbnail-filter"></div>
@@ -31,5 +31,5 @@
         </div>
       </div>
     </div>
-  </a>
+  <% end %>
 </div>

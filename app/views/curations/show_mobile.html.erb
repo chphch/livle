@@ -2,22 +2,22 @@
 <% video_id = @curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
 
 <section id="video">
-  <div class="watch-video">
+  <div class="show-video">
     <!-- Youtube Video Player -->
-    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&watchinfo=0&
     iv_load_policy=3&modestbranding=1&playsinline=1&loop=1&playlist=<%= video_id %>" frameborder="0"></iframe>
 
     <div id="youtube-player-filter">
-      <div class="watch-video-filter"></div>
-      <div class="watch-connector-container">
+      <div class="show-video-filter"></div>
+      <div class="show-connector-container">
         <div class="white-title">connector</div>
         <div class="white-content"><%= @curation.user.nickname %>님</div>
       </div>
     </div>
 
-    <div class="watch-play-button-container text-center" id="youtube-player-controller">
+    <div class="show-play-button-container text-center" id="youtube-player-controller">
       <a href="<%= url_for(:back) %>" method="get">
-        <div class="watch-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
+        <div class="show-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
       </a>
       <%= image_tag("icon_play_button", style: "height: 16%; width: auto; margin-top: 24%;", id: "play-button") %>
     </div>
@@ -25,7 +25,7 @@
 </section>
 
 <section id="info">
-  <div class="watch-video-info">
+  <div class="show-video-info">
     <div class="row">
       <div class="col-xs-8">
         <%= image_tag("icon_like_gray", class: "info-icon") %>
@@ -42,7 +42,7 @@
 </section>
 
 <section id="content">
-  <div class="content-container watch-video-info">
+  <div class="content-container show-video-info">
     <p class="black-title">
       <% @curation.curation_artists.each do |curation_artist| %>
           <%= curation_artist.artist.name %>,
@@ -54,11 +54,11 @@
 </section>
 
 <div class="hr-container">
-  <div class="watch-video-filter"></div>
+  <div class="show-video-filter"></div>
 </div>
 
 <section id="comment">
-  <%= render partial: "partial_views/watch_comment", locals: {comments: @curation.curation_comments} %>
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </section>
 
 <script>

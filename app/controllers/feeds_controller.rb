@@ -4,12 +4,14 @@ class FeedsController < ApplicationController
     @feeds = Feed.paginate(page: params[:page], per_page: 6)
     respond_to do |format|
       format.html
-      format.js { render 'feeds/s_feed' }
+      format.js { render 'feeds/s_feed_mobile' }
     end
+    render_by_device
   end
 
-  def watch
-    @feed = Feed.find_by(id: params[:feed_id])
+  def show
+    @feed = Feed.find_by(id: params[:id])
+    render_by_device
   end
 
   private
