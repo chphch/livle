@@ -3,13 +3,11 @@ class UpcomingsController < ApplicationController
 
   def index
     @upcomings = Upcoming.order('start_date ASC').paginate(page: params[:page], per_page: 8)
+    calc_d_day
     respond_to do |format|
-      format.html
+      format.html { render_by_device }
       format.js { render 'upcomings/s_upcoming_mobile' }
     end
-    calc_d_day
-
-    render_by_device
   end
 
   def show
