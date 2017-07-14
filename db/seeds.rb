@@ -32,7 +32,7 @@ for i in 1..SIZE_1
                             )
   for i in 1..SIZE_2
     CurationArtist.create(curation_id: curation.id, artist_id: rand(1..SIZE_1))
-    CurationLike.create(curation_id: curation.id, user_id: rand(1..SIZE_1))
+#    CurationLike.create(curation_id: curation.id, user_id: rand(1..SIZE_1))
     CurationComment.create(curation_id: curation.id, user_id: rand(1..SIZE_1), content: Faker::Hacker.say_something_smart)
   end
 end
