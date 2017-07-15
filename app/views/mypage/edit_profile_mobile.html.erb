@@ -1,33 +1,35 @@
 <header>
-  <div class="row">
-    <%= link_to mypage_index_path do %>
-      <%= image_tag 'icon_back_black.png', class: "mypage-back-button" %>
-    <% end %>
-  <div class="col-xs-offset-4 col-xs-4">
-    <div class="text-center">
-      <h1><%= current_user.nickname %></h1>
-    </div>
+  <div class="mypage-header-container text-center">
+    <h1><%= current_user.nickname %></h1>
+    <hr>
   </div>
+  <div class="mypage-header-container">
+    <a href="<%= url_for(:back) %>" method="get">
+      <div class="mypage-back-button">
+        <%= image_tag("icon_back_black", style: "width: 2.6rem; height: auto;") %>
+      </div>
+    </a>
   </div>
 </header>
 
-<hr>
+<section id="profile-img">
+  <div class="mypage-profile-img-position text-center">
+    <form action="/mypage/update_profile" id="update-profile" method="post" enctype="multipart/form-data">
+      <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
+      <label for="profile">
+        <div class="mypage-profile-img-container">
+          <% if current_user.profile_img != nil %>
+              <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
+          <% else %>
+              <%= image_tag("image_profile", id: "upload-profile-img", class: "mypage-profile-img") %>
+          <% end %>
+          <div class="mypage-edit-pencil">
+            <%= image_tag("icon_pencil_black", style: "height: 100%; width: auto;") %>
+          </div>
+        </div>
+      </label>
 
-<section class="text-center">
-  <div class="mypage-edit-profile-image">
-    <div>
-      <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
-    </div>
+      <button type="submit" class="btn btn-default">변경하기</button>
+    </form>
   </div>
-
-  <div class="mypage-edit-profile-email">
-    <%= current_user.email %>
-    <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
-  </div>
-
-  <div class="mypage-edit-profile-nickname">
-    <%= current_user.nickname %>
-    <%= image_tag 'icon_pencil_black.png', class: "mypage-edit-pencil" %>
-  </div>
-  
 </section>

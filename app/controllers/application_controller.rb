@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :null_session, if: ->{request.format.json?}
 
   def render_by_device
     if browser.device.mobile?
