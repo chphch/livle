@@ -1,14 +1,6 @@
 // They will automatically be included in application.css.
 // Place all the styles related to the mypage controller here.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.mypage-back-button {
-  position: absolute;
-  top: 6rem;
-  left: 5rem;
-  height: 5rem;
-  width: 3rem;
-}
 .mypage-index-profile-image {
   margin-top: 3rem;
   height: 17rem;
@@ -89,26 +81,6 @@
   font-weight: bold;
   margin-left: 3rem;
 }
-.mypage-edit-profile-image {
-  margin-top: 30rem;
-  display: inline-block;
-  height: 35rem;
-  width: 35rem;
-  border-radius: 100%;
-  border: 1rem black solid;
-  position: relative;
-  div {
-    border: 0.2rem black solid;
-    border-radius: 1rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 7.5rem;
-    width: 11rem;
-    background-color: white;
-    padding: 1.5rem;
-  }
-}
 .mypage-edit-profile-email {
   margin-top: 10rem;
   font-size: 4rem;
@@ -116,10 +88,6 @@
 .mypage-edit-profile-nickname {
   font-size: 4rem;
   margin-top: 5rem;
-}
-.mypage-edit-pencil {
-  width: 4.5rem;
-  height: 4.5rem;
 }
 .mypage-settings-background {
   background-color: #EFEFF4;
@@ -144,4 +112,69 @@
   width: 90%;
   margin: 0;
   background-color: black;
+}
+
+// Edit Page
+.mypage-header-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  h1 {
+    padding-top: 5%;
+    padding-bottom: 3%;
+  }
+}
+
+.mypage-back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5%;
+}
+
+.mypage-inputfile {
+  position: absolute;
+  display: none;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.mypage-profile-img-position {
+  width: 100%;
+  padding-top: 38%;
+}
+
+.mypage-profile-img-container {
+  position: relative;
+  height: 35rem;
+  width: 35rem;
+  border-radius: 100%;
+  border: 0.2rem black solid;
+}
+
+.mypage-profile-img {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  width: 94%;
+  height: 94%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.mypage-edit-pencil {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11rem;
+  height: 7.5rem;
+  padding: 1.5rem;
+  border: 0.2rem black solid;
+  border-radius: 1rem;
+  background-color: white;
 }

@@ -19,6 +19,10 @@ gem 'omniauth-facebook'
 gem 'figaro'
 # Browser - detecting types of devices
 gem 'browser'
+# Gem For File Upload
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 ###############################################
 

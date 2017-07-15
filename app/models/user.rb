@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :upcoming_comments
   has_many :connect_urls
   has_many :recent_keywords
+  mount_uploader :profile_img, S3Uploader
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
