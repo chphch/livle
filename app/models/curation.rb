@@ -1,5 +1,5 @@
 class Curation < ArtistsRecord
-  searchkick callbacks: :async
+  searchkick callbacks: :async, word_middle: [:artists_names, :title]
   belongs_to :user
   has_many :curation_artists
   has_many :artists, through: :curation_artists
