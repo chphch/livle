@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'feeds#index'
 
   get 'search/index'
-  get 'search/search'
+  post 'search/search'
 
   resources :artists
 

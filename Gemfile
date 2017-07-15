@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
 
+source 'https://rubygems.org'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -19,10 +19,14 @@ gem 'omniauth-facebook'
 gem 'figaro'
 # Browser - detecting types of devices
 gem 'browser'
-# Gem For File Upload
+# Gem For Image Upload
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+# searchkick
+gem 'searchkick'
+# async background job for searchkick index sync
+gem 'activejob_backport'
 
 ###############################################
 
