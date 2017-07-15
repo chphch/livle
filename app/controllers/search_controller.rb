@@ -10,11 +10,11 @@ class SearchController < ApplicationController
     @video_results = Searchkick.search(
       term,
       index_name: [Feed, Curation],
-      fields: [:artist_names, :title]
+      fields: [:artists_names, :title, :content, :user_nickname]
     )
     @upcoming_results = Upcoming.search(
       term,
-      fields: [:artist_names, :title, :place],
+      fields: [:artists_names, :title, :place]
     )
 
     render_by_device

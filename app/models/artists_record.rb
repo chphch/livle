@@ -1,8 +1,7 @@
-class SearchkickRecord < ApplicationRecord
+class ArtistsRecord < ApplicationRecord
   self.abstract_class = true
-  searchkick callbacks: :async
-
   def search_data
+    #attributes.merge(artists_names: self.artists.map { |artist| artist.name }
     attributes.merge(artists_names: self.artists.map(&:name))
   end
 end

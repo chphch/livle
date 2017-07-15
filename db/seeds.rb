@@ -29,7 +29,7 @@ end
 for i in 1..SIZE_1
   curation = Curation.create(
     user_id: rand(1..SIZE_1),
-    title: "c_title_" + i.to_s,
+    title: "curation_" + i.to_s,
     content: Faker::Hacker.say_something_smart,
     youtube_id: "https://youtu.be/Xvjnoagk6GU",
     count_share: rand(1..100),
@@ -56,7 +56,7 @@ end
 for i in 1..SIZE_1
   feed = Feed.create(
     user_id: rand(1..SIZE_1),
-    title: "f_fifle_" + i.to_s,
+    title: "feed_" + i.to_s,
     youtube_id: "https://youtu.be/Xvjnoagk6GU",
     count_view: rand(1..100),
     count_share: rand(1..100)
@@ -81,7 +81,7 @@ end
 
 for i in 1..SIZE_1
   upcoming = Upcoming.create(
-    title: "u_title_" + i.to_s,
+    title: "upcoming_" + i.to_s,
     place: Faker::Space.galaxy,
     main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
     start_date: Date.new(2017,rand(1..12),rand(1..12)),

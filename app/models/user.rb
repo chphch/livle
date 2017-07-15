@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  searchkick callbacks: :async
   has_many :curation_likes
   has_many :feeds
   has_many :feed_likes
