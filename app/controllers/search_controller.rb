@@ -5,7 +5,18 @@ class SearchController < ApplicationController
 
   # keyword : feed.title, upcoming.title, artist.name, user.nickname, upcoming.place
   def search
+    term = params[:term]
+
+    @video_results = Searchkick.search(
+      term,
+      index_name: [Feed, Curation],
+      fields: [:artist_names, :title]
+    )
+    @upcoming_results = Upcoming.search(
+      term,
+      fields: [:artist_names, :title, :place],
+    )
+
     render_by_device
   end
-
 end

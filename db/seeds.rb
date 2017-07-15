@@ -7,63 +7,103 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 SIZE_1 = 20
-SIZE_2 = 5
+SIZE_2 = 1
 
 for i in 1..SIZE_1
-  User.create(email: i.to_s + "@a.com",
-              password: "12341234",
-              provider: "local",
-              nickname: Faker::HarryPotter.character,
-              profile_img: "image_profile.jpeg"
-             )
+  User.create(
+    email: i.to_s + "@a.com",
+    password: "12341234",
+    provider: "local",
+    nickname: Faker::HarryPotter.character,
+    profile_img: "image_profile.jpeg"
+  )
 end
 
 for i in 1..SIZE_1
-  Artist.create(name: Faker::Book.author, image_url: "image_artist.jpg")
+  Artist.create(
+    name: "artist_" + i.to_s,
+    image_url: "image_artist.jpg"
+  )
 end
 
 for i in 1..SIZE_1
-  curation = Curation.create(user_id: rand(1..SIZE_1),
-                             title: Faker::Demographic.race,
-                             content: Faker::Hacker.say_something_smart,
-                             youtube_id: "https://youtu.be/Xvjnoagk6GU",
-                             count_share: rand(1..100),
-                             count_view: rand(1..100)
-                            )
+  curation = Curation.create(
+    user_id: rand(1..SIZE_1),
+    title: "c_title_" + i.to_s,
+    content: Faker::Hacker.say_something_smart,
+    youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    count_share: rand(1..100),
+    count_view: rand(1..100)
+  )
   for i in 1..SIZE_2
-    CurationArtist.create(curation_id: curation.id, artist_id: rand(1..SIZE_1))
-#    CurationLike.create(curation_id: curation.id, user_id: rand(1..SIZE_1))
-    CurationComment.create(curation_id: curation.id, user_id: rand(1..SIZE_1), content: Faker::Hacker.say_something_smart)
+    arr = Array.new(SIZE_1) {|i| i}.sample(5)
+    CurationArtist.create(
+      curation_id: curation.id,
+      artist_id: arr[i]
+    )
+    CurationLike.create(
+      curation_id: curation.id,
+      user_id: arr[i]
+    )
+    CurationComment.create(
+      curation_id: curation.id,
+      user_id: rand(1..SIZE_1),
+      content: Faker::Hacker.say_something_smart
+    )
   end
 end
 
 for i in 1..SIZE_1
-  feed = Feed.create(user_id: rand(1..SIZE_1),
-                     title: Faker::Demographic.race,
-                     youtube_id: "https://youtu.be/Xvjnoagk6GU",
-                     count_view: rand(1..100),
-                     count_share: rand(1..100)
-                    )
+  feed = Feed.create(
+    user_id: rand(1..SIZE_1),
+    title: "f_fifle_" + i.to_s,
+    youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    count_view: rand(1..100),
+    count_share: rand(1..100)
+  )
   for i in 1..SIZE_2
-    FeedComment.create(feed_id: feed.id, user_id: rand(1..SIZE_1), content: Faker::Hacker.say_something_smart)
-    FeedArtist.create(feed_id: feed.id, artist_id: rand(1..SIZE_1))
-    FeedLike.create(feed_id: feed.id, user_id: rand(1..SIZE_1))
+    arr = Array.new(SIZE_1) {|i| i}.sample(5)
+    FeedComment.create(
+      feed_id: feed.id,
+      user_id: arr[i],
+      content: Faker::Hacker.say_something_smart
+    )
+    FeedArtist.create(
+      feed_id: feed.id,
+      artist_id: arr[i]
+    )
+    FeedLike.create(
+      feed_id: feed.id,
+      user_id: rand(1..SIZE_1)
+    )
   end
 end
 
 for i in 1..SIZE_1
-  upcoming = Upcoming.create(title: Faker::Space.agency,
-                             place: Faker::Space.galaxy,
-                             main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
-                             start_date: Date.new(2017,rand(1..12),rand(1..12)),
-                             end_date: Date.new(2017,rand(1..12),rand(1..12)),
-                             ticket_url: 'www.naver.com',
-                             count_view: rand(1..100),
-                             count_share: rand(1..100)
-                            )
+  upcoming = Upcoming.create(
+    title: "u_title_" + i.to_s,
+    place: Faker::Space.galaxy,
+    main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    start_date: Date.new(2017,rand(1..12),rand(1..12)),
+    end_date: Date.new(2017,rand(1..12),rand(1..12)),
+    ticket_url: 'www.naver.com',
+    count_view: rand(1..100),
+    count_share: rand(1..100)
+  )
   for i in 1..SIZE_2
-    UpcomingArtist.create(upcoming_id: upcoming.id, artist_id: rand(1..SIZE_1))
-    UpcomingComment.create(upcoming_id: upcoming.id, user_id: rand(1..SIZE_1), content: Faker::Hacker.say_something_smart)
-    UpcomingLike.create(upcoming_id: upcoming.id, user_id: rand(1..SIZE_1))
+    arr = Array.new(SIZE_1) {|i| i}.sample(5)
+    UpcomingArtist.create(
+      upcoming_id: upcoming.id,
+      artist_id: arr[i]
+    )
+    UpcomingComment.create(
+      upcoming_id: upcoming.id,
+      user_id: rand(1..SIZE_1),
+      content: Faker::Hacker.say_something_smart
+    )
+    UpcomingLike.create(
+      upcoming_id: upcoming.id,
+      user_id: arr[i]
+    )
   end
 end

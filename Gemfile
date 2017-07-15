@@ -19,6 +19,10 @@ gem 'omniauth-facebook'
 gem 'figaro'
 # Browser - detecting types of devices
 gem 'browser'
+# searchkick
+gem 'searchkick'
+# async background job for searchkick index sync
+gem 'activejob_backport'
 
 ###############################################
 

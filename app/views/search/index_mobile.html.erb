@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row" style="margin-top:30%">
+    <h1>SEARCH</h1>
+    <%= form_tag search_search_path, remote: true do %>
+      <%= label_tag :term, "Search for:" %>
+      <%= text_field_tag :term, nil, class: "search-text-tmp" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div id="search-video-results" class="col-xs-offset-2 col-xs-3">
+    </div>
+    <div id="search-upcoming-results" class="col-xs-offset-2 col-xs-3">
+    </div>
+  </div>
+</div>
