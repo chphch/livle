@@ -1,4 +1,6 @@
 class MypageController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     render_by_device
   end
@@ -20,5 +22,11 @@ class MypageController < ApplicationController
 
   def settings
     render_by_device
+  end
+
+  def authenticate_user!
+    if !user_signed_in?
+      redirect_to mypage_index_path
+    end
   end
 end
