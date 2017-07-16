@@ -1,3 +1,3 @@
-class FeedLikesController < ApplicationController
+class FeedLikesController < LikesController
 
 end

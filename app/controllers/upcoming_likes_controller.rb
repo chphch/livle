@@ -1,9 +1,3 @@
-class UpcomingLikesController < ApplicationController
-  def create
+class UpcomingLikesController < LikesController
 
-  end
-
-  def destroy
-
-  end
 end

@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   # skip_before_action :verify_authenticity_token
   protect_from_forgery with: :null_session, if: ->{request.format.json?}
 
+  # return the type of the device as a string
+  def device_suffix
+    browser.device.mobile? ? "mobile" : "desktop"
+  end
+
   # render html or js file by respond format
   # also choose the template by the type of the requesting device
   def render_by_device
-    device_suffix = browser.device.mobile? ? "mobile" : "desktop"
     def filename(device_suffix, filetype_suffix)
       "#{controller_name}/#{action_name}_#{device_suffix}.#{filetype_suffix}.erb"
     end
