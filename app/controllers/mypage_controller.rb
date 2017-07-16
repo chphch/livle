@@ -6,6 +6,7 @@ class MypageController < ApplicationController
   end
 
   def edit_profile
+    @disable_nav = true
     render_by_device
   end
 
@@ -21,6 +22,7 @@ class MypageController < ApplicationController
   end
 
   def settings
+    @disable_nav = true
     render_by_device
   end
 

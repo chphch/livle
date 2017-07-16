@@ -13,7 +13,8 @@ class UpcomingsController < ApplicationController
   def show
     @upcoming = Upcoming.find_by(id: params[:id])
     @d_day = d_day
-
+    
+    @disable_nav = true
     render_by_device
   end
 

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 SIZE_1 = 20
-SIZE_2 = 1
+SIZE_2 = 5
 
 for i in 1..SIZE_1
   User.create(

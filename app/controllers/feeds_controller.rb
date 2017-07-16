@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find_by(id: params[:id])
+    @disable_nav = true
     render_by_device
   end
 
