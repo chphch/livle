@@ -28,7 +28,9 @@
   <div class="show-video-info">
     <div class="row">
       <div class="col-xs-8">
-        <%= image_tag("icon_like_gray", class: "info-icon") %>
+        <%= link_to feed_feed_likes_path(@feed.id), method: "POST", remote: true do %>
+          <%= image_tag("icon_like_gray", class: "info-icon") %>
+        <% end %>
         <p class="gray-content" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
         <%= image_tag("icon_share_gray", class: "info-icon") %>
         <p class="gray-content"><%= @feed.count_share %></p>
