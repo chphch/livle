@@ -1,31 +1,31 @@
 <nav class="bottom-navbar">
-  <a href="/feeds" method="get">
+  <%= link_to feeds_path do %>
     <div class="navbar-element text-center">
       <%= image_tag("icon_feed", style: "width: 32%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">Home</p>
     </div>
-  </a>
-  <a href="/upcomings" method="get">
+  <% end %>
+  <%= link_to upcomings_path do %>
     <div class="navbar-element text-center">
       <%= image_tag("icon_upcoming", style: "width: 32%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">Upcoming</p>
     </div>
-  </a>
+  <% end %>
   <div class="navbar-element text-center">
-    <a href="/search/index" method="get">
+    <%= link_to search_index_path do %>
       <%= image_tag("icon_search", style: "width: 78%; height: auto; margin-bottom: -8%; margin-top: -46%;") %>
-    </a>
+    <% end %>
   </div>
-  <a href="/connect_urls" method="get">
+  <%= link_to connect_urls_path do %>
     <div class="navbar-element text-center">
       <%= image_tag("icon_connect", style: "width:42%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">Connect</p>
     </div>
-  </a>
-  <a href="/mypage/index" method="get">
+  <% end %>
+  <%= link_to mypage_index_path do %>
     <div class="navbar-element text-center">
       <%= image_tag("icon_my_page", style: "width: 30%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
       <p class="black-content">My page</p>
     </div>
-  </a>
+  <% end %>
 </nav>

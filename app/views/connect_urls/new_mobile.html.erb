@@ -1,0 +1,53 @@
+<iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @connectUrl.video_url %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&watchinfo=0&iv_load_policy=3&modestbranding=1&playsinline=1&loop=1&playlist=<%= @connectUrl.video_url %>" frameborder="0"></iframe>
+<div style="background-color:grey">
+  <%= form_for @connectUrl do |f| %>
+    <%= f.text_area :describe %>
+    <%= f.submit "보내기" %>
+  <% end %>
+</div>
+
+<script>
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+      events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  $('#youtube-player-controller').click(function() {
+    if(player.getPlayerState() == 1) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+    }
+  });
+
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      $('#play-button').css('visibility', 'hidden')
+      $('#youtube-player-filter').css('visibility', 'hidden')
+    }
+    else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
+      $('#play-button').css('visibility', 'visible')
+      $('#youtube-player-filter').css('visibility', 'visible')
+    }
+  }
+
+  function stopVideo() {
+    player.stopVideo();
+  }
+</script>

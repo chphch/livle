@@ -15,17 +15,15 @@
     </div>
     <div class="connect-content-container">
       <div class="row">
-        <div class="col-xs-8 ui labeled input">
-          <div class="ui label">
-            http://
+        <%= form_tag new_connect_url_path, method: "GET" do %>
+          <div class="col-xs-8 ui labeled input">
+            <%= label_tag :video_url, "http://", class: "ui label" %>
+            <%= text_field_tag :video_url, nil, placeholder: "youtube.com" %>
           </div>
-          <input type="text" placeholder="youtube.com">
-        </div>
-        <div class="col-xs-4">
-          <button class="ui secondary button">
-            <span class="connect-button-container">보내기</span>
-          </button>
-        </div>
+          <div class="col-xs-4">
+            <%= submit_tag "보내기", class: "ui secondary button connect-button-container" %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="connect-content-container">

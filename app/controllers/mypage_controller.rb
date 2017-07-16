@@ -1,5 +1,5 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, only: [:edit_profile, :settings]
 
   def index
     render_by_device

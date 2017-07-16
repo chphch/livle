@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :connect_urls, only: [:new, :create, :destroy]
+  resources :connect_urls, only: [:index, :new, :create, :destroy]
   resources :recent_keywords, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
