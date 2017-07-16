@@ -12,6 +12,7 @@ class UpcomingsController < ApplicationController
 
   def show
     @upcoming = Upcoming.find_by(id: params[:id])
+    @upcoming.increase_count_view
     @d_day = d_day
     
     @disable_nav = true

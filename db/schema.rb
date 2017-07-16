@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714075225) do
+ActiveRecord::Schema.define(version: 20170716213035) do
 
   create_table "artists", force: :cascade do |t|
     t.integer "curation_id"
@@ -112,6 +112,13 @@ ActiveRecord::Schema.define(version: 20170714075225) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recent_keywords", force: :cascade do |t|

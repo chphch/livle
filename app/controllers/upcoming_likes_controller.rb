@@ -1,3 +1,5 @@
-class UpcomingLikesController < LikesController
-
+class UpcomingLikesController < ApplicationController
+  def create
+    create_like
+  end
 end
