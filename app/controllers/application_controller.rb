@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
       format.js { render filename(device_suffix, "js") }
     end
   end
+
+  # keeping user to the same page after sign in
+  def after_sign_in_path_for(resource)
+    request.referrer
+  end
 end

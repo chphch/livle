@@ -21,5 +21,4 @@ class MypageController < ApplicationController
   def settings
     render_by_device
   end
-
 end
