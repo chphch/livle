@@ -7,19 +7,18 @@ Rails.application.routes.draw do
   resources :artists
 
   resources :curations do
-    resources :curation_likes, only: [:create] ## create method do either like or unlike
     resources :curation_comments, only: [:create, :update, :destroy]
   end
 
   resources :feeds do
-    resources :feed_likes, only: [:create]
     resources :feed_comments, only: [:create, :update, :destroy]
   end
 
   resources :upcomings do
-    resources :upcoming_likes, only: [:create]
     resources :upcoming_comments, only: [:create, :update, :destroy]
   end
+
+  get 'create_like/:type/:post_id' => 'application#create_like', as: 'create_like'
 
   get 'mypage/index'
   get 'mypage/edit_profile'

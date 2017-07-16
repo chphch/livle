@@ -49,7 +49,9 @@
         <%= link_to "티켓버튼", @upcoming.ticket_url, class: "black-content" %>
       </div>
       <div class="col-xs-2 text-center">
-        <p class="black-content">찜버튼</p>
+        <%= link_to create_like_path("upcoming", @upcoming.id), remote: true do %>
+          <p class="black-content">찜버튼</p>
+        <% end %>
       </div>
     </div>
   </div>
