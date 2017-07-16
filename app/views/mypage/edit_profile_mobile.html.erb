@@ -4,11 +4,11 @@
     <hr>
   </div>
   <div class="mypage-header-container">
-    <a href="<%= url_for(:back) %>" method="get">
+    <%= link_to('/mypage/index') do %>
       <div class="mypage-back-button">
         <%= image_tag("icon_back_black", style: "width: 2.6rem; height: auto;") %>
       </div>
-    </a>
+    <% end %>
   </div>
 </header>
 
