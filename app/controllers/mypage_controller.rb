@@ -26,6 +26,11 @@ class MypageController < ApplicationController
     render_by_device
   end
 
+  def notice
+    @notices = Notice.all
+    render_by_device
+  end
+
   def authenticate_user!
     if !user_signed_in?
       redirect_to mypage_index_path

@@ -107,3 +107,10 @@ for i in 1..SIZE_1
     )
   end
 end
+
+for i in 1..SIZE_2
+  notice = Notice.create(
+     title: "notice_" + i.to_s,
+     content: Faker::Hacker.say_something_smart
+  )
+end

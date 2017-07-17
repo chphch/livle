@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'mypage/index'
   get 'mypage/edit_profile'
   get 'mypage/settings'
+  get 'mypage/notice'
   post 'mypage/update_profile'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

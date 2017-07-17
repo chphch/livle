@@ -1,10 +1,8 @@
 <% if @like_true %>
-    console.log("YES I LIKE IT");
     $('#show-like').attr("src", "<%= image_url "icon_like_gray_fill" %>");
     var cur_count = parseInt($('#show-like-count').text(), 10);
     $('#show-like-count').text(cur_count + 1);
 <% else %>
-    console.log("NO LIKE");
     $('#show-like').attr("src", "<%= image_url "icon_like_gray" %>");
     var cur_count = parseInt($('#show-like-count').text(), 10);
     $('#show-like-count').text(cur_count - 1);
