@@ -11,12 +11,8 @@
 
 <section id="profile-info">
   <div class="mypage-index-profile-img">
-    <% if user_signed_in? %>
-        <% if current_user.profile_img != nil %>
-            <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
-        <% else %>
-            <%= image_tag("image_profile", id: "upload-profile-img", class: "mypage-profile-img") %>
-        <% end %>
+    <% if user_signed_in? && current_user.profile_img != nil %>
+        <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
     <% else %>
         <%= image_tag("image_profile", id: "upload-profile-img", class: "mypage-profile-img") %>
     <% end %>

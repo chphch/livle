@@ -14,7 +14,7 @@
 <section>
   <div class="row mypage-settings-background"></div>
 
-  <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: "", method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: "/mypage/edit_profile", method: "GET"} %>
   <hr class="mypage-settings-offset-line">
   <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: edit_user_password_path, method: "GET"} %>
   <hr class="mypage-settings-offset-line">
