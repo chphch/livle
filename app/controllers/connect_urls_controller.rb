@@ -12,6 +12,8 @@ class ConnectUrlsController < ApplicationController
       format.html { render_by_device }
       format.js { render 'partial_views/video_player' }
     end
+
+    @disable_nav = true
   end
 
   def create

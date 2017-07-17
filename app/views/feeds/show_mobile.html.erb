@@ -29,9 +29,9 @@
     <div class="row">
       <div class="col-xs-8">
         <%= link_to create_like_path("feed", @feed.id), remote: true do %>
-          <%= image_tag("icon_like_gray", class: "info-icon") %>
+          <%= image_tag("icon_like_gray", class: "info-icon", id: "show-like") %>
         <% end %>
-        <p class="gray-content" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
+        <p class="gray-content" id="show-like-count" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
         <%= image_tag("icon_share_gray", class: "info-icon") %>
         <p class="gray-content"><%= @feed.count_share %></p>
       </div>
@@ -73,39 +73,39 @@
 
   var player;
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-      events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-      }
-    });
+      player = new YT.Player('youtube-player', {
+          events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+          }
+      });
   }
 
   function onPlayerReady(event) {
-    event.target.playVideo();
+      event.target.playVideo();
   }
 
   $('#youtube-player-controller').click(function() {
-    if(player.getPlayerState() == 1) {
-      player.pauseVideo();
-    } else {
-      player.playVideo();
-    }
+      if(player.getPlayerState() == 1) {
+          player.pauseVideo();
+      } else {
+          player.playVideo();
+      }
   });
 
   var done = false;
   function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-      $('#play-button').css('visibility', 'hidden')
-      $('#youtube-player-filter').css('visibility', 'hidden')
-    }
-    else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
-      $('#play-button').css('visibility', 'visible')
-      $('#youtube-player-filter').css('visibility', 'visible')
-    }
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+          $('#play-button').css('visibility', 'hidden')
+          $('#youtube-player-filter').css('visibility', 'hidden')
+      }
+      else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
+          $('#play-button').css('visibility', 'visible')
+          $('#youtube-player-filter').css('visibility', 'visible')
+      }
   }
 
   function stopVideo() {
-    player.stopVideo();
+      player.stopVideo();
   }
 </script>

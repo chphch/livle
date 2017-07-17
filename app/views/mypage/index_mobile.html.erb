@@ -87,7 +87,9 @@
     <%= render file: '/devise/sessions/new_mobile.html.erb' %>
   </form>
   <script>
-    $('#modal-page').modal();
+    $('#modal-page').modal({
+        fadeDuration: 400,
+    });
   </script>
 <% end %>
 
