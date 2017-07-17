@@ -1,7 +1,4 @@
 $(document).html(
-  "<form id='modal-page' class='modal'>
-  <%= escape_javascript(render file: '/devise/sessions/new_mobile.html.erb') %>
-  </form>
-  ");
-  $("#modal-page").modal('show');
-  $('#modal-page').modal();
+  "<form id='modal-page' class='modal'><%= escape_javascript(render file: '/devise/sessions/new_mobile.html.erb') %></form>");
+$("#modal-page").modal('show');
+$('#modal-page').modal();

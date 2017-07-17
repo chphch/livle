@@ -7,12 +7,10 @@ class ConnectUrlsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
-      @connectUrl = ConnectUrl.new(params.permit(:video_url))
-      render_by_device
-    else
-      ############################ pop up sign_in modal
-      redirect_to root_path
+    @connectUrl = ConnectUrl.new(video_url: params[:video_url])
+    respond_to do |format|
+      format.html { render_by_device }
+      format.js { render 'partial_views/video_player' }
     end
   end
 
