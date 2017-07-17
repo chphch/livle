@@ -22,10 +22,14 @@ class ApplicationController < ActionController::Base
 
   # create or destroy like
   def create_like
-    type = params[:type]                                       # e.g. "curation"
-    like_class = "#{type.capitalize}Like".constantize          # e.g. CurationLike
-    @like_true = like_class.create_like(type, current_user.id, params[:post_id])
-    render '/create_like'
+    if user_signed_in?
+      type = params[:type]                                       # e.g. "curation"
+      like_class = "#{type.capitalize}Like".constantize          # e.g. CurationLike
+      @like_true = like_class.create_like(type, current_user.id, params[:post_id])
+      render '/create_like'
+    else
+      render '/login_modal'
+    end
   end
 
   # keeping user to the same page after sign in
