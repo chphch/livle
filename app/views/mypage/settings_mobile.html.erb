@@ -11,7 +11,7 @@
   </div>
 </header>
 
-<section>
+<section id="settings">
   <div class="row mypage-settings-background"></div>
 
   <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: "/mypage/edit_profile", method: "GET"} %>
@@ -32,4 +32,20 @@
   <hr class="mypage-settings-offset-line">
   <%= render partial: "settings_row_mobile", locals: {tag: "탈퇴하기", color: "blue", url: user_registration_path, method: "DELETE"} %>
   <hr class="mypage-settings-offset-line">
+</section>
+
+<section id="contact">
+  <form id="mypage-settings-modal" class="modal" style="display: none">
+    <%= render partial: "settings_contact_mobile" %>
+  </form>
+
+  <div class="users-new-button text-center" id="mypage-settings-contact">
+    <p class="white-title">라이블에게 문의하기</p>
+  </div>
+
+  <script>
+    $('#mypage-settings-contact').click(function () {
+       $('#mypage-settings-modal').modal();
+    });
+  </script>
 </section>
