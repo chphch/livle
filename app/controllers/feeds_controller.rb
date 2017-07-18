@@ -12,7 +12,6 @@ class FeedsController < ApplicationController
     @feed = Feed.find_by(id: params[:id])
     @feed.increase_count_view
     @disable_nav = true
-    render_by_device
   end
 
   private
