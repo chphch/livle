@@ -27,6 +27,8 @@ gem 'fog-aws'
 gem 'searchkick'
 # async background job for searchkick index sync
 gem 'activejob_backport'
+# gem for scheduling function
+gem 'whenever', :require => false
 
 ###############################################
 

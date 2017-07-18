@@ -33,7 +33,8 @@ for i in 1..SIZE_1
     content: Faker::Hacker.say_something_smart,
     youtube_id: "https://youtu.be/Xvjnoagk6GU",
     count_share: rand(1..100),
-    count_view: rand(1..100)
+    count_view: rand(1..100),
+    rank: 0.0
   )
   for i in 1..SIZE_2
     arr = Array.new(SIZE_1) {|i| i}.sample(5)
@@ -59,7 +60,8 @@ for i in 1..SIZE_1
     title: "feed_" + i.to_s,
     youtube_id: "https://youtu.be/Xvjnoagk6GU",
     count_view: rand(1..100),
-    count_share: rand(1..100)
+    count_share: rand(1..100),
+    rank: 0.0
   )
   for i in 1..SIZE_2
     arr = Array.new(SIZE_1) {|i| i}.sample(5)
