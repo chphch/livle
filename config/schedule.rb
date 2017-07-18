@@ -19,6 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# Code is in lib/tasts/update_ranks.rake
 every 12.hours do
   rake 'update_ranks:feed_ranks'
   rake 'update_ranks:curation_ranks'
