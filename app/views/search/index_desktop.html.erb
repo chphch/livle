@@ -1,0 +1,32 @@
+<section id="search-nav">
+  <div class="ui inverted segment">
+    <div class="search-nav-container">
+      <%= form_tag search_search_path, remote: true do %>
+          <div class="ui inverted left icon input search-nav-textfield">
+            <%= text_field_tag :term, nil, class: "search-text-tmp", placeholder: "검색" %>
+            <i class="search icon"></i>
+          </div>
+          <%= submit_tag "Search" %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="serach-content">
+  <div class="search-content-container">
+    <div class="row">
+      <div id="search-video-results" class="col-xs-offset-2 col-xs-3">
+      </div>
+      <div id="search-upcoming-results" class="col-xs-offset-2 col-xs-3">
+      </div>
+    </div>
+  </div>
+
+  <div id="search-list-container">
+    <%= render partial: "search_card_mobile", collection: @feeds, as: :feed %>
+  </div>
+</section>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @feeds %>
+</div>

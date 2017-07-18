@@ -1,0 +1,20 @@
+<a href="/feeds/<%= feed.id %>" method="get">
+  <div class="search-card-container">
+    <div class="search-card-image-container">
+      <%= image_tag "#{feed.artists.first.image_url}", class: "search-card-image" %>
+      <div class="card-thumbnail-filter"></div>
+
+      <div class="search-card-info text-center">
+        <p class="white-title"><%= feed.title %></p>
+        <p class="white-title">
+          <% if feed.artists.size > 1 %>
+              <%= feed.artists.first.name %> 및 <%= feed.artists.size - 1 %>명
+          <% else %>
+              <%= feed.artists.first.name %>
+          <% end %>
+        </p>
+        <p class="gray-content">@<%= feed.user.nickname %></p>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,3 +1,45 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search-nav-container {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.search-nav-textfield {
+  width: 80%;
+  height: 4rem;
+}
+
+.search-content-container {
+  width: 100%;
+  height: auto;
+  background-color: #000000;
+}
+
+.search-card-container {
+  float: left;
+  width: 50%;
+  overflow: hidden;
+}
+
+.search-card-image-container {
+  position: relative;
+  width: 100%;
+  //height => search.js
+  top: 0;
+  left: 0;
+}
+
+.search-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-card-info {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+}

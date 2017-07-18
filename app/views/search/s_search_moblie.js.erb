@@ -1,0 +1,7 @@
+$('#search-list-container').append('<%= j render partial: "search_card_mobile", collection: @feeds, as: :feed %>');
+<% if @feeds.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
