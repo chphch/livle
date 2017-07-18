@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @feeds = Feed.order('rank ASC').paginate(page: params[:page], per_page: 12)
+    @feeds = Feed.order('rank DESC').paginate(page: params[:page], per_page: 12)
     respond_to do |format|
       format.html { render_by_device }
       format.js { render 'search/s_search_mobile' }

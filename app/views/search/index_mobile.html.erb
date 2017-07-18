@@ -23,9 +23,9 @@
   </div>
 </section>
 
-<div id="search-list-container">
+<section id="search-list-container">
   <%= render partial: "search_card_mobile", collection: @feeds, as: :feed %>
-</div>
+</section>
 
 <div id="infinite-scrolling">
   <%= will_paginate @feeds %>
