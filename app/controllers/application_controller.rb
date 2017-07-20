@@ -15,13 +15,14 @@ class ApplicationController < ActionController::Base
   end
 
   def create_like
+    puts "==============" + request.format
     if user_signed_in?
-      type = params[:type]                                       # e.g. "curation"
-      like_class = "#{type.capitalize}Like".constantize          # e.g. CurationLike
-      post_class = type.capitalize.constantize                   # e.g. Curation
-      likes_field = "#{type}_likes"                              # e.g. "curation_likes"
-      @like_true = like_class.create_like(type, current_user.id, params[:post_id])
-      @like_count = post_class.find(params[:post_id]).send(likes_field).size
+      post_field = "#{controller_name.chomp('s')}_id"                     # e.g. "curation_id"
+      like_class = "#{controller_name.classify}Like".constantize          # e.g. CurationLike
+      post_class = controller_name.classify.constantize                   # e.g. Curation
+      likes_field = "#{controller_name.chomp('s')}_likes"                 # e.g. "curation_likes"
+      @like_true = like_class.create_like(current_user.id, params[post_field.to_sym])
+      @like_count = post_class.find(params[post_field.to_sym]).send(likes_field).size
       render '/create_like'
     else
       render '/login_modal'

@@ -10,14 +10,17 @@ Rails.application.routes.draw do
 
   resources :curations do
     resources :curation_comments, only: [:create, :update, :destroy]
+    get 'create_like'
   end
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
+    get 'create_like'
   end
 
   resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy]
+    get 'create_like'
   end
 
   get 'create_like/:type/:post_id' => 'application#create_like', as: 'create_like'
