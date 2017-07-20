@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+
   root 'feeds#index'
 
   get 'search/index'
