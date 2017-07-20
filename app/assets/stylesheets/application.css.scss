@@ -189,7 +189,7 @@ header {
   background: #EBEBEB;
 }
 
-/// BOTTOM NAVBAR
+/// Navbar
 .bottom-navbar {
   position: fixed;
   width: 100%;
@@ -201,6 +201,44 @@ header {
   display: inline-block;
   width: 19.6%;
   height: auto;
+}
+
+.navbar-desktop-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000000;
+}
+
+.navbar-desktop-logo {
+  width: 25%;
+  height: auto;
+  margin-left: 8%;
+}
+
+.navbar-desktop-search-box {
+  position: relative;
+  left: 14%;
+  width: 72%;
+  padding: 4%;
+  margin-top: 2.4%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  border: none;
+  border-radius: 0.4em;
+  background-color: rgba(226, 222, 222, 0.31);
+  color: #ffffff;
+}
+
+.navbar-desktop-buttons-container {
+  position: relative;
+  right: 0;
 }
 
 /// TEXT STYLING

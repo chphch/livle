@@ -1,0 +1,29 @@
+<nav>
+  <div class="navbar-desktop-container">
+    <div class="row ">
+      <!-- LIVLE logo -->
+      <div class="col-xs-4">
+        <%= link_to feeds_path do %>
+            <%= image_tag "logo_livle", class: "navbar-desktop-logo" %>
+        <% end %>
+      </div>
+      <!-- search-bar -->
+      <div class="col-xs-4">
+        <%= form_tag("/search/serach", method: "get") do %>
+          <%= text_field_tag :term, nil, rows: 1, class: "navbar-desktop-search-box", placeholder: "Search" %>
+        <% end %>
+      </div>
+      <!-- buttons -->
+      <div class="col-xs-4">
+        <div class="navbar-desktop-buttons-container">
+          <%= link_to upcomings_path do %>
+              <p class="white-content">Upcoming</p>
+          <% end %>
+          <%= link_to connect_urls_path do %>
+              <p class="white-content">Connect</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
