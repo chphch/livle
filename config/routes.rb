@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'admin/index'
-
   root 'feeds#index'
 
+  get 'admin/index'
   get 'search/index'
   post 'search/search'
 
@@ -22,8 +21,6 @@ Rails.application.routes.draw do
     resources :upcoming_comments, only: [:create, :update, :destroy]
     get 'create_like'
   end
-
-  get 'create_like/:type/:post_id' => 'application#create_like', as: 'create_like'
 
   get 'mypage/index'
   get 'mypage/edit_profile'
