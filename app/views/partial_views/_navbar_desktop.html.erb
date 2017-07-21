@@ -14,15 +14,36 @@
         <% end %>
       </div>
       <!-- buttons -->
-      <div class="col-xs-4">
+      <div class="col-xs-1">
         <div class="navbar-desktop-buttons-container">
           <%= link_to upcomings_path do %>
-              <p class="white-content">Upcoming</p>
-          <% end %>
-          <%= link_to connect_urls_path do %>
-              <p class="white-content">Connect</p>
+              <div class="navbar-desktop-button-box">
+                <!--<= image_tag "icon_ticket_empty", class: "navbar-desktop-button" %>-->
+                <p style="color: #ffffff; font-size: 1.1em; display: inline-block; margin-left: 8%;">UPCOMING</p>
+              </div>
           <% end %>
         </div>
+      </div>
+      <div class="col-xs-1">
+        <div class="navbar-desktop-buttons-container">
+          <%= link_to connect_urls_path do %>
+              <div class="navbar-desktop-button-box">
+                <!--<= image_tag "icon_connect_empty", class: "navbar-desktop-button" %>-->
+                <p style="color: #ffffff; font-size: 1.1em; display: inline-block; margin-left: 8%;">CONNECT</p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-1">
+        <!-- TODO: Modal 띄우는거 고민해보자.. -->
+        <div class="navbar-desktop-buttons-container">
+          <div id="navbar-login-button">
+            <p style="color: #ffffff; font-size: 1.1em;">로그인</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-1">
+
       </div>
     </div>
   </div>
