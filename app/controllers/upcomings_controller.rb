@@ -13,7 +13,9 @@ class UpcomingsController < ApplicationController
   def show
     @upcoming = Upcoming.find_by(id: params[:id])
     @upcoming.increase_count_view
-    @like_true = Upcominglike.where(upcoming_id: params[:id], user_id: current_user.id).take
+    @like_true = user_signed_in? ?
+      Upcominglike.where(upcoming_id: params[:id], user_id: current_user.id).take :
+      false
     @d_day = d_day
     @disable_nav = true
     render_by_device

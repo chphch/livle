@@ -36,8 +36,7 @@
           <% end %>
         <% end %>
         <p class="gray-content" id="show-like-count" style="padding-right: 6%;"><%= @curation.curation_likes.size %></p>
-        <%= image_tag "icon_share_gray", type: "button", class: "info-icon", "data-toggle": "modal", "data-target": "#share_modal" %>
-        <%= render '/share_modal' %>
+        <%= image_tag "icon_share_gray", id: "share-modal-button", class: "info-icon" %>
         <p class="gray-content"><%= @curation.count_share %></p>
       </div>
       <div class="col-xs-4 text-right">
@@ -68,7 +67,14 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </section>
 
+<%= render '/share_modal' %>
+
 <script>
+$('#share-modal-button').click(function() {
+  console.log("MODAL");
+  $('#share-modal').modal();
+});
+
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
