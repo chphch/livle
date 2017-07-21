@@ -212,8 +212,9 @@ header {
 }
 
 .navbar-desktop-logo {
-  width: 25%;
-  height: auto;
+  width: auto; height: auto;
+  max-width: 25%;
+  max-height: 10%;
   margin-left: 8%;
 }
 
@@ -245,46 +246,4 @@ header {
   display: inline-block;
   height: 2.5em;
   width: auto;
-}
-
-/// TEXT STYLING
-a {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-h2 {
-  font-size: 2.2em;
-}
-
-p {
-  font-size: 1.6em;
-  color: #757575;
-}
-
-.white-title {
-  color: #ffffff;
-  font-size: 2.2em;
-}
-.white-content {
-  color: #ffffff;
-  font-size: 1.6em;
-}
-
-.black-title {
-  color: #000000;
-  font-size: 2.2em;
-}
-.black-content {
-  color: #000000;
-  font-size: 1.6em;
-}
-
-.gray-title {
-  color: #757575;
-  font-size: 2.2em;
-}
-.gray-content {
-  color: #757575;
-  font-size: 1.6em;
 }

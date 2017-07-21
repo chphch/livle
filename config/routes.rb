@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'admin/feed'
+
+  get 'admin/curation'
+
+  get 'admin/artist'
+
+  get 'admin/upcoming'
+
+  get 'admin/connect'
+
+  get 'admin/user_list'
+
+  get 'admin/data'
+
+  get 'admin/notice'
+
   get 'admin/index'
 
   root 'feeds#index'

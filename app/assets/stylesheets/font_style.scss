@@ -1,0 +1,72 @@
+//Size
+$title-size: 2.2rem;
+$content-size: 1.6rem;
+$desktop-title-size: 1.6rem;
+$desktop-content-size: 1.2rem;
+//Color
+$white: #ffffff;
+$black: #000000;
+$gray: #757575;
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+h2 {
+  font-size: $title-size;
+}
+
+p {
+  font-size: 1.6em;
+  color: $gray;
+}
+
+// Mobile Fonts
+.white-title {
+  color: $white;
+  font-size: $title-size;
+}
+.white-content {
+  color: $white;
+  font-size: $content-size;
+}
+
+.black-title {
+  color: $black;
+  font-size: $title-size;
+}
+.black-content {
+  color: $black;
+  font-size: $content-size;
+}
+
+.gray-title {
+  color: $gray;
+  font-size: $title-size;
+}
+.gray-content {
+  color: $gray;
+  font-size: $content-size;
+}
+
+// Desktop Fonts
+.white-desktop-title {
+  color: $white;
+  font-size: $desktop-title-size;
+}
+
+.white-desktop-content {
+  color: $white;
+  font-size: $desktop-content-size;
+}
+
+.black-desktop-title {
+  color: $black;
+  font-size: $desktop-title-size;
+}
+
+.black-desktop-content {
+  color: $black;
+  font-size: $desktop-content-size;
+}
