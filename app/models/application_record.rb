@@ -6,8 +6,9 @@ class ApplicationRecord < ActiveRecord::Base
     self.save
   end
 
-  def self.create_like(type, user_id, post_id)
-    like = self.where("#{type}_id = ? AND user_id = ?",
+  def self.create_like(user_id, post_id)
+    post_field = "#{self.name.downcase.chomp('like')}_id"                   # e.g. "curation_id"
+    like = self.where("#{post_field} = ? AND user_id = ?",
                             post_id,
                             user_id,
                            ).take
@@ -16,7 +17,7 @@ class ApplicationRecord < ActiveRecord::Base
       return false
     else
       like = self.new
-      like["#{type}_id"] = post_id
+      like[post_field] = post_id
       like.user_id = user_id
       like.save
       return true

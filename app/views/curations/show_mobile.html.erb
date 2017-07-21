@@ -28,15 +28,20 @@
   <div class="show-video-info">
     <div class="row">
       <div class="col-xs-8">
-        <%= link_to create_like_path("curation", @curation.id), remote: true do %>
-          <%= image_tag("icon_like_gray", class: "info-icon", id: "show-like") %>
+        <%= link_to curation_create_like_path(@curation.id), remote: true do %>
+          <% if @like_true %>
+            <%= image_tag "icon_like_gray_filled", class: "info-icon show-like", class: "info-icon" %>
+          <% else %>
+            <%= image_tag "icon_like_gray", class: "info-icon show-like" %>
+          <% end %>
         <% end %>
         <p class="gray-content" id="show-like-count" style="padding-right: 6%;"><%= @curation.curation_likes.size %></p>
-        <%= image_tag("icon_share_gray", class: "info-icon") %>
+        <%= image_tag "icon_share_gray", type: "button", class: "info-icon", "data-toggle": "modal", "data-target": "#share_modal" %>
+        <%= render '/share_modal' %>
         <p class="gray-content"><%= @curation.count_share %></p>
       </div>
       <div class="col-xs-4 text-right">
-        <%= image_tag("icon_view_gray", class: "info-icon") %>
+        <%= image_tag "icon_view_gray", class: "info-icon" %>
         <p class="gray-content"><%= @curation.count_view %></p>
       </div>
     </div>
@@ -46,9 +51,9 @@
 <section id="content">
   <div class="content-container show-video-info">
     <p class="black-title">
-      <% @curation.curation_artists.each do |curation_artist| %>
-          <%= curation_artist.artist.name %>,
-      <% end %>
+    <% @curation.curation_artists.each do |curation_artist| %>
+      <%= curation_artist.artist.name %>,
+    <% end %>
     </p>
     <div class="content-container gray-content"><%= @curation.title %></div>
     <div class="content-container gray-content"><%= @curation.content %></div>
@@ -64,47 +69,47 @@
 </section>
 
 <script>
-    var tag = document.createElement('script');
+var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('youtube-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
     }
+  });
+}
 
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
 
-    $('#youtube-player-controller').click(function() {
-        if(player.getPlayerState() == 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-        }
-    });
+$('#youtube-player-controller').click(function() {
+  if(player.getPlayerState() == 1) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
+});
 
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-            $('#play-button').css('visibility', 'hidden')
-            $('#youtube-player-filter').css('visibility', 'hidden')
-        }
-        else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
-            $('#play-button').css('visibility', 'visible')
-            $('#youtube-player-filter').css('visibility', 'visible')
-        }
-    }
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    $('#play-button').css('visibility', 'hidden')
+      $('#youtube-player-filter').css('visibility', 'hidden')
+  }
+  else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
+    $('#play-button').css('visibility', 'visible')
+      $('#youtube-player-filter').css('visibility', 'visible')
+  }
+}
 
-    function stopVideo() {
-        player.stopVideo();
-    }
+function stopVideo() {
+  player.stopVideo();
+}
 </script>

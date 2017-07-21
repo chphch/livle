@@ -28,8 +28,12 @@
   <div class="show-video-info">
     <div class="row">
       <div class="col-xs-8">
-        <%= link_to create_like_path("feed", @feed.id), remote: true do %>
-          <%= image_tag("icon_like_gray", class: "info-icon", id: "show-like") %>
+        <%= link_to feed_create_like_path(@feed.id), remote: true do %>
+          <% if @like_true %>
+            <%= image_tag("icon_like_gray_filled", class: "info-icon", id: "show-like") %>
+          <% else %>
+            <%= image_tag("icon_like_gray", class: "info-icon", id: "show-like") %>
+          <% end %>
         <% end %>
         <p class="gray-content" id="show-like-count" style="padding-right: 6%;"><%= @feed.feed_likes.size %></p>
         <%= image_tag("icon_share_gray", class: "info-icon") %>
