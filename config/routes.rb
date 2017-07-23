@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
   get 'admin/feed'
-
   get 'admin/curation'
-
   get 'admin/artist'
-
   get 'admin/upcoming'
-
   get 'admin/connect'
-
   get 'admin/user_list'
-
   get 'admin/data'
-
   get 'admin/notice'
-
   get 'admin/index'
 
   root 'feeds#index'
@@ -24,17 +16,23 @@ Rails.application.routes.draw do
 
   resources :artists
 
-  resources :curations do
+  resources :curations, only: [:create, :show] do
     resources :curation_comments, only: [:create, :update, :destroy]
   end
+  get 'curations/:id/update' => 'feeds#update'
+  get 'curations/:id/destroy' => 'feeds#destroy'
 
-  resources :feeds do
+  resources :feeds, only: [:index, :create, :show] do
     resources :feed_comments, only: [:create, :update, :destroy]
   end
+  get 'feeds/:id/update' => 'feeds#update'
+  get 'feeds/:id/destroy' => 'feeds#destroy'
 
-  resources :upcomings do
+  resources :upcomings, only: [:index, :create, :show] do
     resources :upcoming_comments, only: [:create, :update, :destroy]
   end
+  get 'upcomings/:id/update' => 'upcomings#update'
+  get 'upcomings/:id/destroy' => 'upcomings#destroy'
 
   get 'create_like/:type/:post_id' => 'application#create_like', as: 'create_like'
 

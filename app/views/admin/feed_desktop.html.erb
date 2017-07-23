@@ -26,42 +26,50 @@
   </div>
 
   <% @feeds.each do |feed| %>
-      <div class="admin-desktop-content-box">
-        <div class="row">
-          <div class="col-xs-1">
-            <p class="black-desktop-content"><%= feed.id %></p>
-          </div>
-          <div class="col-xs-2">
-            <p class="black-desktop-content"><%= feed.title %></p>
-          </div>
-          <div class="col-xs-2">
-            <p class="black-desktop-content">
-              <% feed.artists.each do |artist| %>
-                  <%= artist.name %>,
+      <%= form_tag "/feeds/#{feed.id}", method: :get do %>
+        <div class="admin-desktop-content-box">
+          <div class="row">
+            <div class="col-xs-1">
+              <p class="black-desktop-content"><%= feed.id %></p>
+            </div>
+            <div class="col-xs-2 form-group">
+              <p class="black-desktop-content">
+                <%= text_field_tag(:title, "#{feed.title}", class: "form-control") %>
+              </p>
+            </div>
+            <div class="col-xs-2">
+              <p class="black-desktop-content">
+                <% feed.artists.each do |artist| %>
+                    <%= artist.name %>,
+                <% end %>
+              </p>
+            </div>
+            <div class="col-xs-1">
+              <p class="black-desktop-content"><%= feed.user.nickname %></p>
+            </div>
+            <div class="col-xs-2">
+              <p class="black-desktop-content">
+                <%= text_field_tag(:youtube_id, "#{feed.youtube_id}", class: "form-control") %>
+              </p>
+            </div>
+            <div class="col-xs-1 text-center">
+              <p class="black-desktop-content" style="overflow-x: scroll"><%= feed.rank %></p>
+            </div>
+            <div class="col-xs-1">
+              <%= link_to "/feeds/#{feed.id}" do %>
+                  <button type="button" class="btn btn-outline-primary">바로가기</button>
               <% end %>
-            </p>
-          </div>
-          <div class="col-xs-1">
-            <p class="black-desktop-content"><%= feed.user.nickname %></p>
-          </div>
-          <div class="col-xs-2">
-            <p class="black-desktop-content"><%= feed.youtube_id %></p>
-          </div>
-          <div class="col-xs-1 text-center">
-            <p class="black-desktop-content"><%= feed.rank %></p>
-          </div>
-          <div class="col-xs-1">
-            <%= link_to "/feeds/#{feed.id}" do %>
-                <button type="button" class="btn btn-outline-primary">바로가기</button>
-            <% end %>
-          </div>
-          <div class="col-xs-1 text-center">
-            <p class="black-desktop-content">수정</p>
-          </div>
-          <div class="col-xs-1 text-center">
-            <p class="black-desktop-content">삭제</p>
+            </div>
+            <div class="col-xs-1 text-center">
+              <p class="black-desktop-content">
+                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+              </p>
+            </div>
+            <div class="col-xs-1 text-center">
+              <p class="black-desktop-content">삭제</p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
   <% end %>
 </div>
