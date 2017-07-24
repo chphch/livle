@@ -28,3 +28,10 @@
   padding-bottom: 1.5%;
   border-bottom: 1px solid #000000;
 }
+
+.admin-desktop-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

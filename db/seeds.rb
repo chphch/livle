@@ -22,7 +22,7 @@ end
 for i in 1..SIZE_1
   Artist.create(
     name: "artist_" + i.to_s,
-    image_url: "image_artist.jpg"
+    # image_url: "image_artist.jpg"
   )
 end
 

@@ -16,7 +16,7 @@ class FeedsController < ApplicationController
   end
 
   def update
-    @feed = Feed.find_by(id: params[:feed_id])
+    @feed = Feed.find_by(id: params[:id])
 
     if @feed.update(title: params[:title], youtube_id: params[:youtube_id])
       redirect_back(fallback_location: root_path)
@@ -26,7 +26,11 @@ class FeedsController < ApplicationController
   end
 
   def destroy
-
+    if Feed.destroy(params[:id])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: @feed.errors.messages
+    end
   end
 
   private

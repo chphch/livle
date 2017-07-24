@@ -1,1 +1,77 @@
+<!-- Side Navbar -->
 <%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="black-desktop-title">User Lists</p>
+  <div class="row">
+    <div class="col-xs-1">
+      <p class="black-desktop-content">index</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Nickname</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Provider</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Created Feeds</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Feed Likes</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Upcoming Likes</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Feed Comments</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Upcoming Comments</p>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <% @users.each do |user| %>
+      <div class="admin-desktop-content-box">
+        <div class="row">
+          <div class="col-xs-1">
+            <p class="black-desktop-content"><%= user.id %></p>
+          </div>
+          <%= form_tag "/users/#{user.id}", method: :put do %>
+              <div class="col-xs-2 form-group">
+                <%= text_field_tag(:nickname, "#{user.nickname}", class: "form-control") %>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.provider %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.feeds.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.feed_likes.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.upcoming_likes.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.feed_comments.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= user.upcoming_comments.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <!-- 뭐 넣을지 생각해보기 -->
+              </div>
+              <div class="col-xs-1 text-center">
+                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+              </div>
+          <% end %>
+          <div class="col-xs-1 text-center">
+            <%= link_to "/users/#{user.id}", method: :delete do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

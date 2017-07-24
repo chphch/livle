@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'feeds#index'
+
   get 'admin/feed'
   get 'admin/curation'
   get 'admin/artist'
@@ -9,18 +11,18 @@ Rails.application.routes.draw do
   get 'admin/notice'
   get 'admin/index'
 
-  root 'feeds#index'
-
   get 'search/index'
   post 'search/search'
 
-  resources :artists
+  resources :artists, only: [:index, :create, :show]
+  post 'artists/:id/update' => 'artists#update'
+  get 'artists/:id/destroy' => 'artists#destroy'
 
   resources :curations, only: [:create, :show] do
     resources :curation_comments, only: [:create, :update, :destroy]
   end
-  get 'curations/:id/update' => 'feeds#update'
-  get 'curations/:id/destroy' => 'feeds#destroy'
+  get 'curations/:id/update' => 'curations#update'
+  get 'curations/:id/destroy' => 'curations#destroy'
 
   resources :feeds, only: [:index, :create, :show] do
     resources :feed_comments, only: [:create, :update, :destroy]
