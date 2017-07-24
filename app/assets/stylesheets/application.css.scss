@@ -12,11 +12,21 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 
 header {
   padding-top: 5%;
   padding-bottom: 3%;
+}
+
+// social-share-modal
+.social-share-button {
+  .ssb-icon {
+    background-size: 100px 100px !important;
+    height: 100px !important;
+    width: 100px !important;
+  }
 }
 
 .card-border {

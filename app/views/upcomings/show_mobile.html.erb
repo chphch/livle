@@ -9,7 +9,7 @@
 
     <div id="youtube-player-filter">
       <div class="show-video-filter"></div>
-        <div class="show-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
+      <div class="show-video-back"><%= image_tag("icon_back", style: "width: 2.6rem; height: auto;") %></div>
       </a>
     </div>
 
@@ -49,7 +49,7 @@
         <%= link_to "티켓버튼", @upcoming.ticket_url, class: "black-content" %>
       </div>
       <div class="col-xs-2 text-center">
-        <%= link_to create_like_path("upcoming", @upcoming.id), remote: true do %>
+        <%= link_to upcoming_create_like_path(@upcoming.id), remote: true do %>
           <p class="black-content">찜버튼</p>
         <% end %>
       </div>
@@ -69,7 +69,7 @@
       </div>
       <div class="col-xs-4 text-right">
         <div class="text-right">
-          <%= image_tag("icon_share_gray", class: "card-button-share") %>
+          <%= image_tag("icon_share_gray", id: "share-modal-button", class: "card-button-share") %>
         </div>
       </div>
     </div>
@@ -88,48 +88,53 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
 </section>
 
+<%= render partial: '/share_modal', locals: {post: @upcoming} %>
+
 <script>
-    var tag = document.createElement('script');
+$('#share-modal-button').click(function() {
+  $('#share-modal').modal();
+});
+var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('youtube-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
     }
+  });
+}
 
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
 
-    $('#youtube-player-controller').click(function() {
-        if(player.getPlayerState() == 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-        }
-    });
+$('#youtube-player-controller').click(function() {
+  if(player.getPlayerState() == 1) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  };
+});
 
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-            $('#play-button').css('visibility', 'hidden')
-            $('#youtube-player-filter').css('visibility', 'hidden')
-        }
-        else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
-            $('#play-button').css('visibility', 'visible')
-            $('#youtube-player-filter').css('visibility', 'visible')
-        }
-    }
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    $('#play-button').css('visibility', 'hidden')
+      $('#youtube-player-filter').css('visibility', 'hidden')
+  }
+  else if(event.data == YT.PlayerState.PAUSED || event.data == event.data == YT.PlayerState.CUED) {
+    $('#play-button').css('visibility', 'visible')
+      $('#youtube-player-filter').css('visibility', 'visible')
+  }
+}
 
-    function stopVideo() {
-        player.stopVideo();
-    }
+function stopVideo() {
+  player.stopVideo();
+}
 </script>

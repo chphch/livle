@@ -29,6 +29,8 @@ gem 'searchkick'
 gem 'activejob_backport'
 # gem for scheduling function
 gem 'whenever', :require => false
+# social-share-button
+gem 'social-share-button'
 
 ###############################################
 

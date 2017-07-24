@@ -67,7 +67,7 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </section>
 
-<%= render '/share_modal' %>
+<%= render partial: '/share_modal', locals: {post: @curation} %>
 
 <script>
 $('#share-modal-button').click(function() {

@@ -1,3 +1,7 @@
-<form id="share-modal" class="modal" style="display:none">
-  SHARE MODAL
+<form id="share-modal" class="modal" style="display:none;padding:10rem;">
+  <%= social_share_button_tag(
+    post.title,
+    'data-twitter-title': post.title,
+    url: "https://www.naver.com"
+  ) %>
 </form>
