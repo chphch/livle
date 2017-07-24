@@ -1,0 +1,87 @@
+<!-- Side Navbar -->
+<%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="black-desktop-title">Artist Lists</p>
+  <div class="row">
+    <div class="col-xs-1">
+      <p class="black-desktop-content">index</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Profile Image</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Name</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">On Feeds</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">On Curations</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">On Upcomings</p>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <% @artists.each do |artist| %>
+      <div class="admin-desktop-content-box">
+        <div class="row">
+          <div class="col-xs-1">
+            <p class="black-desktop-content"><%= artist.id %></p>
+          </div>
+          <%= form_tag "/artists/#{artist.id}/update", method: :post, multipart: true do %>
+              <div class="col-xs-2">
+                <input type="file" name="image_url" id="profile<%= artist.id %>" accept="image/*" class="mypage-inputfile">
+                <label for="profile<%= artist.id %>">
+                  <% if artist.image_url == nil %>
+                      <%= image_tag("image_artist", id: "upload-image-#{artist.id}", class: "admin-desktop-image-container") %>
+                  <% else %>
+                      <%= image_tag("#{artist.image_url}", id: "upload-image-#{artist.id}", class: "admin-desktop-image-container") %>
+                  <% end %>
+                </label>
+              </div>
+              <div class="col-xs-2">
+                <%= text_field_tag(:name, "#{artist.name}", class: "form-control") %>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= artist.feed_artists.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= artist.curation_artists.size %></p>
+              </div>
+              <div class="col-xs-2">
+                <p class="black-desktop-content"><%= artist.upcoming_artists.size %></p>
+              </div>
+              <div class="col-xs-1">
+                <!-- TODO: 뭐 넣을지 생각해보기 -->
+              </div>
+              <div class="col-xs-1 text-center">
+                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+              </div>
+          <% end %>
+          <div class="col-xs-1 text-center">
+            <%= link_to "/artists/#{artist.id}/destroy" do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </div>
+        </div>
+        <!--<script>-->
+            <!--function updateImg(input) {-->
+                <!--if (input.files && input.files[0]) {-->
+                    <!--var reader = new FileReader();-->
+                    <!--reader.onload = function (e) {-->
+                        <!--$('#upload-image-<= artist.id %>').attr('src', e.target.result);-->
+                    <!--}-->
+                    <!--reader.readAsDataURL(input.files[0]);-->
+                    <!--console.log(input.files[0]);-->
+                <!--}-->
+            <!--}-->
+            <!--$('#profile<= artist.id %>').change(function () {-->
+                <!--updateImg(this);-->
+            <!--});-->
+        <!--</script>-->
+      </div>
+  <% end %>
+</div>

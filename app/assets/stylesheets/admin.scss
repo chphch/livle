@@ -1,3 +1,37 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-desktop-nav-box {
+  float: left;
+  width: 12%;
+  height: 60%;
+  background-color: rgba(240, 240, 240, 0.45);
+  li {
+    padding-left : 12%;
+    padding-right: 12%;
+    padding-top: 6%;
+    padding-bottom: 6%;
+  }
+}
+
+.admin-desktop-container {
+  float: left;
+  width: 88%;
+  padding-top: 4%;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 4%;
+}
+
+.admin-desktop-content-box {
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  border-bottom: 1px solid #000000;
+}
+
+.admin-desktop-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

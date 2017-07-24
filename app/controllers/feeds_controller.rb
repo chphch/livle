@@ -18,6 +18,24 @@ class FeedsController < ApplicationController
     render_by_device
   end
 
+  def update
+    @feed = Feed.find_by(id: params[:id])
+
+    if @feed.update(title: params[:title], youtube_id: params[:youtube_id])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: @feed.errors.messages
+    end
+  end
+
+  def destroy
+    if Feed.destroy(params[:id])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: @feed.errors.messages
+    end
+  end
+
   private
     def req_latest_feeds
 

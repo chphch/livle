@@ -1,0 +1,75 @@
+<!-- Side Navbar -->
+<%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="black-desktop-title">Curation Lists</p>
+  <div class="row">
+    <div class="col-xs-1">
+      <p class="black-desktop-content">index</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Title</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Artists</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Curator</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Youtube ID</p>
+    </div>
+    <div class="col-xs-2 text-center">
+      <p class="black-desktop-content">Content</p>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <% @curations.each do |curation| %>
+      <div class="admin-desktop-content-box">
+        <div class="row">
+          <div class="col-xs-1">
+            <p class="black-desktop-content"><%= curation.id %></p>
+          </div>
+          <%= form_tag "/curations/#{curation.id}/update", method: :get do %>
+              <div class="col-xs-2 form-group">
+                <p class="black-desktop-content">
+                  <%= text_field_tag(:title, "#{curation.title}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content">
+                  <% curation.artists.each do |artist| %>
+                      <%= artist.name %>,
+                  <% end %>
+                </p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content"><%= curation.user.nickname %></p>
+              </div>
+              <div class="col-xs-2">
+                <p class="black-desktop-content">
+                  <%= text_field_tag(:youtube_id, "#{curation.youtube_id}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-2">
+                <%= text_field_tag(:content, "#{curation.content}", class: "form-control") %>
+              </div>
+              <div class="col-xs-1">
+                <%= link_to "/curations/#{curation.id}" do %>
+                    <button type="button" class="btn btn-outline-primary">바로가기</button>
+                <% end %>
+              </div>
+              <div class="col-xs-1 text-center">
+                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+              </div>
+          <% end %>
+          <div class="col-xs-1 text-center">
+            <%= link_to "/curations/#{curation.id}/destroy" do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
