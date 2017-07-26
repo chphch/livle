@@ -1,44 +1,39 @@
 <div class="_card-container-m">
   <%= link_to curation_path(curation.id) do %>
-      <div class="card-thumbnail">
-        <div class="text-center">
-          <img class="card-image" src="<%= image_url("image_live") %>"/>
-          <div class="card-thumbnail-filter"></div>
-        </div>
+      <div class="_thumbnail-container-m">
+        <%= image_tag "image_live", class: "_thumbnail-image-m", id: "curation-#{curation.id}" %>
+        <div class="_thumbnail-filter-m"></div>
 
-        <div class="feed-info">
-          <%= image_tag("icon_like_white", class: "feed-info-icon") %>
-          <p class="white-content"><%= curation.curation_likes.size %></p>
-          <%= image_tag("icon_share_white", class: "feed-info-icon") %>
-          <p class="white-content"><%= curation.count_share %></p>
-          <%= image_tag("icon_view_white", class: "feed-info-icon") %>
-          <p class="white-content"><%= curation.count_view %></p>
+        <div class="_thumbnail-info-container-m _row-positioner">
+          <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= curation.count_view %></p>
+          <%= image_tag("icon_like_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= curation.curation_likes.size %></p>
+          <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= curation.count_share %></p>
         </div>
       </div>
+      <hr>
 
-      <div class="card-describe">
-        <div class="row">
-          <div class="col-xs-8">
-            <% artist = curation.curation_artists %>
-            <p class="black-title">
-              <% if curation.curation_artists.size > 1 %>
-                  <%= artist.name %> 및 <%= curation.curation_artists.size - 1 %>명
-              <% else %>
-                  <%= artist.name %>
-              <% end %>
-            </p>
-          </div>
-          <div class="col-xs-4">
-            <div class="text-right">
-              <%= image_tag("icon_share_gray", class: "card-button-share") %>
-            </div>
-          </div>
-        </div>
-
-        <!-- Title -->
-        <p class="gray-title"><%= curation.title %></p>
-        <!-- Content -->
-        <p class="gray-content"><%= curation.content %></p>
+      <div class="_describe-container-m">
+        <p class="_fs-3-mobile _white">
+          <!-- title -->
+          <%= curation.title %> -
+          <!-- artist name -->
+          <% curation.artists.each_with_index do |artist, i| %>
+              <%= artist.name %>
+              <% break if curation.artists[i+1] == nil %>
+              ,&nbsp
+          <% end %>
+        </p>
       </div>
+      <!-- Content -->
+      <p class="_fs-4-mobile _light-gray"><%= curation.content %></p>
   <% end %>
 </div>
+<script>
+    <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+    $('#curation-<%= curation.id %>').attr({
+        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
+    });
+</script>

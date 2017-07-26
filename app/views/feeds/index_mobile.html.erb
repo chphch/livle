@@ -7,7 +7,6 @@
 </header>
 
 <div id="feeds-index" class="_list-container-m">
-  <!-- Ruby Code -->
   <% f_index = 0 %>
   <% @curations.each do |curation| %>
       <%= render partial: "curations/curation_card_mobile", locals: {curation: curation} %>

@@ -42,8 +42,9 @@
   height: 6%;
 }
 
-._thumbnail-elem-container-m {
-  margin-right: $elem-container-mh-m;
+._describe-container-m {
+  padding-top: $card-container-pv-m;
+  padding-bottom: $card-container-pv-m;
 }
 
 ////positioners
@@ -52,33 +53,11 @@
   text-align: center;
 }
 
+._vcenter-positioner {
+  vertical-align: middle;
+}
+
 ._row-positioner {
   display: flex;
   flex-direction: row;
-}
-
-////icon, image, video
-._thumbnail-image-m {
-  position: relative;
-  top: 0; left: 0;
-  width: 100%;
-  height: auto;
-}
-
-._thumbnail-filter-m {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.47) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.47) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.47) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
-}
-
-._thumbnail-info-icon-m {
-  width: auto;
-  height: 100%;
-  margin-right: $info-mh-m;
 }
