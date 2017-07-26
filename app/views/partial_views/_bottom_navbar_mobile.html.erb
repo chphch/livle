@@ -1,14 +1,14 @@
-<nav class="bottom-navbar">
+<nav class="_navbar-m">
   <%= link_to feeds_path do %>
     <div class="navbar-element text-center">
-      <%= image_tag("icon_feed", style: "width: 32%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
-      <p class="black-content">Home</p>
+      <%= image_tag("icon_home_empty", style: "width: 42%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
+      <p class="_fs-1 _white">Home</p>
     </div>
   <% end %>
   <%= link_to upcomings_path do %>
     <div class="navbar-element text-center">
-      <%= image_tag("icon_upcoming", style: "width: 32%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
-      <p class="black-content">Upcoming</p>
+      <%= image_tag("icon_ticket_empty", style: "width: 34%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
+      <p class="_fs-1 _white">Upcoming</p>
     </div>
   <% end %>
   <div class="navbar-element text-center">
@@ -18,14 +18,14 @@
   </div>
   <%= link_to connect_urls_path do %>
     <div class="navbar-element text-center">
-      <%= image_tag("icon_connect", style: "width:42%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
-      <p class="black-content">Connect</p>
+      <%= image_tag("icon_connect_empty", style: "width:42%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
+      <p class="_fs-1 _white">Connect</p>
     </div>
   <% end %>
   <%= link_to mypage_index_path do %>
     <div class="navbar-element text-center">
       <%= image_tag("icon_my_page", style: "width: 30%; height: auto; padding-top:10%; padding-bottom: 4%;") %>
-      <p class="black-content">My page</p>
+      <p class="_fs-1 _white">My page</p>
     </div>
   <% end %>
 </nav>
