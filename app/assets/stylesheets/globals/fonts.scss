@@ -1,3 +1,5 @@
+@import "sizes";
+
 a {
   text-decoration: none !important;
   color: inherit !important;
@@ -6,43 +8,43 @@ a {
 //desktop fonts
 ._fs-1 {
   font-size: $fs-1;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-2 {
   font-size: $fs-2;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-3 {
   font-size: $fs-3;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-4 {
   font-size: $fs-4;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-5 {
   font-size: $fs-5;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 
 //mobile fonts
 ._fs-1-mobile {
   font-size: $fs-1-m;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-2-mobile {
   font-size: $fs-2-m;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-3-mobile {
   font-size: $fs-3-m;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-4-mobile {
   font-size: $fs-4-m;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
 ._fs-5-mobile {
   font-size: $fs-5-m;
-  font-family: 'Roboto','Nanum Square', sans-serif;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
 }

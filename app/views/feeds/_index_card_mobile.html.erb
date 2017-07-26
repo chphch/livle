@@ -1,47 +1,44 @@
-<div class="card-border">
+<div class="_card-container-m">
   <%= link_to feed_path(feed.id) do %>
-    <div class="card-title text-center">
-      <h2>'<%= feed.user.nickname %>'s VIDEO</h2>
-    </div>
+      <div class="_thumbnail-container-m">
+        <%= image_tag "image_live", class: "_thumbnail-image-m" %>
+        <div class="_thumbnail-filter-m"></div>
 
-    <div class="card-thumbnail">
-      <div class="text-center">
-        <img class="card-image" src="<%= image_url("image_live") %>"/>
-        <div class="card-thumbnail-filter"></div>
-      </div>
-
-      <div class="feed-info">
-        <%= image_tag("icon_like_white", class: "feed-info-icon") %>
-        <p class="white-content"><%= feed.feed_likes.size %></p>
-        <%= image_tag("icon_share_white", class: "feed-info-icon") %>
-        <p class="white-content"><%= feed.count_share %></p>
-        <%= image_tag("icon_view_white", class: "feed-info-icon") %>
-        <p class="white-content"><%= feed.count_view %></p>
-      </div>
-    </div>
-
-    <div class="card-brief">
-      <div class="row">
-        <div class="col-xs-8">
-          <% artist = feed.feed_artists.first.artist %>
-
-          <p class="black-title">
-            <!-- Artist Name -->
-            <% if feed.feed_artists.size > 1 %>
-              <%= artist.name %> 및 <%= feed.feed_artists.size - 1 %>명
-            <% else %>
-              <%= artist.name %>
-            <% end %>
-            <!-- Title -->
-             - <%= feed.title %>
-          </p>
+        <div class="_thumbnail-info-container-m _row-positioner">
+          <div class="_thumbnail-elem-container-m"></div>
+          <%= image_tag("icon_like_white", class: "_thumbnail-info-icon-m") %>
+          <p class="_fs-5-mobile _white"><%= feed.feed_likes.size %></p>
+          <div class="_thumbnail-elem-container-m"></div>
+          <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m") %>
+          <p class="_fs-5-mobile _white"><%= feed.count_share %></p>
+          <div class="_thumbnail-elem-container-m"></div>
+          <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m") %>
+          <p class="_fs-5-mobile _white"><%= feed.count_view %></p>
         </div>
-        <div class="col-xs-4">
-          <div class="text-right">
-            <%= image_tag("icon_share_gray", class: "card-button-share") %>
+      </div>
+
+      <div class="card-brief">
+        <div class="row">
+          <div class="col-xs-8">
+            <% artist = feed.feed_artists.first.artist %>
+
+            <p class="black-title">
+              <!-- Artist Name -->
+              <% if feed.feed_artists.size > 1 %>
+                  <%= artist.name %> 및 <%= feed.feed_artists.size - 1 %>명
+              <% else %>
+                  <%= artist.name %>
+              <% end %>
+              <!-- Title -->
+              - <%= feed.title %>
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <%= image_tag("icon_share_gray", class: "card-button-share") %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   <% end %>
 </div>

@@ -1,3 +1,16 @@
+//container-padding
+$list-container-ph-m: 6%;
+$list-container-pv-m: 4%;
+$card-container-pv-m: 2%;
+$text-container-pv-m: 3%;
+$elem-container-mh-m: 3%;
+
+//logo-size
+$logo-height-m: 8rem;
+
+//element-margin
+$info-mh-m: 1.5%;
+
 //font-size
 $fs-1: 1.6rem;
 $fs-2: 1.5rem;
@@ -5,11 +18,11 @@ $fs-3: 1.4rem;
 $fs-4: 1.3rem;
 $fs-5: 1.2rem;
 
-$fs-1-m: 2.2rem;
-$fs-2-m: 2rem;
-$fs-3-m: 1.9rem;
-$fs-4-m: 1.8rem;
-$fs-5-m: 1.6rem;
+$fs-1-m: 3.6rem;
+$fs-2-m: 3.4rem;
+$fs-3-m: 3.2rem;
+$fs-4-m: 3rem;
+$fs-5-m: 2.4rem;
 
 //blur-size
-$blur = blur(34);
+$blur: blur(34);
