@@ -1,38 +1,50 @@
-<div class="card-border">
+<div class="_card-container-m">
   <%= link_to upcoming_path(upcoming.id) do %>
-    <div class="card-thumbnail upcoming-index-card-thumbnail">
-      <%= image_tag "image_live", class: "card-image upcoming-index-card-image" %>
-      <div class="card-thumbnail-filter"></div>
-      <div class="upcoming-index-card-title">
-        <%= upcoming.title %>
-      </div>
-      <div class="upcoming-index-card-place">
-        <%= upcoming.place %>
-      </div>
-      <div class="upcoming-index-card-date">
-        <%= upcoming.start_date %> - <%= upcoming.end_date %>
-      </div>
-      <div class="upcoming-index-card-pick-button">
-        찜버튼
-      </div>
-    </div>
+      <div class="_thumbnail-container-m">
+        <%= image_tag "image_live", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
+        <div class="_thumbnail-filter-m"></div>
 
-    <div class="card-brief">
-      <div class="row upcoming-index-card-row">
-        <div class="col-xs-8 upcoming-index-card-lineup">
-          <% artist = upcoming.upcoming_artists.first.artist %>
-          <p class="black-title">
-            <% if upcoming.upcoming_artists.size > 1 %>
-              <%= artist.name %> 및 <%= upcoming.upcoming_artists.size %>명
-            <% else %>
-              <%= artist.name %>
+        <div class="_thumbnail-info-container-m _row-positioner">
+          <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= upcoming.count_view %></p>
+          <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= upcoming.upcoming_likes.size %></p>
+          <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= upcoming.count_share %></p>
+        </div>
+
+        <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
+          <p class="_fs-3-mobile _white _thumbnail-margin-right-m"><b>D-<%= @d_day[upcoming.id] %></b></p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="_describe-container-m _row-positioner">
+        <div class="describe-text">
+          <p class="_fs-3-mobile _white">
+            <%= upcoming.title %> (<%= upcoming.place %>)
+          </p>
+          <p class="_fs-4-mobile _light-gray">
+            <%= upcoming.start_date %> - <%= upcoming.end_date %>
+          </p>
+          <p class="_fs-4-mobile _light-gray">
+            <!-- artist name -->
+            <% upcoming.artists.each_with_index do |artist, i| %>
+                <%= artist.name %>
+                <% break if upcoming.artists[i+1] == nil %>
+                ,&nbsp
             <% end %>
           </p>
         </div>
-        <div class="col-xs-4 upcoming-index-card-dday text-right">
-          <p class="gray-title">D-<%= @d_day[upcoming.id] %></p>
+        <div class="describe-icon _thumbnail-margin-right-m">
+          <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m" %>
         </div>
       </div>
-    </div>
   <% end %>
 </div>
+<script>
+    <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+    $('#upcoming-<%= upcoming.id %>').attr({
+        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
+    });
+</script>

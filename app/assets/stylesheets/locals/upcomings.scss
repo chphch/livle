@@ -2,59 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.upcoming-index {
-  height: 20rem;
-}
-.upcoming-index-card-thumbnail {
-}
-.upcoming-index-card-image {
-}
-.upcoming-index-card-title {
-  position: absolute;
-  top: 43rem;
-  left: 3rem;
-  font-size: 3.5rem;
-  color: white;
-}
-.upcoming-index-card-place {
-  position: absolute;
-  top: 48rem;
-  left: 3rem;
-  font-size: 3rem;
-  color: white;
-}
-.upcoming-index-card-date {
-  position: absolute;
-  top: 53rem;
-  left: 3rem;
-  font-size: 2.3rem;
-  color: #C6C6C6;
-}
-.upcoming-index-card-pick-button {
-  position: absolute;
-  top: 53rem;
-  left: 77rem;
-  font-size: 3rem;
-  color: #e1e1e1;
-}
-.upcoming-index-card-row {
-}
-.upcoming-index-card-lineup {
-}
+//index styles are here
+#upcoming-index {
+  .describe-text {
+    flex-grow: 8;
+  }
 
-.upcoming-index-card-dday {
-  font-weight: bold;
-}
-
-#content .info-icon {
-  display: inline-block;
-  height: 30pt;
-  width: auto;
-}
-
-#content .text-right .gray-content {
-  display: inline-block;
-  padding-left: 4%;
+  .describe-icon {
+    flex-grow: 2;
+    text-align: right;
+  }
 }
 
 .upcoming-show-lineup-container {
