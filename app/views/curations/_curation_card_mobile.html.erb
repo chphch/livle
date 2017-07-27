@@ -12,6 +12,11 @@
           <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
           <p class="_fs-5-mobile _white"><%= curation.count_share %></p>
         </div>
+
+        <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
+          <%= image_tag("icon_crown_gold", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -1%") %>
+          <p class="_fs-5-mobile _white _thumbnail-margin-right-m"><%= curation.user.nickname %></p>
+        </div>
       </div>
       <hr>
 
@@ -26,9 +31,9 @@
               ,&nbsp
           <% end %>
         </p>
+        <!-- Content -->
+        <p class="_fs-4-mobile _light-gray _f-line-mobile"><%= curation.content %></p>
       </div>
-      <!-- Content -->
-      <p class="_fs-4-mobile _light-gray"><%= curation.content %></p>
   <% end %>
 </div>
 <script>

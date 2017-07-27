@@ -44,7 +44,7 @@
 }
 
 ._describe-container-m {
-  padding-top: $card-container-pv-m;
+  padding-top: 2%;
   padding-bottom: $card-container-pv-m;
 }
 
@@ -55,10 +55,18 @@
 }
 
 ._vcenter-positioner {
-  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 ._row-positioner {
   display: flex;
   flex-direction: row;
+}
+
+._hright-positioner {
+  display: flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
 }

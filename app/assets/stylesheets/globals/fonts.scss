@@ -28,6 +28,10 @@ a {
 }
 
 //mobile fonts
+._fs-navbar-mobile {
+  font-size: $fs-navbar-m;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
 ._fs-1-mobile {
   font-size: $fs-1-m;
   font-family: 'Nanum Square', 'Roboto', sans-serif;
@@ -47,4 +51,7 @@ a {
 ._fs-5-mobile {
   font-size: $fs-5-m;
   font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+._f-line-mobile {
+  line-height: 170%;
 }
