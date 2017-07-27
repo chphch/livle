@@ -1,31 +1,44 @@
 <nav class="_navbar-m _vcenter-positioner">
   <%= link_to feeds_path, class: "_navbar-element-m" do %>
     <div class="text-center">
-      <%= image_tag("icon_home_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+      <%= image_tag("icon_home_empty", id:"nav-home", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
       <p class="_fs-navbar-mobile _white">Home</p>
     </div>
   <% end %>
   <%= link_to upcomings_path, class: "_navbar-element-m" do %>
     <div class="text-center">
-      <%= image_tag("icon_ticket_empty", style: "width: auto; height: 8rem;") %>
+      <%= image_tag("icon_ticket_empty", id:"nav-upcoming", style: "width: auto; height: 8rem;") %>
       <p class="_fs-navbar-mobile _white" style="margin-top: -1%;">Upcoming</p>
     </div>
   <% end %>
   <%= link_to search_index_path, class: "_navbar-element-m" do %>
       <div class="text-center">
-        <%= image_tag("icon_search", style: "width: auto; height: 14rem;") %>
+        <%= image_tag("icon_search_empty", id:"nav-search", style: "width: auto; height: 12rem;") %>
       </div>
   <% end %>
   <%= link_to connect_urls_path, class: "_navbar-element-m" do %>
     <div class="text-center">
-      <%= image_tag("icon_connect_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+      <%= image_tag("icon_connect_empty", id:"nav-connect", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
       <p class="_fs-navbar-mobile _white">Connect</p>
     </div>
   <% end %>
   <%= link_to mypage_index_path, class: "_navbar-element-m" do %>
     <div class="text-center">
-      <%= image_tag("icon_mypage_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+      <%= image_tag("icon_mypage_empty", id:"nav-mypage", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
       <p class="_fs-navbar-mobile _white">My page</p>
     </div>
   <% end %>
+  <script>
+    <% prev = Rails.application.routes.recognize_path(request.referrer) %>
+    <% control = controller.class.name.split("::").first.to_s %>
+
+    console.log("prev: " + <%= prev[:controller] %> + " || cur: " + <%= control %>);
+
+    <% if control == 'FeedsController' %>
+    <% elsif control == 'UpcomingsController' %>
+    <% elsif control == 'SearchController' %>
+    <% elsif control == 'ConnectUrlsController' %>
+    <% else %>
+    <% end %>
+  </script>
 </nav>
