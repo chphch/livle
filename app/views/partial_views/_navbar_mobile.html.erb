@@ -29,16 +29,17 @@
     </div>
   <% end %>
   <script>
-    <% prev = Rails.application.routes.recognize_path(request.referrer) %>
     <% control = controller.class.name.split("::").first.to_s %>
-
-    console.log("prev: " + <%= prev[:controller] %> + " || cur: " + <%= control %>);
-
     <% if control == 'FeedsController' %>
+      $('#nav-home').attr("src", "<%= image_url "icon_home_filled" %>");
     <% elsif control == 'UpcomingsController' %>
+      $('#nav-upcoming').attr("src", "<%= image_url "icon_ticket_filled" %>");
     <% elsif control == 'SearchController' %>
+      $('#nav-search').attr("src", "<%= image_url "icon_search_filled" %>");
     <% elsif control == 'ConnectUrlsController' %>
+      $('#nav-connect').attr("src", "<%= image_url "icon_connect_empty" %>");
     <% else %>
+      $('#nav-mypage').attr("src", "<%= image_url "icon_mypage_filled" %>");
     <% end %>
   </script>
 </nav>
