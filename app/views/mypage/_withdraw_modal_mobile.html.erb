@@ -1,0 +1,13 @@
+<div class="mypage-settings-modal-container">
+  <div class="mypage-settings-modal-header text-center">
+    <p class="black-title">정말 탈퇴 하시겠습니까?</p>
+  </div>
+  <div class="mypage-settings-modal-box text-center">
+    <%= link_to(user_registration_path, method: "DELETE") do %>
+      <p class="black-title">탈퇴하기</p>
+    <% end %>
+  </div>
+  <div class="mypage-settings-modal-box text-center" data-dismiss="modal">
+    <p class="black-title">취소</p>
+  </div>
+</div>
