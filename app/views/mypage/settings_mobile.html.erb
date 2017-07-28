@@ -1,15 +1,4 @@
-<header>
-  <div class="row">
-    <%= link_to mypage_index_path do %>
-      <%= image_tag 'icon_back_black.png', class: "mypage-back-button" %>
-    <% end %>
-    <div class="col-xs-offset-4 col-xs-4">
-      <div class="text-center">
-        <h1>설정</h1>
-      </div>
-    </div>
-  </div>
-</header>
+<%= render partial: 'top_mobile', locals: {title: "설정"} %>
 
 <section id="settings">
   <div class="row mypage-settings-background"></div>
@@ -53,13 +42,13 @@
 </section>
 
 <script>
-$('#withdraw-modal-button').click(function (e) {
+$('#withdraw-modal-button').click(function () {
   $('#withdraw-modal').modal();
 });
-$('#logout-modal-button').click(function (e) {
+$('#logout-modal-button').click(function () {
   $('#logout-modal').modal();
 });
-$('#mypage-settings-contact').click(function (e) {
+$('#mypage-settings-contact').click(function () {
   $('#mypage-settings-modal').modal();
 });
 </script>

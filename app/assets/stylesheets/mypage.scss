@@ -94,8 +94,8 @@
 .mypage-settings-background {
   background-color: #EFEFF4;
   height: 10rem;
-  border-top: 1px grey solid;
-  border-bottom: 1px grey solid;
+  border-top: 1px #EFEFF4 solid;
+  border-bottom: 1px #EFEFF4 solid;
 }
 .mypage-settings-row {
   height: 10rem;
@@ -118,7 +118,6 @@
 
 // Edit Page
 .mypage-header-container {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
