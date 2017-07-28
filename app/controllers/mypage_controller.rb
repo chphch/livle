@@ -1,7 +1,11 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user!, only: [:edit_profile, :settings]
+  before_action :authenticate_user!, only: [:edit_password, :edit_profile, :settings]
 
   def index
+    render_by_device
+  end
+
+  def edit_password
     render_by_device
   end
 

@@ -1,19 +1,5 @@
 <%= render partial: 'top_mobile', locals: {title: current_user.nickname} %>
 
-<header>
-  <div class="mypage-header-container text-center">
-    <h1><%= current_user.nickname %></h1>
-    <hr>
-  </div>
-  <div class="mypage-header-container">
-    <%= link_to('/mypage/index') do %>
-      <div class="mypage-back-button">
-        <%= image_tag("icon_back_black", style: "width: 2.6rem; height: auto;") %>
-      </div>
-    <% end %>
-  </div>
-</header>
-
 <section id="profile-img">
   <div class="mypage-profile-img-position text-center">
     <form action="/mypage/update_profile" id="update-profile" method="post" enctype="multipart/form-data">
