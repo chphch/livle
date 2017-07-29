@@ -42,7 +42,8 @@ Rails.application.routes.draw do
   get 'mypage/index'
   get 'mypage/edit_profile'
   get 'mypage/settings'
-  get 'mypage/notice'
+  get 'mypage/terms_of_use'
+  get 'mypage/privacy_policy'
   post 'mypage/update_profile'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -53,7 +54,7 @@ Rails.application.routes.draw do
 
   resources :connect_urls, only: [:index, :new, :create, :destroy]
   resources :recent_keywords, only: [:create, :destroy]
-  resources :notices
+  resources :notices, only: [:index, :create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

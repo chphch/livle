@@ -26,8 +26,11 @@ class MypageController < ApplicationController
     render_by_device
   end
 
-  def notice
-    @notices = Notice.all
+  def terms_of_use
+    render_by_device
+  end
+
+  def privacy_policy
     render_by_device
   end
 

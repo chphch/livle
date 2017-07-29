@@ -1,5 +1,5 @@
-<%= link_to url, method: :get do %>
-  <div class="row mypage-settings-row">
+<%= link_to url, method: method, onclick: defined?(disabled) ? "return false" : "" do %>
+  <div <%= defined?(id) ? "id=#{id}" : "" %> class="row mypage-settings-row">
     <div class="col-xs-offset-1 col-xs-10">
       <%= tag %>
     </div>

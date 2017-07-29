@@ -2,89 +2,74 @@
   <div class="row">
     <div class="col-xs-offset-4 col-xs-4">
       <div class="text-center">
-        <h1><%= user_signed_in? ? current_user.nickname : ""%></h1>
+        <h1><%= user_signed_in? ? current_user.nickname : "My Page"%></h1>
       </div>
     </div>
   </div>
 </header>
 <hr>
 
-<section id="profile-info">
-  <div class="mypage-index-profile-img">
-    <% if user_signed_in? && current_user.profile_img != nil %>
-        <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
-    <% else %>
-        <%= image_tag("image_profile", id: "upload-profile-img", class: "mypage-profile-img") %>
-    <% end %>
-  </div>
+<% if user_signed_in? %>
+  <section id="profile-info">
+    <div class="mypage-index-profile-img">
+      <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
+    </div>
 
-  <div class="text-center mypage-index-email">
-    <% if user_signed_in? %>
+    <div class="text-center mypage-index-email">
       <%= current_user.email %>
-    <% else %>
-      yourname@livle.co.kr
-    <% end %>
-  </div>
+    </div>
 
-  <div class="text-center mypage-index-likes">
-    <span>좋아요 수 </span><span>234</span>
-  </div>
+    <div class="text-center mypage-index-likes">
+      <span>좋아요 수 </span><span>234</span>
+    </div>
 
-  <div class="row mypage-index-settings">
-    <%= link_to mypage_edit_profile_path do %>
+    <div class="row mypage-index-settings">
+      <%= link_to mypage_edit_profile_path do %>
         <div class="text-center mypage-index-edit-profile col-xs-offset-2 col-xs-5">
           프로필 설정
         </div>
-    <% end %>
-    <%= link_to mypage_settings_path do %>
+      <% end %>
+      <%= link_to mypage_settings_path do %>
         <div class="text-center mypage-index-gear col-xs-2">
           <%= image_tag 'icon_settings.png' %>
         </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="row text-center">
-    <div class="mypage-index-pick-list">
-      <div class="row">
-        <div class="col-xs-1">
-          <%= image_tag 'icon_like_black_edge.png' %>
+    <div class="row text-center">
+      <div class="mypage-index-pick-list">
+        <div class="row">
+          <div class="col-xs-1">
+            <%= image_tag 'icon_like_black_edge.png' %>
+          </div>
+          <div class="col-xs-2">찜 목록</div>
         </div>
-        <div class="col-xs-2">찜 목록</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-offset-1 col-xs-8">
-          하이네켄 프레젠트 스타디움
+        <div class="row">
+          <div class="col-xs-offset-1 col-xs-8">
+            하이네켄 프레젠트 스타디움
+          </div>
+          <div class="col-xs-3">
+            D-35
+          </div>
         </div>
-        <div class="col-xs-3">
-          D-35
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-offset-1 col-xs-8">
-          펜타포트 락 페스티벌 2017
-        </div>
-        <div class="col-xs-3">
-          D-100
+        <div class="row">
+          <div class="col-xs-offset-1 col-xs-8">
+            펜타포트 락 페스티벌 2017
+          </div>
+          <div class="col-xs-3">
+            D-100
+          </div>
         </div>
       </div>
     </div>
-  </div>
-~
-  <div class="row mypage-index-mylist">
-    <div class="col-xs-2 mypage-index-mylist-heart">
-      <%= image_tag 'icon_like_black_edge.png' %>
+    ~
+    <div class="row mypage-index-mylist">
+      <div class="col-xs-2 mypage-index-mylist-heart">
+        <%= image_tag 'icon_like_black_edge.png' %>
+      </div>
+      <div class="col-xs-2">마이 리스트</div>
     </div>
-    <div class="col-xs-2">마이 리스트</div>
-  </div>
-</section>
-
-<% if !user_signed_in? %>
-  <form id="modal-page" class="modal">
-    <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-  </form>
-  <script>
-    $('#modal-page').modal({
-        fadeDuration: 400
-    });
-  </script>
+  </section>
+<% else %>
+  <%= render file: '/devise/sessions/new_mobile.html.erb' %>
 <% end %>
