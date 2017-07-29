@@ -6,7 +6,7 @@
   </div>
 </header>
 
-<div id="feeds-index" class="_list-container-m">
+<div id="feeds-index-mobile" class="_list-container-m">
   <% f_index = 0 %>
   <% @curations.each do |curation| %>
       <%= render partial: "curations/curation_card_mobile", locals: {curation: curation} %>
