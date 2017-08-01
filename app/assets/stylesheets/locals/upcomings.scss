@@ -14,6 +14,25 @@
   }
 }
 
+#upcomings-show-mobile {
+  .describe-padding {
+    padding-top: 1.5%;
+  }
+
+  .describe-date {
+    flex-grow: 6;
+  }
+
+  .describe-icons {
+    flex-grow: 4;
+    text-align: right;
+  }
+
+  .icon-padding {
+    padding-left: 6%;
+  }
+}
+
 .upcoming-show-lineup-container {
   width: 100%;
   height: auto;

@@ -2,7 +2,9 @@ class UpcomingsController < ApplicationController
   require 'date'
 
   def index
-    @upcomings = Upcoming.order('start_date ASC').paginate(page: params[:page], per_page: 8)
+    today = DateTime.now
+    @upcomings = Upcoming.where('start_date >= ?', today).order('start_date ASC')
+                     .paginate(page: params[:page], per_page: 8)
     calc_d_day
     respond_to do |format|
       format.html { render_by_device }
@@ -33,7 +35,8 @@ class UpcomingsController < ApplicationController
         today = DateTime.now.strftime('%Q').to_i
         day_to_millisec = 1000*60*60*24
 
-        @d_day[upcoming.id] = ((start_day - today)/day_to_millisec).floor
+        d_day = ((start_day - today)/day_to_millisec).floor
+        @d_day[upcoming.id] = -d_day
       end
     end
 
@@ -42,6 +45,7 @@ class UpcomingsController < ApplicationController
       today = DateTime.now.strftime('%Q').to_i
       day_to_millisec = 1000*60*60*24
 
-      return ((start_day - today)/day_to_millisec).floor
+      d_day = ((start_day - today)/day_to_millisec).floor
+      return -d_day
     end
 end
