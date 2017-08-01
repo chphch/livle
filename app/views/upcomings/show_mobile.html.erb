@@ -48,17 +48,15 @@
 
   <!-- Video info -->
   <div class="_show-info-padding-m _show-describe-container-m">
-    <div class="_row-positioner">
-      <p class="_fs-3-mobile _white"><%= @upcoming.title %></p>
-      <div class="_show-text-container-m _hright-positioner">
+    <div class="_show-text-container-m _row-positioner">
+      <p class="width-devision _fs-3-mobile _white"><%= @upcoming.title %></p>
+      <div class="width-devision _hright-positioner">
         <p class="_fs-3-mobile _white _f-letter-mobile"><strong>D<%= @d_day %></strong></p>
       </div>
     </div>
-
     <div class="describe-padding">
       <p class="_fs-3-mobile _white"><%= @upcoming.place %></p>
     </div>
-
     <div class="describe-padding _vcenter-positioner">
       <div class="describe-date">
         <p class="_fs-4-mobile _light-gray">
@@ -74,6 +72,24 @@
         <% end %>
       </div>
     </div>
+  </div>
+
+  <!-- Line-Up -->
+  <div class="line-up-container">
+    <div class="_show-text-container-m _row-positioner">
+      <p class="width-devision _fs-3-mobile _white">LINE - UP</p>
+      <div class="width-devision _hright-positioner">
+        <p class="_fs-3-mobile _white">전체보기</p>
+      </div>
+    </div>
+  </div>
+  <div class="line-up-img-container">
+    <% @upcoming.upcoming_artists.each do |artist| %>
+        <div class="artist-profile _hcenter-positioner _vcenter-positioner"
+             style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
+          <p class="_fs-2-mobile _white"><%= artist.artist.name %></p>
+        </div>
+    <% end %>
   </div>
 
   <!-- Like, Comment, Share Buttons -->
@@ -92,27 +108,6 @@
       <p class="_fs-4-mobile _white _icon-text-margin-m">공유</p>
     </div>
   </div>
-</div>
-
-<div class="show-video-info">
-  <div class="row">
-    <div class="col-xs-8">
-      <p class="black-title">LINE - UP</p>
-    </div>
-    <div class="col-xs-4 text-right">
-      <div class="text-right">
-        <%= image_tag("icon_share_gray", id: "share-modal-button", class: "card-button-share") %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="upcoming-show-lineup-container">
-  <% @upcoming.upcoming_artists.each do |artist| %>
-      <div class="upcoming-show-artist-profile text-center" style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
-        <p class="upcoming-show-artist-name white-title"><%= artist.artist.name %></p>
-      </div>
-  <% end %>
 </div>
 
 <section id="comment">

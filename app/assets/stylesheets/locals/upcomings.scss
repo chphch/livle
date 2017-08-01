@@ -1,8 +1,6 @@
-// Place all the styles related to the upcomings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals/sizes";
+@import "globals/colors";
 
-//index styles are here
 #upcoming-index-mobile {
   .describe-text {
     flex-grow: 8;
@@ -15,6 +13,12 @@
 }
 
 #upcomings-show-mobile {
+  background: $black;
+
+  .width-devision {
+    flex-grow: 1;
+  }
+
   .describe-padding {
     padding-top: 1.5%;
   }
@@ -31,22 +35,29 @@
   .icon-padding {
     padding-left: 6%;
   }
-}
 
-.upcoming-show-lineup-container {
-  width: 100%;
-  height: auto;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
+  .line-up-container {
+    padding-top: $list-container-pv-m;
+    padding-bottom: $list-container-pv-m;
+    padding-left: $list-container-ph-m;
+    padding-right: $list-container-ph-m;
+    background: $black;
+  }
 
-.upcoming-show-artist-profile {
-  display: inline-block;
-  overflow: hidden;
-  width: 36rem;
-  height: 36rem;
-}
+  .line-up-img-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
 
-.upcoming-show-artist-name {
-  padding-top: 42%;
+  .artist-profile {
+    flex: 0 0 auto;
+    width: 36rem;
+    height: 36rem;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 3rem;
+  }
 }

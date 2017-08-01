@@ -73,10 +73,10 @@
     </div>
   </div>
 
-  <div class="upcoming-show-lineup-container">
+  <div class="line-up-img-container">
     <% @upcoming.upcoming_artists.each do |artist| %>
-      <div class="upcoming-show-artist-profile text-center" style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
-        <p class="upcoming-show-artist-name white-title"><%= artist.artist.name %></p>
+      <div class="artist-profile text-center" style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
+        <p class="artist-name white-title"><%= artist.artist.name %></p>
       </div>
     <% end %>
   </div>
