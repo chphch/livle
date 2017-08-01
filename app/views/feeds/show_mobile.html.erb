@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="_show-play-button-container _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
+    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
       <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
         <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
         <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
@@ -46,16 +46,56 @@
     <% end %>
   </div>
 
-  <div class="_show-info-padding-m">
+  <!-- Video info -->
+  <div class="_show-info-padding-m _show-describe-container-m">
+    <div class="_row-positioner">
+      <p class="_fs-3-mobile _white"><%= @feed.title %> -&nbsp</p>
+      <p class="_fs-4-mobile _light-gray">
+        <% @feed.artists.each_with_index do |artist, i| %>
+            <%= artist.name %>
+            <% break if @feed.artists[i+1] == nil %>
+            ,&nbsp
+        <% end %>
+      </p>
+    </div>
+
+    <div class="_show-describe-item-container-m _vcenter-positioner">
+      <div class="_profile-container-m _profile-border-m">
+        <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
+      </div>
+
+      <div class="_show-text-padding-m _vcenter-positioner">
+        <div class="_show-text-container-m">
+          <div class="_show-text-margin-m _vcenter-positioner">
+            <%= image_tag("icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%") %>
+            <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
+          </div>
+          <p class="_fs-4-mobile _light-gray">소개글을 입력해주세요~!</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<section id="content">
-</section>
+  <!-- Like, Comment, Share Buttons -->
+  <div class="_show-buttons-container-m _row-positioner">
+    <%= link_to feed_create_like_path(@feed.id), remote: true, class: "_show-button
+    _hcenter-positioner _vcenter-positioner" do %>
+        <%= image_tag "icon_like_empty", class: "_show-icon-m show-like" %>
+        <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
+    <% end %>
+    <div class="_show-button _hcenter-positioner _vcenter-positioner">
+      <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
+      <p class="_fs-4-mobile _white _icon-text-margin-m">댓글</p>
+    </div>
+    <div class="_show-button _hcenter-positioner _vcenter-positioner">
+      <%= image_tag "icon_share_white", class: "_show-icon-m" %>
+      <p class="_fs-4-mobile _white _icon-text-margin-m">공유</p>
+    </div>
+  </div>
 
-<section id="comment">
+  <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
-</section>
+</div>
 
 <%= render partial: '/share_modal', locals: {post: @feed} %>
 

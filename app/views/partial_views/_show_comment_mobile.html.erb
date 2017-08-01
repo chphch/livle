@@ -1,12 +1,15 @@
-<div class="show-video-info">
-  <div class="black-content">댓글 <%= comments.size %>개</div>
-  <hr>
+<div class="_comments-container-m">
   <% comments.each do |comment| %>
-    <div class="content-container">
-      <p class="black-title"><%= comment.user.nickname %></p>
-      <div class="comment-container">
-        <p class="black-content"><%= comment.content %></p>
+      <div class="_vcenter-positioner">
+        <div class="_profile-container-m">
+          <%= image_tag "#{comment.user.profile_img}", class: "_profile-user-m" %>
+        </div>
+        <p class="_fs-4-mobile _white _icon-text-margin-m"><%= comment.user.nickname %></p>
       </div>
-    </div>
+      <div class="_comment-content-container-m">
+        <p class="_fs-5-mobile _white">
+          <%= comment.content %>
+        </p>
+      </div>
   <% end %>
 </div>
