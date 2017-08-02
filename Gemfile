@@ -29,7 +29,6 @@ gem 'searchkick'
 gem 'activejob_backport'
 # gem for scheduling function
 gem 'whenever', :require => false
-gem 'minitest', '~> 5.10.3'
 # social-share-button
 gem 'social-share-button'
 
@@ -43,8 +42,6 @@ gem 'sqlite3'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Semantic-UI Gem
-gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

@@ -1,6 +1,58 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals/colors";
+@import "globals/sizes";
+
+#search-index-mobile {
+  background: $black;
+
+  .search-input-container {
+    width: 100%;
+    padding: 2%;
+  }
+
+  .input-icon-container {
+    flex-grow: 1;
+    -webkit-flex-grow: 2;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .search-input-field {
+    width: 100%;
+    height: 8rem;
+    background: $dark-gray;
+    border: none;
+    border-radius: 0.5rem;
+
+    transition-duration: 0.15s;
+    -webkit-transition-duration: 0.15s;
+    -moz-transition-duration: 0.15s;
+  }
+
+  .input-icon {
+    width: auto;
+    height: 4rem;
+  }
+
+  .input-field {
+    background: $dark-gray;
+    height: 100%;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    border: none;
+  }
+
+  .input-esc {
+    width: auto;
+    height: 4rem;
+    object-fit: contain;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+
 .search-nav-container {
   padding-top: 2%;
   padding-bottom: 2%;

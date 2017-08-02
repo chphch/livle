@@ -2,6 +2,8 @@
 @import "globals/colors";
 
 #upcoming-index-mobile {
+  background: $black;
+
   .describe-text {
     flex-grow: 8;
   }
@@ -17,6 +19,14 @@
 
   .width-devision {
     flex-grow: 1;
+  }
+
+  .describe-container {
+    padding-top: 5%;
+    padding-bottom: 3%;
+    padding-left: $list-container-ph-m;
+    padding-right: $list-container-ph-m;
+    background: $dark-dark-gray;
   }
 
   .describe-padding {

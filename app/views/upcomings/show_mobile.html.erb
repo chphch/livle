@@ -47,29 +47,31 @@
   </div>
 
   <!-- Video info -->
-  <div class="_show-info-padding-m _show-describe-container-m">
-    <div class="_show-text-container-m _row-positioner">
-      <p class="width-devision _fs-3-mobile _white"><%= @upcoming.title %></p>
-      <div class="width-devision _hright-positioner">
-        <p class="_fs-3-mobile _white _f-letter-mobile"><strong>D<%= @d_day %></strong></p>
+  <div class="_show-info-padding-m">
+    <div class="describe-container">
+      <div class="_show-text-container-m _row-positioner">
+        <p class="width-devision _fs-1-mobile _white"><%= @upcoming.title %></p>
+        <div class="width-devision _hright-positioner">
+          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @d_day %></strong></p>
+        </div>
       </div>
-    </div>
-    <div class="describe-padding">
-      <p class="_fs-3-mobile _white"><%= @upcoming.place %></p>
-    </div>
-    <div class="describe-padding _vcenter-positioner">
-      <div class="describe-date">
-        <p class="_fs-4-mobile _light-gray">
-          <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
-        </p>
+      <div class="describe-padding">
+        <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
       </div>
-      <div class="describe-icons">
-        <%= link_to @upcoming.ticket_url do %>
-            <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
-        <% end %>
-        <%= link_to upcoming_create_like_path(@upcoming.id), remote: true do %>
-            <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m icon-padding" %>
-        <% end %>
+      <div class="describe-padding _vcenter-positioner">
+        <div class="describe-date">
+          <p class="_fs-3-mobile _light-gray">
+            <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
+          </p>
+        </div>
+        <div class="describe-icons">
+          <%= link_to @upcoming.ticket_url do %>
+              <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
+          <% end %>
+          <%= link_to upcoming_create_like_path(@upcoming.id), remote: true do %>
+              <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m icon-padding" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

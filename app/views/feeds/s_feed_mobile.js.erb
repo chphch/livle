@@ -1,5 +1,5 @@
-$('#feeds-index').append('<%= j render partial: "index_card_mobile", collection: @feeds, as: :feed %>');
-$('#feeds-index').append('<%= j render partial: "curations/curation_card_mobile", collection: @curations, as: :curation %>');
+$('#feeds-card-list-m').append('<%= j render partial: "index_card_mobile", collection: @feeds, as: :feed %>');
+$('#feeds-card-list-m').append('<%= j render partial: "curations/curation_card_mobile", collection: @curations, as: :curation %>');
 <% if @feeds.next_page || @curations.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
   $('.pagination').replaceWith('<%= j will_paginate @curations %>');

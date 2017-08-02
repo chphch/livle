@@ -5,6 +5,23 @@ hr {
   border-top: 2px solid $dark-green !important;
 }
 
+input::-webkit-input-placeholder {
+  color: $white !important;
+}
+input:-moz-placeholder {
+  color: $white !important;
+}
+input::-moz-placeholder {
+  color: $white !important;
+}
+input:-ms-input-placeholder {
+  color: $white !important;
+}
+input:focus {
+  outline: none;
+  caret-color: $light-green;
+}
+
 ////navbar
 ._navbar-m {
   position: fixed;
@@ -117,7 +134,7 @@ hr {
 }
 
 ._show-info-padding-m {
-  padding-top: 56.25% + $list-container-pv-m;
+  padding-top: 56.25%;
 }
 
 ._show-text-padding-m {

@@ -1,30 +1,30 @@
-<!-- background -->
-<div class="_body-background-m"></div>
-<header>
-  <div class="_hcenter-positioner">
-    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+<div id="feeds-index-mobile">
+  <header>
+    <div class="_hcenter-positioner">
+      <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    </div>
+  </header>
+
+  <div class="_list-container-m" id="feeds-card-list-m">
+    <% f_index = 0 %>
+    <% @curations.each do |curation| %>
+        <%= render partial: "curations/curation_card_mobile", locals: {curation: curation} %>
+        <% rand_num = rand(2) + 2 %>
+        <% f_count = 0 %>
+
+        <% while (f_index < @feeds.size) %>
+            <%= render partial: "index_card_mobile", locals: {feed: @feeds[f_index]} %>
+            <% f_index += 1 %>
+            <% f_count += 1 %>
+
+            <% unless f_count < rand_num %>
+                <% break %>
+            <% end %>
+        <% end %>
+    <% end %>
   </div>
-</header>
 
-<div id="feeds-index-mobile" class="_list-container-m">
-  <% f_index = 0 %>
-  <% @curations.each do |curation| %>
-      <%= render partial: "curations/curation_card_mobile", locals: {curation: curation} %>
-      <% rand_num = rand(2) + 2 %>
-      <% f_count = 0 %>
-
-      <% while (f_index < @feeds.size) %>
-          <%= render partial: "index_card_mobile", locals: {feed: @feeds[f_index]} %>
-          <% f_index += 1 %>
-          <% f_count += 1 %>
-
-          <% unless f_count < rand_num %>
-              <% break %>
-          <% end %>
-      <% end %>
-  <% end %>
-</div>
-
-<div id="infinite-scrolling">
-  <%= will_paginate @feeds %>
+  <div id="infinite-scrolling">
+    <%= will_paginate @feeds %>
+  </div>
 </div>

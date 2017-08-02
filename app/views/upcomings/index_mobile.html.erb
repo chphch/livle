@@ -1,15 +1,15 @@
-<!-- background -->
-<div class="_body-background-m"></div>
-<header>
-  <div class="_hcenter-positioner">
-    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+<div id="upcoming-index-mobile">
+  <header>
+    <div class="_hcenter-positioner">
+      <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    </div>
+  </header>
+
+  <div class="_list-container-m" id="upcomings-card-list-m">
+    <%= render partial: "index_card_mobile", collection: @upcomings, as: :upcoming %>
   </div>
-</header>
 
-<div id="upcoming-index-mobile" class="_list-container-m">
-  <%= render partial: "index_card_mobile", collection: @upcomings, as: :upcoming %>
-</div>
-
-<div id="infinite-scrolling">
-  <%= will_paginate @upcomings %>
+  <div id="infinite-scrolling">
+    <%= will_paginate @upcomings %>
+  </div>
 </div>
