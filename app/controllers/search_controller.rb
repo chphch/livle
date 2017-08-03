@@ -8,23 +8,22 @@ class SearchController < ApplicationController
   end
 
   # keyword : feed.title, upcoming.title, artist.name, user.nickname, upcoming.place
-  def search
-    term = params[:term]
+  def result
+    @search = params[:search]
 
-    @video_results = Searchkick.search(
-      term,
+    @feed_results = Searchkick.search(
+      @search,
       index_name: [Feed, Curation],
       fields: [:artists_names, :title, :user_nickname],
       operator: "or",
       match: :word_middle
     )
     @upcoming_results = Upcoming.search(
-      term,
+      @search,
       fields: [:artists_names, :title, :place],
       operator: "or",
       match: :word_middle
     )
-
     render_by_device
   end
 end

@@ -1,0 +1,21 @@
+<div class="_body-background-m"></div>
+<div class="search-input-container">
+  <%= form_tag search_result_path, method: :get do %>
+      <div class="_vcenter-positioner">
+        <div class="search-input-field _vcenter-positioner">
+          <div class="input-icon-container _hright-positioner">
+            <%= image_tag "icon_search_gray", class: "input-icon" %>
+          </div>
+          <%= text_field_tag :search, nil, class: "input-field _fs-3-mobile _white", rows: "1", placeholder: "검색" %>
+          <%= image_tag "icon_esc", class: "input-esc", style: "display: none" %>
+        </div>
+        <!--<= submit_tag "Search" %>-->
+
+        <div class="cancel-field">
+          <div class="cancel-container _vcenter-positioner _hcenter-positioner">
+            <p class="_fs-3-mobile _light-green _f-letter-mobile">취소</p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

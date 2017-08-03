@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'admin/notice'
   get 'admin/index'
 
-  get 'search/index'
-  post 'search/search'
+  get 'search' => 'search#index'
+  get 'search/result'
 
   resources :artists, only: [:index, :create, :show]
   post 'artists/:id/update' => 'artists#update'
