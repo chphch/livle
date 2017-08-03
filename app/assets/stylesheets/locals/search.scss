@@ -6,14 +6,23 @@
 
 #search-index-mobile,
 #search-result-mobile {
+  #search-bar {
+    position: fixed;
+    z-index: 18;
+    transition: top 0.4s ease-in-out;
+    -webkit-transition: top 0.4s ease-in-out;
+    -moz-transition: top 0.4s ease-in-out;
+  }
+
   .search-input-container {
     width: 100%;
     padding: 2%;
+    background: $black;
   }
 
   .input-icon-container {
-    flex-grow: 2;
-    -webkit-flex-grow: 2;
+    flex-grow: 3;
+    -webkit-flex-grow: 3;
     padding-left: 4%;
     padding-right: 4%;
   }
@@ -60,6 +69,11 @@
     width: 100%;
     height: 8rem;
     margin-top: 0.3rem;
+  }
+
+  // Search-Bar Event
+  .search-bar-up {
+    top: -10rem;
   }
 }
 

@@ -1,4 +1,5 @@
 <div id="search-result-mobile">
+  <div class="_body-background-m"></div>
   <%= render partial: "search_bar_mobile" %>
 
   <div class="selector-container _row-positioner">
@@ -23,21 +24,4 @@
     $('.cancel-field').click(function () {
         window.location = "<%= search_path %>";
     });
-
-    $('#feeds-selector').click(function () {
-        renderResult("feed")
-    });
-    $('#upcomings-selector').click(function () {
-        renderResult("upcoming")
-    });
-
-    function renderResult(params) {
-      if(params === "feed") {
-          $('#result-list-feed').show();
-          $('#result-list-upcoming').hide();
-      } else {
-          $('#result-list-feed').hide();
-          $('#result-list-upcoming').show();
-      }
-    }
 </script>
