@@ -27,5 +27,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
     $('.input-esc').click(function () {
         $('.input-field').val('');
+        $('.input-esc').hide();
     });
 });

@@ -158,6 +158,9 @@
 
 ._row-positioner {
   display: flex;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   flex-direction: row;
 }
 
