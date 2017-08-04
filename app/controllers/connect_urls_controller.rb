@@ -8,10 +8,7 @@ class ConnectUrlsController < ApplicationController
 
   def new
     @connectUrl = ConnectUrl.new(video_url: params[:video_url])
-    respond_to do |format|
-      format.html { render_by_device }
-      format.js { render 'partial_views/video_player' }
-    end
+    render_by_device
 
     @disable_nav = true
   end

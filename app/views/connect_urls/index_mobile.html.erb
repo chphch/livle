@@ -23,3 +23,12 @@
     </div>
   </div>
 </div>
+
+<% if !user_signed_in? %>
+    <form id="modal-page" class="modal">
+      <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+    </form>
+    <script>
+        $('#modal-page').modal();
+    </script>
+<% end %>
