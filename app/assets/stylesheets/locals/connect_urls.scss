@@ -1,6 +1,76 @@
 // Place all the styles related to the connect_urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals/colors";
+@import "globals/sizes";
+
+#connect-index-mobile {
+  input::-webkit-input-placeholder {
+    color: $white !important;
+  }
+  input:-moz-placeholder {
+    color: $white !important;
+  }
+  input::-moz-placeholder {
+    color: $white !important;
+  }
+  input:-ms-input-placeholder {
+    color: $white !important;
+  }
+
+  .content-container {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+  .text-container {
+    padding: 0 0 4%;
+    text-align: center;
+  }
+
+  .text-spacing {
+    line-height: 600%;
+    letter-spacing: 1rem;
+  }
+
+  .connect-input-container {
+    width: 80%;
+  }
+
+  .icon-container {
+    height: 10rem;
+    padding: 0 4%;
+    margin: 0 1% 0 0;
+    background: rgba(256, 256, 256, 0.27);
+    border-radius: $br-min-m 0 0 $br-min-m;
+  }
+
+  .input-container {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    height: 10rem;
+    background: rgba(256, 256, 256, 0.27);
+    border-radius: 0 $br-min-m $br-min-m 0;
+  }
+
+  .input-icon {
+    width: auto;
+    height: 5rem;
+  }
+
+  .input-field {
+    width: 100%;
+    height: 100%;
+    background: none;
+    margin: 0 4%;
+    border: none;
+  }
+}
+
 .connect-border {
   margin-left: 4%;
   margin-right: 4%;
