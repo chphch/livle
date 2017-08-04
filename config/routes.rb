@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get 'upcomings/:id/destroy' => 'upcomings#destroy'
 
   get 'mypage/index'
+  get 'mypage/edit_password'
+  patch 'mypage/update_password'
   get 'mypage/edit_profile'
   get 'mypage/settings'
   get 'mypage/terms_of_use'
