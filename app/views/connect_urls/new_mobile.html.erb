@@ -28,7 +28,7 @@
     <div class="connect-input-container">
       <%= form_tag "/connect_urls" do %>
           <div class="input-container">
-            <%= text_field_tag :describe, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", rows: "8", placeholder: "영상에 대해 알려주세요" %>
+            <%= text_area_tag :describe, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", rows: 8, placeholder: "영상에 대해 알려주세요" %>
           </div>
       <% end %>
     </div>

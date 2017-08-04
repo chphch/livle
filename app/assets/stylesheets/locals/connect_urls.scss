@@ -6,16 +6,16 @@
 
 #connect-index-mobile,
 #connect-new-mobile {
-  input::-webkit-input-placeholder {
+  ::-webkit-input-placeholder {
     color: $white !important;
   }
-  input:-moz-placeholder {
+  :-moz-placeholder {
     color: $white !important;
   }
-  input::-moz-placeholder {
+  ::-moz-placeholder {
     color: $white !important;
   }
-  input:-ms-input-placeholder {
+  :-ms-input-placeholder {
     color: $white !important;
   }
 
@@ -46,7 +46,7 @@
     width: 100%;
     height: 100%;
     background: none;
-    margin: 0 4%;
+    padding: 2% 4%;
     border: none;
   }
 }
