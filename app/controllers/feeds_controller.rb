@@ -35,13 +35,4 @@ class FeedsController < ApplicationController
       render text: @feed.errors.messages
     end
   end
-
-  private
-    def req_latest_feeds
-
-    end
-
-    def share
-
-    end
 end

@@ -16,8 +16,8 @@ class MypageController < ApplicationController
 
   def update_profile
     @user = current_user
-    puts @user.nickname
 
+    puts @user.nickname
     if @user.update(profile_img: params[:profile_img])
       redirect_back(fallback_location: root_path)
     else
@@ -42,5 +42,11 @@ class MypageController < ApplicationController
     if !user_signed_in?
       redirect_to mypage_index_path
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
   end
 end
