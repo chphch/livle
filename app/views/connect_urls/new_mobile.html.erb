@@ -2,6 +2,7 @@
 <% video_id = @connectUrl.video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
 
 <div id="connect-new-mobile">
+  <div class="_body-background-m"></div>
   <div class="_show-video-container-m">
     <!-- Youtube Video Player -->
     <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
@@ -21,6 +22,16 @@
     <%= link_to :back, class: "_show-video-back-container-m" do %>
         <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
     <% end %>
+  </div>
+
+  <div class="content-container _vcenter-positioner _hcenter-positioner">
+    <div class="connect-input-container">
+      <%= form_tag "/connect_urls" do %>
+          <div class="input-container">
+            <%= text_field_tag :describe, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", rows: "8", placeholder: "영상에 대해 알려주세요" %>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
