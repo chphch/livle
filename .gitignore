@@ -166,3 +166,6 @@ fabric.properties
 
 # .idea
 .idea/
+
+# jupyter notebook
+.ipynb_checkpoints/
