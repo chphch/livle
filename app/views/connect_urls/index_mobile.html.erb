@@ -4,7 +4,7 @@
   <div class="content-container _vcenter-positioner _hcenter-positioner">
     <div class="text-container text-spacing">
       <p class="_fs-1-mobile _white">
-        <%= current_user.nickname %>님이 느꼈던 전율의 순간.<br>
+        <%= user_signed_in? ? current_user.nickname : "LIVLE" %>님이 느꼈던 전율의 순간.<br>
         그 떨림을 전해주세요
       </p>
     </div>
@@ -26,7 +26,9 @@
 
 <% if !user_signed_in? %>
     <form id="modal-page" class="modal">
-      <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+      <div class="_big-modal-container">
+        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+      </div>
     </form>
     <script>
         $('#modal-page').modal();
