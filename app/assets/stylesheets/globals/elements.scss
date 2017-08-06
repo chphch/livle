@@ -2,7 +2,8 @@
 @import "colors";
 
 hr {
-  border-top: 2px solid $dark-green !important;
+  border-top: 1px solid $light-gray !important;
+  margin: 0 !important;
 }
 
 :focus {
@@ -107,7 +108,14 @@ hr {
   width: 33.3%;
   height: 100%;
 }
-
+._submit-button {
+  padding: 3.5% 0;
+  background: none;
+  border: 2px solid $white;
+  border-radius: $br-image-m;
+  -webkit-border-radius: $br-image-m;
+  -moz-border-radius: $br-image-m;
+}
 ////margin, padding
 ._thumbnail-elem-margin-m {
   margin-left: $thumbnail-elem-mh-m;

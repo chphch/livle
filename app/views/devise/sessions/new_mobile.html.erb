@@ -1,42 +1,70 @@
-<div class="users-new-container">
-  <div class="users-new-header text-center">
-    <p class="black-title">LIVLE</p>
+<div id="device-new-mobile">
+  <div class="_column-positioner _vcenter-positioner">
+    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    <div class="moto-container">
+      <p class="_fs-3-mobile _white _f-letter-mobile">Life is LIVLE</p>
+    </div>
   </div>
 
-  <div class="users-new-body">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.email_field :email, placeholder: "이메일", autofocus: true, class: "users-new-textfield" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "users-new-textfield" %>
-        </div>
-
-        <% if devise_mapping.rememberable? -%>
-            <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+  <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+      <div class="_column-positioner _vcenter-positioner">
+        <!-- 이메일 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
-        <% end -%>
-
-        <div class="row">
-          <div class="col-xs-6 text-center">
-            <div class="actions">
-              <%= f.submit "Log in", class: "users-new-button" %>
+            <div class="input-container">
+              <%= f.email_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-3-mobile _white" %>
             </div>
           </div>
+        </div>
+        <!-- 비밀번호 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_lock", class: "input-icon" %>
+            </div>
+            <div class="input-container">
+              <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-3-mobile _white" %>
+            </div>
+          </div>
+        </div>
+        <!-- Remember Checkbox -->
+        <!--< if devise_mapping.rememberable? -%>-->
+        <!--<div class="field">-->
+        <!--<= f.check_box :remember_me %>-->
+        <!--<= f.label :remember_me %>-->
+        <!--</div>-->
+        <!--< end -%>-->
 
-          <div class="col-xs-6 text-center">
+        <div class="button-container">
+          <div class="_vcenter-positioner">
             <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                <div class="users-new-button">
-                  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+                <div class="button-width _submit-button _fs-2-mobile _white _text-center">
+                  <%= link_to "회원가입", new_registration_path(resource_name) %><br />
                 </div>
             <% end -%>
+            <div class="button-margin"></div>
+            <%= f.submit "로그인", class: "button-width _submit-button _fs-2-mobile _white" %>
           </div>
         </div>
-    <% end %>
+      </div>
+  <% end %>
 
-    <%= render "devise/shared/links_mobile" %>
+  <div class="_column-positioner _vcenter-positioner">
+    <div class="hr-container _vcenter-positioner">
+      <div class="hr"></div>
+      <div class="hr-text">
+        <p class="_fs-4-mobile _white">or you can</p>
+      </div>
+      <div class="hr"></div>
+    </div>
+    <!-- Facebook Login -->
+    <div class="button-container">
+      <%= render "devise/shared/links_mobile" %>
+    </div>
   </div>
 </div>
+<!--<div class="_big-modal-container">-->
+<!--</div>-->

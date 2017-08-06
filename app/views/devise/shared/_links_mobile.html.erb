@@ -8,22 +8,30 @@
   <!--</div>-->
 <!--< end -%>-->
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <div class="users-new-button">
-      <%= link_to "#{OmniAuth::Utils.camelize(provider)}으로 로그인하기", omniauth_authorize_path(resource_name, provider) %><br />
-    </div>
+<div id="device-link-mobile">
+  <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+          <div class="facebook-button _submit-button _fs-2-mobile _white _text-center">
+            <%= link_to "#{OmniAuth::Utils.camelize(provider)}으로 3초만에 로그인", omniauth_authorize_path(resource_name, provider) %><br />
+          </div>
+      <% end -%>
   <% end -%>
-<% end -%>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <div class="option-text-container _hright-positioner _fs-4-mobile _white">
+        <%= link_to "비밀번호를 잊어버리셨나요?", new_password_path(resource_name) %><br />
+      </div>
+  <% end -%>
+
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <div class="option-text-container _hright-positioner _fs-4-mobile _white">
+        <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+      </div>
+  <% end -%>
+
+  <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+      <div class="option-text-container _hright-positioner _fs-4-mobile _white">
+        <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+      </div>
+  <% end -%>
+</div>

@@ -129,6 +129,20 @@
   background: $dark-dark-gray;
 }
 
+._mypage-title-container-m {
+  padding: 4% 0;
+}
+
+._big-modal-container {
+  position: absolute;
+  top: 18%;
+  left: 14%;
+  width: 72%;
+  height: 56%;
+  background: #ffffff;
+  border-radius: 6rem;
+}
+
 ////positioners
 ._hcenter-positioner {
   display: flex;
@@ -141,6 +155,13 @@
   -webkit-justify-content: center;
   -moz-box-pack: center;
   -ms-flex-pack: center;
+}
+
+._column-positioner {
+  /* column direction */
+  flex-direction: column !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
 }
 
 ._vcenter-positioner {
@@ -168,4 +189,8 @@
   display: flex;
   justify-content: flex-end;
   -webkit-justify-content: flex-end;
+}
+
+._text-center {
+  text-align: center;
 }
