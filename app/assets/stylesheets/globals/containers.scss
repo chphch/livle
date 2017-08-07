@@ -20,14 +20,11 @@
 }
 
 ._list-container-m {
-  padding-left: $list-container-ph-m;
-  padding-right: $list-container-ph-m;
-  padding-top: $list-container-pv-m;
-  padding-bottom: $list-container-pv-m;
+  padding: $list-container-pv-m 0;
 }
 
 ._card-container-m {
-  padding-bottom: $card-container-pv-m;
+  padding: 0 1% 1%;
 }
 
 ._thumbnail-container-m {
@@ -44,8 +41,9 @@
 }
 
 ._describe-container-m {
-  padding-top: 2%;
-  padding-bottom: $card-container-pv-m;
+  position: absolute;
+  bottom: 10%; left: 0;
+  padding: 0 $thumbnail-elem-mh-m;
 }
 
 ._show-video-container-m {
