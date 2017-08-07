@@ -5,7 +5,7 @@
 
   <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: mypage_edit_profile_path, method: "GET"} %>
   <hr class="mypage-settings-offset-line">
-  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: mypage_edit_password_path, method: "GET"} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: mypage_edit_password_path, method: "GET", remote: true} %>
   <hr class="mypage-settings-offset-line">
   <%= render partial: "settings_row_mobile", locals: {tag: "공지사항", color: "black", url: notices_path, method: "GET"} %>
 
@@ -38,6 +38,9 @@
   </form>
   <form id="mypage-settings-modal" class="modal">
     <%= render partial: "settings_contact_mobile" %>
+  </form>
+  <form id="cannot-change-password-modal" class="modal">
+    <%= render partial: "cannot_change_password_modal_mobile" %>
   </form>
 </section>
 

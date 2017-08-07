@@ -1,4 +1,4 @@
-<%= link_to url, method: method, onclick: defined?(disabled) ? "return false" : "" do %>
+<%= link_to url, method: method, onclick: defined?(disabled) ? "return false" : "", remote: defined?(remote) ? true : false do %>
   <div <%= defined?(id) ? "id=#{id}" : "" %> class="row mypage-settings-row">
     <div class="col-xs-offset-1 col-xs-10">
       <%= tag %>
