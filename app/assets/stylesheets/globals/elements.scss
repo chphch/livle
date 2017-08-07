@@ -2,7 +2,7 @@
 @import "colors";
 
 hr {
-  border-top: 1px solid $light-gray !important;
+  border-top: 1px solid $gray !important;
   margin: 0 !important;
 }
 
@@ -18,7 +18,7 @@ hr {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-  ////navbar
+////navbar
 ._navbar-m {
   position: fixed;
   width: 100%;
