@@ -1,23 +1,34 @@
-<%= render partial: 'top_mobile', locals: {title: current_user.nickname} %>
+<div id="mypage-edit-profile-mobile">
+  <div class="_body-background-m"></div>
 
-<section id="profile-img">
-  <div class="mypage-profile-img-position text-center">
-    <form action="/mypage/update_profile" id="update-profile" method="post" enctype="multipart/form-data">
-      <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
-      <label for="profile">
-        <div class="mypage-profile-img-container">
-          <% if current_user.profile_img != nil %>
-              <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "mypage-profile-img") %>
-          <% else %>
-              <%= image_tag("image_profile", id: "upload-profile-img", class: "mypage-profile-img") %>
-          <% end %>
-          <div class="mypage-edit-pencil">
-            <%= image_tag("icon_pencil_black", style: "height: 100%; width: auto;") %>
-          </div>
-        </div>
-      </label>
-
-      <button type="submit" class="btn btn-default">변경하기</button>
-    </form>
+  <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
+    <p class="_fs-2-mobile _white"><%= user_signed_in? ? current_user.nickname : "로그인"%></p>
   </div>
-</section>
+  <!-- back button -->
+  <%= link_to mypage_index_path, class: "_show-video-back-container-m" do %>
+      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+  <% end %>
+  <hr>
+
+  <%= form_tag mypage_update_profile_path, multipart: true, method: :post, id: "update-profile" do %>
+      <!-- save button -->
+      <div class="save-button">
+        <%= submit_tag "완료", class: "_fs-4-mobile _white _f-letter-mobile" %>
+      </div>
+      <div class="edit-container _vcenter-positioner _hcenter-positioner">
+        <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
+        <label for="profile">
+          <div class="profile-container">
+            <% if current_user.profile_img != nil %>
+                <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "profile-img") %>
+            <% else %>
+                <%= image_tag("image_profile", id: "upload-profile-img", class: "profile-img") %>
+            <% end %>
+            <div class="mypage-edit-pencil">
+              <%= image_tag("icon_pencil_black", style: "height: 100%; width: auto;") %>
+            </div>
+          </div>
+        </label>
+      </div>
+  <% end %>
+</div>
