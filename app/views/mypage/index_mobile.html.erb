@@ -38,27 +38,55 @@
           <% end %>
         </div>
 
-        <div class="upcoming-like-container _row-positioner">
-          <%= image_tag "icon_hand_filled", class: "list-icon" %>
+        <!-- 찜목록 section -->
+        <div class="upcoming-like-container">
+          <div class="_row-positioner">
+            <%= image_tag "icon_hand_filled", class: "list-icon" %>
+            <div class="list-container">
+              <div class="list-text-container">
+                <p class="_fs-4-mobile _white">찜 목록</p>
+              </div>
+              <% if current_user.upcoming_likes.size != 0 %>
+                  <% current_user.upcoming_likes.each do |like| %>
+                      <div class="list-text-container _vcenter-positioner">
+                        <p class="list-text _fs-4-mobile _white"><%= like.upcoming.title %></p>
+                        <p class="_fs-2-mobile _white _f-letter-mobile">D<%= d_day(like.upcoming.start_date) %></p>
+                      </div>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+          <% if current_user.upcoming_likes.size == 0 %>
+              <div class="_text-center">
+                <p class="_fs-4-mobile _white">
+                  내가 찜한 영상을 모아볼 수 있어요.
+                </p>
+              </div>
+          <% end %>
+        </div>
+
+        <!-- 마이 리스트 section -->
+        <div class="mylist-title _row-positioner">
+          <%= image_tag "icon_like_filled", class: "list-icon" %>
           <div class="list-container">
             <div class="list-text-container">
-              <p class="_fs-4-mobile _white">찜 목록</p>
+              <p class="_fs-4-mobile _white">마이 리스트</p>
             </div>
-            <% current_user.upcoming_likes.each do |like| %>
-                <div class="list-text-container _row-positioner">
-                  <p class="_fs-4-mobile _white"><%= like.upcoming.title %></p>
-                  <p class="_fs-3-mobile _white"><%=  %></p>
-                </div>
-            <% end %>
           </div>
         </div>
-      </div>
-
-      <div class="row mypage-index-mylist">
-        <div class="col-xs-2 mypage-index-mylist-heart">
-          <%= image_tag 'icon_like_black_edge.png' %>
-        </div>
-        <div class="col-xs-2">마이 리스트</div>
+        <% if current_user.feed_likes.size == 0 && current_user.curation_likes.size == 0 %>
+            <div class="_text-center">
+              <p class="_fs-4-mobile _white">
+                내가 좋아요한 영상을 모아볼 수 있어요.
+              </p>
+            </div>
+        <% else %>
+            <div id="mypage-mylist-mobile">
+              <%= current_user.feed_likes.each do |like| %>
+                  <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
+              <% end %>
+            </div>
+        <% end %>
       </div>
   <% else %>
       <div class="login-container _hcenter-positioner _vcenter-positioner">

@@ -81,14 +81,39 @@
     flex-grow: 1;
     -webkit-flex-grow: 1;
   }
-
   .list-icon {
     width: auto;
     height: 6rem;
   }
-
   .list-text-container {
     padding: 1% 0;
+  }
+  .list-text {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+  }
+
+  .mylist-title {
+    width: 100%;
+    padding: 2% 4%;
+  }
+
+  #mypage-mylist-mobile {
+    padding: 0 2%;
+
+    .search-card-mobile {
+      padding-top: 0.5%;
+    }
+
+    .card-devider {
+      width: 50%;
+      //flex-grow: 1;
+      //-webkit-flex-grow: 1;
+    }
+
+    .card-text {
+      padding-left: 3%;
+    }
   }
 }
 
