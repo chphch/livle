@@ -7,17 +7,17 @@ class ConnectUrlsController < ApplicationController
   end
 
   def new
-    @connectUrl = ConnectUrl.new(video_url: params[:video_url])
+    @video_url = params[:video_url]
     render_by_device
 
     @disable_nav = true
   end
 
   def create
-    connectUrl = ConnectUrl.new(params.require(:connect_url).permit(:video_url, :describe))
-    connectUrl.user_id = current_user.id
-    connectUrl.save
-    redirect_to connect_urls_path
+    connectUrl = ConnectUrl.new(video_url: @video_url, describe: params[:describe], user_id: current_user.id)
+    if connectUrl.save
+      redirect_to connect_urls_path
+    end
   end
 
   def destroy

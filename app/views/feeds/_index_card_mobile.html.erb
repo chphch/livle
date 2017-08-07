@@ -14,28 +14,27 @@
         </div>
 
         <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
-          <%= image_tag("icon_crown", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -1%") %>
-          <p class="_fs-5-mobile _white _thumbnail-margin-right-m"><%= feed.user.nickname %></p>
+          <%= image_tag("icon_crown", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -2%") %>
+          <p class="_fs-4-mobile _white _thumbnail-margin-right-m"><%= feed.user.nickname %></p>
         </div>
-      </div>
-      <hr>
 
-      <div class="_describe-container-m">
-        <p class="_fs-3-mobile _white">
-          <!-- title -->
-          <%= feed.title %> -
-          <!-- artist name -->
-          <% feed.artists.each_with_index do |artist, i| %>
-              <%= artist.name %>
-              <% break if feed.artists[i+1] == nil %>
-              ,&nbsp
-          <% end %>
-        </p>
+        <div class="_describe-container-m">
+          <p class="_fs-2-mobile _white">
+            <!-- title -->
+            <%= feed.title %> -
+            <!-- artist name -->
+            <% feed.artists.each_with_index do |artist, i| %>
+                <%= artist.name %>
+                <% break if feed.artists[i+1] == nil %>
+                ,&nbsp
+            <% end %>
+          </p>
+        </div>
       </div>
   <% end %>
 </div>
 <script>
-    <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+    <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
     $('#feed-<%= feed.id %>').attr({
         src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
     });

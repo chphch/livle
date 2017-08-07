@@ -2,7 +2,8 @@
 @import "colors";
 
 hr {
-  border-top: 2px solid $dark-green !important;
+  border-top: 1px solid $gray !important;
+  margin: 0 !important;
 }
 
 :focus {
@@ -17,7 +18,7 @@ hr {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-  ////navbar
+////navbar
 ._navbar-m {
   position: fixed;
   width: 100%;
@@ -64,7 +65,7 @@ hr {
 
 ._upcoming-like-icon-m {
   width: auto;
-  height: 7rem;
+  height: 6rem;
 }
 
 ._profile-border-m {
@@ -107,11 +108,17 @@ hr {
   width: 33.3%;
   height: 100%;
 }
-
+._submit-button {
+  padding: 3.5% 0;
+  background: none;
+  border: 2px solid $white;
+  border-radius: $br-image-m;
+  -webkit-border-radius: $br-image-m;
+  -moz-border-radius: $br-image-m;
+}
 ////margin, padding
 ._thumbnail-elem-margin-m {
-  margin-left: $thumbnail-elem-mh-m;
-  margin-right: $thumbnail-elem-mh-m;
+  margin: 0 1.5%;
 }
 
 ._thumbnail-margin-right-m {

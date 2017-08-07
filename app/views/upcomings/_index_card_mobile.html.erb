@@ -4,39 +4,30 @@
         <%= image_tag "image_live", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
-        <div class="_thumbnail-info-container-m _row-positioner">
-          <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white"><%= upcoming.count_view %></p>
-          <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white"><%= upcoming.upcoming_likes.size %></p>
-          <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white"><%= upcoming.count_share %></p>
+        <div class="describe-container _row-positioner">
+          <div class="describe-text">
+            <p class="_fs-3-mobile _white">
+              <%= upcoming.title %> (<%= upcoming.place %>)
+            </p>
+            <p class="_fs-4-mobile _light-gray">
+              <%= upcoming.start_date %> - <%= upcoming.end_date %>
+            </p>
+            <p class="_fs-4-mobile _light-gray">
+              <!-- artist name -->
+              <% upcoming.artists.each_with_index do |artist, i| %>
+                  <%= artist.name %>
+                  <% break if upcoming.artists[i+1] == nil %>
+                  ,&nbsp
+              <% end %>
+            </p>
+          </div>
         </div>
 
         <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
           <p class="_fs-3-mobile _white _f-letter-mobile _thumbnail-margin-right-m"><strong>D<%= @d_day[upcoming.id] %></strong></p>
         </div>
-      </div>
-      <hr>
 
-      <div class="_describe-container-m _row-positioner">
-        <div class="describe-text">
-          <p class="_fs-3-mobile _white">
-            <%= upcoming.title %> (<%= upcoming.place %>)
-          </p>
-          <p class="_fs-4-mobile _light-gray">
-            <%= upcoming.start_date %> - <%= upcoming.end_date %>
-          </p>
-          <p class="_fs-4-mobile _light-gray">
-            <!-- artist name -->
-            <% upcoming.artists.each_with_index do |artist, i| %>
-                <%= artist.name %>
-                <% break if upcoming.artists[i+1] == nil %>
-                ,&nbsp
-            <% end %>
-          </p>
-        </div>
-        <div class="describe-icon _thumbnail-margin-right-m">
+        <div class="describe-icon">
           <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m" %>
         </div>
       </div>

@@ -1,31 +1,168 @@
 // They will automatically be included in application.css.
 // Place all the styles related to the mypage controller here.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.mypage-index-profile-img {
-  position: relative;
-  top: 3rem;
-  left: 40.4rem;
-  width: 17rem;
-  height: 17rem;
-  border-radius: 100%;
-  border: 0.2rem black solid;
+@import "globals/sizes";
+@import "globals/colors";
+
+#mypage-index-mobile {
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+  .login-container {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+
+  .profile-container {
+    position: relative;
+    top: 4rem;
+    width: 19rem;
+    height: 19rem;
+    border-radius: 50%;
+    border: 0.8rem $light-green solid;
+  }
+
+  .profile-img {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 94%;
+    height: 94%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .info-container {
+    margin-top: 6rem;
+  }
+
+  .info-text-container {
+    margin: 4% 0 4%;
+  }
+
+  .settings-container {
+    margin-top: 4rem;
+    width: 70%;
+  }
+
+  .edit-button {
+    padding: 4% 0 4%;
+    border: 2px solid $light-gray;
+    border-radius: $br-min-m;
+  }
+
+  .edit-profile-width {
+    padding:0 2% 0 0;
+    flex-grow: 0.8;
+    -webkit-flex-grow: 0.8;
+  }
+  .edit-settings-width {
+    padding: 0 0 0 2%;
+    flex-grow: 0.2;
+    -webkit-flex-grow: 0.2;
+  }
+  .settings-icon {
+    width: auto;
+    height: 7rem;
+    margin: -1rem 0 0;
+  }
+
+  .upcoming-like-container {
+    width: 96%;
+    margin: 4% 0 4%;
+    padding: 2%;
+    background: $gray-opacity;
+    border-radius: $br-min-m;
+  }
+
+  .list-container {
+    padding: 0 0 0 2%;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+  }
+  .list-icon {
+    width: auto;
+    height: 6rem;
+  }
+  .list-text-container {
+    padding: 1% 0;
+  }
+  .list-text {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+  }
+
+  .mylist-title {
+    width: 100%;
+    padding: 2% 4%;
+  }
+
+  #mypage-mylist-mobile {
+    padding: 0 2%;
+
+    .search-card-mobile {
+      padding-top: 0.5%;
+    }
+
+    .card-devider {
+      width: 50%;
+      //flex-grow: 1;
+      //-webkit-flex-grow: 1;
+    }
+
+    .card-text {
+      padding-left: 3%;
+    }
+  }
 }
-.mypage-index-email {
-  margin-top: 3rem;
-  font-size: 3.5rem;
+
+#mypage-edit-profile-mobile {
+  .save-button {
+    position: absolute;
+    z-index: 98;
+    top: 0; right: 0;
+    padding: 4% 4% 0 0;
+  }
+
+  .edit-container {
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+
+  .profile-container {
+    position: relative;
+    width: 34rem;
+    height: 34rem;
+    border-radius: 50%;
+    border: 1rem $light-green solid;
+  }
+
+  .profile-img {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 94%;
+    height: 94%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .mypage-edit-pencil {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 11rem;
+    height: 7.5rem;
+    padding: 1.5rem;
+    border: 0.2rem black solid;
+    border-radius: 1rem;
+    background-color: white;
+  }
 }
-.mypage-index-likes {
-  margin-top: 1.5rem;
-}
-.mypage-index-likes span:first-child{
-  font-size: 2.5rem;
-}
-.mypage-index-likes span:last-child {
-  font-size: 3rem;
-  color: grey;
-}
-.mypage-index-settings {
-  margin-top: 4rem;
+
+.settings-container {
   div {
     border-color: grey;
     border-radius: 1rem;
@@ -34,9 +171,6 @@
     font-size: 3rem;
     color: grey;
   }
-}
-.mypage-index-edit-profile {
-  padding-top: 1.6rem;
 }
 .mypage-index-gear {
   margin-left: 2rem;
@@ -155,29 +289,6 @@
   width: 35rem;
   border-radius: 100%;
   border: 0.2rem black solid;
-}
-
-.mypage-profile-img {
-  position: absolute;
-  top: 3%;
-  left: 3%;
-  width: 94%;
-  height: 94%;
-  object-fit: cover;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.mypage-edit-pencil {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 11rem;
-  height: 7.5rem;
-  padding: 1.5rem;
-  border: 0.2rem black solid;
-  border-radius: 1rem;
-  background-color: white;
 }
 
 .mypage-notice-container {

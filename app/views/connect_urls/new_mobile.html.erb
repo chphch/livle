@@ -1,5 +1,5 @@
 <!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @connectUrl.video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+<% video_id = @video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
 
 <div id="connect-new-mobile">
   <div class="_body-background-m"></div>

@@ -9,8 +9,14 @@
   }
 
   .describe-icon {
-    flex-grow: 2;
-    text-align: right;
+    position: absolute;
+    top: $thumbnail-elem-mh-m; right: $thumbnail-elem-mh-m;
+  }
+
+  .describe-container {
+    position: absolute;
+    bottom: 3%; left: 0;
+    padding: 0 $thumbnail-elem-mh-m;
   }
 }
 
@@ -21,7 +27,7 @@
     flex-grow: 1;
   }
 
-  .describe-container {
+  .info-container {
     padding-top: 5%;
     padding-bottom: 3%;
     padding-left: $list-container-ph-m;

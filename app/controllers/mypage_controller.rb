@@ -1,6 +1,7 @@
 class MypageController < ApplicationController
   before_action :authenticate_user!, only: [:edit_password, :edit_profile, :settings]
   before_action :facebook_user!, only: [:edit_password]
+  helper_method :d_day
 
   def index
     render_by_device
@@ -66,6 +67,15 @@ class MypageController < ApplicationController
     if user_signed_in? && current_user.isFacebook?
       redirect_to mypage_index_path
     end
+  end
+
+  def d_day(start_date)
+    start_day = start_date.strftime('%Q').to_i
+    today = DateTime.now.strftime('%Q').to_i
+    day_to_millisec = 1000*60*60*24
+
+    d_day = ((start_day - today)/day_to_millisec).floor
+    return -d_day
   end
 
   def user_params

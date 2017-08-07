@@ -1,50 +1,50 @@
 <nav class="_navbar-m _vcenter-positioner">
   <% control = controller.class.name.split("::").first.to_s %>
   <%= link_to feeds_path, class: "_navbar-element-m" do %>
-      <div class="text-center">
+      <div class="_text-center">
         <% if control == 'FeedsController'%>
-            <%= image_tag("icon_home_filled", id:"nav-home", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_home_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% else %>
-            <%= image_tag("icon_home_empty", id:"nav-home", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_home_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% end %>
         <p class="_fs-navbar-mobile _white">Home</p>
       </div>
   <% end %>
   <%= link_to upcomings_path, class: "_navbar-element-m" do %>
-      <div class="text-center">
+      <div class="_text-center">
         <% if control == 'UpcomingsController'%>
-            <%= image_tag("icon_ticket_filled", id:"nav-upcoming", style: "width: auto; height: 8rem;") %>
+            <%= image_tag("icon_ticket_filled", style: "width: auto; height: 8rem;") %>
         <% else %>
-            <%= image_tag("icon_ticket_empty", id:"nav-upcoming", style: "width: auto; height: 8rem;") %>
+            <%= image_tag("icon_ticket_empty", style: "width: auto; height: 8rem;") %>
         <% end %>
         <p class="_fs-navbar-mobile _white" style="margin-top: -1%;">Upcoming</p>
       </div>
   <% end %>
   <%= link_to search_path, class: "_navbar-element-m" do %>
-      <div class="text-center">
+      <div class="_text-center">
         <% if control == 'SearchController'%>
-            <%= image_tag("icon_search_filled", id:"nav-search", style: "width: auto; height: 12rem;") %>
+            <%= image_tag("icon_search_filled", style: "width: auto; height: 12rem;") %>
         <% else %>
-            <%= image_tag("icon_search_empty", id:"nav-search", style: "width: auto; height: 12rem;") %>
+            <%= image_tag("icon_search_empty", style: "width: auto; height: 12rem;") %>
         <% end %>
       </div>
   <% end %>
   <%= link_to connect_urls_path, class: "_navbar-element-m" do %>
-      <div class="text-center">
+      <div class="_text-center">
         <% if control == 'SearchController'%>
-            <%= image_tag("icon_connect_empty", id:"nav-connect", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_connect_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% else %>
-            <%= image_tag("icon_connect_empty", id:"nav-connect", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_connect_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% end %>
         <p class="_fs-navbar-mobile _white">Connect</p>
       </div>
   <% end %>
   <%= link_to mypage_index_path, class: "_navbar-element-m" do %>
-      <div class="text-center">
+      <div class="_text-center">
         <% if control == 'MypageController'%>
-            <%= image_tag("icon_mypage_filled", id:"nav-mypage", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_mypage_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% else %>
-            <%= image_tag("icon_mypage_empty", id:"nav-mypage", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_mypage_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
         <% end %>
         <p class="_fs-navbar-mobile _white">My page</p>
       </div>
