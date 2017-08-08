@@ -1,1 +1,79 @@
+<!-- Side Navbar -->
 <%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="black-desktop-title">Upcoming Lists</p>
+  <div class="row">
+    <div class="col-xs-1">
+      <p class="black-desktop-content">index</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Title</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Place</p>
+    </div>
+    <div class="col-xs-1">
+      <p class="black-desktop-content">Artists</p>
+    </div>
+    <div class="col-xs-2">
+      <p class="black-desktop-content">Youtube ID</p>
+    </div>
+    <div class="col-xs-1 text-center">
+      <p class="black-desktop-content">Ticket</p>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <% @upcomings.each do |upcoming| %>
+      <div class="admin-desktop-content-box">
+        <div class="row">
+          <div class="col-xs-1">
+            <p class="black-desktop-content"><%= upcoming.id %></p>
+          </div>
+          <%= form_tag "/upcomings/#{upcoming.id}/update", method: :get do %>
+              <div class="col-xs-2 form-group">
+                <p class="black-desktop-content">
+                  <%= text_field_tag(:title, "#{upcoming.title}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-2">
+                <p class="black-desktop-content">
+                  <%= text_field_tag(:place, "#{upcoming.place}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-1">
+                <p class="black-desktop-content">
+                  <% upcoming.artists.each do |artist| %>
+                      <%= artist.name %>,
+                  <% end %>
+                </p>
+              </div>
+              <div class="col-xs-2">
+                <p class="black-desktop-content">
+                  <%= text_field_tag(:main_youtube_id, "#{upcoming.main_youtube_id}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-1 text-center">
+                <p class="black-desktop-content" style="overflow-x: scroll">
+                  <%= text_field_tag(:ticket_url, "#{upcoming.ticket_url}", class: "form-control") %>
+                </p>
+              </div>
+              <div class="col-xs-1">
+                <%= link_to "/upcomings/#{upcoming.id}" do %>
+                    <button type="button" class="btn btn-outline-primary">바로가기</button>
+                <% end %>
+              </div>
+              <div class="col-xs-1 text-center">
+                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+              </div>
+          <% end %>
+          <div class="col-xs-1 text-center">
+            <%= link_to "/upcomings/#{upcoming.id}/destroy" do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
