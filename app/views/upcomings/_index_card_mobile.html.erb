@@ -6,13 +6,13 @@
 
         <div class="describe-container _row-positioner">
           <div class="describe-text">
-            <p class="_fs-3-mobile _white">
+            <p class="_fs-2-mobile _white">
               <%= upcoming.title %> (<%= upcoming.place %>)
             </p>
-            <p class="_fs-4-mobile _light-gray">
+            <p class="_fs-3-mobile _light-gray">
               <%= upcoming.start_date %> - <%= upcoming.end_date %>
             </p>
-            <p class="_fs-4-mobile _light-gray">
+            <p class="_fs-3-mobile _light-gray">
               <!-- artist name -->
               <% upcoming.artists.each_with_index do |artist, i| %>
                   <%= artist.name %>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
-          <p class="_fs-3-mobile _white _f-letter-mobile _thumbnail-margin-right-m"><strong>D<%= d_day(upcoming.start_date) %></strong></p>
+          <p class="_fs-2-mobile _white _f-letter-mobile _thumbnail-margin-right-m"><strong>D<%= d_day(upcoming.start_date) %></strong></p>
         </div>
 
         <div class="describe-icon">
@@ -34,7 +34,7 @@
   <% end %>
 </div>
 <script>
-    <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+    <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
     $('#upcoming-<%= upcoming.id %>').attr({
         src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
     });

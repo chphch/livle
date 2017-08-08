@@ -25,6 +25,25 @@ class UpcomingsController < ApplicationController
 
   end
 
+  def update
+    @upcoming = Upcoming.find_by(id: params[:id])
+
+    if @upcoming.update(title: params[:title], place: params[:place],
+                        main_youtube_id: params[:main_youtube_id], ticket_url: params[:ticket_url])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: @upcoming.errors.messages
+    end
+  end
+
+  def destroy
+    if Upcoming.destroy(params[:id])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: @upcoming.errors.messages
+    end
+  end
+
   def d_day(start_date)
     start_day = start_date.strftime('%Q').to_i
     today = DateTime.now.strftime('%Q').to_i
