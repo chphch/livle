@@ -2,7 +2,7 @@
   <div class="_body-background-m"></div>
 
   <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
-    <p class="_fs-2-mobile _white"><%= user_signed_in? ? current_user.nickname : "로그인"%></p>
+    <p class="_fs-2-mobile _white"><%= user_signed_in? ? "프로필 편집" : "로그인"%></p>
   </div>
   <!-- back button -->
   <%= link_to mypage_index_path, class: "_show-video-back-container-m" do %>
@@ -15,68 +15,49 @@
       <div class="save-button">
         <%= submit_tag "완료", class: "_fs-4-mobile _white _f-letter-mobile" %>
       </div>
-      <div class="edit-container _column-positioner _vcenter-positioner _hcenter-positioner">
-        <!-- image -->
-        <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
-        <label for="profile">
-          <div class="profile-container">
-            <% if current_user.profile_img != nil %>
-                <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "profile-img") %>
-            <% else %>
-                <%= image_tag("image_profile", id: "upload-profile-img", class: "profile-img") %>
-            <% end %>
-            <div class="mypage-edit-pencil">
-              <%= image_tag("icon_pencil_black", style: "height: 100%; width: auto;") %>
+      <div class="_column-positioner _vcenter-positioner">
+        <div class="edit-container">
+          <!-- image -->
+          <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
+          <label for="profile">
+            <div class="profile-container">
+              <% if current_user.profile_img != nil %>
+                  <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "profile-img") %>
+              <% else %>
+                  <%= image_tag("image_profile", id: "upload-profile-img", class: "profile-img") %>
+              <% end %>
+              <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
+                <%= image_tag("icon_camera", style: "height: 75%; width: auto;") %>
+              </div>
             </div>
+          </label>
+        </div>
+        <p class="_fs-1-mobile _white _hcenter-positioner"><%= current_user.nickname %></p>
+
+        <div class="translucency-container">
+          <div class="edit-input-container _vcenter-positioner">
+            <div class="icon-container _hcenter-positioner">
+              <%= image_tag "icon_mail", class: "input-icon" %>
+            </div>
+            <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white",
+                               value: "#{current_user.email}" %>
           </div>
-        </label>
+          <div class="hr-white"></div>
+          <div class="edit-input-container _vcenter-positioner">
+            <div class="icon-container _hcenter-positioner">
+              <%= image_tag "icon_mypage_filled", class: "input-icon" %>
+            </div>
+            <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white",
+                               value: "#{current_user.nickname}" %>
+          </div>
+          <div class="hr-white"></div>
+          <div class="edit-input-container _vcenter-positioner">
+            <div class="icon-container _hcenter-positioner">
+              <%= image_tag "icon_mypage_filled", class: "input-icon" %>
+            </div>
+            <p class="_fs-3-mobile _white">상태메세지</p>
+          </div>
+        </div>
       </div>
   <% end %>
-
-  <div class="_white _hcenter-positioner"><%= current_user.email %></div>
-
-  <input  id="nickname-field" value="<%= current_user.nickname %>arbitary nickname input" class="_hcenter-positioner class-A" style="position:fixed;border:1px black solid;width:300px;height:100px;top:1100px;left:300px;" readonly />
-  <span id="tog-1" style="border:10px white solid;position:fixed;left:650px;top:1100px">
-    <%= image_tag("icon_pencil_black", id:"button-1", style: "height: 100px; width: auto;") %>
-    <%= image_tag("icon_pencil_white", id:"button-1", style: "border:1px black solid;height: 100px; width: auto;display: none") %>
-  </span>
-  <br/>
-
-  <input id="introduce-field" class="_hcenter-positioner class-A" style="border:1px black solid;position:fixed;top:1300px;left:300px;width:300px;" readonly />
-  <span id="tog-2" style="position:fixed;top:1300px;left:650px;border:3px white solid;width:100px;">
-    <%= image_tag("icon_pencil_black", id:"button-1", style: "height: 30px; width: auto;") %>
-    <%= image_tag("icon_pencil_white", id:"button-1", style: "border:1px black solid;height: 30px; width: auto;display:none;") %>
-  </span>
-
 </div>
-
-<script>
-    $('#tog-1').on("click", function(event) {
-        toggleField($('#nickname-field'), this, "<%= mypage_update_nickname_path %>");
-    });
-    $('#tog-2').on("click", function(event) {
-        toggleField($('#introduce-field'), this, "<%= mypage_update_introduce_path %>");
-    });
-
-    function toggleField(target, button, url) {
-        if (target.prop("readOnly")) {
-            target.prop("readOnly", false);
-            target.toggleClass("class-A class-B");
-            $('img', button).toggle();
-        } else {
-            $.ajax({
-                method: "GET",
-                url: url,
-                data: { nickname: target.val() },
-                success: function(data) {
-                    console.log(data);
-                    target.prop("value", data.nickname);
-                    target.prop("readOnly", true);
-                    target.toggleClass("class-A class-B");
-                    $('img', button).toggle();
-                    $('._mypage-title-container-m').find('p').text(data.nickname);
-                }
-            });
-        }
-    }
-</script>

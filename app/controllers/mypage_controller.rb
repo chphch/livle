@@ -75,7 +75,11 @@ class MypageController < ApplicationController
     day_to_millisec = 1000*60*60*24
 
     d_day = ((start_day - today)/day_to_millisec).floor
-    return -d_day
+    if d_day == 0
+      return "-day"
+    else
+      return -d_day
+    end
   end
 
   def user_params

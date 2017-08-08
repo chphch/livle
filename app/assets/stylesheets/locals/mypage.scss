@@ -4,6 +4,17 @@
 @import "globals/sizes";
 @import "globals/colors";
 
+#mypage-index-mobile,
+#mypage-edit-profile-mobile {
+  .translucency-container {
+    width: 96%;
+    margin: 4% 0 4%;
+    padding: 2%;
+    background: $gray-opacity;
+    border-radius: $br-min-m;
+  }
+}
+
 #mypage-index-mobile {
   position: fixed;
   top: 0; left: 0; bottom: 0; right: 0;
@@ -68,14 +79,6 @@
     margin: -1rem 0 0;
   }
 
-  .upcoming-like-container {
-    width: 96%;
-    margin: 4% 0 4%;
-    padding: 2%;
-    background: $gray-opacity;
-    border-radius: $br-min-m;
-  }
-
   .list-container {
     padding: 0 0 0 2%;
     flex-grow: 1;
@@ -118,6 +121,10 @@
 }
 
 #mypage-edit-profile-mobile {
+  p {
+    margin: 0 !important;
+  }
+
   .save-button {
     position: absolute;
     z-index: 98;
@@ -126,14 +133,13 @@
   }
 
   .edit-container {
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
+    margin: 8% 0 4%;
   }
 
   .profile-container {
     position: relative;
-    width: 34rem;
-    height: 34rem;
+    width: 28rem;
+    height: 28rem;
     border-radius: 50%;
     border: 1rem $light-green solid;
   }
@@ -149,16 +155,44 @@
     border-radius: 50%;
   }
 
-  .mypage-edit-pencil {
+  .icon-container {
+    width: 14rem;
+    height: auto;
+  }
+
+  .input-icon {
+    width: auto;
+    height: 6rem;
+  }
+
+  .edit-notice-container {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: -6%;
+    right: -12%;
     width: 11rem;
-    height: 7.5rem;
-    padding: 1.5rem;
-    border: 0.2rem black solid;
-    border-radius: 1rem;
-    background-color: white;
+    height: 8rem;
+    border: 4px $white solid;
+    border-radius: 1.5rem;
+    background-color: rgba(81, 81, 81, 0.6);
+  }
+
+  .edit-input-container {
+    width: 100%;
+    padding: 3% 4% 3% 0;
+  }
+
+  .hr-white {
+    width: 100%;
+    height: 2px;
+    background: $light-gray;
+  }
+
+  .input-field {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    height: 100%;
+    background: none;
+    border: none;
   }
 }
 
@@ -171,59 +205,6 @@
     font-size: 3rem;
     color: grey;
   }
-}
-.mypage-index-gear {
-  margin-left: 2rem;
-  img {
-    width: 80%;
-    height: 100%;
-  }
-}
-.mypage-index-pick-list {
-  margin-top: 5rem;
-  display: inline-block;
-  background-color: #D9D9D9;
-  border-radius: 1.5rem;
-  width: 90%;
-  text-align: left;
-  font-size: 2.5rem;
-  div {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    div {
-      display: inline-block;
-      img {
-        margin-left: 1.5rem;
-        width: 100%;
-      }
-    }
-  }
-}
-.mypage-index-pick-list .row:first-child {
-  font-weight: bold;
-}
-.mypage-index-mylist {
-  margin-top: 3rem;
-}
-.mypage-index-mylist-heart {
-  img {
-    margin-left: 5rem;
-    width: 5rem;
-    height: 5rem;
-  }
-}
-.mypage-index-mylist div:nth-child(2) {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-left: 3rem;
-}
-.mypage-edit-profile-email {
-  margin-top: 10rem;
-  font-size: 4rem;
-}
-.mypage-edit-profile-nickname {
-  font-size: 4rem;
-  margin-top: 5rem;
 }
 .mypage-settings-background {
   background-color: #EFEFF4;
@@ -248,47 +229,6 @@
   width: 90%;
   margin: 0;
   background-color: black;
-}
-
-// Edit Page
-.mypage-header-container {
-  top: 0;
-  left: 0;
-  width: 100%;
-  h1 {
-    padding-top: 5%;
-    padding-bottom: 3%;
-  }
-}
-
-.mypage-back-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 5%;
-}
-
-.mypage-inputfile {
-  position: absolute;
-  display: none;
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.mypage-profile-img-position {
-  width: 100%;
-  padding-top: 38%;
-}
-
-.mypage-profile-img-container {
-  position: relative;
-  height: 35rem;
-  width: 35rem;
-  border-radius: 100%;
-  border: 0.2rem black solid;
 }
 
 .mypage-notice-container {
