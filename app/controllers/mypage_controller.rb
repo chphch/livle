@@ -1,5 +1,6 @@
 class MypageController < ApplicationController
   before_action :authenticate_user!, only: [:edit_password, :edit_profile, :settings]
+  before_action :facebook_user!, only: [:edit_password]
   helper_method :d_day
 
   def index
@@ -7,6 +8,18 @@ class MypageController < ApplicationController
   end
 
   def edit_password
+    if current_user.isFacebook?
+      render_by_device('cannot_change_password')
+    else
+      render_by_device
+    end
+  end
+
+  def recover_password_new
+    render_by_device
+  end
+
+  def recover_password_email_sent
     render_by_device
   end
 
@@ -15,15 +28,18 @@ class MypageController < ApplicationController
     render_by_device
   end
 
-  def update_profile
-    @user = current_user
+  def update_profile_img
 
-    puts @user.nickname
-    if @user.update(profile_img: params[:profile_img])
-      redirect_back(fallback_location: root_path)
-    else
-      render text: @user.errors.messages
-    end
+  end
+
+  def update_nickname
+    current_user.nickname = params[:nickname]
+    current_user.save
+    render json: { nickname: params[:nickname] }
+  end
+
+  def update_introduce
+
   end
 
   def settings
@@ -39,8 +55,16 @@ class MypageController < ApplicationController
     render_by_device
   end
 
+  private
+
   def authenticate_user!
     if !user_signed_in?
+      redirect_to mypage_index_path
+    end
+  end
+
+  def facebook_user!
+    if user_signed_in? && current_user.isFacebook?
       redirect_to mypage_index_path
     end
   end
@@ -54,8 +78,7 @@ class MypageController < ApplicationController
     return -d_day
   end
 
-  private
-    def user_params
-      params.require(:user).permit(:current_password, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
 end

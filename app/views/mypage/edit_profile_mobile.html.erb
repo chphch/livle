@@ -32,4 +32,51 @@
         </label>
       </div>
   <% end %>
+
+  <div class="_white _hcenter-positioner"><%= current_user.email %></div>
+
+  <input  id="nickname-field" value="<%= current_user.nickname %>arbitary nickname input" class="_hcenter-positioner class-A" style="position:fixed;border:1px black solid;width:300px;height:100px;top:1100px;left:300px;" readonly />
+  <span id="tog-1" style="border:10px white solid;position:fixed;left:650px;top:1100px">
+    <%= image_tag("icon_pencil_black", id:"button-1", style: "height: 100px; width: auto;") %>
+    <%= image_tag("icon_pencil_white", id:"button-1", style: "border:1px black solid;height: 100px; width: auto;display: none") %>
+  </span>
+  <br/>
+
+  <input id="introduce-field" class="_hcenter-positioner class-A" style="border:1px black solid;position:fixed;top:1300px;left:300px;width:300px;" readonly />
+  <span id="tog-2" style="position:fixed;top:1300px;left:650px;border:3px white solid;width:100px;">
+    <%= image_tag("icon_pencil_black", id:"button-1", style: "height: 30px; width: auto;") %>
+    <%= image_tag("icon_pencil_white", id:"button-1", style: "border:1px black solid;height: 30px; width: auto;display:none;") %>
+  </span>
+
 </div>
+
+<script>
+    $('#tog-1').on("click", function(event) {
+        toggleField($('#nickname-field'), this, "<%= mypage_update_nickname_path %>");
+    });
+    $('#tog-2').on("click", function(event) {
+        toggleField($('#introduce-field'), this, "<%= mypage_update_introduce_path %>");
+    });
+
+    function toggleField(target, button, url) {
+        if (target.prop("readOnly")) {
+            target.prop("readOnly", false);
+            target.toggleClass("class-A class-B");
+            $('img', button).toggle();
+        } else {
+            $.ajax({
+                method: "GET",
+                url: url,
+                data: { nickname: target.val() },
+                success: function(data) {
+                    console.log(data);
+                    target.prop("value", data.nickname);
+                    target.prop("readOnly", true);
+                    target.toggleClass("class-A class-B");
+                    $('img', button).toggle();
+                    $('._mypage-title-container-m').find('p').text(data.nickname);
+                }
+            });
+        }
+    }
+</script>

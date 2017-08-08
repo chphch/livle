@@ -17,6 +17,7 @@
       <% end -%>
   <% end -%>
 
+
   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
       <div class="option-text-container _hright-positioner _fs-4-mobile _white">
         <%= link_to "비밀번호를 잊어버리셨나요?", new_password_path(resource_name) %><br />
