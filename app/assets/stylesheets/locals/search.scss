@@ -103,6 +103,15 @@
     flex-grow: 1;
     -webkit-flex-grow: 1;
   }
+
+  .info-text-container {
+    padding: 0 0 4%;
+    text-align: center;
+  }
+  .text-spacing {
+    line-height: 600%;
+    letter-spacing: 1rem;
+  }
 }
 
 #search-list-container,

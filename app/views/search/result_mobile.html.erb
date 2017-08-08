@@ -17,6 +17,13 @@
   <div id="result-list-upcoming">
     <%= render partial: "upcoming_card_mobile", collection: @upcoming_results, as: :upcoming %>
   </div>
+
+  <div class="info-text-container text-spacing _vcenter-positioner">
+    <p class="_fs-1-mobile _white">
+      <%= user_signed_in? ? current_user.nickname : "LIVLE" %>님이 느꼈던 전율의 순간.<br>
+      그 떨림을 전해주세요
+    </p>
+  </div>
 </div>
 
 <script>

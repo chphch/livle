@@ -39,7 +39,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
-            <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white",
+            <%= text_field_tag :email, nil, class: "input-field _fs-3-mobile _white",
                                value: "#{current_user.email}" %>
           </div>
           <div class="hr-white"></div>
@@ -47,7 +47,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
-            <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white",
+            <%= text_field_tag :nickname, nil, class: "input-field _fs-3-mobile _white",
                                value: "#{current_user.nickname}" %>
           </div>
           <div class="hr-white"></div>

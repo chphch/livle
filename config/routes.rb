@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   patch 'mypage/update_password'
   get 'mypage/recover_password_email_sent'
   get 'mypage/edit_profile'
-  get 'mypage/update_profile_img'
+  get 'mypage/update_profile'
   get 'mypage/update_nickname'
   get 'mypage/update_introduce'
   get 'mypage/settings'

@@ -28,8 +28,13 @@ class MypageController < ApplicationController
     render_by_device
   end
 
-  def update_profile_img
-
+  def update_profile
+    user = current_user
+    if user.update(profile_img: params[:profile_img], email: params[:email], nickname: params[:nickname])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: user.errors.messages
+    end
   end
 
   def update_nickname

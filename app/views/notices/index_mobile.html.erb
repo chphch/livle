@@ -1,7 +1,7 @@
 <%= render partial: '/mypage/top_mobile', locals: {title: "공지사항"}  %>
 
 <section id="notice">
-  <div class="row mypage-settings-background"></div>
+  <div class="row settings-blank"></div>
   <% @notices.each do |notice| %>
     <div class="mypage-notice-container">
       <p class="black-title"><%= notice.title %></p>

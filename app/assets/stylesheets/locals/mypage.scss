@@ -16,7 +16,7 @@
 }
 
 #mypage-index-mobile {
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 
   .login-container {
@@ -196,6 +196,44 @@
   }
 }
 
+#mypage-settings-mobile {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: $black;
+
+  .settings-blank {
+    background-color: $dark-gray;
+    height: 10rem;
+  }
+
+  .settings-element-container {
+    height: 10rem;
+    margin: 0 0 0 8%;
+    padding: 2rem 5% 2rem 0;
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .hr-container {
+    position: absolute;
+    left: 8%;
+    width: 92%;
+    margin: 0;
+    color: $gray;
+  }
+
+  .text-width {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+  }
+
+  .arrow-icon {
+    width: auto;
+    height: 3rem;
+  }
+}
+
 .settings-container {
   div {
     border-color: grey;
@@ -205,30 +243,6 @@
     font-size: 3rem;
     color: grey;
   }
-}
-.mypage-settings-background {
-  background-color: #EFEFF4;
-  height: 10rem;
-  border-top: 1px #EFEFF4 solid;
-  border-bottom: 1px #EFEFF4 solid;
-}
-.mypage-settings-row {
-  height: 10rem;
-  padding: 2.5rem 1.5rem;
-  div {
-    font-size: 3.5rem;
-    img {
-      height: 7rem;
-      width: 7rem;
-    }
-  }
-}
-.mypage-settings-offset-line {
-  position: absolute;
-  left: 10%;
-  width: 90%;
-  margin: 0;
-  background-color: black;
 }
 
 .mypage-notice-container {

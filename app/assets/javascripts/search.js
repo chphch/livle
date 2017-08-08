@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     //focus 할 때
-    $('.input-field').focus(function () {
+    $('.search-input-field').click(function () {
+        $('.input-field').focus();
         onfocus();
     });
     //focus 안할 때
