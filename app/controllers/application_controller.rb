@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # skip_before_action :verify_authenticity_token
   protect_from_forgery with: :null_session, if: ->{request.format.json?}
+  helper_method :svg_tag
 
   # render html or js file by respond format # also choose the template by the type of the requesting device
   def render_by_device(filename = nil)
@@ -27,6 +28,11 @@ class ApplicationController < ActionController::Base
     else
       render '/login_modal'
     end
+  end
+
+  def svg_tag(path)
+    file = File.open("app/assets/images/#{path}", "rb")
+    file.read.html_safe
   end
 
   # keeping user to the same page after sign in

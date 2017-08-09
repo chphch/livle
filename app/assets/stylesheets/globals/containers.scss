@@ -140,6 +140,20 @@
   border-radius: 6rem;
 }
 
+._small-modal-container {
+  position: absolute;
+  top: 34%;
+  left: 14%;
+  width: 72%;
+  height: 32%;
+  background: $dark-dark-gray;
+  border-radius: 6rem;
+}
+
+._modal-icon-container {
+  margin: 0 6% 0 0;
+}
+
 ////positioners
 ._hcenter-positioner {
   display: flex;

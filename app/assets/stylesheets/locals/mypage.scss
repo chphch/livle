@@ -234,11 +234,14 @@
   }
 
   .inquire-button {
-    width: 75%;
+    width: 60%;
     margin: 8rem 0;
-    padding: 2rem 0;
+    padding: 2% 0;
     border: 2px solid $white;
     border-radius: $br-min-m;
+    p {
+      margin: 0;
+    }
   }
 }
 
@@ -287,21 +290,6 @@
     width: 90%;
     padding: 4% 0;
   }
-}
-
-.mypage-settings-modal-container {
-  position: absolute;
-  top: 34%;
-  left: 14%;
-  width: 72%;
-  height: 32%;
-  background: #ffffff;
-  border-radius: 2rem;
-}
-
-.mypage-settings-modal-header {
-  padding-top: 12%;
-  padding-bottom: 12%;
 }
 
 .mypage-settings-modal-box {

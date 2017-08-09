@@ -98,6 +98,11 @@ hr {
   width: auto;
   height: 56%;
 }
+
+._modal-icon-m {
+  width: auto;
+  height: 5rem;
+}
 ////button
 ._show-play-button {
   width: auto;
@@ -115,6 +120,20 @@ hr {
   border-radius: $br-image-m;
   -webkit-border-radius: $br-image-m;
   -moz-border-radius: $br-image-m;
+}
+
+._small-modal-button {
+  padding: 3% 0;
+  margin: 0 4%;
+  width: 43%;
+  background: none;
+  border: 2px solid $white;
+  border-radius: $br-min-m;
+  -webkit-border-radius: $br-min-m;
+  -moz-border-radius: $br-min-m;
+  p {
+    margin: 0;
+  }
 }
 ////margin, padding
 ._thumbnail-elem-margin-m {
@@ -147,4 +166,9 @@ hr {
 
 ._show-describe-item-padding-m {
   padding-top: $list-container-pv-m;
+}
+
+._small-modal-title {
+  padding-top: 12%;
+  padding-bottom: 12%;
 }
