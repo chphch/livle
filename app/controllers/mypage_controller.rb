@@ -53,10 +53,12 @@ class MypageController < ApplicationController
   end
 
   def terms_of_use
+    @disable_nav = true
     render_by_device
   end
 
   def privacy_policy
+    @disable_nav = true
     render_by_device
   end
 

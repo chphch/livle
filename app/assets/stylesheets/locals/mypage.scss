@@ -232,6 +232,38 @@
     width: auto;
     height: 3rem;
   }
+
+  .inquire-button {
+    width: 75%;
+    margin: 8rem 0;
+    padding: 2rem 0;
+    border: 2px solid $white;
+    border-radius: $br-min-m;
+  }
+}
+
+#mypage-notice-mobile {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: $black;
+
+  ._row-positioner {
+    p {
+      margin: 0;
+    }
+  }
+
+  .notice-container {
+    margin: 3% 5%;
+    padding: 3% 5%;
+    border-radius: $br-min-m;
+    background: $dark-gray;
+  }
+
+  .title-width {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+  }
 }
 
 .settings-container {
@@ -245,16 +277,16 @@
   }
 }
 
-.mypage-notice-container {
-  margin-top: 3%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 3%;
-  padding: 3%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 3em;
-  background: #EBEBEB;
+#mypage-privacy-policy-mobile,
+#mypage-terms-of-use-mobile {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: $black;
+
+  .text-container {
+    width: 90%;
+    padding: 4% 0;
+  }
 }
 
 .mypage-settings-modal-container {
