@@ -99,9 +99,14 @@ hr {
   height: 56%;
 }
 
+._modal-big-icon-m {
+  width: auto;
+  height: 18rem;
+  margin: 0 0 6%;
+}
 ._modal-icon-m {
   width: auto;
-  height: 5rem;
+  height: 4.5rem;
 }
 ////button
 ._show-play-button {
@@ -124,13 +129,13 @@ hr {
 
 ._small-modal-button {
   padding: 3% 0;
-  margin: 0 4%;
-  width: 43%;
+  margin: 0 2%;
+  width: 46%;
   background: none;
   border: 2px solid $white;
-  border-radius: $br-min-m;
-  -webkit-border-radius: $br-min-m;
-  -moz-border-radius: $br-min-m;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
   p {
     margin: 0;
   }
@@ -169,6 +174,5 @@ hr {
 }
 
 ._small-modal-title {
-  padding-top: 12%;
-  padding-bottom: 12%;
+  padding: 0 0 6%;
 }

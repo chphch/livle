@@ -1,22 +1,22 @@
 <div class="_small-modal-container">
-  <div class="_small-modal-title text-center">
-    <p class="_fs-4-mobile _white">라이블에게 문의하기</p>
-  </div>
-  <div class="_row-positioner">
-    <div class="_small-modal-button _vcenter-positioner _hcenter-positioner">
-      <div class="_modal-icon-container">
-        <%= image_tag "icon_mail", class: "_modal-icon-m" %>
-      </div>
-      <p class="_fs-3-mobile _white">이메일</p>
+  <div class="_modal-background _column-positioner _hcenter-positioner">
+    <div class="_small-modal-title text-center">
+      <%= image_tag "icon_qna", class: "_modal-big-icon-m" %>
+      <p class="_fs-4-mobile _white _f-letter-mobile">라이블에게 문의하기</p>
     </div>
-    <div class="_small-modal-button _vcenter-positioner _hcenter-positioner">
-      <div class="_modal-icon-container">
-          <%= svg_tag "icon_messenger.svg" %>
+    <div class="_row-positioner">
+      <div class="_small-modal-button _vcenter-positioner _hcenter-positioner">
+        <div class="_modal-icon-container">
+          <%= image_tag "icon_mail", class: "_modal-icon-m" %>
+        </div>
+        <p class="_fs-3-mobile _white">이메일</p>
       </div>
-      <p class="_fs-3-mobile _white">페이스북 메세지</p>
+      <div class="_small-modal-button _vcenter-positioner _hcenter-positioner">
+        <div class="_modal-icon-container">
+          <%= image_tag "icon_messenger", class: '_modal-icon-m' %>
+        </div>
+        <p class="_fs-3-mobile _white">페이스북 메세지</p>
+      </div>
     </div>
   </div>
 </div>
-<script>
-    $('svg').addClass('_modal-icon-m');
-</script>
