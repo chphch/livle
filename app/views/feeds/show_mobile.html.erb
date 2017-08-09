@@ -26,7 +26,7 @@
         <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @feed.count_view %></p>
         <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @feed.feed_likes.size %></p>
+        <p id="like-count" class="_fs-5-mobile _white"><%= @feed.feed_likes.size %></p>
         <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @feed.count_share %></p>
       </div>
@@ -82,7 +82,10 @@
   <div class="_show-buttons-container-m _row-positioner">
     <%= link_to feed_create_like_path(@feed.id), remote: true, class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
-        <%= image_tag "icon_like_empty", class: "_show-icon-m show-like" %>
+        <div class="_show-icon-m show-like">
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", style: "height:40px;width:40px;", class: "" %>
+        </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
@@ -99,89 +102,105 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
 </div>
 
-<%= render partial: '/share_modal', locals: {post: @feed} %>
+<!-- Modals -->
+<% if !user_signed_in? %>
+    <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+      <div class=\"_big-modal-container\">
+        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+      </div>
+    </form>
+<% end %>
+<%= render partial: '/xhrs/share_modal', locals: {post: @feed} %>
 
 <script>
-  // share modal
-  $('#share-modal-button').click(function() {
-    $('#share-modal').modal();
-  });
 
-  // filter
-  $('#youtube-player-controller').click(function (e) {
-      if(e.target.nodeName === 'DIV') {
-          if($('#youtube-player-filter').is(':visible') === true) {
-              $('#youtube-player-filter').hide();
-              $('.youtube-player-buttons').hide();
-          } else {
-              $('#youtube-player-filter').show();
-              $('.youtube-player-buttons').show();
-          }
-      }
-  });
-  
-  // youtube player
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // initialize like button
+    <% if @like_true %>
+      $('#icon-like-empty').addClass('_display-none');
+    <% else %>
+      $('#icon-like-filled').addClass('_display-none');
+    <% end %>
 
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
+    // share modal
+    $('#share-modal-button').click(function() {
+        $('#share-modal').modal();
     });
-  }
 
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
+    // filter
+    $('#youtube-player-controller').click(function (e) {
+        if(e.target.nodeName === 'DIV') {
+            if($('#youtube-player-filter').is(':visible') === true) {
+                $('#youtube-player-filter').hide();
+                $('.youtube-player-buttons').hide();
+            } else {
+                $('#youtube-player-filter').show();
+                $('.youtube-player-buttons').show();
+            }
+        }
+    });
+  
+    // youtube player
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  $('#play-button').click(function() {
-    if(player.getPlayerState() === 1) {
-      player.pauseVideo();
-    } else {
-      player.playVideo();
-      $('#youtube-player-filter').hide();
-      $('.youtube-player-buttons').hide();
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player', {
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
     }
-  });
 
-  $('#hd-button').click(function () {
-      var quality = player.getPlaybackQuality();
-      console.log('quality = ' + quality);
-      $(this).toggleClass('_light-gray _white');
-      if(quality === 'small' || quality === 'medium' || quality === 'large') {
-          player.setPlaybackQuality('hd720');
-      } else {
-          player.setPlaybackQuality('large');
-      }
-  });
-
-  $('#fullscreen-button').click(function () {
-      var elem = document.getElementById("youtube-player");
-      // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
-      if(elem.requestFullScreen) {
-          elem.requestFullScreen();
-      } else if(elem.webkitRequestFullScreen) {
-          elem.webkitRequestFullScreen();
-      } else if(elem.msRequestFullScreen){
-          elem.msRequestFullScreen();
-      } else if(elem.mozRequestFullScreen) {
-          elem.mozRequestFullScreen();
-      }
-  });
-
-  var done = false;
-  function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.PLAYING && !done) {
-        $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
+    function onPlayerReady(event) {
+        event.target.playVideo();
     }
-    else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-        $('#play-button').attr('src', "<%= image_url "icon_play" %>");
+
+    $('#play-button').click(function() {
+        if(player.getPlayerState() === 1) {
+            player.pauseVideo();
+        } else {
+            player.playVideo();
+            $('#youtube-player-filter').hide();
+            $('.youtube-player-buttons').hide();
+        }
+    });
+
+    $('#hd-button').click(function () {
+        var quality = player.getPlaybackQuality();
+        console.log('quality = ' + quality);
+        $(this).toggleClass('_light-gray _white');
+        if(quality === 'small' || quality === 'medium' || quality === 'large') {
+            player.setPlaybackQuality('hd720');
+        } else {
+            player.setPlaybackQuality('large');
+        }
+    });
+
+    $('#fullscreen-button').click(function () {
+        var elem = document.getElementById("youtube-player");
+        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
+        if(elem.requestFullScreen) {
+            elem.requestFullScreen();
+        } else if(elem.webkitRequestFullScreen) {
+            elem.webkitRequestFullScreen();
+        } else if(elem.msRequestFullScreen){
+            elem.msRequestFullScreen();
+        } else if(elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        }
+    });
+
+    var done = false;
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING && !done) {
+            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
+        }
+        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
+            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
+        }
     }
-  }
 </script>

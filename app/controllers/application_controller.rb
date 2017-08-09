@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
       post_id = params[post_field.to_sym]
       @like_true = like_class.create_like(current_user.id, post_id)
       @like_count = post_class.find(post_id).send(likes_field).size
-      render '/create_like', formats: :js
+      render '/xhrs/create_like'
     else
-      render '/login_modal'
+      render '/xhrs/login_modal'
     end
   end
 

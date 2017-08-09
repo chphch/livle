@@ -26,7 +26,7 @@
         <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @upcoming.count_view %></p>
         <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.upcoming_likes.size %></p>
+        <p id="like-count" class="_fs-5-mobile _white"><%= @upcoming.upcoming_likes.size %></p>
         <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @upcoming.count_share %></p>
       </div>
@@ -116,9 +116,25 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
 </section>
 
-<%= render partial: '/share_modal', locals: {post: @upcoming} %>
+<!-- Modals -->
+<% if !user_signed_in? %>
+    <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+      <div class=\"_big-modal-container\">
+        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+      </div>
+    </form>
+<% end %>
+<%= render partial: '/xhrs/share_modal', locals: {post: @upcoming} %>
 
 <script>
+
+    // initialize like button
+    <% if @like_true %>
+    $('#icon-like-empty').addClass('_display-none');
+    <% else %>
+    $('#icon-like-filled').addClass('_display-none');
+    <% end %>
+
     // share modal
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();
