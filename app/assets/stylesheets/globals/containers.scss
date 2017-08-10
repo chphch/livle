@@ -33,7 +33,7 @@
   height: 100%;
 }
 
-._thumbnail-info-container-m {
+._thumbnail-button-container-m {
   position: absolute;
   bottom: 3%; left: 1%;
   width: 100%;
@@ -81,6 +81,11 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+._show-progress-container-m {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 ._show-describe-container-m {

@@ -108,6 +108,10 @@ hr {
   width: auto;
   height: 4.5rem;
 }
+#progress-bar {
+  width: 12rem;
+  height: 12rem;
+}
 ////button
 ._show-play-button {
   width: auto;
@@ -157,6 +161,10 @@ hr {
 
 ._icon-text-margin-m {
   margin-left: $list-container-ph-m;
+}
+
+._show-progress-margin-m {
+  margin-top: 38%;
 }
 
 ._show-info-padding-m {
