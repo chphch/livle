@@ -26,13 +26,23 @@
 
   <div class="content-container _vcenter-positioner _hcenter-positioner">
     <div class="connect-input-container">
-      <%= form_tag "/connect_urls" do %>
+      <%= form_tag connect_urls_path, id: "connect-form", remote: true do %>
+          <%= hidden_field_tag :video_url, @video_url %>
           <div class="input-container">
             <%= text_area_tag :describe, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", rows: 8, placeholder: "영상에 대해 알려주세요" %>
           </div>
       <% end %>
+      <div class="submit-container _hcenter-positioner">
+        <div class="submit-button _text-center" id="connect-submit-button">
+          <p class="_fs-2-mobile _white">보내기</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <form id="done-modal" class="modal">
+    <%= render partial: "done_modal_mobile" %>
+  </form>
 </div>
 
 <script>
@@ -113,4 +123,9 @@
             $('#play-button').attr('src', "<%= image_url "icon_play" %>");
         }
     }
+
+    $('#connect-submit-button').click(function () {
+        $('#done-modal').modal();
+        $('#connect-form').delay(1600).submit();
+    });
 </script>
