@@ -39,7 +39,7 @@
       </div>
       <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
       <div class="_show-progress-container-m _hcenter-positioner">
-        <p class="_show-progress-margin-m _fs-4-mobile _white" id="duration"></p>
+        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
       </div>
     </div>
 
@@ -132,9 +132,11 @@
         if(e.target.nodeName === 'DIV') {
             if($('#youtube-player-filter').is(':visible') === true) {
                 $('#youtube-player-filter').hide();
+                $('#remaining-time').hide();
                 $('.youtube-player-buttons').hide();
             } else {
                 $('#youtube-player-filter').show();
+                $('#remaining-time').show();
                 $('.youtube-player-buttons').show();
             }
         }
@@ -166,7 +168,7 @@
     function updateTimerDisplay(){
         // Update current time text display.
         checkTime = setInterval(function () {
-            $('#duration').text(formatTime( player.getDuration() - player.getCurrentTime() ));
+            $('#remaining-time').text(formatTime( player.getDuration() - player.getCurrentTime() ));
         }, 500);
     }
 
@@ -184,6 +186,7 @@
         } else {
             player.playVideo();
             $('#youtube-player-filter').hide();
+            $('#remaining-time').hide();
             $('.youtube-player-buttons').hide();
         }
     });
