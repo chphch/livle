@@ -23,10 +23,11 @@
   <%= link_to search_path, class: "_navbar-element-m" do %>
       <div class="_text-center">
         <% if control == 'SearchController'%>
-            <%= image_tag("icon_search_filled", style: "width: auto; height: 12rem;") %>
+            <%= image_tag("icon_search_filled", style: "width: auto; height: 7rem; margin-bottom: 2%;") %>
         <% else %>
-            <%= image_tag("icon_search_empty", style: "width: auto; height: 12rem;") %>
+            <%= image_tag("icon_search_empty", style: "width: auto; height: 7rem; margin-bottom: 2%;") %>
         <% end %>
+        <p class="_fs-navbar-mobile _white">Search</p>
       </div>
   <% end %>
   <%= link_to connect_urls_path, class: "_navbar-element-m" do %>
