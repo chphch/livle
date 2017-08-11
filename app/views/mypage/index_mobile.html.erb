@@ -51,7 +51,9 @@
                       <%= link_to "/upcomings/#{like.upcoming.id}" do %>
                           <div class="list-text-container _vcenter-positioner">
                             <p class="list-text _fs-4-mobile _white"><%= like.upcoming.title %></p>
-                            <p class="_fs-2-mobile _white _f-letter-mobile">D<%= d_day(like.upcoming.start_date) %></p>
+                            <p class="_fs-2-mobile _white _f-letter-mobile">
+                              D<%= d_day(like.upcoming.start_date) %>
+                            </p>
                           </div>
                       <% end %>
                   <% end %>
@@ -84,6 +86,9 @@
             </div>
         <% else %>
             <div id="mypage-mylist-mobile">
+              <%= current_user.curation_likes.each do |like| %>
+                  <%= render partial: "search/feed_card_mobile", locals: {feed: like.curation} %>
+              <% end %>
               <%= current_user.feed_likes.each do |like| %>
                   <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
               <% end %>
