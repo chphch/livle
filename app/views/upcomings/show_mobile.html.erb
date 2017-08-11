@@ -116,13 +116,17 @@
       <p class="_fs-4-mobile _white _icon-text-margin-m">공유</p>
     </div>
   </div>
+
+  <section id="modal">
+    <form id="share-modal" class="modal">
+      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
+    </form>
+  </section>
+
+  <!-- Comments -->
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
 </div>
 
-<section id="comment">
-  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
-</section>
-
-<%= render partial: '/share_modal', locals: {post: @upcoming} %>
 
 <script>
     // share modal

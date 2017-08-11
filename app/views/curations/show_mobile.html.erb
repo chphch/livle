@@ -105,11 +105,15 @@
     </div>
   </div>
 
+  <section id="modal">
+    <form id="share-modal" class="modal">
+      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @curation} %>
+    </form>
+  </section>
+
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </div>
-
-<%= render partial: '/share_modal', locals: {post: @curation} %>
 
 <script>
     // share modal

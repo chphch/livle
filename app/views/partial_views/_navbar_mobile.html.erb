@@ -1,4 +1,4 @@
-<nav class="_navbar-m _vcenter-positioner">
+<nav class="_vcenter-positioner _navbar-m">
   <% control = controller.class.name.split("::").first.to_s %>
   <%= link_to feeds_path, class: "_navbar-element-m" do %>
       <div class="_text-center">
@@ -17,7 +17,7 @@
         <% else %>
             <%= image_tag("icon_ticket_empty", style: "width: auto; height: 8rem;") %>
         <% end %>
-        <p class="_fs-navbar-mobile _white" style="margin-top: -1%;">Upcoming</p>
+        <p class="_fs-navbar-mobile _white">Upcoming</p>
       </div>
   <% end %>
   <%= link_to search_path, class: "_navbar-element-m" do %>
@@ -32,10 +32,10 @@
   <% end %>
   <%= link_to connect_urls_path, class: "_navbar-element-m" do %>
       <div class="_text-center">
-        <% if control == 'SearchController'%>
-            <%= image_tag("icon_connect_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+        <% if control == 'ConnectUrlsController'%>
+            <%= image_tag("icon_connect_filled", style: "width: auto; height: 8rem;") %>
         <% else %>
-            <%= image_tag("icon_connect_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
+            <%= image_tag("icon_connect_empty", style: "width: auto; height: 8rem;") %>
         <% end %>
         <p class="_fs-navbar-mobile _white">Connect</p>
       </div>

@@ -101,11 +101,15 @@
     </div>
   </div>
 
+  <section id="modal">
+    <form id="share-modal" class="modal">
+      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @feed} %>
+    </form>
+  </section>
+
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
 </div>
-
-<%= render partial: '/share_modal', locals: {post: @feed} %>
 
 <script>
   // share modal

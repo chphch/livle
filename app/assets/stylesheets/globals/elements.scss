@@ -30,6 +30,10 @@ hr {
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 40%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 40%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  /* align vertical */
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
 }
 
 ._navbar-element-m {
@@ -115,7 +119,7 @@ hr {
 ////button
 ._show-play-button {
   width: auto;
-  height: 28%;
+  height: 30%;
   z-index: 99;
 }
 ._show-button {
