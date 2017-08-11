@@ -11,11 +11,12 @@ SIZE_2 = 5
 
 for i in 1..SIZE_1
   User.create(
-    email: i.to_s + "@a.com",
+    email: i.to_s + "@naver.com",
     password: "12341234",
     provider: "local",
     nickname: Faker::HarryPotter.character,
-    profile_img: "image_profile.jpeg"
+    intro: Faker::Hacker.say_something_smart,
+    profile_img: "image_profile.jpg"
   )
 end
 
@@ -31,7 +32,7 @@ for i in 1..SIZE_1
     user_id: rand(1..SIZE_1),
     title: "curation_" + i.to_s,
     content: Faker::Hacker.say_something_smart,
-    youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    youtube_id: "https://www.youtube.com/watch?v=mHr2-0hCiqg",
     count_share: rand(1..100),
     count_view: rand(1..100),
     rank: 0.0
@@ -58,7 +59,7 @@ for i in 1..SIZE_1
   feed = Feed.create(
     user_id: rand(1..SIZE_1),
     title: "feed_" + i.to_s,
-    youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    youtube_id: "https://www.youtube.com/watch?v=6XJjw7sWj84",
     count_view: rand(1..100),
     count_share: rand(1..100),
     rank: 0.0
@@ -85,10 +86,10 @@ for i in 1..SIZE_1
   upcoming = Upcoming.create(
     title: "upcoming_" + i.to_s,
     place: Faker::Space.galaxy,
-    main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
-    start_date: Date.new(2017,rand(1..12),rand(1..12)),
-    end_date: Date.new(2017,rand(1..12),rand(1..12)),
-    ticket_url: 'www.naver.com',
+    main_youtube_id: "https://www.youtube.com/watch?v=eBNk5-FhYzM",
+    start_date: Date.new(2017,rand(8..12),rand(1..30)),
+    end_date: Date.new(2017,rand(8..12),rand(1..30)),
+    ticket_url: 'https://www.naver.com',
     count_view: rand(1..100),
     count_share: rand(1..100)
   )
