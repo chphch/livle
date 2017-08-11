@@ -38,6 +38,9 @@
         <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
       </div>
       <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
+      <div class="_show-progress-container-m _hcenter-positioner">
+        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+      </div>
     </div>
 
     <!-- back button -->
@@ -116,9 +119,11 @@
         if(e.target.nodeName === 'DIV') {
             if($('#youtube-player-filter').is(':visible') === true) {
                 $('#youtube-player-filter').hide();
+                $('#remaining-time').hide();
                 $('.youtube-player-buttons').hide();
             } else {
                 $('#youtube-player-filter').show();
+                $('#remaining-time').show();
                 $('.youtube-player-buttons').show();
             }
         }
@@ -142,6 +147,24 @@
 
     function onPlayerReady(event) {
         event.target.playVideo();
+        updateTimerDisplay();
+        //updateProgressBar();
+    }
+
+    // Duration Time
+    function updateTimerDisplay(){
+        // Update current time text display.
+        checkTime = setInterval(function () {
+            $('#remaining-time').text(formatTime( player.getDuration() - player.getCurrentTime() ));
+        }, 500);
+    }
+
+    function formatTime(time){
+        time = Math.round(time);
+        var minutes = Math.floor(time / 60),
+            seconds = time - minutes * 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return minutes + ":" + seconds;
     }
 
     $('#play-button').click(function() {
@@ -150,6 +173,7 @@
         } else {
             player.playVideo();
             $('#youtube-player-filter').hide();
+            $('#remaining-time').hide();
             $('.youtube-player-buttons').hide();
         }
     });
