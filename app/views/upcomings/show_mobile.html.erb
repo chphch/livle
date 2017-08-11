@@ -1,50 +1,49 @@
-<!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+<div id="upcomings-show-mobile" data-video-index = "0">
 
-<div id="upcomings-show-mobile">
-  <div class="_show-video-container-m">
-    <!-- Youtube Video Player -->
-    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
-            webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+  <!-- Youtube Video Player -->
+  <% @posts.each_with_index do |post, index| %>
 
-    <div id="youtube-player-filter">
-      <div class="_show-video-filter-m"></div>
-      <div class="_show-video-title-container-m _hcenter-positioner">
-        <p class="_fs-2-mobile _white">
-          <!-- title -->
-          <%= @upcoming.title %> -
-          <!-- artist.name -->
-          <% @upcoming.artists.each_with_index do |artist, i| %>
-              <%= artist.name %>
-              <% break if @upcoming.artists[i+1] == nil %>
-              ,&nbsp
-          <% end %>
-        </p>
+      <div id="show-video-container-<%= index %>" class="_show-video-container-m <%= index == 0 ? "" : "_display-none" %>">
+        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= post[:video_id] %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= post[:video_id] %>"
+                webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+        <div id="youtube-player-filter">
+          <div class="_show-video-filter-m"></div>
+          <div class="_show-video-title-container-m _hcenter-positioner">
+            <p class="_fs-2-mobile _white">
+              <!-- title -->
+              <%= @upcoming.title %> -
+              <!--artist.name -->
+              <%= post[:artist_name] %>
+            </p>
+          </div>
+          <div class="_thumbnail-info-container-m _row-positioner">
+            <% if index != 0 %>
+                <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p class="_fs-5-mobile _white"><%= post[:count_view] %></p>
+                <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p id="video-like-count" class="_fs-5-mobile _white"><%= post[:count_like] %></p>
+                <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p class="_fs-5-mobile _white"><%= post[:count_share] %></p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controlle/r">
+          <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
+            <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
+            <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
+          </div>
+          <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
+        </div>
       </div>
-      <div class="_thumbnail-info-container-m _row-positioner">
-        <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.count_view %></p>
-        <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p id="like-count" class="_fs-5-mobile _white"><%= @upcoming.upcoming_likes.size %></p>
-        <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.count_share %></p>
-      </div>
-    </div>
 
-    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
-      <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
-        <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
-      </div>
-      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
-    </div>
+  <% end %>
 
-    <!-- back button -->
-    <%= link_to :back, class: "_show-video-back-container-m" do %>
-        <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-    <% end %>
-  </div>
+  <!-- back button -->
+  <%= link_to :back, class: "_show-video-back-container-m" do %>
+      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+  <% end %>
 
   <!-- Video info -->
   <div class="_show-info-padding-m">
@@ -52,7 +51,7 @@
       <div class="_show-text-container-m _row-positioner">
         <p class="width-devision _fs-1-mobile _white"><%= @upcoming.title %></p>
         <div class="width-devision _hright-positioner">
-          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @d_day %></strong></p>
+          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
         </div>
       </div>
       <div class="describe-padding">
@@ -68,8 +67,12 @@
           <%= link_to @upcoming.ticket_url do %>
               <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
           <% end %>
-          <%= link_to upcoming_create_like_path(@upcoming.id), remote: true do %>
-              <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m icon-padding" %>
+          <%= link_to upcoming_create_like_path(@upcoming.id), remote: true,
+                      class: "_show-button _hcenter-positioner _vcenter-positioner" do %>
+              <div class="_show-icon-m show-like">
+                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", style: "height:40px;width:40px;", class: "" %>
+                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", style: "height:40px;width:40px;", class: "" %>
+              </div>
           <% end %>
         </div>
       </div>
@@ -86,23 +89,25 @@
     </div>
   </div>
   <div class="line-up-img-container">
-    <% @upcoming.upcoming_artists.each do |artist| %>
-        <div class="artist-profile _hcenter-positioner _vcenter-positioner"
-             style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
-          <p class="_fs-2-mobile _white"><%= artist.artist.name %></p>
+    <% @upcoming.artists.each_with_index do |artist, index| %>
+        <div class="artist-profile _hcenter-positioner _vcenter-positioner" data-button-num="<%= index %>"
+             style="background: url(<%= image_url(artist.image_url) %>) no-repeat center center; background-size: cover;">
+          <p class="_fs-2-mobile _white"><%= artist.name %></p>
         </div>
     <% end %>
   </div>
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner">
-    <%= link_to upcoming_create_like_path(@upcoming.id), remote: true, class: "_show-button
+    <%= link_to upcoming_create_like_path(@upcoming), remote: true, class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
-        <%= image_tag "icon_like_empty", class: "_show-icon-m show-like" %>
+        <div class="_show-icon-m show-like">
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", style: "height:40px;width:40px;", class: "" %>
+        </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
-      <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white _icon-text-margin-m">댓글</p>
     </div>
     <div class="_show-button _hcenter-positioner _vcenter-positioner" id="share-modal-button">
@@ -128,12 +133,30 @@
 
 <script>
 
-    // initialize like button
+    // initialize upcoming like button
     <% if @like_true %>
     $('#icon-like-empty').addClass('_display-none');
     <% else %>
     $('#icon-like-filled').addClass('_display-none');
     <% end %>
+
+    // initialize video(feed/curation) like button
+
+    // change video by selecting lineup
+    $('.line-up-img-container')
+        .find('.artist-profile')
+        .each(function(index, clickedElement) {
+            $(clickedElement).on("click", function(event) {
+                switchVideo(this);
+            });
+        });
+    function switchVideo(clickedElement) {
+        var clickedIndex = $(clickedElement).data("buttonNum");
+        var currentVideoIndex = $("#upcomings-show-mobile").data("videoIndex");
+        $("#show-video-container-" + currentVideoIndex).addClass("_display-none")
+        $("#show-video-container-" + clickedIndex).removeClass("_display-none");
+        $("#upcomings-show-mobile").data("videoIndex", clickedIndex);
+    }
 
     // share modal
     $('#share-modal-button').click(function() {
