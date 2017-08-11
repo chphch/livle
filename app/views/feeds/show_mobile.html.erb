@@ -33,14 +33,17 @@
     </div>
 
     <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
+      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+        <div id="progress-bar"></div>
+      </div>
+      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+      </div>
       <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
+        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin: 1% 3% 0 0;">HD</p>
         <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
       </div>
       <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
-      <div class="_show-progress-container-m _hcenter-positioner">
-        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
-      </div>
     </div>
 
     <!-- back button -->
@@ -144,7 +147,7 @@
   function onPlayerReady(event) {
     event.target.playVideo();
       updateTimerDisplay();
-      //updateProgressBar();
+      updateProgressBar();
   }
 
   // Duration Time
@@ -161,6 +164,21 @@
           seconds = time - minutes * 60;
       seconds = seconds < 10 ? '0' + seconds : seconds;
       return minutes + ":" + seconds;
+  }
+
+  // Circle Progressbar
+  var progress = new ProgressBar.Circle('#progress-bar', {
+      strokeWidth: 6,
+      easing: 'easeInOut',
+      color: '#9BFFCC',
+      trailColor: '#949494',
+      trailWidth: 3,
+      svgStyle: null
+  });
+  function updateProgressBar(){
+      updateProgress = setInterval(function () {
+          progress.set((player.getCurrentTime() / player.getDuration()));
+      }, 200);
   }
 
   $('#play-button').click(function() {
