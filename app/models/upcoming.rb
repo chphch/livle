@@ -9,12 +9,13 @@ class Upcoming < ArtistsRecord
   def posts
     result = []
     artists.each do |artist|
-      result.append(upcoming_post_json(artist.popular_post))
+      result.append(upcoming_post_json(artist))
     end
     if main_youtube_id
       result.unshift(
           {
               artist_name: "Main Video",
+              artist_image_url: Faker::LoremPixel.image("50x60"),
               video_id: get_youtube_video_id(main_youtube_id)
           }
       )
@@ -22,14 +23,16 @@ class Upcoming < ArtistsRecord
     return result
   end
 
-  def upcoming_post_json(post)
+  def upcoming_post_json(artist)
+    post = artist.popular_post
     if post.class == Feed
       count_like = post.feed_likes.size
     elsif post.class == Curation
       count_like = post.curation_likes.size
     end
     {
-        artist_name: post.artists.take.name,
+        artist_name: artist.name,
+        artist_image_url: artist.image_url,
         video_id: get_youtube_video_id(main_youtube_id),
         count_view: post.count_view,
         count_like: count_like,

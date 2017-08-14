@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
       post_id = params[post_field.to_sym]
       @like_true = like_class.create_like(current_user, post_id)
       @like_count = post_class.find(post_id).send(likes_field).size
+      @like_type = like_class == UpcomingLike ? "hand" : "like"
       render '/xhrs/create_like'
     else
       render '/xhrs/login_modal'

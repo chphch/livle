@@ -1,3 +1,10 @@
-$('#icon-<%= like_type %>-like-empty').toggleClass("_display-none")
-$('#icon-<%= like_type %>-like-filled').toggleClass("_display-none");
-$('#<%= like_type %>-like-count').text("<%= @like_count %>");
+<% if @like_true %>
+console.log("TRUE");
+$('#icon-<%= @like_type %>-empty').removeClass("_display-none");
+$('#icon-<%= @like_type %>-filled').addClass("_display-none");
+<% else %>
+console.log("FALSE");
+$('#icon-<%= @like_type %>-empty').addClass("_display-none");
+$('#icon-<%= @like_type %>-filled').removeClass("_display-none");
+<% end %>
+$('#<%= @like_type %>-like-count').text("<%= @like_count %>");

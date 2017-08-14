@@ -15,7 +15,7 @@ class ApplicationRecord < ActiveRecord::Base
     else
       like = self.new
       like[post_field] = post_id
-      like.user.id = user.id
+      like.user_id = user.id
       like.save
       return true
     end
