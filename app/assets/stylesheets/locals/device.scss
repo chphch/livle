@@ -1,7 +1,9 @@
 @import "globals/sizes";
 @import "globals/colors";
 
-#device-new-mobile {
+#device-new-mobile,
+#device-recover-new-mobile,
+#device-recover-email-sent-mobile {
   width: 100%;
 
   .moto-container {

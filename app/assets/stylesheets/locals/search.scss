@@ -6,19 +6,6 @@
 
 #search-index-mobile,
 #search-result-mobile {
-  input::-webkit-input-placeholder {
-    color: $light-gray !important;
-  }
-  input:-moz-placeholder {
-    color: $light-gray !important;
-  }
-  input::-moz-placeholder {
-    color: $light-gray !important;
-  }
-  input:-ms-input-placeholder {
-    color: $light-gray !important;
-  }
-
   #search-bar {
     position: fixed;
     z-index: 18;

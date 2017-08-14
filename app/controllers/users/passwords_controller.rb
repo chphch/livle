@@ -3,6 +3,7 @@ class Users::PasswordsController < Devise::PasswordsController
   def new
     super
     render_by_device '/mypage/recover_password_new'
+    @disable_nav = true
   end
 
   # POST /resource/password
@@ -14,6 +15,7 @@ class Users::PasswordsController < Devise::PasswordsController
   def edit
     super
     render_by_device '/mypage/recover_password_edit'
+    @disable_nav = true
   end
 
   # PUT /resource/password

@@ -18,6 +18,19 @@ hr {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+input::-webkit-input-placeholder {
+  color: $light-gray !important;
+}
+input:-moz-placeholder {
+  color: $light-gray !important;
+}
+input::-moz-placeholder {
+  color: $light-gray !important;
+}
+input:-ms-input-placeholder {
+  color: $light-gray !important;
+}
+
 ////navbar
 ._navbar-m {
   position: fixed;
