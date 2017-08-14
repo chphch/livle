@@ -30,7 +30,7 @@ class MypageController < ApplicationController
 
   def update_profile
     user = current_user
-    if user.update(profile_img: params[:profile_img], email: params[:email], nickname: params[:nickname])
+    if user.update(profile_img: params[:profile_img], email: params[:email], nickname: params[:nickname], intro: params[:intro])
       redirect_back(fallback_location: root_path)
     else
       render text: user.errors.messages

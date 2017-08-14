@@ -125,6 +125,10 @@
     margin: 0 !important;
   }
 
+  .mypage-inputfile {
+    display: none;
+  }
+
   .save-button {
     position: absolute;
     z-index: 98;
@@ -242,6 +246,31 @@
     p {
       margin: 0;
     }
+  }
+}
+
+#mypage-edit-password-mobile {
+  .password-input-container {
+    padding: 4%;
+  }
+
+  .save-button {
+    position: absolute;
+    z-index: 98;
+    top: 0; right: 0;
+    padding: 4% 4% 0 0;
+  }
+
+  .password-input-field {
+    padding: 3% 0 5%;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 4%;
+    background: $dark-gray;
+    border: none;
+    border-radius: $br-min-m;
   }
 }
 

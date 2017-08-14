@@ -40,7 +40,7 @@
               <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
             <%= text_field_tag :email, nil, class: "input-field _fs-3-mobile _white",
-                               value: "#{current_user.email}" %>
+                               placeholder: "이메일", value: "#{current_user.email}" %>
           </div>
           <div class="hr-white"></div>
           <div class="edit-input-container _vcenter-positioner">
@@ -48,14 +48,15 @@
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
             <%= text_field_tag :nickname, nil, class: "input-field _fs-3-mobile _white",
-                               value: "#{current_user.nickname}" %>
+                               placeholder: "닉네임", value: "#{current_user.nickname}" %>
           </div>
           <div class="hr-white"></div>
           <div class="edit-input-container _vcenter-positioner">
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
-            <p class="_fs-3-mobile _white">상태메세지</p>
+            <%= text_field_tag :intro, nil, class: "input-field _fs-3-mobile _white",
+                               placeholder: "상태메세지", value: "#{current_user.intro}" %>
           </div>
         </div>
       </div>

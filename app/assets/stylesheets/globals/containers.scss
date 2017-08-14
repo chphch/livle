@@ -1,6 +1,10 @@
 @import "sizes";
 @import "colors";
 
+body {
+  background: $black;
+}
+
 ////backgrounds
 ._body-background-m {
   position: fixed;

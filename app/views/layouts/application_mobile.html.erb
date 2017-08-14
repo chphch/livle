@@ -26,5 +26,8 @@
     <!-- Bottom Navbar -->
     <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
     <%= yield %>
+    <% unless @disable_nav %>
+      <div class="navbar-space-m"></div>
+    <% end %>
   </body>
 </html>

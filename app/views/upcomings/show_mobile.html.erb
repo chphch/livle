@@ -46,11 +46,12 @@
       <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
       <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
     </div>
+
+    <!-- back button -->
+    <%= link_to :back, class: "_show-video-back-container-m" do %>
+        <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+    <% end %>
   </div>
-  <!-- back button -->
-  <%= link_to :back, class: "_show-video-back-container-m" do %>
-      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-  <% end %>
 
   <!-- Video info -->
   <div class="_show-info-padding-m">
