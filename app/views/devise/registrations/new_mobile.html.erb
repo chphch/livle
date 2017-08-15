@@ -1,0 +1,75 @@
+<div class="_full-container _column-positioner _hcenter-positioner" id="device-signup-mobile">
+  <div class="_body-background-m"></div>
+
+  <div class="_column-positioner _vcenter-positioner">
+    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    <div class="moto-container">
+      <p class="_fs-3-mobile _white _f-letter-mobile">Life is LIVLE</p>
+      <!--<= devise_error_messages! %>-->
+    </div>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="_column-positioner _vcenter-positioner">
+        <!-- 이메일 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_mail", class: "input-icon" %>
+            </div>
+            <div class="input-container">
+              <%= f.email_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-3-mobile _white" %>
+            </div>
+          </div>
+        </div>
+        <!-- 닉네임 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_mypage_empty", class: "input-icon" %>
+            </div>
+            <div class="input-container">
+              <%= f.email_field :nickname, placeholder: "닉네임", autofocus: true, class: "input-field _fs-3-mobile _white" %>
+            </div>
+          </div>
+        </div>
+        <!-- 비밀번호 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_lock", class: "input-icon" %>
+            </div>
+            <div class="input-container">
+              <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-3-mobile _white" %>
+            </div>
+          </div>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+        </div>
+        <!-- 비밀번호 확인 -->
+        <div class="login-input-container">
+          <div class="_row-positioner">
+            <div class="icon-container _vcenter-positioner">
+              <%= image_tag "icon_lock", class: "input-icon" %>
+            </div>
+            <div class="input-container">
+              <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-3-mobile _white" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-container">
+          <div class="_vcenter-positioner">
+            <div class="button-width _submit-button _fs-2-mobile _white _text-center">
+              <%= link_to "취소", mypage_index_path %>
+            </div>
+            <div class="button-margin"></div>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <%= f.submit "회원가입", class: "button-width _submit-button _fs-2-mobile _white" %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
