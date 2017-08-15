@@ -31,6 +31,7 @@ input:-ms-input-placeholder {
   color: $light-gray !important;
 }
 
+/////////////////////////MOBILE////////////////////////
 ////navbar
 ._navbar-m {
   position: fixed;
@@ -205,4 +206,14 @@ input:-ms-input-placeholder {
 
 ._small-modal-title {
   padding: 0 0 6%;
+}
+
+/////////////////////////DESKTOP////////////////////////
+////navbar
+._navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000000;
 }

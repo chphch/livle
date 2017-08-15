@@ -1,70 +1,62 @@
-<nav>
-  <div class="navbar-desktop-container">
-    <div class="row">
-      <!-- LIVLE logo -->
-      <div class="col-xs-4">
-        <%= link_to feeds_path do %>
-            <%= image_tag "logo_livle", class: "navbar-desktop-logo" %>
-        <% end %>
-      </div>
-      <!-- search-bar -->
-      <div class="col-xs-4">
-        <%= form_tag("/search/serach", method: "get") do %>
-          <%= text_field_tag :term, nil, rows: 1, class: "navbar-desktop-search-box", placeholder: "Search" %>
-        <% end %>
-      </div>
-      <!-- buttons -->
-      <div class="col-xs-1">
-        <div class="navbar-desktop-buttons-container">
-          <%= link_to upcomings_path do %>
-              <div class="navbar-desktop-button-box text-center">
-                <!--<= image_tag "icon_ticket_empty", class: "navbar-desktop-button" %>-->
-                <p class="white-desktop-title">UPCOMING</p>
-              </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-xs-1">
-        <div class="navbar-desktop-buttons-container">
-          <%= link_to connect_urls_path do %>
-              <div class="navbar-desktop-button-box text-center">
-                <!--<= image_tag "icon_connect_empty", class: "navbar-desktop-button" %>-->
-                <p class="white-desktop-title">CONNECT</p>
-              </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-xs-1">
-        <!-- TODO: Modal 띄우는거 고민해보자.. -->
-        <div class="navbar-desktop-buttons-container">
-          <div id="navbar-login-button" class="text-center">
-            <p class="white-desktop-title">로그인</p>
+<nav class="_vcenter-positioner _navbar">
+  <!-- LIVLE logo -->
+  <%= link_to feeds_path do %>
+      <%= image_tag "logo_livle", class: "navbar-desktop-logo" %>
+  <% end %>
+  <!-- search-bar -->
+  <%= form_tag("/search/serach", method: "get") do %>
+      <%= text_field_tag :term, nil, rows: 1, class: "navbar-desktop-search-box", placeholder: "Search" %>
+  <% end %>
+  <!-- buttons -->
+  <div class="col-xs-1">
+    <div class="navbar-desktop-buttons-container">
+      <%= link_to upcomings_path do %>
+          <div class="navbar-desktop-button-box text-center">
+            <!--<= image_tag "icon_ticket_empty", class: "navbar-desktop-button" %>-->
+            <p class="white-desktop-title">UPCOMING</p>
           </div>
-        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <div class="navbar-desktop-buttons-container">
+      <%= link_to connect_urls_path do %>
+          <div class="navbar-desktop-button-box text-center">
+            <!--<= image_tag "icon_connect_empty", class: "navbar-desktop-button" %>-->
+            <p class="white-desktop-title">CONNECT</p>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <!-- TODO: Modal 띄우는거 고민해보자.. -->
+    <div class="navbar-desktop-buttons-container">
+      <div id="navbar-login-button" class="text-center">
+        <p class="white-desktop-title">로그인</p>
       </div>
-      <div class="col-xs-1">
-        <div class="navbar-desktop-buttons-container dropdown text-center">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <p class="white-desktop-title">Profile</p>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">프로필 설정</a>
-            </li>
-            <li>
-              <a href="#">좋아요 모아보기</a>
-            </li>
-            <li>
-              <a href="#">로그아웃</a>
-            </li>
-            <li>
-              <%= link_to admin_feed_path do %>
-                  관리자 설정
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <div class="navbar-desktop-buttons-container dropdown text-center">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <p class="white-desktop-title">Profile</p>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">프로필 설정</a>
+        </li>
+        <li>
+          <a href="#">좋아요 모아보기</a>
+        </li>
+        <li>
+          <a href="#">로그아웃</a>
+        </li>
+        <li>
+          <%= link_to admin_feed_path do %>
+              관리자 설정
+          <% end %>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
