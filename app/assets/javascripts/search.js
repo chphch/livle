@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //focus 안할 때
     $('.cancel-field').click(function () {
         $('.input-field').val('');
-        $('.input-icon-container').css({
-            'flex-grow': 3,
-            '-webkit-flex-grow': 3
-        });
+        $('.input-icon-container').css('width', '50%');
         $('.search-input-field').css('width', '100%');
         $('.cancel-field').hide();
     });
@@ -47,11 +44,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     function onfocus() {
-        $('.input-icon-container').css({
-            'flex-grow': 0,
-            '-webkit-flex-grow': 0
-        });
         $('.search-input-field').css('width', '84%');
+        $('.input-icon-container').css('width', '14%');
+        $('.input-field').css({
+            'flex-grow': 1,
+            '-webkit-flex-grow': 1
+        })
         $('.cancel-field').show();
     }
 

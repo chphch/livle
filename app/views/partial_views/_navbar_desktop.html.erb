@@ -1,45 +1,54 @@
 <nav class="_vcenter-positioner _navbar">
-  <!-- LIVLE logo -->
-  <%= link_to feeds_path do %>
-      <%= image_tag "logo_livle", class: "navbar-desktop-logo" %>
-  <% end %>
+  <% control = controller.class.name.split("::").first.to_s %>
   <!-- search-bar -->
-  <%= form_tag("/search/serach", method: "get") do %>
-      <%= text_field_tag :term, nil, rows: 1, class: "navbar-desktop-search-box", placeholder: "Search" %>
-  <% end %>
-  <!-- buttons -->
-  <div class="col-xs-1">
-    <div class="navbar-desktop-buttons-container">
+  <div class="_hcenter-positioner">
+    <%= form_tag search_result_path, method: :get, class: "_navbar-serach-container"  do %>
+        <div class="_vcenter-positioner">
+          <div class="_navbar-search-icon-container _hright-positioner">
+            <%= image_tag "icon_search_gray", class: "_navbar-search-icon" %>
+          </div>
+          <%= text_field_tag :search, nil, class: "_navbar-search-input _fs-4 _white", placeholder: "검색하기" %>
+          <%= image_tag "icon_esc", class: "_navbar-search-esc", style: "display: none" %>
+        </div>
+    <% end %>
+  </div>
+
+  <!-- LIVLE logo -->
+  <div class="_navbar-logo-container _vcenter-positioner">
+    <%= link_to feeds_path do %>
+        <%= image_tag "logo_livle", class: "_navbar-logo" %>
+    <% end %>
+  </div>
+
+  <div class="_navbar-buttons-container _vcenter-positioner">
+    <!-- buttons -->
+    <div class="_navbar-button-container">
       <%= link_to upcomings_path do %>
-          <div class="navbar-desktop-button-box text-center">
-            <!--<= image_tag "icon_ticket_empty", class: "navbar-desktop-button" %>-->
-            <p class="white-desktop-title">UPCOMING</p>
-          </div>
+          <% if control == 'UpcomingsController' %>
+              <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
+          <% else %>
+              <%= image_tag "icon_ticket_empty", class: "_navbar-icon" %>
+          <% end %>
       <% end %>
     </div>
-  </div>
-  <div class="col-xs-1">
-    <div class="navbar-desktop-buttons-container">
+    <div class="_navbar-button-container">
       <%= link_to connect_urls_path do %>
-          <div class="navbar-desktop-button-box text-center">
-            <!--<= image_tag "icon_connect_empty", class: "navbar-desktop-button" %>-->
-            <p class="white-desktop-title">CONNECT</p>
-          </div>
+          <% if control == 'ConnectUrlsController' %>
+              <%= image_tag "icon_connect_filled", class: "_navbar-icon" %>
+          <% else %>
+              <%= image_tag "icon_connect_empty", class: "_navbar-icon" %>
+          <% end %>
       <% end %>
     </div>
-  </div>
-  <div class="col-xs-1">
     <!-- TODO: Modal 띄우는거 고민해보자.. -->
-    <div class="navbar-desktop-buttons-container">
-      <div id="navbar-login-button" class="text-center">
-        <p class="white-desktop-title">로그인</p>
+    <div class="_navbar-button-container">
+      <div id="navbar-login-button">
+        <p class="_fs-3 _white">로그인</p>
       </div>
     </div>
-  </div>
-  <div class="col-xs-1">
-    <div class="navbar-desktop-buttons-container dropdown text-center">
+    <div class="_navbar-button-container dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <p class="white-desktop-title">Profile</p>
+        <p class="_fs-3 _white">Profile</p>
       </a>
       <ul class="dropdown-menu">
         <li>

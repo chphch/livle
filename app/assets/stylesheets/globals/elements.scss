@@ -216,4 +216,63 @@ input:-ms-input-placeholder {
   left: 0;
   width: 100%;
   background: #000000;
+
+  ._navbar-serach-container {
+    width: 25%;
+    margin: 1rem 0;
+    padding: 0.6rem 0;
+    background: $dark-gray;
+    border: none;
+    -webkit-border-radius: $br-min;
+    -moz-border-radius: $br-min;
+    border-radius: $br-min;
+  }
+  ._navbar-search-input {
+    background: $dark-gray;
+    height: 100%;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    border: none;
+  }
+  ._navbar-search-icon-container {
+    flex-grow: 2;
+    -webkit-flex-grow: 2;
+    padding: 0 2%;
+  }
+  ._navbar-search-icon {
+    width: auto;
+    height: 1.6rem;
+  }
+  ._navbar-search-esc {
+    width: auto;
+    height: 2rem;
+  }
+
+  ._navbar-logo-container {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    padding: 0 4%;
+  }
+  ._navbar-logo {
+    width: auto;
+    height: 4rem;
+  }
+
+  ._navbar-buttons-container {
+    position: absolute;
+    top: 0; right: 2%;
+    height: 100%;
+    p {
+      margin: 0;
+    }
+  }
+  ._navbar-button-container {
+    padding: 0 1rem;
+  }
+
+  ._navbar-icon {
+    width: auto;
+    height: 3rem;
+  }
 }
