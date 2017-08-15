@@ -39,7 +39,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
-            <%= text_field_tag :email, nil, class: "input-field _fs-3-mobile _white",
+            <%= text_field_tag :email, nil, class: "edit-input-field _fs-3-mobile _white",
                                placeholder: "이메일", value: "#{current_user.email}" %>
           </div>
           <div class="hr-white"></div>
@@ -47,7 +47,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
-            <%= text_field_tag :nickname, nil, class: "input-field _fs-3-mobile _white",
+            <%= text_field_tag :nickname, nil, class: "edit-input-field _fs-3-mobile _white",
                                placeholder: "닉네임", value: "#{current_user.nickname}" %>
           </div>
           <div class="hr-white"></div>
@@ -55,7 +55,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
-            <%= text_field_tag :intro, nil, class: "input-field _fs-3-mobile _white",
+            <%= text_field_tag :intro, nil, class: "edit-input-field _fs-3-mobile _white",
                                placeholder: "상태메세지", value: "#{current_user.intro}" %>
           </div>
         </div>

@@ -9,9 +9,9 @@
   #search-bar {
     position: fixed;
     z-index: 18;
-    transition: top 0.4s ease-in-out;
-    -webkit-transition: top 0.4s ease-in-out;
-    -moz-transition: top 0.4s ease-in-out;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
   }
 
   .search-container {
