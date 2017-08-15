@@ -32,6 +32,10 @@ $('document').ready(function() {
 
     // on each player ready
     function onPlayerReady(event) {
+        player = event.target;
+        if (player.index == 0) {
+            player.playVideo();
+        }
         readyPlayerSize++;
         if (readyPlayerSize == videoSize) {
             onAllPlayerReady();
@@ -71,6 +75,11 @@ $('document').ready(function() {
             });
             player.fullScreenButton.on("click", function() {
                onClickFullscreenButton(player);
+            });
+        });
+        $('.artist-profile').each(function(index, lineupButton) {
+            $(lineupButton).on("click", function() {
+                onClickLineupButton($(this));
             });
         });
     }
@@ -124,30 +133,52 @@ $('document').ready(function() {
         }
     });
 
-    // set on click lineup
-    $('.artist-profile').each(function(index, lineupButton) {
-        $(lineupButton).on("click", function() {
-            onClickLineupButton($(this));
-        });
-    });
-
     // on click lineup button(profile)
     function onClickLineupButton(lineupButton) {
         var buttonIndex = $(lineupButton).data("index");
         var currentVideoIndex = $('#upcomings-show-mobile').data("videoIndex");
-        $('.show-video-container').filter(function() {
-            return $(this).data("index") == currentVideoIndex;
-        }).addClass("_display-none");
-        $('.show-video-container').filter(function() {
-            return $(this).data("index") == buttonIndex;
-        }).removeClass("_display-none");
-        players.filter(function(player) {
+        var currentPlayer = players.filter(function(player) {
             return player.index == currentVideoIndex;
-        })[0].pauseVideo();
-        players.filter(function(player) {
+        })[0];
+        var targetPlayer = players.filter(function(player) {
             return player.index == buttonIndex;
-        })[0].playVideo();
-        setVideoLike(buttonIndex);
+        })[0];
+        var currentContainer = currentPlayer.container;
+        var targetContainer = targetPlayer.container;
+        var likeTrue = $(targetContainer).data("likeTrue");
+        switchVideoDisplay(targetContainer, currentContainer);
+        switchVideoStatus(targetPlayer, currentPlayer);
+        switchLikebuttonColor(likeTrue);
+        switchLikebuttonUrl(targetContainer);
+
+        $('.show-video-container').filter(function(index, ele) {
+            console.log($(ele).data());
+        });
+
         $('#upcomings-show-mobile').data("videoIndex", buttonIndex);
+    }
+
+    function switchVideoDisplay(targetContainer, currentContainer) {
+        $(currentContainer).addClass("_display-none");
+        $(targetContainer).removeClass("_display-none");
+    }
+    function switchVideoStatus(targetPlayer, currentPlayer) {
+        currentPlayer.pauseVideo();
+        targetPlayer.playVideo();
+    }
+    function switchLikebuttonColor(likeTrue) {
+        if (likeTrue) {
+            $('#icon-like-filled').removeClass('_display-none');
+            $('#icon-like-empty').addClass('_display-none');
+        } else {
+            $('#icon-like-filled').addClass('_display-none');
+            $('#icon-like-empty').removeClass('_display-none');
+        }
+    }
+    function switchLikebuttonUrl(targetContainer) {
+        var postClass = targetContainer.data("postClass");
+        var postId = targetContainer.data("postId");
+        var videoIndex = targetContainer.data("index");
+        $('#video-like-button').attr("href", "/upcomings/toggle_video_like/" + postClass + "/" + postId + "/" + videoIndex);
     }
 });

@@ -14,7 +14,7 @@ class UpcomingsController < ApplicationController
 
   def show
     @upcoming = Upcoming.find(params[:id])
-    @posts = @upcoming.posts
+    @posts = @upcoming.posts(current_user)
     @like_true = user_signed_in? &&
         UpcomingLike.where(
             upcoming_id: params[:id],
@@ -24,8 +24,31 @@ class UpcomingsController < ApplicationController
     render_by_device
   end
 
-  def share
+  def toggle_like
+    if user_signed_in?
+      upcoming = Upcoming.find(params[:upcoming_id])
+      @like_true = UpcomingLike.toggle_like(upcoming, current_user)
+      @like_type = "hand"
+      @like_count = upcoming.upcoming_likes.size
+      render '/xhrs/create_like'
+    else
+      render '/xhrs/login_modal'
+    end
+  end
 
+  def toggle_video_like
+    post_type = params[:post_class]
+    post_id = params[:post_id]
+    video_index = params[:video_index]
+    if (post_type == "feed")
+      puts "FEED LIKE"
+      puts video_index
+      redirect_to "/feeds/#{post_id}/toggle_like/#{video_index}"
+    elsif (post_type == "curation")
+      puts "CURATION LIKE"
+      puts video_index
+      redirect_to "/curations/#{post_id}/toggle_like/#{video_index}"
+    end
   end
 
   private

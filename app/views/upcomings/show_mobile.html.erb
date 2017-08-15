@@ -1,9 +1,13 @@
-<div id="upcomings-show-mobile" data-video-index="0", data-size="<%= @posts.size %>">
+<div id="upcomings-show-mobile" data-video-index="0" data-size="<%= @posts.size %>" >
 
   <!-- Youtube Video Player -->
   <% @posts.each_with_index do |post, index| %>
 
-      <div class="_show-video-container-m show-video-container <%= index == 0 ? "" : "_display-none" %>" data-index="<%= index %>">
+      <div class="_show-video-container-m show-video-container <%= index == 0 ? "" : "_display-none" %>"
+           data-index="<%= index %>"
+           data-post-class="<%= post[:post_class] %>"
+           data-post-id="<%= post[:id] %>"
+           data-like-true="<%= post[:like_true] %>">
         <iframe id="youtube-player-<%= index %>" type="text/html" src="http://www.youtube.com/embed/<%= post[:video_id] %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
     autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= post[:video_id] %>"
                 webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
@@ -68,11 +72,11 @@
           <%= link_to @upcoming.ticket_url do %>
               <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
           <% end %>
-          <%= link_to create_like_path(@upcoming.id), remote: true,
+          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true,
                       class: "_show-button _hcenter-positioner _vcenter-positioner" do %>
               <div class="_show-icon-m show-like">
-                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", style: "height:40px;width:40px;", class: "" %>
-                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", style: "height:40px;width:40px;", class: "" %>
+                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", style: "height:40px;width:40px;", class: @like_true ? "_display-none" : "" %>
+                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", style: "height:40px;width:40px;", class: @like_true ? "" : "_display-none" %>
               </div>
           <% end %>
         </div>
@@ -91,22 +95,21 @@
   </div>
   <div class="line-up-img-container">
     <% @posts.each_with_index do |post, index| %>
-        <%= link_to_remote create_like_path(post) do %>
-            <div class="artist-profile _hcenter-positioner _vckenter-positioner" data-index="<%= index %>"
-                 style="background: url(<%= post[:artist_image_url] %>) no-repeat center center; background-size: cover;">
-              <p class="_fs-2-mobile _white"><%= post[:artist_name] %></p>
-            </div>
-        <% end %>
+        <div class="artist-profile _hcenter-positioner _vckenter-positioner"
+             data-index="<%= index %>"
+             style="background: url(<%= post[:artist_image_url] %>) no-repeat center center; background-size: cover;">
+          <p class="_fs-2-mobile _white"><%= post[:artist_name] %></p>
+        </div>
     <% end %>
   </div>
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner">
-    <%= link_to create_like_path(@upcoming), remote: true, class: "_show-button
+    <%= link_to "", remote: true, id: "video-like-button", class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
-          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
-          <%= image_tag "icon_like_filled", id: "icon-like-filled", style: "height:40px;width:40px;", class: "" %>
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none", style: "height:40px;width:40px;" %>
         </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
@@ -135,12 +138,6 @@
 <%= render partial: '/xhrs/share_modal', locals: {post: @upcoming} %>
 
 <script>
-
-    // initialize upcoming like button
-    $('#icon-hand-' + "<%= @like_true ? "empty" : "filled" %>").addClass('_display-none');
-
-    // initialize video(feed/curation) like button
-
     // share modal
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();

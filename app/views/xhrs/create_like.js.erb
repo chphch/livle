@@ -1,10 +1,21 @@
+var emptyLikeIcon = $('#icon-<%= @like_type %>-empty');
+var filledLikeIcon = $('#icon-<%= @like_type %>-filled');
+
 <% if @like_true %>
-console.log("TRUE");
-$('#icon-<%= @like_type %>-empty').removeClass("_display-none");
-$('#icon-<%= @like_type %>-filled').addClass("_display-none");
+emptyLikeIcon.addClass("_display-none");
+filledLikeIcon.removeClass("_display-none");
 <% else %>
-console.log("FALSE");
-$('#icon-<%= @like_type %>-empty').addClass("_display-none");
-$('#icon-<%= @like_type %>-filled').removeClass("_display-none");
+emptyLikeIcon.removeClass("_display-none");
+filledLikeIcon.addClass("_display-none");
 <% end %>
+
 $('#<%= @like_type %>-like-count').text("<%= @like_count %>");
+
+// only for upcoming show page video like data
+<% if @video_index %>
+console.log($("#video-like-count").text());
+$('#video-like-count').text("<%= @like_count %>");
+$('.show-video-container').filter(function(index, container) {
+    return $(container).data("index") == <%= @video_index %>;
+}).data("likeTrue", <% if @like_true %>true<% else %>false<% end %>);
+<% end %>

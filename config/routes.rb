@@ -18,23 +18,27 @@ Rails.application.routes.draw do
   post 'artists/:id/update' => 'artists#update'
   get 'artists/:id/destroy' => 'artists#destroy'
 
-  get 'create/like/:post' => 'application#create_like', as: create_like
-
   resources :curations, only: [:create, :show] do
     resources :curation_comments, only: [:create, :update, :destroy]
+    get 'toggle_like/' => 'curations#toggle_like'
+    get 'toggle_like/:video_index' => 'curations#toggle_like'
   end
   get 'curations/:id/update' => 'curations#update'
   get 'curations/:id/destroy' => 'curations#destroy'
 
   resources :feeds, only: [:index, :create, :show] do
     resources :feed_comments, only: [:create, :update, :destroy]
+    get 'toggle_like' => 'feeds#toggle_like'
+    get 'toggle_like/:video_index' => 'feeds#toggle_like'
   end
   get 'feeds/:id/update' => 'feeds#update'
   get 'feeds/:id/destroy' => 'feeds#destroy'
 
   resources :upcomings, only: [:index, :create, :show] do
     resources :upcoming_comments, only: [:create, :update, :destroy]
+    get 'toggle_like'
   end
+  get 'upcomings/toggle_video_like/:post_class/:post_id/:video_index' => 'upcomings#toggle_video_like'
   get 'upcomings/:id/update' => 'upcomings#update'
   get 'upcomings/:id/destroy' => 'upcomings#destroy'
 
