@@ -1,0 +1,13 @@
+<div id="curation-card">
+  <div class="curation-background">
+    <%= image_tag "image_live", class: "thumbnail-img", id: "curation-#{curation.id}" %>
+
+  </div>
+
+</div>
+<script>
+    <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+    $('#curation-<%= curation.id %>').attr({
+        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
+    });
+</script>

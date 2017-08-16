@@ -25,12 +25,12 @@ Rails.application.routes.draw do
   get 'curations/:id/update' => 'curations#update'
   get 'curations/:id/destroy' => 'curations#destroy'
 
-  resources :feeds, only: [:index, :create, :show] do
+  resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
     get 'create_like'
   end
-  get 'feeds/:id/update' => 'feeds#update'
-  get 'feeds/:id/destroy' => 'feeds#destroy'
+  # get 'feeds/:id/update' => 'feeds#update'
+  # get 'feeds/:id/destroy' => 'feeds#destroy'
 
   resources :upcomings, only: [:index, :create, :show] do
     resources :upcoming_comments, only: [:create, :update, :destroy]

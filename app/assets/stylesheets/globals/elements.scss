@@ -216,7 +216,8 @@ input:-ms-input-placeholder {
   left: 0;
   width: 100%;
   padding: 1rem 0;
-  background: #000000;
+  z-index: 99;
+  background: $black;
 
   ._navbar-serach-container {
     width: 25%;
