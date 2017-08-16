@@ -73,16 +73,13 @@
             <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
           </p>
         </div>
-        <div class="describe-icons">
+        <div class="describe-icons _vcenter-positioner _hright-positioner">
           <%= link_to @upcoming.ticket_url do %>
               <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
           <% end %>
-          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true,
-                      class: "_show-button _hcenter-positioner _vcenter-positioner" do %>
-              <div class="_show-icon-m show-like">
-                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", style: "height:40px;width:40px;", class: @like_true ? "_display-none" : "" %>
-                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", style: "height:40px;width:40px;", class: @like_true ? "" : "_display-none" %>
-              </div>
+          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+              <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
+              <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
           <% end %>
         </div>
       </div>
@@ -113,12 +110,13 @@
     <%= link_to "", remote: true, id: "video-like-button", class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
-          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;" %>
-          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none", style: "height:40px;width:40px;" %>
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>
         </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
+      <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white _icon-text-margin-m">댓글</p>
     </div>
     <div class="_show-button _hcenter-positioner _vcenter-positioner" id="share-modal-button">
