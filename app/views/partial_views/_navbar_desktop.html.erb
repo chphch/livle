@@ -46,14 +46,17 @@
         <p class="_fs-3 _white">Login</p>
       </div>
     </div>
-    <div class="_navbar-button-container dropdown">
+    <div class="dropdown _navbar-button-container">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <div class="_navbar-profile-container">
-          <% if user_signed_in? %>
-              <%= image_tag "#{current_user.profile_img}", class: "_navbar-profile-img" %>
-          <% else %>
-              <%= image_tag "image_profile", class: "_navbar-profile-img" %>
-          <% end %>
+        <div class="_vcenter-positioner">
+          <div class="_navbar-profile-container">
+            <% if user_signed_in? %>
+                <%= image_tag "#{current_user.profile_img}", class: "_navbar-profile-img" %>
+            <% else %>
+                <%= image_tag "image_profile", class: "_navbar-profile-img" %>
+            <% end %>
+          </div>
+          <%= image_tag "icon_dropdown", class: "_navbar-dropdown-icon" %>
         </div>
       </a>
       <ul class="dropdown-menu dropdown-menu-right">
