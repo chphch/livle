@@ -22,7 +22,7 @@
           <% end %>
         </p>
       </div>
-      <div class="_thumbnail-info-container-m _row-positioner">
+      <div class="_thumbnail-button-container-m _row-positioner">
         <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @curation.count_view %></p>
         <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
@@ -33,8 +33,14 @@
     </div>
 
     <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
-      <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
+      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+        <div id="progress-bar"></div>
+      </div>
+      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+      </div>
+      <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
+        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin: 1% 3% 0 0;">HD</p>
         <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
       </div>
       <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
@@ -84,7 +90,7 @@
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner">
-    <%= link_to curation_create_like_path(@curation.id), remote: true, class: "_show-button
+    <%= link_to curation_toggle_like_path(@curation.id), remote: true, class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
           <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
@@ -102,22 +108,27 @@
     </div>
   </div>
 
+
+
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </div>
 
 <!-- Modals -->
-<% if !user_signed_in? %>
-    <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
-      <div class=\"_big-modal-container\">
-        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-      </div>
-    </form>
-<% end %>
-<%= render partial: '/xhrs/share_modal', locals: {post: @curation} %>
+<section id="modal">
+  <% if !user_signed_in? %>
+      <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+        <div class=\"_big-modal-container\">
+          <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+        </div>
+      </form>
+  <% end %>
+  <form id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @curation} %>
+  </form>
+</section>
 
 <script>
-
     // initialize like button
     <% if @like_true %>
     $('#icon-like-empty').addClass('_display-none');
@@ -135,9 +146,11 @@
         if(e.target.nodeName === 'DIV') {
             if($('#youtube-player-filter').is(':visible') === true) {
                 $('#youtube-player-filter').hide();
+                $('#remaining-time').hide();
                 $('.youtube-player-buttons').hide();
             } else {
                 $('#youtube-player-filter').show();
+                $('#remaining-time').show();
                 $('.youtube-player-buttons').show();
             }
         }
@@ -161,6 +174,39 @@
 
     function onPlayerReady(event) {
         event.target.playVideo();
+        updateTimerDisplay();
+        updateProgressBar();
+    }
+
+    // Duration Time
+    function updateTimerDisplay(){
+        // Update current time text display.
+        checkTime = setInterval(function () {
+            $('#remaining-time').text(formatTime( player.getDuration() - player.getCurrentTime() ));
+        }, 500);
+    }
+
+    function formatTime(time){
+        time = Math.round(time);
+        var minutes = Math.floor(time / 60),
+            seconds = time - minutes * 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return minutes + ":" + seconds;
+    }
+
+    // Circle Progressbar
+    var progress = new ProgressBar.Circle('#progress-bar', {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        color: '#9BFFCC',
+        trailColor: 'rgba(256, 256, 256, 0.33)',
+        trailWidth: 4,
+        svgStyle: null
+    });
+    function updateProgressBar(){
+        updateProgress = setInterval(function () {
+            progress.set((player.getCurrentTime() / player.getDuration()));
+        }, 200);
     }
 
     $('#play-button').click(function() {
@@ -169,6 +215,7 @@
         } else {
             player.playVideo();
             $('#youtube-player-filter').hide();
+            $('#remaining-time').hide();
             $('.youtube-player-buttons').hide();
         }
     });

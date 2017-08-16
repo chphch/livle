@@ -22,7 +22,7 @@
               <%= post[:artist_name] %>
             </p>
           </div>
-          <div class="_thumbnail-info-container-m _row-positioner">
+          <div class="_thumbnail-button-container-m _row-positioner">
             <% if index != 0 %>
                 <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
                 <p class="_fs-5-mobile _white"><%= post[:count_view] %></p>
@@ -35,14 +35,19 @@
         </div>
 
         <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
-          <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
+          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+            <div id="progress-bar"></div>
+          </div>
+          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+            <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+          </div>
+          <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
             <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin-top: 1%;">HD</p>
             <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
           </div>
           <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
         </div>
       </div>
-
   <% end %>
 
   <!-- back button -->
@@ -56,7 +61,7 @@
       <div class="_show-text-container-m _row-positioner">
         <p class="width-devision _fs-1-mobile _white"><%= @upcoming.title %></p>
         <div class="width-devision _hright-positioner">
-          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
+          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= d_day(@upcoming.start_date) %></strong></p>
         </div>
       </div>
       <div class="describe-padding">
@@ -121,21 +126,24 @@
       <p class="_fs-4-mobile _white _icon-text-margin-m">공유</p>
     </div>
   </div>
-</div>
 
-<section id="comment">
-  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
-</section>
-
-<!-- Modals -->
-<% if !user_signed_in? %>
-    <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
-      <div class=\"_big-modal-container\">
-        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-      </div>
+  <!-- Modals -->
+  <section id="modal">
+    <% if !user_signed_in? %>
+        <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+          <div class=\"_big-modal-container\">
+            <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+          </div>
+        </form>
+    <% end %>
+    <form id="share-modal" class="modal">
+      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
     </form>
-<% end %>
-<%= render partial: '/xhrs/share_modal', locals: {post: @upcoming} %>
+  </section>
+
+  <!-- Comments -->
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
+</div>
 
 <script>
     // share modal

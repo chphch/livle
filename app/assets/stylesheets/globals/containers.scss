@@ -1,6 +1,10 @@
 @import "sizes";
 @import "colors";
 
+body {
+  background: $black;
+}
+
 ////backgrounds
 ._body-background-m {
   position: fixed;
@@ -13,10 +17,15 @@
 }
 
 ////containers
+._full-container {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
 ._logo-container-m {
   width: auto;
   height: $logo-height-m;
-  margin-top: $logo-container-mv-m;
+  margin-top: 2%;
 }
 
 ._list-container-m {
@@ -33,11 +42,11 @@
   height: 100%;
 }
 
-._thumbnail-info-container-m {
+._thumbnail-button-container-m {
   position: absolute;
   bottom: 3%; left: 1%;
   width: 100%;
-  height: 6%;
+  height: 7%;
 }
 
 ._describe-container-m {
@@ -81,6 +90,11 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+._show-progress-container-m {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 ._show-describe-container-m {
@@ -132,12 +146,49 @@
 
 ._big-modal-container {
   position: absolute;
-  top: 18%;
-  left: 14%;
-  width: 72%;
-  height: 56%;
+  top: 0; left: 0; bottom: 0; right: 0;
+  //top: 18%;
+  //left: 14%;
+  //width: 72%;
+  //height: 56%;
+  margin: 24rem 12rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
+}
+
+._small-modal-container {
+  position: absolute;
+  top: 34%;
+  left: 14%;
+  width: 72%;
+  height: 32%;
+  background: none;
+  border-radius: 6rem;
+}
+
+._modal-background {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-color: rgba(82, 82, 82, .9);
+  border-radius: 6rem;
+}
+/* support backdrop-filter */
+@supports ( (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)) ) {
+  ._modal-background {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+}
+/* no support backdrop-filter */
+//@supports ( not ( (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)) ) ) {
+//  ._modal-background {
+//    -webkit-filter: url(#backdrop-filter-blur);
+//    filter: url(#backdrop-filter-blur);
+//  }
+//}
+
+._modal-icon-container {
+  margin: 0 6% 0 0;
 }
 
 ////positioners

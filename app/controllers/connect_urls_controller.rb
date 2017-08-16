@@ -14,7 +14,7 @@ class ConnectUrlsController < ApplicationController
   end
 
   def create
-    connectUrl = ConnectUrl.new(video_url: @video_url, describe: params[:describe], user_id: current_user.id)
+    connectUrl = ConnectUrl.new(video_url: params[:video_url], describe: params[:describe], user_id: current_user.id)
     if connectUrl.save
       redirect_to connect_urls_path
     end

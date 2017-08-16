@@ -1,0 +1,9 @@
+<div class="_small-modal-container">
+  <div class="_modal-background _vcenter-positioner _hcenter-positioner">
+    <%= social_share_button_tag(
+            post.title,
+            'data-twitter-title': post.title,
+        'url': "#{request.original_url}")
+    %>
+  </div>
+</div>

@@ -4,10 +4,11 @@ $black: #000000;
 $dark-dark-gray: #292929;
 $dark-gray: #525252;
 $gray: #757575;
-$light-gray: #A7A7A7;
+$light-gray: #bfbfbf;
 $dark-green: #58757C;
 $light-green: #9BFFCC;
 $facebook-blue: #023698;
+$red: #FF0000;
 $gray-opacity: rgba(256, 256, 256, 0.27);
 
 ._white {
@@ -30,4 +31,7 @@ $gray-opacity: rgba(256, 256, 256, 0.27);
 }
 ._facebook-blue {
   color: $facebook-blue;
+}
+._red {
+  color: $red;
 }

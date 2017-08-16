@@ -4,7 +4,7 @@
         <%= image_tag "image_live", class: "_thumbnail-image-m", id: "curation-#{curation.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
-        <div class="_thumbnail-info-container-m _row-positioner">
+        <div class="_thumbnail-button-container-m _row-positioner">
           <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
           <p class="_fs-5-mobile _white"><%= curation.count_view %></p>
           <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
@@ -13,7 +13,7 @@
           <p class="_fs-5-mobile _white"><%= curation.count_share %></p>
         </div>
 
-        <div class="_thumbnail-info-container-m _vcenter-positioner _hright-positioner">
+        <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner">
           <%= image_tag("icon_crown_gold", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -2%") %>
           <p class="_fs-4-mobile _white _thumbnail-margin-right-m"><%= curation.user.nickname %></p>
         </div>

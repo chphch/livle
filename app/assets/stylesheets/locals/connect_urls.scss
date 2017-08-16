@@ -28,16 +28,6 @@
     letter-spacing: 1rem;
   }
 
-  .content-container {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    flex-direction: column;
-    -webkit-flex-direction: column;
-  }
-
   .connect-input-container {
     width: 90%;
   }
@@ -52,6 +42,14 @@
 }
 
 #connect-index-mobile {
+  .background-img {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
   .icon-container {
     height: 10rem;
     padding: 0 4%;
@@ -80,5 +78,21 @@
     height: 24rem;
     background: $gray-opacity;
     border-radius: $br-min-m;
+  }
+
+  .submit-container {
+    width: 100%;
+    margin: 4% 0;
+  }
+
+  .submit-button {
+    width: 45%;
+    padding: 3% 0;
+    background: none;
+    border: 2px solid $white;
+    border-radius: $br-image-m;
+    p {
+      margin: 0;
+    }
   }
 }

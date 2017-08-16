@@ -3,6 +3,8 @@
   <head>
     <title>Livle</title>
     <%= csrf_meta_tags %>
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=0.39, maximum-scale=0.39, user-scalable=no" />
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -26,5 +28,8 @@
     <!-- Bottom Navbar -->
     <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
     <%= yield %>
+    <% unless @disable_nav %>
+      <div class="navbar-space-m"></div>
+    <% end %>
   </body>
 </html>

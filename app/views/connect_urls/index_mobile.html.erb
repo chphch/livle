@@ -1,7 +1,8 @@
 <div id="connect-index-mobile">
   <div class="_body-background-m"></div>
+  <%= image_tag "background_connect", class: "background-img" %>
 
-  <div class="content-container _vcenter-positioner _hcenter-positioner">
+  <div class="_full-container _column-positioner _vcenter-positioner _hcenter-positioner">
     <div class="info-text-container text-spacing">
       <p class="_fs-1-mobile _white">
         <%= user_signed_in? ? current_user.nickname : "LIVLE" %>님이 느꼈던 전율의 순간.<br>
@@ -16,7 +17,7 @@
               <%= image_tag "icon_video_cam", class: "input-icon" %>
             </div>
             <div class="input-container">
-              <%= text_field_tag :video_url, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", placeholder: "URL을 입력해주세요" %>
+              <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white", placeholder: "URL을 입력해주세요" %>
             </div>
           </div>
       <% end %>

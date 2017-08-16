@@ -28,8 +28,13 @@ class MypageController < ApplicationController
     render_by_device
   end
 
-  def update_profile_img
-
+  def update_profile
+    user = current_user
+    if user.update(profile_img: params[:profile_img], email: params[:email], nickname: params[:nickname], intro: params[:intro])
+      redirect_back(fallback_location: root_path)
+    else
+      render text: user.errors.messages
+    end
   end
 
   def update_nickname
@@ -48,10 +53,12 @@ class MypageController < ApplicationController
   end
 
   def terms_of_use
+    @disable_nav = true
     render_by_device
   end
 
   def privacy_policy
+    @disable_nav = true
     render_by_device
   end
 
@@ -75,7 +82,11 @@ class MypageController < ApplicationController
     day_to_millisec = 1000*60*60*24
 
     d_day = ((start_day - today)/day_to_millisec).floor
-    return -d_day
+    if d_day == 0
+      return "-day"
+    else
+      return -d_day
+    end
   end
 
   def user_params
