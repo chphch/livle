@@ -89,9 +89,8 @@
     <%= link_to feed_toggle_like_path(@feed.id), remote: true, class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
-          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
-          <%= image_tag "icon_like_filled", id: "icon-like-filled", style: "height:40px;width:40px;", class: "" %>
-        </div>
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>       </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
