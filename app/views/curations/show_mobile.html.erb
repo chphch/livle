@@ -26,7 +26,7 @@
         <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @curation.count_view %></p>
         <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @curation.curation_likes.size %></p>
+        <p id="like-count" class="_fs-5-mobile _white"><%= @curation.curation_likes.size %></p>
         <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @curation.count_share %></p>
       </div>
@@ -90,9 +90,12 @@
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner">
-    <%= link_to curation_create_like_path(@curation.id), remote: true, class: "_show-button
+    <%= link_to curation_toggle_like_path(@curation.id), remote: true, class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
-        <%= image_tag "icon_like_empty", class: "_show-icon-m show-like" %>
+        <div class="_show-icon-m show-like">
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;", class: "" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", style: "height:40px;width:40px;", class: "" %>
+        </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
@@ -106,17 +109,34 @@
   </div>
   <hr>
 
-  <section id="modal">
-    <form id="share-modal" class="modal">
-      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @curation} %>
-    </form>
-  </section>
+
 
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @curation.curation_comments} %>
 </div>
 
+<!-- Modals -->
+<section id="modal">
+  <% if !user_signed_in? %>
+      <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+        <div class=\"_big-modal-container\">
+          <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+        </div>
+      </form>
+  <% end %>
+  <form id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @curation} %>
+  </form>
+</section>
+
 <script>
+    // initialize like button
+    <% if @like_true %>
+    $('#icon-like-empty').addClass('_display-none');
+    <% else %>
+    $('#icon-like-filled').addClass('_display-none');
+    <% end %>
+
     // share modal
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();

@@ -1,57 +1,59 @@
-<!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+<div id="upcomings-show-mobile" data-video-index="0" data-size="<%= @posts.size %>" >
 
-<div id="upcomings-show-mobile">
-  <div class="_show-video-container-m">
-    <!-- Youtube Video Player -->
-    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
-            webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+  <!-- Youtube Video Player -->
+  <% @posts.each_with_index do |post, index| %>
 
-    <div id="youtube-player-filter">
-      <div class="_show-video-filter-m"></div>
-      <div class="_show-video-title-container-m _hcenter-positioner">
-        <p class="_fs-2-mobile _white">
-          <!-- title -->
-          <%= @upcoming.title %> -
-          <!-- artist.name -->
-          <% @upcoming.artists.each_with_index do |artist, i| %>
-              <%= artist.name %>
-              <% break if @upcoming.artists[i+1] == nil %>
-              ,&nbsp
-          <% end %>
-        </p>
-      </div>
-      <div class="_thumbnail-button-container-m _row-positioner">
-        <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.count_view %></p>
-        <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.upcoming_likes.size %></p>
-        <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @upcoming.count_share %></p>
-      </div>
-    </div>
+      <div class="_show-video-container-m show-video-container <%= index == 0 ? "" : "_display-none" %>"
+           data-index="<%= index %>"
+           data-post-class="<%= post[:post_class] %>"
+           data-post-id="<%= post[:id] %>"
+           data-like-true="<%= post[:like_true] %>">
+        <iframe id="youtube-player-<%= index %>" type="text/html" src="http://www.youtube.com/embed/<%= post[:video_id] %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= post[:video_id] %>"
+                webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
 
-    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
-      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <div id="progress-bar"></div>
-      </div>
-      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
-      </div>
-      <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin: 1% 3% 0 0;">HD</p>
-        <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
-      </div>
-      <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
-      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
-    </div>
+        <div class="youtube-player-filter">
+          <div class="_show-video-filter-m"></div>
+          <div class="_show-video-title-container-m _hcenter-positioner">
+            <p class="_fs-2-mobile _white">
+              <!-- title -->
+              <%= @upcoming.title %> -
+              <!--artist.name -->
+              <%= post[:artist_name] %>
+            </p>
+          </div>
+          <div class="_thumbnail-button-container-m _row-positioner">
+            <% if index != 0 %>
+                <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p class="_fs-5-mobile _white"><%= post[:count_view] %></p>
+                <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p id="video-like-count" class="_fs-5-mobile _white"><%= post[:count_like] %></p>
+                <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+                <p class="_fs-5-mobile _white"><%= post[:count_share] %></p>
+            <% end %>
+          </div>
+        </div>
 
-    <!-- back button -->
-    <%= link_to :back, class: "_show-video-back-container-m" do %>
-        <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-    <% end %>
-  </div>
+        <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
+          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+            <div id="progress-bar"></div>
+          </div>
+          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+            <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+          </div>
+          <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
+            <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin-top: 1%;">HD</p>
+            <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
+          </div>
+          <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
+        </div>
+      </div>
+  <% end %>
+
+  <!-- back button -->
+  <%= link_to :back, class: "_show-video-back-container-m" do %>
+      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+  <% end %>
 
   <!-- Video info -->
   <div class="_show-info-padding-m">
@@ -75,8 +77,12 @@
           <%= link_to @upcoming.ticket_url do %>
               <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
           <% end %>
-          <%= link_to upcoming_create_like_path(@upcoming.id), remote: true do %>
-              <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m icon-padding" %>
+          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true,
+                      class: "_show-button _hcenter-positioner _vcenter-positioner" do %>
+              <div class="_show-icon-m show-like">
+                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", style: "height:40px;width:40px;", class: @like_true ? "_display-none" : "" %>
+                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", style: "height:40px;width:40px;", class: @like_true ? "" : "_display-none" %>
+              </div>
           <% end %>
         </div>
       </div>
@@ -93,23 +99,26 @@
     </div>
   </div>
   <div class="line-up-img-container">
-    <% @upcoming.upcoming_artists.each do |artist| %>
-        <div class="artist-profile _hcenter-positioner _vcenter-positioner"
-             style="background: url(<%= image_url("#{artist.artist.image_url}") %>) no-repeat center center; background-size: cover;">
-          <p class="_fs-2-mobile _white"><%= artist.artist.name %></p>
+    <% @posts.each_with_index do |post, index| %>
+        <div class="artist-profile _hcenter-positioner _vckenter-positioner"
+             data-index="<%= index %>"
+             style="background: url(<%= post[:artist_image_url] %>) no-repeat center center; background-size: cover;">
+          <p class="_fs-2-mobile _white"><%= post[:artist_name] %></p>
         </div>
     <% end %>
   </div>
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner">
-    <%= link_to upcoming_create_like_path(@upcoming.id), remote: true, class: "_show-button
+    <%= link_to "", remote: true, id: "video-like-button", class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
-        <%= image_tag "icon_like_empty", class: "_show-icon-m show-like" %>
+        <div class="_show-icon-m show-like">
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", style: "height:40px;width:40px;" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none", style: "height:40px;width:40px;" %>
+        </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
-      <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white _icon-text-margin-m">댓글</p>
     </div>
     <div class="_show-button _hcenter-positioner _vcenter-positioner" id="share-modal-button">
@@ -119,7 +128,15 @@
   </div>
   <hr>
 
+  <!-- Modals -->
   <section id="modal">
+    <% if !user_signed_in? %>
+        <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
+          <div class=\"_big-modal-container\">
+            <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+          </div>
+        </form>
+    <% end %>
     <form id="share-modal" class="modal">
       <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
     </form>
@@ -129,123 +146,9 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
 </div>
 
-
 <script>
     // share modal
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();
     });
-
-    // filter
-    $('#youtube-player-controller').click(function (e) {
-        if(e.target.nodeName === 'DIV') {
-            if($('#youtube-player-filter').is(':visible') === true) {
-                $('#youtube-player-filter').hide();
-                $('#remaining-time').hide();
-                $('.youtube-player-buttons').hide();
-            } else {
-                $('#youtube-player-filter').show();
-                $('#remaining-time').show();
-                $('.youtube-player-buttons').show();
-            }
-        }
-    });
-
-    // youtube player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        event.target.playVideo();
-        updateTimerDisplay();
-        updateProgressBar();
-    }
-
-    // Duration Time
-    function updateTimerDisplay(){
-        // Update current time text display.
-        checkTime = setInterval(function () {
-            $('#remaining-time').text(formatTime( player.getDuration() - player.getCurrentTime() ));
-        }, 500);
-    }
-    function formatTime(time){
-        time = Math.round(time);
-        var minutes = Math.floor(time / 60),
-            seconds = time - minutes * 60;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        return minutes + ":" + seconds;
-    }
-
-    // Circle Progressbar
-    var progress = new ProgressBar.Circle('#progress-bar', {
-        strokeWidth: 4,
-        easing: 'easeInOut',
-        color: '#9BFFCC',
-        trailColor: 'rgba(256, 256, 256, 0.33)',
-        trailWidth: 4,
-        svgStyle: null
-    });
-    function updateProgressBar(){
-        updateProgress = setInterval(function () {
-            progress.set((player.getCurrentTime() / player.getDuration()));
-        }, 200);
-    }
-
-    $('#play-button').click(function() {
-        if(player.getPlayerState() === 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-            $('#youtube-player-filter').hide();
-            $('#remaining-time').hide();
-            $('.youtube-player-buttons').hide();
-        }
-    });
-
-    $('#hd-button').click(function () {
-        var quality = player.getPlaybackQuality();
-        console.log('quality = ' + quality);
-        $(this).toggleClass('_light-gray _white');
-        if(quality === 'small' || quality === 'medium' || quality === 'large') {
-            player.setPlaybackQuality('hd720');
-        } else {
-            player.setPlaybackQuality('large');
-        }
-    });
-
-    $('#fullscreen-button').click(function () {
-        var elem = document.getElementById("youtube-player");
-        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
-        if(elem.requestFullScreen) {
-            elem.requestFullScreen();
-        } else if(elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen();
-        } else if(elem.msRequestFullScreen){
-            elem.msRequestFullScreen();
-        } else if(elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        }
-    });
-
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING && !done) {
-            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
-        }
-        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
-        }
-    }
 </script>

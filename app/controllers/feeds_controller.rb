@@ -18,9 +18,21 @@ class FeedsController < ApplicationController
     render_by_device
   end
 
-  def update
-    @feed = Feed.find_by(id: params[:id])
+  def toggle_like
+    if user_signed_in?
+      feed = Feed.find(params[:feed_id])
+      @like_true = FeedLike.toggle_like(feed, current_user)
+      @like_type = "like"
+      @like_count = feed.feed_likes.size
+      @video_index = params[:video_index]
+      render '/xhrs/create_like'
+    else
+      render '/xhrs/login_modal'
+    end
+  end
 
+  def update
+    @feed = Feed.find(params[:id])
     if @feed.update(title: params[:title], youtube_id: params[:youtube_id])
       redirect_back(fallback_location: root_path)
     else

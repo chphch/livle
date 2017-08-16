@@ -6,21 +6,27 @@ class ApplicationRecord < ActiveRecord::Base
     self.save
   end
 
-  def self.create_like(user_id, post_id)
-    post_field = "#{self.name.downcase.chomp('like')}_id"                   # e.g. "curation_id"
-    like = self.where("#{post_field} = ? AND user_id = ?",
-                            post_id,
-                            user_id,
-                           ).take
+  def self.toggle_like(post, user)
+    post_class_name = post.class.name.downcase # curation
+    post_field_sym = "#{post_class_name}_id".to_sym # :curation_id
+    like = self.where("#{post_class_name}_id = ? AND user_id = ?", post.id, user.id).take
     if like
       like.destroy
       return false
     else
       like = self.new
-      like[post_field] = post_id
-      like.user_id = user_id
+      like[post_field_sym] = post.id
+      like.user_id = user.id
       like.save
       return true
     end
+  end
+
+  def like_class
+    "#{self.class.name}Like".constantize
+  end
+
+  def get_youtube_video_id(youtube_video_url)
+    youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '')
   end
 end

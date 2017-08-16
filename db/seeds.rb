@@ -22,8 +22,8 @@ end
 
 for i in 1..SIZE_1
   Artist.create(
-    name: "artist_" + i.to_s,
-    # image_url: "image_artist.jpg"
+    name: "artist_" + (i * 5).to_s,
+    image_url: "asdfasdf"
   )
 end
 
@@ -86,12 +86,10 @@ for i in 1..SIZE_1
   upcoming = Upcoming.create(
     title: "upcoming_" + i.to_s,
     place: Faker::Space.galaxy,
-    main_youtube_id: "https://www.youtube.com/watch?v=eBNk5-FhYzM",
-    start_date: Date.new(2017,rand(8..12),rand(1..30)),
-    end_date: Date.new(2017,rand(8..12),rand(1..30)),
-    ticket_url: 'https://www.naver.com',
-    count_view: rand(1..100),
-    count_share: rand(1..100)
+    main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
+    start_date: Date.new(2017,rand(1..12),rand(1..12)),
+    end_date: Date.new(2017,rand(1..12),rand(1..12)),
+    ticket_url: 'www.naver.com'
   )
   for i in 1..SIZE_2
     arr = Array.new(SIZE_1) {|i| i}.sample(5)

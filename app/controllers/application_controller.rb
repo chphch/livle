@@ -21,11 +21,12 @@ class ApplicationController < ActionController::Base
       post_class = controller_name.classify.constantize                   # e.g. Curation
       likes_field = "#{controller_name.chomp('s')}_likes"                 # e.g. "curation_likes"
       post_id = params[post_field.to_sym]
-      @like_true = like_class.create_like(current_user.id, post_id)
+      @like_true = like_class.toggle_like(current_user, post_id)
       @like_count = post_class.find(post_id).send(likes_field).size
-      render '/create_like', formats: :js
+      @like_type = like_class == UpcomingLike ? "hand" : "like"
+      render '/xhrs/create_like'
     else
-      render '/login_modal'
+      render '/xhrs/login_modal'
     end
   end
 

@@ -1,6 +1,0 @@
-<% if @like_true %>
-  $('.show-like').attr("src", "<%= image_url "icon_like_filled" %>");
-<% else %>
-  $('.show-like').attr("src", "<%= image_url "icon_like_empty" %>");
-<% end %>
-$('#show-like-count').text("<%= @like_count %>");
