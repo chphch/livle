@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "globals/colors";
 
-#feeds-index-mobile {
+#feeds-index-mobile,
+#feeds-show-mobile,
+#curations-show-mobile {
   background: $black;
 }
