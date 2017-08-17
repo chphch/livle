@@ -27,23 +27,42 @@
     background: $black;
   }
 
-  .card-container {
+  .feed-list-container {
     position: relative;
     width: 116rem;
   }
 
-  .prev_list {
+  .prev-list {
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
     background: $black-opacity;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  .next_list {
+  .next-list {
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
     background: $black-opacity;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .current-list {
+    position: relative;
+    top: 0; left: 0; bottom: 0; right: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .card-container {
+    position: relative;
+    width: 16rem;
+    margin: 2rem;
   }
 }
 
@@ -77,6 +96,7 @@
     top: 0; left: 0; bottom: 0;
     width: 50rem;
     margin: 0 0 0 12rem;
+    p { margin: 0; }
   }
 
   .curator-container {
@@ -89,7 +109,5 @@
 }
 
 #feed-index-card {
-  .card-container {
-    padding: 4%;
-  }
+
 }

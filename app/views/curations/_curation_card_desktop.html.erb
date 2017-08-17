@@ -34,7 +34,7 @@
         <p class="_fs-2 _white"><%= curation.title %></p>
       </div>
       <div class="curation-text-container">
-        <p class="_fs-4 _light-gray _f-line-mobile"><%= curation.content %></p>
+        <%= simple_format curation.content, class: "_fs-4 _light-gray _f-line-mobile" %>
       </div>
     </div>
   </div>

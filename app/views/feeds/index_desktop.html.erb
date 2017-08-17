@@ -5,12 +5,26 @@
   </div>
 
   <div class="feed-container _hcenter-positioner">
-    <div class="card-container">
-      <div class="prev_list">
+    <div class="feed-list-container">
+      <div class="current-list _vcenter-positioner" id="scroll-target">
+        <% @feeds.each_with_index do |feed, i| %>
+            <% if i % 2 != 0 && @feeds[i+1] != nil %>
+                <div class="feed-list _column-positioner">
+                  <div class="card-container">
+                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>
+                  </div>
+                  <div class="card-container">
+                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i+1]} %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+
+      <div class="prev-list _vcenter-positioner _hcenter-positioner">
         <%= image_tag "icon_back" %>
       </div>
-      <p class="_fs-2 _white">Padding Test</p>
-      <div class="next_list">
+      <div class="next-list _vcenter-positioner _hcenter-positioner">
         <%= image_tag "icon_next" %>
       </div>
     </div>
