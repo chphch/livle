@@ -36,17 +36,24 @@
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
-    background: $black-opacity;
+    background: -moz-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     &:hover {
       cursor: pointer;
     }
+  }
+  #prev-btn {
+    display: none;
   }
 
   .next-list {
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
-    background: $black-opacity;
+    background: -moz-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     &:hover {
       cursor: pointer;
     }

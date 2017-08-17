@@ -18,4 +18,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'scrollLeft': $scroll
         }, 500);
     }
+
+    $this.scroll(function () {
+        if ($this.scrollLeft() > 0) {
+            $('#prev-btn').show();
+        } else {
+            $('#prev-btn').hide();
+        }
+    });
+
+    function checkPos() {
+        if ($this.scrollLeft() > 0) {
+            $('#prev-btn').show();
+        } else {
+            $('#prev-btn').hide();
+        }
+    }
 });
