@@ -31,6 +31,21 @@ input:-ms-input-placeholder {
   color: $light-gray !important;
 }
 
+._no-p-margin {
+  p { margin: 0; }
+}
+
+._profile-img {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  width: 94%;
+  height: 94%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 /////////////////////////MOBILE////////////////////////
 ////navbar
 ._navbar-m {
@@ -93,7 +108,7 @@ input:-ms-input-placeholder {
 
 ._profile-border-m {
   border-radius: 100%;
-  border: 0.3rem $light-green solid;
+  border: 0.2rem $light-green solid;
 }
 
 ._show-video-filter-m {
@@ -208,6 +223,11 @@ input:-ms-input-placeholder {
   display: none;
 }
 
+._flex-grow-1 {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+}
+
 ._small-modal-title {
   padding: 0 0 6%;
 }
@@ -221,19 +241,21 @@ input:-ms-input-placeholder {
   width: 100%;
   padding: 1rem 0;
   z-index: 99;
-  background: $black;
+  background: rgba(0, 0, 0, 0);
+  transition: background 800ms;
+  -webkit-transition: background 800ms;
 
   ._navbar-serach-container {
     width: 25%;
     padding: 0.6rem 0;
-    background: $dark-gray;
+    background: rgba(226, 222, 222, 0.31);
     border: none;
     -webkit-border-radius: $br-min;
     -moz-border-radius: $br-min;
     border-radius: $br-min;
   }
   ._navbar-search-input {
-    background: $dark-gray;
+    background: none;
     width: 52%;
     height: 100%;
     border: none;
@@ -299,18 +321,35 @@ input:-ms-input-placeholder {
     border: 1px solid $light-green;
     border-radius: 50%;
   }
-  ._navbar-profile-img {
-    position: absolute;
-    top: 4%;
-    left: 4%;
-    width: 94%;
-    height: 94%;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 50%;
-  }
+
   ._navbar-dropdown-icon {
     width: auto;
     padding: 0 0 0 1rem;
+  }
+}
+
+////icon, video
+._thumbnail-info-icon {
+  width: auto;
+  height: 2rem;
+}
+
+._crown-icon-margin {
+  margin: 0 4% 0 0;
+}
+
+._video-player {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background: rgba(0,0,0,1);
+  overflow:hidden;
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

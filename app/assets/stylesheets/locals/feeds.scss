@@ -13,18 +13,27 @@
 
 //Desktop
 #feeds-index {
+  background: $black;
+
   .curation-container {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-    height: 38%;
+    position: relative;
+    top: 0; left: 0; right: 0;
+    height: 36rem;
     background: $gray;
+  }
+
+  .feed-container {
+    padding: 8% 0;
+    background: $black;
+  }
+
+  .card-container {
+    width: 116rem;
   }
 }
 
 #curation-card {
   .curation-background {
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
     overflow: hidden;
   }
 
@@ -34,5 +43,32 @@
     object-fit: cover;
     filter: $blur;
     -webkit-filter: $blur;
+  }
+
+  .curation-filter {
+    background: $black-opacity;
+    padding: 5rem 0 0;
+  }
+
+  .curation-video-container {
+    position: relative;
+    top: 0;
+    width: 54rem;
+    height: auto;
+  }
+
+  .curation-describe-container {
+    position: relative;
+    top: 0; left: 0; bottom: 0;
+    width: 50rem;
+    margin: 0 0 0 12rem;
+  }
+
+  .curator-container {
+    padding: 0 0 0 6%;
+  }
+
+  .curation-text-container {
+    padding: 4% 0 0;
   }
 }

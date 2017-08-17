@@ -1,12 +1,45 @@
 <div id="curation-card">
-  <div class="curation-background">
+  <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+  <div class="curation-background _full-container">
     <%= image_tag "image_live", class: "thumbnail-img", id: "curation-#{curation.id}" %>
-
   </div>
 
+  <div class="curation-filter _full-container _hcenter-positioner">
+    <div class="curation-video-container">
+      <div class="_video-player">
+        <!-- Youtube Video Player -->
+        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+                webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="curation-describe-container _column-positioner _hcenter-positioner">
+      <div class="_vcenter-positioner">
+        <div class="_profile-container _profile-border-m">
+          <%= image_tag "#{curation.user.profile_img}", class: "_profile-img" %>
+        </div>
+        <div class="curator-container _flex-grow-1">
+          <div class="_vcenter-positioner _no-p-margin">
+            <%= image_tag("icon_crown_gold", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
+            <p class="_fs-2 _white"><%= curation.user.nickname %></p>
+          </div>
+          <div class="_no-p-margin">
+            <p class="_fs-4 _light-gray"><%= curation.user.intro %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="curation-text-container">
+        <p class="_fs-2 _white"><%= curation.title %></p>
+      </div>
+      <div class="curation-text-container">
+        <p class="_fs-4 _light-gray _f-line-mobile"><%= curation.content %></p>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-    <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
     $('#curation-<%= curation.id %>').attr({
         src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
     });

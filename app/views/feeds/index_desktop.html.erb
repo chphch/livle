@@ -1,5 +1,12 @@
 <div id="feeds-index">
+  <% @disable_nav = true %>
   <div class="curation-container">
     <%= render partial: "curations/curation_card_desktop", locals: {curation: @curations.first} %>
+  </div>
+
+  <div class="feed-container _hcenter-positioner">
+    <div class="card-container">
+      <p class="_fs-2 _white">Padding Test</p>
+    </div>
   </div>
 </div>
