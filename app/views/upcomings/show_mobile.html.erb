@@ -97,7 +97,7 @@
   </div>
   <div class="line-up-img-container">
     <% @posts.each_with_index do |post, index| %>
-        <div class="artist-profile _hcenter-positioner _vckenter-positioner"
+        <div class="artist-profile _hcenter-positioner _vcenter-positioner"
              data-index="<%= index %>"
              style="background: url(<%= post[:artist_image_url] %>) no-repeat center center; background-size: cover;">
           <p class="_fs-2-mobile _white"><%= post[:artist_name] %></p>
