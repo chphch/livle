@@ -28,7 +28,22 @@
   }
 
   .card-container {
+    position: relative;
     width: 116rem;
+  }
+
+  .prev_list {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 8rem;
+    background: $black-opacity;
+  }
+
+  .next_list {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 8rem;
+    background: $black-opacity;
   }
 }
 
