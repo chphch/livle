@@ -22,7 +22,7 @@
               <%= post[:artist_name] %>
             </p>
           </div>
-          <div class="_thumbnail-button-container-m _row-positioner">
+          <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
             <% if index != 0 %>
                 <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
                 <p class="_fs-5-mobile _white"><%= post[:count_view] %></p>
@@ -39,7 +39,7 @@
             <div id="progress-bar"></div>
           </div>
           <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-            <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time"></p>
+            <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time">0:00</p>
           </div>
           <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
             <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin-top: 1%;">HD</p>
@@ -106,7 +106,7 @@
   </div>
 
   <!-- Like, Comment, Share Buttons -->
-  <div class="_show-buttons-container-m _row-positioner">
+  <div class="_show-buttons-container-m _row-positioner _no-p-margin">
     <%= link_to "", remote: true, id: "video-like-button", class: "_show-button
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
@@ -117,11 +117,11 @@
     <% end %>
     <div class="_show-button _hcenter-positioner _vcenter-positioner">
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white _icon-text-margin-m">댓글</p>
+      <p class="_fs-4-mobile _white">댓글</p>
     </div>
     <div class="_show-button _hcenter-positioner _vcenter-positioner" id="share-modal-button">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white _icon-text-margin-m">공유</p>
+      <p class="_fs-4-mobile _white">공유</p>
     </div>
   </div>
   <hr>

@@ -131,6 +131,7 @@ input:-ms-input-placeholder {
 ._show-icon-m {
   width: auto;
   height: 5rem;
+  margin: 0 $list-container-ph-m 0 0;
 }
 
 ._modal-big-icon-m {
@@ -143,8 +144,8 @@ input:-ms-input-placeholder {
   height: 4.5rem;
 }
 #progress-bar {
-  width: 18rem;
-  height: 18rem;
+  width: 20%;
+  height: auto;
 }
 ////button
 ._show-play-button {
