@@ -23,13 +23,18 @@
   }
 
   .feed-container {
-    padding: 8% 0;
+    padding: 8rem 0;
     background: $black;
   }
 
   .feed-list-container {
     position: relative;
     width: 116rem;
+  }
+  @media (max-width: $desktop) {
+    .feed-list-container {
+      width: 96rem;
+    }
   }
 
   .prev-list {
@@ -104,6 +109,16 @@
     width: 50rem;
     margin: 0 0 0 12rem;
     p { margin: 0; }
+  }
+  @media (max-width: $desktop) {
+    .curation-video-container {
+      width: 48rem;
+    }
+
+    .curation-describe-container {
+      width: 42rem;
+      margin: 0 0 0 6rem;
+    }
   }
 
   .curator-container {
