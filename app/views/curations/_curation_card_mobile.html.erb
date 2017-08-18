@@ -29,8 +29,9 @@
                 ,&nbsp
             <% end %>
           </p>
+
           <!-- Content -->
-          <p class="_fs-curation-mobile _light-gray _f-line-mobile"><%= curation.content %></p>
+          <%= simple_format content_shorten(curation.content), class: "_fs-curation-mobile _light-gray _f-line-mobile" %>
         </div>
       </div>
   <% end %>
