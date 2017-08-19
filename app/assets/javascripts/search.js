@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    ///(with '_' -> _navbar_desktop, without '_' -> _search_bar_mobile)
+    ////(with '_' -> _navbar_desktop, without '_' -> _search_bar_mobile)
 
     //focus 할 때
     $('#search-bar .search-input-field, ._navbar-serach-container').click(function () {
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     //Scroll Event
-    var iScrollPos = 0;
     scrolling();
     new ResizeSensor($('#search-list-container'), function () {
         scrolling();
@@ -88,15 +87,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
+    var iScrollPos = 0;
     function scrolling() {
         $(window).scroll(function () {
             var iCurScrollPos = $(this).scrollTop();
             if (iCurScrollPos > iScrollPos) {
                 //Scrolling Down
-                $('#search-bar').addClass('search-bar-up');
+                $('.search-container').addClass('search-bar-up');
             } else {
                 //Scrolling Up
-                $('#search-bar').removeClass('search-bar-up');
+                $('.search-container').removeClass('search-bar-up');
             }
             iScrollPos = iCurScrollPos;
         });

@@ -1,5 +1,34 @@
 <div id="feeds-index">
+  <% @disable_nav = true %>
   <div class="curation-container">
     <%= render partial: "curations/curation_card_desktop", locals: {curation: @curations.first} %>
+  </div>
+
+  <div class="feed-container _hcenter-positioner">
+    <div class="feed-list-container">
+      <div class="current-list _vcenter-positioner" id="scroll-target">
+        <% @feeds.each_with_index do |feed, i| %>
+            <% if i % 2 != 0 && @feeds[i+1] != nil %>
+                <div class="feed-list _column-positioner">
+                  <div class="card-container">
+                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>
+                  </div>
+                  <div class="card-container">
+                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i+1]} %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+
+      <div id="prev-btn">
+        <div class="prev-list _vcenter-positioner _hcenter-positioner">
+          <%= image_tag "icon_back" %>
+        </div>
+      </div>
+      <div class="next-list _vcenter-positioner _hcenter-positioner">
+        <%= image_tag "icon_next" %>
+      </div>
+    </div>
   </div>
 </div>

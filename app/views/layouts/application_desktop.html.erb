@@ -24,8 +24,8 @@
 
   <body>
     <!-- Navbar -->
+    <%= render partial: "partial_views/navbar_desktop"%>
     <% unless @disable_nav %>
-      <%= render partial: "partial_views/navbar_desktop"%>
       <div style="padding: 2%;"></div>
     <% end %>
     <%= yield %>

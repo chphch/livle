@@ -13,18 +13,73 @@
 
 //Desktop
 #feeds-index {
+  background: $black;
+
   .curation-container {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-    height: 38%;
+    position: relative;
+    top: 0; left: 0; right: 0;
+    height: 36rem;
     background: $gray;
+  }
+
+  .feed-container {
+    padding: 8rem 0;
+    background: $black;
+  }
+
+  .feed-list-container {
+    position: relative;
+    width: 116rem;
+  }
+  @media (max-width: $desktop) {
+    .feed-list-container {
+      width: 96rem;
+    }
+  }
+
+  .prev-list {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 8rem;
+    background: -moz-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  #prev-btn {
+    display: none;
+  }
+
+  .next-list {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 8rem;
+    background: -moz-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .current-list {
+    position: relative;
+    top: 0; left: 0; bottom: 0; right: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .card-container {
+    position: relative;
+    width: 16rem;
+    margin: 2rem;
   }
 }
 
 #curation-card {
   .curation-background {
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
     overflow: hidden;
   }
 
@@ -35,4 +90,46 @@
     filter: $blur;
     -webkit-filter: $blur;
   }
+
+  .curation-filter {
+    background: $black-opacity;
+    padding: 5rem 0 0;
+  }
+
+  .curation-video-container {
+    position: relative;
+    top: 0;
+    width: 54rem;
+    height: auto;
+  }
+
+  .curation-describe-container {
+    position: relative;
+    top: 0; left: 0; bottom: 0;
+    width: 50rem;
+    margin: 0 0 0 12rem;
+    p { margin: 0; }
+  }
+  @media (max-width: $desktop) {
+    .curation-video-container {
+      width: 48rem;
+    }
+
+    .curation-describe-container {
+      width: 42rem;
+      margin: 0 0 0 6rem;
+    }
+  }
+
+  .curator-container {
+    padding: 0 0 0 6%;
+  }
+
+  .curation-text-container {
+    padding: 4% 0 0;
+  }
+}
+
+#feed-index-card {
+
 }

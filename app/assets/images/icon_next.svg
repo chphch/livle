@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="34px" viewBox="0 0 24 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Back Chevron Copy 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polyline id="path-1" points="1648.67192 686 1635.50751 673 1633 675.47619 1643.6569 686 1633 696.52381 1635.50751 699 1648.67192 686"></polyline>
+        <!--<filter x="-44.7%" y="-19.2%" width="189.3%" height="153.8%" filterUnits="objectBoundingBox" id="filter-2">-->
+            <!--<feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>-->
+            <!--<feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>-->
+            <!--<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>-->
+        <!--</filter>-->
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="피드-copy" transform="translate(-1629.000000, -671.000000)">
+            <g id="Back-Chevron-Copy-8">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

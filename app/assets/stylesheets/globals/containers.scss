@@ -1,9 +1,6 @@
 @import "sizes";
 @import "colors";
 
-body {
-  background: $black;
-}
 
 ////backgrounds
 ._body-background-m {
@@ -250,4 +247,23 @@ body {
 
 ._text-center {
   text-align: center;
+}
+
+//////DESKTOP
+._profile-container {
+  position: relative;
+  top: 0; left: 0;
+  padding: 0.2rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+._thumbnail-image-container {
+  position: relative;
+  width: 16rem;
+  height: auto;
+}
+
+._text-container {
+  padding: 0.8rem 0;
 }

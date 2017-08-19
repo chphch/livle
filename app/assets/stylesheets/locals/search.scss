@@ -4,29 +4,32 @@
 @import "globals/colors";
 @import "globals/sizes";
 
-#search-index-mobile,
-#search-result-mobile {
-  #search-bar {
-    position: fixed;
-    z-index: 18;
-    transition: all 0.4s;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
+#search-bar {
+  .search-dummy {
+    width: 100%;
+    padding: 2%;
+    height: 12rem;
+    background: $black;
   }
 
   .search-container {
+    position: fixed;
+    z-index: 18;
+    top: 0;
     width: 100%;
     padding: 2%;
     background: $black;
+    transition: all 150ms;
+    -webkit-transition: all 150ms;
+    -moz-transition: all 150ms;
   }
 
   .input-icon-container {
     width: 50%;
     padding: 0 4%;
-
-    transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
+    transition: all 200ms;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
   }
 
   .search-input-field {
