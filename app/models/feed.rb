@@ -11,4 +11,8 @@ class Feed < ArtistsRecord
     super
     attributes.merge(user_nickname: self.user.nickname)
   end
+
+  def video_id
+    get_youtube_video_id(youtube_id)
+  end
 end

@@ -9,13 +9,8 @@ emptyLikeIcon.removeClass("_display-none");
 filledLikeIcon.addClass("_display-none");
 <% end %>
 
-$('#<%= @like_type %>-like-count').text("<%= @like_count %>");
-
-// only for upcoming show page video like data
-<% if @video_index %>
-console.log($("#video-like-count").text());
-$('#video-like-count').text("<%= @like_count %>");
-$('.show-video-container').filter(function(index, container) {
+var container = $('.show-video-container').filter(function(index, container) {
     return $(container).data("index") == <%= @video_index %>;
-}).data("likeTrue", <% if @like_true %>true<% else %>false<% end %>);
-<% end %>
+});
+container.find('.post-like-count').text("<%= @like_count %>");
+container.data("likeTrue", <% if @like_true %>true<% else %>false<% end %>);

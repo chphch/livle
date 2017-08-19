@@ -1,24 +1,21 @@
-<!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+<div id="curations-show-mobile" class="show-mobile" data-size="1">
 
-<div id="curations-show-mobile">
-  <div class="_show-video-container-m">
-    <!-- Youtube Video Player -->
-    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+  <!-- Youtube Video Player -->
+  <div class="_show-video-container-m show-video-container" data-index="0">
+    <iframe id="youtube-player-0" type="text/html" src="http://www.youtube.com/embed/<%= @video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @video_id %>"
             webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
 
-    <div id="youtube-player-filter">
+    <div class="youtube-player-filter">
       <div class="_show-video-filter-m"></div>
       <div class="_show-video-title-container-m _hcenter-positioner">
         <p class="_fs-2-mobile _white">
           <!-- title -->
           <%= @curation.title %> -
           <!-- artist.name -->
-          <% @curation.artists.each_with_index do |artist, i| %>
+          <% @curation.artists.each_with_index do |artist, index| %>
+              <% unless index == 0 %>,&nbsp<% end %>
               <%= artist.name %>
-              <% break if @curation.artists[i+1] == nil %>
-              ,&nbsp
           <% end %>
         </p>
       </div>
@@ -26,24 +23,24 @@
         <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @curation.count_view %></p>
         <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p id="like-count" class="_fs-5-mobile _white"><%= @curation.curation_likes.size %></p>
+        <p class="_fs-5-mobile _white post-like-count"><%= @curation.curation_likes.size %></p>
         <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
         <p class="_fs-5-mobile _white"><%= @curation.count_share %></p>
       </div>
     </div>
 
-    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
+    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
       <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <div id="progress-bar"></div>
+        <div id="progress-bar-0" class="video-progress-bar"></div>
       </div>
       <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <p class="_show-progress-margin-m _fs-4-mobile _white" id="remaining-time">0:00</p>
+        <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>
       </div>
       <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin: 1% 3% 0 0;">HD</p>
+        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 1% 3% 0 0;">HD</p>
         <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
       </div>
-      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
+      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
     </div>
 
     <!-- back button -->
@@ -57,7 +54,7 @@
     <div class="_show-describe-container-m">
       <div class="_vcenter-positioner">
         <div class="_profile-container-m _profile-border-m">
-          <%= image_tag "#{@curation.user.profile_img}", class: "_profile-user-m" %>
+          <%= image_tag @curation.user.profile_img, class: "_profile-user-m" %>
         </div>
 
         <div class="_show-text-padding-m _vcenter-positioner">
@@ -74,10 +71,9 @@
       <div class="_show-describe-item-padding-m _row-positioner">
         <p class="_fs-3-mobile _white"><%= @curation.title %> -&nbsp</p>
         <p class="_fs-4-mobile _light-gray">
-          <% @curation.artists.each_with_index do |artist, i| %>
+          <% @curation.artists.each_with_index do |artist, index| %>
+              <% unless index == 0 %>,&nbsp<% end %>
               <%= artist.name %>
-              <% break if @curation.artists[i+1] == nil %>
-              ,&nbsp
           <% end %>
         </p>
       </div>
@@ -139,118 +135,4 @@
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();
     });
-
-    // filter
-    $('#youtube-player-controller').click(function (e) {
-        if(e.target.nodeName === 'DIV') {
-            if($('#youtube-player-filter').is(':visible') === true) {
-                $('#youtube-player-filter').hide();
-                $('#remaining-time').hide();
-                $('.youtube-player-buttons').hide();
-            } else {
-                $('#youtube-player-filter').show();
-                $('#remaining-time').show();
-                $('.youtube-player-buttons').show();
-            }
-        }
-    });
-
-    // youtube player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        event.target.playVideo();
-        updateTimerDisplay();
-        updateProgressBar();
-    }
-
-    // Duration Time
-    function updateTimerDisplay(){
-        // Update current time text display.
-        checkTime = setInterval(function () {
-            $('#remaining-time').text(formatTime( player.getDuration() - player.getCurrentTime() ));
-        }, 500);
-    }
-
-    function formatTime(time){
-        time = Math.round(time);
-        var minutes = Math.floor(time / 60),
-            seconds = time - minutes * 60;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        return minutes + ":" + seconds;
-    }
-
-    // Circle Progressbar
-    var progress = new ProgressBar.Circle('#progress-bar', {
-        strokeWidth: 4,
-        easing: 'easeInOut',
-        color: '#9BFFCC',
-        trailColor: 'rgba(256, 256, 256, 0.33)',
-        trailWidth: 4,
-        svgStyle: null
-    });
-    function updateProgressBar(){
-        updateProgress = setInterval(function () {
-            progress.set((player.getCurrentTime() / player.getDuration()));
-        }, 200);
-    }
-
-    $('#play-button').click(function() {
-        if(player.getPlayerState() === 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-            $('#youtube-player-filter').hide();
-            $('#remaining-time').hide();
-            $('.youtube-player-buttons').hide();
-        }
-    });
-
-    $('#hd-button').click(function () {
-        var quality = player.getPlaybackQuality();
-        console.log('quality = ' + quality);
-        $(this).toggleClass('_light-gray _white');
-        if(quality === 'small' || quality === 'medium' || quality === 'large') {
-            player.setPlaybackQuality('hd720');
-        } else {
-            player.setPlaybackQuality('large');
-        }
-    });
-
-    $('#fullscreen-button').click(function () {
-        var elem = document.getElementById("youtube-player");
-        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
-        if(elem.requestFullScreen) {
-            elem.requestFullScreen();
-        } else if(elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen();
-        } else if(elem.msRequestFullScreen){
-            elem.msRequestFullScreen();
-        } else if(elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        }
-    });
-
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING && !done) {
-            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
-        }
-        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
-        }
-    }
 </script>

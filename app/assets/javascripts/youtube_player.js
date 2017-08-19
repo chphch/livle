@@ -6,7 +6,7 @@ $('document').ready(function() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     // create player object list when iframeAPI is ready
-    var videoSize = $('#upcomings-show-mobile').data("size");
+    var videoSize = $('.show-mobile').data("size");
     var players = [];
     var readyPlayerSize = 0;
     window.onYouTubeIframeAPIReady = function() {
@@ -23,8 +23,18 @@ $('document').ready(function() {
             player.container = $(this);
             player.playButton = $(this).find('.play-button');
             player.qualityButton = $(this).find('.hd-button');
-            player.fullScreenButton = $(this).find('.fullscreen-button')
+            player.fullScreenButton = $(this).find('.fullscreen-button');
             player.filter = $(this).find('.youtube-player-filter');
+            player.remainingTimer = $(this).find('.remaining-timer');
+            player.progressBar = $(this).find('#progress-bar-' + index);
+            player.progressBarController = new ProgressBar.Circle('#progress-bar-' + index, {
+                strokeWidth: 4,
+                easing: 'easeInOut',
+                color: '#9BFFCC',
+                trailColor: 'rgba(256, 256, 256, 0.33)',
+                trailWidth: 4,
+                svgStyle: null
+            });
             players.push(player);
         });
     };
@@ -35,19 +45,41 @@ $('document').ready(function() {
         if (player.index == 0) {
             player.playVideo();
         }
+        updateTimerDisplay(player);
+        updateProgressBar(player);
         readyPlayerSize++;
         if (readyPlayerSize == videoSize) {
             onAllPlayerReady();
         }
     }
 
-    // set change of play button image
+    function updateTimerDisplay(player){
+        // Update current time text display.
+        checkTime = setInterval(function () {
+            player.remainingTimer.text(formatTime( player.getDuration() - player.getCurrentTime() ));
+        }, 500);
+    }
+    function formatTime(time){
+        time = Math.round(time);
+        var minutes = Math.floor(time / 60),
+            seconds = time - minutes * 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return minutes + ":" + seconds;
+    }
+    function updateProgressBar(player){
+        updateProgress = setInterval(function () {
+            player.progressBarController.set((player.getCurrentTime() / player.getDuration()));
+        }, 200);
+    }
+
+    // set change of play button image'
     function onPlayerStateChange(event) {
-        var playButton = event.target.playButton;
+        var player = event.target;
         if (event.data === YT.PlayerState.PLAYING) {
-            playButton.attr('src', "/assets/icon_pause");
+            player.playButton.attr('src', "/assets/icon_pause");
+            hideFilter(player);
         } else if (event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-            playButton.attr('src', "/assets/icon_play");
+            player.playButton.attr('src', "/assets/icon_play");
         }
     }
 
@@ -70,15 +102,13 @@ $('document').ready(function() {
                 onClickPlayButton(player);
             });
             player.qualityButton.on("click", function() {
-               onClickQualityButton(player);
+                onClickQualityButton(player);
             });
             player.fullScreenButton.on("click", function() {
-               onClickFullscreenButton(player);
+                onClickFullscreenButton(player);
             });
-        });
-        $('.artist-profile').each(function(index, lineupButton) {
-            $(lineupButton).on("click", function() {
-                onClickLineupButton($(this));
+            player.container.on("click", function() {
+                onClickContainer(player);
             });
         });
     }
@@ -89,8 +119,6 @@ $('document').ready(function() {
             player.pauseVideo();
         } else {
             player.playVideo();
-            player.filter.hide();
-            player.playButton.hide();
         }
     }
 
@@ -119,17 +147,33 @@ $('document').ready(function() {
         }
     }
 
-    // show/hide filter on click
-    $('.youtube-player-controller').on("click", function (e) {
-        if (e.target.nodeName === 'DIV') {
-            if ($('.youtube-player-filter').is(':visible') === true) {
-                $('.youtube-player-filter').hide();
-                $('.youtube-player-buttons').hide();
-            } else {
-                $('.youtube-player-filter').show();
-                $('.youtube-player-buttons').show();
-            }
+    // on clikc container show filter, buttons, progress-bar, timer
+    function onClickContainer(player) {
+        if (player.filter.is(':visible') === true && !$(event.target).hasClass("play-button")) {
+            hideFilter(player);
+        } else {
+            showFilter(player);
         }
+    }
+
+    function showFilter(player) {
+        player.filter.show();
+        player.playButton.show();
+        player.progressBar.show();
+        player.remainingTimer.show();
+    }
+    function hideFilter(player) {
+        player.filter.hide();
+        player.playButton.hide();
+        player.progressBar.hide();
+        player.remainingTimer.hide();
+    }
+
+    // set onclick lineup buttons
+    $('.artist-profile').each(function(index, lineupButton) {
+        $(lineupButton).on("click", function() {
+            onClickLineupButton($(this));
+        });
     });
 
     // on click lineup button(profile)
@@ -149,11 +193,6 @@ $('document').ready(function() {
         switchVideoStatus(targetPlayer, currentPlayer);
         switchLikebuttonColor(likeTrue);
         switchLikebuttonUrl(targetContainer);
-
-        $('.show-video-container').filter(function(index, ele) {
-            console.log($(ele).data());
-        });
-
         $('#upcomings-show-mobile').data("videoIndex", buttonIndex);
     }
 

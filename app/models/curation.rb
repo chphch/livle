@@ -5,4 +5,8 @@ class Curation < ArtistsRecord
   has_many :artists, through: :curation_artists
   has_many :curation_likes
   has_many :curation_comments
+
+  def video_id
+    get_youtube_video_id(youtube_id)
+  end
 end

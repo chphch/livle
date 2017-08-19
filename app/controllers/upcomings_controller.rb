@@ -29,7 +29,7 @@ class UpcomingsController < ApplicationController
       @like_true = UpcomingLike.toggle_like(upcoming, current_user)
       @like_type = "hand"
       @like_count = upcoming.upcoming_likes.size
-      render '/xhrs/create_like'
+      render '/xhrs/toggle_like'
     else
       render '/xhrs/login_modal'
     end
