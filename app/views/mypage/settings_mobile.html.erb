@@ -1,18 +1,11 @@
 <div id="mypage-settings-mobile">
-  <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
-    <p class="_fs-2-mobile _white">설정</p>
-  </div>
-  <!-- back button -->
-  <%= link_to mypage_index_path, class: "_show-video-back-container-m" do %>
-      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-  <% end %>
 
   <!-- setting lists -->
   <div class="settings-blank"></div>
 
   <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: mypage_edit_profile_path, method: "GET"} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: mypage_edit_password_path, method: "GET", remote: true} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: edit_user_registration_path, method: "GET", remote: true} %>
   <hr class="hr-container">
   <%= render partial: "settings_row_mobile", locals: {tag: "공지사항", color: "black", url: notices_path, method: "GET"} %>
 
@@ -24,9 +17,9 @@
 
   <div class="settings-blank"></div>
 
-  <%= render partial: "settings_row_mobile", locals: {id: "logout-modal-button", tag: "로그아웃", color: "blue", disabled: true, url: "", method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {id: "logout-modal-button", tag: "로그아웃", color: "blue", method: ""} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {id: "withdraw-modal-button", tag: "탈퇴하기", color: "blue", disabled: true, url: "", method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {id: "withdraw-modal-button", tag: "탈퇴하기", color: "blue", method: ""} %>
   <hr class="hr-container">
 
   <div class="_hcenter-positioner">
@@ -37,16 +30,16 @@
 
   <section id="modal">
     <form id="withdraw-modal" class="modal">
-      <%= render partial: "withdraw_modal_mobile" %>
+      <%= render partial: "/devise/registrations/withdraw_modal_mobile" %>
     </form>
     <form id="logout-modal" class="modal">
-      <%= render partial: "logout_modal_mobile" %>
+      <%= render partial: "/devise/sessions/logout_modal_mobile" %>
     </form>
     <form id="mypage-settings-modal" class="modal">
       <%= render partial: "settings_contact_mobile" %>
     </form>
     <form id="cannot-change-password-modal" class="modal">
-      <%= render partial: "cannot_change_password_modal_mobile" %>
+      <%= render partial: "/devise/registrations/cannot_change_password_modal_mobile" %>
     </form>
   </section>
 </div>

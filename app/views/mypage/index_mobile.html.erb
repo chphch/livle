@@ -1,10 +1,4 @@
 <div id="mypage-index-mobile">
-  <div class="_body-background-m"></div>
-
-  <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
-    <p class="_fs-2-mobile _white"><%= user_signed_in? ? current_user.nickname : "로그인"%></p>
-  </div>
-  <hr>
 
   <% if user_signed_in? %>
       <div class="_column-positioner _vcenter-positioner">
@@ -21,7 +15,7 @@
           </div>
           <div class="info-text-container _hcenter-positioner">
             <p class="_fs-4-mobile _white">좋아요 수</p>
-            <p class="_fs-4-mobile _light-gray">&nbsp&nbsp&nbsp0</p>
+            <p class="_fs-4-mobile _light-gray">&nbsp&nbsp&nbsp<%= @like_size %></p>
           </div>
         </div>
 

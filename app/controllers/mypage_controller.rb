@@ -1,30 +1,21 @@
 class MypageController < ApplicationController
   before_action :authenticate_user!, only: [:edit_password, :edit_profile, :settings]
-  before_action :facebook_user!, only: [:edit_password]
-  helper_method :d_day
+  helper_method :d_day, :resource_name, :resource, :devise_mapping, :resource_class
 
   def index
-    render_by_device
-  end
-
-  def edit_password
-    if current_user.isFacebook?
-      render_by_device('cannot_change_password')
+    if user_signed_in?
+      @title = current_user.nickname
+      @like_size = current_user.feed_likes.size + current_user.curation_likes.size
     else
-      render_by_device
+      @title = "로그인"
     end
-  end
-
-  def recover_password_new
-    render_by_device
-  end
-
-  def recover_password_email_sent
     render_by_device
   end
 
   def edit_profile
+    @title = current_user.nickname
     @disable_nav = true
+    @back_url = request.referrer
     render_by_device
   end
 
@@ -37,41 +28,32 @@ class MypageController < ApplicationController
     end
   end
 
-  def update_nickname
-    current_user.nickname = params[:nickname]
-    current_user.save
-    render json: { nickname: params[:nickname] }
-  end
-
-  def update_introduce
-
-  end
-
   def settings
+    @disable_background_image = true
     @disable_nav = true
+    @title = "설정"
+    @back_url = mypage_index_path
     render_by_device
   end
 
   def terms_of_use
     @disable_nav = true
+    @title = "약관"
+    @back_url = mypage_settings_path
     render_by_device
   end
 
   def privacy_policy
     @disable_nav = true
+    @title = "개인정보처리방침"
+    @back_url = mypage_settings_path
     render_by_device
   end
 
   private
 
   def authenticate_user!
-    if !user_signed_in?
-      redirect_to mypage_index_path
-    end
-  end
-
-  def facebook_user!
-    if user_signed_in? && current_user.isFacebook?
+    unless user_signed_in?
       redirect_to mypage_index_path
     end
   end
@@ -89,7 +71,22 @@ class MypageController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:current_password, :password, :password_confirmation)
+
+  # divise methods
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def resource_class
+    User
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 end

@@ -1,7 +1,12 @@
 <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
   <p class="_fs-2-mobile _white"><%= title %></p>
 </div>
+
 <!-- back button -->
-<%= link_to url_for(:back), class: "_show-video-back-container-m" do %>
-    <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+<% if back_url %>
+    <%= link_to back_url, class: "_show-video-back-container-m" do %>
+        <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
+    <% end %>
 <% end %>
+
+<hr>

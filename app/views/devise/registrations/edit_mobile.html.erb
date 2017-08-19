@@ -1,14 +1,4 @@
 <div id="mypage-edit-password-mobile">
-  <div class="_body-background-m"></div>
-
-  <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
-    <p class="_fs-2-mobile _white"><%= user_signed_in? ? "비밀번호 변경" : "로그인"%></p>
-  </div>
-  <!-- back button -->
-  <%= link_to mypage_index_path, class: "_show-video-back-container-m" do %>
-      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-  <% end %>
-  <hr>
 
   <div class="password-input-container">
     <%= form_for current_user, url: user_registration_path, remote: true do |f| %>

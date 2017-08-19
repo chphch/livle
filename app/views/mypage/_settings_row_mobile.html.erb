@@ -1,4 +1,4 @@
-<%= link_to url, method: method, onclick: defined?(disabled) ? "return false" : "", remote: defined?(remote) ? true : false do %>
+<%= link_to defined?(url) ? url : "", method: method, onclick: defined?(url) ? "" : "return false", remote: defined?(remote) ? true : false do %>
   <div <%= defined?(id) ? "id=#{id}" : "" %> class="settings-element-container _vcenter-positioner">
     <% if tag == "로그아웃" || tag == "탈퇴하기" %>
         <p class="text-width _fs-2-mobile _light-green"><%= tag %></p>

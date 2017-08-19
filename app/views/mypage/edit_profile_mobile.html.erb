@@ -1,15 +1,6 @@
 <div id="mypage-edit-profile-mobile">
   <div class="_body-background-m"></div>
 
-  <div class="_mypage-title-container-m _hcenter-positioner _vcenter-positioner">
-    <p class="_fs-2-mobile _white"><%= user_signed_in? ? "프로필 편집" : "로그인"%></p>
-  </div>
-  <!-- back button -->
-  <%= link_to mypage_index_path, class: "_show-video-back-container-m" do %>
-      <%= image_tag("icon_back", style: "width: 3rem; height: auto;") %>
-  <% end %>
-  <hr>
-
   <%= form_tag mypage_update_profile_path, multipart: true, method: :post, id: "update-profile" do %>
       <!-- save button -->
       <div class="save-button">
@@ -32,15 +23,14 @@
             </div>
           </label>
         </div>
-        <p class="_fs-1-mobile _white _hcenter-positioner"><%= current_user.nickname %></p>
 
         <div class="translucency-container">
           <div class="edit-input-container _vcenter-positioner">
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
-            <%= text_field_tag :email, nil, class: "edit-input-field _fs-3-mobile _white",
-                               placeholder: "이메일", value: "#{current_user.email}" %>
+            <%= text_field_tag nil, nil, class: "edit-input-field _fs-3-mobile _white",
+                               value: "#{current_user.email}", disabled: true %>
           </div>
           <div class="hr-white"></div>
           <div class="edit-input-container _vcenter-positioner">

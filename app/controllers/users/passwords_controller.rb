@@ -2,8 +2,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   def new
     super
-    render_by_device '/mypage/recover_password_new'
-    @disable_nav = true
+    @title = "비밀번호 찾기"
+    render_by_device '/devise/passwords/new'
   end
 
   # POST /resource/password
@@ -11,11 +11,16 @@ class Users::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
+  def after_create
+    @title = "비밀번호 찾기"
+    render_by_device '/devise/passwords/after_create'
+  end
+
   # GET /resource/password/edit?reset_password_token=abcdef
   def edit
     super
-    render_by_device '/mypage/recover_password_edit'
     @disable_nav = true
+    render_by_device '/devise/passwords/edit'
   end
 
   # PUT /resource/password
@@ -31,6 +36,6 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # The path used after sending reset password instructions
   def after_sending_reset_password_instructions_path_for(resource_name)
-     mypage_recover_password_email_sent_path
+    users_passwords_after_create_path
   end
 end

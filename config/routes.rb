@@ -43,13 +43,8 @@ Rails.application.routes.draw do
   get 'upcomings/:id/destroy' => 'upcomings#destroy'
 
   get 'mypage/index'
-  get 'mypage/edit_password'
-  patch 'mypage/update_password'
-  get 'mypage/recover_password_email_sent'
   get 'mypage/edit_profile'
   get 'mypage/update_profile'
-  get 'mypage/update_nickname'
-  get 'mypage/update_introduce'
   get 'mypage/settings'
   get 'mypage/terms_of_use'
   get 'mypage/privacy_policy'
@@ -60,6 +55,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    get 'users/passwords/after_create'
+  end
 
   resources :connect_urls, only: [:index, :new, :create, :destroy]
   resources :recent_keywords, only: [:create, :destroy]
