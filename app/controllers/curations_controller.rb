@@ -3,6 +3,15 @@ class CurationsController < ApplicationController
     @curation = Curation.find_by(id: params[:id])
     @curation.increase_count_view
     @video_id = @curation.video_id
+
+    @related_feeds = []
+    @curation.artists.each do |artist|
+      same_artist = Artist.find(artist.id)
+      same_artist.feed_artists.each do |feed|
+        @related_feeds.push(feed.feed)
+      end
+    end
+
     @like_true = user_signed_in? &&
         CurationLike.where(curation_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
