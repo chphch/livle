@@ -153,10 +153,6 @@ input:-ms-input-placeholder {
   height: 30%;
   z-index: 99;
 }
-._show-button {
-  width: 33.3%;
-  height: 100%;
-}
 ._submit-button {
   padding: 3.5% 0;
   background: none;
@@ -366,7 +362,17 @@ input:-ms-input-placeholder {
   -webkit-filter: $blur;
 }
 
+._show-icon {
+  width: auto;
+  height: 2.5rem;
+  margin: 0 1.2rem 0 0;
+}
+
 ////margin, padding
 ._thumbnail-elem-margin {
   margin: 0 1rem;
+}
+
+._show-button-padding {
+  padding: 0 0.8rem;
 }

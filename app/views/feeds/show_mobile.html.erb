@@ -82,7 +82,7 @@
 
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _vcenter-positioner _no-p-margin">
-    <%= link_to feed_toggle_like_path(@feed.id), remote: true, class: "_show-button
+    <%= link_to feed_toggle_like_path(@feed.id), remote: true, class: "_flex-grow-1
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
           <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
@@ -90,11 +90,11 @@
         </div>
         <p class="_fs-4-mobile _white">좋아요</p>
     <% end %>
-    <div class="_show-button _hcenter-positioner _vcenter-positioner">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner">
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">댓글</p>
     </div>
-    <div class="_show-button _hcenter-positioner _vcenter-positioner" id="share-modal-button">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">공유</p>
     </div>
