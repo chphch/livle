@@ -126,13 +126,16 @@
 
 #search-result {
   background: $black;
+  width: 100%;
 
-  .result-container {
+  .result-list-container {
     padding: 2rem 0;
     width: $wide-width;
   }
   @media (max-width: $desktop) {
-    width: $narrow-width;
+    .result-list-container {
+      width: $narrow-width;
+    }
   }
 
   .search-card-container {
