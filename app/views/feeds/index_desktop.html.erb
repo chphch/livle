@@ -9,7 +9,7 @@
       <div class="current-list _vcenter-positioner" id="scroll-target">
         <% @feeds.each_with_index do |feed, i| %>
             <% if i % 2 != 0 && @feeds[i+1] != nil %>
-                <div class="feed-list _column-positioner">
+                <div class="_column-positioner">
                   <div class="card-container">
                     <%= render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>
                   </div>
