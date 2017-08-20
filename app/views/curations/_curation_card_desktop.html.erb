@@ -1,7 +1,7 @@
 <div id="curation-card">
   <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <div class="curation-background _full-container">
-    <%= image_tag "image_live", class: "thumbnail-img", id: "curation-#{curation.id}" %>
+    <%= image_tag "image_live", class: "_thumbnail-blur-img", id: "curation-#{curation.id}" %>
   </div>
 
   <div class="curation-filter _full-container _hcenter-positioner">
@@ -15,11 +15,12 @@
     </div>
 
     <div class="curation-describe-container _column-positioner _hcenter-positioner">
+      <!-- curator profile -->
       <div class="_vcenter-positioner">
         <div class="_profile-container _profile-border-m">
           <%= image_tag "#{curation.user.profile_img}", class: "_profile-img" %>
         </div>
-        <div class="curator-container _flex-grow-1">
+        <div class="_curator-container _flex-grow-1">
           <div class="_vcenter-positioner _no-p-margin">
             <%= image_tag("icon_crown_gold", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
             <p class="_fs-2 _white"><%= curation.user.nickname %></p>
@@ -43,6 +44,4 @@
     $('#curation-<%= curation.id %>').attr({
         src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
     });
-
-
 </script>
