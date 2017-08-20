@@ -37,6 +37,10 @@
       <div class="curation-text-container">
         <%= simple_format curation.content, class: "_fs-4 _light-gray _f-line-mobile" %>
       </div>
+      <%= link_to curation_path(curation.id), class: "curation-button _vcenter-positioner
+          _hcenter-positioner _no-p-margin" do %>
+          <p class="_fs-3 _white">더보기</p>
+      <% end %>
     </div>
   </div>
 </div>

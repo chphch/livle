@@ -1,30 +1,24 @@
 <div class="search-card-mobile">
-  <a href="/upcomings/<%= upcoming.id %>" method="get">
-    <div class="_row-positioner">
-      <div class="_thumbnail-container-m card-devider">
-        <%= image_tag "image_live", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
-      </div>
+  <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+  <%= link_to upcomings_path(upcoming.id) do %>
+      <div class="_row-positioner">
+        <div class="_thumbnail-container-m card-devider">
+          <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m" %>
+        </div>
 
-      <div class="card-text card-devider">
-        <p class="_fs-3-mobile _white"><%= upcoming.title %></p>
-        <p class="_fs-3-mobile _white">
-          <%= upcoming.start_date %> - <%= upcoming.end_date %>
-        </p>
-        <p class="_fs-4-mobile _light-gray">
-          <% upcoming.artists.each_with_index do |artist, i| %>
-              <%= artist.name %>
-              <% break if upcoming.artists[i+1] == nil %>
-              ,&nbsp
-          <% end %>
-        </p>
+        <div class="card-text card-devider">
+          <p class="_fs-3-mobile _white"><%= upcoming.title %></p>
+          <p class="_fs-3-mobile _white">
+            <%= upcoming.start_date %> - <%= upcoming.end_date %>
+          </p>
+          <p class="_fs-4-mobile _light-gray">
+            <% upcoming.artists.each_with_index do |artist, i| %>
+                <%= artist.name %>
+                <% break if upcoming.artists[i+1] == nil %>
+                ,&nbsp
+            <% end %>
+          </p>
+        </div>
       </div>
-    </div>
-  </a>
+  <% end %>
 </div>
-
-<script>
-    <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
-    $('#upcoming-<%= upcoming.id %>').attr({
-        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
-    });
-</script>

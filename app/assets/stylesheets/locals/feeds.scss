@@ -29,11 +29,11 @@
 
   .feed-list-container {
     position: relative;
-    width: 116rem;
+    width: $wide-width;
   }
   @media (max-width: $desktop) {
     .feed-list-container {
-      width: 96rem;
+      width: $narrow-width;
     }
   }
 
@@ -85,7 +85,7 @@
 
   .curation-filter {
     background: $black-opacity;
-    padding: 5rem 0 0;
+    padding: $navbar-height 0 0;
   }
 
   .curation-video-container {
@@ -116,6 +116,21 @@
   .curation-text-container {
     padding: 4% 0 0;
   }
+
+  .curation-button {
+    width: 7rem;
+    height: $navbar-h;
+    margin: 1rem 0 0;
+    border: 1px solid $white;
+    border-radius: $br-min;
+
+    &:hover {
+      background: $white;
+      p {
+        color: $black;
+      }
+    }
+  }
 }
 
 #feeds-show,
@@ -123,12 +138,12 @@
   background: $black;
 
   .show-container {
-    padding: 5rem 0 0;
-    width: 116rem;
+    padding: $navbar-height 0 0;
+    width: $wide-width;
   }
   @media (max-width: $desktop) {
     .show-container {
-      width: 96rem;
+      width: $narrow-width;
     }
   }
 

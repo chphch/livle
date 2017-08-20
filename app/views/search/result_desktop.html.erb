@@ -1,0 +1,13 @@
+<div id="search-result">
+  <div class="_hcenter-positioner">
+    <div class="result-container">
+      <% @show_curator = true %>
+      <p class="_fs-1 _white">Feed (<%= @feed_results.size %>)</p>
+      <% @feed_results.each do |result| %>
+          <div class="search-card-container">
+            <%= render partial: "feeds/index_card_desktop", locals: {feed: result} %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
