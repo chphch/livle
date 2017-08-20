@@ -19,7 +19,9 @@ class FeedsController < ApplicationController
     @feed.artists.each do |artist|
       same_artist = Artist.find(artist.id)
       same_artist.feed_artists.each do |feed|
-        @related_feeds.push(feed.feed)
+        if feed.feed.id != @feed.id
+          @related_feeds.push(feed.feed)
+        end
       end
     end
 

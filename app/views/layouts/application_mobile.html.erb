@@ -25,6 +25,8 @@
   </head>
 
   <body>
+  <!-- Bottom Navbar -->
+  <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
   <% if @disable_background_image %>
       <div class="_body-background-m-no-background-image"></div>
   <% else %>
@@ -33,8 +35,5 @@
   <%= render partial: '/mypage/top_mobile', locals: {title: @title, back_url: @back_url} if @title %>
 
   <%= yield %>
-
-  <!-- Bottom Navbar -->
-  <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
   </body>
 </html>
