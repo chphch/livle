@@ -1,13 +1,15 @@
 <div id="feed-index-card">
   <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to feed_path(feed.id) do %>
-      <div class="_vcenter-positioner _no-p-margin _text-container">
-        <%= image_tag("icon_crown", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
-        <p class="_fs-5 _white"><%= feed.user.nickname %></p>
-      </div>
+      <% if @show_curator %>
+          <div class="_vcenter-positioner _no-p-margin _text-container">
+            <%= image_tag("icon_crown", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
+            <p class="_fs-5 _white"><%= feed.user.nickname %></p>
+          </div>
+      <% end %>
 
       <div class="_thumbnail-image-container">
-        <%= image_tag "image_live", class: "_thumbnail-image", id: "feed-#{feed.id}" %>
+        <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
       </div>
 
       <div class="_text-container _no-p-margin">
@@ -24,8 +26,3 @@
       </div>
   <% end %>
 </div>
-<script>
-    $('#feed-<%= feed.id %>').attr({
-        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
-    });
-</script>

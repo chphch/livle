@@ -1,14 +1,11 @@
-<!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
-
 <div id="feeds-show">
   <div class="_hcenter-positioner">
     <div class="show-container _row-positioner">
       <div class="show-video-container _no-p-margin">
         <div class="_video-player">
           <!-- Youtube Video Player -->
-          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @video_id %>"
                   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
         </div>
 
@@ -53,20 +50,19 @@
 
       <div class="related-video-container">
         <div class="related-video-background">
-          <%= image_tag "image_live", class: "_thumbnail-blur-img", id: "feed-#{@feed.id}" %>
+          <%= image_tag "http://img.youtube.com/vi/#{@video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
           <div class="related-video-filter _full-container"></div>
         </div>
 
-        <div class="related-card-container">
-          <p class="_fs-4 _white">관련영상</p>
+        <div class="related-card-container _hcenter-positioner">
+          <div class="card-container">
+            <p class="_fs-4 _white">관련영상</p>
+            <% @related_feeds.each do |feed| %>
+                <%= render partial: "index_card_desktop", locals: {feed: feed } %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-    $('#feed-<%= @feed.id %>').attr({
-        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
-    });
-</script>

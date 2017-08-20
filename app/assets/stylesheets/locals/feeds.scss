@@ -130,8 +130,8 @@
     position: relative;
     top: 0;
     padding: 2rem 0;
-    flex-grow: 0.7;
-    -webkit-flex-grow: 0.7;
+    flex-grow: 0.78;
+    -webkit-flex-grow: 0.78;
   }
 
   .text-container {
@@ -141,13 +141,15 @@
   .related-video-container {
     position: relative;
     top: 0;
-    flex-grow: 0.3;
-    -webkit-flex-grow: 0.3;
+    background: none;
+    flex-grow: 0.22;
+    -webkit-flex-grow: 0.22;
   }
 
   .related-video-background {
     position: absolute;
-    top: 2rem; left: 2rem; bottom: 2rem; right: 2rem;
+    top: 2rem; left: 3rem; bottom: 2rem; right: 3rem;
+    z-index: 1;
     overflow: hidden;
     border: none;
     -webkit-border-radius: $br-image;
@@ -160,9 +162,15 @@
   }
 
   .related-card-container {
-    position: absolute;
+    position: relative;
+    z-index: 2;
     width: 100%;
-    padding: 3rem;
+    padding: 3rem 0;
     height: auto;
+  }
+
+  .card-container {
+    position: relative;
+    width: 16rem;
   }
 }

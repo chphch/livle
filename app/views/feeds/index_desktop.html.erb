@@ -8,6 +8,7 @@
     <div class="feed-list-container">
       <div class="current-list _vcenter-positioner" id="scroll-target">
         <% @feeds.each_with_index do |feed, i| %>
+            <% @show_curator = true %>
             <% if i % 2 != 0 && @feeds[i+1] != nil %>
                 <div class="_column-positioner">
                   <div class="card-container">

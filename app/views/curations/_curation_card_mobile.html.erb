@@ -1,7 +1,8 @@
 <div class="_card-container-m">
+  <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to curation_path(curation.id) do %>
       <div class="_thumbnail-container-m">
-        <%= image_tag "image_live", class: "_thumbnail-image-m", id: "curation-#{curation.id}" %>
+        <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m" %>
         <div class="_thumbnail-filter-m"></div>
 
         <div class="_thumbnail-button-container-m _row-positioner">
@@ -36,9 +37,3 @@
       </div>
   <% end %>
 </div>
-<script>
-    <% video_id = curation.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
-    $('#curation-<%= curation.id %>').attr({
-        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
-    });
-</script>

@@ -14,6 +14,15 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
     @video_id = @feed.video_id
+
+    @related_feeds = []
+    @feed.artists.each do |artist|
+      same_artist = Artist.find(artist.id)
+      same_artist.feed_artists.each do |feed|
+        @related_feeds.push(feed.feed)
+      end
+    end
+
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
