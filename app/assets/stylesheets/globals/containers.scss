@@ -61,6 +61,11 @@
   padding: 0 $thumbnail-elem-mh-m;
 }
 
+._describe-text-container-m {
+  max-height: 10rem;
+  overflow-y: hidden;
+}
+
 ._show-video-container-m {
   z-index: 5;
   position: fixed;

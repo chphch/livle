@@ -64,7 +64,7 @@ class FeedsController < ApplicationController
   end
 
   def content_shorten(content)
-    lines = content.split(/\n/)
+    lines = content.split(/\n+/)
 
     if lines.size > 2
       m_content = lines[0] + "<br />" + lines[1] + " ..."

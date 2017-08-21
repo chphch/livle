@@ -53,7 +53,7 @@
                 </p>
               </div>
               <div class="col-xs-2">
-                <%= text_field_tag(:content, "#{curation.content}", class: "form-control") %>
+                <%= text_area_tag(:content, "#{curation.content}", class: "form-control") %>
               </div>
               <div class="col-xs-1">
                 <%= link_to "/curations/#{curation.id}" do %>
