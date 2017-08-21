@@ -13,7 +13,20 @@ class UpcomingsController < ApplicationController
 
   def show
     @upcoming = Upcoming.find(params[:id])
-    @posts = @upcoming.posts(current_user)
+    @posts = @upcoming.main_video_and_feeds(current_user)
+    puts '+++++++++======================""'
+    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^"
+
+    @artists = @upcoming.artists.map()
+    puts @aritsts
+
+
+    unshift(
+        Artist.new(
+            name: "Main Video",
+            image_url: Faker::LoremPixel.image("50x60")
+        )
+    )
     @like_true = user_signed_in? &&
         UpcomingLike.where(
             upcoming_id: params[:id],
@@ -35,19 +48,11 @@ class UpcomingsController < ApplicationController
     end
   end
 
-  def toggle_video_like
+  def toggle_feed_like
     post_type = params[:post_class]
     post_id = params[:post_id]
     video_index = params[:video_index]
-    if (post_type == "feed")
-      puts "FEED LIKE"
-      puts video_index
-      redirect_to "/feeds/#{post_id}/toggle_like/#{video_index}"
-    elsif (post_type == "curation")
-      puts "CURATION LIKE"
-      puts video_index
-      redirect_to "/curations/#{post_id}/toggle_like/#{video_index}"
-    end
+    redirect_to "/feeds/#{post_id}/toggle_like/#{video_index}"
   end
 
   def update

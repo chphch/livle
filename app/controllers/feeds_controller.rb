@@ -13,7 +13,6 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
     @video_id = @feed.video_id
-
     @related_feeds = []
     @feed.artists.each do |artist|
       same_artist = Artist.find(artist.id)

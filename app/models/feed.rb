@@ -6,6 +6,7 @@ class Feed < ArtistsRecord
   has_many :feed_likes
   has_many :feed_comments
   has_many :connect_urls
+  attr_accessor :video_id
 
   def search_data
     super
