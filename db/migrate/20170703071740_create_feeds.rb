@@ -2,6 +2,7 @@ class CreateFeeds < ActiveRecord::Migration[5.1]
   def change
     create_table :feeds do |t|
       t.belongs_to :user
+      t.boolean :is_curation
       t.string :title
       t.string :youtube_id
       t.integer :count_view

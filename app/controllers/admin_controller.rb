@@ -4,11 +4,6 @@ class AdminController < ApplicationController
     render_by_device
   end
 
-  def curation
-    @curations = Curation.all
-    render_by_device
-  end
-
   def artist
     @artists = Artist.all
     render_by_device

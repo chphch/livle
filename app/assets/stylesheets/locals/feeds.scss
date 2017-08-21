@@ -6,21 +6,13 @@
 
 //Mobile
 #feeds-index-mobile,
-#feeds-show-mobile,
-#curations-show-mobile {
+#feeds-show-mobile {
   background: $black;
 }
 
 //Desktop
 #feeds-index {
   background: $black;
-
-  .curation-container {
-    position: relative;
-    top: 0; left: 0; right: 0;
-    height: 36rem;
-    background: $gray;
-  }
 
   .feed-container {
     padding: 8rem 0;
@@ -78,68 +70,7 @@
   }
 }
 
-#curation-card {
-  .curation-background {
-    overflow: hidden;
-  }
-
-  .curation-filter {
-    background: $black-opacity;
-    padding: $navbar-height 0 0;
-  }
-
-  .curation-video-container {
-    position: relative;
-    top: 0;
-    width: 54rem;
-    height: auto;
-  }
-
-  .curation-describe-container {
-    position: relative;
-    top: 0; left: 0; bottom: 0;
-    width: 50rem;
-    margin: 0 0 0 12rem;
-    p { margin: 0; }
-  }
-  @media (max-width: $desktop) {
-    .curation-video-container {
-      width: 48rem;
-    }
-
-    .curation-describe-container {
-      width: 42rem;
-      margin: 0 0 0 6rem;
-    }
-  }
-
-  .curation-text-container {
-    padding: 4% 0 0;
-
-    &:last-of-type {
-      max-height: 15rem;
-      overflow-y: hidden;
-    }
-  }
-
-  .curation-button {
-    width: 7rem;
-    height: $navbar-h;
-    margin: 1rem 0 0;
-    border: 1px solid $white;
-    border-radius: $br-min;
-
-    &:hover {
-      background: $white;
-      p {
-        color: $black;
-      }
-    }
-  }
-}
-
-#feeds-show,
-#curations-show {
+#feeds-show {
   background: $black;
 
   .show-container {

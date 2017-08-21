@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'feeds#index'
 
   get 'admin/feed'
-  get 'admin/curation'
   get 'admin/artist'
   get 'admin/upcoming'
   get 'admin/connect'
@@ -16,12 +15,6 @@ Rails.application.routes.draw do
 
 
   resources :artists, only: [:index, :create, :show, :update, :destroy]
-
-  resources :curations do
-    resources :curation_comments, only: [:create, :update, :destroy]
-    get 'toggle_like/' => 'curations#toggle_like'
-    get 'toggle_like/:video_index' => 'curations#toggle_like'
-  end
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
