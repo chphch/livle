@@ -126,16 +126,15 @@ $('document').ready(function() {
     function onClickQualityButton(player) {
         var quality = player.getPlaybackQuality();
         if (quality === 'small' || quality === 'medium' || quality === 'large') {
-            player.setPlaybackQuality('hd1080');
+            player.setPlaybackQuality('hd720');
         } else {
-            player.setPlaybackQuality('small');
+            player.setPlaybackQuality('medium');
         }
     }
 
     // on click fullscreen button
     function onClickFullscreenButton(player) {
         var iframeTag = player.a;
-        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
         if (iframeTag.requestFullScreen) {
             iframeTag.requestFullScreen();
         } else if (iframeTag.webkitRequestFullScreen) {
@@ -161,12 +160,16 @@ $('document').ready(function() {
         player.playButton.show();
         player.progressBar.show();
         player.remainingTimer.show();
+        player.qualityButton.show();
+        player.fullScreenButton.show();
     }
     function hideFilter(player) {
         player.filter.hide();
         player.playButton.hide();
         player.progressBar.hide();
         player.remainingTimer.hide();
+        player.qualityButton.hide();
+        player.fullScreenButton.hide();
     }
 
     // set onclick lineup buttons

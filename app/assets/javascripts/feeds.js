@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     //DESKTOP
     $this = $('#scroll-target');
-    $cardWidth = $('.feed-list').width();
+    $cardWidth = $('.current-list ._column-positioner').width();
 
     $('.prev-list').bind("click", function () {
         scrollMove('left');

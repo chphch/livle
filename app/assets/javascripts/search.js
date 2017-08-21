@@ -79,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function renderResult(params) {
         if(params === "feed") {
-            $('#result-list-feed').show();
-            $('#result-list-upcoming').hide();
+            $('#result-list-feed-m').show();
+            $('#result-list-upcoming-m').hide();
         } else {
-            $('#result-list-feed').hide();
-            $('#result-list-upcoming').show();
+            $('#result-list-feed-m').hide();
+            $('#result-list-upcoming-m').show();
         }
     }
 
