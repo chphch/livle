@@ -13,3 +13,18 @@
       </div>
   <% end %>
 </div>
+
+<!-- TODO: Form Helper 완성시키기 -->
+<!--<= form_for comments.create do |f| %>-->
+<div class="_comment-edit-container-m _vcenter-positioner _no-p-margin">
+  <div class="input-container _flex-grow-1">
+    <%= text_field_tag :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "input-text _fs-4-mobile _white" %>
+    <!--<= t.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "_fs-4-mobile _white" %>-->
+  </div>
+
+  <div class="submit-container">
+    <%= submit_tag "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>
+    <!--<= t.submit "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>-->
+  </div>
+</div>
+<!--< end %>-->

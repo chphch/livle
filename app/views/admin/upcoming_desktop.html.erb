@@ -31,7 +31,7 @@
           <div class="col-xs-1">
             <p class="black-desktop-content"><%= upcoming.id %></p>
           </div>
-          <%= form_tag "/upcomings/#{upcoming.id}/update", method: :get do %>
+          <%= form_tag upcoming_path(upcoming.id), method: :patch do %>
               <div class="col-xs-2 form-group">
                 <p class="black-desktop-content">
                   <%= text_field_tag(:title, "#{upcoming.title}", class: "form-control") %>
@@ -69,7 +69,7 @@
               </div>
           <% end %>
           <div class="col-xs-1 text-center">
-            <%= link_to "/upcomings/#{upcoming.id}/destroy" do %>
+            <%= link_to upcoming_path(upcoming.id), method: :destroy do %>
                 <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
           </div>

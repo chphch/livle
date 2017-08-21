@@ -115,6 +115,11 @@
 
   .curation-text-container {
     padding: 4% 0 0;
+
+    &:last-of-type {
+      max-height: 15rem;
+      overflow-y: hidden;
+    }
   }
 
   .curation-button {

@@ -31,7 +31,7 @@
           <div class="col-xs-1">
             <p class="black-desktop-content"><%= artist.id %></p>
           </div>
-          <%= form_tag "/artists/#{artist.id}/update", method: :post, multipart: true do %>
+          <%= form_tag artist_path(artist.id), method: :patch, multipart: true do %>
               <div class="col-xs-2">
                 <input type="file" name="image_url" id="profile<%= artist.id %>" accept="image/*" class="mypage-inputfile">
                 <label for="profile<%= artist.id %>">
@@ -62,7 +62,7 @@
               </div>
           <% end %>
           <div class="col-xs-1 text-center">
-            <%= link_to "/artists/#{artist.id}/destroy" do %>
+            <%= link_to artist_path(artist.id), method: :destroy do %>
                 <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
           </div>

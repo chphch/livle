@@ -1,11 +1,7 @@
 <div id="mypage-edit-profile-mobile">
-  <div class="_body-background-m"></div>
-
   <%= form_tag mypage_update_profile_path, multipart: true, method: :post, id: "update-profile" do %>
       <!-- save button -->
-      <div class="save-button">
-        <%= submit_tag "완료", class: "_fs-4-mobile _white _f-letter-mobile" %>
-      </div>
+      <%= submit_tag "완료", class: "save-button _fs-4-mobile _white _f-letter-mobile" %>
       <div class="_column-positioner _vcenter-positioner">
         <div class="edit-container">
           <!-- image -->
@@ -29,8 +25,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mail", class: "input-icon" %>
             </div>
-            <%= text_field_tag nil, nil, class: "edit-input-field _fs-3-mobile _white",
-                               value: "#{current_user.email}", disabled: true %>
+            <p class="edit-input-field _fs-3-mobile _white"><%= current_user.email %></p>
           </div>
           <div class="hr-white"></div>
           <div class="edit-input-container _vcenter-positioner">

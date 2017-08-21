@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'search/result'
 
-  resources :artists, only: [:index, :create, :show]
 
-  resources :curations, only: [:create, :show] do
+  resources :artists, only: [:index, :create, :show, :update, :destroy]
+
+  resources :curations do
     resources :curation_comments, only: [:create, :update, :destroy]
     get 'toggle_like/' => 'curations#toggle_like'
     get 'toggle_like/:video_index' => 'curations#toggle_like'
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     get 'toggle_like/:video_index' => 'feeds#toggle_like'
   end
 
-  resources :upcomings, only: [:index, :create, :show] do
+  resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy]
     get 'toggle_like'
   end
@@ -36,11 +37,12 @@ Rails.application.routes.draw do
 
   get 'mypage/index'
   get 'mypage/edit_profile'
-  get 'mypage/update_profile'
+  # get 'mypage/update_profile'
   get 'mypage/settings'
   get 'mypage/terms_of_use'
   get 'mypage/privacy_policy'
   post 'mypage/update_profile'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',

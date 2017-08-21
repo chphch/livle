@@ -26,6 +26,13 @@ class ApplicationController < ActionController::Base
     "http://localhost:3000"
   end
 
+  # ####### handling facebook callback error
+  # def after_sign_in_path_for(resource)
+  #   if request.env['omniauth.origin']
+  #     request.env['omniauth.origin']
+  #   end
+  # end
+
   private
   # return the type of the device as a string
   def device_suffix
