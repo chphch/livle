@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
 
   # keeping user to the same page after sign in
   def after_sign_in_path_for(resource)
+    # if request.env['omniauth.origin']
+    #   request.env['omniauth.origin']
+    # end
     request.referrer
   end
 
