@@ -14,17 +14,15 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'search/result'
 
-  resources :artists, only: [:index, :create, :show]
-  post 'artists/:id/update' => 'artists#update'
-  get 'artists/:id/destroy' => 'artists#destroy'
+  resources :artists
 
-  resources :curations, only: [:create, :show] do
+  resources :curations do
     resources :curation_comments, only: [:create, :update, :destroy]
     get 'toggle_like/' => 'curations#toggle_like'
     get 'toggle_like/:video_index' => 'curations#toggle_like'
   end
-  get 'curations/:id/update' => 'curations#update'
-  get 'curations/:id/destroy' => 'curations#destroy'
+  # get 'curations/:id/update' => 'curations#update'
+  # get 'curations/:id/destroy' => 'curations#destroy'
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
@@ -34,21 +32,20 @@ Rails.application.routes.draw do
   # get 'feeds/:id/update' => 'feeds#update'
   # get 'feeds/:id/destroy' => 'feeds#destroy'
 
-  resources :upcomings, only: [:index, :create, :show] do
+  resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy]
     get 'toggle_like'
   end
   get 'upcomings/toggle_video_like/:post_class/:post_id/:video_index' => 'upcomings#toggle_video_like'
-  get 'upcomings/:id/update' => 'upcomings#update'
-  get 'upcomings/:id/destroy' => 'upcomings#destroy'
 
   get 'mypage/index'
   get 'mypage/edit_profile'
   get 'mypage/update_profile'
+  post 'mypage/update_profile'
   get 'mypage/settings'
   get 'mypage/terms_of_use'
   get 'mypage/privacy_policy'
-  post 'mypage/update_profile'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',

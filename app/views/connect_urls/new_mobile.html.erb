@@ -46,83 +46,83 @@
 </div>
 
 <script>
-    // filter
-    $('#youtube-player-controller').click(function (e) {
-        if(e.target.nodeName === 'DIV') {
-            if($('#youtube-player-filter').is(':visible') === true) {
-                $('#youtube-player-filter').hide();
-                $('.youtube-player-buttons').hide();
-            } else {
-                $('#youtube-player-filter').show();
-                $('.youtube-player-buttons').show();
-            }
-        }
-    });
-
-    // youtube player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
-
-    $('#play-button').click(function() {
-        if(player.getPlayerState() === 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-            $('#youtube-player-filter').hide();
-            $('.youtube-player-buttons').hide();
-        }
-    });
-
-    $('#hd-button').click(function () {
-        var quality = player.getPlaybackQuality();
-        console.log('quality = ' + quality);
-        $(this).toggleClass('_light-gray _white');
-        if(quality === 'small' || quality === 'medium' || quality === 'large') {
-            player.setPlaybackQuality('hd720');
-        } else {
-            player.setPlaybackQuality('large');
-        }
-    });
-
-    $('#fullscreen-button').click(function () {
-        var elem = document.getElementById("youtube-player");
-        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
-        if(elem.requestFullScreen) {
-            elem.requestFullScreen();
-        } else if(elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen();
-        } else if(elem.msRequestFullScreen){
-            elem.msRequestFullScreen();
-        } else if(elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        }
-    });
-
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING && !done) {
-            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
-        }
-        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
-        }
-    }
+//    // filter
+//    $('#youtube-player-controller').click(function (e) {
+//        if(e.target.nodeName === 'DIV') {
+//            if($('#youtube-player-filter').is(':visible') === true) {
+//                $('#youtube-player-filter').hide();
+//                $('.youtube-player-buttons').hide();
+//            } else {
+//                $('#youtube-player-filter').show();
+//                $('.youtube-player-buttons').show();
+//            }
+//        }
+//    });
+//
+//    // youtube player
+//    var tag = document.createElement('script');
+//    tag.src = "https://www.youtube.com/iframe_api";
+//    var firstScriptTag = document.getElementsByTagName('script')[0];
+//    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//
+//    var player;
+//    function onYouTubeIframeAPIReady() {
+//        player = new YT.Player('youtube-player', {
+//            events: {
+//                'onReady': onPlayerReady,
+//                'onStateChange': onPlayerStateChange
+//            }
+//        });
+//    }
+//
+//    function onPlayerReady(event) {
+//        event.target.playVideo();
+//    }
+//
+//    $('#play-button').click(function() {
+//        if(player.getPlayerState() === 1) {
+//            player.pauseVideo();
+//        } else {
+//            player.playVideo();
+//            $('#youtube-player-filter').hide();
+//            $('.youtube-player-buttons').hide();
+//        }
+//    });
+//
+//    $('#hd-button').click(function () {
+//        var quality = player.getPlaybackQuality();
+//        console.log('quality = ' + quality);
+//        $(this).toggleClass('_light-gray _white');
+//        if(quality === 'small' || quality === 'medium' || quality === 'large') {
+//            player.setPlaybackQuality('hd720');
+//        } else {
+//            player.setPlaybackQuality('large');
+//        }
+//    });
+//
+//    $('#fullscreen-button').click(function () {
+//        var elem = document.getElementById("youtube-player");
+//        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
+//        if(elem.requestFullScreen) {
+//            elem.requestFullScreen();
+//        } else if(elem.webkitRequestFullScreen) {
+//            elem.webkitRequestFullScreen();
+//        } else if(elem.msRequestFullScreen){
+//            elem.msRequestFullScreen();
+//        } else if(elem.mozRequestFullScreen) {
+//            elem.mozRequestFullScreen();
+//        }
+//    });
+//
+//    var done = false;
+//    function onPlayerStateChange(event) {
+//        if (event.data === YT.PlayerState.PLAYING && !done) {
+//            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
+//        }
+//        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
+//            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
+//        }
+//    }
 
     $('#connect-submit-button').click(function () {
         $('#done-modal').modal();

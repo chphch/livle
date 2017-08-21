@@ -140,7 +140,23 @@
   border-top-right-radius: $br-min-m;
   border-bottom-right-radius: $br-min-m;
   border-bottom-left-radius: $br-min-m;
+  background: $dark-gray;
+}
+
+._comment-edit-container-m {
+  position: fixed;
+  left: 0; bottom: 0; right: 0;
+  height: 6%;
+  padding: 2% 0 2% 2%;
   background: $dark-dark-gray;
+  .input-container {
+    height: 100%;
+    border: 2px solid $white;
+    border-radius: $br-min-m;
+  }
+  .submit-container {
+    padding: 0 3rem;
+  }
 }
 
 ._mypage-title-container-m {
