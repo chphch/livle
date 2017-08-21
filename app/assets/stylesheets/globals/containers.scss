@@ -159,6 +159,11 @@
     border: 2px solid $white;
     border-radius: $br-min-m;
   }
+  .input-text {
+    width: 100%;
+    height: 100%;
+    padding: 2% 4%;
+  }
   .submit-container {
     padding: 0 3rem;
   }
