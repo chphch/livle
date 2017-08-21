@@ -24,6 +24,9 @@ class FeedsController < ApplicationController
         end
       end
     end
+    # TODO:@related_feeds.shuffle.join
+    # TODO:unique
+    @related_feeds.uniq{ |f| f.title }
 
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take

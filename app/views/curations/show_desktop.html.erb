@@ -43,9 +43,13 @@
               <p class="_fs-2 _white"><%= @curation.user.nickname %></p>
             </div>
             <div class="_no-p-margin">
-              <p class="_fs-4 _light-gray"><%= @curation.user.intro %></p>
+              <p class="_fs-4 _white"><%= @curation.user.intro %></p>
             </div>
           </div>
+        </div>
+
+        <div class="text-container">
+          <%= simple_format @curation.content, class: "_fs-4 _light-gray _f-line" %>
         </div>
 
         <!-- Like, Comment, Share Buttons -->
