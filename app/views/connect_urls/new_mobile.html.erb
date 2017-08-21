@@ -1,21 +1,30 @@
-<!-- video_id 추출하기 위한 정규식 -->
-<% video_id = @video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
-
-<div id="connect-new-mobile">
+<div id="connect-new-mobile" class="show-mobile" data-size="1">
   <div class="_body-background-m"></div>
   <div class="_show-video-container-m">
-    <!-- Youtube Video Player -->
-    <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
-            webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
 
-    <div class="_show-video-filter-m" id="youtube-player-filter"></div>
-    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner" id="youtube-player-controller">
-      <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m" id="hd-button" style="margin-top: 1%;">HD</p>
-        <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m", id:"fullscreen-button" %>
+    <!-- Youtube Video Player -->
+    <div class="_show-video-container-m show-video-container" data-index="0">
+      <iframe id="youtube-player-0" type="text/html" src="http://www.youtube.com/embed/<%= @video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @video_id %>"
+              webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+
+      <div class="youtube-player-filter">
+        <div class="_show-video-filter-m"></div>
       </div>
-      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons", id: "play-button") %>
+
+      <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
+        <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+          <div id="progress-bar-0" class="video-progress-bar"></div>
+        </div>
+        <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
+          <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>
+        </div>
+        <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
+          <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 1% 3% 0 0;">HD</p>
+          <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
+        </div>
+        <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
+      </div>
     </div>
 
     <!-- back button -->
@@ -26,106 +35,16 @@
 
   <div class="_full-container _vcenter-positioner _hcenter-positioner">
     <div class="connect-input-container">
-      <%= form_tag connect_urls_path, id: "connect-form", remote: true do %>
-          <%= hidden_field_tag :video_url, @video_url %>
+      <%= form_for @connect_url, id: "connect-form", remote: true do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :video_url, value: @video_url %>
           <div class="input-container">
-            <%= text_area_tag :describe, nil, class: "input-field _f-letter-mobile _fs-3-mobile _white", rows: 8, placeholder: "영상에 대해 알려주세요" %>
+            <%= f.text_field :describe, class: "input-field _f-letter-mobile _fs-3-mobile _white", row: 8, placeholder: "영상에 대해 알려주세요" %>
+          </div>
+          <div class="submit-container _hcenter-positioner">
+            <%= f.submit class: "submit-button _text-center _fs-2-mobile _white", id: "connect-submit-button", value: "보내기" %>
           </div>
       <% end %>
-      <div class="submit-container _hcenter-positioner">
-        <div class="submit-button _text-center" id="connect-submit-button">
-          <p class="_fs-2-mobile _white">보내기</p>
-        </div>
-      </div>
     </div>
   </div>
-
-  <form id="done-modal" class="modal">
-    <%= render partial: "done_modal_mobile" %>
-  </form>
 </div>
-
-<script>
-    // filter
-    $('#youtube-player-controller').click(function (e) {
-        if(e.target.nodeName === 'DIV') {
-            if($('#youtube-player-filter').is(':visible') === true) {
-                $('#youtube-player-filter').hide();
-                $('.youtube-player-buttons').hide();
-            } else {
-                $('#youtube-player-filter').show();
-                $('.youtube-player-buttons').show();
-            }
-        }
-    });
-
-    // youtube player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
-
-    $('#play-button').click(function() {
-        if(player.getPlayerState() === 1) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-            $('#youtube-player-filter').hide();
-            $('.youtube-player-buttons').hide();
-        }
-    });
-
-    $('#hd-button').click(function () {
-        var quality = player.getPlaybackQuality();
-        console.log('quality = ' + quality);
-        $(this).toggleClass('_light-gray _white');
-        if(quality === 'small' || quality === 'medium' || quality === 'large') {
-            player.setPlaybackQuality('hd720');
-        } else {
-            player.setPlaybackQuality('large');
-        }
-    });
-
-    $('#fullscreen-button').click(function () {
-        var elem = document.getElementById("youtube-player");
-        // TODO: Fullscreen일때 컨트롤바도 만들어야 함..
-        if(elem.requestFullScreen) {
-            elem.requestFullScreen();
-        } else if(elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen();
-        } else if(elem.msRequestFullScreen){
-            elem.msRequestFullScreen();
-        } else if(elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        }
-    });
-
-    var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING && !done) {
-            $('#play-button').attr('src', "<%= image_url "icon_pause" %>");
-        }
-        else if(event.data === YT.PlayerState.PAUSED || event.data === event.data === YT.PlayerState.CUED) {
-            $('#play-button').attr('src', "<%= image_url "icon_play" %>");
-        }
-    }
-
-    $('#connect-submit-button').click(function () {
-        $('#done-modal').modal();
-        $('#connect-form').delay(2400).submit();
-    });
-</script>
