@@ -39,7 +39,7 @@
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :video_url, value: @video_url %>
           <div class="input-container">
-            <%= f.text_field :describe, class: "input-field _f-letter-mobile _fs-3-mobile _white", row: 8, placeholder: "영상에 대해 알려주세요" %>
+            <%= f.text_area :describe, class: "input-field _f-letter-mobile _fs-3-mobile _white", row: 8, placeholder: "영상에 대해 알려주세요" %>
           </div>
           <div class="submit-container _hcenter-positioner">
             <%= f.submit class: "submit-button _text-center _fs-2-mobile _white", id: "connect-submit-button", value: "보내기" %>

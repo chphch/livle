@@ -18,7 +18,7 @@ for i in 1..SIZE_1
     provider: "local",
     nickname: Faker::HarryPotter.character,
     intro: Faker::Hacker.say_something_smart,
-    profile_img: "image_profile.jpg"
+    profile_img: nil
   )
 end
 
