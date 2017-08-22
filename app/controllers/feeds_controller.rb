@@ -1,6 +1,4 @@
 class FeedsController < ApplicationController
-  helper_method :content_shorten
-
   def index
     @feeds = Feed.paginate(page: params[:page], per_page: 8)
     respond_to do |format|
@@ -59,19 +57,6 @@ class FeedsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       render text: @feed.errors.messages
-    end
-  end
-
-  def content_shorten(content)
-    lines = content.split(/\n+/)
-
-    if lines.size > 2
-      m_content = lines[0] + "<br />" + lines[1] + " ..."
-      puts "shorten: " + m_content
-      return m_content
-    else
-      puts "original: " + content
-      return content
     end
   end
 end

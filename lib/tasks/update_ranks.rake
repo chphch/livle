@@ -17,4 +17,6 @@ namespace :update_ranks do
       Feed.update(feed.id, rank: result) # Update rank value
     end
   end
+
+  # TODO: db_backup
 end
