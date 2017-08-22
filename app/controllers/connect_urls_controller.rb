@@ -2,25 +2,39 @@ class ConnectUrlsController < ApplicationController
   before_action :authenticate_user!, only: [:describe]
 
   def index
-    @nickname = user_signed_in? ? current_user.nickname : "손님???"
+    @nickname = user_signed_in? ? "#{current_user.nickname}님" : "당신"
     render_by_device
   end
 
   def new
-    @video_url = params[:video_url]
-    render_by_device
-
-    @disable_nav = true
+    if user_signed_in?
+      respond_to do |format|
+        format.html {
+          @connect_url = ConnectUrl.new
+          @video_url = params[:video_url]
+          @video_id = get_youtube_video_id(params[:video_url])
+          @disable_nav = true
+          render_by_device
+        }
+        format.js { render js: "window.location = '#{new_connect_url_path}?video_url=#{params[:video_url]}';" }
+      end
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
-    connectUrl = ConnectUrl.new(video_url: params[:video_url], describe: params[:describe], user_id: current_user.id)
-    if connectUrl.save
-      redirect_to connect_urls_path
-    end
+    connectUrl = ConnectUrl.new(connect_url_params)
+    connectUrl.save
+    render_by_device
   end
 
   def destroy
 
+  end
+
+  private
+  def connect_url_params
+    params.require(:connect_url).permit(:video_url, :describe, :user_id)
   end
 end

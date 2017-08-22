@@ -5,33 +5,23 @@
   <div class="_full-container _column-positioner _vcenter-positioner _hcenter-positioner">
     <div class="info-text-container text-spacing">
       <p class="_fs-1-mobile _white">
-        <%= user_signed_in? ? current_user.nickname : "LIVLE" %>님이 느꼈던 전율의 순간.<br>
+        <%= @nickname %>이 느꼈던 전율의 순간.<br>
         그 떨림을 전해주세요
       </p>
     </div>
 
     <div class="connect-input-container">
-      <%= form_tag new_connect_url_path, method: :get do %>
+      <%= form_tag new_connect_url_path, method: :get, remote: true do %>
           <div class="_row-positioner">
             <div class="icon-container _vcenter-positioner">
               <%= image_tag "icon_video_cam", class: "input-icon" %>
             </div>
             <div class="input-container">
               <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white", placeholder: "URL을 입력해주세요" %>
+              <%= submit_tag "URL 링크 바로가기", class: "input-field _fs-3-mobile _white" %>
             </div>
           </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<% if !user_signed_in? %>
-    <form id="modal-page" class="modal">
-      <div class="_big-modal-container">
-        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-      </div>
-    </form>
-    <script>
-        $('#modal-page').modal();
-    </script>
-<% end %>

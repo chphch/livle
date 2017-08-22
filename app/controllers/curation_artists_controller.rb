@@ -1,2 +1,0 @@
-class CurationArtistsController < ApplicationController
-end

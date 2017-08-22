@@ -34,6 +34,11 @@ class User < ApplicationRecord
     end
   end
 
+  # whether or not the page changes
+  def remote
+
+  end
+
   def isFacebook?
     self.provider == "facebook";
   end

@@ -6,10 +6,10 @@ class MypageController < ApplicationController
     if user_signed_in?
       @title = current_user.nickname
       @like_size = current_user.feed_likes.size + current_user.curation_likes.size
+      render_by_device
     else
-      @title = "로그인"
+      redirect_to new_user_session_path
     end
-    render_by_device
   end
 
   def edit_profile
@@ -69,24 +69,5 @@ class MypageController < ApplicationController
     else
       return -d_day
     end
-  end
-
-
-  # divise methods
-
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def resource_class
-    User
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
   end
 end

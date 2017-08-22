@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-SIZE_1 = 20
+SIZE_1 = 60
 SIZE_2 = 5
+youtube_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84", "https://youtu.be/Xvjnoagk6GU"]
 
 for i in 1..SIZE_1
   User.create(
@@ -28,38 +29,12 @@ for i in 1..SIZE_1
 end
 
 for i in 1..SIZE_1
-  curation = Curation.create(
-    user_id: rand(1..SIZE_1),
-    title: "curation_" + i.to_s,
-    content: Faker::Hacker.say_something_smart,
-    youtube_id: "https://www.youtube.com/watch?v=mHr2-0hCiqg",
-    count_share: rand(1..100),
-    count_view: rand(1..100),
-    rank: 0.0
-  )
-  for i in 1..SIZE_2
-    arr = Array.new(SIZE_1) {|i| i}.sample(5)
-    CurationArtist.create(
-      curation_id: curation.id,
-      artist_id: arr[i]
-    )
-    CurationLike.create(
-      curation_id: curation.id,
-      user_id: arr[i]
-    )
-    CurationComment.create(
-      curation_id: curation.id,
-      user_id: rand(1..SIZE_1),
-      content: Faker::Hacker.say_something_smart
-    )
-  end
-end
-
-for i in 1..SIZE_1
   feed = Feed.create(
     user_id: rand(1..SIZE_1),
+    is_curation: [false, false, false, true].sample,
     title: "feed_" + i.to_s,
-    youtube_id: "https://www.youtube.com/watch?v=6XJjw7sWj84",
+    youtube_id: youtube_list.sample,
+    content: Faker::Hacker.say_something_smart,
     count_view: rand(1..100),
     count_share: rand(1..100),
     rank: 0.0
@@ -86,10 +61,10 @@ for i in 1..SIZE_1
   upcoming = Upcoming.create(
     title: "upcoming_" + i.to_s,
     place: Faker::Space.galaxy,
-    main_youtube_id: "https://youtu.be/Xvjnoagk6GU",
-    start_date: Date.new(2017,rand(1..12),rand(1..12)),
-    end_date: Date.new(2017,rand(1..12),rand(1..12)),
-    ticket_url: 'www.naver.com'
+    main_youtube_id: youtube_list.sample,
+    start_date: Date.new(2017,rand(8..12),rand(1..30)),
+    end_date: Date.new(2017,rand(8..12),rand(1..30)),
+    ticket_url: 'https://m.facebook.com'
   )
   for i in 1..SIZE_2
     arr = Array.new(SIZE_1) {|i| i}.sample(5)

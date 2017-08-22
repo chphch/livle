@@ -1,57 +1,30 @@
 <div id="feeds-show-mobile" class="show-mobile" data-size="1">
-  <!-- Youtube Video Player -->
-  <div class="_show-video-container-m show-video-container" data-index="0">
-    <iframe id="youtube-player-0" type="text/html" src="http://www.youtube.com/embed/<%= @video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @video_id %>"
-            webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+  <%= render partial: '/partial_views/youtube_player', locals: { video_id: @video_id, feed: @feed, artists: @feed.artists } %>
 
-    <div class="youtube-player-filter">
-      <div class="_show-video-filter-m"></div>
-      <div class="_show-video-title-container-m _hcenter-positioner">
-        <p class="_fs-2-mobile _white">
-          <!-- title -->
-          <%= @feed.title %> -
-          <!-- artist.name -->
-          <% @feed.artists.each_with_index do |artist, index| %>
-              <% unless index == 0 %>,&nbsp<% end %>
-              <%= artist.name %>
-          <% end %>
-        </p>
-      </div>
-      <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
-        <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @feed.count_view %></p>
-        <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white post-like-count"><%= @feed.feed_likes.size %></p>
-        <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-        <p class="_fs-5-mobile _white"><%= @feed.count_share %></p>
-      </div>
-    </div>
-
-    <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
-      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <div id="progress-bar-0" class="video-progress-bar"></div>
-      </div>
-      <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-        <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>
-      </div>
-      <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-        <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 1% 3% 0 0;">HD</p>
-        <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
-      </div>
-      <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
-    </div>
-
-    <!-- back button -->
-    <%= link_to :back, class: "_show-video-back-container-m" do %>
-        <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
-    <% end %>
-  </div>
+  <!-- back button -->
+  <%= link_to :back, class: "_show-video-back-container-m" do %>
+      <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
+  <% end %>
 
   <!-- Video info -->
   <div class="_show-info-padding-m">
     <div class="_show-describe-container-m">
-      <div class="_row-positioner">
+      <div class="_vcenter-positioner">
+        <div class="_profile-container-m _profile-border-m">
+          <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
+        </div>
+
+        <div class="_show-text-padding-m _vcenter-positioner _flex-grow-1 _no-p-margin">
+          <div class="_show-text-container-m">
+            <div class="_show-text-margin-m _vcenter-positioner">
+              <%= image_tag(@feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%") %>
+              <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
+            </div>
+            <p class="_fs-4-mobile _light-gray"><%= @feed.user.intro %></p>
+          </div>
+        </div>
+      </div>
+      <div class="_show-describe-item-padding-m _row-positioner">
         <p class="_fs-3-mobile _white"><%= @feed.title %> -&nbsp</p>
         <p class="_fs-4-mobile _light-gray">
           <% @feed.artists.each_with_index do |artist, index| %>
@@ -60,21 +33,8 @@
           <% end %>
         </p>
       </div>
-
-      <div class="_show-describe-item-padding-m _vcenter-positioner">
-        <div class="_profile-container-m _profile-border-m">
-          <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
-        </div>
-
-        <div class="_show-text-padding-m _vcenter-positioner _flex-grow-1">
-          <div class="_show-text-container-m">
-            <div class="_show-text-margin-m _vcenter-positioner">
-              <%= image_tag("icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%") %>
-              <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
-            </div>
-            <p class="_fs-4-mobile _light-gray">소개글을 입력해주세요~!</p>
-          </div>
-        </div>
+      <div class="_show-describe-item-padding-m">
+        <%= simple_format @feed.content, class:"_fs-4-mobile _light-gray _f-line-mobile" %>
       </div>
     </div>
   </div>
@@ -84,8 +44,8 @@
     <%= link_to feed_toggle_like_path(@feed.id), remote: true, class: "_flex-grow-1
     _hcenter-positioner _vcenter-positioner" do %>
         <div class="_show-icon-m show-like">
-          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
-          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m #{@like_true ? '_display_none' : ''}" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m #{@like_true ? '' : '_display_none'}" %>
         </div>
         <p class="_fs-4-mobile _white">좋아요</p>
     <% end %>
@@ -119,13 +79,6 @@
 </div>
 
 <script>
-    // initialize like button
-    <% if @like_true %>
-    $('#icon-like-empty').addClass('_display-none');
-    <% else %>
-    $('#icon-like-filled').addClass('_display-none');
-    <% end %>
-
     // share modal
     $('#share-modal-button').click(function() {
         $('#share-modal').modal();

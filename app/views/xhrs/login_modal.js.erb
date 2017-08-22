@@ -1,1 +1,8 @@
+$('body').append(
+    '<div id="login-modal" class="modal">\
+    <div class="_big-modal-container">\
+    <%= j render file: "/devise/sessions/new_mobile.html.erb" %>\
+    </div>\
+    </form>'
+);
 $('#login-modal').modal();

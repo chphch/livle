@@ -35,47 +35,6 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.index ["user_id"], name: "index_connect_urls_on_user_id"
   end
 
-  create_table "curation_artists", force: :cascade do |t|
-    t.integer "curation_id"
-    t.integer "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_curation_artists_on_artist_id"
-    t.index ["curation_id"], name: "index_curation_artists_on_curation_id"
-  end
-
-  create_table "curation_comments", force: :cascade do |t|
-    t.integer "curation_id"
-    t.integer "user_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["curation_id"], name: "index_curation_comments_on_curation_id"
-    t.index ["user_id"], name: "index_curation_comments_on_user_id"
-  end
-
-  create_table "curation_likes", force: :cascade do |t|
-    t.integer "curation_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["curation_id"], name: "index_curation_likes_on_curation_id"
-    t.index ["user_id"], name: "index_curation_likes_on_user_id"
-  end
-
-  create_table "curations", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.text "content"
-    t.string "youtube_id"
-    t.integer "count_share"
-    t.integer "count_view"
-    t.float "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_curations_on_user_id"
-  end
-
   create_table "feed_artists", force: :cascade do |t|
     t.integer "feed_id"
     t.integer "artist_id"
@@ -106,8 +65,10 @@ ActiveRecord::Schema.define(version: 20170716213035) do
 
   create_table "feeds", force: :cascade do |t|
     t.integer "user_id"
+    t.boolean "is_curation"
     t.string "title"
     t.string "youtube_id"
+    t.text "content"
     t.integer "count_view"
     t.integer "count_share"
     t.float "rank"
