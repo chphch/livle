@@ -5,7 +5,7 @@ class MypageController < ApplicationController
   def index
     if user_signed_in?
       @title = current_user.nickname
-      @like_size = current_user.feed_likes.size + current_user.curation_likes.size
+      @like_size = current_user.feed_likes.size
       render_by_device
     else
       redirect_to new_user_session_path
