@@ -89,7 +89,7 @@
 }
 
 ._show-video-back-container-m {
-  position: absolute;
+  position: fixed;
   z-index: 98;
   top: 0; left: 0;
   padding: 4%;
@@ -118,6 +118,7 @@
 
 ._show-text-container-m {
   width: 100%;
+  height: 100%;
 }
 
 ._show-buttons-container-m {

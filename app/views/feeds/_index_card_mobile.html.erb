@@ -14,7 +14,7 @@
         </div>
 
         <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner">
-          <%= image_tag("icon_crown", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -2%") %>
+          <%= image_tag(feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m", style: "margin-top: -2%") %>
           <p class="_fs-4-mobile _white _thumbnail-margin-right-m"><%= feed.user.nickname %></p>
         </div>
 
@@ -29,6 +29,9 @@
                 ,&nbsp
             <% end %>
           </p>
+          <!-- Content -->
+          <%= simple_format content_shorten(feed.content), class: "_describe-text-container-m _fs-curation-mobile
+               _light-gray _f-line-mobile" %>
         </div>
       </div>
   <% end %>
