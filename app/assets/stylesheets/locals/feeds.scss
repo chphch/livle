@@ -11,8 +11,75 @@
 }
 
 //Desktop
+#official-card {
+  .official-background {
+    overflow: hidden;
+  }
+
+  .official-filter {
+    background: $black-opacity;
+    padding: $navbar-height 0 0;
+  }
+
+  .official-video-container {
+    position: relative;
+    top: 0;
+    width: 54rem;
+    height: auto;
+  }
+
+  .official-describe-container {
+    position: relative;
+    top: 0; left: 0; bottom: 0;
+    width: 50rem;
+    margin: 0 0 0 12rem;
+    p { margin: 0; }
+  }
+  @media (max-width: $desktop) {
+    .official-video-container {
+      width: 48rem;
+    }
+
+    .official-describe-container {
+      width: 42rem;
+      margin: 0 0 0 6rem;
+    }
+  }
+
+  .official-text-container {
+    padding: 4% 0 0;
+
+    &:last-of-type {
+      max-height: 15rem;
+      overflow-y: hidden;
+    }
+  }
+
+  .official-button {
+    width: 7rem;
+    height: $navbar-h;
+    margin: 1rem 0 0;
+    border: 1px solid $white;
+    border-radius: $br-min;
+
+    &:hover {
+      background: $white;
+      p {
+        color: $black;
+      }
+    }
+  }
+}
+
 #feeds-index {
   background: $black;
+
+  .curation-container {
+    position: relative;
+    top: 0; left: 0; right: 0;
+    height: 36rem;
+    background: $gray;
+  }
 
   .feed-container {
     padding: 8rem 0;
@@ -65,8 +132,9 @@
 
   .card-container {
     position: relative;
-    width: 16rem;
-    margin: 2rem;
+    width: 18rem;
+    height: 20rem;
+    margin: 2rem 1rem;
   }
 }
 

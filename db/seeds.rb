@@ -8,7 +8,8 @@
 
 SIZE_1 = 60
 SIZE_2 = 5
-youtube_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84", "https://youtu.be/Xvjnoagk6GU"]
+youtube_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84",
+                "https://youtu.be/Xvjnoagk6GU", "https://www.youtube.com/watch?v=_gWn2xRfE90", "https://youtu.be/si_TE3iKjEQ"]
 
 for i in 1..SIZE_1
   User.create(

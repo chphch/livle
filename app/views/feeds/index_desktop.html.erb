@@ -1,7 +1,7 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
   <div class="curation-container">
-    <%= render partial: "curations/curation_card_desktop", locals: {curation: @curations.first} %>
+    <%= render partial: "index_official_desktop", locals: {feed: @feeds.where(is_curation: true).first} %>
   </div>
 
   <div class="feed-container _hcenter-positioner">
