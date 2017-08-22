@@ -156,6 +156,16 @@ input:-ms-input-placeholder {
   width: 20%;
   height: auto;
 }
+
+//social button icon size
+.social-share-button {
+  .ssb-icon {
+    $icon-size: 12rem;
+    background-size: $icon-size !important;
+    width: $icon-size !important; height: $icon-size !important;
+    margin: 0 2rem;
+  }
+}
 ////button
 ._show-play-button {
   width: auto;
