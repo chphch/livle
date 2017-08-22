@@ -6,7 +6,7 @@
         <%= image_tag current_user.profile_img, class: "_profile-img" %>
       </div>
       <p class="_fs-4 _white "><%= current_user.nickname %></p>
-      <%= text_field_tag :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "_comment-content-container _flex-grow-1 _fs-4 _white" %>
+      <%= text_field_tag :content, nil, placeholder: "어떤 말이 하고 싶으신가요?", class: "_comment-content-container _flex-grow-1 _fs-4 _white" %>
       <!--<= t.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "_comment-content-container _flex-grow-1 _fs-4 _white" %>-->
     </div>
     <!--< end %>-->
