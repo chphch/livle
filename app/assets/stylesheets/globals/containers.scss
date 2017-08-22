@@ -177,21 +177,15 @@
 ._big-modal-container {
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  //top: 18%;
-  //left: 14%;
-  //width: 72%;
-  //height: 56%;
-  margin: 24rem 12rem;
+  margin: 24rem 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
 
 ._small-modal-container {
   position: absolute;
-  top: 34%;
-  left: 14%;
-  width: 72%;
-  height: 32%;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: 56rem 8rem;
   background: none;
   border-radius: 6rem;
 }
