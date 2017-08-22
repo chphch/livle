@@ -3,7 +3,8 @@
   <% if user_signed_in? %>
       <div class="_column-positioner _vcenter-positioner">
         <div class="profile-container">
-          <%= image_tag("#{current_user.profile_img}", id: "upload-profile-img", class: "profile-img") %>
+          <%= image_tag current_user.profile_img != nil ? current_user.profile_img : image_profile,
+                        id: "upload-profile-img", class: "profile-img" %>
         </div>
 
         <div class="info-container _text-center">

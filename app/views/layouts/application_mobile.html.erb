@@ -35,5 +35,8 @@
   <%= render partial: '/mypage/top_mobile', locals: {title: @title, back_url: @back_url} if @title %>
 
   <%= yield %>
+  <% unless @disable_nav %>
+      <div style="padding: 4rem; background: none;"></div>
+  <% end %>
   </body>
 </html>
