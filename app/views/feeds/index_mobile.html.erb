@@ -3,7 +3,7 @@
     <%= image_tag "logo_livle", class: "_logo-container-m" %>
   </div>
 
-  <div class="_list-container-m" id="feeds-card-list-m">
+  <div class="_card-list-container-m" id="feeds-card-list-m">
     <% @feeds.each do |feed| %>
         <%= render partial: 'index_card_mobile', locals: {feed: feed} %>
     <% end %>

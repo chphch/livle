@@ -102,7 +102,7 @@ input:-ms-input-placeholder {
 
 ._thumbnail-info-icon-m {
   width: auto;
-  height: 100%;
+  height: 4rem;
   margin-right: $thumbnail-info-mh-m;
 }
 
@@ -112,7 +112,7 @@ input:-ms-input-placeholder {
 }
 
 ._profile-border-m {
-  border-radius: 100%;
+  border-radius: 50%;
   border: 0.2rem $light-green solid;
 }
 
@@ -205,12 +205,6 @@ input:-ms-input-placeholder {
   margin-right: $thumbnail-elem-mh-m;
 }
 
-._show-text-margin-m {
-  width: 100%;
-  height: 3.5rem;
-  margin-bottom: 2.8rem;
-}
-
 ._icon-text-margin-m {
   margin-left: $list-container-ph-m;
 }
@@ -219,18 +213,8 @@ input:-ms-input-placeholder {
   margin-top: 26%;
 }
 
-._show-info-padding-m {
+._show-player-padding-m {
   padding-top: 56.25%;
-}
-
-._show-text-padding-m {
-  width: 75%;
-  height: 12rem;
-  padding-left: $list-container-ph-m;
-}
-
-._show-describe-item-padding-m {
-  padding-top: $list-container-pv-m;
 }
 
 ._small-modal-title {

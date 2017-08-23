@@ -10,6 +10,28 @@
   background: $black;
 }
 
+#feeds-show-mobile {
+  .info-container {
+    padding: $list-container-pv-m $list-container-ph-m;
+    background: $dark-dark-gray;
+  }
+
+  .text-padding {
+    width: 75%;
+    height: 12rem;
+    padding: 0 0 0 $list-container-ph-m;
+  }
+
+  .text-row {
+    width: 100%;
+    padding: 2% 0;
+  }
+
+  .describe-container {
+    padding-top: $list-container-pv-m;
+  }
+}
+
 //Desktop
 #official-card {
   .official-background {

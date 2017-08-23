@@ -2,40 +2,41 @@
   <%= render partial: '/partial_views/youtube_player', locals: { video_id: @video_id, feed: @feed, artists: @feed.artists } %>
 
   <!-- back button -->
-  <%= link_to :back, class: "_show-video-back-container-m" do %>
+  <%= link_to :back, class: "_link-back-container-m" do %>
       <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
   <% end %>
 
   <!-- Video info -->
-  <div class="_show-info-padding-m">
-    <div class="_show-describe-container-m">
-      <div class="_vcenter-positioner">
-        <div class="_profile-container-m _profile-border-m">
-          <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
-        </div>
+  <div class="_show-player-padding-m"></div>
+  <div class="info-container">
+    <div class="_vcenter-positioner">
+      <div class="_profile-container-m _profile-border-m">
+        <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
+      </div>
 
-        <div class="_show-text-padding-m _vcenter-positioner _flex-grow-1 _no-p-margin">
-          <div class="_show-text-container-m">
-            <div class="_show-text-margin-m _vcenter-positioner">
-              <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%" %>
-              <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
-            </div>
+      <div class="text-padding _vcenter-positioner _flex-grow-1 _no-p-margin">
+        <div class="_show-text-container-m _column-positioner _vcenter-positioner">
+          <div class="text-row _vcenter-positioner">
+            <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%" %>
+            <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
+          </div>
+          <div class="text-row">
             <p class="_fs-4-mobile _light-gray"><%= @feed.user.intro %></p>
           </div>
         </div>
       </div>
-      <div class="_show-describe-item-padding-m _row-positioner">
-        <p class="_fs-3-mobile _white"><%= @feed.title %> -&nbsp</p>
-        <p class="_fs-4-mobile _light-gray">
-          <% @feed.artists.each_with_index do |artist, index| %>
-              <% unless index == 0 %>,&nbsp<% end %>
-              <%= artist.name %>
-          <% end %>
-        </p>
-      </div>
-      <div class="_show-describe-item-padding-m">
-        <%= simple_format @feed.content, class:"_fs-4-mobile _light-gray _f-line-mobile" %>
-      </div>
+    </div>
+    <div class="describe-container _row-positioner">
+      <p class="_fs-3-mobile _white"><%= @feed.title %> -&nbsp</p>
+      <p class="_fs-4-mobile _light-gray">
+        <% @feed.artists.each_with_index do |artist, index| %>
+            <% unless index == 0 %>,&nbsp<% end %>
+            <%= artist.name %>
+        <% end %>
+      </p>
+    </div>
+    <div class="describe-container">
+      <%= simple_format @feed.content, class:"_fs-4-mobile _light-gray _f-line-mobile" %>
     </div>
   </div>
 
