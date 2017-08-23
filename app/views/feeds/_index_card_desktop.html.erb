@@ -3,7 +3,8 @@
   <%= link_to feed_path(feed.id) do %>
       <% if @show_curator %>
           <div class="_vcenter-positioner _no-p-margin _text-container">
-            <%= image_tag("icon_crown", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
+            <%= image_tag feed.is_curation ? "icon_crown_gold" : "icon_crown",
+                class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%" %>
             <p class="_fs-5 _white"><%= feed.user.nickname %></p>
           </div>
       <% end %>

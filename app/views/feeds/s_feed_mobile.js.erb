@@ -1,5 +1,5 @@
 $('#feeds-card-list-m').append('<%= j render partial: "index_card_mobile", collection: @feeds, as: :feed %>');
-<% if @feeds.next_page || @curations.next_page %>
+<% if @feeds.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
 <% else %>
   $(window).off('scroll');

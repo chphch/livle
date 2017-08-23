@@ -17,7 +17,7 @@
         <div class="_show-text-padding-m _vcenter-positioner _flex-grow-1 _no-p-margin">
           <div class="_show-text-container-m">
             <div class="_show-text-margin-m _vcenter-positioner">
-              <%= image_tag(@feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%") %>
+              <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%" %>
               <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
             </div>
             <p class="_fs-4-mobile _light-gray"><%= @feed.user.intro %></p>

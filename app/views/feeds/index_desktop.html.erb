@@ -1,7 +1,7 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
   <div class="curation-container">
-    <%= render partial: "index_official_desktop", locals: {feed: @feeds.where(is_curation: true).first} %>
+    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} %>
   </div>
 
   <div class="feed-container _hcenter-positioner">
@@ -20,6 +20,10 @@
                 </div>
             <% end %>
         <% end %>
+
+        <div class="_display-none" id="infinite-scrolling">
+          <%= will_paginate @feeds %>
+        </div>
       </div>
 
       <div id="prev-btn">

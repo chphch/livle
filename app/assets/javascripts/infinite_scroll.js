@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     var isLoading = false;
-    if ($('#infinite-scrolling').length > 0) {
+        if ($('#infinite-scrolling').length > 0) {
         $(window).on('scroll', function() {
             var more_contents_url = $('.pagination a.next_page').attr('href');
             if (!isLoading && more_contents_url && $(window).scrollTop() > $(document).height() - $(window).height() - 240) {

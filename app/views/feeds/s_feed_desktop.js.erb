@@ -1,0 +1,21 @@
+$('#scroll-target').append(
+  '<% @show_curator = true %>\
+  <% @feeds.each_with_index do |feed, i| %>\
+    <% if i % 2 != 0 && @feeds[i+1] != nil %>\
+      <div class="_column-positioner">\
+        <div class="card-container">\
+          <%= j render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>\
+        </div>\
+        <div class="card-container">\
+          <%= j render partial: "index_card_desktop", locals: {feed: @feeds[i+1]} %>\
+        </div>\
+      </div>\
+    <% end %>\
+  <% end %>'
+);
+<% if @feeds.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+<% else %>
+  $('#scroll-target').off('scroll');
+  $('.pagination').remove();
+<% end %>

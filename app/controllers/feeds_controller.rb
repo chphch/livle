@@ -1,9 +1,10 @@
 class FeedsController < ApplicationController
   def index
-    @feeds = Feed.paginate(page: params[:page], per_page: 8)
+    @officials = Feed.where(is_curation: true)
+    @feeds = Feed.paginate(page: params[:page], per_page: 14)
     respond_to do |format|
       format.html { render_by_device }
-      format.js { render 'feeds/s_feed_mobile' }
+      format.js { render 's_feed_' + device_suffix }
     end
   end
 
