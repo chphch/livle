@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "globals/colors";
 @import "globals/sizes";
+@import "globals/mixins";
 
 #connect-index-mobile,
 #connect-new-mobile {
@@ -33,8 +34,7 @@
   }
 
   .input-field {
-    width: 100%;
-    height: 100%;
+    @include size(100%);
     background: none;
     padding: 2% 4%;
     border: none;
@@ -50,10 +50,7 @@
     padding: 3% 0;
     background: none;
     border: 2px solid $white;
-    border-radius: $br-image-m;
-    p {
-      margin: 0;
-    }
+    @include border-radius($br-image-m);
   }
 }
 
@@ -61,8 +58,7 @@
   .background-img {
     position: fixed;
     top: 0; left: 0; right: 0;
-    width: 100%;
-    height: auto;
+    @include size(100%, auto);
     object-fit: contain;
   }
 
@@ -71,28 +67,25 @@
     padding: 0 4%;
     margin: 0 0.6% 0 0;
     background: rgba(256, 256, 256, 0.27);
-    border-radius: $br-min-m 0 0 $br-min-m;
+    @include border-radius($br-min-m 0 0 $br-min-m);
   }
 
   .input-container {
-    flex-grow: 1;
-    -webkit-flex-grow: 1;
+    @include flex-grow(1);
     height: 10rem;
     background: $gray-opacity;
-    border-radius: 0 $br-min-m $br-min-m 0;
+    @include border-radius(0 $br-min-m $br-min-m 0);
   }
 
   .input-icon {
-    width: auto;
-    height: 5rem;
+    @include size(auto, 5rem);
   }
 }
 
 #connect-new-mobile {
   .input-container {
-    width: 100%;
-    height: 24rem;
+    @include size(100%, 24rem);
     background: $gray-opacity;
-    border-radius: $br-min-m;
+    @include border-radius($br-min-m);
   }
 }
