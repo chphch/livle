@@ -34,10 +34,10 @@
         </div>
 
         <div class="text-container _vcenter-positioner">
-          <div class="_profile-container _profile-border-m">
+          <div class="_profile-container _profile-border-green">
             <%= image_tag "#{@feed.user.profile_img}", class: "_profile-img" %>
           </div>
-          <div class="_official-container _flex-grow-1">
+          <div class="_username-container _flex-grow-1">
             <div class="_vcenter-positioner _no-p-margin">
               <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown",
                             class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%" %>

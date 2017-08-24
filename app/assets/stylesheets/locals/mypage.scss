@@ -28,18 +28,7 @@
     top: 4rem;
     width: 19rem;
     height: 19rem;
-    border-radius: 50%;
-    border: 0.8rem $light-green solid;
-  }
-
-  .profile-img {
-    position: absolute;
-    top: 3%;
-    left: 3%;
-    width: 94%;
-    height: 94%;
-    object-fit: cover;
-    overflow: hidden;
+    padding: 0.6rem;
     border-radius: 50%;
   }
 
@@ -146,7 +135,7 @@
     width: 28rem;
     height: 28rem;
     border-radius: 50%;
-    border: 1rem $light-green solid;
+    padding: .6rem;
   }
 
   .profile-img {

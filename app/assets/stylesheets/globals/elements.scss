@@ -1,6 +1,8 @@
 @import "sizes";
 @import "colors";
+@import "mixins";
 
+//__________BOTH__________
 hr {
   border-top: 1px solid $gray !important;
   margin: 0 !important;
@@ -18,15 +20,8 @@ hr {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-input::-webkit-input-placeholder {
-  color: $light-gray !important;
-}
-input:-moz-placeholder {
-  color: $light-gray !important;
-}
-input::-moz-placeholder {
-  color: $light-gray !important;
-}
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
 input:-ms-input-placeholder {
   color: $light-gray !important;
 }
@@ -35,126 +30,84 @@ input:-ms-input-placeholder {
   p { margin: 0; }
 }
 
-._profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
 ._display-none {
   display: none;
 }
 
 ._flex-grow-1 {
-  flex-grow: 1;
-  -webkit-flex-grow: 1;
+  @include flex-grow(1);
 }
 
-/////////////////////////MOBILE////////////////////////
-////navbar
+._profile-img {
+  @include size(100%);
+  object-fit: cover;
+  @include border-radius(50%);
+}
+
+._profile-border-green {
+  @include border-radius(50%);
+  border: 0.2rem $light-green solid;
+}
+
+//__________MOBILE__________
+//navbar
 ._navbar-m {
   position: fixed;
   width: 100%;
   bottom: 0;
   padding: 1% 0;
-  z-index: 99;
-
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 40%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 40%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-
-  /* align vertical */
-  align-items: flex-end;
-  -webkit-align-items: flex-end;
+  z-index: $z-most-important;
+  @include background-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%);
+  /* align to bottom */
+  @include align-items(flex-end);
 }
 
-._navbar-element-m {
-  flex-grow: 1;
-  -webkit-flex-grow: 1;
-}
-
-.navbar-space-m {
-  width: 100%;
-  height: 9rem;
-  background: none;
-}
-
-////border, icon, image, video
+//image
 ._thumbnail-image-m {
   position: relative;
-  top: 0; left: 0;
-  width: 100%;
-  height: auto;
+  top: 0; left: 0; right: 0;
+  @include size(100%, auto);
 }
 
+//filter
 ._thumbnail-filter-m {
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%;
-  height: 60%;
-
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 80%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 80%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
-}
-
-._thumbnail-info-icon-m {
-  width: auto;
-  height: 4rem;
-  margin-right: $thumbnail-info-mh-m;
-}
-
-._upcoming-like-icon-m {
-  width: auto;
-  height: 8rem;
-}
-
-._profile-border-m {
-  border-radius: 50%;
-  border: 0.2rem $light-green solid;
+  bottom: 0; left: 0; right: 0;
+  @include size(100%, 60%);
+  @include background-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 80%);
 }
 
 ._show-video-filter-m {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: -moz-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  @include position(0);
+  @include size(100%);
+  @include background-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%);
 }
 
-._profile-user-m {
-  position: absolute;
-  top: 3.2%; left: 3.2%;
-  width: 94%;
-  height: 94%;
-  object-fit: cover;
-  overflow: hidden;
-  border-radius: 50%;
+//icon
+._thumbnail-info-icon-m {
+  @include size(auto, 4rem);
+  margin: 0 $thumbnail-info-mh-m 0 0;
+}
+
+._upcoming-like-icon-m {
+  @include size(auto, 8rem);
 }
 
 ._show-icon-m {
-  width: auto;
-  height: 5rem;
+  @include size(auto, 5rem);
   margin: 0 $list-container-ph-m 0 0;
 }
 
 ._modal-big-icon-m {
-  width: auto;
-  height: 18rem;
+  @include size(auto, 18rem);
   margin: 0 0 6%;
 }
 ._modal-icon-m {
-  width: auto;
-  height: 4.5rem;
+  @include size(auto, 4.5rem);
 }
 .video-progress-bar {
-  width: 20%;
-  height: auto;
+  @include size(20%, auto);
 }
 
 //social button icon size
@@ -162,23 +115,20 @@ input:-ms-input-placeholder {
   .ssb-icon {
     $icon-size: 12rem;
     background-size: $icon-size !important;
-    width: $icon-size !important; height: $icon-size !important;
+    @include size($icon-size !important);
     margin: 0 2rem;
   }
 }
-////button
+//button
 ._show-play-button {
-  width: auto;
-  height: 30%;
-  z-index: 99;
+  @include size(auto, 30%);
+  z-index: $z-most-important;
 }
 ._submit-button {
   padding: 3.5% 0;
   background: none;
   border: 2px solid $white;
-  border-radius: $br-image-m;
-  -webkit-border-radius: $br-image-m;
-  -moz-border-radius: $br-image-m;
+  @include border-radius($br-image-m);
 }
 
 ._small-modal-button {
@@ -192,8 +142,7 @@ input:-ms-input-placeholder {
 }
 
 ._small-modal-partision {
-  width: 0.2rem;
-  height: 8rem;
+  @include size(0.2rem, 8rem);
   background: #ffffff;
 }
 ////margin, padding
@@ -202,114 +151,93 @@ input:-ms-input-placeholder {
 }
 
 ._thumbnail-margin-right-m {
-  margin-right: $thumbnail-elem-mh-m;
+  margin: 0 $thumbnail-elem-mh-m 0 0;
 }
 
 ._icon-text-margin-m {
-  margin-left: $list-container-ph-m;
+  margin: 0 0 0 $list-container-ph-m;
 }
 
 ._show-progress-margin-m {
-  margin-top: 26%;
+  margin: 26% 0 0;
 }
 
 ._show-player-padding-m {
-  padding-top: 56.25%;
+  padding: 56.25% 0 0;
 }
 
 ._small-modal-title {
   padding: 0 0 6%;
 }
 
-/////////////////////////DESKTOP////////////////////////
-////navbar
+//__________DESKTOP__________
+//navbar
 ._navbar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0; right: 0;
   width: 100%;
   padding: 1rem 0;
-  z-index: 99;
+  z-index: $z-most-important;
   background: rgba(0, 0, 0, 0);
-  transition: background 480ms;
-  -webkit-transition: background 480ms;
+  @include transition(background 480ms);
 
   ._navbar-serach-container {
     width: 25%;
     padding: 0.6rem 0;
     background: rgba(226, 222, 222, 0.31);
     border: none;
-    -webkit-border-radius: $br-min;
-    -moz-border-radius: $br-min;
-    border-radius: $br-min;
+    @include border-radius($br-min);
   }
   ._navbar-search-input {
     background: none;
-    width: 52%;
-    height: 100%;
+    @include size(52%, 100%);
     border: none;
   }
   ._navbar-search-icon-container {
     width: 48%;
     padding: 0 3%;
-    transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
+    @include transition(all 0.2s);
   }
   ._navbar-search-icon {
-    width: auto;
-    height: 1.6rem;
+    @include size(auto, 1.6rem);
   }
 
   ._navbar-logo-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0; right: 0;
     height: 100%;
     padding: 0 2%;
   }
   ._navbar-logo {
-    width: auto;
-    height: 4rem;
+    @include size(auto, 4rem);
   }
 
   ._navbar-buttons-container {
     position: absolute;
-    top: 0;
-    right: 2%;
+    top: 0; right: 2%;
     height: 100%;
-    p {
-      margin: 0;
-    }
   }
-  ._navbar-button-container {
+  ._navbar-button {
     padding: 0 1rem;
   }
   ._navbar-icon {
-    width: auto;
-    height: $navbar-h;
+    @include size(auto, $navbar-h);
   }
 
   ._navbar-login-button {
-    width: 7rem;
-    height: $navbar-h;
+    @include size(7rem, $navbar-h);
     border: 1px solid $white;
-    border-radius: $br-min;
-    p {
-      margin: 0;
-    }
+    @include border-radius($br-min);
   }
 
   ._navbar-profile-container {
     position: relative;
-    top: 0;
-    left: 0;
-    width: $navbar-h;
-    height: $navbar-h;
+    top: 0; left: 0;
+    @include size($navbar-h);
     margin: 0 0 0 1rem;
     padding: 0.1rem;
     border: 1px solid $light-green;
-    border-radius: 50%;
+    @include border-radius(50%);
   }
 
   ._navbar-dropdown-icon {
@@ -318,10 +246,9 @@ input:-ms-input-placeholder {
   }
 }
 
-////icon, image, video
+//icon, image, video
 ._thumbnail-info-icon {
-  width: auto;
-  height: 2rem;
+  @include size(auto, 2rem);
 }
 
 ._crown-icon-margin {
@@ -330,41 +257,26 @@ input:-ms-input-placeholder {
 
 ._video-player {
   position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  background: rgba(0,0,0,1);
-  overflow:hidden;
-  iframe, object, embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  @include video-player;
 }
 
 ._thumbnail-image {
-  width: 100%;
-  height: auto;
+  @include size(100%, auto);
   object-fit: cover;
 }
 
 ._thumbnail-blur-img {
-  width: 100%;
-  height: 100%;
+  @include size(100%);
   object-fit: cover;
-  filter: $blur;
-  -webkit-filter: $blur;
+  @include filter($blur);
 }
 
 ._show-icon {
-  width: auto;
-  height: 2.5rem;
+  @include size(auto, 2.5rem);
   margin: 0 1.2rem 0 0;
 }
 
-////margin, padding
+//margin, padding
 ._thumbnail-elem-margin {
   margin: 0 1rem;
 }

@@ -1,8 +1,8 @@
-<div class="_comment-container-m">
+<div class="_comments-group-m">
   <% comments.each do |comment| %>
       <div class="_vcenter-positioner">
         <div class="_profile-container-m">
-          <%= image_tag "#{comment.user.profile_img}", class: "_profile-user-m" %>
+          <%= image_tag "#{comment.user.profile_img}", class: "_profile-img" %>
         </div>
         <p class="_fs-4-mobile _white _icon-text-margin-m"><%= comment.user.nickname %></p>
       </div>

@@ -1,17 +1,17 @@
 <div id="feeds-show-mobile" class="show-mobile" data-size="1">
-  <%= render partial: '/partial_views/youtube_player', locals: { video_id: @video_id, feed: @feed, artists: @feed.artists } %>
+  <%= render partial: 'partial_views/youtube_player', locals: { video_id: @video_id, feed: @feed, artists: @feed.artists } %>
 
   <!-- back button -->
   <%= link_to :back, class: "_link-back-container-m" do %>
-      <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
+      <%= image_tag "icon_back", style: "width: 4rem; height: auto;" %>
   <% end %>
 
   <!-- Video info -->
   <div class="_show-player-padding-m"></div>
   <div class="info-container">
     <div class="_vcenter-positioner">
-      <div class="_profile-container-m _profile-border-m">
-        <%= image_tag "#{@feed.user.profile_img}", class: "_profile-user-m" %>
+      <div class="_profile-container-m _profile-border-green">
+        <%= image_tag "#{@feed.user.profile_img}", class: "_profile-img" %>
       </div>
 
       <div class="text-padding _vcenter-positioner _flex-grow-1 _no-p-margin">
@@ -64,9 +64,9 @@
   <!-- Modals -->
   <section id="modal">
     <% if !user_signed_in? %>
-        <form id='login-modal' class='modal' style="width:800px;height:800px;border:3px white solid">
-          <div class=\"_big-modal-container\">
-            <%= render file: '/devise/sessions/new_mobile.html.erb' %>
+        <form id='login-modal' class='modal'>
+          <div class="_big-modal-container">
+            <%= render file: 'devise/sessions/new_mobile.html.erb' %>
           </div>
         </form>
     <% end %>

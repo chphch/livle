@@ -7,11 +7,11 @@
           <!-- image -->
           <input type="file" name="profile_img" id="profile" accept="image/*" class="mypage-inputfile">
           <label for="profile">
-            <div class="profile-container">
+            <div class="profile-container _profile-border-green">
               <% if current_user.profile_img != nil %>
-                  <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "profile-img") %>
+                  <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "_profile-img") %>
               <% else %>
-                  <%= image_tag("image_profile", id: "upload-profile-img", class: "profile-img") %>
+                  <%= image_tag("image_profile", id: "upload-profile-img", class: "_profile-img") %>
               <% end %>
               <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
                 <%= image_tag("icon_camera", style: "height: 75%; width: auto;") %>

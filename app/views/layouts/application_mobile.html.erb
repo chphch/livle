@@ -32,7 +32,7 @@
   <% else %>
       <div class="_body-background-m"></div>
   <% end %>
-  <%= render partial: '/mypage/top_mobile', locals: {title: @title, back_url: @back_url} if @title %>
+  <%= render partial: 'mypage/top_mobile', locals: {title: @title, back_url: @back_url} if @title %>
 
   <%= yield %>
   <% unless @disable_nav %>

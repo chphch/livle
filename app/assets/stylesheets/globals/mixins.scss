@@ -1,0 +1,91 @@
+//position
+@mixin position($top, $right: $top, $bottom: $top, $left: $right) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+//size
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+//background with gradient
+@mixin background-gradient($dir, $pos1, $pos2, $pos3: $pos2) {
+  @each $prefix in -moz, -ms-, -webkit- {
+    background: #{$prefix}linear-gradient($dir, $pos1, $pos2, $pos3);
+  }
+  @if $dir == bottom {
+    background: #{$prefix}linear-gradient(to top, $pos1, $pos2, $pos3);
+  } @else if $dir == top {
+    background: linear-gradient(to bottom, $pos1, $pos2, $pos3);
+  } @else if $dir == right {
+    background: linear-gradient(to left, $pos1, $pos2, $pos3);
+  } @else if $dir == left {
+    background: linear-gradient(to right, $pos1, $pos2, $pos3);
+  }
+}
+
+//containing video player
+@mixin video-player {
+  @include size(100%, 0);
+  padding-bottom: 56.25%;
+  background: rgba(0, 0, 0, 1);
+  overflow: hidden;
+  iframe, object, embed {
+    position: absolute;
+    @include size(100%);
+  }
+}
+
+//for multiple browser
+@mixin display-flex {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+}
+
+@mixin justify-content($pos) {
+  justify-content: $pos;
+  -webkit-justify-content: $pos;
+  -moz-box-pack: $pos;
+  -ms-flex-pack: $pos;
+}
+
+@mixin flex-direction($dir) {
+  @each $prefix in -ms-, -webkit-, null {
+    #{$prefix}flex-direction: $dir;
+  }
+}
+
+@mixin align-items($pos) {
+  @each $prefix in -ms-, -moz-, -webkit-, null {
+    #{$prefix}align-items: $pos;
+  }
+}
+
+@mixin flex-grow($size) {
+  @each $prefix in -ms-, -webkit-, null {
+    #{$prefix}flex-grow: $size;
+  }
+}
+
+@mixin border-radius($size) {
+  @each $prefix in -moz-, -webkit-, null {
+    #{$prefix}border-radius: $size;
+  }
+}
+
+@mixin transition($prop) {
+  @each $prefix in -moz-, -webkit-, null {
+    #{$prefix}transition: $prop;
+  }
+}
+
+@mixin filter($effect) {
+  filter: $effect;
+  -webkit-filter: $effect;
+}
