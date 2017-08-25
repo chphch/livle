@@ -1,9 +1,9 @@
 <div id="mypage-notice-mobile">
 
   <% @notices.each do |notice| %>
-    <div class="notice-container">
+    <div class="notice-container _no-p-margin">
       <div class="_vcenter-positioner">
-        <p class="title-width _fs-2-mobile _white"><%= notice.title %></p>
+        <p class="_flex-grow-1 _fs-2-mobile _white"><%= notice.title %></p>
         <p class="_fs-4-mobile _light-gray"><%= notice.created_at.strftime("%m/%d") %></p>
       </div>
       <p class="_fs-3-mobile _white"><%= notice.content %></p>

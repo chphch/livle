@@ -5,23 +5,21 @@
         <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
-        <div class="describe-container _row-positioner">
-          <div class="describe-text">
-            <p class="_fs-2-mobile _white">
-              <%= upcoming.title %> (<%= upcoming.place %>)
-            </p>
-            <p class="_fs-3-mobile _light-gray">
-              <%= upcoming.start_date %> - <%= upcoming.end_date %>
-            </p>
-            <p class="_fs-3-mobile _light-gray">
-              <!-- artist name -->
-              <% upcoming.artists.each_with_index do |artist, i| %>
-                  <%= artist.name %>
-                  <% break if upcoming.artists[i+1] == nil %>
-                  ,&nbsp
-              <% end %>
-            </p>
-          </div>
+        <div class="describe-container">
+          <p class="_fs-2-mobile _white">
+            <%= upcoming.title %> (<%= upcoming.place %>)
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            <%= upcoming.start_date %> - <%= upcoming.end_date %>
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            <!-- artist name -->
+            <% upcoming.artists.each_with_index do |artist, i| %>
+                <%= artist.name %>
+                <% break if upcoming.artists[i+1] == nil %>
+                ,&nbsp
+            <% end %>
+          </p>
         </div>
 
         <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner">
