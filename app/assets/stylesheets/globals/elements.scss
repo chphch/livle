@@ -254,12 +254,12 @@ input:-ms-input-placeholder {
 }
 
 //icon, image, video
-._thumbnail-info-icon {
+._video-info-icon {
   @include size(auto, 2rem);
 }
 
 ._crown-icon-margin {
-  margin: 0 1rem 0 0;
+  margin: -1% 1rem 0 0;
 }
 
 ._video-player {
