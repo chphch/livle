@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @disable_nav = true
     @title = "회원가입"
     respond_with resource do |format|
-      format.html { render_by_device '/devise/registrations/new' }
+      format.html { render_by_device }
     end
   end
 
@@ -49,7 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       @title = "비밀번호 변경"
       @back_url = mypage_settings_path
-      render_by_device '/devise/registrations/edit'
+      render_by_device
     end
   end
 
