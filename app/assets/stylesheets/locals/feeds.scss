@@ -3,11 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "globals/colors";
 @import "globals/sizes";
+@import "globals/mixins";
 
 //Mobile
 #feeds-index-mobile,
 #feeds-show-mobile {
   background: $black;
+}
+
+#feeds-show-mobile {
+  .info-container {
+    padding: $list-container-pv-m $list-container-ph-m;
+    background: $dark-dark-gray;
+  }
+
+  .text-padding {
+    @include size(75%, 12rem);
+    padding: 0 0 0 $list-container-ph-m;
+  }
+
+  .text-row {
+    width: 100%;
+    padding: 2% 0;
+  }
+
+  .describe-container {
+    padding-top: $list-container-pv-m;
+  }
 }
 
 //Desktop
@@ -23,17 +45,13 @@
 
   .official-video-container {
     position: relative;
-    top: 0;
-    width: 54rem;
-    height: auto;
+    @include size(54rem, auto);
   }
 
   .official-describe-container {
     position: relative;
-    top: 0; left: 0; bottom: 0;
     width: 50rem;
     margin: 0 0 0 12rem;
-    p { margin: 0; }
   }
   @media (max-width: $desktop) {
     .official-video-container {
@@ -56,17 +74,13 @@
   }
 
   .official-button {
-    width: 7rem;
-    height: $navbar-h;
+    @include size(7rem, $navbar-h);
     margin: 1rem 0 0;
     border: 1px solid $white;
-    border-radius: $br-min;
-
+    @include border-radius($br-min);
     &:hover {
       background: $white;
-      p {
-        color: $black;
-      }
+      p { color: $black; }
     }
   }
 }
@@ -100,9 +114,7 @@
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
-    background: -moz-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    @include background-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%);
     &:hover {
       cursor: pointer;
     }
@@ -115,9 +127,7 @@
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
-    background: -moz-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    @include background-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%);
     &:hover {
       cursor: pointer;
     }
@@ -125,15 +135,14 @@
 
   .current-list {
     position: relative;
-    top: 0; left: 0; bottom: 0; right: 0;
+    @include position(0);
     overflow-x: scroll;
     overflow-y: hidden;
   }
 
   .card-container {
     position: relative;
-    width: 18rem;
-    height: 20rem;
+    @include size(18rem, 20rem);
     margin: 2rem 1rem;
   }
 }
@@ -154,24 +163,15 @@
   .show-video-container {
     position: relative;
     top: 0;
-    padding: 2rem 0;
     width: 80%;
+    padding: 2rem 0;
   }
   .related-video-container {
     position: relative;
     top: 0;
+    @include size(20%, auto);
     background: none;
-    width: 20%;
-    height: auto;
   }
-  //@media (max-width: $desktop) {
-  //  .show-video-container {
-  //    width: 75%;
-  //  }
-  //  .related-video-container {
-  //    width: 25%;
-  //  }
-  //}
 
   .text-container {
     padding: 2rem 0 0;
@@ -179,13 +179,11 @@
 
   .related-video-background {
     position: absolute;
-    top: 2rem; left: 2rem; bottom: 2rem; right: 2rem;
-    z-index: 1;
+    @include position(2rem);
+    z-index: $z-back;
     overflow: hidden;
     border: none;
-    -webkit-border-radius: $br-image;
-    -moz-border-radius: $br-image;
-    border-radius: $br-image;
+    @include border-radius($br-image);
   }
 
   .related-video-filter {
@@ -194,10 +192,9 @@
 
   .related-card-container {
     position: relative;
-    z-index: 2;
-    width: 100%;
+    z-index: $z-front;
+    @include size(100%, auto);
     padding: 3rem 0;
-    height: auto;
   }
 
   .card-container {

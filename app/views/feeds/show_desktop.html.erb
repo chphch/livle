@@ -24,22 +24,23 @@
           </div>
 
           <div class="_video-info-icon-container _vcenter-positioner">
-            <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin") %>
+            <%= image_tag "icon_view_white", class: "_video-info-icon _thumbnail-elem-margin" %>
             <p class="_fs-5 _white"><%= @feed.count_view %></p>
-            <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin") %>
+            <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
             <p id="like-count" class="_fs-5 _white"><%= @feed.feed_likes.size %></p>
-            <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin") %>
+            <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
             <p class="_fs-5 _white"><%= @feed.count_share %></p>
           </div>
         </div>
 
         <div class="text-container _vcenter-positioner">
-          <div class="_profile-container _profile-border-m">
+          <div class="_profile-container _profile-border-green">
             <%= image_tag "#{@feed.user.profile_img}", class: "_profile-img" %>
           </div>
-          <div class="_official-container _flex-grow-1">
+          <div class="_username-container _flex-grow-1">
             <div class="_vcenter-positioner _no-p-margin">
-              <%= image_tag("icon_crown", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
+              <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown",
+                            class: "_video-info-icon _crown-icon-margin" %>
               <p class="_fs-2 _white"><%= @feed.user.nickname %></p>
             </div>
             <div class="_no-p-margin">

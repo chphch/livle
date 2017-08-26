@@ -3,72 +3,60 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "globals/colors";
 @import "globals/sizes";
+@import "globals/mixins";
 
 #search-bar {
   .search-dummy {
-    width: 100%;
+    @include size(100%, 12rem);
     padding: 2%;
-    height: 12rem;
     background: $black;
   }
 
   .search-container {
     position: fixed;
-    z-index: 18;
-    top: 0;
-    width: 100%;
+    z-index: $z-front;
+    top: 0; left: 0; right: 0;
     padding: 2%;
     background: $black;
-    transition: all 150ms;
-    -webkit-transition: all 150ms;
-    -moz-transition: all 150ms;
+    @include transition(all 150ms);
   }
 
   .input-icon-container {
     width: 50%;
     padding: 0 4%;
-    transition: all 200ms;
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
+    @include transition(all 200ms);
   }
 
   .search-input-field {
-    width: 100%;
-    height: 8rem;
+    @include size(100%, 8rem);
     background: $dark-gray;
     border: none;
-    border-radius: 0.5rem;
+    @include border-radius(0.5rem);
   }
 
   .input-icon {
-    width: auto;
-    height: 4rem;
+    @include size(auto, 4rem);
   }
 
   .input-field {
+    @include size(50%, 100%);
     background: $dark-gray;
-    width: 50%;
-    height: 100%;
     border: none;
   }
 
   .input-esc {
-    width: auto;
-    height: 4rem;
+    @include size(auto, 4rem);
     object-fit: contain;
     padding: 0 4%;
   }
 
   .cancel-field {
-    width: 16%;
-    height: 100%;
+    @include size(16%, 100%);
     display: none;
   }
 
   .cancel-container {
-    width: 100%;
-    height: 100%;
-    p { margin: 0; }
+    @include size(100%);
   }
 
   // Search-Bar Event
@@ -79,30 +67,21 @@
 
 #search-result-mobile {
   .selector-container {
-    width: 100%;
-    height: 8rem;
+    @include size(100%, 8rem);
     padding-top: 1%;
   }
   .button-container {
     height: 100%;
-    flex-grow: 1;
-    -webkit-flex-grow: 1;
   }
 
   .selector-bar-container {
-    width: 50%;
-    height: .4rem;
+    @include size(50%, .4rem);
     margin:  0 0 1rem;
     .selector-bar {
-      width: 45%;
-      height: 100%;
+      @include size(45%, 100%);
       background: $white;
     }
-    -webkit-transition: margin 300ms;
-    -moz-transition: margin 300ms;
-    -ms-transition: margin 300ms;
-    -o-transition: margin 300ms;
-    transition: margin 300ms;
+    @include transition(margin 300ms);
   }
 
   .info-text-container {
@@ -118,11 +97,10 @@
 #search-list-container,
 #result-list-feed-m,
 #result-list-upcoming-m {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 0 2%;
 
   .search-card-mobile {
-    padding-top: 0.5%;
+    padding: 0.5% 0 0;
   }
 
   .card-devider {
@@ -130,7 +108,7 @@
   }
 
   .card-text {
-    padding-left: 3%;
+    padding: 0 0 0 3%;
   }
 }
 

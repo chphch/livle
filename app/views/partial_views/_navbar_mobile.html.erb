@@ -1,6 +1,6 @@
 <nav class="_vcenter-positioner _navbar-m">
   <% control = controller.class.name.split("::").first.to_s %>
-  <%= link_to feeds_path, class: "_navbar-element-m" do %>
+  <%= link_to feeds_path, class: "_flex-grow-1" do %>
       <div class="_text-center">
         <% if control == 'FeedsController'%>
             <%= image_tag("icon_home_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
@@ -10,7 +10,7 @@
         <p class="_fs-navbar-mobile _white">Home</p>
       </div>
   <% end %>
-  <%= link_to upcomings_path, class: "_navbar-element-m" do %>
+  <%= link_to upcomings_path, class: "_flex-grow-1" do %>
       <div class="_text-center">
         <% if control == 'UpcomingsController'%>
             <%= image_tag("icon_ticket_filled", style: "width: auto; height: 8rem;") %>
@@ -20,7 +20,7 @@
         <p class="_fs-navbar-mobile _white">Upcoming</p>
       </div>
   <% end %>
-  <%= link_to search_path, class: "_navbar-element-m" do %>
+  <%= link_to search_path, class: "_flex-grow-1" do %>
       <div class="_text-center">
         <% if control == 'SearchController'%>
             <%= image_tag("icon_search_filled", style: "width: auto; height: 7rem; margin-bottom: 2%;") %>
@@ -30,7 +30,7 @@
         <p class="_fs-navbar-mobile _white">Search</p>
       </div>
   <% end %>
-  <%= link_to connect_urls_path, class: "_navbar-element-m" do %>
+  <%= link_to connect_urls_path, class: "_flex-grow-1" do %>
       <div class="_text-center">
         <% if control == 'ConnectUrlsController'%>
             <%= image_tag("icon_connect_filled", style: "width: auto; height: 8rem;") %>
@@ -40,7 +40,7 @@
         <p class="_fs-navbar-mobile _white">Connect</p>
       </div>
   <% end %>
-  <%= link_to mypage_index_path, class: "_navbar-element-m" do %>
+  <%= link_to mypage_index_path, class: "_flex-grow-1" do %>
       <div class="_text-center">
         <% if control == 'MypageController'%>
             <%= image_tag("icon_mypage_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>

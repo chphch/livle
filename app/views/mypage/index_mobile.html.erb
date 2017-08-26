@@ -2,9 +2,9 @@
 
   <% if user_signed_in? %>
       <div class="_column-positioner _vcenter-positioner">
-        <div class="profile-container">
+        <div class="profile-container _profile-border-green">
           <%= image_tag current_user.profile_img != nil ? current_user.profile_img : image_profile,
-                        id: "upload-profile-img", class: "profile-img" %>
+                        id: "upload-profile-img", class: "_profile-img" %>
         </div>
 
         <div class="info-container _text-center">
@@ -45,7 +45,7 @@
                   <% current_user.upcoming_likes.each do |like| %>
                       <%= link_to "/upcomings/#{like.upcoming.id}" do %>
                           <div class="list-text-container _vcenter-positioner">
-                            <p class="list-text _fs-4-mobile _white"><%= like.upcoming.title %></p>
+                            <p class="_flex-grow-1 _fs-4-mobile _white"><%= like.upcoming.title %></p>
                             <p class="_fs-2-mobile _white _f-letter-mobile">
                               D<%= d_day(like.upcoming.start_date) %>
                             </p>

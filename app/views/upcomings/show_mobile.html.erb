@@ -11,7 +11,7 @@
   <% end %>
 
   <!-- back button -->
-  <%= link_to :back, class: "_show-video-back-container-m" do %>
+  <%= link_to :back, class: "_link-back-container-m" do %>
       <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
   <% end %>
 
@@ -24,24 +24,24 @@
           <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
         </div>
       </div>
-      <div class="describe-padding">
-        <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
+    </div>
+    <div class="describe-padding">
+      <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
+    </div>
+    <div class="describe-padding _vcenter-positioner">
+      <div class="describe-date">
+        <p class="_fs-3-mobile _light-gray">
+          <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
+        </p>
       </div>
-      <div class="describe-padding _vcenter-positioner">
-        <div class="describe-date">
-          <p class="_fs-3-mobile _light-gray">
-            <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
-          </p>
-        </div>
-        <div class="describe-icons _vcenter-positioner _hright-positioner">
-          <%= link_to @upcoming.ticket_url do %>
-              <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
-          <% end %>
-          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
-              <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
-              <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
-          <% end %>
-        </div>
+      <div class="describe-icons _vcenter-positioner _hright-positioner">
+        <%= link_to @upcoming.ticket_url do %>
+            <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
+        <% end %>
+        <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+            <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
+            <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -49,8 +49,8 @@
   <!-- Line-Up -->
   <div class="line-up-container">
     <div class="_show-text-container-m _row-positioner">
-      <p class="width-devision _fs-3-mobile _white">LINE - UP</p>
-      <div class="width-devision _hright-positioner">
+      <p class="_flex-grow-1 _fs-3-mobile _white">LINE - UP</p>
+      <div class="_flex-grow-1 _hright-positioner">
         <p class="_fs-3-mobile _white">전체보기</p>
       </div>
     </div>
@@ -89,7 +89,7 @@
   <section id="modal">
     <% if !user_signed_in? %>
         <div id='login-modal' class='modal'>
-          <div class="_big-modal-container">
+          <div class="_big-modal">
             <%= render file: '/devise/sessions/new_mobile.html.erb' %>
           </div>
         </div>

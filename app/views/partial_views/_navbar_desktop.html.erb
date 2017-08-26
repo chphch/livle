@@ -20,9 +20,9 @@
     <% end %>
   </div>
 
-  <div class="_navbar-buttons-container _vcenter-positioner">
+  <div class="_navbar-buttons-container _vcenter-positioner _no-p-margin">
     <!-- buttons -->
-    <div class="_navbar-button-container">
+    <div class="_navbar-button">
       <%= link_to upcomings_path do %>
           <% if control == 'UpcomingsController' %>
               <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
@@ -31,7 +31,7 @@
           <% end %>
       <% end %>
     </div>
-    <div class="_navbar-button-container">
+    <div class="_navbar-button">
       <%= link_to connect_urls_path do %>
           <% if control == 'ConnectUrlsController' %>
               <%= image_tag "icon_connect_filled", class: "_navbar-icon" %>
@@ -41,12 +41,12 @@
       <% end %>
     </div>
     <!-- TODO: Modal 띄우는거 고민해보자.. -->
-    <div class="_navbar-button-container">
-      <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner">
+    <div class="_navbar-button">
+      <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
         <p class="_fs-3 _white">Login</p>
       </div>
     </div>
-    <div class="dropdown _navbar-button-container">
+    <div class="dropdown _navbar-button">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <div class="_vcenter-positioner">
           <div class="_navbar-profile-container">

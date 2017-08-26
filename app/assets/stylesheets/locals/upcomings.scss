@@ -1,12 +1,9 @@
 @import "globals/sizes";
 @import "globals/colors";
+@import "globals/mixins";
 
 #upcoming-index-mobile {
   background: $black;
-
-  .describe-text {
-    flex-grow: 8;
-  }
 
   .describe-icon {
     position: absolute;
@@ -23,28 +20,21 @@
 #upcomings-show-mobile {
   background: $black;
 
-  .width-devision {
-    flex-grow: 1;
-  }
-
   .info-container {
-    padding-top: 5%;
-    padding-bottom: 3%;
-    padding-left: $list-container-ph-m;
-    padding-right: $list-container-ph-m;
+    padding: 5% $list-container-ph-m 3%;
     background: $dark-dark-gray;
   }
 
   .describe-padding {
-    padding-top: 1.5%;
+    padding: 1.5% 0 0;
   }
 
   .describe-date {
-    flex-grow: 6;
+    @include flex-grow(6);
   }
 
   .describe-icons {
-    flex-grow: 4;
+    @include flex-grow(4);
   }
 
   .icon-padding {
@@ -52,15 +42,12 @@
   }
 
   .line-up-container {
-    padding-top: $list-container-pv-m;
-    padding-bottom: $list-container-pv-m;
-    padding-left: $list-container-ph-m;
-    padding-right: $list-container-ph-m;
+    padding: $list-container-pv-m $list-container-ph-m;
     background: $black;
   }
 
-  .line-up-img-container {
-    display: flex;
+  .line-up-group-container {
+    @include display-flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -69,10 +56,8 @@
 
   .artist-profile {
     flex: 0 0 auto;
-    width: 36rem;
-    height: 36rem;
-    margin-left: 1%;
-    margin-right: 1%;
-    border-radius: $br-image-m;
+    @include size(36rem);
+    margin: 0 1%;
+    @include border-radius($br-image-m);
   }
 }

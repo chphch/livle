@@ -33,7 +33,7 @@
           </div>
           <%= form_tag artist_path(artist.id), method: :patch, multipart: true do %>
               <div class="col-xs-2">
-                <input type="file" name="image_url" id="profile<%= artist.id %>" accept="image/*" class="mypage-inputfile">
+                <input type="file" name="image_url" id="profile<%= artist.id %>" accept="image/*" class="_display-none">
                 <label for="profile<%= artist.id %>">
                   <% if artist.image_url == nil %>
                       <%= image_tag("image_artist", id: "upload-image-#{artist.id}", class: "admin-desktop-image-container") %>
