@@ -1,5 +1,4 @@
 class UpcomingsController < ApplicationController
-  helper_method :d_day
 
   def index
     today = DateTime.now
@@ -13,25 +12,12 @@ class UpcomingsController < ApplicationController
 
   def show
     @upcoming = Upcoming.find(params[:id])
-    @posts = @upcoming.main_video_and_feeds(current_user)
-    puts '+++++++++======================""'
-    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^"
-
-    @artists = @upcoming.artists.map()
-    puts @aritsts
-
-
-    unshift(
-        Artist.new(
-            name: "Main Video",
-            image_url: Faker::LoremPixel.image("50x60")
-        )
-    )
+    @artists = @upcoming.wrap_artists(current_user)
+    @main_video = @upcoming.main_video
+    @main_video_image_url = Upcoming.main_video_image_url
+    @main_video_id = Upcoming.main_video_id
     @like_true = user_signed_in? &&
-        UpcomingLike.where(
-            upcoming_id: params[:id],
-            user_id: current_user.id
-        ).take
+        UpcomingLike.where(upcoming_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
     render_by_device
   end
@@ -48,16 +34,8 @@ class UpcomingsController < ApplicationController
     end
   end
 
-  def toggle_feed_like
-    post_type = params[:post_class]
-    post_id = params[:post_id]
-    video_index = params[:video_index]
-    redirect_to "/feeds/#{post_id}/toggle_like/#{video_index}"
-  end
-
   def update
-    @upcoming = Upcoming.find_by(id: params[:id])
-
+    @upcoming = Upcoming.find(params[:id])
     if @upcoming.update(title: params[:title], place: params[:place],
                         main_youtube_id: params[:main_youtube_id], ticket_url: params[:ticket_url])
       redirect_back(fallback_location: root_path)
@@ -71,19 +49,6 @@ class UpcomingsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       render text: @upcoming.errors.messages
-    end
-  end
-
-  def d_day(start_date)
-    start_day = start_date.strftime('%Q').to_i
-    today = DateTime.now.strftime('%Q').to_i
-    day_to_millisec = 1000*60*60*24
-
-    d_day = ((start_day - today)/day_to_millisec).floor
-    if d_day == 0
-      return "-day"
-    else
-      return -d_day
     end
   end
 end

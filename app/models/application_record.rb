@@ -26,7 +26,7 @@ class ApplicationRecord < ActiveRecord::Base
     "#{self.class.name}Like".constantize
   end
 
-  def get_youtube_video_id(youtube_video_url)
+  def self.get_youtube_video_id(youtube_video_url)
     youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '')
   end
 end

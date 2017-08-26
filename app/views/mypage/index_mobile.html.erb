@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-        <% if current_user.feed_likes.size == 0 && current_user.curation_likes.size == 0 %>
+        <% if current_user.feed_likes.size == 0 %>
             <div class="info-text-container _text-center">
               <p class="_fs-4-mobile _white">
                 내가 좋아요한 영상을 모아볼 수 있어요.
@@ -80,9 +80,6 @@
             </div>
         <% else %>
             <div id="mypage-mylist-mobile">
-              <%= current_user.curation_likes.each do |like| %>
-                  <%= render partial: "search/feed_card_mobile", locals: {feed: like.curation} %>
-              <% end %>
               <%= current_user.feed_likes.each do |like| %>
                   <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
               <% end %>

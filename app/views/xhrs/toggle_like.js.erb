@@ -10,7 +10,7 @@ filledLikeIcon.addClass("_display-none");
 <% end %>
 
 var container = $('.show-video-container').filter(function(index, container) {
-    return $(container).data("index") == <%= @video_index %>;
+    return $(container).data("playerId") == "<%= @player_id %>";
 });
 container.find('.post-like-count').text("<%= @like_count %>");
-container.data("likeTrue", <% if @like_true %>true<% else %>false<% end %>);
+container.data("likeTrue", <%= @like_true %>);

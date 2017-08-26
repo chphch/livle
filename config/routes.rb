@@ -18,15 +18,14 @@ Rails.application.routes.draw do
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
-    get 'toggle_like' => 'feeds#toggle_like'
-    get 'toggle_like/:video_index' => 'feeds#toggle_like'
+    get 'toggle_like'
   end
+  get 'feeds/toggle_like/:player_id' => 'feeds#toggle_like'
 
   resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy]
     get 'toggle_like'
   end
-  get 'upcomings/toggle_video_like/:post_class/:post_id/:video_index' => 'upcomings#toggle_video_like'
 
   get 'mypage/index'
   get 'mypage/edit_profile'
