@@ -1,10 +1,15 @@
-<%= link_to defined?(url) ? url : "", method: method, onclick: defined?(url) ? "" : "return false", remote: defined?(remote) ? true : false do %>
-  <div <%= defined?(id) ? "id=#{id}" : "" %> class="settings-element-container _vcenter-positioner _no-p-margin">
-    <% if tag == "로그아웃" || tag == "탈퇴하기" %>
-        <p class="_flex-grow-1 _fs-2-mobile _light-green"><%= tag %></p>
-    <% else %>
-        <p class="_flex-grow-1 _fs-2-mobile _white"><%= tag %></p>
-        <%= image_tag 'icon_arrow_right', class: "arrow-icon" %>
-    <% end %>
-  </div>
+<% url = defined?(url) ? url : "" %>
+<% method = defined?(method) ? method : "" %>
+<% onclick = "event.preventDefault();#{defined?(onclick) ? onclick : defined?(url) ? "" : "return false;"}" %>
+<% remote = defined?(remote) ? remote : false %>
+<% colorClass = defined?(color) ? "_" + color : "_white" %>
+<% showArrow = colorClass == "_white" %>
+
+<%= link_to url, method: method, onclick: onclick, remote: remote do %>
+    <div class="settings-element-container _vcenter-positioner _no-p-margin">
+      <p class="_flex-grow-1 _fs-2-mobile <%= colorClass %>"><%= tag %></p>
+      <% if showArrow %>
+          <%= image_tag 'icon_arrow_right', class: "arrow-icon" %>
+      <% end %>
+    </div>
 <% end %>

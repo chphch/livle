@@ -78,34 +78,18 @@
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">댓글</p>
     </div>
-    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">공유</p>
     </div>
   </div>
   <hr>
 
-  <!-- Modals -->
-  <section id="modal">
-    <% if !user_signed_in? %>
-        <div id='login-modal' class='modal'>
-          <div class="_big-modal">
-            <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-          </div>
-        </div>
-    <% end %>
-    <form id="share-modal" class="modal">
-      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
-    </form>
-  </section>
-
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
-</div>
 
-<script>
-    // share modal
-    $('#share-modal-button').click(function() {
-        $('#share-modal').modal();
-    });
-</script>
+  <!-- Modals -->
+  <div id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
+  </div>
+</div>

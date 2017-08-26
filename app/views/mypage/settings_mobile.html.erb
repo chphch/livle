@@ -2,55 +2,39 @@
   <!-- setting lists -->
   <div class="settings-blank"></div>
 
-  <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", color: "black", url: mypage_edit_profile_path, method: "GET"} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "프로필 설정", url: mypage_edit_profile_path, method: "GET"} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", color: "black", url: edit_user_registration_path, method: "GET", remote: true} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "비밀번호 변경", url: edit_user_registration_path, method: "GET", remote: true} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {tag: "공지사항", color: "black", url: notices_path, method: "GET"} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "공지사항", url: notices_path, method: "GET"} %>
 
   <div class="settings-blank"></div>
 
-  <%= render partial: "settings_row_mobile", locals: {tag: "약관", color: "black", url: mypage_terms_of_use_path, method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "약관", url: mypage_terms_of_use_path} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {tag: "개인정보처리방침", color: "black", url: mypage_privacy_policy_path, method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {tag: "개인정보처리방침", url: mypage_privacy_policy_path} %>
 
   <div class="settings-blank"></div>
 
-  <%= render partial: "settings_row_mobile", locals: {id: "logout-modal-button", tag: "로그아웃", color: "blue", method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {onclick: "$('#logout-modal').modal();", tag: "로그아웃", color: "light-green"} %>
   <hr class="hr-container">
-  <%= render partial: "settings_row_mobile", locals: {id: "withdraw-modal-button", tag: "탈퇴하기", color: "blue", method: ""} %>
+  <%= render partial: "settings_row_mobile", locals: {onclick: "$('#withdraw-modal').modal();", tag: "탈퇴하기", color: "light-green"} %>
   <hr class="hr-container">
 
   <div class="_hcenter-positioner">
-    <div class="inquire-button _text-center _no-p-margin" id="mypage-settings-contact">
+    <div class="inquire-button _text-center _no-p-margin" onclick="$('#mypage-settings-modal').modal();">
       <p class="_fs-3-mobile _white">라이블에게 문의하기</p>
     </div>
   </div>
 
-  <section id="modal">
-    <div id="withdraw-modal" class="modal">
-      <%= render partial: "/devise/registrations/withdraw_modal_mobile" %>
-    </div>
-    <div id="logout-modal" class="modal">
-      <%= render partial: "/devise/sessions/logout_modal_mobile" %>
-    </div>
-    <div id="mypage-settings-modal" class="modal">
-      <%= render partial: "settings_contact_mobile" %>
-    </div>
-    <div id="cannot-change-password-modal" class="modal">
-      <%= render partial: "/devise/registrations/cannot_change_password_modal_mobile" %>
-    </div>
-  </section>
+  <!--Modal-->
+  <div id="withdraw-modal" class="modal">
+    <%= render partial: "/devise/registrations/withdraw_modal_mobile" %>
+  </div>
+  <div id="logout-modal" class="modal">
+    <%= render partial: "/devise/sessions/logout_modal_mobile" %>
+  </div>
+  <div id="mypage-settings-modal" class="modal">
+    <%= render partial: "settings_contact_mobile" %>
+  </div>
 </div>
-
-<script>
-$('#withdraw-modal-button').click(function () {
-  $('#withdraw-modal').modal();
-});
-$('#logout-modal-button').click(function () {
-  $('#logout-modal').modal();
-});
-$('#mypage-settings-contact').click(function () {
-  $('#mypage-settings-modal').modal();
-});
-</script>
