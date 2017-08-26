@@ -30,6 +30,7 @@ class S3Uploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  # TODO: full, thumnail version set
   # version :thumb do
   #   process resize_to_fit: [50, 50]
   # end

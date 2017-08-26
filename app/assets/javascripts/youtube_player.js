@@ -1,4 +1,4 @@
-$('document').ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
     // youtube api
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";

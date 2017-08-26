@@ -81,9 +81,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if(params === "feed") {
             $('#result-list-feed-m').show();
             $('#result-list-upcoming-m').hide();
+            $('.selector-bar-container').css('margin-left', 0);
         } else {
             $('#result-list-feed-m').hide();
             $('#result-list-upcoming-m').show();
+            $('.selector-bar-container').css('margin-left', '50%');
         }
     }
 

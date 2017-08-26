@@ -30,6 +30,8 @@ gem 'activejob_backport'
 gem 'whenever', :require => false
 # social-share-button
 gem 'social-share-button'
+# gem for copy text to clipboard
+gem 'clipboard'
 
 ###############################################
 

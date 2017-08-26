@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.boolean "is_curation"
     t.string "title"
     t.string "youtube_id"
+    t.text "content"
     t.integer "count_view"
     t.integer "count_share"
     t.float "rank"

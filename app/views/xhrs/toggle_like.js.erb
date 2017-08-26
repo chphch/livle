@@ -2,11 +2,11 @@ var emptyLikeIcon = $('#icon-<%= @like_type %>-empty');
 var filledLikeIcon = $('#icon-<%= @like_type %>-filled');
 
 <% if @like_true %>
-emptyLikeIcon.addClass("_display-none");
-filledLikeIcon.removeClass("_display-none");
+  emptyLikeIcon.addClass("_display-none");
+  filledLikeIcon.removeClass("_display-none");
 <% else %>
-emptyLikeIcon.removeClass("_display-none");
-filledLikeIcon.addClass("_display-none");
+  emptyLikeIcon.removeClass("_display-none");
+  filledLikeIcon.addClass("_display-none");
 <% end %>
 
 var container = $('.show-video-container').filter(function(index, container) {

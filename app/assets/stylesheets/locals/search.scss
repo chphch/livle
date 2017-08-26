@@ -82,17 +82,31 @@
     width: 100%;
     height: 8rem;
     padding-top: 1%;
-    padding-bottom: 1%;
   }
-
   .button-container {
     height: 100%;
     flex-grow: 1;
     -webkit-flex-grow: 1;
   }
 
+  .selector-bar-container {
+    width: 50%;
+    height: .4rem;
+    margin:  0 0 1rem;
+    .selector-bar {
+      width: 45%;
+      height: 100%;
+      background: $white;
+    }
+    -webkit-transition: margin 300ms;
+    -moz-transition: margin 300ms;
+    -ms-transition: margin 300ms;
+    -o-transition: margin 300ms;
+    transition: margin 300ms;
+  }
+
   .info-text-container {
-    padding: 0 0 4%;
+    padding: 4% 0;
     text-align: center;
   }
   .text-spacing {

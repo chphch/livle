@@ -89,7 +89,7 @@
 }
 
 ._show-video-back-container-m {
-  position: absolute;
+  position: fixed;
   z-index: 98;
   top: 0; left: 0;
   padding: 4%;
@@ -118,6 +118,7 @@
 
 ._show-text-container-m {
   width: 100%;
+  height: 100%;
 }
 
 ._show-buttons-container-m {
@@ -163,6 +164,8 @@
     width: 100%;
     height: 100%;
     padding: 2% 4%;
+    background: none;
+    border: none;
   }
   .submit-container {
     padding: 0 3rem;
@@ -176,21 +179,15 @@
 ._big-modal-container {
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  //top: 18%;
-  //left: 14%;
-  //width: 72%;
-  //height: 56%;
-  margin: 24rem 12rem;
+  margin: 24rem 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
 
 ._small-modal-container {
   position: absolute;
-  top: 34%;
-  left: 14%;
-  width: 72%;
-  height: 32%;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: 56rem 8rem;
   background: none;
   border-radius: 6rem;
 }
@@ -307,7 +304,7 @@
   height: 2rem;
 }
 
-._curator-container {
+._official-container {
   padding: 0 0 0 2rem;
 }
 

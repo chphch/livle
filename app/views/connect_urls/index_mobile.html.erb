@@ -17,9 +17,11 @@
               <%= image_tag "icon_video_cam", class: "input-icon" %>
             </div>
             <div class="input-container">
-              <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white", placeholder: "URL을 입력해주세요" %>
-              <%= submit_tag "URL 링크 바로가기", class: "input-field _fs-3-mobile _white" %>
+              <%= text_field_tag :video_url, nil, class: "input-field _fs-3-mobile _white", placeholder: "Youtube URL을 입력해주세요" %>
             </div>
+          </div>
+          <div class="submit-container _hcenter-positioner">
+            <%= submit_tag "보내기", class: "submit-button _text-center _fs-2-mobile _white", id: "connect-submit-button" %>
           </div>
       <% end %>
     </div>

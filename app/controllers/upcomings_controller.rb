@@ -1,5 +1,4 @@
 class UpcomingsController < ApplicationController
-
   def index
     today = DateTime.now
     @upcomings = Upcoming.where('start_date >= ?', today).order('start_date ASC')

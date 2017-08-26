@@ -1,0 +1,54 @@
+<div id="official-card">
+  <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+  <div class="official-background _full-container">
+    <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
+  </div>
+
+  <div class="official-filter _full-container _hcenter-positioner">
+    <div class="official-video-container _vcenter-positioner">
+      <div class="_video-player">
+        <!-- Youtube Video Player -->
+        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+                webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="official-describe-container _column-positioner _hcenter-positioner">
+      <!-- curator profile -->
+      <div class="_vcenter-positioner">
+        <div class="_profile-container _profile-border-m">
+          <%= image_tag "#{feed.user.profile_img}", class: "_profile-img" %>
+        </div>
+        <div class="_official-container _flex-grow-1">
+          <div class="_vcenter-positioner _no-p-margin">
+            <%= image_tag("icon_crown_gold", class: "_thumbnail-info-icon _crown-icon-margin", style: "margin-top: -1%") %>
+            <p class="_fs-2 _white"><%= feed.user.nickname %></p>
+          </div>
+          <div class="_no-p-margin">
+            <p class="_fs-4 _light-gray"><%= feed.user.intro %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="official-text-container">
+        <p class="_fs-2 _white">
+          <%= feed.title %> -
+          <!-- artist name -->
+          <% feed.artists.each_with_index do |artist, i| %>
+              <%= artist.name %>
+              <% break if feed.artists[i+1] == nil %>
+              ,&nbsp
+          <% end %>
+        </p>
+      </div>
+      <div class="official-text-container">
+        <%= simple_format feed.content, class: "_fs-4 _light-gray _f-line-mobile" %>
+      </div>
+      <%= link_to feed_path(feed.id), class: "official-button _vcenter-positioner
+          _hcenter-positioner _no-p-margin" do %>
+          <p class="_fs-3 _white">더보기</p>
+      <% end %>
+    </div>
+  </div>
+</div>

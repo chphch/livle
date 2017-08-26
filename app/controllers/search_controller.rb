@@ -13,7 +13,6 @@ class SearchController < ApplicationController
 
     @feed_results = Searchkick.search(
       @search,
-      index_name: [Feed, Curation],
       fields: [:artists_names, :title, :user_nickname],
       operator: "or",
       match: :word_middle

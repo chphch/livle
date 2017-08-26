@@ -1,7 +1,8 @@
 <div class="_card-container-m">
+  <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to upcoming_path(upcoming.id), method: :get do %>
       <div class="_thumbnail-container-m">
-        <%= image_tag "image_live", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
+        <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
         <div class="describe-container _row-positioner">
@@ -33,9 +34,3 @@
       </div>
   <% end %>
 </div>
-<script>
-    <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
-    $('#upcoming-<%= upcoming.id %>').attr({
-        src: "http://img.youtube.com/vi/<%= video_id %>/maxresdefault.jpg"
-    });
-</script>

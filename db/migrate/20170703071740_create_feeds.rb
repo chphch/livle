@@ -5,6 +5,7 @@ class CreateFeeds < ActiveRecord::Migration[5.1]
       t.boolean :is_curation
       t.string :title
       t.string :youtube_id
+      t.text :content
       t.integer :count_view
       t.integer :count_share
       t.float :rank
