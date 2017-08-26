@@ -1,14 +1,14 @@
 <div id="mypage-edit-profile-mobile">
-  <%= form_tag mypage_update_profile_path, multipart: true, method: :post, id: "update-profile" do %>
+  <%= form_for @user, url: mypage_update_profile_path, html: {multipart: false, remote: true, id: "update-profile"} do |f| %>
       <!-- save button -->
-      <%= submit_tag "완료", class: "save-button _fs-4-mobile _white _f-letter-mobile" %>
+      <%= f.submit "완료", class: "save-button _fs-4-mobile _white _f-letter-mobile" %>
       <div class="_column-positioner _vcenter-positioner _no-p-margin">
         <div class="edit-container">
           <!-- image -->
-          <input type="file" name="profile_img" id="profile" accept="image/*" class="_display-none">
-          <label for="profile">
+          <%= f.file_field :profile_img, id: "profile", accept: "image/*", class: "_display-none" %>
+          <%= f.label :profile_img do %>
             <div class="profile-container _profile-border-green">
-              <% if current_user.profile_img != nil %>
+              <% if current_user.profile_img %>
                   <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "_profile-img") %>
               <% else %>
                   <%= image_tag("image_profile", id: "upload-profile-img", class: "_profile-img") %>
@@ -17,7 +17,7 @@
                 <%= image_tag("icon_camera", style: "height: 75%; width: auto;") %>
               </div>
             </div>
-          </label>
+          <% end %>
         </div>
 
         <div class="translucency-container">
@@ -32,7 +32,7 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
-            <%= text_field_tag :nickname, nil, class: "edit-input-field _fs-3-mobile _white",
+            <%= f.text_field :nickname, class: "edit-input-field _fs-3-mobile _white",
                                placeholder: "닉네임", value: "#{current_user.nickname}" %>
           </div>
           <div class="hr-white"></div>
@@ -40,8 +40,8 @@
             <div class="icon-container _hcenter-positioner">
               <%= image_tag "icon_intro", class: "input-icon" %>
             </div>
-            <%= text_field_tag :intro, nil, class: "edit-input-field _fs-3-mobile _white",
-                               placeholder: "상태메세지", value: "#{current_user.intro}" %>
+            <%= f.text_field :introduce, class: "edit-input-field _fs-3-mobile _white",
+                               placeholder: "상태메세지", value: "#{current_user.introduce}" %>
           </div>
         </div>
       </div>

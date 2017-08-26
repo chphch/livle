@@ -21,7 +21,7 @@ for i in 1..SIZE_1
     password: "12341234",
     provider: "local",
     nickname: Faker::HarryPotter.character,
-    intro: Faker::Hacker.say_something_smart,
+    introduce: Faker::Hacker.say_something_smart,
     profile_img: nil
   )
 end
