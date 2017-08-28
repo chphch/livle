@@ -1,30 +1,19 @@
 <div class="_comments-group-m">
-  <% comments.each do |comment| %>
-      <div class="_vcenter-positioner">
-        <div class="_profile-container-m">
-          <%= image_tag "#{comment.user.profile_img}", class: "_profile-img" %>
-        </div>
-        <p class="_fs-4-mobile _white _icon-text-margin-m"><%= comment.user.nickname %></p>
-      </div>
-      <div class="_comment-content-container-m">
-        <p class="_fs-5-mobile _white">
-          <%= comment.content %>
-        </p>
-      </div>
-  <% end %>
+  <%= render partial: "partial_views/comment_card_mobile", collection: comments, as: :comment %>
 </div>
+<div style="padding: 4rem 0; width: 100%;"></div>
 
-<!-- TODO: Form Helper 완성시키기 -->
-<!--<= form_for comments.create do |f| %>-->
-<div class="_comment-edit-container-m _vcenter-positioner _no-p-margin">
-  <div class="input-container _flex-grow-1">
-    <%= text_field_tag :content, nil, placeholder: "어떤 말이 하고 싶으신가요?", class: "input-text _fs-4-mobile _white" %>
-    <!--<= t.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "_fs-4-mobile _white" %>-->
-  </div>
+<%= form_for model.new, url: model.class.name == 'FeedComment' ? feed_feed_comments_path(parent_id) :
+      upcoming_upcoming_comments_path(parent_id), remote: true do |f| %>
+    <div class="_comment-edit-container-m _vcenter-positioner _no-p-margin">
+      <div class="input-container _flex-grow-1">
+        <%= f.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "input-text _fs-4-mobile _white" %>
+      </div>
+      <%= f.hidden_field :model_id, value: parent_id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <div class="submit-container">
-    <%= submit_tag "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>
-    <!--<= t.submit "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>-->
-  </div>
-</div>
-<!--< end %>-->
+      <div class="submit-container">
+        <%= f.submit "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>
+      </div>
+    </div>
+<% end %>

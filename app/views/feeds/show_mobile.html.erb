@@ -1,7 +1,5 @@
 <div id="feeds-show-mobile">
-
   <%= render partial: '/partial_views/youtube_player', locals: { player_id: 0, feed: @feed, artists: @feed.artists, autoplay: true } %>
-
   <!-- back button -->
   <%= link_to :back, class: "_link-back-container-m" do %>
       <%= image_tag "icon_back", style: "width: 4rem; height: auto;" %>
@@ -63,7 +61,7 @@
   <hr>
 
   <!-- Comments -->
-  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments, model: FeedComment, parent_id: @feed.id} %>
 
   <!-- Modals -->
   <div id="share-modal" class="modal">
