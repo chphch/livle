@@ -6,8 +6,7 @@
     </div>
   </div>
 
-  <% remote ||= @remote %>
-  <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: remote do |f| %>
+  <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: @remote_new_session do |f| %>
       <div class="_column-positioner _vcenter-positioner">
         <!-- 이메일 -->
         <div class="login-input-container">
@@ -41,7 +40,7 @@
               <%= link_to "회원가입", new_registration_path(resource_name) %><br />
             </div>
             <div class="button-margin"></div>
-            <%= f.hidden_field :remote %>
+            <%= f.hidden_field :remote_new_session %>
             <%= f.submit "로그인", class: "button-width _submit-button _fs-2-mobile _white" %>
           </div>
         </div>

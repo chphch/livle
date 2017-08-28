@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :connect_urls
   has_many :recent_keywords
   mount_uploader :profile_img, S3Uploader
+  attr_accessor :remote_new_session
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,9 +19,6 @@ class User < ApplicationRecord
   validates :email, presence: true, confirmation: true, uniqueness: true
   validates :nickname, presence: true, confirmation: true, length: {maximum: 20}, uniqueness: true
   validates :password, presence: true, confirmation: true, length: {in: 8..20}
-  validates_presence_of     :password, if: :password_required?
-  validates_confirmation_of :password, if: :password_required?
-  validates_length_of       :password, within: password_length, allow_blank: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -33,11 +31,6 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
-  end
-
-  # whether or not the page changes
-  def remote
-
   end
 
   def isFacebook?
