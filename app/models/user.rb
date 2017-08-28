@@ -18,7 +18,7 @@ class User < ApplicationRecord
     :omniauthable, :omniauth_providers => [:facebook]
   validates :email, presence: true, confirmation: true, uniqueness: true
   validates :nickname, presence: true, length: {maximum: 20}, uniqueness: true
-  validates :password, presence: true, confirmation: true, length: {in: 8..20}
+  validates :password, presence: true, confirmation: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, email: auth.info.email).first_or_create do |user|
