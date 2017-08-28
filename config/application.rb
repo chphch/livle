@@ -16,5 +16,8 @@ module Livel
     # -- all .rb files in that directory are automatically loaded.
 
     config.autoload_paths << Rails.root.join('lib')
+
+    # set default locale
+    config.i18n.default_locale = :ko
   end
 end

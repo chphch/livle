@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       ## Customizable
       t.string   :provider
       t.string   :uid
-      t.string   :nickname
+      t.string   :nickname,          null: false, default: ""
       t.string   :introduce
       t.string   :profile_img
 

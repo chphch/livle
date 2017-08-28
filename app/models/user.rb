@@ -15,6 +15,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:facebook]
+  validates :email, presence: true, confirmation: true, uniqueness: true
+  validates :nickname, presence: true, confirmation: true, length: {maximum: 20}, uniqueness: true
+  validates :password, presence: true, confirmation: true, length: {in: 8..20}
   validates_presence_of     :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
   validates_length_of       :password, within: password_length, allow_blank: true

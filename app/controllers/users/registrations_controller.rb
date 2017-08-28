@@ -16,7 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.save
-    yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
@@ -31,7 +30,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource do |format|
-        format.html { "ERROR_MESSAGE" }
+        format.js {
+          if resource.errors.size != 0
+            puts resource.errors.to_h
+            render js: "$('#error-message').text('#{resource.errors.messages.first.second.first}');"
+          else
+            render json: {}
+          end
+        }
       end
     end
   end
