@@ -45,7 +45,7 @@ class FeedsController < ApplicationController
       @like_count = feed.feed_likes.size
       render '/xhrs/toggle_like'
     else
-      render '/xhrs/login_modal'
+      redirect_to new_user_session_path
     end
   end
 

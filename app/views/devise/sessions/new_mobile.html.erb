@@ -7,7 +7,7 @@
   </div>
 
   <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
-      <%= f.hidden_field :remote_new_session, value: @remote_new_session %>
+      <%= f.hidden_field :remote_new_session %>
       <div class="_column-positioner _vcenter-positioner">
         <!-- 이메일 -->
         <div class="login-input-container">

@@ -10,11 +10,11 @@ class Users::SessionsController < Devise::SessionsController
     respond_with(resource, serialize_options(resource)) do |format|
       format.html {
         @title = "로그인"
-        @remote_new_session = false
+        resource.remote_new_session = false
         render_by_device
       }
       format.js {
-        @remote_new_session = true
+        resource.remote_new_session = true
         render "/xhrs/login_modal"
       }
     end
@@ -25,11 +25,11 @@ class Users::SessionsController < Devise::SessionsController
     self.resource = warden.authenticate(auth_options)
     if resource && resource.active_for_authentication?
       set_flash_message!(:notice, :signed_in)
-      puts flash.to_h
+      puts flash[:notice] #####TODO SUCCESSFUL LOGIN MESSAGE NEEDS TO BE PASSED TO RENDING PAGE
       sign_in(resource_name, resource)
       respond_with resource do |format|
         format.js {
-          if params[:user][:remote_new_session]
+          if params[:user][:remote_new_session] == "true"
             render js: "$('#login-modal').modal('hide');"
           else
             render js: "window.location = '#{mypage_index_path}';"
