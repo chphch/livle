@@ -12,7 +12,6 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
     @video_id = @feed.video_id
-
     @related_feeds = []
     @feed.artists.each do |artist|
       same_artist = Artist.find(artist.id)
@@ -33,11 +32,17 @@ class FeedsController < ApplicationController
 
   def toggle_like
     if user_signed_in?
-      feed = Feed.find(params[:feed_id])
+      if params[:player_id]
+        playerFeedArtist = FeedArtist.find(params[:player_id])
+        feed = playerFeedArtist.feed
+        @player_id = playerFeedArtist.id
+        @feed_id = feed.id
+      else
+        feed = Feed.find(params[:feed_id])
+      end
       @like_true = FeedLike.toggle_like(feed, current_user)
       @like_type = "like"
       @like_count = feed.feed_likes.size
-      @video_index = params[:video_index] || 0
       render '/xhrs/toggle_like'
     else
       render '/xhrs/login_modal'

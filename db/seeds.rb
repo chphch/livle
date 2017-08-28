@@ -11,20 +11,24 @@ SIZE_2 = 5
 youtube_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84",
                 "https://youtu.be/Xvjnoagk6GU", "https://www.youtube.com/watch?v=_gWn2xRfE90", "https://youtu.be/si_TE3iKjEQ"]
 
+def random_sample
+  (1..SIZE_1).to_a.sample(SIZE_2)
+end
+
 for i in 1..SIZE_1
   User.create(
     email: i.to_s + "@naver.com",
     password: "12341234",
     provider: "local",
     nickname: Faker::HarryPotter.character,
-    intro: Faker::Hacker.say_something_smart,
+    introduce: Faker::Hacker.say_something_smart,
     profile_img: nil
   )
 end
 
 for i in 1..SIZE_1
   Artist.create(
-    name: "artist_" + (i * 5).to_s,
+    name: "artist_" + i.to_s,
     image_url: "asdfasdf"
   )
 end
@@ -40,16 +44,15 @@ for i in 1..SIZE_1
     count_share: rand(1..100),
     rank: 0.0
   )
-  for i in 1..SIZE_2
-    arr = Array.new(SIZE_1) {|i| i}.sample(5)
+  random_sample.each do |ri|
     FeedComment.create(
       feed_id: feed.id,
-      user_id: arr[i],
+      user_id: rand(1..SIZE_1),
       content: Faker::Hacker.say_something_smart
     )
     FeedArtist.create(
       feed_id: feed.id,
-      artist_id: arr[i]
+      artist_id: ri
     )
     FeedLike.create(
       feed_id: feed.id,
@@ -67,11 +70,10 @@ for i in 1..SIZE_1
     end_date: Date.new(2017,rand(8..12),rand(1..30)),
     ticket_url: 'https://m.facebook.com'
   )
-  for i in 1..SIZE_2
-    arr = Array.new(SIZE_1) {|i| i}.sample(5)
+  random_sample.each do |ri|
     UpcomingArtist.create(
       upcoming_id: upcoming.id,
-      artist_id: arr[i]
+      artist_id: ri
     )
     UpcomingComment.create(
       upcoming_id: upcoming.id,
@@ -80,7 +82,7 @@ for i in 1..SIZE_1
     )
     UpcomingLike.create(
       upcoming_id: upcoming.id,
-      user_id: arr[i]
+      user_id: ri
     )
   end
 end

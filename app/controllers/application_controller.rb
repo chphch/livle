@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   # render html or js file by respond format # also choose the template by the type of the requesting device
   def render_by_device(filename = nil, layout_name = "application")
     def fullname(device_suffix, filetype_suffix, filename)
-      current_path = Rails.application.routes.recognize_path(request.path)[:controller]
+      current_path = request.path
       action_path = filename || "#{controller_name}/#{action_name}"
-      if current_path[0..5] == 'users/'
+      if current_path[0..5] == '/users'
         action_path = "devise/#{action_path}"
       end
       "#{action_path}_#{device_suffix}.#{filetype_suffix}.erb"

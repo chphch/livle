@@ -5,12 +5,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     build_resource({})
-    yield resource if block_given?
-
     @disable_nav = true
     @title = "회원가입"
     respond_with resource do |format|
-      format.html { render_by_device '/devise/registrations/new' }
+      format.html { render_by_device }
     end
   end
 
@@ -45,11 +43,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     if current_user.isFacebook?
-      render_by_device 'cannot_change_password'
+      render_by_device 'registrations/cannot_change_password'
     else
       @title = "비밀번호 변경"
       @back_url = mypage_settings_path
-      render_by_device '/devise/registrations/edit'
+      render_by_device
     end
   end
 

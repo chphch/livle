@@ -1,52 +1,13 @@
-<div id="upcomings-show-mobile" class="show-mobile" data-video-index="0" data-size="<%= @posts.size %>" >
+<div id="upcomings-show-mobile">
+
   <!-- Youtube Video Player -->
-  <% @posts.each_with_index do |post, index| %>
-
-      <div class="_show-video-container-m show-video-container <%= index == 0 ? "" : "_display-none" %>"
-           data-index="<%= index %>"
-           data-post-class="<%= post[:post_class] %>"
-           data-post-id="<%= post[:id] %>"
-           data-like-true="<%= post[:like_true] %>">
-        <iframe id="youtube-player-<%= index %>" type="text/html" src="http://www.youtube.com/embed/<%= post[:video_id] %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= post[:video_id] %>"
-                webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-
-        <div class="youtube-player-filter">
-          <div class="_show-video-filter-m"></div>
-          <div class="_show-video-title-container-m _hcenter-positioner">
-            <p class="_fs-2-mobile _white">
-              <!-- title -->
-              <%= @upcoming.title %> -
-              <!--artist.name -->
-              <%= post[:artist_name] %>
-            </p>
-          </div>
-          <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
-            <% if index != 0 %>
-                <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-                <p class="_fs-5-mobile _white"><%= post[:count_view] %></p>
-                <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-                <p class="_fs-5-mobile _white post-like-count"><%= post[:count_like] %></p>
-                <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-                <p class="_fs-5-mobile _white"><%= post[:count_share] %></p>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
-          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-            <div id="progress-bar-<%= index %>" class="video-progress-bar"></div>
-          </div>
-          <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-            <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>
-          </div>
-          <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-            <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin-top: 1%;">HD</p>
-            <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
-          </div>
-          <%= image_tag("icon_play", class: "_show-play-button youtube-player-buttons play-button") %>
-        </div>
-      </div>
+  <% if @main_video %>
+      <%= render partial: 'partial_views/youtube_player', locals: { player_id: @main_video_id,feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
+  <% end %>
+  <% @artists.each_with_index do |artist, index| %>
+      <% player_display_none = index != 0 || @main_video %>
+      <% autoplay = index == 0 && !@main_video %>
+      <%= render partial: 'partial_views/youtube_player', locals: { player_id: artist.popular_feed_artist.id, feed: artist.popular_feed, player_display_none: player_display_none, autoplay: autoplay}%>
   <% end %>
 
   <!-- back button -->
@@ -55,12 +16,13 @@
   <% end %>
 
   <!-- Video info -->
-  <div class="_show-player-padding-m"></div>
-  <div class="info-container">
-    <div class="_show-text-container-m _row-positioner">
-      <p class="_flex-grow-1 _fs-1-mobile _white"><%= @upcoming.title %></p>
-      <div class="_flex-grow-1 _hright-positioner">
-        <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= d_day(@upcoming.start_date) %></strong></p>
+  <div class="_show-info-padding-m">
+    <div class="info-container">
+      <div class="_show-text-container-m _row-positioner">
+        <p class="width-devision _fs-1-mobile _white"><%= @upcoming.title %></p>
+        <div class="width-devision _hright-positioner">
+          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
+        </div>
       </div>
     </div>
     <div class="describe-padding">
@@ -93,13 +55,12 @@
       </div>
     </div>
   </div>
-  <div class="line-up-group-container">
-    <% @posts.each_with_index do |post, index| %>
-        <div class="artist-profile _hcenter-positioner _vcenter-positioner"
-             data-index="<%= index %>"
-             style="background: url(<%= post[:artist_image_url] %>) no-repeat center center; background-size: cover;">
-          <p class="_fs-2-mobile _white"><%= post[:artist_name] %></p>
-        </div>
+  <div class="line-up-img-container">
+    <% if @main_video %>
+        <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: @main_video_id, image_url: @main_video_image_url, name: "Main Video" } %>
+    <% end %>
+    <% @artists.each do |artist| %>
+        <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: artist.popular_feed_artist.id, image_url: artist.image_url , name: artist.name } %>
     <% end %>
   </div>
 
@@ -117,34 +78,18 @@
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">댓글</p>
     </div>
-    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">공유</p>
     </div>
   </div>
   <hr>
 
-  <!-- Modals -->
-  <section id="modal">
-    <% if !user_signed_in? %>
-        <div id='login-modal' class='modal'>
-          <div class="_big-modal">
-            <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-          </div>
-        </div>
-    <% end %>
-    <form id="share-modal" class="modal">
-      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
-    </form>
-  </section>
-
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments} %>
-</div>
 
-<script>
-    // share modal
-    $('#share-modal-button').click(function() {
-        $('#share-modal').modal();
-    });
-</script>
+  <!-- Modals -->
+  <div id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
+  </div>
+</div>

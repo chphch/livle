@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.string "provider"
     t.string "uid"
     t.string "nickname"
-    t.string "intro"
+    t.string "introduce"
     t.string "profile_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

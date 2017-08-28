@@ -11,12 +11,12 @@ class UpcomingsController < ApplicationController
 
   def show
     @upcoming = Upcoming.find(params[:id])
-    @posts = @upcoming.posts(current_user)
+    @artists = @upcoming.wrap_artists(current_user)
+    @main_video = @upcoming.main_video
+    @main_video_image_url = Upcoming.main_video_image_url
+    @main_video_id = Upcoming.main_video_id
     @like_true = user_signed_in? &&
-        UpcomingLike.where(
-            upcoming_id: params[:id],
-            user_id: current_user.id
-        ).take
+        UpcomingLike.where(upcoming_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
     render_by_device
   end
@@ -33,24 +33,8 @@ class UpcomingsController < ApplicationController
     end
   end
 
-  def toggle_video_like
-    post_type = params[:post_class]
-    post_id = params[:post_id]
-    video_index = params[:video_index]
-    if (post_type == "feed")
-      puts "FEED LIKE"
-      puts video_index
-      redirect_to "/feeds/#{post_id}/toggle_like/#{video_index}"
-    elsif (post_type == "curation")
-      puts "CURATION LIKE"
-      puts video_index
-      redirect_to "/curations/#{post_id}/toggle_like/#{video_index}"
-    end
-  end
-
   def update
-    @upcoming = Upcoming.find_by(id: params[:id])
-
+    @upcoming = Upcoming.find(params[:id])
     if @upcoming.update(title: params[:title], place: params[:place],
                         main_youtube_id: params[:main_youtube_id], ticket_url: params[:ticket_url])
       redirect_back(fallback_location: root_path)

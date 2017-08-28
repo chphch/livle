@@ -1,5 +1,6 @@
-<div id="feeds-show-mobile" class="show-mobile" data-size="1">
-  <%= render partial: 'partial_views/youtube_player', locals: { video_id: @video_id, feed: @feed, artists: @feed.artists } %>
+<div id="feeds-show-mobile">
+
+  <%= render partial: '/partial_views/youtube_player', locals: { player_id: 0, feed: @feed, artists: @feed.artists, autoplay: true } %>
 
   <!-- back button -->
   <%= link_to :back, class: "_link-back-container-m" do %>
@@ -21,7 +22,7 @@
             <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
           </div>
           <div class="text-row">
-            <p class="_fs-4-mobile _light-gray"><%= @feed.user.intro %></p>
+            <p class="_fs-4-mobile _light-gray"><%= @feed.user.introduce %></p>
           </div>
         </div>
       </div>
@@ -54,34 +55,18 @@
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">댓글</p>
     </div>
-    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-4-mobile _white">공유</p>
     </div>
   </div>
   <hr>
 
-  <!-- Modals -->
-  <section id="modal">
-    <% if !user_signed_in? %>
-        <form id='login-modal' class='modal'>
-          <div class="_big-modal-container">
-            <%= render file: 'devise/sessions/new_mobile.html.erb' %>
-          </div>
-        </form>
-    <% end %>
-    <form id="share-modal" class="modal">
-      <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @feed} %>
-    </form>
-  </section>
-
   <!-- Comments -->
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
-</div>
 
-<script>
-    // share modal
-    $('#share-modal-button').click(function() {
-        $('#share-modal').modal();
-    });
-</script>
+  <!-- Modals -->
+  <div id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @feed} %>
+  </div>
+</div>

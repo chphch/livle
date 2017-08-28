@@ -1,7 +1,7 @@
-<!-- Youtube Video Player -->
-<div class="_show-video-container-m show-video-container" data-index="0">
-  <iframe id="youtube-player-0" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+<% player_display_none = defined?(player_display_none) && player_display_none ? "_display-none" : "" %>
+<div class="_show-video-container-m show-video-container <%= player_display_none %>" data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
+  <iframe id="youtube-player-<%= player_id %>" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=0&rel=0&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1"
           webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
 
   <div class="youtube-player-filter">
@@ -9,27 +9,30 @@
     <div class="_show-video-title-container-m _hcenter-positioner">
       <p class="_fs-2-mobile _white">
         <!-- title -->
-        <%= feed.title %> -
+        <%= feed.title %>
+        <% unless feed.artists.size == 0 %> - <% end %>
         <!-- artist.name -->
-        <% artists.each_with_index do |artist, index| %>
+        <% feed.artists.each_with_index do |artist, index| %>
             <% unless index == 0 %>,&nbsp<% end %>
             <%= artist.name %>
         <% end %>
       </p>
     </div>
-    <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
-      <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-      <p class="_fs-5-mobile _white"><%= feed.count_view %></p>
-      <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-      <p class="_fs-5-mobile _white post-like-count"><%= feed.feed_likes.size %></p>
-      <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-      <p class="_fs-5-mobile _white"><%= feed.count_share %></p>
-    </div>
+    <% unless defined?(no_thumbnail_button) %>
+        <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
+          <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= feed.count_view %></p>
+          <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white post-like-count"><%= feed.feed_likes.size %></p>
+          <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
+          <p class="_fs-5-mobile _white"><%= feed.count_share %></p>
+        </div>
+    <% end %>
   </div>
 
   <div class="_show-play-button-container-m _hcenter-positioner _vcenter-positioner youtube-player-controller">
     <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
-      <div id="progress-bar-0" class="video-progress-bar"></div>
+      <div id="progress-bar-<%= player_id %>" class="video-progress-bar"></div>
     </div>
     <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
       <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>

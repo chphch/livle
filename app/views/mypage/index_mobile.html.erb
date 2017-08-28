@@ -81,9 +81,6 @@
             </div>
         <% else %>
             <div id="mypage-mylist-mobile">
-              <%= current_user.curation_likes.each do |like| %>
-                  <%= render partial: "search/feed_card_mobile", locals: {feed: like.curation} %>
-              <% end %>
               <%= current_user.feed_likes.each do |like| %>
                   <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
               <% end %>

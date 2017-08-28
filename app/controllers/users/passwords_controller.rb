@@ -3,7 +3,7 @@ class Users::PasswordsController < Devise::PasswordsController
   def new
     super
     @title = "비밀번호 찾기"
-    render_by_device '/devise/passwords/new'
+    render_by_device
   end
 
   # POST /resource/password
@@ -13,14 +13,14 @@ class Users::PasswordsController < Devise::PasswordsController
 
   def after_create
     @title = "비밀번호 찾기"
-    render_by_device '/devise/passwords/after_create'
+    render_by_device
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   def edit
     super
     @disable_nav = true
-    render_by_device '/devise/passwords/edit'
+    render_by_device
   end
 
   # PUT /resource/password
@@ -29,7 +29,6 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   protected
-
   def after_resetting_password_path_for(resource)
     mypage_index_path
   end
