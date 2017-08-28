@@ -5,4 +5,6 @@ $('body').append(
       </div>\
     </div>'
 );
-$('#login-modal').modal();
+var loginModal = $('#login-modal');
+loginModal.modal();
+loginModal.on('hide.bs.modal', function() {loginModal.remove()});
