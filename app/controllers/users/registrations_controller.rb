@@ -20,7 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+        respond_with resource do |format|
+          format.js {render js: "window.location = '#{mypage_index_path}';"}
+        end
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -35,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
             puts resource.errors.to_h
             render js: "$('#error-message').text('#{resource.errors.messages.first.second.first}');"
           else
-            render json: {}
+            render json: {} # unexpected authentication error
           end
         }
       end
