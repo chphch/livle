@@ -3,11 +3,12 @@
 </div>
 <div style="padding: 4rem 0; width: 100%;"></div>
 
-<%= form_for model.new, url: model.class.name == 'FeedComment' ? feed_feed_comments_path(parent_id) :
+<%= form_for model.new, url: model.to_s == 'FeedComment' ? feed_feed_comments_path(parent_id) :
       upcoming_upcoming_comments_path(parent_id), remote: true do |f| %>
     <div class="_comment-edit-container-m _vcenter-positioner _no-p-margin">
       <div class="input-container _flex-grow-1">
-        <%= f.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", class: "input-text _fs-4-mobile _white" %>
+        <%= f.text_field :content, placeholder: "어떤 말이 하고 싶으신가요?", autocomplete: "off",
+                         class: "input-text _fs-4-mobile _white" %>
       </div>
       <%= f.hidden_field :model_id, value: parent_id %>
       <%= f.hidden_field :user_id, value: current_user.id %>

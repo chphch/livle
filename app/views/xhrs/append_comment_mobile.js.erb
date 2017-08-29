@@ -2,9 +2,9 @@
     $('._comments-group-m').append(
       '<div class="_vcenter-positioner">\
         <div class="_profile-container-m">\
-          <%= image_tag current_user.profile_img, class: "_profile-img" %>\
+          <%= image_tag @user.profile_img, class: "_profile-img" %>\
         </div>\
-        <p class="_fs-4-mobile _white _icon-text-margin-m"><%= current_user.nickname %></p>\
+        <p class="_fs-4-mobile _white _icon-text-margin-m"><%= @user.nickname %></p>\
       </div>\
       <div class="_comment-content-container-m">\
         <p class="_fs-5-mobile _white">\
@@ -12,4 +12,5 @@
         </p>\
       </div>'
     );
+    $('._comment-edit-container-m .input-text').val('');
 <% end %>
