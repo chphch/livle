@@ -15,32 +15,34 @@
   <% end %>
 
   <!-- Video info -->
-  <div class="_show-info-padding-m">
+  <div class="_show-player-padding-m">
     <div class="info-container">
       <div class="_show-text-container-m _row-positioner">
-        <p class="width-devision _fs-1-mobile _white"><%= @upcoming.title %></p>
+        <p class="_flex-grow-1 _fs-1-mobile _white">
+          <%= @upcoming.title %>
+        </p>
         <div class="width-devision _hright-positioner">
           <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
         </div>
       </div>
-    </div>
-    <div class="describe-padding">
-      <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
-    </div>
-    <div class="describe-padding _vcenter-positioner">
-      <div class="describe-date">
-        <p class="_fs-3-mobile _light-gray">
-          <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
-        </p>
+      <div class="describe-padding">
+        <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
       </div>
-      <div class="describe-icons _vcenter-positioner _hright-positioner">
-        <%= link_to @upcoming.ticket_url do %>
-            <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
-        <% end %>
-        <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
-            <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
-            <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
-        <% end %>
+      <div class="describe-padding _vcenter-positioner">
+        <div class="describe-date">
+          <p class="_fs-3-mobile _light-gray">
+            <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
+          </p>
+        </div>
+        <div class="describe-icons _vcenter-positioner _hright-positioner">
+          <%= link_to @upcoming.ticket_url do %>
+              <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
+          <% end %>
+          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+              <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
+              <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -54,7 +56,7 @@
       </div>
     </div>
   </div>
-  <div class="line-up-img-container">
+  <div class="line-up-group-container">
     <% if @main_video %>
         <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: @main_video_id, image_url: @main_video_image_url, name: "Main Video" } %>
     <% end %>
