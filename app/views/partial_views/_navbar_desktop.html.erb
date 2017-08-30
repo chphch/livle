@@ -41,40 +41,33 @@
       <% end %>
     </div>
     <!-- TODO: Modal 띄우는거 고민해보자.. -->
-    <div class="_navbar-button">
-      <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
-        <p class="_fs-3 _white">Login</p>
-      </div>
-    </div>
-    <div class="dropdown _navbar-button">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <div class="_vcenter-positioner">
-          <div class="_navbar-profile-container">
-            <% if user_signed_in? %>
-                <%= image_tag "#{current_user.profile_img}", class: "_profile-img" %>
-            <% else %>
-                <%= image_tag "image_profile", class: "_profile-img" %>
-            <% end %>
+    <% if !user_signed_in? %>
+        <div class="_navbar-button">
+          <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
+            <p class="_fs-3 _white">Login</p>
           </div>
-          <%= image_tag "icon_dropdown", class: "_navbar-dropdown-icon" %>
         </div>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-right">
-        <li>
-          <a href="#">프로필 설정</a>
-        </li>
-        <li>
-          <a href="#">좋아요 모아보기</a>
-        </li>
-        <li>
-          <a href="#">로그아웃</a>
-        </li>
-        <li>
-          <%= link_to admin_feed_path do %>
-              관리자 설정
-          <% end %>
-        </li>
-      </ul>
-    </div>
+    <% else %>
+        <div class="dropdown _navbar-button">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <div class="_vcenter-positioner">
+              <div class="_navbar-profile-container">
+                <%= image_tag "#{current_user.profile_img}", class: "_profile-img" %>
+              </div>
+              <%= image_tag "icon_dropdown", class: "_navbar-dropdown-icon" %>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#">프로필 설정</a></li>
+            <li><a href="#">마이 페이지</a></li>
+            <li><a href="#">로그아웃</a></li>
+            <li>
+              <%= link_to admin_feed_path do %>
+                  관리자 설정
+              <% end %>
+            </li>
+          </ul>
+        </div>
+    <% end %>
   </div>
 </nav>

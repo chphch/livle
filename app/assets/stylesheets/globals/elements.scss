@@ -2,7 +2,9 @@
 @import "colors";
 @import "mixins";
 
-//__________BOTH__________
+//########################
+//#         BOTH         #
+//########################
 hr {
   border-top: 1px solid $gray !important;
   margin: 0 !important;
@@ -33,6 +35,11 @@ input:-ms-input-placeholder {
   color: $light-gray !important;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 ._no-p-margin {
   p { margin: 0; }
 }
@@ -61,7 +68,9 @@ input:-ms-input-placeholder {
   border: 0.2rem $light-green solid;
 }
 
-//__________MOBILE__________
+//########################
+//#        MOBILE        #
+//########################
 //navbar
 ._navbar-m {
   position: fixed;
@@ -198,7 +207,11 @@ input:-ms-input-placeholder {
     padding: 0.6rem 0;
     background: rgba(226, 222, 222, 0.31);
     border: none;
+    z-index: $z-most-important + 1;
     @include border-radius($br-min);
+    &:hover {
+      cursor: text;
+    }
   }
   ._navbar-search-input {
     background: none;
@@ -246,7 +259,7 @@ input:-ms-input-placeholder {
     position: relative;
     top: 0; left: 0;
     @include size($navbar-h);
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 2rem;
     padding: 0.1rem;
     border: 1px solid $light-green;
     @include border-radius(50%);

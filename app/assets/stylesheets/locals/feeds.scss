@@ -5,7 +5,9 @@
 @import "globals/sizes";
 @import "globals/mixins";
 
-//Mobile
+//########################
+//#        MOBILE        #
+//########################
 #feeds-index-mobile,
 #feeds-show-mobile {
   background: $black;
@@ -32,7 +34,9 @@
   }
 }
 
-//Desktop
+//########################
+//#       DESKTOP        #
+//########################
 #official-card {
   .official-background {
     overflow: hidden;
@@ -100,16 +104,6 @@
     background: $black;
   }
 
-  .feed-list-container {
-    position: relative;
-    width: $wide-width;
-  }
-  @media (max-width: $desktop) {
-    .feed-list-container {
-      width: $narrow-width;
-    }
-  }
-
   .prev-list {
     position: absolute;
     top: 0; left: 0; bottom: 0;
@@ -152,12 +146,6 @@
 
   .show-container {
     padding: $navbar-height 0 0;
-    width: $wide-width;
-  }
-  @media (max-width: $desktop) {
-    .show-container {
-      width: $narrow-width;
-    }
   }
 
   .show-video-container {

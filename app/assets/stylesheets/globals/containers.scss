@@ -2,7 +2,9 @@
 @import "colors";
 @import "mixins";
 
-//__________BOTH__________
+//########################
+//#         BOTH         #
+//########################
 //containers
 ._full-container {
   position: absolute;
@@ -44,7 +46,9 @@
   text-align: center;
 }
 
-//__________MOBILE__________
+//########################
+//#        MOBILE        #
+//########################
 //backgrounds
 ._body-background-m {
   position: fixed;
@@ -222,8 +226,24 @@
   margin: 0 6% 0 0;
 }
 
-//__________DESKTOP__________
+//########################
+//#       DESKTOP        #
+//########################
 //containers
+._desktop-container {
+  position: relative;
+  width: $wide-width;
+}
+@media (max-width: $desktop) {
+  ._desktop-container {
+    width: $narrow-width;
+  }
+}
+._desktop-container-narrow {
+  position: relative;
+  width: $narrow-width;
+}
+
 ._profile-container {
   position: relative;
   top: 0; left: 0;

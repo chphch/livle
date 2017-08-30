@@ -2,6 +2,9 @@
 @import "globals/colors";
 @import "globals/mixins";
 
+//########################
+//#        MOBILE        #
+//########################
 #device-new-mobile,
 #device-recover-new-mobile,
 #device-recover-email-sent-mobile,
@@ -81,3 +84,7 @@
     padding: 4% 0;
   }
 }
+
+//########################
+//#       DESKTOP        #
+//########################

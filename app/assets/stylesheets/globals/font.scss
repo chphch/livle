@@ -5,32 +5,9 @@ a {
   color: inherit !important;
 }
 
-//desktop fonts
-._fs-1 {
-  font-size: $fs-1;
-  font-family: 'Nanum Square', 'Roboto', sans-serif;
-}
-._fs-2 {
-  font-size: $fs-2;
-  font-family: 'Nanum Square', 'Roboto', sans-serif;
-}
-._fs-3 {
-  font-size: $fs-3;
-  font-family: 'Nanum Square', 'Roboto', sans-serif;
-}
-._fs-4 {
-  font-size: $fs-4;
-  font-family: 'Nanum Square', 'Roboto', sans-serif;
-}
-._fs-5 {
-  font-size: $fs-5;
-  font-family: 'Nanum Square', 'Roboto', sans-serif;
-}
-._f-line {
-  line-height: 170%;
-}
-
-//mobile fonts
+//########################
+//#        MOBILE        #
+//########################
 ._fs-navbar-mobile {
   font-size: $fs-navbar-m;
   font-family: 'Nanum Square', 'Roboto', sans-serif;
@@ -59,9 +36,41 @@ a {
   font-size: 3.2rem;
   font-family: 'Nanum Square', 'Roboto', sans-serif;
 }
+
 ._f-line-mobile {
   line-height: 170%;
 }
 ._f-letter-mobile {
   letter-spacing: 0.4rem;
+}
+
+//########################
+//#       DESKTOP        #
+//########################
+._fs-1 {
+  font-size: $fs-1;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+._fs-2 {
+  font-size: $fs-2;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+._fs-3 {
+  font-size: $fs-3;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+._fs-4 {
+  font-size: $fs-4;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+._fs-5 {
+  font-size: $fs-5;
+  font-family: 'Nanum Square', 'Roboto', sans-serif;
+}
+
+._f-line {
+  line-height: 170%;
+}
+._f-letter {
+  letter-spacing: 0.6rem;
 }
