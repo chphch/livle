@@ -11,8 +11,9 @@
                          class: "input-text _fs-4-mobile _white" %>
       </div>
       <%= f.hidden_field :model_id, value: parent_id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
+      <% if user_sigined_id? %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+      <% end %>
       <div class="submit-container">
         <%= f.submit "게시", class: "_fs-4-mobile _light-green _f-letter-mobile" %>
       </div>
