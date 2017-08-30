@@ -18,10 +18,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_youtube_video_id(youtube_video_url)
-    youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '')
-  end
-
   def host_name
     "http://localhost:3000"
   end

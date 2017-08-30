@@ -12,7 +12,7 @@ class ConnectUrlsController < ApplicationController
         format.html {
           @connect_url = ConnectUrl.new
           @video_url = params[:video_url]
-          @connect_feed = Feed.new(youtube_url: get_youtube_video_id(params[:video_url]))
+          @connect_feed = Feed.new(youtube_url: params[:video_url])
           @disable_nav = true
           render_by_device
         }
