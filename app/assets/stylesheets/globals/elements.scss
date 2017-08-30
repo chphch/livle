@@ -37,6 +37,11 @@ input:-ms-input-placeholder {
   p { margin: 0; }
 }
 
+._no-background-border {
+  background: none;
+  border: none;
+}
+
 ._display-none {
   display: none;
 }
