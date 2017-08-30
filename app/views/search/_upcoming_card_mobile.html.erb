@@ -1,5 +1,5 @@
 <div class="search-card-mobile">
-  <% video_id = upcoming.main_youtube_id.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
+  <% video_id = upcoming.main_youtube_url.gsub(/https:\/\/www.youtube.com\/watch?|https:\/\/youtu.be\//, '') %>
   <%= link_to upcomings_path(upcoming.id) do %>
       <div class="_row-positioner">
         <div class="_thumbnail-container-m card-devider">

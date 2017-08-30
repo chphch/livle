@@ -52,7 +52,7 @@ class FeedsController < ApplicationController
 
   def update
     @feed = Feed.find(params[:id])
-    if @feed.update(title: params[:title], youtube_id: params[:youtube_id])
+    if @feed.update(title: params[:title], youtube_url: params[:youtube_url])
       redirect_back(fallback_location: root_path)
     else
       render text: @feed.errors.messages

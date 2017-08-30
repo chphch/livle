@@ -14,7 +14,7 @@ class Upcoming < ArtistsRecord
   end
 
   def main_video
-    if self.main_youtube_id
+    if self.main_youtube_url
       main_video = Feed.new(
           id: self.class.main_video_id,
           video_id: self.main_video_id,
@@ -27,7 +27,7 @@ class Upcoming < ArtistsRecord
   end
 
   def main_video_id
-    self.class.get_youtube_video_id(self.main_youtube_id)
+    self.class.get_youtube_video_id(self.main_youtube_url)
   end
 
   def self.main_video_image_url

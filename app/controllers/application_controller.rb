@@ -18,14 +18,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # keeping user to the same page after sign in
-  def after_sign_in_path_for(resource)
-    request.referrer
-    # if request.env['omniauth.origin']
-    #   request.env['omniauth.origin']
-    # end
-  end
-
   def get_youtube_video_id(youtube_video_url)
     youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '')
   end

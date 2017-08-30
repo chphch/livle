@@ -1,5 +1,5 @@
 <div class="_card-container-m">
-  <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+  <% video_id = feed.youtube_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to feed_path(feed.id) do %>
       <div class="_thumbnail-container-m">
         <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m", id: "feed-#{feed.id}" %>

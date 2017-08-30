@@ -22,6 +22,6 @@ class Feed < ArtistsRecord
   end
 
   def video_id
-    @video_id || self.class.get_youtube_video_id(self.youtube_id)
+    @video_id || self.class.get_youtube_video_id(self.youtube_url)
   end
 end

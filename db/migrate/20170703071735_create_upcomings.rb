@@ -3,7 +3,7 @@ class CreateUpcomings < ActiveRecord::Migration[5.1]
     create_table :upcomings do |t|
       t.string :title
       t.string :place
-      t.string :main_youtube_id
+      t.string :main_youtube_url
       t.date :start_date
       t.date :end_date
       t.string :ticket_url

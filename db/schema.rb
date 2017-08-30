@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.integer "user_id"
     t.boolean "is_curation"
     t.string "title"
-    t.string "youtube_id"
+    t.string "youtube_url"
     t.text "content"
     t.integer "count_view"
     t.integer "count_share"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20170716213035) do
   create_table "upcomings", force: :cascade do |t|
     t.string "title"
     t.string "place"
-    t.string "main_youtube_id"
+    t.string "main_youtube_url"
     t.date "start_date"
     t.date "end_date"
     t.string "ticket_url"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.string "last_sign_in_ip"
     t.string "provider"
     t.string "uid"
-    t.string "nickname"
+    t.string "nickname", default: "", null: false
     t.string "introduce"
     t.string "profile_img"
     t.datetime "created_at", null: false

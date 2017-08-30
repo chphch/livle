@@ -8,7 +8,7 @@
 
 SIZE_1 = 60
 SIZE_2 = 5
-youtube_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84",
+youtube_url_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84",
                 "https://youtu.be/Xvjnoagk6GU", "https://www.youtube.com/watch?v=_gWn2xRfE90", "https://youtu.be/si_TE3iKjEQ"]
 
 def random_sample
@@ -38,7 +38,7 @@ for i in 1..SIZE_1
     user_id: rand(1..SIZE_1),
     is_curation: [false, false, false, true].sample,
     title: "feed_" + i.to_s,
-    youtube_id: youtube_list.sample,
+    youtube_url: youtube_url_list.sample,
     content: Faker::Hacker.say_something_smart,
     count_view: rand(1..100),
     count_share: rand(1..100),
@@ -65,7 +65,7 @@ for i in 1..SIZE_1
   upcoming = Upcoming.create(
     title: "upcoming_" + i.to_s,
     place: Faker::Space.galaxy,
-    main_youtube_id: youtube_list.sample,
+    main_youtube_url: youtube_url_list.sample,
     start_date: Date.new(2017,rand(8..12),rand(1..30)),
     end_date: Date.new(2017,rand(8..12),rand(1..30)),
     ticket_url: 'https://m.facebook.com'
