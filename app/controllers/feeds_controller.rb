@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   def index
+    @enable_transparent = true #for desktop
     @officials = Feed.where(is_curation: true)
     @feeds = Feed.paginate(page: params[:page], per_page: 14)
     respond_to do |format|

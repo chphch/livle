@@ -58,16 +58,33 @@
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">프로필 설정</a></li>
-            <li><a href="#">마이 페이지</a></li>
-            <li><a href="#">로그아웃</a></li>
             <li>
-              <%= link_to admin_feed_path do %>
-                  관리자 설정
+              <%= link_to mypage_index_path, class: "_text-center" do %>
+                  <p class="_fs-4 _black">마이페이지</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to mypage_edit_profile_path, class: "_text-center" do %>
+                  <p class="_fs-4 _black">프로필 설정</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "_text-center" do %>
+                  <p class="_fs-4 _black">로그아웃</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_feed_path, class: "_text-center" do %>
+                  <p class="_fs-4 _black">관리자 설정</p>
               <% end %>
             </li>
           </ul>
         </div>
     <% end %>
+  </div>
+
+  <!--Modal-->
+  <div id="logout-modal" class="modal">
+    <%= render partial: "/devise/sessions/logout_modal_mobile" %>
   </div>
 </nav>

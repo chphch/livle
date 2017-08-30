@@ -5,6 +5,9 @@
 @import "globals/colors";
 @import "globals/mixins";
 
+//########################
+//#        MOBILE        #
+//########################
 #mypage-index-mobile,
 #mypage-edit-profile-mobile {
   .translucency-container {
@@ -248,4 +251,13 @@
     width: 90%;
     padding: 4% 0;
   }
+}
+
+//########################
+//#       DESKTOP        #
+//########################
+#mypage-index {
+  background: $black;
+
+
 }
