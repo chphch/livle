@@ -1,3 +1,6 @@
+//########################
+//#         BOTH         #
+//########################
 //position
 @mixin position($top, $right: $top, $bottom: $top, $left: $right) {
   top: $top;

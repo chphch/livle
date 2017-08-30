@@ -1,0 +1,23 @@
+<div id="connect-index">
+  <div class="connect-title-container _hcenter-positioner">
+    <div class="_desktop-container-narrow _hcenter-positioner">
+      <p class="_fs-1 _f-letter _f-line _white _text-center">
+        <%= @nickname %>이 느꼈던 전율의 순간.<br>
+        그 떨림을 전해주세요
+      </p>
+    </div>
+  </div>
+
+  <div class="connect-input-container _hcenter-positioner">
+    <%= form_tag new_connect_url_path, method: :get, remote: true do %>
+        <div class="_desktop-container-narrow _vcenter-positioner">
+          <div class="icon-container">
+            <%= image_tag "icon_video_cam", class: "input-icon" %>
+          </div>
+          <div class="input-container">
+            <%= text_field_tag :vide_url, nil, class: "input-field _fs-3 _white", placeholder: "Youtube URL을 입력해주세요" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

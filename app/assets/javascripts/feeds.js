@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if ($('#infinite-scrolling').length > 0) {
             var more_contents_url = $('.pagination a.next_page').attr('href');
             if (!isLoading && more_contents_url &&
-                    $this.scrollLeft() + $('.feed-list-container').width() > $this[0].scrollWidth - $cardWidth*3) {
+                    $this.scrollLeft() + $('._desktop-container').width() > $this[0].scrollWidth - $cardWidth*3) {
                 console.log("url: " + more_contents_url);
                 isLoading = true;
                 $.getScript(more_contents_url).done(function (data,textStatus,jqxhr) {

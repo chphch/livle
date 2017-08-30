@@ -63,7 +63,7 @@
   <hr>
 
   <!-- Comments -->
-  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments} %>
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @feed.feed_comments, model: FeedComment, parent_id: @feed.id} %>
 
   <!-- Modals -->
   <div id="share-modal" class="modal">
