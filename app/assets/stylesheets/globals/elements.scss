@@ -50,7 +50,7 @@ input:-ms-input-placeholder {
 }
 
 ._display-none {
-  display: none;
+  display: none !important;
 }
 
 ._flex-grow-1 {

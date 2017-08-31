@@ -16,7 +16,10 @@ class MypageController < ApplicationController
   end
 
   def update_profile
-    if current_user.update(user_params)
+    # TODO: 이미지 저장이 안됨 (err: ERROR // PROFILE IS NOT UPDATED)
+    params.require(:user).permit(:nickname, :profile_img, :introduce)
+    if current_user.update(profile_img: params[:user][:profile_img], nickname: params[:user][:nickname],
+                           introduce: params[:user][:introduce])
       @user = current_user
       render_by_device
     else
@@ -47,10 +50,6 @@ class MypageController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:nickname, :profile_img, :introduce)
-  end
-
   def authenticate_user!
     unless user_signed_in?
       redirect_to new_user_session_path
