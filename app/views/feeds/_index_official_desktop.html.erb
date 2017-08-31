@@ -1,5 +1,5 @@
 <div id="official-card">
-  <% video_id = feed.youtube_id.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+  <% video_id = feed.youtube_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <div class="official-background _full-container">
     <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
   </div>
@@ -26,7 +26,7 @@
             <p class="_fs-2 _white"><%= feed.user.nickname %></p>
           </div>
           <div class="_no-p-margin">
-            <p class="_fs-4 _light-gray"><%= feed.user.intro %></p>
+            <p class="_fs-4 _light-gray"><%= feed.user.introduce %></p>
           </div>
         </div>
       </div>

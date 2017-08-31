@@ -1,9 +1,14 @@
-class Upcoming < ArtistsRecord
+class Upcoming < ApplicationRecord
   searchkick callbacks: :async, word_middle: [:artists_names, :title, :place]
   has_many :upcoming_artists
   has_many :artists, through: :upcoming_artists
   has_many :upcoming_likes
   has_many :upcoming_comments
+
+  # merge related model fields for searchkick indexing
+  def search_data
+    attributes.merge(artists_names: self.artists.map(&:name))
+  end
 
   def wrap_artists(user)
     self.artists.each do |artist|
@@ -14,7 +19,7 @@ class Upcoming < ArtistsRecord
   end
 
   def main_video
-    if self.main_youtube_id
+    if self.main_youtube_url
       main_video = Feed.new(
           id: self.class.main_video_id,
           video_id: self.main_video_id,
@@ -27,13 +32,14 @@ class Upcoming < ArtistsRecord
   end
 
   def main_video_id
-    self.class.get_youtube_video_id(self.main_youtube_id)
+    self.class.get_youtube_video_id(self.main_youtube_url)
   end
 
   def self.main_video_image_url
     Faker::LoremPixel.image("50x60")
   end
 
+  # TODO 쇼페이지에서 여러 비디오들과 구분하기 위해 쓰는 아이디인데 함수명이 중복됨, 고칠것
   def self.main_video_id
     "main_video"
   end

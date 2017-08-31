@@ -1,23 +1,26 @@
+<% player_id ||= 0 %>
 <% player_display_none = defined?(player_display_none) && player_display_none ? "_display-none" : "" %>
 <div class="_show-video-container-m show-video-container <%= player_display_none %>" data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
-  <iframe id="youtube-player-<%= player_id %>" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=0&rel=0&showinfo=0&
+  <iframe id="youtube-player-<%= player_id %>" type="text/html" src="https://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=0&rel=0&showinfo=0&
     autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1"
           webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
 
   <div class="youtube-player-filter">
     <div class="_show-video-filter-m"></div>
-    <div class="_show-video-title-container-m _hcenter-positioner">
-      <p class="_fs-2-mobile _white">
-        <!-- title -->
-        <%= feed.title %>
-        <% unless feed.artists.size == 0 %> - <% end %>
-        <!-- artist.name -->
-        <% feed.artists.each_with_index do |artist, index| %>
-            <% unless index == 0 %>,&nbsp<% end %>
-            <%= artist.name %>
-        <% end %>
-      </p>
-    </div>
+    <% if defined?(artists) %>
+        <div class="_show-video-title-container-m _hcenter-positioner">
+          <p class="_fs-2-mobile _white">
+            <!-- title -->
+            <%= feed.title %>
+            <% unless feed.artists.size == 0 %> - <% end %>
+            <!-- artist.name -->
+            <% feed.artists.each_with_index do |artist, index| %>
+                <% unless index == 0 %>,&nbsp<% end %>
+                <%= artist.name %>
+            <% end %>
+          </p>
+        </div>
+    <% end %>
     <% unless defined?(no_thumbnail_button) %>
         <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
           <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>

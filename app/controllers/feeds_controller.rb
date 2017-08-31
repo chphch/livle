@@ -6,6 +6,8 @@ class FeedsController < ApplicationController
     common_feeds = Feed.where(is_curation: false).order('created_at DESC')
     merged_feeds = common_feeds.each_slice(4).zip(@officials).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 14)
+    @enable_transparent = true #for desktop
+
     respond_to do |format|
       format.html { render_by_device }
       format.js { render 's_feed_' + device_suffix }
@@ -49,13 +51,13 @@ class FeedsController < ApplicationController
       @like_count = feed.feed_likes.size
       render '/xhrs/toggle_like'
     else
-      render '/xhrs/login_modal'
+      redirect_to new_user_session_path
     end
   end
 
   def update
     @feed = Feed.find(params[:id])
-    if @feed.update(title: params[:title], youtube_id: params[:youtube_id])
+    if @feed.update(title: params[:title], youtube_url: params[:youtube_url])
       redirect_back(fallback_location: root_path)
     else
       render text: @feed.errors.messages

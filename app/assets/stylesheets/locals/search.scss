@@ -5,7 +5,32 @@
 @import "globals/sizes";
 @import "globals/mixins";
 
-#search-bar {
+//########################
+//#        MOBILE        #
+//########################
+#search-list-container,
+#result-list-feed-m,
+#result-list-upcoming-m {
+  padding: 0 2%;
+
+  .search-card-mobile {
+    padding: 0.5% 0 0;
+  }
+
+  .card-devider {
+    width: 50%;
+  }
+
+  .card-text {
+    padding: 0 0 0 3%;
+  }
+}
+
+#result-list-upcoming-m {
+  display: none;
+}
+
+#search-bar-mobile {
   .search-dummy {
     @include size(100%, 12rem);
     padding: 2%;
@@ -94,28 +119,9 @@
   }
 }
 
-#search-list-container,
-#result-list-feed-m,
-#result-list-upcoming-m {
-  padding: 0 2%;
-
-  .search-card-mobile {
-    padding: 0.5% 0 0;
-  }
-
-  .card-devider {
-    width: 50%;
-  }
-
-  .card-text {
-    padding: 0 0 0 3%;
-  }
-}
-
-#result-list-upcoming-m {
-  display: none;
-}
-
+//########################
+//#       DESKTOP        #
+//########################
 #search-result {
   background: $black;
   width: 100%;

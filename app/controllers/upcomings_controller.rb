@@ -36,7 +36,7 @@ class UpcomingsController < ApplicationController
   def update
     @upcoming = Upcoming.find(params[:id])
     if @upcoming.update(title: params[:title], place: params[:place],
-                        main_youtube_id: params[:main_youtube_id], ticket_url: params[:ticket_url])
+                        main_youtube_url: params[:main_youtube_url], ticket_url: params[:ticket_url])
       redirect_back(fallback_location: root_path)
     else
       render text: @upcoming.errors.messages
