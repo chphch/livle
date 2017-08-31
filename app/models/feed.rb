@@ -24,4 +24,20 @@ class Feed < ArtistsRecord
   def video_id
     @video_id || self.class.get_youtube_video_id(self.youtube_id)
   end
+
+  # TODO jaeseong to elaborate the algorithm
+  def priority
+    VIEW_WEIGHT = 10 # Dummy value
+    SHARE_WEIGHT = 10 # Dummy value
+    LIKE_CORRECTION = 100 # Dummy value
+
+    priority = (VIEW_WEIGHT * self.count_view) + (SHARE_WEIGHT * self.count_share)
+
+    self.feed_likes.each do |l|
+      passed = Time.now - l.created_at # in seconds
+      priority = priority + (passed / LIKE_CORRECTION)
+    end
+
+    return priority
+  end
 end
