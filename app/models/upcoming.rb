@@ -39,6 +39,7 @@ class Upcoming < ApplicationRecord
     Faker::LoremPixel.image("50x60")
   end
 
+  # TODO 쇼페이지에서 여러 비디오들과 구분하기 위해 쓰는 아이디인데 함수명이 중복됨, 고칠것
   def self.main_video_id
     "main_video"
   end

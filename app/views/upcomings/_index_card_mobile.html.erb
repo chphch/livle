@@ -1,8 +1,7 @@
 <div class="_card-container-m">
-  <% video_id = upcoming.main_youtube_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to upcoming_path(upcoming.id), method: :get do %>
       <div class="_thumbnail-container-m">
-        <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
+        <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
         <div class="describe-container">

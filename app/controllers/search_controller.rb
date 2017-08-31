@@ -11,7 +11,7 @@ class SearchController < ApplicationController
   def result
     @search = params[:search]
 
-    @feed_results = Searchkick.search(
+    @feed_results = Feed.search(
       @search,
       fields: [:artists_names, :title, :user_nickname],
       operator: "or",

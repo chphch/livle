@@ -14,7 +14,6 @@ class Feed < ApplicationRecord
 
   # merge related model fields for searchkick indexing
   def search_data
-    super
     attributes.merge(user_nickname: self.user.nickname)
     attributes.merge(artists_names: self.artists.map(&:name))
   end
