@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   def index
     @officials = Feed.where(is_curation: true).order('created_at DESC')
     common_feeds = Feed.where(is_curation: false).order('created_at DESC')
-    merged_feeds = common_feeds.each_slice(4).zip(officials).flatten
+    merged_feeds = common_feeds.each_slice(4).zip(@officials).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 14)
     respond_to do |format|
       format.html { render_by_device }
