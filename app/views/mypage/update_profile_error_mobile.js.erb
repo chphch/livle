@@ -1,1 +1,11 @@
-window.alert("ERROR // PROFILE IS NOT UPDATED");
+$('body').append(
+    '<div id="update-profile-error-modal" class="modal">\
+<%= j render partial: "update_profile_error_modal_mobile" %>\
+</div>'
+);
+var alertModal = $('#update-profile-error-modal');
+alertModal.modal();
+setTimeout(function() {alertModal.modal('hide')}, 1500);
+alertModal.on('hide.bs.modal', function() {
+    alertModal.remove();
+});

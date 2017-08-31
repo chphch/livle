@@ -20,6 +20,7 @@ class MypageController < ApplicationController
       @user = current_user
       render_by_device
     else
+      puts current_user.errors.messages
       render_by_device '/mypage/update_profile_error'
     end
   end
