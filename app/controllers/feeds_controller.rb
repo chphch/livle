@@ -20,19 +20,7 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
-    @video_id = @feed.video_id
-    @related_feeds = []
-    @feed.artists.each do |artist|
-      same_artist = Artist.find(artist.id)
-      same_artist.feed_artists.each do |feed|
-        if feed.feed.id != @feed.id
-          @related_feeds.push(feed.feed)
-        end
-      end
-    end
-    # TODO: @related_feeds.shuffle.join
-    # TODO: unique
-
+    @related_feeds = @feed.related_feeds
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
