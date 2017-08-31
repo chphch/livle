@@ -1,9 +1,14 @@
-class Upcoming < ArtistsRecord
+class Upcoming < ApplicationRecord
   searchkick callbacks: :async, word_middle: [:artists_names, :title, :place]
   has_many :upcoming_artists
   has_many :artists, through: :upcoming_artists
   has_many :upcoming_likes
   has_many :upcoming_comments
+
+  # merge related model fields for searchkick indexing
+  def search_data
+    attributes.merge(artists_names: self.artists.map(&:name))
+  end
 
   def wrap_artists(user)
     self.artists.each do |artist|

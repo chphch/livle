@@ -6,6 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
     self.save
   end
 
+  # only for FeedLike and UpcomingLike classes
   def self.toggle_like(post, user)
     post_class_name = post.class.name.downcase # curation
     post_field_sym = "#{post_class_name}_id".to_sym # :curation_id

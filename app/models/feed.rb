@@ -1,4 +1,4 @@
-class Feed < ArtistsRecord
+class Feed < ApplicationRecord
   searchkick callbacks: :async, word_middle: [:artists_names, :title, :user_nickname]
   belongs_to :user
   has_many :feed_artists
@@ -12,9 +12,11 @@ class Feed < ArtistsRecord
     return user && self.feed_likes.exists?(user_id: user.id) || false
   end
 
+  # merge related model fields for searchkick indexing
   def search_data
     super
     attributes.merge(user_nickname: self.user.nickname)
+    attributes.merge(artists_names: self.artists.map(&:name))
   end
 
   def id
