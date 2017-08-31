@@ -1,0 +1,18 @@
+<div class="_small-modal">
+  <div class="_modal-background _column-positioner _hcenter-positioner">
+    <div class="_small-modal-title text-center">
+      <%= image_tag "icon_qna", class: "_modal-big-icon-m" %>
+      <p class="_fs-4-mobile _white _f-letter-mobile" id="modal-msg">티켓 링크 바로가기</p>
+    </div>
+    <div class="_hcenter-positioner">
+      <p class="_fs-2-mobile _white">
+        <% upcoming.upcoming_ticket_urls.each do |u| %>
+            <%= link_to u.ticket_url, target: :_blank do %>
+                <%= u.provider %>
+            <% end %>
+            <br>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

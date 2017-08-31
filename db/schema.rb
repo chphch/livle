@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716213035) do
+ActiveRecord::Schema.define(version: 20170831071959) do
 
   create_table "artists", force: :cascade do |t|
     t.integer "curation_id"
@@ -120,13 +120,21 @@ ActiveRecord::Schema.define(version: 20170716213035) do
     t.index ["user_id"], name: "index_upcoming_likes_on_user_id"
   end
 
+  create_table "upcoming_ticket_urls", force: :cascade do |t|
+    t.integer "upcoming_id"
+    t.string "provider"
+    t.string "ticket_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["upcoming_id"], name: "index_upcoming_ticket_urls_on_upcoming_id"
+  end
+
   create_table "upcomings", force: :cascade do |t|
     t.string "title"
     t.string "place"
     t.string "main_youtube_url"
     t.date "start_date"
     t.date "end_date"
-    t.string "ticket_url"
     t.integer "count_view"
     t.integer "count_share"
     t.datetime "created_at", null: false
