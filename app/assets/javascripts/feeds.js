@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function scrolling() {
-    console.log("cur pos: "+ $this.scrollLeft());
+    // console.log("cur pos: "+ $this.scrollLeft());
     if ($this.scrollLeft() > 0) {
         $('#prev-btn').show();
     } else {

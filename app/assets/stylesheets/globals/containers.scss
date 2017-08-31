@@ -209,7 +209,7 @@
 ._big-modal {
   position: absolute;
   @include position(0);
-  margin: 24rem 8rem;
+  margin: 22rem 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
@@ -217,7 +217,7 @@
 ._small-modal {
   position: absolute;
   @include position(0);
-  margin: 56rem 8rem;
+  margin: 42rem 8rem;
   background: none;
   border-radius: 6rem;
 }
