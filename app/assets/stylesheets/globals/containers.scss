@@ -11,6 +11,12 @@
   @include position(0);
 }
 
+//modals
+.modal {
+  position: fixed;
+  @include position(0);
+}
+
 //positioners
 ._hcenter-positioner {
   @include display-flex;
@@ -207,9 +213,9 @@
 
 //modals
 ._big-modal {
-  position: absolute;
-  @include position(0);
-  margin: 22rem 8rem;
+  position: relative;
+  height: 120rem;
+  margin: 0 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
@@ -217,7 +223,7 @@
 ._small-modal {
   position: absolute;
   @include position(0);
-  margin: 42rem 8rem;
+  margin: 32em 8rem;
   background: none;
   border-radius: 6rem;
 }
@@ -294,4 +300,9 @@
     border: none;
     @include border-radius($br-min);
   }
+}
+
+//modals
+._desktop-modal {
+  position: relative;
 }

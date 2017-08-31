@@ -7,4 +7,6 @@ $('body').append(
 );
 var loginModal = $('#login-modal');
 loginModal.modal();
+$('._big-modal').css('margin-top',
+    ($(window).height() - $('._big-modal').height())/2);
 loginModal.on('hide.bs.modal', function() {loginModal.remove()});

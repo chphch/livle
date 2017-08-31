@@ -40,7 +40,6 @@
           <% end %>
       <% end %>
     </div>
-    <!-- TODO: Modal 띄우는거 고민해보자.. -->
     <% if !user_signed_in? %>
         <div class="_navbar-button">
           <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
@@ -81,10 +80,5 @@
           </ul>
         </div>
     <% end %>
-  </div>
-
-  <!--Modal-->
-  <div id="logout-modal" class="modal">
-    <%= render partial: "/devise/sessions/logout_modal_mobile" %>
   </div>
 </nav>

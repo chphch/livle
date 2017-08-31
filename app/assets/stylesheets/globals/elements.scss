@@ -191,7 +191,9 @@ input:-ms-input-placeholder {
   padding: 0 0 6%;
 }
 
-//__________DESKTOP__________
+//########################
+//#       DESKTOP        #
+//########################
 //navbar
 ._navbar {
   position: fixed;
@@ -253,6 +255,11 @@ input:-ms-input-placeholder {
     @include size(7rem, $navbar-h);
     border: 1px solid $white;
     @include border-radius($br-min);
+    &:hover {
+      cursor: pointer;
+      background: $white;
+      p { color: $black; }
+    }
   }
 
   ._navbar-profile-container {
