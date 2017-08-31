@@ -12,6 +12,18 @@ class Feed < ApplicationRecord
     return user && self.feed_likes.exists?(user_id: user.id) || false
   end
 
+  def related_feeds
+    feed_list = []
+    self.artists.each do |artist|
+      artist.feeds.each do |feed|
+        if feed.id != self.id
+          feed_list.push(feed)
+        end
+      end
+    end
+    return feed_list.sample(10)
+  end
+
   # merge related model fields for searchkick indexing
   def search_data
     attributes.merge(user_nickname: self.user.nickname)

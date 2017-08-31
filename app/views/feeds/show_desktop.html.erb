@@ -5,8 +5,8 @@
       <div class="show-video-container _no-p-margin">
         <div class="_video-player">
           <!-- Youtube Video Player -->
-          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @video_id %>"
+          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @feed.video_id %>"
                   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
         </div>
 
@@ -81,7 +81,7 @@
       <!-- Reated Video -->
       <div class="related-video-container">
         <div class="related-video-background">
-          <%= image_tag "http://img.youtube.com/vi/#{@video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
+          <%= image_tag "http://img.youtube.com/vi/#{@feed.video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
           <div class="related-video-filter _full-container"></div>
         </div>
 
