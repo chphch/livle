@@ -1,3 +1,63 @@
 <div id="mypage-index">
-
+  <div class="_hcenter-positioner">
+    <div class="_desktop-container-narrow _row-positioner">
+      <!-- profile, upcoming -->
+      <div class="left-group">
+        <div class="edit-profile-container _hcenter-positioner _column-positioner">
+          <div class="profile-box _vcenter-positioner _hcenter-positioner">
+            <div class="profile-container _profile-border-green">
+              <%= image_tag current_user.profile_img, class: "_profile-img" %>
+            </div>
+          </div>
+          <p class="fs-4 _white"><%= current_user.email %></p>
+          <p class="fs-4 _white"><%= current_user.introduce %></p>
+          <p class="fs-4">
+            <span class="_white">좋아요 수</span>
+            <span class="_light-gray"><%= current_user.upcoming_likes.size +
+                                              current_user.feed_likes.size %></span>
+          </p>
+        </div>
+        <div class="upcoming-like-container _no-p-margin">
+          <div class="_vcenter-positioner">
+            <%= image_tag "icon_hand_filled", class: "mypage-icon" %>
+            <p class="_fs-3 _white">찜 목록</p>
+          </div>
+          <% if current_user.upcoming_likes.size != 0 %>
+              <% current_user.upcoming_likes.each do |like| %>
+                  <%= link_to upcoming_path(like.upcoming.id) do %>
+                      <div class="list-text-container _vcenter-positioner">
+                        <p class="_flex-grow-1 _fs-4 _white"><%= like.upcoming.title %></p>
+                        <p class="_fs-2 _white _f-letter">
+                          D<%= d_day(like.upcoming.start_date) %>
+                        </p>
+                      </div>
+                  <% end %>
+              <% end %>
+          <% else %>
+              <div class="info-text-container _text-center">
+                <p class="_fs-2 _white">내가 찜한 영상을 모아볼 수 있어요.</p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- my list -->
+      <div class="mylist-container _no-p-margin">
+        <div class="_vcenter-positioner">
+          <%= image_tag "icon_like_filled", class: "mypage-icon" %>
+          <p class="_fs-3 _white">마이 리스트</p>
+        </div>
+        <% if current_user.feed_likes.size != 0 %>
+            <% current_user.feed_likes.each do |like| %>
+                <div class="mylist-card-container">
+                  <%= render partial: "feeds/index_card_desktop", locals: {feed: like.feed} %>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="info-text-container _text-center">
+              <p class="_fs-2 _white">내가 좋아요한 영상을 모아볼 수 있어요.</p>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
