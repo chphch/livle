@@ -1,20 +1,20 @@
 $('#scroll-target').append(
   '<% @show_curator = true %>\
-  <% @feeds.each_with_index do |feed, i| %>\
-    <% if i % 2 != 0 && @feeds[i+1] != nil %>\
+  <% @commons.each_with_index do |commons, i| %>\
+    <% if i % 2 != 0 && @commons[i+1] != nil %>\
       <div class="_column-positioner">\
         <div class="card-container">\
-          <%= j render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>\
+          <%= j render partial: "index_card_desktop", locals: {feed: @commons[i]} %>\
         </div>\
         <div class="card-container">\
-          <%= j render partial: "index_card_desktop", locals: {feed: @feeds[i+1]} %>\
+          <%= j render partial: "index_card_desktop", locals: {feed: @commons[i+1]} %>\
         </div>\
       </div>\
     <% end %>\
   <% end %>'
 );
-<% if @feeds.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+<% if @commons.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @commons %>');
 <% else %>
   $('#scroll-target').off('scroll');
   $('.pagination').remove();

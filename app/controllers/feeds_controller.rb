@@ -2,10 +2,13 @@ require 'will_paginate/array'
 
 class FeedsController < ApplicationController
   def index
-    @officials = Feed.where(is_curation: true).order('created_at DESC')
+    official_feeds = Feed.where(is_curation: true).order('created_at DESC')
     common_feeds = Feed.where(is_curation: false).order('created_at DESC')
-    merged_feeds = common_feeds.each_slice(4).zip(@officials).flatten
-    @feeds = merged_feeds.paginate(page: params[:page], per_page: 14)
+    merged_feeds = common_feeds.each_slice(4).zip(official_feeds).flatten
+    @feeds = merged_feeds.paginate(page: params[:page], per_page: 10) #for mobile
+
+    @officials = official_feeds.paginate(page: params[:page], per_page: 4) #for desktop
+    @commons = common_feeds.paginate(page: params[:page], per_page: 14) #for desktop
     @enable_transparent = true #for desktop
 
     respond_to do |format|

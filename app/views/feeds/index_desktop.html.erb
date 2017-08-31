@@ -8,21 +8,21 @@
     <div class="_desktop-container">
       <div class="current-list _vcenter-positioner" id="scroll-target">
         <% @show_curator = true %>
-        <% @feeds.each_with_index do |feed, i| %>
-            <% if i % 2 != 0 && @feeds[i+1] != nil %>
+        <% @commons.each_with_index do |common, i| %>
+            <% if i % 2 != 0 && @commons[i+1] != nil %>
                 <div class="_column-positioner">
                   <div class="card-container">
-                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i]} %>
+                    <%= render partial: "index_card_desktop", locals: {feed: @commons[i]} %>
                   </div>
                   <div class="card-container">
-                    <%= render partial: "index_card_desktop", locals: {feed: @feeds[i+1]} %>
+                    <%= render partial: "index_card_desktop", locals: {feed: @commons[i+1]} %>
                   </div>
                 </div>
             <% end %>
         <% end %>
 
         <div class="_display-none" id="infinite-scrolling">
-          <%= will_paginate @feeds %>
+          <%= will_paginate @commons %>
         </div>
       </div>
 

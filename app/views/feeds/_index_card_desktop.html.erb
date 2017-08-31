@@ -1,5 +1,4 @@
 <div id="feed-index-card">
-  <% video_id = feed.youtube_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
   <%= link_to feed_path(feed.id) do %>
       <% if @show_curator %>
           <div class="_vcenter-positioner _no-p-margin _text-container">
@@ -10,7 +9,7 @@
       <% end %>
 
       <div class="_thumbnail-image-container">
-        <%= image_tag "http://img.youtube.com/vi/#{video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
+        <%= image_tag "http://img.youtube.com/vi/#{feed.video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
       </div>
 
       <div class="_text-container _no-p-margin">
