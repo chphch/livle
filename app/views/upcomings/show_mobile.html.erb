@@ -35,9 +35,7 @@
           </p>
         </div>
         <div class="describe-icons _vcenter-positioner _hright-positioner">
-          <%= link_to @upcoming.ticket_url do %>
-              <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding" %>
-          <% end %>
+          <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding", onclick: "$('#ticket-link-modal').modal();" %>
           <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
               <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
               <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
@@ -90,6 +88,9 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments, model: UpcomingComment, parent_id: @upcoming.id} %>
 
   <!-- Modals -->
+  <div id ="ticket-link-modal" class="modal">
+    <%= render partial: 'partial_views/ticket_link_mobile', locals: {upcoming: @upcoming} %>
+  </div>
   <div id="share-modal" class="modal">
     <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
   </div>

@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20170831071959) do
 
   create_table "upcoming_ticket_urls", force: :cascade do |t|
     t.integer "upcoming_id"
+    t.string "provider"
     t.string "ticket_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,7 +135,6 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.string "main_youtube_url"
     t.date "start_date"
     t.date "end_date"
-    t.string "ticket_url"
     t.integer "count_view"
     t.integer "count_share"
     t.datetime "created_at", null: false

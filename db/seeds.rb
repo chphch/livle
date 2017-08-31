@@ -12,8 +12,8 @@ youtube_url_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.
                 "https://youtu.be/Xvjnoagk6GU", "https://www.youtube.com/watch?v=_gWn2xRfE90", "https://youtu.be/si_TE3iKjEQ"]
 ticket_url_list = ["http://www.interpark.com/malls/index.html", "http://www.auction.co.kr/?redirect=1&pid=346", "http://pc.shopping2.naver.com/home/p/index.nhn"]
 
-def random_sample
-  (1..SIZE_1).to_a.sample(SIZE_2)
+def random_sample(range = 1..SIZE_1, size = SIZE_2)
+  range.to_a.sample(size)
 end
 
 for i in 1..SIZE_1
@@ -70,9 +70,10 @@ for i in 1..SIZE_1
     start_date: Date.new(2017,rand(8..12),rand(1..30)),
     end_date: Date.new(2017,rand(8..12),rand(1..30)),
   )
-  random_sample.each do |ri|
+  random_sample(0..2, 3).each do |ri|
     UpcomingTicketUrl.create(
         upcoming_id: upcoming.id,
+        provider: UpcomingTicketUrl.providers[ri],
         ticket_url: ticket_url_list[ri]
     )
   end
