@@ -25,20 +25,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
 
-    $this.on('scroll', function () {
-        if ($this.scrollLeft() > $cardWidth) {
-            $('#prev-btn').show();
-        } else {
-            $('#prev-btn').hide();
-        }
-    });
-
     function scrollMove(click) {
         var dir = click === 'left' ? '-=' : '+=';
         var $scroll = dir + ($cardWidth * 3);
 
         $this.stop().animate({
             'scrollLeft': $scroll
-        }, 350);
+        }, {
+            duration: 350,
+            complete: function () {
+                scrolling();
+            }
+        });
     }
 });
+
+function scrolling() {
+    console.log("cur pos: "+ $this.scrollLeft());
+    if ($this.scrollLeft() > 0) {
+        $('#prev-btn').show();
+    } else {
+        $('#prev-btn').hide();
+    }
+}
