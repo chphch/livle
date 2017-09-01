@@ -16,7 +16,7 @@
   <!-- LIVLE logo -->
   <div class="_navbar-logo-container _vcenter-positioner">
     <%= link_to feeds_path do %>
-        <%= image_tag "logo_livle", class: "_navbar-logo" %>
+        <%= image_tag "logo_livle", class: "_logo-livle" %>
     <% end %>
   </div>
 
@@ -40,13 +40,14 @@
           <% end %>
       <% end %>
     </div>
-    <!-- TODO: Modal 띄우는거 고민해보자.. -->
     <% if !user_signed_in? %>
-        <div class="_navbar-button">
-          <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
-            <p class="_fs-3 _white">Login</p>
-          </div>
-        </div>
+        <%= link_to mypage_index_path, class: "_text-center" do %>
+            <div class="_navbar-button">
+              <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
+                <p class="_fs-3 _white">Login</p>
+              </div>
+            </div>
+        <% end %>
     <% else %>
         <div class="dropdown _navbar-button">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -81,10 +82,5 @@
           </ul>
         </div>
     <% end %>
-  </div>
-
-  <!--Modal-->
-  <div id="logout-modal" class="modal">
-    <%= render partial: "/devise/sessions/logout_modal_mobile" %>
   </div>
 </nav>

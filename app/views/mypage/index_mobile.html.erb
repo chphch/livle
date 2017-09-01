@@ -1,5 +1,4 @@
 <div id="mypage-index-mobile">
-
   <% if user_signed_in? %>
       <div class="_column-positioner _vcenter-positioner">
         <div class="profile-container _profile-border-green">
@@ -43,7 +42,7 @@
               </div>
               <% if current_user.upcoming_likes.size != 0 %>
                   <% current_user.upcoming_likes.each do |like| %>
-                      <%= link_to "/upcomings/#{like.upcoming.id}" do %>
+                      <%= link_to upcoming_path(like.upcoming.id) do %>
                           <div class="list-text-container _vcenter-positioner">
                             <p class="_flex-grow-1 _fs-4-mobile _white"><%= like.upcoming.title %></p>
                             <p class="_fs-2-mobile _white _f-letter-mobile">

@@ -1,20 +1,22 @@
 <div id="mypage-edit-profile-mobile">
-  <%= form_for @user, url: mypage_update_profile_path, html: {multipart: false, remote: true, id: "update-profile"} do |f| %>
+  <%= form_for @user, url: mypage_update_profile_path, html: {multipart: true, remote: true, id: "update-profile"} do |f| %>
       <!-- save button -->
       <%= f.submit "완료", class: "save-button _fs-4-mobile _white _f-letter-mobile" %>
       <div class="_column-positioner _vcenter-positioner _no-p-margin">
         <div class="edit-container">
           <!-- image -->
-          <%= f.file_field :profile_img, id: "profile", accept: "image/*", class: "_display-none" %>
+          <div class="_display-none">
+            <%= f.file_field :profile_img, accept: "image/*" %>
+          </div>
           <%= f.label :profile_img do %>
             <div class="profile-container _profile-border-green">
               <% if current_user.profile_img %>
-                  <%= image_tag("#{current_user.profile_img}",id: "upload-profile-img", class: "_profile-img") %>
+                  <%= image_tag current_user.profile_img ,id: "upload-profile-img", class: "_profile-img" %>
               <% else %>
-                  <%= image_tag("image_profile", id: "upload-profile-img", class: "_profile-img") %>
+                  <%= image_tag "image_profile", id: "upload-profile-img", class: "_profile-img" %>
               <% end %>
               <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
-                <%= image_tag("icon_camera", style: "height: 75%; width: auto;") %>
+                <%= image_tag "icon_camera", style: "height: 75%; width: auto;" %>
               </div>
             </div>
           <% end %>

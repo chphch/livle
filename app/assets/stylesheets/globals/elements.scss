@@ -50,7 +50,7 @@ input:-ms-input-placeholder {
 }
 
 ._display-none {
-  display: none;
+  display: none !important;
 }
 
 ._flex-grow-1 {
@@ -145,7 +145,7 @@ input:-ms-input-placeholder {
   @include size(auto, 30%);
   z-index: $z-most-important;
 }
-._submit-button {
+._submit-button-m {
   padding: 3.5% 0;
   background: none;
   border: 2px solid $white;
@@ -191,7 +191,9 @@ input:-ms-input-placeholder {
   padding: 0 0 6%;
 }
 
-//__________DESKTOP__________
+//########################
+//#       DESKTOP        #
+//########################
 //navbar
 ._navbar {
   position: fixed;
@@ -233,9 +235,6 @@ input:-ms-input-placeholder {
     height: 100%;
     padding: 0 2%;
   }
-  ._navbar-logo {
-    @include size(auto, 2.5rem);
-  }
 
   ._navbar-buttons-container {
     position: absolute;
@@ -253,6 +252,11 @@ input:-ms-input-placeholder {
     @include size(7rem, $navbar-h);
     border: 1px solid $white;
     @include border-radius($br-min);
+    &:hover {
+      cursor: pointer;
+      background: $white;
+      p { color: $black; }
+    }
   }
 
   ._navbar-profile-container {
@@ -269,6 +273,11 @@ input:-ms-input-placeholder {
     width: auto;
     padding: 0 0 0 1rem;
   }
+}
+
+//logo
+._logo-livle {
+  @include size(auto, 2.5rem);
 }
 
 //icon, image, video
@@ -308,4 +317,12 @@ input:-ms-input-placeholder {
 
 ._show-button-padding {
   padding: 0 0.8rem;
+}
+
+//button
+._submit-button {
+  padding: 3.5% 0;
+  background: none;
+  border: 1px solid $white;
+  @include border-radius($br-image);
 }

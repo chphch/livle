@@ -258,6 +258,71 @@
 //########################
 #mypage-index {
   background: $black;
+  height: 70em;
 
+  .mypage-icon {
+    @include size(auto, 2rem);
+    margin: 0 0.8rem 0 0;
+  }
 
+  .info-text-container {
+    padding: 6rem 0;
+  }
+
+  .left-group {
+    position: relative;
+    @include size(26%, auto);
+    padding: $desktop-margin-top 0;
+
+    .edit-profile-container {
+      @include size(100%, 36rem);
+      border-radius: $br-min;
+      background: $dark-dark-gray;
+      padding: 2rem;
+      margin: 0 0 2rem;
+    }
+
+    .profile-box {
+      @include flex-grow(1);
+      @include size(100%, auto);
+      .profile-container {
+        position: relative;
+        @include size(12rem);
+        padding: 0.6rem;
+        @include border-radius(50%);
+      }
+
+      .edit-notice-container {
+        position: absolute;
+        bottom: -2%; right: -4%;
+        @include size(4.3rem, 3.2rem);
+        border: 1px $white solid;
+        @include border-radius(0.7rem);
+        background-color: rgba(81, 81, 81, 0.6);
+      }
+    }
+
+    .upcoming-like-container {
+      @include size(100%, auto);
+      border-radius: $br-min;
+      background: $dark-dark-gray;
+      padding: 2rem;
+      .list-text-container {
+        padding: 0.8rem 0;
+      }
+    }
+  }
+
+  .mylist-container {
+    position: relative;
+    @include size(71%, auto);
+    margin: $desktop-margin-top 0 0 3%;
+    padding: 2rem;
+
+    .mylist-card-container {
+      display: inline-block;
+      width: 49.6%;
+      padding: 2rem 1rem 0;
+    }
+  }
 }

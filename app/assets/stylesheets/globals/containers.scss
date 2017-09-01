@@ -11,6 +11,12 @@
   @include position(0);
 }
 
+//modals
+.modal {
+  position: fixed;
+  @include position(0);
+}
+
 //positioners
 ._hcenter-positioner {
   @include display-flex;
@@ -44,6 +50,13 @@
 
 ._text-center {
   text-align: center;
+}
+
+._display-flex {
+  display: flex !important;
+  display: -webkit-flex !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
 }
 
 //########################
@@ -207,9 +220,9 @@
 
 //modals
 ._big-modal {
-  position: absolute;
-  @include position(0);
-  margin: 24rem 8rem;
+  position: relative;
+  height: 120rem;
+  margin: 0 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
@@ -217,7 +230,7 @@
 ._small-modal {
   position: absolute;
   @include position(0);
-  margin: 56rem 8rem;
+  margin: 34em 8rem;
   background: none;
   border-radius: 6rem;
 }
@@ -270,7 +283,7 @@
 }
 
 ._show-buttons-container {
-  padding: 3rem 0 1rem;
+  padding: $desktop-margin-top+1rem 0 1rem;
 }
 
 ._comment-container {
@@ -294,4 +307,10 @@
     border: none;
     @include border-radius($br-min);
   }
+}
+
+//modals
+._desktop-modal {
+  position: relative;
+  width: 32rem;
 }

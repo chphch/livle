@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-   $('#profile').change(function () {
+   $('#user_profile_img').change(function () {
        updateImg(this);
    });
 
