@@ -88,9 +88,10 @@
 //########################
 //#       DESKTOP        #
 //########################
-#device-new {
+#device-new,
+#device-signup {
   .moto-container {
-    padding: 6rem 0;
+    padding: 0 0 4rem;
     .moto-margin {
       margin: 0.8rem 0;
     }
@@ -125,12 +126,6 @@
         margin: 0 10%;
       }
     }
-
-    .input-group {
-      @include flex-grow(1);
-      @include size(100%, auto);
-      margin: 3rem 0;
-    }
     .option-text-container {
       padding: 0.6rem 0;
     }
@@ -164,6 +159,21 @@
       padding: 1rem;
       @include size(100%);
     }
+  }
+}
+
+#device-new {
+  .input-group {
+    @include flex-grow(1);
+    @include size(100%, auto);
+    margin: 3rem 0;
+  }
+}
+#device-signup {
+  .input-group {
+    @include flex-grow(1);
+    @include size(100%, auto);
+    margin: 0 0 3rem;
   }
 }
 
