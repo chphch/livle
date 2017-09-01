@@ -15,9 +15,9 @@
                 </div>
             <% end %>
           </div>
-          <p class="fs-4 _white"><%= user_signed_in? ? current_user.email : "contact@livle.co.kr" %></p>
-          <p class="fs-4 _white"><%= user_signed_in? ? current_user.introduce : "자기소개를 해주세요." %></p>
-          <p class="fs-4">
+          <p class="_fs-5 _white"><%= user_signed_in? ? current_user.email : "contact@livle.co.kr" %></p>
+          <p class="_fs-5 _white"><%= user_signed_in? ? current_user.introduce : "자기소개를 해주세요." %></p>
+          <p class="_fs-5">
             <span class="_white">좋아요 수</span>
             <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
                 current_user.feed_likes.size : 0 %></span>
@@ -41,7 +41,7 @@
               <% end %>
           <% else %>
               <div class="info-text-container _text-center">
-                <p class="_fs-2 _white">내가 찜한 영상을 모아볼 수 있어요.</p>
+                <p class="_fs-3 _white">내가 찜한 영상을 모아볼 수 있어요.</p>
               </div>
           <% end %>
         </div>
@@ -60,7 +60,7 @@
             <% end %>
         <% else %>
             <div class="info-text-container _text-center">
-              <p class="_fs-2 _white">내가 좋아요한 영상을 모아볼 수 있어요.</p>
+              <p class="_fs-3 _white">내가 좋아요한 영상을 모아볼 수 있어요.</p>
             </div>
         <% end %>
       </div>
@@ -68,7 +68,7 @@
   </div>
 
   <% if !user_signed_in? %>
-      <div id="login-modal" class="_full-container _hcenter-positioner _vcenter-positioner modal">
+      <div id="login-modal" class="_full-container _display-flex _hcenter-positioner _vcenter-positioner modal">
         <div class="_desktop-modal">
           <%= render file: '/devise/sessions/new_desktop.html.erb' %>
         </div>
