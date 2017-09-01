@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //맨 처음 input이 비어있지 않을 때
     if ($('.input-field').val() !== '') {
-        onfocus();
+        onfocus(true);
         $('.input-esc').show();
     }
     //X button 띄우는 이벤트
