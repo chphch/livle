@@ -16,7 +16,7 @@
   <!-- LIVLE logo -->
   <div class="_navbar-logo-container _vcenter-positioner">
     <%= link_to feeds_path do %>
-        <%= image_tag "logo_livle", class: "_navbar-logo" %>
+        <%= image_tag "logo_livle", class: "_logo-livle" %>
     <% end %>
   </div>
 
@@ -41,11 +41,13 @@
       <% end %>
     </div>
     <% if !user_signed_in? %>
-        <div class="_navbar-button">
-          <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
-            <p class="_fs-3 _white">Login</p>
-          </div>
-        </div>
+        <%= link_to mypage_index_path, class: "_text-center" do %>
+            <div class="_navbar-button">
+              <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
+                <p class="_fs-3 _white">Login</p>
+              </div>
+            </div>
+        <% end %>
     <% else %>
         <div class="dropdown _navbar-button">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

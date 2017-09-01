@@ -258,6 +258,7 @@
 //########################
 #mypage-index {
   background: $black;
+  height: 70em;
 
   .mypage-icon {
     @include size(auto, 2rem);
@@ -289,6 +290,15 @@
         @include size(12rem);
         padding: 0.6rem;
         @include border-radius(50%);
+      }
+
+      .edit-notice-container {
+        position: absolute;
+        bottom: -2%; right: -4%;
+        @include size(4.3rem, 3.2rem);
+        border: 1px $white solid;
+        @include border-radius(0.7rem);
+        background-color: rgba(81, 81, 81, 0.6);
       }
     }
 

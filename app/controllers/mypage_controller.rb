@@ -1,9 +1,11 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit_profile, :update_profile, :settings]
 
   def index
-    @title = current_user.nickname
-    @like_size = current_user.feed_likes.size
+    if user_signed_in?
+      @title = current_user.nickname
+      @like_size = current_user.feed_likes.size
+    end
     render_by_device
   end
 
