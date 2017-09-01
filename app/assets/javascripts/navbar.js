@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
 
+    //navbar desktop login modal
     $('._navbar-login-button').on('click', function () {
         $('body').append(
             '<div id="login-modal" class="modal _hcenter-positioner">\
