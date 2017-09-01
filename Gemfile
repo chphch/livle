@@ -24,8 +24,6 @@ gem 'mini_magick'
 gem 'fog-aws'
 # searchkick
 gem 'searchkick'
-# async background job for searchkick index sync
-gem 'activejob_backport'
 # gem for scheduling function
 gem 'whenever', :require => false
 # social-share-button
