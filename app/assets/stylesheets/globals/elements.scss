@@ -275,6 +275,22 @@ input:-ms-input-placeholder {
   }
 }
 
+//dropdown
+.dropdown-menu {
+  background: $dark-dark-gray !important;
+  min-width: 14rem !important;
+  margin: 1rem 0 0 !important;
+  padding: 0 !important;
+  @include border-radius($br-min !important);
+  li {
+    padding: .6rem 0 !important;
+    &:hover {
+      background: $gray;
+    }
+  }
+  a:hover { background: none !important; }
+}
+
 //logo
 ._logo-livle {
   @include size(auto, 2.5rem);
