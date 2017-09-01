@@ -1,8 +1,8 @@
 $('#mypage-title').text("<%= @user.nickname %>");
 $('body').append(
     '<div id="successful-update-profile-modal" class="modal">\
-      <%= j render partial: "successful_update_profile_modal_mobile" %>\
-    </div>'
+<%= j render partial: "successful_update_profile_modal_mobile" %>\
+</div>'
 );
 var alertModal = $('#successful-update-profile-modal');
 alertModal.modal();

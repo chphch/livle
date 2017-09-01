@@ -26,6 +26,9 @@
     margin: 0 0.6% 0 0;
     background: rgba(256, 256, 256, 0.27);
     @include border-radius($br-min-m 0 0 $br-min-m);
+    .input-icon {
+      @include size(auto, 5rem);
+    }
   }
 
   .input-container {
@@ -33,10 +36,6 @@
     height: 10rem;
     background: rgba(256, 256, 256, 0.27);
     @include border-radius(0 $br-min-m $br-min-m 0);
-  }
-
-  .input-icon {
-    @include size(auto, 5rem);
   }
 
   .input-field {
@@ -135,11 +134,14 @@
     width: 100%;
     margin: 1rem 0;
     .icon-container {
-      height: 4rem;
+      @include size(5rem, 4rem);
       padding: 0 1.4rem;
       margin: 0 0.2rem 0 0;
       background: rgba(256, 256, 256, 0.27);
       @include border-radius($br-min 0 0 $br-min);
+      .input-icon {
+        @include size(auto, 2.5rem);
+      }
     }
 
     .input-container {
@@ -147,17 +149,12 @@
       height: 4rem;
       background: rgba(256, 256, 256, 0.27);
       @include border-radius(0 $br-min $br-min 0);
-    }
-
-    .input-icon {
-      @include size(auto, 2.5rem);
-    }
-
-    .input-field {
-      background: none;
-      border: none;
-      padding: 1rem;
-      @include size(100%);
+      .input-field {
+        background: none;
+        border: none;
+        padding: 1rem;
+        @include size(100%);
+      }
     }
   }
 }

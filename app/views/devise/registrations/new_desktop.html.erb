@@ -16,47 +16,39 @@
           <div class="input-group">
             <div class="_column-positioner _vcenter-positioner">
               <!-- 이메일 -->
-              <div class="login-input-container">
-                <div class="_row-positioner">
-                  <div class="icon-container _vcenter-positioner">
-                    <%= image_tag "icon_mail", class: "input-icon" %>
-                  </div>
-                  <div class="input-container">
-                    <%= f.text_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
-                  </div>
+              <div class="login-input-container _vcenter-positioner">
+                <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_mail", class: "input-icon" %>
+                </div>
+                <div class="input-container">
+                  <%= f.text_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
                 </div>
               </div>
               <!-- 닉네임 -->
-              <div class="login-input-container">
-                <div class="_row-positioner">
-                  <div class="icon-container _vcenter-positioner">
-                    <%= image_tag "icon_mypage_empty", class: "input-icon" %>
-                  </div>
-                  <div class="input-container">
-                    <%= f.text_field :nickname, placeholder: "닉네임", autofocus: true, class: "input-field _fs-4 _white" %>
-                  </div>
+              <div class="login-input-container _vcenter-positioner">
+                <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_mypage_empty", class: "input-icon" %>
+                </div>
+                <div class="input-container">
+                  <%= f.text_field :nickname, placeholder: "닉네임", autofocus: true, class: "input-field _fs-4 _white" %>
                 </div>
               </div>
               <!-- 비밀번호 -->
-              <div class="login-input-container">
-                <div class="_row-positioner">
-                  <div class="icon-container _vcenter-positioner">
-                    <%= image_tag "icon_lock", class: "input-icon" %>
-                  </div>
-                  <div class="input-container">
-                    <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
-                  </div>
+              <div class="login-input-container _vcenter-positioner">
+                <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_lock", class: "input-icon" %>
+                </div>
+                <div class="input-container">
+                  <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
                 </div>
               </div>
               <!-- 비밀번호 확인 -->
-              <div class="login-input-container">
-                <div class="_row-positioner">
-                  <div class="icon-container _vcenter-positioner">
-                    <%= image_tag "icon_lock", class: "input-icon" %>
-                  </div>
-                  <div class="input-container">
-                    <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-4 _white" %>
-                  </div>
+              <div class="login-input-container _vcenter-positioner">
+                <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_lock", class: "input-icon" %>
+                </div>
+                <div class="input-container">
+                  <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-4 _white" %>
                 </div>
               </div>
             </div>
