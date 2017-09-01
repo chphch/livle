@@ -55,13 +55,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /resource
+  # DON'T CONFUSE! only updating password, not profile. updating-profile is in mypage-controller at this time
   def update
     # TODO with blank password, current_user.update_with_password doesn't return false
     # temporarily add extra exception handling + (password error message doensn't contain "새로운")
     password_length = params[:user][:password].length
     if password_length != 0 && current_user.update_with_password(account_update_params)
       bypass_sign_in(current_user)
-      render 'registrations/update_password_success_mobile'
+      # render 'registrations/update_password_success_mobile'
+      render_by_device 'registrations/update_password_success'
     else
       if password_length == 0
         current_user.errors.messages[:password] << "새로운 " + I18n.t("activerecord.errors.models.user.attributes.password.blank")
@@ -69,7 +71,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render js: "$('#error-message').text('#{current_user.errors.messages.first.second.first}');"
     end
   end
-
 
   # DELETE /resource
   # def destroy
