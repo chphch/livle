@@ -4,6 +4,7 @@ class Upcoming < ApplicationRecord
   has_many :artists, through: :upcoming_artists
   has_many :upcoming_likes
   has_many :upcoming_comments
+  has_many :upcoming_ticket_urls
 
   # merge related model fields for searchkick indexing
   def search_data

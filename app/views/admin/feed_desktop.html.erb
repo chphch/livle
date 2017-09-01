@@ -26,12 +26,12 @@
   </div>
 
   <% @feeds.each do |feed| %>
-        <div class="admin-desktop-content-box">
-          <div class="row">
-            <div class="col-xs-1">
-              <p class="black-desktop-content"><%= feed.id %></p>
-            </div>
-            <%= form_tag feed_path(feed.id), method: :patch do %>
+      <div class="admin-desktop-content-box">
+        <div class="row">
+          <div class="col-xs-1">
+            <p class="black-desktop-content"><%= feed.id %></p>
+          </div>
+          <%= form_tag feed_path(feed.id), method: :patch do %>
               <div class="col-xs-2 form-group">
                 <p class="black-desktop-content">
                   <%= text_field_tag(:title, "#{feed.title}", class: "form-control") %>
@@ -63,13 +63,13 @@
               <div class="col-xs-1 text-center">
                 <%= submit_tag("수정", class: "btn btn-outline-primary") %>
               </div>
+          <% end %>
+          <div class="col-xs-1 text-center">
+            <%= link_to feed_path(feed.id), method: :destroy do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
-            <div class="col-xs-1 text-center">
-              <%= link_to feed_path(feed.id), method: :destroy do %>
-                  <button type="button" class="btn btn-outline-primary">삭제</button>
-              <% end %>
-            </div>
           </div>
         </div>
+      </div>
   <% end %>
 </div>
