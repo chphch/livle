@@ -179,38 +179,39 @@
   @include size(12rem);
 }
 
-._comments-group-m {
+._show-comments-m {
   width: 100%;
   padding: 6%;
   background: $black;
+  ._comment-edit-container-m {
+    height: 13rem;
+    padding: 2% 0 2% 2%;
+    .input-container {
+      @include size(100%);
+      border: 1px solid $white;
+      @include border-radius($br-min-m);
+    }
+    .input-text {
+      @include size(100%);
+      padding: 2% 4%;
+      background: none;
+      border: none;
+    }
+    .submit-container {
+      padding: 0 3rem;
+    }
+  }
+
+  ._comments-group-m {
+    margin: 6% 0 0;
+  }
+
   ._comment-content-container-m {
     margin: 2% 0 0 18%;
     padding: 3% 5% 3% 6%;
     //왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래
     @include border-radius(0 $br-min-m $br-min-m $br-min-m);
     background: $dark-gray;
-  }
-}
-
-._comment-edit-container-m {
-  position: fixed;
-  left: 0; bottom: 0; right: 0;
-  height: 11rem;
-  padding: 2% 0 2% 2%;
-  background: $dark-dark-gray;
-  .input-container {
-    height: 100%;
-    border: 2px solid $white;
-    @include border-radius($br-min-m);
-  }
-  .input-text {
-    @include size(100%);
-    padding: 2% 4%;
-    background: none;
-    border: none;
-  }
-  .submit-container {
-    padding: 0 3rem;
   }
 }
 
