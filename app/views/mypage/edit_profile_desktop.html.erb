@@ -2,7 +2,7 @@
   <!-- TODO: 검정색 background는 상단의 style을 없애면 됨! -->
   <div class="_desktop-modal _column-positioner _hcenter-positioner">
     <div class="title-container _text-center">
-      <p class="_fs-1 _white">프로필 변경하기</p>
+      <p class="_fs-1 _white _f-letter">프로필 변경하기</p>
     </div>
     <%= form_for @user, url: mypage_update_profile_path, html: {multipart: true, remote: true, id: "update-profile"} do |f| %>
         <div class="edit-profile-container _column-positioner _vcenter-positioner">
