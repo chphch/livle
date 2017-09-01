@@ -98,7 +98,7 @@
 //########################
 #connect-index {
   background: $black;
-  height: 70em;
+  min-height: 70em;
 
   .connect-title-container {
     padding: 8rem 0;
@@ -131,6 +131,7 @@
 
 #connect-new {
   background: $black;
+  min-height: 70em;
 
   .connect-url-container {
     padding: 8rem 0 4rem;

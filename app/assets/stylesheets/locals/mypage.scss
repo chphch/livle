@@ -258,7 +258,7 @@
 //########################
 #mypage-index {
   background: $black;
-  height: 70em;
+  min-height: 70em;
 
   .mypage-icon {
     @include size(auto, 2rem);
