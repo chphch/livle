@@ -2,7 +2,6 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
-
   # GET /resource/sign_in
   def new
     self.resource = resource_class.new(sign_in_params)

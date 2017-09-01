@@ -56,20 +56,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    @user = User.find(current_user.id)
-    if @user.update_with_password(user_params)
-      puts @user.errors.messages
-      bypass_sign_in(@user)
-      render 'update_password_success'
+    # TODO with blank password, current_user.update_with_password doesn't return false
+    # temporarily add extra exception handling + (password error message doensn't contain "새로운")
+    password_length = params[:user][:password].length
+    if password_length != 0 && current_user.update_with_password(account_update_params)
+      bypass_sign_in(current_user)
+      render 'registrations/update_password_success_mobile'
     else
-      puts @user.errors.messages
-      render 'update_password_fail'
+      if password_length == 0
+        current_user.errors.messages[:password] << "새로운 " + I18n.t("activerecord.errors.models.user.attributes.password.blank")
+      end
+      render js: "$('#error-message').text('#{current_user.errors.messages.first.second.first}');"
     end
   end
 
-  def user_params
-    params.require(:user).permit(:current_password, :password, :password_confirmation)
-  end
 
   # DELETE /resource
   # def destroy
@@ -93,9 +93,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:current_password, :password, :password_confirmation])
+  end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)

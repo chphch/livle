@@ -7,7 +7,8 @@
           <%= f.submit "완료", class: "_fs-4-mobile _white _f-letter-mobile" %>
         </div>
 
-        <div class="error-message"></div>
+        <div id="error-message" class="_fs-2-mobile _white _text-center"></div>
+
         <p class="_fs-3-mobile _white _f-letter-mobile">기존 비밀번호</p>
         <div class="password-input-field">
           <%= f.password_field :current_password, placeholder: "기존 비밀번호를 입력해주세요", class: "input-field _fs-3-mobile _white" %>
