@@ -4,7 +4,7 @@ module UpcomingsHelper
     today = DateTime.now.strftime('%Q').to_i
     day_to_millisec = 1000*60*60*24
 
-    d_day = ((start_day - today)/day_to_millisec).floor
+    d_day = (start_day - today)/day_to_millisec
     if d_day == 0
       return "-day"
     else
