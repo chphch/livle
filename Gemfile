@@ -30,6 +30,9 @@ gem 'whenever', :require => false
 gem 'social-share-button'
 # gem for copy text to clipboard
 gem 'clipboard'
+# payment
+gem 'httparty'
+gem 'iamport'
 
 ###############################################
 
