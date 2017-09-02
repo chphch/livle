@@ -4,24 +4,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $('#search-bar-mobile .input-field, ._navbar-search-input').focus();
         onfocus(true);
     });
-    //취소버튼을 누를 때
+    //취소버튼 누를 때
     $('.cancel-field').click(function () {
         onfocus(false);
+        $('.input-esc').hide();
     });
-    //focusout 할 때
+    //desktop, focusout 할 때
     $('._navbar-serach-container').focusout(function () {
         onfocus(false);
     });
 
-    //맨 처음 input이 비어있지 않을 때
+    //search autocomplete
+    $('#search').keypress(function() {
+        $.ajax({
+            url: '/search/autocomplete',
+            data: {
+                key: $(this).val()
+            },
+            success: function(data) {
+                $('#search').autocomplete({
+                    source: data
+                });
+            }
+        });
+    });
+
+    //mobile, 맨 처음 input이 비어있지 않을 때
     if ($('#search-bar-mobile .input-field').val() !== '') {
-        //for mobile
         $('.search-input-field').css('width', '84%');
         $('.cancel-field').show();
         $('.input-esc').show();
     }
 
-    //X button 띄우는 이벤트
+    //텍스트 삭제 button 띄우는 이벤트
     $('.input-field').bind('input', function () {
         if($(this).val() !== '') {
             $('.input-esc').show();
@@ -29,8 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             $('.input-esc').hide();
         }
     });
-
-    //X button
+    //삭제 button 클릭시 이벤트
     $('.input-esc').click(function () {
         $('.input-field').val('');
         $('.input-esc').hide();

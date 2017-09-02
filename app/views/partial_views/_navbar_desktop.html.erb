@@ -2,14 +2,7 @@
   <% control = controller.class.name.split("::").first.to_s %>
   <!-- search-bar -->
   <div class="_hcenter-positioner">
-    <%= form_tag search_result_path, method: :get, class: "_navbar-serach-container"  do %>
-        <div class="_vcenter-positioner">
-          <div class="_navbar-search-icon-container _hright-positioner">
-            <%= image_tag "icon_search_gray", class: "_navbar-search-icon" %>
-          </div>
-          <%= text_field_tag :search, nil, class: "_navbar-search-input _fs-4 _white", placeholder: "검색하기" %>
-        </div>
-    <% end %>
+    <%= render partial: "/search/search_bar_desktop" %>
   </div>
 
   <!-- LIVLE logo -->
