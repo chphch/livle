@@ -1,10 +1,9 @@
 class FeedComment < ApplicationRecord
   belongs_to :feed
   belongs_to :user
-  attr_accessor :created_at
 
   def created_time
-    created = (@created_at.to_f*1000).to_i
+    created = (self.created_at.to_f*1000).to_i
     now = (Time.now.to_f*1000).to_i
     min_to_millisec = 1000*60
 
