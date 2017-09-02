@@ -1,6 +1,6 @@
 $('body').append(
     '<div id="done-modal" class="modal">\
-      <%= j render partial: "done_modal_mobile" %>\
+      <%= j render partial: "partial_views/check_modal_mobile", locals: {text: "전송이 완료되었습니다."} %>\
     </div>'
 );
 $('#done-modal').modal();

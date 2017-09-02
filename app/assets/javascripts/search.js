@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     ////(with '_' -> _navbar_desktop, without '_' -> _search_bar_mobile)
 
     //focus 할 때
-    $('#search-bar .search-input-field, ._navbar-serach-container').click(function () {
-        $('#search-bar .input-field, ._navbar-search-input').focus();
+    $('#search-bar-mobile .search-input-field, ._navbar-serach-container').click(function () {
+        $('#search-bar-mobile .input-field, ._navbar-search-input').focus();
         onfocus(true);
     });
     //취소버튼을 누를 때
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //맨 처음 input이 비어있지 않을 때
     if ($('.input-field').val() !== '') {
-        onfocus();
+        onfocus(true);
         $('.input-esc').show();
     }
     //X button 띄우는 이벤트
@@ -36,9 +36,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     //Scroll Event
-    scrolling();
-    new ResizeSensor($('#search-list-container'), function () {
+    $(window).scroll(function () {
         scrolling();
+    });
+    new ResizeSensor($('#search-list-container'), function () {
+        $(window).scroll(function () {
+            scrolling();
+        });
     });
 
     //Result action
@@ -52,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function onfocus(status) {
         if (status) {
             //for both
-            $('#search-bar .input-icon-container, ._navbar-search-icon-container').css('width', '14%');
-            $('#search-bar .input-field, ._navbar-search-input').css({
+            $('#search-bar-mobile .input-icon-container, ._navbar-search-icon-container').css('width', '14%');
+            $('#search-bar-mobile .input-field, ._navbar-search-input').css({
                 'flex-grow': 1,
                 '-webkit-flex-grow': 1
             });
@@ -63,10 +67,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             $('.cancel-field').show();
         } else {
             //for mobile
-            $('#search-bar .input-field').val('');
-            $('#search-bar .input-icon-container').css('width', '50%');
+            $('#search-bar-mobile .input-field').val('');
+            $('#search-bar-mobile .input-icon-container').css('width', '50%');
             $('.search-input-field').css('width', '100%');
-            $('#search-bar .cancel-field').hide();
+            $('#search-bar-mobile .cancel-field').hide();
 
             //for desktop
             $('._navbar-search-icon-container').css('width', '48%');
@@ -89,18 +93,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    var iScrollPos = 0;
+    var lastScrollPos = 0;
     function scrolling() {
-        $(window).scroll(function () {
-            var iCurScrollPos = $(this).scrollTop();
-            if (iCurScrollPos > iScrollPos) {
-                //Scrolling Down
-                $('.search-container').addClass('search-bar-up');
-            } else {
-                //Scrolling Up
-                $('.search-container').removeClass('search-bar-up');
-            }
-            iScrollPos = iCurScrollPos;
-        });
+        var curScrollPos = $(this).scrollTop();
+        if (curScrollPos > lastScrollPos) {
+            //Scrolling Down
+            $('.search-container').addClass('search-bar-up');
+        } else {
+            //Scrolling Up
+            $('.search-container').removeClass('search-bar-up');
+        }
+        lastScrollPos = curScrollPos;
     }
 });

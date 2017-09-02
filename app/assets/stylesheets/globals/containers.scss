@@ -11,6 +11,12 @@
   @include position(0);
 }
 
+//modals
+.modal {
+  position: fixed;
+  @include position(0);
+}
+
 //positioners
 ._hcenter-positioner {
   @include display-flex;
@@ -44,6 +50,13 @@
 
 ._text-center {
   text-align: center;
+}
+
+._display-flex {
+  display: flex !important;
+  display: -webkit-flex !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
 }
 
 //########################
@@ -166,10 +179,33 @@
   @include size(12rem);
 }
 
-._comments-group-m {
+._show-comments-m {
   width: 100%;
   padding: 6%;
   background: $black;
+  ._comment-edit-container-m {
+    height: 13rem;
+    padding: 2% 0 2% 2%;
+    .input-container {
+      @include size(100%);
+      border: 1px solid $white;
+      @include border-radius($br-min-m);
+    }
+    .input-text {
+      @include size(100%);
+      padding: 2% 4%;
+      background: none;
+      border: none;
+    }
+    .submit-container {
+      padding: 0 3rem;
+    }
+  }
+
+  ._comments-group-m {
+    margin: 6% 0 0;
+  }
+
   ._comment-content-container-m {
     margin: 2% 0 0 18%;
     padding: 3% 5% 3% 6%;
@@ -179,37 +215,15 @@
   }
 }
 
-._comment-edit-container-m {
-  position: fixed;
-  left: 0; bottom: 0; right: 0;
-  height: 11rem;
-  padding: 2% 0 2% 2%;
-  background: $dark-dark-gray;
-  .input-container {
-    height: 100%;
-    border: 2px solid $white;
-    @include border-radius($br-min-m);
-  }
-  .input-text {
-    @include size(100%);
-    padding: 2% 4%;
-    background: none;
-    border: none;
-  }
-  .submit-container {
-    padding: 0 3rem;
-  }
-}
-
 ._mypage-title-container-m {
   padding: 4% 0 2%;
 }
 
 //modals
 ._big-modal {
-  position: absolute;
-  @include position(0);
-  margin: 24rem 8rem;
+  position: relative;
+  height: 120rem;
+  margin: 0 8rem;
   background: $dark-dark-gray;
   border-radius: 6rem;
 }
@@ -217,7 +231,7 @@
 ._small-modal {
   position: absolute;
   @include position(0);
-  margin: 56rem 8rem;
+  margin: 30em 8rem;
   background: none;
   border-radius: 6rem;
 }
@@ -270,7 +284,7 @@
 }
 
 ._show-buttons-container {
-  padding: 3rem 0 1rem;
+  padding: $desktop-margin-top+1rem 0 1rem;
 }
 
 ._comment-container {
@@ -294,4 +308,10 @@
     border: none;
     @include border-radius($br-min);
   }
+}
+
+//modals
+._desktop-modal {
+  position: relative;
+  width: 36rem;
 }

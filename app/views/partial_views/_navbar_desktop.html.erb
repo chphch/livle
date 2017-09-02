@@ -16,7 +16,7 @@
   <!-- LIVLE logo -->
   <div class="_navbar-logo-container _vcenter-positioner">
     <%= link_to feeds_path do %>
-        <%= image_tag "logo_livle", class: "_navbar-logo" %>
+        <%= image_tag "logo_livle", class: "_logo-livle" %>
     <% end %>
   </div>
 
@@ -40,13 +40,14 @@
           <% end %>
       <% end %>
     </div>
-    <!-- TODO: Modal 띄우는거 고민해보자.. -->
     <% if !user_signed_in? %>
-        <div class="_navbar-button">
-          <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
-            <p class="_fs-3 _white">Login</p>
-          </div>
-        </div>
+        <%= link_to mypage_index_path, class: "_text-center" do %>
+            <div class="_navbar-button">
+              <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
+                <p class="_fs-3 _white">Login</p>
+              </div>
+            </div>
+        <% end %>
     <% else %>
         <div class="dropdown _navbar-button">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -60,31 +61,26 @@
           <ul class="dropdown-menu dropdown-menu-right">
             <li>
               <%= link_to mypage_index_path, class: "_text-center" do %>
-                  <p class="_fs-4 _black">마이페이지</p>
+                  <p class="_fs-4 _white">마이페이지</p>
               <% end %>
             </li>
             <li>
               <%= link_to mypage_edit_profile_path, class: "_text-center" do %>
-                  <p class="_fs-4 _black">프로필 설정</p>
+                  <p class="_fs-4 _white">프로필 설정</p>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: "_text-center" do %>
-                  <p class="_fs-4 _black">로그아웃</p>
+                  <p class="_fs-4 _white">로그아웃</p>
               <% end %>
             </li>
             <li>
               <%= link_to admin_feed_path, class: "_text-center" do %>
-                  <p class="_fs-4 _black">관리자 설정</p>
+                  <p class="_fs-4 _white">관리자 설정</p>
               <% end %>
             </li>
           </ul>
         </div>
     <% end %>
-  </div>
-
-  <!--Modal-->
-  <div id="logout-modal" class="modal">
-    <%= render partial: "/devise/sessions/logout_modal_mobile" %>
   </div>
 </nav>

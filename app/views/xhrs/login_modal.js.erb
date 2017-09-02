@@ -1,10 +1,12 @@
 $('body').append(
     '<div id="login-modal" class="modal">\
       <div class="_big-modal">\
-      <%= j render file: "/devise/sessions/new_mobile.html.erb" %>\
+      <%= j render file: "devise/sessions/new_mobile.html.erb" %>\
       </div>\
     </div>'
 );
 var loginModal = $('#login-modal');
 loginModal.modal();
+$('._big-modal').css('margin-top',
+    ($(window).height() - $('._big-modal').height())/2);
 loginModal.on('hide.bs.modal', function() {loginModal.remove()});

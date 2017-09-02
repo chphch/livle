@@ -10,7 +10,7 @@
 //########################
 #mypage-index-mobile,
 #mypage-edit-profile-mobile {
-  .translucency-container {
+  .opacity-container {
     width: 96%;
     margin: 4% 0 4%;
     padding: 2%;
@@ -258,6 +258,131 @@
 //########################
 #mypage-index {
   background: $black;
+  min-height: 70em;
 
+  .mypage-icon {
+    @include size(auto, 2rem);
+    margin: 0 0.8rem 0 0;
+  }
 
+  .info-text-container {
+    padding: 6rem 0;
+  }
+
+  .left-group {
+    position: relative;
+    @include size(26%, auto);
+    padding: $desktop-margin-top 0;
+
+    .edit-profile-container {
+      @include size(100%, 36rem);
+      border-radius: $br-min;
+      background: $dark-dark-gray;
+      padding: 2rem;
+      margin: 0 0 2rem;
+    }
+
+    .profile-box {
+      @include flex-grow(1);
+      @include size(100%, auto);
+      .profile-container {
+        position: relative;
+        @include size(12rem);
+        padding: 0.6rem;
+        @include border-radius(50%);
+      }
+
+      .edit-notice-container {
+        position: absolute;
+        bottom: -2%; right: -4%;
+        @include size(4.3rem, 3.2rem);
+        border: 1px $white solid;
+        @include border-radius(0.7rem);
+        background-color: rgba(81, 81, 81, 0.6);
+      }
+    }
+
+    .upcoming-like-container {
+      @include size(100%, auto);
+      border-radius: $br-min;
+      background: $dark-dark-gray;
+      padding: 2rem;
+      .list-text-container {
+        padding: 0.8rem 0;
+      }
+    }
+  }
+
+  .mylist-container {
+    position: relative;
+    @include size(71%, auto);
+    margin: $desktop-margin-top 0 0 3%;
+    padding: 2rem;
+
+    .mylist-card-container {
+      display: inline-block;
+      width: 49.6%;
+      padding: 2rem 1rem 0;
+    }
+  }
+}
+
+#mypage-edit-profile {
+  .title-container {
+    padding: 0 0 4rem;
+  }
+
+  .edit-profile-container {
+    @include size(100%, auto);
+    background: $dark-dark-gray;
+    @include border-radius($br-min);
+    padding: 4rem 2rem;
+    .profile-container {
+      position: relative;
+      @include size(12rem);
+      margin: 0 0 4rem;
+      padding: 0.6rem;
+      @include border-radius(50%);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .edit-notice-container {
+      position: absolute;
+      bottom: -2%; right: -4%;
+      @include size(4.3rem, 3.2rem);
+      border: 1px $white solid;
+      @include border-radius(0.7rem);
+      background-color: rgba(81, 81, 81, 0.6);
+    }
+  }
+
+  .edit-input-container {
+    width: 100%;
+    margin: 1rem 0;
+    .icon-container {
+      @include size(5rem, 4rem);
+      padding: 0 1.4rem;
+      margin: 0 0.2rem 0 0;
+      background: $gray-opacity;
+      @include border-radius($br-min 0 0 $br-min);
+      .input-icon {
+        @include size(auto, 2.5rem);
+      }
+    }
+
+    .input-container {
+      height: 4rem;
+      @include flex-grow(1);
+      background: $gray-opacity;
+      @include border-radius(0 $br-min $br-min 0);
+      .input-field {
+        background: none;
+        border: none;
+        padding: 1rem;
+        @include size(100%);
+      }
+    }
+  }
 }

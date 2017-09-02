@@ -2,7 +2,9 @@
   <div class="_modal-background _column-positioner _hcenter-positioner">
     <div class="_small-modal-title text-center">
       <%= image_tag "icon_check", class: "_modal-big-icon-m" %>
-      <p class="_fs-4-mobile _white _f-letter-mobile">전송이 완료되었습니다.</p>
+      <% if defined?(text) %>
+          <p class="_fs-4-mobile _white _f-letter-mobile"><%= text %></p>
+      <% end %>
     </div>
   </div>
 </div>

@@ -108,7 +108,7 @@
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
-    @include background-gradient(left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%);
+    @include background-gradient(left, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
     &:hover {
       cursor: pointer;
     }
@@ -121,7 +121,7 @@
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
-    @include background-gradient(right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0) 100%);
+    @include background-gradient(right, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
     &:hover {
       cursor: pointer;
     }
@@ -148,7 +148,7 @@
     position: relative;
     top: 0;
     width: 80%;
-    padding: 2rem 0;
+    padding: $desktop-margin-top 0;
   }
   .related-video-container {
     position: relative;

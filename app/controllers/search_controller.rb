@@ -25,4 +25,16 @@ class SearchController < ApplicationController
     )
     render_by_device
   end
+
+  # Should return an array of strings
+  def autocomplete
+    key = params[:key]
+    feeds = Feed.select('title').where('title LIKE ?', "%#{key}%").limit(10).map { |f| f.title }
+    upcomings = Upcoming.select('title').where('title LIKE ?',"%#{key}%").limit(5).map { |u| u.title }
+    result = feeds + upcomings
+
+    respond_to do |format|
+      format.json { render json: result }
+    end
+  end
 end
