@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             },
             success: function(data) {
                 $('#search').autocomplete({
+                    //UI: .ui-autocomplete
                     source: data
                 });
             }
