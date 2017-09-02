@@ -3,18 +3,18 @@
                                    upcoming_upcoming_comments_path(parent_id), remote: true do |f| %>
       <div class="_vcenter-positioner">
         <div class="_profile-container-m">
-          <%= image_tag current_user.profile_img, class: "_profile-img" %>
+          <%= image_tag user_signed_in? ? current_user.profile_img : "", class: "_profile-img" %>
         </div>
         <div class="_comment-edit-container-m _vcenter-positioner _flex-grow-1 _no-p-margin">
           <%= f.hidden_field :model_id, value: parent_id %>
           <%= f.hidden_field :user_id, value: user_signed_in? ? current_user.id : -1 %>
-          <div class="input-container _vcenter-positioner">
+          <sdiv class="input-container _vcenter-positioner">
             <%= f.text_field :content, placeholder: "댓글을 입력해주세요!", autocomplete: "off",
                              class: "input-text _fs-4-mobile _white _flex-grow-1" %>
             <div class="submit-container">
               <%= f.submit "게시", class: "_no-background-border _fs-4-mobile _light-green _f-letter-mobile" %>
             </div>
-          </div>
+          </sdiv>
         </div>
       </div>
   <% end %>
