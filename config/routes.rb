@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'search/result'
   get 'search/autocomplete'
 
+  get 'feeds/payment_test'
+  get 'feeds/payment'
+
 
   resources :artists, only: [:index, :create, :show, :update, :destroy]
 
