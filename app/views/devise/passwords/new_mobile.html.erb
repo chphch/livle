@@ -1,4 +1,4 @@
-<div id="device-recover-new-mobile">
+<div class="_full-container _column-positioner _hcenter-positioner" id="device-recover-new-mobile">
   <div class="_column-positioner _vcenter-positioner">
     <%= image_tag "logo_livle", class: "_logo-container-m" %>
     <div class="moto-container _text-center">
@@ -9,7 +9,6 @@
   <%= form_for(resource, asx: resource_name, url: password_path(resource_name), html: {method: :post }) do |f| %>
       <div class="_column-positioner _vcenter-positioner">
         <%= devise_error_messages! %>
-
         <!-- 이메일 -->
         <div class="login-input-container">
           <div class="_row-positioner">

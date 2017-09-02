@@ -30,7 +30,7 @@
 </div>
 
 <script>
-    $('.input-field').val("<%= @search %>");
+    $('.search-input-field .input-field').val("<%= @search %>");
     $('.cancel-field').click(function () {
         window.location = "<%= search_path %>";
     });

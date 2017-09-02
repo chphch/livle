@@ -98,7 +98,7 @@
 //########################
 #connect-index {
   background: $black;
-  height: 70em;
+  min-height: 70em;
 
   .connect-title-container {
     padding: 8rem 0;
@@ -117,13 +117,50 @@
   .input-container {
     @include flex-grow(1);
     height: 4rem;
-    background: $gray-opacity;
+    background: none;
+    border: 1px solid $gray-opacity;
     @include border-radius($br-min);
     .input-field {
       @include size(100%);
       background: none;
       border: none;
       padding: 2%;
+    }
+  }
+}
+
+#connect-new {
+  background: $black;
+  min-height: 70em;
+
+  .connect-url-container {
+    padding: 8rem 0 4rem;
+  }
+  .icon-container {
+    padding: 0 4rem 0 0;
+    .input-icon {
+      width: auto;
+      height: 4rem;
+    }
+  }
+
+  .new-video-container {
+    position: relative;
+    @include size(100%, auto);
+    margin: 2rem 0;
+  }
+
+  .input-container {
+    @include size(100%, auto);
+    background: none;
+    border: 1px solid $white;
+    @include border-radius($br-min);
+    .input-field {
+      width: 100%;
+      min-height: 12rem;
+      background: none;
+      border: none;
+      padding: 1rem;
     }
   }
 }

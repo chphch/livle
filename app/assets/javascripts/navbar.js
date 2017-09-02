@@ -2,12 +2,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //navbar_desktop.html.erb
     $(window).on('scroll', function() {
         if( $(window).scrollTop() > $(window).height() * 0.02 ) {
-            $('._navbar').css('background', 'rgba(18, 18, 18, 1)');
+            $('._navbar').css('background', 'rgba(18, 18, 18, .9)');
         } else {
             $('._navbar').css('background', 'rgba(18, 18, 18, 0)');
         }
     });
 
+    //navbar desktop login modal
     $('._navbar-login-button').on('click', function () {
         $('body').append(
             '<div id="login-modal" class="modal _hcenter-positioner">\

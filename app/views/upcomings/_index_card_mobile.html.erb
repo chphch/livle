@@ -26,7 +26,7 @@
         </div>
 
         <div class="describe-icon">
-          <%= image_tag "icon_hand_empty", class: "_upcoming-like-icon-m" %>
+          <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m" %>
         </div>
       </div>
   <% end %>
