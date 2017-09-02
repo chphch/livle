@@ -29,7 +29,7 @@ class UpcomingsController < ApplicationController
       @like_count = upcoming.upcoming_likes.size
       render '/xhrs/toggle_like'
     else
-      render '/xhrs/login_modal'
+      redirect_to new_user_session_path
     end
   end
 
