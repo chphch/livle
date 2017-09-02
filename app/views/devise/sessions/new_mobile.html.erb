@@ -57,7 +57,7 @@
     </div>
     <!-- Facebook Login -->
     <div class="button-container">
-      <%= render "devise/shared/links_mobile" %>
+      <%= render partial: "devise/shared/links_mobile", locals: {remote: resource.remote_new_session} %>
     </div>
   </div>
 </div>

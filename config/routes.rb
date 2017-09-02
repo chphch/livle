@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   devise_scope :user do
+    # get 'users/auth/facebook/:remote_new_session' => 'users/omniauth_callbacks#facebook', as: :user_facebook_login_callback
     get 'users/passwords/after_create'
   end
 

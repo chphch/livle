@@ -30,7 +30,7 @@ class Users::SessionsController < Devise::SessionsController
         format.js {
           if params[:user][:remote_new_session] == "true"
             render js: "$('#login-modal').modal('hide');"
-          else
+          elsif remote_new_session == "false"
             render js: "window.location = '#{mypage_index_path}';"
           end
         }
@@ -40,6 +40,7 @@ class Users::SessionsController < Devise::SessionsController
       render js: "$('#login-error-message').text('#{flash[:alert]}');"
     end
   end
+
 
   # DELETE /resource/sign_out
   # def destroy
@@ -54,7 +55,6 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  # keeping user to the same page after sign in
   # def after_sign_in_path_for(resource)
   #   after_sign_in_path_for(resource)
   # end
