@@ -290,7 +290,6 @@
 ._comment-container {
   width: 100%;
   padding: 1rem 0;
-
   ._comment-profile-container {
     position: relative;
     top: 0;
@@ -301,10 +300,22 @@
     @include border-radius(50%);
   }
 
+  ._comment-input-container {
+    margin: 0 0 0 2rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid $dark-gray;
+    @include border-radius($br-min);
+  }
+
+  ._comment-created-time-container {
+    padding: 0 0 0 2rem;
+  }
+
   ._comment-content-container {
     margin: 0 0 0 2rem;
     padding: 0.5rem 1rem;
-    background: $dark-gray;
+    background: $dark-dark-gray;
     border: none;
     @include border-radius($br-min);
   }

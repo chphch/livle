@@ -75,7 +75,7 @@
         <hr>
 
         <!-- Comments -->
-        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @feed.feed_comments} %>
+        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @feed.feed_comments, model: FeedComment, parent_id: @feed.id} %>
       </div>
 
       <!-- Reated Video -->

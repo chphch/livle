@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+$('._comments-group').append(
+    '<div class="_comment-container _vcenter-positioner">\n' +
+    '  <div class="_comment-profile-container">\n' +
+    '    <%= image_tag @comment.user.profile_img, class: "_profile-img" %>\n' +
+    '  </div>\n' +
+    '  <p class="_fs-4 _white "><%= @comment.user.nickname %></p>\n' +
+    '  <div class="_comment-created-time-container">\n' +
+    '    <p class="_fs-5 _light-gray"><%= @comment.created_time %></p>\n' +
+    '  </div>\n' +
+    '  <div class="_comment-content-container _flex-grow-1">\n' +
+    '    <%= simple_format @comment.content, class: "_fs-4 _white" %>\n' +
+    '  </div>\n' +
+    '</div>'
+);
+$('._comment-container ._comment-input-container').val('');
+<% end %>
