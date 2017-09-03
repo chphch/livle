@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'search/result'
   get 'search/autocomplete'
+  get 'search/clear_history'
 
 
   resources :artists, only: [:index, :create, :show, :update, :destroy]
