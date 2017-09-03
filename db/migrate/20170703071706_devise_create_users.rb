@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :provider
       t.string   :nickname,          null: false
       t.string   :introduce
-      t.string   :profile_img,       null: false, default: "uploads/user/profile_img/default_profile_img.png"
+      t.string   :profile_img
       t.boolean  :is_admin,          null: false, default: false
 
       t.timestamps null: false
