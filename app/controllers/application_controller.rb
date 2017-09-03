@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
     end
     respond_to do |format|
       format.html { render fullname(device_suffix, "html", filename), layout: "/layouts/#{layout_name}_#{device_suffix}.html.erb" }
-      format.js { render fullname(device_suffix, "js", filename) }
+      format.js {
+        render fullname(device_suffix, "js", filename) }
     end
   end
 

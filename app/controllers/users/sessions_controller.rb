@@ -9,12 +9,13 @@ class Users::SessionsController < Devise::SessionsController
     respond_with(resource, serialize_options(resource)) do |format|
       format.html {
         @title = "로그인"
+
         resource.remote_new_session = false
         render_by_device
       }
       format.js {
         resource.remote_new_session = true
-        render "/xhrs/login_modal"
+        render_by_device
       }
     end
   end

@@ -1,5 +1,5 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit_profile, :update_profile, :settings]
+  before_action :authenticate_user!
 
   def index
     @title = current_user.nickname
