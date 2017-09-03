@@ -12,6 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       sign_in(@user, scope: :user)
       set_flash_message(:notice, :signed_in, scope: "devise.sessions") if is_navigational_format?
+      @device_suffix = device_suffix
       render 'devise/sessions/facebook'
     else
       # TODO When is this exception-handling-block executed?
@@ -37,7 +38,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
-  # protected
+  protected
+
+  def device_suffix
+    browser.device.mobile? ? "mobile" : "desktop"
+  end
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)
