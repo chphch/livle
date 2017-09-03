@@ -8,6 +8,29 @@
 //########################
 //#        MOBILE        #
 //########################
+//autocomplete
+@media (max-width: 1023px) {
+  .ui-autocomplete span.hl_results {
+    //highlight result
+    border: none;
+  }
+  .ui-autocomplete {
+    width: 12rem;
+    background: rgba(106, 106, 106, .85);
+    padding: 2%;
+    border: none !important;
+    @include border-radius(0.5rem);
+    li {
+      font-size: $fs-2-m;
+      color: $white;
+      padding: 4% 0;
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #DDDDDD;
+      }
+    }
+  }
+}
+
 #search-list-container,
 #result-list-feed-m,
 #result-list-upcoming-m {
@@ -23,6 +46,10 @@
 
   .card-text {
     padding: 0 0 0 3%;
+  }
+
+  .ui-menu-item {
+    background: $dark-dark-gray !important;
   }
 }
 
