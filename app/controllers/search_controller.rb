@@ -10,6 +10,17 @@ class SearchController < ApplicationController
   # keyword : feed.title, upcoming.title, artist.name, user.nickname, upcoming.place
   def result
     @search = params[:search]
+    if current_user
+      # 같은 검색어가 목록에 여럿 있는 경우를 막기 위해 있으면 삭제
+      prev = current_user.recent_keywords.where('keyword', @search)
+      if prev.count > 0
+        prev.take.destroy
+      end
+      key = RecentKeyword.new
+      key.keyword = @search
+      key.user_id = current_user.id
+      key.save
+    end
 
     @feed_results = Feed.search(
       @search,
@@ -37,4 +48,13 @@ class SearchController < ApplicationController
       format.json { render json: result }
     end
   end
+
+  def clear_history
+    if current_user
+      current_user.recent_keywords.destroy_all
+    else
+      puts "Error"
+    end
+  end
+
 end

@@ -1,0 +1,16 @@
+<!-- TODO 디자인 입히기 -->
+<% if current_user %>
+  <% if current_user.recent_keywords.count > 0 %>
+    <div>최근 검색어</div>
+    <% current_user.recent_keywords.reverse_each do |k| %>
+      <div>
+        <%=k.keyword%>
+      </div>
+    <% end %>
+    <%=link_to '최근 기록 삭제', '/search/clear_history', remote: true %>
+  <% else %>
+    최근 검색어 내역이 없습니다.
+  <% end %>
+<% else %>
+  로그인을 해야 최근 검색어를 볼 수 있어여
+<% end %>
