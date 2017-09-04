@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
       }
       format.js {
         resource.remote_new_session = true
-        render "/xhrs/login_modal"
+        render_by_device
       }
     end
   end

@@ -33,7 +33,7 @@
       <% end %>
     </div>
     <% if !user_signed_in? %>
-        <%= link_to mypage_index_path, class: "_text-center" do %>
+        <%= link_to mypage_index_path, class: "_text-center", remote: true do %>
             <div class="_navbar-button">
               <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
                 <p class="_fs-3 _white">Login</p>

@@ -3,18 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: ->{request.format.json?}
 
   # render html or js file by respond format # also choose the template by the type of the requesting device
-  def render_by_device(filename = nil, layout_name = "application")
-    def fullname(device_suffix, filetype_suffix, filename)
-      current_path = request.path
-      action_path = filename || "#{controller_name}/#{action_name}"
-      if current_path[0..5] == '/users'
-        action_path = "devise/#{action_path}"
-      end
-      "#{action_path}_#{device_suffix}.#{filetype_suffix}.erb"
-    end
+  def render_by_device(filename = nil, args = {})
+    args[:layout_name] ||= "application"
     respond_to do |format|
-      format.html { render fullname(device_suffix, "html", filename), layout: "/layouts/#{layout_name}_#{device_suffix}.html.erb" }
-      format.js { render fullname(device_suffix, "js", filename) }
+      format.html { render full_filename(device_suffix, "html", filename), layout: "/layouts/#{args[:layout_name]}_#{device_suffix}.html.erb" }
+      format.js { render full_filename(device_suffix, "js", filename) }
     end
   end
 
@@ -23,6 +16,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def full_filename(device_suffix, filetype_suffix, filename)
+    action_path = filename || "#{controller_name}/#{action_name}"
+    if request.path[0..5] == '/users'
+      action_path = "devise/#{action_path}"
+    end
+    "#{action_path}_#{device_suffix}.#{filetype_suffix}.erb"
+  end
+
   # return the type of the device as a string
   def device_suffix
     browser.device.mobile? ? "mobile" : "desktop"
