@@ -7,7 +7,7 @@
     <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
       <!-- Facebook Login -->
       <div class="button-container">
-        <div id="device-link">
+        <div id="device-link" style="cursor: pointer;">
           <%- if devise_mapping.omniauthable? %>
               <a onclick="onClickFacebookLoginButton();">
                 <div class="facebook-button _submit-button _fs-4 _white _text-center">페이스북으로 3초만에 로그인</div>
@@ -63,9 +63,9 @@
 
           <div class="button-container">
             <div class="_vcenter-positioner">
-              <div class="button-width _submit-button _fs-3 _white _text-center">
-                <%= link_to "회원가입", new_registration_path(resource_name) %><br />
-              </div>
+              <%= link_to new_registration_path(resource_name), class: "button-width _submit-button _text-center" do %>
+                  <p class="_fs-3 _white">회원가입</p>
+              <% end %>
               <div class="button-margin"></div>
               <%= f.submit "로그인", class: "button-width _submit-button _fs-3 _white" %>
             </div>

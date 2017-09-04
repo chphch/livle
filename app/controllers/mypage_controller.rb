@@ -16,7 +16,6 @@ class MypageController < ApplicationController
   end
 
   def update_profile
-    # TODO: 이미지 저장이 안됨 (err: ERROR // PROFILE IS NOT UPDATED)
     params.require(:user).permit(:nickname, :profile_img, :introduce)
     if current_user.update(profile_img: params[:user][:profile_img], nickname: params[:user][:nickname],
                            introduce: params[:user][:introduce])

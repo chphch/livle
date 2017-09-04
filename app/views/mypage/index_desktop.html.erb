@@ -66,15 +66,4 @@
       </div>
     </div>
   </div>
-
-  <% if !user_signed_in? %>
-      <div id="login-modal" class="_full-container _display-flex _hcenter-positioner _vcenter-positioner modal">
-        <div class="_desktop-modal">
-          <%= render file: '/devise/sessions/new_desktop.html.erb' %>
-        </div>
-      </div>
-      <script>
-        $('#login-modal').modal();
-      </script>
-  <% end %>
 </div>

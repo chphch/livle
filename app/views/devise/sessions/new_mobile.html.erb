@@ -8,7 +8,7 @@
 
   <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
       <%= f.hidden_field :remote_new_session %>
-      <div class="_column-positioner _vcenter-positioner">
+      <div class="_column-positioner _vcenter-positioner _no-p-margin">
         <!-- 이메일 -->
         <div class="login-input-container">
           <div class="_row-positioner">
@@ -37,9 +37,9 @@
 
         <div class="button-container">
           <div class="_vcenter-positioner">
-            <div class="button-width _submit-button-m _fs-2-mobile _white _text-center">
-              <%= link_to "회원가입", new_registration_path(resource_name) %><br />
-            </div>
+            <%= link_to new_registration_path(resource_name), class: "button-width _submit-button-m _text-center" do %>
+                <p class="_fs-2-mobile _white">회원가입</p>
+            <% end %>
             <div class="button-margin"></div>
             <%= f.submit "로그인", class: "button-width _submit-button-m _fs-2-mobile _white" %>
           </div>
@@ -60,7 +60,7 @@
       <div id="device-link-mobile">
         <%- if devise_mapping.omniauthable? %>
             <a onclick="onClickFacebookLoginButton();">
-              <div class="facebook-button _submit-button _fs-2-mobile _white _text-center">"페이스북으로 3초만에 로그인"</div>
+              <div class="facebook-button _submit-button-m _fs-2-mobile _white _text-center">"페이스북으로 3초만에 로그인"</div>
             </a>
         <% end -%>
 
