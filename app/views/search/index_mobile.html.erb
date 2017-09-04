@@ -2,16 +2,16 @@
   <div class="_body-background-m"></div>
   <%= render partial: "search_bar_mobile" %>
 
-  <div id="search-list-container">
+  <!-- 랭킹 목록 -->
+  <div id="search-list-group-m">
     <%= render partial: "feed_card_mobile", collection: @feeds, as: :feed %>
   </div>
-
-  <div id="infinite-scrolling">
-    <%= will_paginate @feeds %>
-  </div>
-  
-  <!-- TODO css, 어디다 둘지 -->
-  <div id="search-recent-keywords" style="position: fixed; left: 0; right: 0; top: 100px; font-size: 100px; color: white">
+  <!-- 최근 검색어 목록 -->
+  <div id="search-recent-keywords" style="display: none;">
     <%= render partial: 'recent_keywords' %>
+  </div>
+
+  <div id="infinite-scrolling" class="_display-none">
+    <%= will_paginate @feeds %>
   </div>
 </div>

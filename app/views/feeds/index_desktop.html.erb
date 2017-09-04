@@ -8,7 +8,7 @@
     <div class="_desktop-container">
       <div class="current-list _vcenter-positioner" id="scroll-target">
         <% @show_curator = true %>
-        <% @commons.each_with_index do |common, i| %>
+        <% @commons.each_index do |i| %>
             <% if i % 2 != 0 && @commons[i+1] != nil %>
                 <div class="_column-positioner">
                   <div class="card-container">
