@@ -1,8 +1,0 @@
-$('body').append(
-    '<div id="login-modal">\
-      <%= j render file: "devise/sessions/new_desktop.html.erb" %>\
-    </div>'
-);
-var loginModal = $('#login-modal');
-loginModal.modal();
-loginModal.on('hide.bs.modal', function() {loginModal.remove()});
