@@ -262,7 +262,8 @@
 }
 @media (max-width: $desktop) {
   ._desktop-container {
-    width: $narrow-width;
+    max-width: $narrow-width;
+    width: 100%;
   }
 }
 ._desktop-container-narrow {

@@ -78,6 +78,10 @@
   }
 
   .official-button {
+    @include size(5rem, 100%);
+  }
+
+  .show-button {
     @include size(7rem, $navbar-h);
     margin: 1rem 0 0;
     border: 1px solid $white;
@@ -104,7 +108,7 @@
     background: $black;
   }
 
-  .prev-list {
+  .prev-filter {
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
@@ -113,11 +117,11 @@
       cursor: pointer;
     }
   }
-  #prev-btn {
+  #prev-section {
     display: none;
   }
 
-  .next-list {
+  .next-filter {
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
@@ -127,7 +131,18 @@
     }
   }
 
-  .current-list {
+  .scroll-button {
+    @include size(6rem, 100%);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .arrow-button {
+    @include size(auto, 3rem);
+  }
+
+  .feed-card-group {
     position: relative;
     @include position(0);
     overflow-x: scroll;
