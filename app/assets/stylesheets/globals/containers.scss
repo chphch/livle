@@ -243,6 +243,18 @@
 //########################
 //#       DESKTOP        #
 //########################
+//backgrounds
+._devise-background {
+  position: fixed;
+  @include position(0);
+  z-index: $z-burrow;
+  background: url(asset-path("background_concert.png")) no-repeat center center;
+  background-size: cover;
+  ._devise-filter {
+    @include size(100%);
+    background: $black-opacity;
+  }
+}
 //containers
 ._desktop-container {
   position: relative;

@@ -2,7 +2,7 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
-  # GET /resource/sign_in
+  # GET /users/sign_in
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
@@ -19,7 +19,7 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
-  # POST /resource/sign_in
+  # POST /users/sign_in
   def create
     self.resource = warden.authenticate(auth_options)
     if resource && resource.active_for_authentication?
@@ -42,7 +42,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
 
-  # DELETE /resource/sign_out
+  # DELETE /users/sign_out
   # def destroy
   #   super
   # end
