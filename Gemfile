@@ -19,7 +19,7 @@ gem 'figaro'
 # Browser - detecting types of devices
 gem 'browser'
 # Gem For Image Upload
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 # searchkick
