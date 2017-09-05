@@ -3,6 +3,8 @@ class ConnectUrlsController < ApplicationController
 
   def index
     @nickname = user_signed_in? ? "#{current_user.nickname}님" : "당신"
+    @enable_transparent = true #for desktop
+
     render_by_device
   end
 

@@ -31,5 +31,8 @@
       <div style="padding: 2.5rem; background: #121212;"></div>
     <% end %>
     <%= yield %>
+    <% if @enable_footer %>
+        <%= render partial: "partial_views/footer_desktop" %>
+    <% end %>
   </body>
 </html>

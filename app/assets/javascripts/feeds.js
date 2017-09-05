@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function scrolling() {
     // console.log("cur pos: "+ $this.scrollLeft());
     if ($this.scrollLeft() > 0) {
-        $('#prev-section').show();
+        $('.prev-button, .prev-filter').show();
     } else {
-        $('#prev-section').hide();
+        $('.prev-button, .prev-filter').hide();
     }
 }
