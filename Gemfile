@@ -22,8 +22,13 @@ gem 'browser'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+
 # searchkick
 gem 'searchkick'
+# for aws elasticsearch server
+gem 'elasticsearch', '>= 1.0.15'
+gem 'faraday_middleware-aws-signers-v4'
+
 # gem for scheduling function
 gem 'whenever', :require => false
 # social-share-button
