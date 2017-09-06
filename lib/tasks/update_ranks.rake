@@ -20,6 +20,8 @@ namespace :update_ranks do
         priority = priority + time_coefficient(comment.created_at) * COMMENT_WEIGHT
       end
 
+      # TODO - use arbitrary weight
+
       Feed.update(feed.id, rank: priority) # Update rank value
 
     end
@@ -37,17 +39,23 @@ namespace :update_ranks do
 
   desc 'update upcoming ranks'
   task upcoming_ranks: :environment do
-    # 3개의 +1점짜리 영상(관련 영상에 달린 코멘트가 30개) = 하루
-    RECENCY_WEIGHT = 4200
+    # 3개의 +1점짜리 영상(관련 영상에 달린 평균 코멘트가 10개) = 하루
+    RECENCY_WEIGHT = 1400
 
     Upcoming.all.each do |upcoming|
 
       popularity = 0
+      feeds_count = 0
 
       upcoming.artists.each do |artist|
         artist.feeds.each do |feed|
+          feeds_count = feed_count + 1
           popularity = popularity + feed.rank
         end
+      end
+
+      if feeds_count > 0
+        popularity = popularity / feeds_count
       end
 
       today = Time.now.to_date
@@ -63,7 +71,7 @@ namespace :update_ranks do
 
       result = popularity - d_day * RECENCY_WEIGHT
 
-      Upcoming.update(upcoming.id, rank: priority)
+      Upcoming.update(upcoming.id, rank: result)
 
     end
 
