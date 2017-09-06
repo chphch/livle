@@ -68,3 +68,57 @@
 //########################
 //#       DESKTOP        #
 //########################
+#upcoming-index {
+  background: $black;
+
+  .upcoming-card-group {
+    padding: 4rem 0;
+  }
+}
+
+#upcoming-index-card {
+  $collab-width: 6rem;
+
+  .card-container {
+    padding: 2rem 0;
+  }
+
+  .collab-conatiner {
+    position: absolute;
+    @include transform(rotate(270deg));
+    left: -8rem;
+  }
+  .ticket-container {
+    position: relative;
+    @include flex-grow(0.7);
+    margin: 0 0 0$collab-width;
+    .ticket-img {
+      position: relative;
+      width: 100%;
+    }
+    .ticket-video-container {
+      position: absolute;
+      @include size(64%, auto);
+      margin: -1.1% 0 0 1%;
+    }
+  }
+  .info-container {
+    position: absolute;
+    right: 0;
+    @include size(25.3%, 100%);
+    padding: 3% 4% 4% 0;
+    .text-container {
+      padding: 2% 0;
+    }
+    .line-up-container {
+      @include size(100%, 26%);
+    }
+    .line-up-text {
+      padding: 4% 0 0;
+    }
+  }
+  .poster-container {
+    position: relative;
+    @include flex-grow(0.3);
+  }
+}

@@ -1,0 +1,57 @@
+<div id="upcoming-index-card">
+  <%= link_to upcoming_path(upcoming.id), method: :get do %>
+      <div class="card-container _vcenter-positioner _no-p-margin">
+        <!-- collab text conatiner -->
+        <div class="collab-conatiner _vcenter-positioner">
+          <% if upcoming.upcoming_ticket_urls.where(provider: '1') != nil %>
+              <p class="_fs-title _white _f-family-tmon">라이블 X <%= upcoming.title %></p>
+          <% end %>
+        </div>
+        <!-- ticket container with background -->
+        <div class="ticket-container _vcenter-positioner">
+          <%= image_tag upcoming_counter%2 != 0 ? "background_ticket_with_line" : "background_ticket",
+                        class: "ticket-img" %>
+          <div class="ticket-video-container">
+            <div class="_video-player">
+              <!-- Youtube Video Player -->
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= upcoming.main_video_id %>?version=3&enablejsapi=1&controls=2&rel=0&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= upcoming.main_video_id %>"
+                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </div>
+          </div>
+          <div class="info-container _column-positioner _hcenter-positioner">
+            <div class="_flex-grow-1">
+              <div class="text-container">
+                <p class="_fs-1 _black _f-family-tmon"><%= upcoming.title %></p>
+              </div>
+              <div class="text-container">
+                <p class="_fs-1 _black _f-family-tmon"><%= upcoming.place %></p>
+              </div>
+              <div class="text-container">
+                <p class="_fs-3 _red _f-family-tmon"><%= upcoming.start_date %></p>
+              </div>
+              <p class="_fs-d-day _dark-gray _f-family-tmon">D<%= upcoming.d_day %></p>
+            </div>
+
+            <div class="line-up-container">
+              <p class="_fs-4 _black _f-family-tmon">LINE-UP</p>
+              <div class="line-up-text">
+                <p class="_fs-5 _dark-gray">
+                  <!-- artist name -->
+                  <% upcoming.artists.each_with_index do |artist, i| %>
+                      <%= artist.name %>
+                      <% break if upcoming.artists[i+1] == nil %>
+                      ,&nbsp
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- poster container -->
+        <div class="poster-container">
+
+        </div>
+      </div>
+  <% end %>
+</div>

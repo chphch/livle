@@ -17,6 +17,8 @@ module Livle
 
     config.autoload_paths << Rails.root.join('lib')
 
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
     # set default locale
     config.i18n.default_locale = :ko
   end
