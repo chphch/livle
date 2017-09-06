@@ -200,3 +200,15 @@
     }
   }
 }
+
+#feed-index-card {
+  .thumbnail-filter {
+    position: absolute;
+    @include position(0);
+    @include background-gradient(top, rgba(0, 0, 0, .0) 47%, rgba(0, 0, 0, .6) 100%);
+  }
+
+  .thumbnail-content {
+    margin: 2%;
+  }
+}

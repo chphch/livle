@@ -43,6 +43,11 @@
   @include align-items(center);
 }
 
+._vbottom-positioner {
+  @include display-flex;
+  @include align-items(flex-end);
+}
+
 ._row-positioner {
   @include display-flex;
   @include flex-direction(row);

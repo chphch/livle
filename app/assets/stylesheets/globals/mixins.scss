@@ -21,7 +21,7 @@
     background: #{$prefix}linear-gradient($dir, $pos1, $pos2, $pos3);
   }
   @if $dir == bottom {
-    background: #{$prefix}linear-gradient(to top, $pos1, $pos2, $pos3);
+    background: linear-gradient(to top, $pos1, $pos2, $pos3);
   } @else if $dir == top {
     background: linear-gradient(to bottom, $pos1, $pos2, $pos3);
   } @else if $dir == right {
