@@ -31,7 +31,7 @@
   }
 }
 
-#search-list-container,
+#search-list-group-m,
 #result-list-feed-m,
 #result-list-upcoming-m {
   padding: 0 2%;
@@ -51,10 +51,6 @@
   .ui-menu-item {
     background: $dark-dark-gray !important;
   }
-}
-
-#result-list-upcoming-m {
-  display: none;
 }
 
 #search-bar-mobile {
@@ -115,6 +111,19 @@
   .search-bar-up {
     top: -10rem;
   }
+}
+
+#search-recent-keywords {
+  .keywords-container {
+    padding: 0 2%;
+  }
+  .text-container {
+    padding: 3% 0;
+  }
+}
+
+#result-list-upcoming-m {
+  display: none;
 }
 
 #search-result-mobile {

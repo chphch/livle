@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $(window).scroll(function () {
         scrolling();
     });
-    new ResizeSensor($('#search-list-container'), function () {
+    new ResizeSensor($('#search-list-group-m'), function () {
         $(window).scroll(function () {
             scrolling();
         });
@@ -95,12 +95,16 @@ function onfocus(status) {
         //for mobile
         $('.search-input-field').css('width', '84%');
         $('.cancel-field').show();
+        $('#search-list-group-m').hide();
+        $('#search-recent-keywords').show();
     } else {
         //for mobile
         $('#search-bar-mobile .input-field').val('');
         $('#search-bar-mobile .input-icon-container').css('width', '50%');
         $('.search-input-field').css('width', '100%');
         $('#search-bar-mobile .cancel-field').hide();
+        $('#search-list-group-m').show();
+        $('#search-recent-keywords').hide();
 
         //for desktop
         $('._navbar-search-icon-container').css('width', '48%');

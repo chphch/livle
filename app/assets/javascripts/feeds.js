@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     //DESKTOP
     $this = $('#scroll-target');
-    $cardWidth = $('.current-list ._column-positioner').width();
+    $cardWidth = $('.feed-card-group ._column-positioner').width();
     var isLoading = false;
 
-    $('.prev-list').on("click", function () {
+    $('.prev-button').on("click", function () {
         scrollMove('left');
     });
-    $('.next-list').on("click", function () {
+    $('.next-button').on("click", function () {
         scrollMove('right');
         //infinite scroll
         if ($('#infinite-scrolling').length > 0) {
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function scrolling() {
     // console.log("cur pos: "+ $this.scrollLeft());
     if ($this.scrollLeft() > 0) {
-        $('#prev-btn').show();
+        $('.prev-button, .prev-filter').show();
     } else {
-        $('#prev-btn').hide();
+        $('.prev-button, .prev-filter').hide();
     }
 }

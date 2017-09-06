@@ -4,6 +4,10 @@
   </div>
 
   <div class="official-filter _full-container _hcenter-positioner">
+    <div class="official-button _vcenter-positioner _hcenter-positioner">
+      <%= image_tag "icon_back", class: "arrow-button" %>
+    </div>
+
     <div class="official-video-container _vcenter-positioner">
       <div class="_video-player">
         <!-- Youtube Video Player -->
@@ -22,7 +26,7 @@
         <div class="_username-container _flex-grow-1">
           <div class="_vcenter-positioner _no-p-margin">
             <%= image_tag "icon_crown_gold", class: "_video-info-icon _crown-icon-margin" %>
-            <p class="_fs-2 _white"><%= feed.user.nickname %></p>
+            <p class="_fs-3 _white"><%= feed.user.nickname %></p>
           </div>
           <div class="_no-p-margin">
             <p class="_fs-4 _light-gray"><%= feed.user.introduce %></p>
@@ -31,7 +35,7 @@
       </div>
 
       <div class="official-text-container">
-        <p class="_fs-2 _white">
+        <p class="_fs-3 _white">
           <%= feed.title %> -
           <!-- artist name -->
           <% feed.artists.each_with_index do |artist, i| %>
@@ -44,10 +48,14 @@
       <div class="official-text-container">
         <%= simple_format feed.content, class: "_fs-4 _light-gray _f-line-mobile" %>
       </div>
-      <%= link_to feed_path(feed.id), class: "official-button _vcenter-positioner
+      <%= link_to feed_path(feed.id), class: "show-button _vcenter-positioner
           _hcenter-positioner _no-p-margin" do %>
-          <p class="_fs-3 _white">더보기</p>
+          <p class="_fs-4 _white">더보기</p>
       <% end %>
+    </div>
+
+    <div class="official-button _vcenter-positioner _hcenter-positioner">
+      <%= image_tag "icon_next", class: "arrow-button" %>
     </div>
   </div>
 </div>

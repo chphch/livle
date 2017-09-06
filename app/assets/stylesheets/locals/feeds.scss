@@ -78,6 +78,10 @@
   }
 
   .official-button {
+    @include size(5rem, 100%);
+  }
+
+  .show-button {
     @include size(7rem, $navbar-h);
     margin: 1rem 0 0;
     border: 1px solid $white;
@@ -104,30 +108,35 @@
     background: $black;
   }
 
-  .prev-list {
+  .prev-filter {
     position: absolute;
     top: 0; left: 0; bottom: 0;
     width: 8rem;
     @include background-gradient(left, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
-    &:hover {
-      cursor: pointer;
-    }
   }
-  #prev-btn {
+  #prev-section {
     display: none;
   }
 
-  .next-list {
+  .next-filter {
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 8rem;
     @include background-gradient(right, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
+  }
+
+  .scroll-button {
+    @include size(6rem, 100%);
     &:hover {
       cursor: pointer;
     }
   }
 
-  .current-list {
+  .arrow-button {
+    @include size(auto, 3rem);
+  }
+
+  .feed-card-group {
     position: relative;
     @include position(0);
     overflow-x: scroll;
@@ -189,5 +198,17 @@
     .card-container {
       width: 12rem;
     }
+  }
+}
+
+#feed-index-card {
+  .thumbnail-filter {
+    position: absolute;
+    @include position(0);
+    @include background-gradient(top, rgba(0, 0, 0, .0) 47%, rgba(0, 0, 0, .6) 100%);
+  }
+
+  .thumbnail-content {
+    margin: 2%;
   }
 }

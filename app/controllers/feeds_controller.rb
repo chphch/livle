@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
     @officials = official_feeds.paginate(page: params[:page], per_page: 4) #for desktop
     @commons = common_feeds.paginate(page: params[:page], per_page: 14) #for desktop
     @enable_transparent = true #for desktop
+    @enable_footer = true #for desktop
 
     respond_to do |format|
       format.html { render_by_device }

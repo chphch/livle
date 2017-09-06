@@ -43,6 +43,11 @@
   @include align-items(center);
 }
 
+._vbottom-positioner {
+  @include display-flex;
+  @include align-items(flex-end);
+}
+
 ._row-positioner {
   @include display-flex;
   @include flex-direction(row);
@@ -243,6 +248,18 @@
 //########################
 //#       DESKTOP        #
 //########################
+//backgrounds
+._devise-background {
+  position: fixed;
+  @include position(0);
+  z-index: $z-burrow;
+  background: url(asset-path("background_concert.png")) no-repeat center center;
+  background-size: cover;
+  ._devise-filter {
+    @include size(100%);
+    background: $black-opacity;
+  }
+}
 //containers
 ._desktop-container {
   position: relative;
@@ -250,7 +267,8 @@
 }
 @media (max-width: $desktop) {
   ._desktop-container {
-    width: $narrow-width;
+    max-width: $narrow-width;
+    width: 100%;
   }
 }
 ._desktop-container-narrow {

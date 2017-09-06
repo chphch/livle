@@ -1,69 +1,73 @@
-<div class="_hcenter-positioner" id="device-signup" style="background: #000000">
-  <!-- TODO: 검정색 background는 상단의 style을 없애면 됨! -->
-  <div class="_desktop-modal _column-positioner _hcenter-positioner">
-    <div class="moto-container _text-center _no-p-margin">
-      <p class="_fs-5 _white">
-        이미 계정이 있으십니까?
-        <%= link_to "로그인", mypage_index_path, style: "text-decoration: underline !important;" %>
-      </p>
-    </div>
-    <div class="moto-container _text-center _no-p-margin">
-      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
-      <p class="moto-margin _fs-5 _white _f-letter">Life is live</p>
-    </div>
-    <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
-      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {remote: true} do |f| %>
-          <div class="input-group">
-            <div class="_column-positioner _vcenter-positioner">
-              <!-- 이메일 -->
-              <div class="login-input-container _vcenter-positioner">
-                <div class="icon-container _vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_mail", class: "input-icon" %>
+<div id="device-signup">
+  <div class="_devise-background">
+    <div class="_devise-filter"></div>
+  </div>
+  <div class="_full-container _hcenter-positioner">
+    <div class="_desktop-modal _column-positioner _hcenter-positioner">
+      <div class="moto-container _text-center _no-p-margin">
+        <p class="_fs-5 _white">
+          이미 계정이 있으십니까?
+          <%= link_to "로그인", mypage_index_path, style: "text-decoration: underline !important;" %>
+        </p>
+      </div>
+      <div class="moto-container _text-center _no-p-margin">
+        <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+        <p class="moto-margin _fs-5 _white _f-letter">Life is live</p>
+      </div>
+      <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {remote: true} do |f| %>
+            <div class="input-group">
+              <div class="_column-positioner _vcenter-positioner">
+                <!-- 이메일 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_mail", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.text_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
+                  </div>
                 </div>
-                <div class="input-container">
-                  <%= f.text_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
+                <!-- 닉네임 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_mypage_empty", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.text_field :nickname, placeholder: "닉네임", autofocus: true, class: "input-field _fs-4 _white" %>
+                  </div>
                 </div>
-              </div>
-              <!-- 닉네임 -->
-              <div class="login-input-container _vcenter-positioner">
-                <div class="icon-container _vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_mypage_empty", class: "input-icon" %>
+                <!-- 비밀번호 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
                 </div>
-                <div class="input-container">
-                  <%= f.text_field :nickname, placeholder: "닉네임", autofocus: true, class: "input-field _fs-4 _white" %>
-                </div>
-              </div>
-              <!-- 비밀번호 -->
-              <div class="login-input-container _vcenter-positioner">
-                <div class="icon-container _vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_lock", class: "input-icon" %>
-                </div>
-                <div class="input-container">
-                  <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
-                </div>
-              </div>
-              <!-- 비밀번호 확인 -->
-              <div class="login-input-container _vcenter-positioner">
-                <div class="icon-container _vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_lock", class: "input-icon" %>
-                </div>
-                <div class="input-container">
-                  <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                <!-- 비밀번호 확인 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="button-container">
-            <div class="_vcenter-positioner">
-              <div class="button-width _submit-button _fs-3 _white _text-center">
-                <%= link_to "취소", mypage_index_path %>
+            <div class="button-container">
+              <div class="_vcenter-positioner">
+                <div class="button-width _submit-button _fs-3 _white _text-center">
+                  <%= link_to "취소", mypage_index_path %>
+                </div>
+                <div class="button-margin"></div>
+                <%= f.submit "회원가입", class: "button-width _submit-button _fs-3 _white" %>
               </div>
-              <div class="button-margin"></div>
-              <%= f.submit "회원가입", class: "button-width _submit-button _fs-3 _white" %>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
