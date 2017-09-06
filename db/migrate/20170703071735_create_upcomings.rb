@@ -8,6 +8,7 @@ class CreateUpcomings < ActiveRecord::Migration[5.1]
       t.date :end_date
       t.integer :count_view
       t.integer :count_share
+      t.integer :rank
 
       t.timestamps
     end
