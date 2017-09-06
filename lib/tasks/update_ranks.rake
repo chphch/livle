@@ -2,10 +2,9 @@ namespace :update_ranks do
   desc 'update feed ranks'
   task feed_ranks: :environment do
     VIEW_WEIGHT = 1
-    LIKE_WEIGHT = 10 * VIEW_WEIGHT
+    LIKE_WEIGHT = 20 * VIEW_WEIGHT
     COMMENT_WEIGHT = 7 * LIKE_WEIGHT
     SHARE_WEIGHT = 14 * LIKE_WEIGHT
-    TIME_ADJUST = 10
 
     feeds = Feed.all
 
@@ -20,19 +19,18 @@ namespace :update_ranks do
         priority = priority + time_coefficient(comment.created_at) * COMMENT_WEIGHT
       end
 
-      result = time_coefficient(feed.created_at) * priority
-
-      Feed.update(feed.id, rank: result) # Update rank value
+      Feed.update(feed.id, rank: priority) # Update rank value
     end
   end
 
-  # TODO : elaborate
+  # TODO later : elaborate
   def time_coefficient(created_at)
-    lower_bound = 0.1
+    lower_bound = 0.05
     oldest_created_at = Feed.minimum(:created_at)
     normalized = ( created_at - oldest_created_at ) / (Time.now - oldest_created_at)
     [1 - Math.sqrt(normalized), lower_bound].max
   end
 
 end
-  # TODO: db_backup
+
+# TODO DB Backup ?
