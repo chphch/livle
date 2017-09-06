@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/carrierwaveuploader/carrierwave.git
-  revision: 7389a82f17d2547766c290b6f1398c9da794353b
-  specs:
-    carrierwave (1.1.0)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,8 +27,6 @@ GEM
     activejob (5.1.3)
       activesupport (= 5.1.3)
       globalid (>= 0.3.6)
-    activejob_backport (0.0.3)
-      activesupport (>= 4.0.0)
     activemodel (5.1.3)
       activesupport (= 5.1.3)
     activerecord (5.1.3)
@@ -54,7 +43,7 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
-    browser (2.5.0)
+    browser (2.5.1)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.15.1)
@@ -64,6 +53,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -91,7 +84,7 @@ GEM
       faraday
       multi_json
     erubi (1.6.1)
-    excon (0.58.0)
+    excon (0.59.0)
     execjs (2.7.0)
     faker (1.8.4)
       i18n (~> 0.5)
@@ -142,9 +135,10 @@ GEM
     mini_mime (0.1.4)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mysql2 (0.4.9)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -229,11 +223,10 @@ GEM
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.0)
+    sprockets-rails (3.2.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.3.13)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -264,11 +257,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activejob_backport
   browser
   byebug
   capybara (~> 2.13)
-  carrierwave!
+  carrierwave
   clipboard
   coffee-rails (~> 4.2)
   devise
@@ -278,6 +270,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  mysql2
   omniauth-facebook
   puma (~> 3.7)
   rails (~> 5.1.2)
@@ -287,7 +280,6 @@ DEPENDENCIES
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   therubyracer
   tzinfo-data
   uglifier (>= 1.3.0)
@@ -296,4 +288,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170831071959) do
 
-  create_table "artists", force: :cascade do |t|
-    t.integer "curation_id"
-    t.integer "artist_id"
+  create_table "artists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "curation_id"
+    t.bigint "artist_id"
     t.string "name"
     t.string "image_url"
     t.datetime "created_at", null: false
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.index ["curation_id"], name: "index_artists_on_curation_id"
   end
 
-  create_table "connect_urls", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "feed_id"
+  create_table "connect_urls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "user_id"
+    t.bigint "feed_id"
     t.string "video_url"
     t.text "describe"
     t.boolean "is_confirmed"
@@ -35,18 +35,18 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.index ["user_id"], name: "index_connect_urls_on_user_id"
   end
 
-  create_table "feed_artists", force: :cascade do |t|
-    t.integer "feed_id"
-    t.integer "artist_id"
+  create_table "feed_artists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "feed_id"
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_feed_artists_on_artist_id"
     t.index ["feed_id"], name: "index_feed_artists_on_feed_id"
   end
 
-  create_table "feed_comments", force: :cascade do |t|
-    t.integer "feed_id"
-    t.integer "user_id"
+  create_table "feed_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "feed_id"
+    t.bigint "user_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,56 +54,56 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.index ["user_id"], name: "index_feed_comments_on_user_id"
   end
 
-  create_table "feed_likes", force: :cascade do |t|
-    t.integer "feed_id"
-    t.integer "user_id"
+  create_table "feed_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "feed_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feed_id"], name: "index_feed_likes_on_feed_id"
     t.index ["user_id"], name: "index_feed_likes_on_user_id"
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "user_id"
     t.boolean "is_curation"
     t.string "title"
     t.string "youtube_url"
     t.text "content"
     t.integer "count_view"
     t.integer "count_share"
-    t.float "rank"
+    t.float "rank", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
-  create_table "notices", force: :cascade do |t|
+  create_table "notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "recent_keywords", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "recent_keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "user_id"
     t.string "keyword"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recent_keywords_on_user_id"
   end
 
-  create_table "upcoming_artists", force: :cascade do |t|
-    t.integer "upcoming_id"
-    t.integer "artist_id"
+  create_table "upcoming_artists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "upcoming_id"
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_upcoming_artists_on_artist_id"
     t.index ["upcoming_id"], name: "index_upcoming_artists_on_upcoming_id"
   end
 
-  create_table "upcoming_comments", force: :cascade do |t|
-    t.integer "upcoming_id"
-    t.integer "user_id"
+  create_table "upcoming_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "upcoming_id"
+    t.bigint "user_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,17 +111,17 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.index ["user_id"], name: "index_upcoming_comments_on_user_id"
   end
 
-  create_table "upcoming_likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "upcoming_id"
+  create_table "upcoming_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "user_id"
+    t.bigint "upcoming_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["upcoming_id"], name: "index_upcoming_likes_on_upcoming_id"
     t.index ["user_id"], name: "index_upcoming_likes_on_user_id"
   end
 
-  create_table "upcoming_ticket_urls", force: :cascade do |t|
-    t.integer "upcoming_id"
+  create_table "upcoming_ticket_urls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "upcoming_id"
     t.string "provider"
     t.string "ticket_url"
     t.datetime "created_at", null: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.index ["upcoming_id"], name: "index_upcoming_ticket_urls_on_upcoming_id"
   end
 
-  create_table "upcomings", force: :cascade do |t|
+  create_table "upcomings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.string "place"
     t.string "main_youtube_url"
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20170831071959) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
