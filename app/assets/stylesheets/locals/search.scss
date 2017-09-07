@@ -161,15 +161,29 @@
 #search-result {
   background: $black;
   width: 100%;
+  min-height: 70em;
+
+  .selector-container {
+    @include size(45%, auto);
+    .button-container {
+      @include size(50%, 6rem);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .selector-bar-container {
+    @include size(50%, .2rem);
+    margin:  0 0 1rem;
+    .selector-bar {
+      @include size(45%, 100%);
+      background: $white;
+    }
+    @include transition(margin 300ms);
+  }
 
   .result-list-container {
     padding: $desktop-margin-top 0;
-    width: $wide-width;
-  }
-  @media (max-width: $desktop) {
-    .result-list-container {
-      width: $narrow-width;
-    }
   }
 
   .search-card-container {

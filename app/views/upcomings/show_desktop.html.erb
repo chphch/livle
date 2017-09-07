@@ -126,23 +126,7 @@
           <div class="card-container">
             <p class="_fs-4 _white">관련영상</p>
             <% @upcoming.related_upcomings.each do |upcoming| %>
-                <%= link_to upcoming_path(upcoming.id) do %>
-                    <div class="_thumbnail-image-container">
-                      <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
-                    </div>
-                    <div class="_text-container _no-p-margin">
-                      <p class="_fs-4 _white">
-                        <%= upcoming.title %> -
-                        <!-- artist name -->
-                        <% upcoming.artists.each_with_index do |artist, i| %>
-                            <%= artist.name %>
-                            <% break if upcoming.artists[i+1] == nil %>
-                            ,&nbsp
-                        <% end %>
-                      </p>
-                      <p class="_fs-5 _light-gray">D<%= upcoming.d_day %></p>
-                    </div>
-                <% end %>
+                <%= render partial: "index_card_desktop", locals: {upcoming: upcoming} %>
             <% end %>
           </div>
         </div>
