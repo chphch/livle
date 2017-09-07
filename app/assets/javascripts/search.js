@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    //focus 할 때
+    //focus 하기
     $('#search-bar-mobile .search-input-field, ._navbar-serach-container').click(function () {
         $('#search-bar-mobile .input-field, ._navbar-search-input').focus();
         onfocus(true);
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     //mobile, 맨 처음 input이 비어있지 않을 때
-    if ($('#search-bar-mobile .input-field').val() !== '') {
-        $('.search-input-field').css('width', '84%');
-        $('.cancel-field').show();
+    if ($('#search').val() !== '') {
+        console.log("triggered!");
+        onfocus(true);
         $('.input-esc').show();
     }
 
