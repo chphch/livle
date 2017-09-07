@@ -122,3 +122,75 @@
     @include flex-grow(0.3);
   }
 }
+
+#upcomings-show {
+  background: $black;
+
+  .show-video-container {
+    position: relative;
+    top: 0;
+    width: 80%;
+    padding: $desktop-margin-top 0;
+    .text-container {
+      position: relative;
+      padding: 2rem 0 0;
+    }
+
+    .text-padding {
+      padding: 1.5rem 0 0;
+    }
+
+    .upcoming-icon {
+      @include size(auto, 4rem);
+      padding: 0 1.2rem;
+    }
+
+    $line-up-height: 12rem;
+    .line-up-container {
+      @include size(100%, $line-up-height);
+      margin: 1rem 0;
+    }
+    .line-up-card {
+      position: relative;
+      @include size($line-up-height);
+      margin: 0 2rem 0 0;
+    }
+  }
+
+  //related video
+  .related-video-container {
+    position: relative;
+    top: 0;
+    @include size(20%, auto);
+    background: none;
+    .related-video-background {
+      position: absolute;
+      @include position(2rem);
+      z-index: $z-back;
+      overflow: hidden;
+      border: none;
+      @include border-radius($br-image);
+    }
+
+    .related-video-filter {
+      background: $black-opacity;
+    }
+
+    .related-card-container {
+      position: relative;
+      z-index: $z-front;
+      @include size(100%, auto);
+      padding: 3rem 0;
+    }
+
+    .card-container {
+      position: relative;
+      width: 16rem;
+    }
+    @media (max-width: $desktop) {
+      .card-container {
+        width: 12rem;
+      }
+    }
+  }
+}

@@ -63,6 +63,16 @@ input:-ms-input-placeholder {
   @include border-radius(50%);
 }
 
+._profile-img-square {
+  @include size(100%);
+  @include border-radius($br-image);
+  object-fit: cover;
+  &:hover {
+    border: solid 1px #ffffff;
+    box-shadow: 0 2px 16px 10px #ffffff;
+  }
+}
+
 ._profile-border-green {
   @include border-radius(50%);
   border: 0.2rem $light-green solid;

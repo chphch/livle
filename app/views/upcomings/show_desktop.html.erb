@@ -1,0 +1,152 @@
+<div id="upcomings-show">
+  <div class="_hcenter-positioner">
+    <div class="_desktop-container _row-positioner">
+      <!-- Main -->
+      <div class="show-video-container _no-p-margin">
+        <!-- Youtube Video Player -->
+        <!-- TODO: 업커밍 영상 라인업 이미지들과 연결시키기 -->
+        <% if @main_video %>
+            <div class="_video-player">
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @upcoming.main_video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @upcoming.main_video_id %>"
+                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </div>
+        <% end %>
+        <% @artists.each_with_index do |artist, index| %>
+            <div class="_video-player <%= index != 0 || @main_video ? '_display-none' : '' %>">
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= artist.popular_feed_artist.id %>?version=3&enablejsapi=1&controls=2&rel=0&
+              autoplay=<%= index == 0 && !@main_video ? 1 : 0 %>&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&
+              playlist=<%= artist.popular_feed_artist.id %>" webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </div>
+        <% end %>
+
+        <div class="text-container _vcenter-positioner">
+          <div class="_flex-grow-1">
+            <p class="_fs-2 _white">
+              <%= @upcoming.title %>
+            </p>
+          </div>
+
+          <!-- TODO: 좋아요, 조회수, 공유수 video별로 업데이트 -->
+          <div class="_video-info-icon-container _vcenter-positioner">
+            <%= image_tag "icon_view_white", class: "_video-info-icon _thumbnail-elem-margin" %>
+            <p class="_fs-5 _white">1000</p>
+            <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
+            <p id="like-count" class="_fs-5 _white">1000</p>
+            <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
+            <p class="_fs-5 _white">1000</p>
+          </div>
+        </div>
+
+        <div class="text-container">
+          <div class="_vcenter-positioner">
+            <div class="_flex-grow-1">
+              <p class="_fs-1 _white">
+                <%= @upcoming.title %>
+              </p>
+            </div>
+            <p class="_fs-1 _white _f-letter">
+              <strong>D<%= @upcoming.d_day %></strong>
+            </p>
+          </div>
+
+          <div class="_vcenter-positioner">
+            <div class="_flex-grow-1">
+              <div class="text-padding">
+                <p class="_fs-1 _white"><%= @upcoming.place %></p>
+              </div>
+              <div class="text-padding">
+                <p class="_fs-3 _light-gray"><%= @upcoming.start_date %></p>
+              </div>
+            </div>
+
+            <%= image_tag "icon_ticket_empty", class: "upcoming-icon" %>
+            <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+                <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none upcoming-icon" : "upcoming-icon" %>
+                <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "upcoming-icon" : "_display-none upcoming-icon" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="text-container">
+          <p class="_fs-1 _white _f-letter-narrow">LINE-UP</p>
+          <p class="_fs-5 _light-gray">
+            <!-- artist.name -->
+            <% @upcoming.artists.each_with_index do |artist, i| %>
+                <%= artist.name %>
+                <% break if @upcoming.artists[i+1] == nil %>
+                ,&nbsp
+            <% end %>
+          </p>
+        </div>
+        <div class="line-up-container _vcenter-positioner">
+          <% @upcoming.artists.each do |artist| %>
+              <div class="line-up-card">
+                <%= image_tag artist.image_url, class: "_profile-img-square" %>
+                <div class="_full-container _hcenter-positioner _vcenter-positioner">
+                  <p class="_fs-3 _white"><%= artist.name %></p>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+        <!-- Like, Comment, Share Buttons -->
+        <div class="_show-buttons-container _vcenter-positioner">
+          <div class="_flex-grow-1 _vcenter-positioner">
+            <%= image_tag "icon_comment_white", class: "_show-icon" %>
+            <p class="_fs-4 _white">댓글 (<%= @upcoming.upcoming_comments.size %>)</p>
+          </div>
+
+          <%= link_to feed_toggle_like_path(@upcoming.id), remote: true, class: "_vcenter-positioner _show-button-padding" do %>
+              <div class="show-like">
+                <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon" %>
+                <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon" %>
+              </div>
+              <p class="_fs-4 _white">좋아요</p>
+          <% end %>
+          <div class="_vcenter-positioner _show-button-padding" id="share-modal-button">
+            <%= image_tag "icon_share_white", class: "_show-icon" %>
+            <p class="_fs-4 _white">공유</p>
+          </div>
+        </div>
+        <hr>
+
+        <!-- Comments -->
+        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @upcoming.upcoming_comments, model: UpcomingComment, parent_id: @upcoming.id} %>
+      </div>
+
+      <!-- Reated Video -->
+      <div class="related-video-container">
+        <div class="related-video-background">
+          <%= image_tag "http://img.youtube.com/vi/#{@upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
+          <div class="related-video-filter _full-container"></div>
+        </div>
+
+        <div class="related-card-container _hcenter-positioner">
+          <div class="card-container">
+            <p class="_fs-4 _white">관련영상</p>
+            <% @upcoming.related_upcomings.each do |upcoming| %>
+                <%= link_to upcoming_path(upcoming.id) do %>
+                    <div class="_thumbnail-image-container">
+                      <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
+                    </div>
+                    <div class="_text-container _no-p-margin">
+                      <p class="_fs-4 _white">
+                        <%= upcoming.title %> -
+                        <!-- artist name -->
+                        <% upcoming.artists.each_with_index do |artist, i| %>
+                            <%= artist.name %>
+                            <% break if upcoming.artists[i+1] == nil %>
+                            ,&nbsp
+                        <% end %>
+                      </p>
+                      <p class="_fs-5 _light-gray">D<%= upcoming.d_day %></p>
+                    </div>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
