@@ -96,19 +96,84 @@
 //########################
 //#       DESKTOP        #
 //########################
+#connect-index,
+#connect-new {
+  .submit-button {
+    @include size(auto, 4rem);
+    margin: 0 0 0 3rem;
+    padding: 0 2rem;
+    background: $dark-gray;
+    border: none;
+    @include border-radius($br-min);
+    &:hover {
+      cursor: pointer;
+      background: $dark-dark-gray;
+    }
+  }
+  .submit-icon {
+    @include size(auto, 2rem);
+  }
+}
+
 #connect-index {
   background: $black;
   min-height: 70em;
 
+  .connect-background {
+    position: relative;
+    padding: $navbar-h 0 0;
+    @include size(100%, 70rem);
+  }
+
+  .video-player {
+    position: absolute;
+    @include size(100%, 0);
+    padding-bottom: 56.25%;
+    background: rgba(0, 0, 0, 1);
+    overflow: hidden;
+    iframe, object, embed {
+      position: absolute;
+      @include size(100%);
+    }
+  }
+  @media (max-width: 1495px) {
+    .video-player {
+      top: 0;
+    }
+  }
+  @media (min-width: 1496px) {
+    .video-player {
+      bottom: -20%;
+    }
+  }
+
   .connect-title-container {
-    padding: 8rem 0;
+    padding: 0 0 4rem;
+    .connect-describe-group {
+      margin: 8rem 0 0;
+    }
+    .connect-describe-container {
+      padding: 0 2rem;
+    }
+    .describe-devider {
+      @include size(6rem, 3rem);
+      border-bottom: 3px dotted $white;
+    }
+    .describe-icon {
+      @include size(auto, 6rem);
+      margin: 0 0 3rem;
+    }
   }
   .connect-input-container {
-    padding: 2rem 0;
+    position: relative;
+    z-index: $z-front;
+    padding: 8rem 0;
+    background: $black;
   }
   .icon-container {
     padding: 0 4rem 0 0;
     .input-icon {
+      @include size(auto, 4rem);
       width: auto;
       height: 4rem;
     }

@@ -1,10 +1,36 @@
 <div id="connect-index">
-  <div class="connect-title-container _hcenter-positioner">
-    <div class="_desktop-container-narrow _hcenter-positioner">
-      <p class="_fs-1 _f-letter _f-line _white _text-center">
-        <%= @nickname %>이 느꼈던 전율의 순간.<br>
-        그 떨림을 전해주세요
-      </p>
+  <div class="connect-background">
+    <div class="video-player">
+      <!-- Youtube Video Player -->
+      <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @bakckground_video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @bakckground_video_id %>"
+              webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+    </div>
+    <div class="_full-container _vcenter-positioner _hcenter-positioner">
+      <div class="connect-title-container _hcenter-positioner">
+        <div class="_desktop-container-narrow _column-positioner _vcenter-positioner _no-p-margin">
+          <p class="_fs-connect _f-letter _f-family-tmon _f-line _white _text-center">
+            <%= @nickname %>이 느꼈던 전율의 순간.<br>
+            그 떨림을 전해주세요
+          </p>
+          <div class="connect-describe-group _row-positioner">
+            <div class="connect-describe-container _text-center">
+              <%= image_tag "icon_video_cam", class: "describe-icon" %>
+              <p class="_fs-3 _white">라이블에게 Youtube URL을<br>보내주세요</p>
+            </div>
+            <div class="describe-devider"></div>
+            <div class="connect-describe-container _text-center">
+              <%= image_tag "icon_airplane", class: "describe-icon" %>
+              <p class="_fs-3 _white">영상과 함께 전하고 싶은<br>말을 적어주세요</p>
+            </div>
+            <div class="describe-devider"></div>
+            <div class="connect-describe-container _text-center">
+              <%= image_tag "icon_crown", class: "describe-icon" %>
+              <p class="_fs-3 _white"><%= @nickname %>의<br>라이브를 함께 공유해요</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -17,9 +43,10 @@
           <div class="input-container">
             <%= text_field_tag :video_url, nil, class: "input-field _fs-3 _white", placeholder: "Youtube URL을 입력해주세요" %>
           </div>
+          <div class="submit-button _vcenter-positioner _hcenter-positioner" onclick="$('form').submit();">
+            <%= image_submit_tag "icon_airplane", class: "submit-icon" %>
+          </div>
         </div>
-
-        <!--TODO: 보내기 버튼 만들어야 함!-->
     <% end %>
   </div>
 </div>

@@ -180,12 +180,21 @@
   }
 
   .info-text-container {
-    padding: 4% 0;
+    padding: 24% 0;
     text-align: center;
   }
   .text-spacing {
-    line-height: 600%;
+    line-height: 240%;
     letter-spacing: 1rem;
+  }
+
+  .submit-button {
+    width: 52%;
+    margin: 6% 0 0;
+    padding: 3% 0;
+    background: none;
+    border: 2px solid $white;
+    @include border-radius($br-image-m);
   }
 }
 

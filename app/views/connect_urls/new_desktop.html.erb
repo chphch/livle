@@ -1,31 +1,33 @@
 <div id="connect-new">
   <div class="connect-url-container _hcenter-positioner">
     <div class="_desktop-container-narrow">
-      <div class="_vcenter-positioner _no-p-margin">
-        <div class="icon-container">
-          <%= image_tag "icon_video_cam", class: "input-icon" %>
-        </div>
-        <p class="_fs-4 _white"><%= @video_url %></p>
-      </div>
-
-      <div class="new-video-container">
-        <div class="_video-player">
-          <!-- Youtube Video Player -->
-          <% video_url = @video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
-          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_url %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_url %>"
-                  webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-        </div>
-      </div>
-
       <%= form_for @connect_url, id: "connect-form", remote: true do |f| %>
+          <div class="_vcenter-positioner _no-p-margin">
+            <div class="_flex-grow-1 _vcenter-positioner">
+              <div class="icon-container">
+                <%= image_tag "icon_video_cam", class: "input-icon" %>
+              </div>
+              <p class="_fs-4 _white"><%= @video_url %></p>
+            </div>
+
+            <%= f.submit "보내기", class: "submit-button _vcenter-positioner _hcenter-positioner _fs-3 _white" %>
+          </div>
+
+          <div class="new-video-container">
+            <div class="_video-player">
+              <!-- Youtube Video Player -->
+              <% video_url = @video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') %>
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_url %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_url %>"
+                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </div>
+          </div>
+
+
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :video_url, value: @video_url %>
           <div class="input-container">
             <%= f.text_area :describe, class: "input-field _fs-4 _white", row: 8, placeholder: "영상에 대해 알려주세요" %>
-          </div>
-          <div class="submit-container _hcenter-positioner">
-            <%= f.submit class: "submit-button _text-center _fs-2 _white", id: "connect-submit-button", value: "보내기" %>
           </div>
       <% end %>
     </div>
