@@ -262,7 +262,7 @@
 
   .mypage-icon {
     @include size(auto, 2rem);
-    margin: 0 0.8rem 0 0;
+    margin: 0 1rem 0 0;
   }
 
   .info-text-container {
@@ -276,8 +276,7 @@
 
     .edit-profile-container {
       @include size(100%, 36rem);
-      border-radius: $br-min;
-      background: $dark-dark-gray;
+      border-top: 2px solid $white;
       padding: 2rem;
       margin: 0 0 2rem;
     }
@@ -289,23 +288,14 @@
         position: relative;
         @include size(12rem);
         padding: 0.6rem;
+        margin: 0 0 2rem;
         @include border-radius(50%);
-      }
-
-      .edit-notice-container {
-        position: absolute;
-        bottom: -2%; right: -4%;
-        @include size(4.3rem, 3.2rem);
-        border: 1px $white solid;
-        @include border-radius(0.7rem);
-        background-color: rgba(81, 81, 81, 0.6);
       }
     }
 
-    .upcoming-like-container {
+    .mypage-info-container {
       @include size(100%, auto);
-      border-radius: $br-min;
-      background: $dark-dark-gray;
+      border-top: 2px solid $white;
       padding: 2rem;
       .list-text-container {
         padding: 0.8rem 0;
@@ -315,8 +305,8 @@
 
   .mylist-container {
     position: relative;
-    @include size(71%, auto);
-    margin: $desktop-margin-top 0 0 3%;
+    @include size(68%, auto);
+    margin: $desktop-margin-top 0 0 6%;
     padding: 2rem;
 
     .mylist-card-container {
