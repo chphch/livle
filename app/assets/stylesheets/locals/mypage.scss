@@ -376,3 +376,9 @@
     @include border-radius($br-min);
   }
 }
+
+//modal position
+#edit-profile-modal {
+  position: absolute;
+  top: 2rem; left: 26rem;
+}
