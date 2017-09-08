@@ -293,6 +293,12 @@
       }
     }
 
+    .button-container {
+      @include size(70%, 4rem);
+      border: 1px solid $white;
+      @include border-radius($br-min);
+    }
+
     .mypage-info-container {
       @include size(100%, auto);
       border-top: 2px solid $white;
@@ -307,7 +313,7 @@
     position: relative;
     @include size(68%, auto);
     margin: $desktop-margin-top 0 0 6%;
-    padding: 2rem;
+    padding: 0 2rem;
 
     .mylist-card-container {
       display: inline-block;
@@ -318,20 +324,15 @@
 }
 
 #mypage-edit-profile {
-  .title-container {
-    padding: 0 0 4rem;
-  }
-
   .edit-profile-container {
     @include size(100%, auto);
-    background: $dark-dark-gray;
     @include border-radius($br-min);
-    padding: 4rem 2rem;
+    padding: 2rem 0 0;
     .profile-container {
       position: relative;
       @include size(12rem);
-      margin: 0 0 4rem;
-      padding: 0.6rem;
+      padding: 0.2rem;
+      margin: 0 0 2rem;
       @include border-radius(50%);
       &:hover {
         cursor: pointer;
@@ -348,31 +349,30 @@
     }
   }
 
-  .edit-input-container {
+  .edit-input-group {
+    border-top: 1px solid $dark-gray;
     width: 100%;
     margin: 1rem 0;
-    .icon-container {
-      @include size(5rem, 4rem);
-      padding: 0 1.4rem;
-      margin: 0 0.2rem 0 0;
-      background: $gray-opacity;
-      @include border-radius($br-min 0 0 $br-min);
-      .input-icon {
-        @include size(auto, 2.5rem);
-      }
-    }
+  }
 
-    .input-container {
-      height: 4rem;
+  .edit-input-container {
+    width: 100%;
+    border-bottom: 1px solid $light-gray;
+    padding: 1rem;
+    .input-field {
       @include flex-grow(1);
-      background: $gray-opacity;
-      @include border-radius(0 $br-min $br-min 0);
-      .input-field {
-        background: none;
-        border: none;
-        padding: 1rem;
-        @include size(100%);
-      }
+      @include size(auto, 100%);
+      text-align: right;
+      background: none;
+      border: none;
     }
+  }
+
+  .submit-button {
+    width: 40%;
+    padding: .6rem;
+    background: none;
+    border: 2px solid $dark-dark-gray;
+    @include border-radius($br-min);
   }
 }

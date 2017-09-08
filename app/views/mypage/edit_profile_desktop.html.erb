@@ -1,55 +1,44 @@
-<div class="_hcenter-positioner" id="mypage-edit-profile" style="background: #000000;">
-  <!-- TODO: 검정색 background는 상단의 style을 없애면 됨! -->
-  <div class="_desktop-modal _column-positioner _hcenter-positioner">
-    <div class="title-container _text-center">
-      <p class="_fs-1 _white _f-letter">프로필 변경하기</p>
-    </div>
-    <%= form_for @user, url: mypage_update_profile_path, html: {multipart: true, remote: true, id: "update-profile"} do |f| %>
-        <div class="edit-profile-container _column-positioner _vcenter-positioner">
-          <!-- image -->
-          <div class="_display-none">
-            <%= f.file_field :profile_img, accept: "image/*" %>
-          </div>
-          <%= f.label :profile_img do %>
-              <div class="profile-container _profile-border-green">
-                <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
-                              class: "_profile-img" %>
-                <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_camera", style: "height: 70%; width: auto;" %>
-                </div>
-              </div>
-          <% end %>
-
-          <div class="edit-input-container _vcenter-positioner">
-            <div class="icon-container _vcenter-positioner _hcenter-positioner">
-              <%= image_tag "icon_mail", class: "input-icon" %>
-            </div>
-            <div class="input-container">
-              <p class="input-field _flex-grow-1 _fs-3 _light-gray"><%= current_user.email %></p>
-            </div>
-          </div>
-
-          <div class="edit-input-container _vcenter-positioner">
-            <div class="icon-container _vcenter-positioner _hcenter-positioner">
-              <%= image_tag "icon_mypage_filled", class: "input-icon" %>
-            </div>
-            <div class="input-container">
-              <%= f.text_field :nickname, class: "input-field _fs-3 _white",
-                               placeholder: "닉네임", value: "#{current_user.nickname}" %>
-            </div>
-          </div>
-
-          <div class="edit-input-container _vcenter-positioner">
-            <div class="icon-container _vcenter-positioner _hcenter-positioner">
-              <%= image_tag "icon_intro", class: "input-icon" %>
-            </div>
-            <div class="input-container">
-              <%= f.text_field :introduce, class: "input-field _fs-3 _white",
-                               placeholder: "상태메세지", value: "#{current_user.introduce}" %>
-            </div>
-          </div>
-          <%= f.submit "완료", class: "_fs-1 _white _f-letter" %>
-        </div>
-    <% end %>
+<div class="_desktop-modal _column-positioner _hcenter-positioner" id="mypage-edit-profile">
+  <div class="_text-center">
+    <p class="_fs-1 _dark-dark-gray _f-letter _f-family-tmon">프로필 변경하기</p>
   </div>
+  <%= form_for @user, url: mypage_update_profile_path, html: {multipart: true, remote: true, id: "update-profile"} do |f| %>
+      <div class="edit-profile-container _column-positioner _vcenter-positioner _no-p-margin">
+        <!-- image -->
+        <div class="_display-none">
+          <%= f.file_field :profile_img, accept: "image/*" %>
+        </div>
+        <%= f.label :profile_img do %>
+            <div class="profile-container _profile-border-green">
+              <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
+                            class: "_profile-img" %>
+              <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
+                <%= image_tag "icon_camera", style: "height: 70%; width: auto;" %>
+              </div>
+            </div>
+        <% end %>
+        <p class="_fs-3 _dark-gray _f-family-tmon"><%= current_user.nickname %></p>
+
+        <div class="edit-input-group _flex-grow-1 _hcenter-positioner _column-positioner">
+          <div class="edit-input-container _vcenter-positioner">
+            <p class="_fs-3 _dark-gray">이메일</p>
+            <p class="input-field _fs-3 _light-gray"><%= current_user.email %></p>
+          </div>
+
+          <div class="edit-input-container _vcenter-positioner">
+            <p class="_fs-3 _dark-dark-gray">닉네임</p>
+            <%= f.text_field :nickname, class: "input-field _fs-3 _black",
+                             placeholder: "닉네임", value: "#{current_user.nickname}" %>
+          </div>
+
+          <div class="edit-input-container _vcenter-positioner">
+            <p class="_fs-3 _dark-dark-gray">상태메세지</p>
+            <%= f.text_field :introduce, class: "input-field _fs-3 _black",
+                             placeholder: "상태메세지를 적어주세요", value: "#{current_user.introduce}" %>
+          </div>
+        </div>
+
+        <%= f.submit "저장", class: "submit-button _fs-1 _black _f-letter" %>
+      </div>
+  <% end %>
 </div>

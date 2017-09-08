@@ -23,7 +23,12 @@
             <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
                 current_user.feed_likes.size : 0 %></span>
           </p>
+          <%= link_to mypage_edit_profile_path, class: "button-container _vcenter-positioner _hcenter-positioner _no-p-margin", remote: true do %>
+              <%= image_tag "icon_settings", class: "mypage-icon", style: "margin-top: -0.5rem;" %>
+              <p class="_fs-4 _white">프로필 설정</p>
+          <% end %>
         </div>
+        <!-- 찜 목록 -->
         <div class="mypage-info-container _no-p-margin">
           <div class="_vcenter-positioner">
             <%= image_tag "icon_hand_empty", class: "mypage-icon" %>
@@ -46,10 +51,11 @@
               </div>
           <% end %>
         </div>
+        <!-- 구매내역 -->
         <div class="mypage-info-container _no-p-margin">
           <div class="_vcenter-positioner">
             <%= image_tag "icon_ticket_empty", class: "mypage-icon" %>
-            <p class="_fs-2 _white">결제내역</p>
+            <p class="_fs-2 _white">구매내역</p>
           </div>
         </div>
       </div>
@@ -59,7 +65,7 @@
           <%= image_tag "icon_like_filled", class: "mypage-icon" %>
           <p class="_fs-3 _white">마이 리스트</p>
         </div>
-        <% if user_signed_in? && current_user.feed_likes.size != 0 %>
+        <% if current_user.feed_likes.size != 0 %>
             <% current_user.feed_likes.each do |like| %>
                 <div class="mylist-card-container">
                   <%= render partial: "feeds/index_card_desktop", locals: {feed: like.feed} %>
