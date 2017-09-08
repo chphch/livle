@@ -76,6 +76,14 @@
   }
 }
 
+#upcoming-ticket-card,
+#upcomings-show {
+  .upcoming-icon {
+    @include size(auto, 4rem);
+    padding: 0 1.2rem;
+  }
+}
+
 #upcoming-ticket-card {
   $collab-width: 6rem;
 
@@ -99,7 +107,13 @@
     .ticket-video-container {
       position: absolute;
       @include size(64%, auto);
-      margin: -1.1% 0 0 1%;
+      margin: -1% 0 0 1%;
+    }
+    .thumbnail-filter {
+      position: absolute;
+      @include position(0);
+      @include background-gradient(bottom, #000000, rgba(0, 0, 0, 0.0) 53%, rgba(0, 0, 0, 0.0));
+      padding: 1rem;
     }
   }
   .info-container {
@@ -138,11 +152,6 @@
 
     .text-padding {
       padding: 1.5rem 0 0;
-    }
-
-    .upcoming-icon {
-      @include size(auto, 4rem);
-      padding: 0 1.2rem;
     }
 
     $line-up-height: 12rem;
