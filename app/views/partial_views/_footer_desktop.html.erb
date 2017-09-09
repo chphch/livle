@@ -1,17 +1,19 @@
 <footer class="_footer">
   <div class="_sns-container _hcenter-positioner">
-    <div class="_logo-container _vcenter-positioner">
-      <%= image_tag "logo_facebook", class: "_logo-image" %>
-    </div>
+    <%= link_to 'https://www.facebook.com/Livlemusic/' do %>
+        <div class="_logo-container _vcenter-positioner">
+          <%= image_tag "logo_facebook", class: "_logo-image" %>
+        </div>
+    <% end %>
     <div class="_logo-container _vcenter-positioner">
       <%= image_tag "logo_instagram", class: "_logo-image" %>
     </div>
   </div>
 
   <div class="_describe-container _vcenter-positioner _no-p-margin">
-    <p class="_fs-4 _white _text-margin-right">Contact Us</p>
+    <p class="_fs-4 _white _text-margin-right" id="render-contact">Contact Us</p>
     <p class="_fs-4 _white _text-margin-right">About</p>
-    <p class="_fs-4 _white">Notice</p>
+    <p class="_fs-4 _white" id="render-notice">Notice</p>
   </div>
 
   <div class="_location-container">
@@ -19,7 +21,30 @@
   </div>
 
   <div class="_legal-term-container _vcenter-positioner _no-p-margin">
-    <div class="_fs-4 _white _text-margin-right">Term of Service</div>
-    <div class="_fs-4 _white">Privacy Policy</div>
+    <%= link_to mypage_terms_of_use_path do %>
+        <div class="_fs-4 _white _text-margin-right">Term of Service</div>
+    <% end %>
+    <%= link_to mypage_privacy_policy_path do %>
+        <div class="_fs-4 _white">Privacy Policy</div>
+    <% end %>
   </div>
+  <script>
+      $('#render-contact').on('click', function () {
+          $('#footer-modal').remove();
+          $('footer').append(
+              '<div id="footer-modal">' +
+              '<%= j render partial: "mypage/settings_contact_desktop" %>' +
+              '</div>'
+          );
+      });
+
+      $('#render-notice').on('click', function () {
+          $('#footer-modal').remove();
+          $('footer').append(
+              '<div id="footer-modal">' +
+              '<%= j render file: "notices/index_desktop.html.erb" %>' +
+              '</div>'
+          );
+      });
+  </script>
 </footer>

@@ -377,6 +377,21 @@
   }
 }
 
+#mypage-terms-of-use,
+#mypage-privacy-policy {
+  background: $black;
+  min-height: 70em;
+  .title-container {
+    padding: 4rem 0;
+  }
+  .content-container {
+    padding: 2rem 0;
+    &:not(:last-of-type) {
+      border-bottom: 1px solid $dark-gray;
+    }
+  }
+}
+
 //modal position
 #edit-profile-modal {
   position: absolute;

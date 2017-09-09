@@ -1,0 +1,33 @@
+<div class="_desktop-modal _column-positioner _vcenter-positioner">
+  <div class="_flex-grow-1 _column-positioner _vcenter-positioner _hcenter-positioner">
+    <%= image_tag "icon_qna_black", class: "modal-icon" %>
+    <div class="_text-center">
+      <p class="_fs-title _dark-gray _f-family-tmon">라이블에게 문의하기</p>
+      <p class="_fs-3 _light-gray">문의사항이나 서비스에 대한<br>피드백을 보내주세요</p>
+    </div>
+  </div>
+  <hr style="width: 100%">
+  <div class="modal-button-container _vcenter-positioner _hcenter-positioner _no-p-margin">
+    <div class="modal-button _vcenter-positioner _hcenter-positioner" id="selector-email">
+      <p class="_fs-4 _dark-gray">이메일</p>
+    </div>
+    <%= link_to 'https://m.me/Livlemusic', class: "modal-button _vcenter-positioner _hcenter-positioner" do %>
+        <p class="_fs-4 _dark-gray">페이스북 메세지</p>
+    <% end %>
+  </div>
+
+  <script>
+      $('#selector-email').on('click', function () {
+          <% copyEmail('contact@livle.co.kr') %>  //mypage_helper.rb
+          if ('<%= pasteEmail %>' === 'contact@livle.co.kr') {
+              $('#footer-modal').remove();
+              $('footer').append(
+                  '<div id="footer-modal">' +
+                  '<%= j render partial: "partial_views/check_modal_desktop", locals: {message: "이메일 주소가 복사되었습니다"} %>' +
+                  '</div>'
+              );
+              console.log("copy successful");
+          }
+      });
+  </script>
+</div>

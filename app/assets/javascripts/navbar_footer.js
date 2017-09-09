@@ -18,4 +18,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             </div>'
         );
     });
+
+    //works like modal on footer
+    $('body').click(function (e) {
+        if(!$(e.target).is('._desktop-modal, ._desktop-modal *'))
+            $('#footer-modal').remove();
+    }).find('._describe-container').on('click', function (e) {
+        e.stopPropagation();
+    });
 });
