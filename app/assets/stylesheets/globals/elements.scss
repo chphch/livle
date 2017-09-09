@@ -289,6 +289,11 @@ textarea {
   }
 }
 
+#footer-modal {
+  position: absolute;
+  left: 6rem; bottom: 20rem;
+}
+
 //footer
 ._footer {
   position: relative;
@@ -302,6 +307,9 @@ textarea {
     top: 0; left: 0;
     height: $height;
     margin: $margin;
+    p:hover {
+      cursor: pointer;
+    }
   }
 
   ._sns-container {
