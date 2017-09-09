@@ -219,8 +219,12 @@
     margin: 6% 0 0;
   }
 
+  ._comment-container-m {
+    margin: 4% 0;
+  }
+
   ._comment-content-container-m {
-    margin: 2% 0 0 18%;
+    margin: 0 0 0 18%;
     padding: 3% 5% 3% 6%;
     //왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래
     @include border-radius(0 $br-min-m $br-min-m $br-min-m);
@@ -315,7 +319,7 @@
 
 ._comment-container {
   width: 100%;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   ._comment-profile-container {
     position: relative;
     top: 0;
@@ -366,8 +370,13 @@
 
 //modals
 ._desktop-modal {
-  @include size(32rem, auto);
+  width: 32rem;
+  min-height: 36rem;
   background: $white;
   padding: 2rem;
   @include border-radius($br-min);
+  .modal-icon {
+    @include size(auto, 6rem);
+    margin: 0 0 4rem;
+  }
 }

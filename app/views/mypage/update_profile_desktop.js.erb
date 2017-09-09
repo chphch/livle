@@ -1,16 +1,11 @@
 $('#mypage-title').text("<%= @user.nickname %>");
-$('body').append(
-    '<div id="successful-update-profile-modal" class="modal">\
-<%= j render partial: "successful_update_profile_modal_mobile" %>\
-</div>'
+$('#edit-profile-modal').remove(); //remove current modal
+$('._desktop-container-narrow').append(
+    '<div id="edit-profile-modal">' +
+      '<%= j render partial: "partial_views/check_modal_desktop", locals: {message: "프로필이 저장되었습니다"} %>' +
+    '</div>'
 );
-var alertModal = $('#successful-update-profile-modal');
-alertModal.modal();
-setTimeout( function() {
-    alertModal.modal('hide')
+setTimeout(function() {
+    //mapage#index로 회귀
+    window.location.assign("<%= mypage_index_url %>");
 }, 1500);
-alertModal.on('hide.bs.modal', function() {
-    alertModal.remove();
-});
-//mapage#index로 회귀
-window.location.assign("<%= mypage_index_url %>");
