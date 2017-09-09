@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-$('._comments-group').append(
+$('._comments-group').prepend(
     '<div class="_comment-container _vcenter-positioner">\n' +
     '  <div class="_comment-profile-container">\n' +
     '    <%= image_tag @comment.user.profile_img, class: "_profile-img" %>\n' +

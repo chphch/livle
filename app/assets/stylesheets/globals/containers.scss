@@ -197,7 +197,7 @@
   padding: 6%;
   background: $black;
   ._comment-edit-container-m {
-    height: 13rem;
+    height: auto;
     padding: 2% 0 2% 2%;
     .input-container {
       @include size(100%);

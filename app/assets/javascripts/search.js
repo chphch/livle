@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //mobile, 맨 처음 input이 비어있지 않을 때
     if ($('#search').val() !== '') {
-        console.log("triggered!");
         onfocus(true);
         $('.input-esc').show();
     }

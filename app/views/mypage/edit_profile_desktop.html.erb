@@ -10,8 +10,8 @@
         </div>
         <%= f.label :profile_img do %>
             <div class="profile-container _profile-border-green">
-              <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
-                            class: "_profile-img" %>
+              <%= image_tag current_user.profile_img != nil ? current_user.profile_img : "image_profile" ,
+                            id: "upload-profile-img", class: "_profile-img" %>
               <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
                 <%= image_tag "icon_camera", style: "height: 70%; width: auto;" %>
               </div>

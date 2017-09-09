@@ -6,7 +6,11 @@ $('body').append(
 );
 var alertModal = $('#successful-update-profile-modal');
 alertModal.modal();
-setTimeout(function() {alertModal.modal('hide')}, 1500);
+setTimeout( function() {
+    alertModal.modal('hide')
+}, 1500);
 alertModal.on('hide.bs.modal', function() {
     alertModal.remove();
 });
+//mapage#index로 회귀
+window.location.assign("<%= mypage_index_url %>");

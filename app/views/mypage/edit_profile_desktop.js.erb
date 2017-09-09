@@ -8,6 +8,20 @@ $('body').on('click', function (e) {
     $target = $('#edit-profile-modal');
     $target.remove();
 }).find('#mypage-edit-profile').on('click', function (e) {
-    console.log("triggered");
     e.stopPropagation();
 });
+
+//change profile image event
+$(':file').change(function () {
+    updateImg(this);
+});
+
+function updateImg(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#upload-profile-img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

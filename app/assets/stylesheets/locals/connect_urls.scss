@@ -87,7 +87,8 @@
 
 #connect-new-mobile {
   .input-container {
-    @include size(100%, 24rem);
+    @include size(100%, auto);
+    min-height: 24rem;
     background: $gray-opacity;
     @include border-radius($br-min-m);
   }
@@ -221,7 +222,7 @@
     border: 1px solid $white;
     @include border-radius($br-min);
     .input-field {
-      width: 100%;
+      @include size(100%, auto);
       min-height: 12rem;
       background: none;
       border: none;

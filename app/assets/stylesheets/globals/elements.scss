@@ -40,6 +40,10 @@ input:-ms-input-placeholder {
   background: transparent;
 }
 
+textarea {
+  resize: none;
+}
+
 ._no-p-margin {
   p { margin: 0; }
 }
