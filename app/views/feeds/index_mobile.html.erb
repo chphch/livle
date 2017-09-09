@@ -1,12 +1,12 @@
 <div id="feeds-index-mobile">
   <div class="_hcenter-positioner">
-    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    <div class="_logo-background _hcenter-positioner">
+      <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    </div>
   </div>
 
   <div class="_cards-group-container-m" id="feeds-card-list-m">
-    <% @feeds.each do |feed| %>
-        <%= render partial: 'index_card_mobile', locals: {feed: feed} %>
-    <% end %>
+    <%= render partial: 'index_card_mobile', collection: @feeds, as: :feed %>
   </div>
 
   <div class="_display-none" id="infinite-scrolling">

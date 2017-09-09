@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('._navbar-login-button').on('click', function () {
         $('body').append(
             '<div id="login-modal" class="modal _hcenter-positioner">\
-                <div class="_desktop-modal">\
+                <div class="_desktop-session-container">\
                     \
                 </div>\
             </div>'

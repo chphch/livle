@@ -1,0 +1,9 @@
+$('body').append(
+    '<div id="done-modal" class="modal">\
+      <%= j render partial: "partial_views/check_modal_mobile", locals: {text: "전송이 완료되었습니다."} %>\
+    </div>'
+);
+$('#done-modal').modal();
+window.setTimeout(function() {
+    window.location = "<%= connect_urls_path %>";
+}, 1000);

@@ -4,6 +4,7 @@ class MypageController < ApplicationController
   def index
     @title = current_user.nickname
     @like_size = current_user.feed_likes.size
+    @enable_footer = true #for desktop
     render_by_device
   end
 

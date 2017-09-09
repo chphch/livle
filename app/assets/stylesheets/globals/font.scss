@@ -1,5 +1,16 @@
 @import "sizes";
 
+@font-face {
+  font-family: 'TmonMonsori';
+  src: font-url('TmonMonsori.ttf') format('truetype'),
+  font-url('TmonMonsori.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//########################
+//#        BOTH          #
+//########################
 body, input {
   font-family: 'Nanum Square', 'Roboto', sans-serif !important;
 }
@@ -7,6 +18,10 @@ body, input {
 a {
   text-decoration: none !important;
   color: inherit !important;
+}
+
+._f-family-tmon {
+  font-family: 'TmonMonsori', 'Roboto';
 }
 
 //########################
@@ -44,6 +59,12 @@ a {
 //########################
 //#       DESKTOP        #
 //########################
+._fs-connect {
+  font-size: 4.5rem;
+}
+._fs-d-day {
+  font-size: 4rem;
+}
 ._fs-title {
   font-size: 2rem;
 }
@@ -68,4 +89,7 @@ a {
 }
 ._f-letter {
   letter-spacing: .3rem;
+}
+._f-letter-narrow {
+  letter-spacing: .1rem;
 }

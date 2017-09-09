@@ -1,5 +1,5 @@
 <div id="upcoming-index-mobile">
-  <div class="_hcenter-positioner">
+  <div class="_logo-background _hcenter-positioner">
     <%= image_tag "logo_livle", class: "_logo-container-m" %>
   </div>
 
@@ -7,7 +7,7 @@
     <%= render partial: "index_card_mobile", collection: @upcomings, as: :upcoming %>
   </div>
 
-  <div id="infinite-scrolling">
+  <div id="infinite-scrolling" class="_display-none">
     <%= will_paginate @upcomings %>
   </div>
 </div>

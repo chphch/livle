@@ -21,7 +21,6 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
-    @related_feeds = @feed.related_feeds
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true

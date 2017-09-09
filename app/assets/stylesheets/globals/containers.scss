@@ -83,6 +83,13 @@
   background-color: $black;
 }
 
+._logo-background {
+  @include background-gradient(top, $black 40%, rgba(18, 18, 18, 0) 100%);
+  width: 100%;
+  padding: 4% 0 8%;
+  z-index: $z-front;
+}
+
 ._modal-background {
   position: absolute;
   @include position(0);
@@ -107,11 +114,12 @@
 //containers
 ._logo-container-m {
   @include size(auto, $logo-height-m);
-  margin: 4% 0 2%;
 }
 
 ._cards-group-container-m {
-  padding: $list-container-pv-m 0;
+  margin: -4% 0 0;
+  padding: 0 0 $list-container-pv-m;
+  z-index: $z-back;
   ._card-container-m {
     padding: 0 1% 1%;
   }
@@ -189,7 +197,7 @@
   padding: 6%;
   background: $black;
   ._comment-edit-container-m {
-    height: 13rem;
+    height: auto;
     padding: 2% 0 2% 2%;
     .input-container {
       @include size(100%);
@@ -336,11 +344,30 @@
     background: $dark-dark-gray;
     border: none;
     @include border-radius($br-min);
+    ._comment-edit-container {
+      display: none;
+    }
+    ._comment-icon {
+      @include size(auto, 1.8rem);
+    }
+
+    &:hover {
+      ._comment-edit-container {
+        display: block;
+      }
+    }
   }
+}
+
+._desktop-session-container {
+  position: relative;
+  width: 36rem;
 }
 
 //modals
 ._desktop-modal {
-  position: relative;
-  width: 36rem;
+  @include size(32rem, auto);
+  background: $white;
+  padding: 2rem;
+  @include border-radius($br-min);
 }
