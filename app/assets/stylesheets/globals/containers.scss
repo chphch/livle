@@ -344,6 +344,18 @@
     background: $dark-dark-gray;
     border: none;
     @include border-radius($br-min);
+    ._comment-edit-container {
+      display: none;
+    }
+    ._comment-icon {
+      @include size(auto, 1.8rem);
+    }
+
+    &:hover {
+      ._comment-edit-container {
+        display: block;
+      }
+    }
   }
 }
 

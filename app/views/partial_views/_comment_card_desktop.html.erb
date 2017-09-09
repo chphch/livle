@@ -6,7 +6,14 @@
   <div class="_comment-created-time-container">
     <p class="_fs-5 _light-gray"><%= comment.created_time %></p>
   </div>
-  <div class="_comment-content-container _flex-grow-1">
-    <%= simple_format comment.content, class: "_fs-4 _white" %>
+  <div class="_comment-content-container _flex-grow-1 _row-positioner">
+    <%= simple_format comment.content, class: "_fs-4 _white _flex-grow-1" %>
+    <% if user_signed_in? %>
+        <% if comment.user.id == current_user.id %>
+            <div class="_comment-edit-container">
+              <%= image_tag "icon_menu", class: "_comment-icon" %>
+            </div>
+        <% end %>
+    <% end %>
   </div>
 </div>
