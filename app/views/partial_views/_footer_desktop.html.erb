@@ -19,7 +19,11 @@
   </div>
 
   <div class="_legal-term-container _vcenter-positioner _no-p-margin">
-    <div class="_fs-4 _white _text-margin-right">Term of Service</div>
-    <div class="_fs-4 _white">Privacy Policy</div>
+    <%= link_to mypage_terms_of_use_path do %>
+        <div class="_fs-4 _white _text-margin-right">Term of Service</div>
+    <% end %>
+    <%= link_to mypage_privacy_policy_path do %>
+        <div class="_fs-4 _white">Privacy Policy</div>
+    <% end %>
   </div>
 </footer>
