@@ -372,6 +372,7 @@
 ._desktop-modal {
   width: 32rem;
   min-height: 36rem;
+  max-height: 52rem;
   background: $white;
   padding: 2rem;
   @include border-radius($br-min);
@@ -390,6 +391,9 @@
     @include border-radius($br-min);
     &:not(:first-child) {
       margin: 0 0 0 4%;
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
 }

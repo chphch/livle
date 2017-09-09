@@ -1,7 +1,7 @@
 $('body').append(
-    '<div id="successful-login-modal" class="modal">\
-<%= j render partial: "devise/sessions/successful_login_modal_#{@device_suffix}", locals: {message: flash[:notice]} %>\
-</body>'
+    '<div id="successful-login-modal" class="modal">' +
+      '<%= j render partial: "devise/sessions/successful_login_modal_#{@device_suffix}", locals: {message: flash[:notice]} %>' +
+    '</div>'
 );
 var successfulLoginModal = $('#successful-login-modal');
 successfulLoginModal.modal();
@@ -12,6 +12,8 @@ successfulLoginModal.on('hide.bs.modal', function() {
         var loginModal = $('#login-modal');
         loginModal.modal('hide');
         loginModal.remove();
+        if('<%= @device_suffix %>' === 'desktop')
+            window.location = "<%= feeds_path %>";
     } else {
         window.location = "<%= mypage_index_path %>";
     }
