@@ -46,14 +46,5 @@
               '</div>'
           );
       });
-
-      //works like modal
-      $('body').on('click', function (e) {
-          if(!$(e.target).hasClass('._desktop-modal')) {
-              $('#footer-modal').remove();
-          }
-      }).find('._desktop-modal, ._describe-container').on('click', function (e) {
-          e.stopPropagation();
-      });
   </script>
 </footer>
