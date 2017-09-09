@@ -375,6 +375,7 @@
   background: $white;
   padding: 2rem;
   @include border-radius($br-min);
+  z-index: $z-most-important;
   .modal-icon {
     @include size(auto, 6rem);
     margin: 0 0 4rem;

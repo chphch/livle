@@ -1,6 +1,6 @@
 <footer class="_footer">
   <div class="_sns-container _hcenter-positioner">
-    <%= link_to 'https://m.me/Livlemusic' do %>
+    <%= link_to 'https://www.facebook.com/Livlemusic/' do %>
         <div class="_logo-container _vcenter-positioner">
           <%= image_tag "logo_facebook", class: "_logo-image" %>
         </div>
@@ -49,7 +49,9 @@
 
       //works like modal
       $('body').on('click', function (e) {
-          $('#footer-modal').remove();
+          if(!$(e.target).hasClass('._desktop-modal')) {
+              $('#footer-modal').remove();
+          }
       }).find('._desktop-modal, ._describe-container').on('click', function (e) {
           e.stopPropagation();
       });
