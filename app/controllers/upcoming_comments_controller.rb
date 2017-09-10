@@ -10,4 +10,8 @@ class UpcomingCommentsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    #TODO: 댓글 삭제기능 추가해야함!
+  end
 end

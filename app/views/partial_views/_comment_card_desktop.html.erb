@@ -16,4 +16,24 @@
         <% end %>
     <% end %>
   </div>
+  <script>
+      $button = $('._comment-edit-container');
+      $button.on('click', function () {
+          $button.append(
+              '<div class="_comment-edit-modal _desktop-small-modal">\n' +
+                '<div class="_column-positioner _vcenter-positioner">\n' +
+                  //TODO: 댓글 삭제기능 추가해야함!
+                  '<%= link_to model.to_s == 'FeedComment' ? "/feeds/#{parent_id}/feed_comments/#{comment.id}" : "/upcomings/#{parent_id}/upcoming_comments/#{comment.id}",
+                    method: :delete do %>' +
+                      '<p class="_fs-3 _black">삭제</p>' +
+                  '<% end %>' +
+                '</div>' +
+              '</div>'
+          );
+      });
+
+      $('._comment-container, ._comment-edit-modal').mouseleave(function () {
+          $('._comment-edit-modal').remove();
+      });
+  </script>
 </div>

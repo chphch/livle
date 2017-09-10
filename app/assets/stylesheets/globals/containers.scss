@@ -349,15 +349,24 @@
     border: none;
     @include border-radius($br-min);
     ._comment-edit-container {
+      position: relative;
       display: none;
     }
     ._comment-icon {
       @include size(auto, 1.8rem);
     }
+    ._comment-edit-modal {
+      position: absolute;
+      top: 3rem;
+      right: 0;
+    }
+  }
 
-    &:hover {
-      ._comment-edit-container {
-        display: block;
+  &:hover {
+    ._comment-edit-container {
+      display: block;
+      &:hover {
+        cursor: pointer;
       }
     }
   }
@@ -396,4 +405,12 @@
       cursor: pointer;
     }
   }
+}
+
+._desktop-small-modal {
+  @include size(12rem, auto);
+  background: $white;
+  padding: 2rem;
+  @include border-radius($br-min);
+  z-index: $z-most-important;
 }

@@ -23,5 +23,6 @@
 <% end %>
 
 <div class="_comments-group">
-  <%= render partial: "/partial_views/comment_card_desktop", collection: comments.order('created_at DESC'), as: :comment %>
+  <%= render partial: "/partial_views/comment_card_desktop", collection: comments.order('created_at DESC'), as: :comment,
+    locals: {model: model, parent_id: parent_id} %>
 </div>
