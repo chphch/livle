@@ -10,21 +10,21 @@
     <%= simple_format comment.content, class: "_fs-4 _white _flex-grow-1" %>
     <% if user_signed_in? %>
         <% if comment.user.id == current_user.id %>
-            <div class="_comment-edit-container">
+            <div class="_comment-edit-container" id="comment-edit-<%= comment.id %>">
               <%= image_tag "icon_menu", class: "_comment-icon" %>
             </div>
         <% end %>
     <% end %>
   </div>
   <script>
-      $button = $('._comment-edit-container');
+      $button = $('#comment-edit-<%= comment.id %>');
       $button.on('click', function () {
-          $button.append(
+          //TODO: 댓글 삭제기능 추가해야함!
+          $('._comment-edit-container').append(
               '<div class="_comment-edit-modal _desktop-small-modal">\n' +
                 '<div class="_column-positioner _vcenter-positioner">\n' +
-                  //TODO: 댓글 삭제기능 추가해야함!
-                  '<%= link_to model.to_s == 'FeedComment' ? "/feeds/#{parent_id}/feed_comments/#{comment.id}" : "/upcomings/#{parent_id}/upcoming_comments/#{comment.id}",
-                    method: :delete do %>' +
+                  '<%= link_to comment.model.to_s == 'FeedComment' ? "/feeds/#{comment.parent_id}/feed_comments/#{comment.id}" :
+                   "/upcomings/#{comment.parent_id}/upcoming_comments/#{comment.id}", method: :delete do %>' +
                       '<p class="_fs-3 _black">삭제</p>' +
                   '<% end %>' +
                 '</div>' +

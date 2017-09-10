@@ -173,7 +173,7 @@
   .related-video-background {
     position: absolute;
     @include position(2rem);
-    z-index: $z-back;
+    z-index: $z-burrow;
     overflow: hidden;
     border: none;
     @include border-radius($br-image);

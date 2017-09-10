@@ -21,4 +21,12 @@ class UpcomingComment < ApplicationRecord
       return term.to_s+"분 전"
     end
   end
+
+  def model
+    return UpcomingComment
+  end
+
+  def parent_id
+    return self.upcoming.id
+  end
 end

@@ -410,7 +410,7 @@
 ._desktop-small-modal {
   @include size(12rem, auto);
   background: $white;
-  padding: 2rem;
+  padding: 1rem;
   @include border-radius($br-min);
   z-index: $z-most-important;
 }
