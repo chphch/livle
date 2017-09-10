@@ -181,3 +181,6 @@ app/views/artists/
 app/views/comment_feeds/
 app/views/comment_upcomings/
 public/uploads/
+
+Gemfile.lock
+db/schema.rb
