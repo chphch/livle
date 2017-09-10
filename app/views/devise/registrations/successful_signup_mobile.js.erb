@@ -1,0 +1,13 @@
+$('body').append(
+    '<div id="successful-signup-modal" class="modal">' +
+      '<%= j render partial: "partial_views/check_modal_mobile", locals: { text: "라이블의 가족이 되셨습니다!" } %>' +
+    '</div>'
+);
+
+var successfulSignupModal = $('#successful-signup-modal');
+successfulSignupModal.modal();
+setTimeout(function() {successfulSignupModal.modal('hide')}, 1500);
+successfulSignupModal.on('hide.bs.modal', function() {
+    successfulSignupModal.remove();
+    window.location = "<%= mypage_index_path %>";
+});
