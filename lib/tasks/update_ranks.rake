@@ -49,7 +49,7 @@ namespace :update_ranks do
 
       upcoming.artists.each do |artist|
         artist.feeds.each do |feed|
-          feeds_count = feed_count + 1
+          feeds_count = feeds_count + 1
           popularity = popularity + feed.rank
         end
       end
