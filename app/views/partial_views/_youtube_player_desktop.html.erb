@@ -1,0 +1,37 @@
+<% player_id ||= 0 %>
+<% player_display_none = defined?(player_display_none) && player_display_none ? "_display-none" : "" %>
+
+<!--TODO remove span tag, the top div class must be show-video-container, move all elements in there -->
+
+<span class="show-video-container-js <%= player_display_none %>" data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
+  <div class="_video-player">
+    <iframe id="youtube-player-<%= player_id %>" type="text/html" src="https://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1"
+            webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+  </div>
+
+  <div class="text-container _vcenter-positioner">
+    <div class="_flex-grow-1">
+      <p class="_fs-2 _white">
+        <!--title-->
+        <%= feed.title %>
+        <% unless feed.artists.size == 0 %> - <% end %>
+        <!-- artist.name -->
+        <% feed.artists.each_with_index do |artist, index| %>
+            <% unless index == 0 %>,&nbsp<% end %>
+            <%= artist.name %>
+        <% end %>
+      </p>
+    </div>
+
+    <!-- TODO: 좋아요, 조회수, 공유수 video별로 업데이트 -->
+    <div class="_video-info-icon-container _vcenter-positioner">
+      <%= image_tag "icon_view_white", class: "_video-info-icon _thumbnail-elem-margin" %>
+      <p class="_fs-5 _white">1000</p>
+      <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
+      <p id="like-count" class="_fs-5 _white">1000</p>
+      <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
+      <p class="_fs-5 _white">1000</p>
+    </div>
+  </div>
+</span>

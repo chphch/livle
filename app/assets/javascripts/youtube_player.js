@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // create player object list when iframeAPI is ready
     window.onYouTubeIframeAPIReady = function() {
-        $('.show-video-container').each(function() {
+        $('.show-video-container-js').each(function() {
             var id = $(this).data("playerId");
             var player = new YT.Player('youtube-player-' + id, {
                 events: {
@@ -25,14 +25,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
             player.filter = $(this).find('.youtube-player-filter');
             player.remainingTimer = $(this).find('.remaining-timer');
             player.progressBar = $(this).find('#progress-bar-' + id);
-            player.progressBarController = new ProgressBar.Circle('#progress-bar-' + id, {
-                strokeWidth: 4,
-                easing: 'easeInOut',
-                color: '#9BFFCC',
-                trailColor: 'rgba(256, 256, 256, 0.33)',
-                trailWidth: 4,
-                svgStyle: null
-            });
+            if (player.progressBar.length) {
+                player.progressBarController = new ProgressBar.Circle('#progress-bar-' + id, {
+                    strokeWidth: 4,
+                    easing: 'easeInOut',
+                    color: '#9BFFCC',
+                    trailColor: 'rgba(256, 256, 256, 0.33)',
+                    trailWidth: 4,
+                    svgStyle: null
+                });
+            }
             players.push(player);
         });
     };
@@ -45,7 +47,9 @@ var readyPlayerSize = 0;
 function onPlayerReady(event) {
     player = event.target;
     updateTimerDisplay(player);
-    updateProgressBar(player);
+    if (player.progressBar.length) {
+        updateProgressBar(player);
+    }
     if (player.autoplay) {
         player.playVideo();
     }
@@ -99,6 +103,7 @@ function onPlaybackQualityChange(event) {
 }
 
 // after all players are ready - set click listeners
+// TODO how to move these methods into onPlayerReady()
 function onAllPlayerReady() {
     players.forEach(function(player){
         player.playButton.on("click", function() {
@@ -171,7 +176,9 @@ function onClickContainer(player) {
 function showFilter(player) {
     player.filter.show();
     player.playButton.show();
-    player.progressBar.show();
+    if (player.progressBar) {
+        player.progressBar.show();
+    }
     player.remainingTimer.show();
     player.qualityButton.show();
     player.fullScreenButton.show();
@@ -179,7 +186,9 @@ function showFilter(player) {
 function hideFilter(player) {
     player.filter.hide();
     player.playButton.hide();
-    player.progressBar.hide();
+    if (player.progressBar) {
+        player.progressBar.hide();
+    }
     player.remainingTimer.hide();
     player.qualityButton.hide();
     player.fullScreenButton.hide();
