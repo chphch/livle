@@ -1,17 +1,4 @@
-<% if user_signed_in? %>
-$('._comments-group-m').append(
-    '<div class="_vcenter-positioner">\n' +
-    '  <div class="_profile-container-m">\n' +
-    '    <%= image_tag @comment.user.profile_img, class: "_profile-img" %>\n' +
-    '  </div>\n' +
-    '  <p class="_fs-4-mobile _white _icon-text-margin-m"><%= @comment.user.nickname %></p>\n' +
-    '  <p class="_fs-5-mobile _light-gray _icon-text-margin-m"><%= @comment.created_time %></p>\n' +
-    '</div>\n' +
-    '<div class="_comment-content-container-m">\n' +
-    '  <p class="_fs-5-mobile _white">\n' +
-    '    <%= @comment.content %>\n' +
-    '  </p>\n' +
-    '</div>'
+$('._comments-group-m').prepend(
+    '<%= j render partial: "partial_views/comment_card_mobile", locals: {comment: @comment} %>'
 );
 $('.input-container .input-text').val('');
-<% end %>

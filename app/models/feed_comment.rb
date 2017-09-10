@@ -13,12 +13,12 @@ class FeedComment < ApplicationRecord
     elsif term > 59
       hour = term/60
       if hour < 24
-        return hour.to_s+"h"
+        return hour.to_s+"시간 전"
       else
-        return (hour/24).to_s+"일"
+        return (hour/24).to_s+"일 전"
       end
     else
-      return term.to_s+"m"
+      return term.to_s+"분 전"
     end
   end
 end

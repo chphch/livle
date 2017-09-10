@@ -20,6 +20,8 @@
 /node_modules
 /yarn-error.log
 
+/public/uploads/*
+
 .byebug_history
 
 # Ignore application configuration
@@ -174,3 +176,8 @@ fabric.properties
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+app/views/artist_upcomings/
+app/views/artists/
+app/views/comment_feeds/
+app/views/comment_upcomings/
+public/uploads/

@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
     @officials = official_feeds.paginate(page: params[:page], per_page: 4) #for desktop
     @commons = common_feeds.paginate(page: params[:page], per_page: 14) #for desktop
     @enable_transparent = true #for desktop
+    @enable_footer = true #for desktop
 
     respond_to do |format|
       format.html { render_by_device }
@@ -20,7 +21,6 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @feed.increase_count_view
-    @related_feeds = @feed.related_feeds
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true
