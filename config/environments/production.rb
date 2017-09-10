@@ -73,13 +73,13 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
-      domain: ENV["Gmail_Domain"],
-      authentication: "plain",
-      enable_starttls_auto: true,
-      user_name: ENV["Gmail_Username"],
-      password: ENV["Gmail_Password"]
+    address: "email-smtp.us-west-2.amazonaws.com",
+    port: 587,
+    domain: 'livle.co.kr',
+    authentication: :login,
+    enable_starttls_auto: true,
+    user_name: ENV["AWS_SES_KEY"],
+    password: ENV["AWS_SES_SECRET"]
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
