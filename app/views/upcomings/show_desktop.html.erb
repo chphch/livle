@@ -58,13 +58,11 @@
 
         <!--line up-->
         <div class="line-up-container _vcenter-positioner">
-          <% @upcoming.artists.each do |artist| %>
-              <div class="line-up-card">
-                <%= image_tag artist.image_url, class: "_profile-img-square" %>
-                <div class="_full-container _hcenter-positioner _vcenter-positioner">
-                  <p class="_fs-3 _white"><%= artist.name %></p>
-                </div>
-              </div>
+          <% if @main_video %>
+              <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: @main_video_id, image_url: @main_video_image_url, name: "Main Video" } %>
+          <% end %>
+          <% @artists.each do |artist| %>
+              <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: artist.popular_feed_artist.id, image_url: artist.image_url , name: artist.name } %>
           <% end %>
         </div>
 

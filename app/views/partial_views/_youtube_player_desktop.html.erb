@@ -24,14 +24,15 @@
       </p>
     </div>
 
-    <!-- TODO: 좋아요, 조회수, 공유수 video별로 업데이트 -->
+    <% unless defined?(no_thumbnail_button) %>
     <div class="_video-info-icon-container _vcenter-positioner">
       <%= image_tag "icon_view_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-      <p class="_fs-5 _white">1000</p>
+      <p class="_fs-5 _white"><%= feed.count_view %></p>
       <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
-      <p id="like-count" class="_fs-5 _white">1000</p>
+      <p id="like-count" class="_fs-5 _white"><%= feed.feed_likes.size %></p>
       <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-      <p class="_fs-5 _white">1000</p>
+      <p class="_fs-5 _white"><%= feed.count_share %></p>
     </div>
+    <% end %>
   </div>
 </span>
