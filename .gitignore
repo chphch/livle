@@ -176,9 +176,11 @@ fabric.properties
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-.elasticbeanstalk/
 app/views/artist_upcomings/
 app/views/artists/
 app/views/comment_feeds/
 app/views/comment_upcomings/
 public/uploads/
+
+Gemfile.lock
+db/schema.rb

@@ -21,6 +21,15 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /users/sign_in
   def create
+    user = User.where(email: params[:user][:email]).take
+    if user && !user.confirmed_at
+      # TODO 모달을 하든가 합시다
+      render js: "$('#login-error-message').text('이메일 인증해주세요');"
+      # 메일 인증 안된 경우 아래에서 401 status error 떠서 그전에 해줘야함
+      # warden.authenticate 코드가 어디있는 메서드인지 못찾겠음
+      return
+    end
+
     self.resource = warden.authenticate(auth_options)
     if resource && resource.active_for_authentication?
       set_flash_message!(:notice, :signed_in)

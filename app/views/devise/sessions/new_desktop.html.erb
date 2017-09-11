@@ -74,7 +74,7 @@
                     <p class="_fs-3 _white">회원가입</p>
                 <% end %>
                 <div class="button-margin"></div>
-                <%= f.submit "로그인", class: "button-width _submit-button _fs-3 _white" %>
+                <%= f.submit "로그인", class: "button-width _submit-button _fs-3 _white", id: 'sign-in' %>
               </div>
             </div>
         <% end %>
@@ -85,3 +85,11 @@
 
 <%= render partial: 'onclick_facebook_button', locals: {url: user_facebook_omniauth_authorize_path, remote: true} %>
 
+<script>
+// Press enter to submit
+$('input').keydown(function(e) {
+  if (e.keyCode == 13) {
+    $('#sign-in').trigger('click');
+  }
+});
+</script>
