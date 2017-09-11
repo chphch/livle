@@ -3,77 +3,133 @@
 
 <div class="admin-desktop-container">
   <p class="black-desktop-title">Upcoming Lists</p>
-  <div class="row">
-    <div class="col-xs-1">
-      <p class="black-desktop-content">index</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Title</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Place</p>
-    </div>
-    <div class="col-xs-1">
-      <p class="black-desktop-content">Artists</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Youtube ID</p>
-    </div>
-    <div class="col-xs-1 text-center">
-      <p class="black-desktop-content">Ticket</p>
-    </div>
-    <div class="col-xs-3"></div>
-  </div>
+  <table>
+    <tr>
+      <td>
+        <p class="black-desktop-content">index</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Title</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Place</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Artists</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Youtube ID</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Ticket</p>
+      </td>
+      <td>
+      </td>
+    </tr>
 
-  <% @upcomings.each do |upcoming| %>
-      <div class="admin-desktop-content-box">
-        <div class="row">
-          <div class="col-xs-1">
+    <% @upcomings.each do |upcoming| %>
+      <tr>
+        <td>
             <p class="black-desktop-content"><%= upcoming.id %></p>
-          </div>
-          <%= form_tag upcoming_path(upcoming.id), method: :patch do %>
-              <div class="col-xs-2 form-group">
-                <p class="black-desktop-content">
-                  <%= text_field_tag(:title, "#{upcoming.title}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-2">
-                <p class="black-desktop-content">
-                  <%= text_field_tag(:place, "#{upcoming.place}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-1">
-                <p class="black-desktop-content">
-                  <% upcoming.artists.each do |artist| %>
-                      <%= artist.name %>,
-                  <% end %>
-                </p>
-              </div>
-              <div class="col-xs-2">
-                <p class="black-desktop-content">
-                  <%= text_field_tag(:main_youtube_url, "#{upcoming.main_youtube_url}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-1 text-center">
-                <p class="black-desktop-content" style="overflow-x: scroll">
-                  <%= text_field_tag(:ticket_url, "#{upcoming.ticket_url}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-1">
-                <%= link_to "/upcomings/#{upcoming.id}" do %>
-                    <button type="button" class="btn btn-outline-primary">바로가기</button>
+        </td>
+          <%= form_for upcoming, method: :patch do |f| %>
+            <td>
+              <p class="black-desktop-content">
+              <%= f.text_field :title %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%= f.text_field :place %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <ul>
+                <% upcoming.upcoming_artists.each do |ua| %>
+                  <li><%= ua.artist.name if ua.artist %> <%=link_to ua, method: :delete do %>(Click to remove)<%end%></li>
                 <% end %>
-              </div>
-              <div class="col-xs-1 text-center">
-                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
-              </div>
+                <li style="display:none">
+                  <%= text_field_tag :artist_name, nil, class: 'artist_name', placeholder: 'Click artist to submit', data: {id: upcoming.id} %>
+                </li>
+                <button class="new-upcoming_artist">Click to add</button>
+              </ul>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%= f.text_field :main_youtube_url %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content" style="overflow-x: scroll">
+              <ul>
+                <% upcoming.upcoming_ticket_urls.each do |t| %>
+                  <li><%=t.provider%> : <%=t.ticket_url%></li>
+                <% end %>
+              </ul>
+              </p>
+            </td>
+            <td>
+              <%= link_to "/upcomings/#{upcoming.id}" do %>
+                <button type="button" class="btn btn-outline-primary">바로가기</button>
+              <% end %>
+            </td>
+            <td>
+              <%= f.submit '수정' %>
+            </td>
           <% end %>
-          <div class="col-xs-1 text-center">
-            <%= link_to upcoming_path(upcoming.id), method: :destroy do %>
-                <button type="button" class="btn btn-outline-primary">삭제</button>
+          <td>
+            <%= link_to upcoming_path(upcoming.id), method: :delete do %>
+              <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
             <% end %>
-          </div>
-        </div>
-      </div>
-  <% end %>
+            <!-- Nested form이 불가능해서 여기다 빼놓음 -->
+            <%= form_tag upcoming_upcoming_artists_path(upcoming.id), data: { id: upcoming.id }, method: :post do %>
+              <%= hidden_field_tag :artist_id, nil, data: { id: upcoming.id } %>
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+      <script>
+$(".new-upcoming_artist").click(function(e) {
+  e.preventDefault();
+  var $new = $(this).prev();
+  $new.toggle();
+  $(this).text( $new.is(":visible") ? "Click to cancel" : "Click to add" );
+});
+
+$('.artist_name').keypress(function() {
+  $.ajax({
+    url: '/artists/autocomplete',
+    data: {
+      key: $(this).val()
+    },
+    context: this,
+    success: function(data) {
+
+      // TODO: 이상하게 다 지워야만 창이 나옴 왜그럴까
+      $(this).autocomplete({
+        //UI: .ui-autocomplete
+        minLength: 0,
+        source: data,
+        select: function(event, ui) {
+          console.log(ui);
+          console.log(ui.item.id);
+          var id = $(this).data('id');
+          $('input:hidden[data-id=' + id + ']').val(ui.item.id);
+          $('form[data-id=' + id + ']').submit();
+          return false;
+        }
+      }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+          .append( "<div><img src='" + item.image_url.url + "' style='width: 50px; height: 50px'/>" + item.name + "</div>" )
+          .appendTo( ul );
+      };
+
+    }
+  });
+});
+      </script>
