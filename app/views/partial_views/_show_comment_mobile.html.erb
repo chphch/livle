@@ -9,7 +9,8 @@
           <%= f.hidden_field :model_id, value: parent_id %>
           <%= f.hidden_field :user_id, value: user_signed_in? ? current_user.id : -1 %>
           <div class="input-container _vcenter-positioner">
-            <%= f.text_area :content, class: "autosize input-text _fs-4-mobile _white _flex-grow-1", rows: 1 , placeholder: "댓글을 입력해주세요!" %>
+            <%= f.text_area :content, class: "autosize input-text _fs-4-mobile _white _flex-grow-1", rows: 1 ,
+                            placeholder: user_signed_in? ? "댓글을 입력해주세요!" : "로그인 후 작성할 수 있습니다" %>
             <div class="submit-container">
               <%= f.submit "게시", class: "_no-background-border _fs-4-mobile _light-green _f-letter-mobile" %>
             </div>

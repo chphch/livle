@@ -17,9 +17,9 @@
     <% end %>
   </div>
   <script>
+      //TODO: js.erb나 js 파일로 옮기기!
       $button = $('#comment-edit-<%= comment.id %>');
       $button.on('click', function () {
-          //TODO: 댓글 삭제기능 추가해야함!
           $('._comment-edit-container').append(
               '<div class="_comment-edit-modal _desktop-small-modal">\n' +
                 '<div class="_column-positioner _vcenter-positioner">\n' +
