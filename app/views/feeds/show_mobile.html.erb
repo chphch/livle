@@ -2,7 +2,7 @@
   <%= render partial: '/partial_views/youtube_player_mobile', locals: { feed: @feed, artists: @feed.artists, autoplay: true } %>
 
   <!-- back button -->
-  <%= link_to :back, class: "_link-back-container-m" do %>
+  <%= link_to :back, class: "_link-back-container-m", id: 'back' do %>
       <%= image_tag "icon_back", style: "width: 4rem; height: auto;" %>
   <% end %>
 
@@ -69,3 +69,14 @@
     <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @feed} %>
   </div>
 </div>
+<script>
+$("#back").click(function(e) {
+  e.preventDefault();
+  if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
+    window.history.back();
+  }
+  else {
+    window.location = '/feeds';
+  }
+});
+</script>

@@ -3,73 +3,135 @@
 
 <div class="admin-desktop-container">
   <p class="black-desktop-title">Feed Lists</p>
-  <div class="row">
-    <div class="col-xs-1">
-      <p class="black-desktop-content">index</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Title</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Artists</p>
-    </div>
-    <div class="col-xs-1">
-      <p class="black-desktop-content">User</p>
-    </div>
-    <div class="col-xs-2">
-      <p class="black-desktop-content">Youtube ID</p>
-    </div>
-    <div class="col-xs-1 text-center">
-      <p class="black-desktop-content">Rank</p>
-    </div>
-    <div class="col-xs-3"></div>
-  </div>
+  <table>
+    <tr>
+      <th>
+        <p class="black-desktop-content">index</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">Title</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">Artists</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">User</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">Youtube ID</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">계산점수</p>
+      </th>
+      <th>
+        <p class="black-desktop-content">주관적점수</p>
+      </th>
+      <th>
+      </th>
+      <th>
+      </th>
+    </tr>
 
-  <% @feeds.each do |feed| %>
-      <div class="admin-desktop-content-box">
-        <div class="row">
-          <div class="col-xs-1">
-            <p class="black-desktop-content"><%= feed.id %></p>
-          </div>
-          <%= form_tag feed_path(feed.id), method: :patch do %>
-              <div class="col-xs-2 form-group">
-                <p class="black-desktop-content">
-                  <%= text_field_tag(:title, "#{feed.title}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-2">
-                <p class="black-desktop-content">
-                  <% feed.artists.each do |artist| %>
-                      <%= artist.name %>,
-                  <% end %>
-                </p>
-              </div>
-              <div class="col-xs-1">
-                <p class="black-desktop-content"><%= feed.user.nickname %></p>
-              </div>
-              <div class="col-xs-2">
-                <p class="black-desktop-content">
-                  <%= text_field_tag(:youtube_url, "#{feed.youtube_url}", class: "form-control") %>
-                </p>
-              </div>
-              <div class="col-xs-1 text-center">
-                <p class="black-desktop-content" style="overflow-x: scroll"><%= feed.rank %></p>
-              </div>
-              <div class="col-xs-1">
-                <%= link_to "/feeds/#{feed.id}" do %>
-                    <button type="button" class="btn btn-outline-primary">바로가기</button>
-                <% end %>
-              </div>
-              <div class="col-xs-1 text-center">
-                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
-              </div>
-          <% end %>
-          <div class="col-xs-1 text-center">
-            <%= link_to feed_path(feed.id), method: :destroy do %>
-                <button type="button" class="btn btn-outline-primary">삭제</button>
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td>
+          <p class="black-desktop-content"><%= feed.id %></p>
+        </td>
+        <%= form_for feed, method: :patch do |f| %>
+          <td>
+            <p class="black-desktop-content">
+            <%= f.text_field :title %>
+            </p>
+          </td>
+          <td>
+            <p class="black-desktop-content">
+            <ul>
+            <% feed.feed_artists.each do |fa| %>
+              <li><%= fa.artist.name if fa.artist %> <%=link_to fa, method: :delete do %>(Click to remove)<%end%></li>
             <% end %>
-          </div>
-        </div>
-      </div>
-  <% end %>
+            <li style="display:none">
+              <%= text_field_tag :artist_name, nil, class: 'artist_name', placeholder: 'Click artist to submit', data: {id: feed.id} %>
+            </li>
+            <button class="new-feed_artist">Click to add</button>
+            </ul>
+            </p>
+          </td>
+          <td>
+            <p class="black-desktop-content"><%= feed.user.nickname %></p>
+          </td>
+          <td>
+            <p class="black-desktop-content">
+            <%=f.text_field :youtube_url %>
+            </p>
+          </td>
+          <td>
+            <p class="black-desktop-content" style="overflow-x: scroll"><%= feed.rank %></p>
+          </td>
+          <td>
+            <%=f.select :valuation, 1..5 %>
+          </td>
+          <td>
+            <%= link_to "/feeds/#{feed.id}" do %>
+              <button type="button" class="btn btn-outline-primary">바로가기</button>
+            <% end %>
+          </td>
+          <td>
+            <%= submit_tag("수정", class: "btn btn-outline-primary") %>
+          </td>
+        <% end %>
+        <td>
+          <%= link_to feed_path(feed.id), method: :delete do %>
+            <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
+          <% end %>
+          <!-- Nested form이 불가능해서 여기다 빼놓음 -->
+          <%= form_tag feed_feed_artists_path(feed.id), data: { id: feed.id }, method: :post do %>
+            <%= hidden_field_tag :artist_id, nil, data: { id: feed.id } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+      <script>
+$(".new-feed_artist").click(function(e) {
+  e.preventDefault();
+  var $new = $(this).prev();
+  $new.toggle();
+  $(this).text( $new.is(":visible") ? "Click to cancel" : "Click to add" );
+});
+
+$('.artist_name').keypress(function() {
+  $.ajax({
+    url: '/artists/autocomplete',
+    data: {
+      key: $(this).val()
+    },
+    context: this,
+    success: function(data) {
+
+      names = data.map(function(a) { return a.name });
+
+      // TODO: 이상하게 다 지워야만 창이 나옴 왜그럴까
+      $(this).autocomplete({
+        //UI: .ui-autocomplete
+        minLength: 0,
+        source: data,
+        select: function(event, ui) {
+          console.log(ui);
+          console.log(ui.item.id);
+          var id = $(this).data('id');
+          $('input:hidden[data-id=' + id + ']').val(ui.item.id);
+          $('form[data-id=' + id + ']').submit();
+          return false;
+        }
+      }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+          .append( "<div><img src='" + item.image_url.url + "' style='width: 50px; height: 50px'/>" + item.name + "</div>" )
+          .appendTo( ul );
+      };
+
+    }
+  });
+});
+      </script>

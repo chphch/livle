@@ -1,31 +1,35 @@
 Rails.application.routes.draw do
   root 'feeds#index'
 
-  get 'admin/feed'
-  get 'admin/artist'
-  get 'admin/upcoming'
-  get 'admin/connect'
-  get 'admin/user_list'
-  get 'admin/data'
-  get 'admin/notice'
-  get 'admin/index'
+  # Admin page
+  get 'admin/feed', as: :admin_feed
+  get 'admin/artist', as: :admin_artist
+  get 'admin/upcoming', as: :admin_upcoming
+  get 'admin/connect', as: :admin_connect
+  get 'admin/user_list', as: :admin_user_list
+  get 'admin/data', as: :admin_data
+  get 'admin/notice', as: :admin_notice
+  get 'admin/index', as: :admin_index
 
   get 'search' => 'search#index'
   get 'search/result'
   get 'search/autocomplete'
   get 'search/clear_history'
 
+  get 'artists/autocomplete'
 
   resources :artists, only: [:index, :create, :show, :update, :destroy]
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy]
+    resources :feed_artists, only: [:create, :destroy], shallow: true
     get 'toggle_like'
   end
   get 'feeds/toggle_like/:player_id' => 'feeds#toggle_like'
 
   resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy]
+    resources :upcoming_artists, only: [:create, :destroy], shallow: true
     get 'toggle_like'
   end
 

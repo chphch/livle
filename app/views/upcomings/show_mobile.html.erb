@@ -10,7 +10,7 @@
   <% end %>
 
   <!-- back button -->
-  <%= link_to :back, class: "_link-back-container-m" do %>
+  <%= link_to :back, class: "_link-back-container-m", id: 'back' do %>
       <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
   <% end %>
 
@@ -95,3 +95,14 @@
     <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
   </div>
 </div>
+<script>
+$("#back").click(function(e) {
+  e.preventDefault();
+  if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
+    window.history.back();
+  }
+  else {
+    window.location = '/upcomings';
+  }
+});
+</script>
