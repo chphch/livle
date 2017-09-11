@@ -12,6 +12,8 @@ successfulLoginModal.on('hide.bs.modal', function() {
         var loginModal = $('#login-modal');
         loginModal.modal('hide');
         loginModal.remove();
+        if('<%= @device_suffix %>' === 'desktop')
+            window.location = "<%= feeds_path %>";
     } else {
         window.location = "<%= mypage_index_path %>";
     }

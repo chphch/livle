@@ -1,13 +1,33 @@
 <div id="search-result">
-  <div class="_hcenter-positioner">
-    <div class="result-list-container">
+  <div class="_column-positioner _vcenter-positioner">
+    <div class="selector-container _hcenter-positioner">
+      <div id="feeds-selector" class="button-container _vcenter-positioner _hcenter-positioner">
+        <p class="_fs-3 _white">VIDEO (<%= @feed_results.size %>)</p>
+      </div>
+      <div id="upcomings-selector" class="button-container _vcenter-positioner _hcenter-positioner">
+        <p class="_fs-3 _white">UPCOMING (<%= @upcoming_results.size %>)</p>
+      </div>
+    </div>
+    <div class="selector-container">
+      <div class="selector-bar-container _hcenter-positioner">
+        <div class="selector-bar"></div>
+      </div>
+    </div>
+    <div class="result-list-container _desktop-container">
       <% @show_curator = true %>
-      <p class="_fs-1 _white">Feed (<%= @feed_results.size %>)</p>
       <% @feed_results.each do |result| %>
-          <div class="search-card-container">
+          <div id="result-list-feed" class="search-card-container">
             <%= render partial: "feeds/index_card_desktop", locals: {feed: result} %>
+          </div>
+      <% end %>
+      <% @upcoming_results.each do |result| %>
+          <div id="result-list-upcoming" class="search-card-container" style="display: none;">
+            <%= render partial: "upcomings/index_card_desktop", locals: {upcoming: result} %>
           </div>
       <% end %>
     </div>
   </div>
 </div>
+<script>
+    $('#search').val("<%= @search %>");
+</script>

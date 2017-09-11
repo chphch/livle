@@ -45,6 +45,18 @@ class Upcoming < ApplicationRecord
     "main_video"
   end
 
+  def related_upcomings
+    upcoming_list = []
+    self.artists.each do |artist|
+      artist.upcomings.each do |upcoming|
+        if upcoming.id != self.id
+          upcoming_list.push(upcoming)
+        end
+      end
+    end
+    return upcoming_list.sample(10)
+  end
+
   def d_day
     start_day = self.start_date.strftime('%Q').to_i
     today = DateTime.now.strftime('%Q').to_i

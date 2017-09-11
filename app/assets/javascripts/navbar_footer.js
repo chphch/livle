@@ -12,10 +12,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('._navbar-login-button').on('click', function () {
         $('body').append(
             '<div id="login-modal" class="modal _hcenter-positioner">\
-                <div class="_desktop-modal">\
+                <div class="_desktop-session-container">\
                     \
                 </div>\
             </div>'
         );
+    });
+
+    //works like modal on footer
+    $('body').click(function (e) {
+        if(!$(e.target).is('._desktop-modal, ._desktop-modal *'))
+            $('#footer-modal').remove();
+    }).find('._describe-container').on('click', function (e) {
+        e.stopPropagation();
     });
 });

@@ -88,6 +88,12 @@
   }
 }
 
+@mixin transform($prop) {
+  @each $prefix in -webkit-, null {
+    #{$prefix}transform: $prop;
+  }
+}
+
 @mixin filter($effect) {
   filter: $effect;
   -webkit-filter: $effect;
