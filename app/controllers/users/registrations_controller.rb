@@ -26,7 +26,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        render_by_device 'registrations/confirmation_email_sent'
+        #respond_with resource do |format|
+        #  format.js {render 'confirmation_email_sent_mobile' }
+        #end
+        #respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
       clean_up_passwords resource

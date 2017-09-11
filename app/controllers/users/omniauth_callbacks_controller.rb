@@ -12,8 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       sign_in(@user, scope: :user)
       set_flash_message(:notice, :signed_in, scope: "devise.sessions") if is_navigational_format?
-      @device_suffix = device_suffix
-      render 'devise/sessions/facebook'
+      render_by_device 'sessions/successful_login', format: :js
     else
       # TODO When is this exception-handling-block executed?
       puts "===============FACEBOOK LOGIN ERROR================="
@@ -32,17 +31,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # GET|POST /users/auth/twitter/callback
   # def failure
-  #   super
+  #   redirect_to root_path
   # end
-  def failure
-    redirect_to root_path
-  end
 
-  protected
-
-  def device_suffix
-    browser.device.mobile? ? "mobile" : "desktop"
-  end
+  # protected
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)
