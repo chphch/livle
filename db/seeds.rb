@@ -46,7 +46,8 @@ for i in 1..SIZE_1
       content: Faker::Hacker.say_something_smart,
       count_view: rand(1..100),
       count_share: rand(1..100),
-      rank: 0.0
+      rank: 0.0,
+      valuation: rand(1..5)
   )
   random_sample.each do |ri|
     FeedComment.create(
