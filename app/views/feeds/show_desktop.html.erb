@@ -9,7 +9,6 @@
     autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @feed.video_id %>"
                   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
         </div>
-
         <div class="text-container _vcenter-positioner">
           <div class="_flex-grow-1">
             <p class="_fs-2 _white">
@@ -67,9 +66,11 @@
               </div>
               <p class="_fs-4 _white">좋아요</p>
           <% end %>
-          <div class="_vcenter-positioner _show-button-padding" id="share-modal-button">
-            <%= image_tag "icon_share_white", class: "_show-icon" %>
-            <p class="_fs-4 _white">공유</p>
+          <div class="_share-container">
+            <div class="_vcenter-positioner _show-button-padding" id="share-button">
+              <%= image_tag "icon_share_white", class: "_show-icon" %>
+              <p class="_fs-4 _white">공유</p>
+            </div>
           </div>
         </div>
         <hr>
@@ -96,4 +97,24 @@
       </div>
     </div>
   </div>
+
+  <script>
+      $('#share-button').on('click', function () {
+          $('._share-container').append(
+              '<div class="_share-modal _desktop-small-modal" id="share-modal">' +
+                '<p class="_fs-3 _black">공유하기</p>' +
+                '<p class="_fs-3 _dark-gray">페이스북 트위터</p>' +
+              '</div>'
+          );
+//          '<= render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>' +
+      });
+
+      //works like modal
+      $('body').click(function (e) {
+          if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
+              $('#share-modal').remove();
+      }).find('#share-button').on('click', function (e) {
+          e.stopPropagation();
+      });
+  </script>
 </div>

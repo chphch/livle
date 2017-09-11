@@ -377,6 +377,14 @@
   width: 36rem;
 }
 
+._share-container {
+  position: relative;
+  ._share-modal {
+    position: absolute;
+    top: 3rem; right: 0;
+  }
+}
+
 //modals
 ._desktop-modal {
   width: 32rem;
@@ -408,7 +416,7 @@
 }
 
 ._desktop-small-modal {
-  @include size(12rem, auto);
+  min-width: 8rem; height: auto;
   background: $white;
   padding: 1rem;
   @include border-radius($br-min);

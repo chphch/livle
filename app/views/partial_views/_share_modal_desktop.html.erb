@@ -1,14 +1,6 @@
-<div class="_small-modal">
-  <div class="_modal-background _column-positioner _hcenter-positioner">
-    <div class="_small-modal-title text-center">
-      <%= image_tag "icon_qna", class: "_modal-big-icon-m" %>
-      <p class="_fs-4-mobile _white _f-letter-mobile" id="modal-msg">공유하기</p>
-    </div>
-    <div class="_hcenter-positioner">
-      <%= social_share_button_tag(
-              post.title,
-              'data-twitter-title': post.title,
-          'url': "#{request.original_url}") %>
-    </div>
-  </div>
+<div class="_small-modal-title _text-center">
+  <p class="_fs-4 _black _f-letter" id="modal-msg">공유하기</p>
+</div>
+<div class="_vcenter-positioner">
+  <%= social_share_button_tag(post.title, "data-twitter-title": post.title, 'url': "#{request.original_url}") %>
 </div>

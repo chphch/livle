@@ -180,6 +180,7 @@ textarea {
   @include size(0.2rem, 8rem);
   background: #ffffff;
 }
+
 ////margin, padding
 ._thumbnail-elem-margin-m {
   margin: 0 1.5%;
@@ -408,4 +409,11 @@ textarea {
   background: none;
   border: 1px solid $white;
   @include border-radius($br-image);
+}
+
+#share-button {
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
 }
