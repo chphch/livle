@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
   end
 
   def full_layoutname(args)
-    "/layouts/#{args[:layout_name].to_s}_#{device_suffix}.html.erb"
+    if request.xhr?.present? || args[:format] == :js
+      return nil
+    else
+      return "/layouts/#{args[:layout_name].to_s}_#{device_suffix}.html.erb"
+    end
   end
 end
