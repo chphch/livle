@@ -26,9 +26,10 @@ class Users::SessionsController < Devise::SessionsController
       set_flash_message!(:notice, :signed_in)
       puts flash[:notice] #####TODO SUCCESSFUL LOGIN MESSAGE NEEDS TO BE PASSED TO RENDING PAGE
       sign_in(resource_name, resource)
+      remote_new_session = params[:user][:remote_new_session]
       respond_with resource do |format|
         format.js {
-          if params[:user][:remote_new_session] == "true"
+          if remote_new_session == "true"
             render js: "$('#login-modal').modal('hide');"
           elsif remote_new_session == "false"
             render js: "window.location = '#{mypage_index_path}';"
