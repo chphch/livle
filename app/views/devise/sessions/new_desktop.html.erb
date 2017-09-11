@@ -28,6 +28,8 @@
           <div class="hr"></div>
         </div>
 
+        <div id="login-error-message" class="_fs-4 _white _text-center"></div>
+
         <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
             <%= f.hidden_field :remote_new_session %>
             <div class="input-group">
