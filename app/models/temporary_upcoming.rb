@@ -1,0 +1,2 @@
+class TemporaryUpcoming < ApplicationRecord
+end
