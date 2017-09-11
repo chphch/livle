@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             player.filter = $(this).find('.youtube-player-filter');
             player.remainingTimer = $(this).find('.remaining-timer');
             player.progressBar = $(this).find('#progress-bar-' + id);
+            player.progressLeft = $(this).find('#progress-left');
+            player.progressRight = $(this).find('#progress-right');
             if (player.progressBar.length) {
                 player.progressBarController = new ProgressBar.Circle('#progress-bar-' + id, {
                     strokeWidth: 4,
@@ -55,7 +57,6 @@ function onPlayerReady(event) {
     }
     readyPlayerSize++;
     var videoSize = $('.show-video-container-js').length;
-    console.log("ready player size: " + readyPlayerSize + ", video size: " + videoSize);
     if (readyPlayerSize == videoSize) {
         onAllPlayerReady();
     }
@@ -110,6 +111,12 @@ function onAllPlayerReady() {
         player.playButton.on("click", function() {
             onClickPlayButton(player);
         });
+        player.progressLeft.on("dblclick", function () {
+            onDoubleclickProgress(player, 'left');
+        });
+        player.progressRight.on("dblclick", function () {
+            onDoubleclickProgress(player, 'right');
+        });
         player.qualityButton.on("click", function() {
             onClickQualityButton(player);
         });
@@ -117,7 +124,6 @@ function onAllPlayerReady() {
             onClickFullscreenButton(player);
         });
         player.container.on("click", function() {
-            console.log("container click");
             onClickContainer(player);
         });
     });
@@ -136,6 +142,18 @@ function onClickPlayButton(player) {
         player.pauseVideo();
     } else {
         player.playVideo();
+    }
+}
+
+// on dblclick progress time
+function onDoubleclickProgress(player, dir) {
+    var curTime = player.getCurrentTime();
+    console.log("double tap! " + curTime);
+
+    if (dir === 'left') {
+        player.seekTo(curTime - 10);
+    } else {
+        player.seekTo(curTime + 10);
     }
 }
 
