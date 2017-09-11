@@ -88,7 +88,8 @@
 //#       DESKTOP        #
 //########################
 #device-new,
-#device-signup {
+#device-signup,
+#device-passwords-new {
   .moto-container {
     padding: 0 0 4rem;
     .moto-margin {
@@ -98,9 +99,9 @@
 
   .login-container {
     @include size(100%, auto);
-    background: $dark-dark-gray;
-    @include border-radius($br-min);
-    padding: 4rem 2rem;
+    background: rgba(216, 216, 216, 0.33);
+    @include border-radius($br-image);
+    padding: 4rem 3rem;
 
     .button-container {
       @include size(100%, auto);
@@ -166,7 +167,8 @@
     margin: 3rem 0;
   }
 }
-#device-signup {
+#device-signup,
+#device-passwords-new {
   .input-group {
     @include flex-grow(1);
     @include size(100%, auto);

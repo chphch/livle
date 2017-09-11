@@ -15,6 +15,15 @@
   <div class="_navbar-buttons-container _vcenter-positioner _no-p-margin">
     <!-- buttons -->
     <div class="_navbar-button">
+      <%= link_to feeds_path do %>
+          <% if control == 'FeedsController' %>
+              <%= image_tag "icon_home_filled", class: "_navbar-icon" %>
+          <% else %>
+              <%= image_tag "icon_home_empty", class: "_navbar-icon" %>
+          <% end %>
+      <% end %>
+    </div>
+    <div class="_navbar-button">
       <%= link_to upcomings_path do %>
           <% if control == 'UpcomingsController' %>
               <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
@@ -33,7 +42,7 @@
       <% end %>
     </div>
     <% if !user_signed_in? %>
-        <%= link_to mypage_index_path, class: "_text-center", remote: true do %>
+        <%= link_to new_user_session_path, class: "_text-center" do %>
             <div class="_navbar-button">
               <div class="_navbar-login-button _hcenter-positioner _vcenter-positioner _no-p-margin">
                 <p class="_fs-3 _white">Login</p>

@@ -88,7 +88,7 @@
         <div class="related-card-container _hcenter-positioner">
           <div class="card-container">
             <p class="_fs-4 _white">관련영상</p>
-            <% @related_feeds.each do |feed| %>
+            <% @feed.related_feeds.each do |feed| %>
                 <%= render partial: "feeds/index_card_desktop", locals: {feed: feed } %>
             <% end %>
           </div>

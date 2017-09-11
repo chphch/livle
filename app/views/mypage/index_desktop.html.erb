@@ -3,15 +3,16 @@
     <div class="_desktop-container-narrow _row-positioner">
       <!-- profile, upcoming -->
       <div class="left-group">
-        <div class="edit-profile-container _hcenter-positioner _column-positioner">
+        <div class="edit-profile-container _column-positioner _vcenter-positioner _hcenter-positioner">
           <div class="profile-box _vcenter-positioner _hcenter-positioner">
             <%= link_to mypage_edit_profile_path do %>
                 <div class="profile-container _profile-border-green">
                   <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
                                 class: "_profile-img" %>
-                  <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
-                    <%= image_tag "icon_camera", style: "height: 70%; width: auto;" %>
-                  </div>
+                </div>
+                <div class="_vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_crown", class: "mypage-icon", style: "margin-top: -1.5rem" %>
+                  <p class="_fs-3 _f-family-tmon _white"><%= current_user.nickname %></p>
                 </div>
             <% end %>
           </div>
@@ -22,11 +23,16 @@
             <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
                 current_user.feed_likes.size : 0 %></span>
           </p>
+          <%= link_to mypage_edit_profile_path, class: "button-container _vcenter-positioner _hcenter-positioner _no-p-margin", remote: true do %>
+              <%= image_tag "icon_settings", class: "mypage-icon", style: "margin-top: -0.5rem;" %>
+              <p class="_fs-4 _white">프로필 설정</p>
+          <% end %>
         </div>
-        <div class="upcoming-like-container _no-p-margin">
+        <!-- 찜 목록 -->
+        <div class="mypage-info-container _no-p-margin">
           <div class="_vcenter-positioner">
-            <%= image_tag "icon_hand_filled", class: "mypage-icon" %>
-            <p class="_fs-3 _white">찜 목록</p>
+            <%= image_tag "icon_hand_empty", class: "mypage-icon" %>
+            <p class="_fs-2 _white">찜 목록</p>
           </div>
           <% if user_signed_in? && current_user.upcoming_likes.size != 0 %>
               <% current_user.upcoming_likes.each do |like| %>
@@ -45,6 +51,13 @@
               </div>
           <% end %>
         </div>
+        <!-- 구매내역 -->
+        <div class="mypage-info-container _no-p-margin">
+          <div class="_vcenter-positioner">
+            <%= image_tag "icon_ticket_empty", class: "mypage-icon" %>
+            <p class="_fs-2 _white">구매내역</p>
+          </div>
+        </div>
       </div>
       <!-- my list -->
       <div class="mylist-container _no-p-margin">
@@ -52,7 +65,7 @@
           <%= image_tag "icon_like_filled", class: "mypage-icon" %>
           <p class="_fs-3 _white">마이 리스트</p>
         </div>
-        <% if user_signed_in? && current_user.feed_likes.size != 0 %>
+        <% if current_user.feed_likes.size != 0 %>
             <% current_user.feed_likes.each do |like| %>
                 <div class="mylist-card-container">
                   <%= render partial: "feeds/index_card_desktop", locals: {feed: like.feed} %>
@@ -66,15 +79,4 @@
       </div>
     </div>
   </div>
-
-  <% if !user_signed_in? %>
-      <div id="login-modal" class="_full-container _display-flex _hcenter-positioner _vcenter-positioner modal">
-        <div class="_desktop-modal">
-          <%= render file: '/devise/sessions/new_desktop.html.erb' %>
-        </div>
-      </div>
-      <script>
-        $('#login-modal').modal();
-      </script>
-  <% end %>
 </div>

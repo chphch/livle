@@ -1,94 +1,88 @@
 <div id="mypage-index-mobile">
-  <% if user_signed_in? %>
-      <div class="_column-positioner _vcenter-positioner">
-        <div class="profile-container _profile-border-green">
-          <%= image_tag current_user.profile_img != nil ? current_user.profile_img : image_profile,
-                        id: "upload-profile-img", class: "_profile-img" %>
-        </div>
+  <div class="_column-positioner _vcenter-positioner">
+    <div class="profile-container _profile-border-green">
+      <%= image_tag current_user.profile_img != nil ? current_user.profile_img : image_profile,
+                    id: "upload-profile-img", class: "_profile-img" %>
+    </div>
 
-        <div class="info-container _text-center">
-          <div class="info-text-container">
-            <p class="_fs-2-mobile _white"><%= current_user.email %></p>
-          </div>
-          <div class="info-text-container">
-            <p class="_fs-4-mobile _light-gray">자기소개를 입력해주세요</p>
-          </div>
-          <div class="info-text-container _hcenter-positioner">
-            <p class="_fs-4-mobile _white">좋아요 수</p>
-            <p class="_fs-4-mobile _light-gray">&nbsp&nbsp&nbsp<%= @like_size %></p>
-          </div>
-        </div>
+    <div class="info-container _text-center">
+      <div class="info-text-container">
+        <p class="_fs-2-mobile _white"><%= current_user.email %></p>
+      </div>
+      <div class="info-text-container">
+        <p class="_fs-4-mobile _light-gray">자기소개를 입력해주세요</p>
+      </div>
+      <div class="info-text-container _hcenter-positioner">
+        <p class="_fs-4-mobile _white">좋아요 수</p>
+        <p class="_fs-4-mobile _light-gray">&nbsp&nbsp&nbsp<%= @like_size %></p>
+      </div>
+    </div>
 
-        <div class="settings-container _vcenter-positioner">
-          <%= link_to mypage_edit_profile_path, class: "edit-profile-width" do %>
-              <div class="edit-button _text-center">
-                <p class="_fs-4-mobile _light-gray">프로필 설정</p>
-              </div>
-          <% end %>
-          <%= link_to mypage_settings_path, class: "edit-settings-width" do %>
-              <div class="edit-button _vcenter-positioner _hcenter-positioner">
-                <%= image_tag "icon_settings", class: "settings-icon" %>
-              </div>
-          <% end %>
-        </div>
+    <div class="settings-container _vcenter-positioner">
+      <%= link_to mypage_edit_profile_path, class: "edit-profile-width" do %>
+          <div class="edit-button _text-center">
+            <p class="_fs-4-mobile _light-gray">프로필 설정</p>
+          </div>
+      <% end %>
+      <%= link_to mypage_settings_path, class: "edit-settings-width" do %>
+          <div class="edit-button _vcenter-positioner _hcenter-positioner">
+            <%= image_tag "icon_settings", class: "settings-icon" %>
+          </div>
+      <% end %>
+    </div>
 
-        <!-- 찜목록 section -->
-        <div class="opacity-container">
-          <div class="_row-positioner">
-            <%= image_tag "icon_hand_filled", class: "list-icon" %>
-            <div class="list-container">
-              <div class="list-text-container">
-                <p class="_fs-4-mobile _white">찜 목록</p>
-              </div>
-              <% if current_user.upcoming_likes.size != 0 %>
-                  <% current_user.upcoming_likes.each do |like| %>
-                      <%= link_to upcoming_path(like.upcoming.id) do %>
-                          <div class="list-text-container _vcenter-positioner">
-                            <p class="_flex-grow-1 _fs-4-mobile _white"><%= like.upcoming.title %></p>
-                            <p class="_fs-2-mobile _white _f-letter-mobile">
-                              D<%= d_day(like.upcoming.start_date) %>
-                            </p>
-                          </div>
-                      <% end %>
+    <!-- 찜목록 section -->
+    <div class="opacity-container">
+      <div class="_row-positioner">
+        <%= image_tag "icon_hand_filled", class: "list-icon" %>
+        <div class="list-container">
+          <div class="list-text-container">
+            <p class="_fs-4-mobile _white">찜 목록</p>
+          </div>
+          <% if current_user.upcoming_likes.size != 0 %>
+              <% current_user.upcoming_likes.each do |like| %>
+                  <%= link_to upcoming_path(like.upcoming.id) do %>
+                      <div class="list-text-container _vcenter-positioner">
+                        <p class="_flex-grow-1 _fs-4-mobile _white"><%= like.upcoming.title %></p>
+                        <p class="_fs-2-mobile _white _f-letter-mobile">
+                          D<%= d_day(like.upcoming.start_date) %>
+                        </p>
+                      </div>
                   <% end %>
               <% end %>
-            </div>
-          </div>
-          <% if current_user.upcoming_likes.size == 0 %>
-              <div class="info-text-container _text-center">
-                <p class="_fs-4-mobile _white">
-                  내가 찜한 영상을 모아볼 수 있어요.
-                </p>
-              </div>
           <% end %>
         </div>
-
-        <!-- 마이 리스트 section -->
-        <div class="mylist-title _row-positioner">
-          <%= image_tag "icon_like_filled", class: "list-icon" %>
-          <div class="list-container">
-            <div class="list-text-container">
-              <p class="_fs-4-mobile _white">마이 리스트</p>
-            </div>
+      </div>
+      <% if current_user.upcoming_likes.size == 0 %>
+          <div class="info-text-container _text-center">
+            <p class="_fs-4-mobile _white">
+              내가 찜한 영상을 모아볼 수 있어요.
+            </p>
           </div>
+      <% end %>
+    </div>
+
+    <!-- 마이 리스트 section -->
+    <div class="mylist-title _row-positioner">
+      <%= image_tag "icon_like_filled", class: "list-icon" %>
+      <div class="list-container">
+        <div class="list-text-container">
+          <p class="_fs-4-mobile _white">마이 리스트</p>
         </div>
-        <% if current_user.feed_likes.size == 0 %>
-            <div class="info-text-container _text-center">
-              <p class="_fs-4-mobile _white">
-                내가 좋아요한 영상을 모아볼 수 있어요.
-              </p>
-            </div>
-        <% else %>
-            <div id="mypage-mylist-mobile">
-              <% current_user.feed_likes.each do |like| %>
-                  <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
-              <% end %>
-            </div>
-        <% end %>
       </div>
-  <% else %>
-      <div class="login-container _hcenter-positioner _vcenter-positioner">
-        <%= render file: '/devise/sessions/new_mobile.html.erb' %>
-      </div>
-  <% end %>
+    </div>
+    <% if current_user.feed_likes.size == 0 %>
+        <div class="info-text-container _text-center">
+          <p class="_fs-4-mobile _white">
+            내가 좋아요한 영상을 모아볼 수 있어요.
+          </p>
+        </div>
+    <% else %>
+        <div id="mypage-mylist-mobile">
+          <% current_user.feed_likes.each do |like| %>
+              <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
 </div>

@@ -9,6 +9,7 @@ class CreateFeeds < ActiveRecord::Migration[5.1]
       t.integer :count_view
       t.integer :count_share
       t.float :rank
+      t.integer :valuation
 
       t.timestamps
     end

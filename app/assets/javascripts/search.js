@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    //focus 할 때
+    //focus 하기
     $('#search-bar-mobile .search-input-field, ._navbar-serach-container').click(function () {
         $('#search-bar-mobile .input-field, ._navbar-search-input').focus();
         onfocus(true);
@@ -31,9 +31,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     //mobile, 맨 처음 input이 비어있지 않을 때
-    if ($('#search-bar-mobile .input-field').val() !== '') {
-        $('.search-input-field').css('width', '84%');
-        $('.cancel-field').show();
+    if ($('#search').val() !== '') {
+        onfocus(true);
         $('.input-esc').show();
     }
 
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $(window).scroll(function () {
         scrolling();
     });
-    new ResizeSensor($('#search-list-container'), function () {
+    new ResizeSensor($('#search-list-group-m'), function () {
         $(window).scroll(function () {
             scrolling();
         });
@@ -63,10 +62,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Result action
     $('#feeds-selector').click(function () {
-        renderResult("feed")
+        renderResult("feed");
     });
     $('#upcomings-selector').click(function () {
-        renderResult("upcoming")
+        renderResult("upcoming");
     });
 
     var lastScrollPos = 0;
@@ -95,12 +94,16 @@ function onfocus(status) {
         //for mobile
         $('.search-input-field').css('width', '84%');
         $('.cancel-field').show();
+        $('#search-list-group-m').hide();
+        $('#search-recent-keywords').show();
     } else {
         //for mobile
         $('#search-bar-mobile .input-field').val('');
         $('#search-bar-mobile .input-icon-container').css('width', '50%');
         $('.search-input-field').css('width', '100%');
         $('#search-bar-mobile .cancel-field').hide();
+        $('#search-list-group-m').show();
+        $('#search-recent-keywords').hide();
 
         //for desktop
         $('._navbar-search-icon-container').css('width', '48%');
@@ -113,12 +116,14 @@ function onfocus(status) {
 
 function renderResult(params) {
     if(params === "feed") {
-        $('#result-list-feed-m').show();
-        $('#result-list-upcoming-m').hide();
+        console.log("feed selected");
+        $('#result-list-feed-m, #result-list-feed').show();
+        $('#result-list-upcoming-m, #result-list-upcoming').hide();
         $('.selector-bar-container').css('margin-left', 0);
     } else {
-        $('#result-list-feed-m').hide();
-        $('#result-list-upcoming-m').show();
+        console.log("upcoming selected");
+        $('#result-list-feed-m, #result-list-feed').hide();
+        $('#result-list-upcoming-m, #result-list-upcoming').show();
         $('.selector-bar-container').css('margin-left', '50%');
     }
 }

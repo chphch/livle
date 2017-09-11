@@ -1,4 +1,4 @@
-$('#search-list-container').append('<%= j render partial: "feed_card_mobile", collection: @feeds, as: :feed %>');
+$('#search-list-group-m').append('<%= j render partial: "feed_card_mobile", collection: @feeds, as: :feed %>');
 <% if @feeds.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
 <% else %>

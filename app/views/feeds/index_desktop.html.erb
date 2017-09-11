@@ -1,12 +1,24 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
   <div class="curation-container">
-    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} %>
+    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} if @officials.size > 0 %>
   </div>
 
-  <div class="feed-container _hcenter-positioner">
+  <div class="feed-container _column-positioner _vcenter-positioner">
+    <div class="_desktop-container _vcenter-positioner">
+      <p class="_fs-title _light-gray _flex-grow-1"
+         style="margin-left: 1rem;">추천 라이브</p>
+      <div class="scroll-button prev-button _vcenter-positioner _hcenter-positioner"
+        style="display: none">
+        <%= image_tag "icon_back", class: "arrow-button" %>
+      </div>
+      <div class="scroll-button next-button _vcenter-positioner _hcenter-positioner">
+        <%= image_tag "icon_next", class: "arrow-button" %>
+      </div>
+    </div>
+
     <div class="_desktop-container">
-      <div class="current-list _vcenter-positioner" id="scroll-target">
+      <div class="feed-card-group _vcenter-positioner" id="scroll-target">
         <% @show_curator = true %>
         <% @commons.each_with_index do |common, i| %>
             <% if i % 2 != 0 && @commons[i+1] != nil %>
@@ -26,14 +38,9 @@
         </div>
       </div>
 
-      <div id="prev-btn">
-        <div class="prev-list _vcenter-positioner _hcenter-positioner">
-          <%= image_tag "icon_back" %>
-        </div>
-      </div>
-      <div class="next-list _vcenter-positioner _hcenter-positioner">
-        <%= image_tag "icon_next" %>
-      </div>
+      <div class="prev-filter _vcenter-positioner _hcenter-positioner"
+           style="display: none"></div>
+      <div class="next-filter _vcenter-positioner _hcenter-positioner"></div>
     </div>
   </div>
 </div>

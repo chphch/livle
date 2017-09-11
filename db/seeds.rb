@@ -16,7 +16,7 @@ def random_sample(range = 1..SIZE_1, size = SIZE_2)
   range.to_a.sample(size)
 end
 
-User.create(email: "admin@admin.com", password: 12341234, provider: "local", nickname: "admin")
+User.create(email: "admin@admin.com", password: 12341234, provider: "local", nickname: "admin", confirmed_at: DateTime.now)
 
 for i in 1..SIZE_1
   User.create(
@@ -25,7 +25,8 @@ for i in 1..SIZE_1
       provider: "local",
       nickname: Faker::HarryPotter.character,
       introduce: Faker::Hacker.say_something_smart,
-      profile_img: nil
+      profile_img: nil,
+      confirmed_at: DateTime.now
   )
 end
 

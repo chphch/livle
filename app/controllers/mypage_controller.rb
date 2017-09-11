@@ -4,6 +4,7 @@ class MypageController < ApplicationController
   def index
     @title = current_user.nickname
     @like_size = current_user.feed_likes.size
+    @enable_footer = true #for desktop
     render_by_device
   end
 
@@ -16,7 +17,6 @@ class MypageController < ApplicationController
   end
 
   def update_profile
-    # TODO: 이미지 저장이 안됨 (err: ERROR // PROFILE IS NOT UPDATED)
     params.require(:user).permit(:nickname, :profile_img, :introduce)
     if current_user.update(profile_img: params[:user][:profile_img], nickname: params[:user][:nickname],
                            introduce: params[:user][:introduce])

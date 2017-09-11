@@ -9,16 +9,13 @@
             <%= f.file_field :profile_img, accept: "image/*" %>
           </div>
           <%= f.label :profile_img do %>
-            <div class="profile-container _profile-border-green">
-              <% if current_user.profile_img %>
-                  <%= image_tag current_user.profile_img ,id: "upload-profile-img", class: "_profile-img" %>
-              <% else %>
-                  <%= image_tag "image_profile", id: "upload-profile-img", class: "_profile-img" %>
-              <% end %>
-              <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
-                <%= image_tag "icon_camera", style: "height: 75%; width: auto;" %>
+              <div class="profile-container _profile-border-green">
+                <%= image_tag  current_user.profile_img != nil ? current_user.profile_img : "image_profile",
+                               id: "upload-profile-img", class: "_profile-img" %>
+                <div class="edit-notice-container _vcenter-positioner _hcenter-positioner">
+                  <%= image_tag "icon_camera", style: "height: 75%; width: auto;" %>
+                </div>
               </div>
-            </div>
           <% end %>
         </div>
 
@@ -35,7 +32,7 @@
               <%= image_tag "icon_mypage_filled", class: "input-icon" %>
             </div>
             <%= f.text_field :nickname, class: "edit-input-field _fs-3-mobile _white",
-                               placeholder: "닉네임", value: "#{current_user.nickname}" %>
+                             placeholder: "닉네임", value: "#{current_user.nickname}" %>
           </div>
           <div class="hr-white"></div>
           <div class="edit-input-container _vcenter-positioner">
@@ -43,7 +40,7 @@
               <%= image_tag "icon_intro", class: "input-icon" %>
             </div>
             <%= f.text_field :introduce, class: "edit-input-field _fs-3-mobile _white",
-                               placeholder: "상태메세지", value: "#{current_user.introduce}" %>
+                             placeholder: "상태메세지", value: "#{current_user.introduce}" %>
           </div>
         </div>
       </div>
