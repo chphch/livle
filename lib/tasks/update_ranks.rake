@@ -20,7 +20,7 @@ namespace :update_ranks do
         priority = priority + time_coefficient(comment.created_at) * COMMENT_WEIGHT
       end
 
-      # TODO - use arbitrary weight
+      priority = priority + feed.valuation * ARBITRARY_WEIGHT
 
       Feed.update(feed.id, rank: priority) # Update rank value
 
