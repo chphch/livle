@@ -12,6 +12,8 @@ class UpcomingCommentsController < ApplicationController
   end
 
   def destroy
-    #TODO: 댓글 삭제기능 추가해야함!
+    FeedComment.find(params[:id]).destroy
+    # TODO: FeedComment 객체만 삭제하면 Feed, User 모델에서 reindex 문제는 없을까?
+    redirect_back(fallback_location: root_path)
   end
 end
