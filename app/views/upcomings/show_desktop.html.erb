@@ -2,43 +2,20 @@
   <div class="_hcenter-positioner">
     <div class="_desktop-container _row-positioner">
       <!-- Main -->
-      <div class="show-video-container _no-p-margin">
+      <div class="_no-p-margin show-video-container">
         <!-- Youtube Video Player -->
-        <!-- TODO: 업커밍 영상 라인업 이미지들과 연결시키기 -->
+
         <% if @main_video %>
-            <div class="_video-player">
-              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @upcoming.main_video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @upcoming.main_video_id %>"
-                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-            </div>
+            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: @main_video_id, feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
         <% end %>
         <% @artists.each_with_index do |artist, index| %>
-            <div class="_video-player <%= index != 0 || @main_video ? '_display-none' : '' %>">
-              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= artist.popular_feed_artist.id %>?version=3&enablejsapi=1&controls=2&rel=0&
-              autoplay=<%= index == 0 && !@main_video ? 1 : 0 %>&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&
-              playlist=<%= artist.popular_feed_artist.id %>" webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-            </div>
+            <% player_display_none = index != 0 || @main_video %>
+            <% autoplay = index == 0 && !@main_video %>
+            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: artist.popular_feed_artist.id, feed: artist.popular_feed, player_display_none: player_display_none, autoplay: autoplay}%>
         <% end %>
 
-        <div class="text-container _vcenter-positioner">
-          <div class="_flex-grow-1">
-            <p class="_fs-2 _white">
-              <%= @upcoming.title %>
-            </p>
-          </div>
-
-          <!-- TODO: 좋아요, 조회수, 공유수 video별로 업데이트 -->
-          <div class="_video-info-icon-container _vcenter-positioner">
-            <%= image_tag "icon_view_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-            <p class="_fs-5 _white">1000</p>
-            <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
-            <p id="like-count" class="_fs-5 _white">1000</p>
-            <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-            <p class="_fs-5 _white">1000</p>
-          </div>
-        </div>
-
         <div class="text-container">
+          <!--upcoming title-->
           <div class="_vcenter-positioner">
             <div class="_flex-grow-1">
               <p class="_fs-1 _white">
@@ -50,6 +27,7 @@
             </p>
           </div>
 
+          <!--upcoming place-->
           <div class="_vcenter-positioner">
             <div class="_flex-grow-1">
               <div class="text-padding">
@@ -59,7 +37,6 @@
                 <p class="_fs-3 _light-gray"><%= @upcoming.start_date %></p>
               </div>
             </div>
-
             <%= image_tag "icon_ticket_empty", class: "upcoming-icon" %>
             <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
                 <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none upcoming-icon" : "upcoming-icon" %>
@@ -68,25 +45,24 @@
           </div>
         </div>
 
+        <!-- each artist name-->
         <div class="text-container">
           <p class="_fs-1 _white _f-letter-narrow">LINE-UP</p>
           <p class="_fs-5 _light-gray">
-            <!-- artist.name -->
-            <% @upcoming.artists.each_with_index do |artist, i| %>
+            <% @upcoming.artists.each_with_index do |artist, index| %>
+                <% unless index == 0 %>,&nbsp<% end %>
                 <%= artist.name %>
-                <% break if @upcoming.artists[i+1] == nil %>
-                ,&nbsp
             <% end %>
           </p>
         </div>
+
+        <!--line up-->
         <div class="line-up-container _vcenter-positioner">
-          <% @upcoming.artists.each do |artist| %>
-              <div class="line-up-card">
-                <%= image_tag artist.image_url, class: "_profile-img-square" %>
-                <div class="_full-container _hcenter-positioner _vcenter-positioner">
-                  <p class="_fs-3 _white"><%= artist.name %></p>
-                </div>
-              </div>
+          <% if @main_video %>
+              <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: @main_video_id, image_url: @main_video_image_url, name: "Main Video" } %>
+          <% end %>
+          <% @artists.each do |artist| %>
+              <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: artist.popular_feed_artist.id, image_url: artist.image_url , name: artist.name } %>
           <% end %>
         </div>
 
@@ -96,15 +72,14 @@
             <%= image_tag "icon_comment_white", class: "_show-icon" %>
             <p class="_fs-4 _white">댓글 (<%= @upcoming.upcoming_comments.size %>)</p>
           </div>
-
-          <%= link_to feed_toggle_like_path(@upcoming.id), remote: true, class: "_vcenter-positioner _show-button-padding" do %>
+          <%= link_to "", id: "video-like-button", remote: true, class: "_vcenter-positioner _show-button-padding" do %>
               <div class="show-like">
                 <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon" %>
                 <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon" %>
               </div>
               <p class="_fs-4 _white">좋아요</p>
           <% end %>
-          <div class="_vcenter-positioner _show-button-padding" id="share-modal-button">
+          <div class="_vcenter-positioner _show-button-padding" id="share-modal-button" onclick="$('#share-modal').modal();">
             <%= image_tag "icon_share_white", class: "_show-icon" %>
             <p class="_fs-4 _white">공유</p>
           </div>
@@ -121,7 +96,6 @@
           <%= image_tag "http://img.youtube.com/vi/#{@upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
           <div class="related-video-filter _full-container"></div>
         </div>
-
         <div class="related-card-container _hcenter-positioner">
           <div class="card-container">
             <p class="_fs-4 _white">관련영상</p>
@@ -132,5 +106,13 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Modals -->
+  <div id ="ticket-link-modal" class="modal">
+    <%= render partial: 'partial_views/ticket_link_desktop', locals: {upcoming: @upcoming} %>
+  </div>
+  <div id="share-modal" class="modal">
+    <%= render partial: 'partial_views/share_modal_desktop', locals: {post: @upcoming} %>
   </div>
 </div>

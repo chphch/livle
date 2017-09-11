@@ -1,7 +1,7 @@
 $('body').append(
-    '<div id="successful-login-modal" class="modal">' +
-      '<%= j render partial: "devise/sessions/successful_login_modal_#{@device_suffix}", locals: {message: flash[:notice]} %>' +
-    '</div>'
+    '<div id="successful-login-modal" class="modal">\
+<%= j render partial: "devise/sessions/successful_login_modal_mobile", locals: {message: flash[:notice]} %>\
+</body>'
 );
 var successfulLoginModal = $('#successful-login-modal');
 successfulLoginModal.modal();

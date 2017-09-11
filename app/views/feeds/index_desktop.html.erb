@@ -1,7 +1,7 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
   <div class="curation-container">
-    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} %>
+    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} if @officials.size > 0 %>
   </div>
 
   <div class="feed-container _column-positioner _vcenter-positioner">

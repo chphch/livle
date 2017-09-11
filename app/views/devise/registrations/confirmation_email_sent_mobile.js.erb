@@ -1,0 +1,13 @@
+$('body').append(
+    '<div id="confirmation-email-sent-mobile" class="modal">\
+<%= j render partial: "/devise/registrations/confirmation_email_sent_mobile" %>\
+</div>'
+);
+var alertModal = $('#confirmation-email-sent-mobile');
+alertModal.modal();
+setTimeout(function() {alertModal.modal('hide')}, 1500);
+alertModal.on('hide.bs.modal', function() {
+    alertModal.remove();
+// TODO 어디로 이동?
+    window.location = "<%= mypage_index_path %>";
+});
