@@ -54,7 +54,8 @@ function onPlayerReady(event) {
         player.playVideo();
     }
     readyPlayerSize++;
-    var videoSize = $('.show-video-container').length;
+    var videoSize = $('.show-video-container-js').length;
+    console.log("ready player size: " + readyPlayerSize + ", video size: " + videoSize);
     if (readyPlayerSize == videoSize) {
         onAllPlayerReady();
     }
@@ -103,7 +104,7 @@ function onPlaybackQualityChange(event) {
 }
 
 // after all players are ready - set click listeners
-// TODO how to move these methods into onPlayerReady()
+// TODO: how to move these methods into onPlayerReady()
 function onAllPlayerReady() {
     players.forEach(function(player){
         player.playButton.on("click", function() {
@@ -116,6 +117,7 @@ function onAllPlayerReady() {
             onClickFullscreenButton(player);
         });
         player.container.on("click", function() {
+            console.log("container click");
             onClickContainer(player);
         });
     });
@@ -161,7 +163,7 @@ function onClickFullscreenButton(player) {
     }
 }
 
-// on clikc container show filter, buttons, progress-bar, timer
+// on click container show filter, buttons, progress-bar, timer
 function onClickContainer(player) {
     if (player.filter.is(':visible') === true &&
         event.target != player.playButton[0] &&
