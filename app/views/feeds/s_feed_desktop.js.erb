@@ -1,21 +1,22 @@
+//commons infinite scrolling
 $('#scroll-target').append(
-  '<% @show_curator = true %>\
-  <% @commons.each_with_index do |commons, i| %>\
-    <% if i % 2 != 0 && @commons[i+1] != nil %>\
-      <div class="_column-positioner">\
-        <div class="card-container">\
-          <%= j render partial: "index_card_desktop", locals: {feed: @commons[i]} %>\
-        </div>\
-        <div class="card-container">\
-          <%= j render partial: "index_card_desktop", locals: {feed: @commons[i+1]} %>\
-        </div>\
-      </div>\
-    <% end %>\
-  <% end %>'
+    '<% @show_curator = true %>\n'+
+    '<% @commons.each_with_index do |commons, i| %>\n' +
+    '    <% if i % 2 != 0 && @commons[i+1] != nil %>\n' +
+    '        <div class="_column-positioner">\n' +
+    '            <div class="card-container">\n' +
+    '                <%= j render partial: "index_card_desktop", locals: {feed: @commons[i]} %>\n' +
+    '            </div>\n' +
+    '            <div class="card-container">\n' +
+    '                <%= j render partial: "index_card_desktop", locals: {feed: @commons[i+1]} %>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    <% end %>\n' +
+    '<% end %>'
 );
 <% if @commons.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @commons %>');
+$('.pagination').replaceWith('<%= j will_paginate @commons %>');
 <% else %>
-  $('#scroll-target').off('scroll');
-  $('.pagination').remove();
+$('#scroll-target').off('scroll');
+$('.pagination').remove();
 <% end %>

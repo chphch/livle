@@ -1,18 +1,18 @@
-<div id="official-card">
+<div class="official-<%= feed_counter %> _full-container _vcenter-positioner" id="official-card" style="display: none">
   <div class="official-background _full-container">
     <%= image_tag "http://img.youtube.com/vi/#{feed.video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
   </div>
 
   <div class="official-filter _full-container _hcenter-positioner">
-    <div class="official-button _vcenter-positioner _hcenter-positioner">
+    <div class="official-button _vcenter-positioner _hcenter-positioner" id="prev-button-<%= feed_counter %>">
       <%= image_tag "icon_back", class: "arrow-button" %>
     </div>
 
     <div class="official-video-container _vcenter-positioner">
       <div class="_video-player">
         <!-- Youtube Video Player -->
-        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= feed.video_id %>"
+        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+        autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= feed.video_id %>"
                 webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <% end %>
     </div>
 
-    <div class="official-button _vcenter-positioner _hcenter-positioner">
+    <div class="official-button _vcenter-positioner _hcenter-positioner" id="next-button-<%= feed_counter %>">
       <%= image_tag "icon_next", class: "arrow-button" %>
     </div>
   </div>
