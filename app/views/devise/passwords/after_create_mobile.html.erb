@@ -3,13 +3,13 @@
     <div class="_column-positioner _vcenter-positioner">
       <%= image_tag "logo_livle", class: "_logo-container-m" %>
       <div class="moto-container _text-center">
-        <p class="_fs-3-mobile _white _f-letter-mobile">메일이 성공적으로 발송되었습니다.</p>
+        <p class="_fs-3-mobile _white _f-letter-mobile">인증메일을 보냈습니다! 메일을 인증해주세요</p>
       </div>
 
-      <div class="button-container">
-        <div class="_vcenter-positioner _hcenter-positioner">
-          <%= link_to "확인", mypage_index_path, class: "button-width _submit-button _fs-2-mobile _white" %>
-        </div>
+      <div class="button-container _vcenter-positioner _hcenter-positioner _no-p-margin">
+        <%= link_to mypage_index_path, class: "button-width _submit-button-m _text-center" do %>
+            <p class="_fs-2-mobile _white">취소</p>
+        <% end %>
       </div>
     </div>
   </div>

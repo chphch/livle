@@ -97,15 +97,34 @@
     }
   }
 
+  .filter-container {
+    position: relative;
+    @include size(100%, auto);
+    @include border-radius($br-image);
+    background: inherit;
+    overflow: hidden;
+    &::before {
+      position: absolute;
+      @include position(-100%);
+      visibility: visible;
+      content: '';
+      background: inherit;
+      @include filter(blur(10px));
+    }
+  }
+
   .login-container {
+    position: relative;
     @include size(100%, auto);
     background: rgba(216, 216, 216, 0.33);
     @include border-radius($br-image);
+    overflow: hidden;
     padding: 4rem 3rem;
 
     .button-container {
       @include size(100%, auto);
       margin: 0 0 1rem;
+      z-index: $z-front;
       .button-width {
         width: 45%;
       }

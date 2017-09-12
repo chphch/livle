@@ -274,16 +274,13 @@
 //########################
 //backgrounds
 ._devise-background {
-  position: fixed;
+  position: absolute;
   @include position(0);
   z-index: $z-burrow;
   background: url(asset-path("background_concert.png")) no-repeat center center;
   background-size: cover;
-  ._devise-filter {
-    @include size(100%);
-    background: $black-opacity;
-  }
 }
+
 //containers
 ._desktop-container {
   position: relative;
@@ -386,6 +383,7 @@
 
 ._desktop-session-container {
   position: relative;
+  background: inherit;
   width: 36rem;
 }
 
