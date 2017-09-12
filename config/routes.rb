@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'admin/feed', as: :admin_feed
   get 'admin/artist', as: :admin_artist
   get 'admin/upcoming', as: :admin_upcoming
+  get 'admin/temporary_upcoming', as: :admin_temporary_upcoming
   get 'admin/connect', as: :admin_connect
   get 'admin/user_list', as: :admin_user_list
   get 'admin/data', as: :admin_data
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
     resources :upcoming_artists, only: [:create, :destroy], shallow: true
     get 'toggle_like'
   end
+
+  resources :temporary_upcomings, only: [:update, :destroy]
+  post 'temporary_upcomings/:id/merge' => 'temporary_upcomings#merge'
 
   get 'mypage/index'
   get 'mypage/edit_profile'
