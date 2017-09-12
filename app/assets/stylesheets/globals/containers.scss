@@ -277,7 +277,7 @@
   position: absolute;
   @include position(0);
   z-index: $z-burrow;
-  background: url(asset-path("background_concert.png")) no-repeat center center;
+  background: url(asset-path("background_concert.jpg")) no-repeat center center;
   background-size: cover;
 }
 
@@ -379,12 +379,6 @@
       }
     }
   }
-}
-
-._desktop-session-container {
-  position: relative;
-  background: inherit;
-  width: 36rem;
 }
 
 ._share-container {

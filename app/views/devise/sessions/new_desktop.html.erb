@@ -1,80 +1,78 @@
-<div id="device-new">
+<div id="devise-new">
   <% @enable_transparent = true %>
-  <div class="_devise-background _hcenter-positioner">
-    <div class="_desktop-session-container _column-positioner _hcenter-positioner">
-      <div class="moto-container _text-center _no-p-margin">
-        <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
-        <p class="moto-margin _fs-5 _white _f-letter" id="login-error-message">Life is live</p>
-      </div>
-      <div class="filter-container">
-        <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
-          <!-- Facebook Login -->
-          <div class="button-container">
-            <div id="device-link" style="cursor: pointer;">
-              <%- if devise_mapping.omniauthable? %>
-                  <a onclick="onClickFacebookLoginButton();">
-                    <div class="facebook-button _submit-button _fs-4 _white _text-center">페이스북으로 3초만에 로그인</div>
-                  </a>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <p class="moto-margin _fs-5 _white _f-letter" id="login-error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
+      <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
+        <!-- Facebook Login -->
+        <div class="button-container">
+          <div id="device-link" style="cursor: pointer;">
+            <%- if devise_mapping.omniauthable? %>
+                <a onclick="onClickFacebookLoginButton();">
+                  <div class="facebook-button _submit-button _fs-4 _white _text-center">페이스북으로 3초만에 로그인</div>
+                </a>
+            <% end -%>
+          </div>
+        </div>
+        <div class="hr-container _vcenter-positioner">
+          <div class="hr"></div>
+          <div class="hr-text">
+            <p class="_fs-4 _white">or you can</p>
+          </div>
+          <div class="hr"></div>
+        </div>
+
+        <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
+            <%= f.hidden_field :remote_new_session %>
+            <div class="input-group">
+              <div class="_column-positioner _vcenter-positioner">
+                <!-- 이메일 -->
+                <div class="login-input-container">
+                  <div class="_row-positioner">
+                    <div class="icon-container _vcenter-positioner">
+                      <%= image_tag "icon_mail", class: "input-icon" %>
+                    </div>
+                    <div class="input-container">
+                      <%= f.email_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
+                    </div>
+                  </div>
+                </div>
+                <!-- 비밀번호 -->
+                <div class="login-input-container">
+                  <div class="_row-positioner">
+                    <div class="icon-container _vcenter-positioner">
+                      <%= image_tag "icon_lock", class: "input-icon" %>
+                    </div>
+                    <div class="input-container">
+                      <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                    </div>
+                  </div>
+                </div>
+                <% if devise_mapping.rememberable? -%>
+                    <%= f.check_box :remember_me, value: "1", checked: "checked", class: "_display-none" %>
+                <% end %>
+              </div>
+
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <div class="option-text-container _fs-5 _light-gray">
+                    <%= link_to "비밀번호를 잊어버리셨나요?", new_password_path(resource_name) %><br />
+                  </div>
               <% end -%>
             </div>
-          </div>
-          <div class="hr-container _vcenter-positioner">
-            <div class="hr"></div>
-            <div class="hr-text">
-              <p class="_fs-4 _white">or you can</p>
+
+            <div class="button-container">
+              <div class="_vcenter-positioner">
+                <%= link_to new_registration_path(resource_name), class: "button-width _submit-button _text-center" do %>
+                    <p class="_fs-3 _white">회원가입</p>
+                <% end %>
+                <div class="button-margin"></div>
+                <%= f.submit "로그인", class: "button-width _submit-button _fs-3 _white", id: 'sign-in' %>
+              </div>
             </div>
-            <div class="hr"></div>
-          </div>
-
-          <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
-              <%= f.hidden_field :remote_new_session %>
-              <div class="input-group">
-                <div class="_column-positioner _vcenter-positioner">
-                  <!-- 이메일 -->
-                  <div class="login-input-container">
-                    <div class="_row-positioner">
-                      <div class="icon-container _vcenter-positioner">
-                        <%= image_tag "icon_mail", class: "input-icon" %>
-                      </div>
-                      <div class="input-container">
-                        <%= f.email_field :email, placeholder: "이메일", autofocus: true, class: "input-field _fs-4 _white" %>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 비밀번호 -->
-                  <div class="login-input-container">
-                    <div class="_row-positioner">
-                      <div class="icon-container _vcenter-positioner">
-                        <%= image_tag "icon_lock", class: "input-icon" %>
-                      </div>
-                      <div class="input-container">
-                        <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
-                      </div>
-                    </div>
-                  </div>
-                  <% if devise_mapping.rememberable? -%>
-                      <%= f.check_box :remember_me, value: "1", checked: "checked", class: "_display-none" %>
-                  <% end %>
-                </div>
-
-                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                    <div class="option-text-container _fs-5 _light-gray">
-                      <%= link_to "비밀번호를 잊어버리셨나요?", new_password_path(resource_name) %><br />
-                    </div>
-                <% end -%>
-              </div>
-
-              <div class="button-container">
-                <div class="_vcenter-positioner">
-                  <%= link_to new_registration_path(resource_name), class: "button-width _submit-button _text-center" do %>
-                      <p class="_fs-3 _white">회원가입</p>
-                  <% end %>
-                  <div class="button-margin"></div>
-                  <%= f.submit "로그인", class: "button-width _submit-button _fs-3 _white", id: 'sign-in' %>
-                </div>
-              </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
