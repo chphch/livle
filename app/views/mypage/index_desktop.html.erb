@@ -5,7 +5,7 @@
       <div class="left-group">
         <div class="edit-profile-container _column-positioner _vcenter-positioner _hcenter-positioner">
           <div class="profile-box _vcenter-positioner _hcenter-positioner">
-            <%= link_to mypage_edit_profile_path do %>
+            <%= link_to mypage_edit_profile_path, remote: true do %>
                 <div class="profile-container _profile-border-green">
                   <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
                                 class: "_profile-img" %>
