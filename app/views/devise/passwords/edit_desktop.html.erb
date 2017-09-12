@@ -1,3 +1,53 @@
 <div id="devise-password-edit">
+  <% @enable_transparent = true %>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <p class="_fs-5 _white">새로운 비밀번호를 입력해주세요</p>
+    </div>
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <!-- ERROR : $('#error-message').text()로 수정해서 보여주기 -->
+      <p class="moto-margin _fs-5 _white _f-letter" id="error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
+      <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
 
+        <!-- TODO: form_for 객체, url 변경해야함 -->
+        <%= form_for resource, asx: resource_name, url: password_path(resource_name), html: {method: :post} , remote: true do |f| %>
+            <div class="input-group">
+              <div class="_column-positioner _vcenter-positioner">
+                <!-- 비밀번호 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password, placeholder: "비밀번호", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
+                </div>
+                <!-- 비밀번호 확인 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <div class="_vcenter-positioner">
+                <div class="button-width _submit-button _fs-3 _white _text-center">
+                  <%= link_to "취소", mypage_index_path %>
+                </div>
+                <div class="button-margin"></div>
+                <%= f.submit "확인", class: "button-width _submit-button _fs-3 _white" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

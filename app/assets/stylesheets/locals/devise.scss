@@ -190,7 +190,8 @@
   }
 }
 #devise-signup,
-#devise-passwords-new {
+#devise-passwords-new,
+#devise-password-edit {
   .input-group {
     @include flex-grow(1);
     @include size(100%, auto);
