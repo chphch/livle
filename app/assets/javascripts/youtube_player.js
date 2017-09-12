@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             player.filter = $(this).find('.youtube-player-filter');
             player.remainingTimer = $(this).find('.remaining-timer');
             player.progressBar = $(this).find('#progress-bar-' + id);
+            player.progressLeft = $(this).find('#progress-left');
+            player.progressRight = $(this).find('#progress-right');
             if (player.progressBar.length) {
                 player.progressBarController = new ProgressBar.Circle('#progress-bar-' + id, {
                     strokeWidth: 4,
@@ -54,7 +56,7 @@ function onPlayerReady(event) {
         player.playVideo();
     }
     readyPlayerSize++;
-    var videoSize = $('.show-video-container').length;
+    var videoSize = $('.show-video-container-js').length;
     if (readyPlayerSize == videoSize) {
         onAllPlayerReady();
     }
@@ -103,11 +105,17 @@ function onPlaybackQualityChange(event) {
 }
 
 // after all players are ready - set click listeners
-// TODO how to move these methods into onPlayerReady()
+// TODO: how to move these methods into onPlayerReady()
 function onAllPlayerReady() {
     players.forEach(function(player){
         player.playButton.on("click", function() {
             onClickPlayButton(player);
+        });
+        player.progressLeft.on("dblclick", function () {
+            onDoubleclickProgress(player, 'left');
+        });
+        player.progressRight.on("dblclick", function () {
+            onDoubleclickProgress(player, 'right');
         });
         player.qualityButton.on("click", function() {
             onClickQualityButton(player);
@@ -137,6 +145,18 @@ function onClickPlayButton(player) {
     }
 }
 
+// on dblclick progress time
+function onDoubleclickProgress(player, dir) {
+    var curTime = player.getCurrentTime();
+    console.log("double tap! " + curTime);
+
+    if (dir === 'left') {
+        player.seekTo(curTime - 10);
+    } else {
+        player.seekTo(curTime + 10);
+    }
+}
+
 // on click quality button
 function onClickQualityButton(player) {
     var quality = player.getPlaybackQuality();
@@ -161,7 +181,7 @@ function onClickFullscreenButton(player) {
     }
 }
 
-// on clikc container show filter, buttons, progress-bar, timer
+// on click container show filter, buttons, progress-bar, timer
 function onClickContainer(player) {
     if (player.filter.is(':visible') === true &&
         event.target != player.playButton[0] &&

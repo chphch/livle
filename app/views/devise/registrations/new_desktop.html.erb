@@ -1,20 +1,17 @@
-<div id="device-signup">
+<div id="devise-signup">
   <% @enable_transparent = true %>
-  <div class="_devise-background">
-    <div class="_devise-filter"></div>
-  </div>
-  <div class="_full-container _hcenter-positioner">
-    <div class="_desktop-session-container _column-positioner _hcenter-positioner">
-      <div class="moto-container _text-center _no-p-margin">
-        <p class="_fs-5 _white">
-          이미 계정이 있으십니까?
-          <%= link_to "로그인", mypage_index_path, style: "text-decoration: underline !important;" %>
-        </p>
-      </div>
-      <div class="moto-container _text-center _no-p-margin">
-        <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
-        <p class="moto-margin _fs-5 _white _f-letter">Life is live</p>
-      </div>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <p class="_fs-5 _white">
+        이미 계정이 있으십니까?
+        <%= link_to "로그인", mypage_index_path, style: "text-decoration: underline !important;" %>
+      </p>
+    </div>
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <p class="moto-margin _fs-5 _white _f-letter" id="error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
       <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
         <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {remote: true} do |f| %>
             <div class="input-group">

@@ -7,7 +7,7 @@ class FeedsController < ApplicationController
     merged_feeds = common_feeds.each_slice(4).zip(official_feeds).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 10) #for mobile
 
-    @officials = official_feeds.paginate(page: params[:page], per_page: 4) #for desktop
+    @officials = official_feeds.paginate(page: params[:page], per_page: 6) #for desktop
     @commons = common_feeds.paginate(page: params[:page], per_page: 14) #for desktop
     @enable_transparent = true #for desktop
     @enable_footer = true #for desktop

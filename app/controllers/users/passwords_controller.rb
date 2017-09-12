@@ -2,7 +2,7 @@ class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   def new
     super
-    @title = "비밀번호 찾기"
+    @title = "비밀번호 찾기" #for mobile
     render_by_device
   end
 
@@ -12,14 +12,15 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   def after_create
-    @title = "비밀번호 찾기"
+    @title = "비밀번호 찾기" #for mobile
     render_by_device
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   def edit
     super
-    @disable_nav = true
+    @title = "비밀번호 변경" #for mobile
+    @disable_nav = true #for mobile
     render_by_device
   end
 

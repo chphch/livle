@@ -1,7 +1,7 @@
 $('body').append(
-    '<div id="confirmation-email-sent-mobile" class="modal">\
-<%= j render partial: "/devise/registrations/confirmation_email_sent_mobile" %>\
-</div>'
+    '<div id="confirmation-email-sent-mobile" class="modal">' +
+    '    <%= j render partial: "/devise/registrations/confirmation_email_sent_mobile" %>' +
+    '</div>'
 );
 var alertModal = $('#confirmation-email-sent-mobile');
 alertModal.modal();

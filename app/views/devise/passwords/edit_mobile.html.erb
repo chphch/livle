@@ -1,3 +1,38 @@
-<%= render partial: 'mypage/top_mobile', locals: {title: "비밀번호 바꾸기"} %>
+<div class="_full-container _column-positioner _hcenter-positioner" id="devise-password-edit-mobile">
+  <div class="_column-positioner _vcenter-positioner">
+    <%= image_tag "logo_livle", class: "_logo-container-m" %>
+    <div class="moto-container _text-center">
+      <!-- ERROR : $('#error-message').text()로 수정해서 보여주기 -->
+      <p class="_fs-3-mobile _white _f-letter-mobile _f-line-mobile" id="error-message">새로운 비밀번호를 입력해주세요</p>
+    </div>
+  </div>
 
-<%= render file: 'devise/passwords/edit_mobile.html.erb' %>
+  <!-- TODO: form_for 객체, url 변경해야함 -->
+  <%= form_for(resource, asx: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
+      <div class="_column-positioner _vcenter-positioner">
+        <!-- 비밀번호 -->
+        <div class="login-input-container _vcenter-positioner">
+          <div class="icon-container _vcenter-positioner">
+            <%= image_tag "icon_lock", class: "input-icon" %>
+          </div>
+          <div class="input-container">
+            <%= f.password_field :password, placeholder: "새 비밀번호", autocomplete: "off", class: "input-field _fs-3-mobile _white" %>
+          </div>
+        </div>
+        <!-- 비밀번호 확인 -->
+        <div class="login-input-container _vcenter-positioner">
+          <div class="icon-container _vcenter-positioner">
+            <%= image_tag "icon_lock", class: "input-icon" %>
+          </div>
+          <div class="input-container">
+            <%= f.password_field :password_confirmation, placeholder: "비밀번호 확인", autocomplete: "off", class: "input-field _fs-3-mobile _white" %>
+          </div>
+        </div>
+        <div class="button-container">
+          <div class="_vcenter-positioner _hcenter-positioner">
+            <%= f.submit "확인", class: "button-width _submit-button-m _fs-2-mobile _white" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

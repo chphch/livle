@@ -1,8 +1,9 @@
 $('body').append(
-    '<div id="successful-login-modal" class="modal">\
-<%= j render partial: "devise/sessions/successful_login_modal_desktop", locals: {message: flash[:notice]} %>\
-</body>'
+    '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
+    '    <%= render partial: "partial_views/check_modal_desktop", locals:{message: flash[:notice]} %>' +
+    '</div>'
 );
-var successfulLoginModal = $('#successful-login-modal');
-successfulLoginModal.modal();
-setTimeout(function() {window.location = "<%= mypage_index_path %>";}, 1500);
+
+setTimeout(function() {
+    window.location = "<%= mypage_index_path %>";
+}, 1500);

@@ -2,9 +2,8 @@
   <div class="_hcenter-positioner">
     <div class="_desktop-container _row-positioner">
       <!-- Main -->
-      <div class="_no-p-margin show-video-container">
+      <div class="show-video-container _no-p-margin">
         <!-- Youtube Video Player -->
-
         <% if @main_video %>
             <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: @main_video_id, feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
         <% end %>
@@ -79,24 +78,27 @@
               </div>
               <p class="_fs-4 _white">좋아요</p>
           <% end %>
-          <div class="_vcenter-positioner _show-button-padding" id="share-modal-button" onclick="$('#share-modal').modal();">
-            <%= image_tag "icon_share_white", class: "_show-icon" %>
-            <p class="_fs-4 _white">공유</p>
+          <div class="_share-container">
+            <div class="_vcenter-positioner _show-button-padding" id="share-button">
+              <%= image_tag "icon_share_white", class: "_show-icon" %>
+              <p class="_fs-4 _white">공유</p>
+            </div>
           </div>
         </div>
         <hr>
 
         <!-- Comments -->
-        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @upcoming.upcoming_comments, model: UpcomingComment, parent_id: @upcoming.id} %>
+        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @upcoming.upcoming_comments, parent_id: @upcoming.id} %>
       </div>
 
       <!-- Reated Video -->
       <div class="related-video-container">
-        <div class="related-video-background">
-          <%= image_tag "http://img.youtube.com/vi/#{@upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
-          <div class="related-video-filter _full-container"></div>
-        </div>
         <div class="related-card-container _hcenter-positioner">
+          <div class="related-video-background">
+            <%= image_tag "http://img.youtube.com/vi/#{@upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
+            <div class="related-video-filter _full-container"></div>
+          </div>
+
           <div class="card-container">
             <p class="_fs-4 _white">관련영상</p>
             <% @upcoming.related_upcomings.each do |upcoming| %>
@@ -112,7 +114,23 @@
   <div id ="ticket-link-modal" class="modal">
     <%= render partial: 'partial_views/ticket_link_desktop', locals: {upcoming: @upcoming} %>
   </div>
-  <div id="share-modal" class="modal">
-    <%= render partial: 'partial_views/share_modal_desktop', locals: {post: @upcoming} %>
-  </div>
+  <script>
+      $('#share-button').on('click', function () {
+          $('._share-container').append(
+              '<div class="_share-modal _desktop-small-modal" id="share-modal">' +
+                '<p class="_fs-3 _black">공유하기</p>' +
+                '<p class="_fs-3 _dark-gray">페이스북 트위터</p>' +
+              '</div>'
+          );
+//          '<= render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>' +
+      });
+
+      //works like modal
+      $('body').click(function (e) {
+          if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
+              $('#share-modal').remove();
+      }).find('#share-button').on('click', function (e) {
+          e.stopPropagation();
+      });
+  </script>
 </div>
