@@ -12,8 +12,7 @@
     <div class="filter-container">
       <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
 
-        <!-- TODO: form_for 객체, url 변경해야함 -->
-        <%= form_for resource, asx: resource_name, url: password_path(resource_name), html: {method: :post} , remote: true do |f| %>
+        <%= form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :post} , remote: true do |f| %>
             <div class="input-group">
               <div class="_column-positioner _vcenter-positioner">
                 <!-- 비밀번호 -->
