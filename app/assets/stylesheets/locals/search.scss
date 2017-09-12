@@ -36,7 +36,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@media screen and (max-device-width: 767px) {
   .ui-autocomplete span.hl_results {
     //highlight result
     border: none;

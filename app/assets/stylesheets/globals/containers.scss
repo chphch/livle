@@ -167,6 +167,11 @@
     position: absolute;
     @include position(0);
   }
+
+  ._show-progress-controller-m {
+    position: relative;
+    height: 100%;
+  }
 }
 
 ._link-back-container-m {
@@ -224,11 +229,18 @@
   }
 
   ._comment-content-container-m {
+    position: relative;
     margin: 0 0 0 18%;
     padding: 3% 5% 3% 6%;
-    //왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래
-    @include border-radius(0 $br-min-m $br-min-m $br-min-m);
+    @include border-radius(0 $br-min-m $br-min-m $br-min-m); //왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래
     background: $dark-gray;
+    ._comment-delete-container-m {
+      position: relative;
+      padding: 1% 0;
+    }
+    ._comment-icon-m {
+      @include size(auto, 3rem);
+    }
   }
 }
 
@@ -262,16 +274,13 @@
 //########################
 //backgrounds
 ._devise-background {
-  position: fixed;
+  position: absolute;
   @include position(0);
   z-index: $z-burrow;
-  background: url(asset-path("background_concert.png")) no-repeat center center;
+  background: url(asset-path("background_concert.jpg")) no-repeat center center;
   background-size: cover;
-  ._devise-filter {
-    @include size(100%);
-    background: $black-opacity;
-  }
 }
+
 //containers
 ._desktop-container {
   position: relative;
@@ -349,23 +358,35 @@
     border: none;
     @include border-radius($br-min);
     ._comment-edit-container {
+      position: relative;
       display: none;
     }
     ._comment-icon {
       @include size(auto, 1.8rem);
     }
+    ._comment-edit-modal {
+      position: absolute;
+      top: 3rem;
+      right: 0;
+    }
+  }
 
-    &:hover {
-      ._comment-edit-container {
-        display: block;
+  &:hover {
+    ._comment-edit-container {
+      display: block;
+      &:hover {
+        cursor: pointer;
       }
     }
   }
 }
 
-._desktop-session-container {
+._share-container {
   position: relative;
-  width: 36rem;
+  ._share-modal {
+    position: absolute;
+    top: 3rem; right: 0;
+  }
 }
 
 //modals
@@ -396,4 +417,12 @@
       cursor: pointer;
     }
   }
+}
+
+._desktop-small-modal {
+  min-width: 8rem; height: auto;
+  background: $white;
+  padding: 1rem;
+  @include border-radius($br-min);
+  z-index: $z-most-important;
 }

@@ -8,6 +8,16 @@ class Feed < ApplicationRecord
   has_many :connect_urls
   attr_accessor :id, :video_id, :like_true, :count_like
 
+  def prev(feeds)
+    # 나중에 생성된 feed
+    return feeds.where('feeds.created_at > ?', self.created_at).first
+  end
+
+  def next(feeds)
+    # 전에 생성된 feed
+    return feeds.where('feeds.created_at < ?', self.created_at).first
+  end
+
   def like_true(user)
     return user && self.feed_likes.exists?(user_id: user.id) || false
   end

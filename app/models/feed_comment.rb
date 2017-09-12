@@ -21,4 +21,12 @@ class FeedComment < ApplicationRecord
       return term.to_s+"분 전"
     end
   end
+
+  def model
+    return FeedComment
+  end
+
+  def parent_id
+    return self.feed.id
+  end
 end

@@ -20,7 +20,7 @@
                 <p class="_fs-3 _white"><%= upcoming.main_video.title %></p>
                 <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
               </div>
-              <%= image_tag "icon_hand_empty", class: "upcoming-icon" %>
+              <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
             </div>
           </div>
           <div class="info-container _column-positioner _hcenter-positioner">
@@ -61,18 +61,19 @@
   <script>
       $cur = $('#ticket-<%= upcoming.id %>');
       $cur.mouseenter(function () {
-          console.log('hover');
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').remove();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
               '<div class="_video-player">' +
               '   <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= upcoming.main_video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&\n' +
               '   autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= upcoming.main_video_id %>"\n' +
               '   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>' +
+              '   <div class="thumbnail-filter _vbottom-positioner _hright-positioner">\n' +
+              '       <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>' +
+              '   </div>' +
               '</div>'
           );
       });
       $cur.mouseleave(function () {
-          console.log('leave');
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
               '<div class="_thumbnail-image-container">\n' +
@@ -83,6 +84,7 @@
               '        <p class="_fs-3 _white"><%= upcoming.main_video.title %></p>\n' +
               '        <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>\n' +
               '    </div>\n' +
+              '    <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>' +
               '</div>'
           );
       });

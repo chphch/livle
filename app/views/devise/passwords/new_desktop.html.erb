@@ -1,21 +1,19 @@
-<div id="device-passwords-new">
+<div id="devise-passwords-new">
   <% @enable_transparent = true %>
-  <div class="_devise-background">
-    <div class="_devise-filter"></div>
-  </div>
-  <div class="_full-container _hcenter-positioner">
-    <div class="_desktop-session-container _column-positioner _hcenter-positioner">
-      <div class="moto-container _text-center _no-p-margin">
-        <p class="_fs-5 _white">
-          비밀번호를 새로 설정하기 위해 이메일<br> 주소를 입력해주세요.
-        </p>
-      </div>
-      <div class="moto-container _text-center _no-p-margin">
-        <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
-        <p class="moto-margin _fs-5 _white _f-letter">Life is live</p>
-      </div>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <p class="_fs-5 _white">
+        비밀번호를 새로 설정하기 위해 이메일<br> 주소를 입력해주세요.
+      </p>
+    </div>
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <!-- ERROR : $('#error-message').text()로 수정해서 보여주기 -->
+      <p class="moto-margin _fs-5 _white _f-letter" id="error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
       <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
-        <%= form_for(resource, asx: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
+        <%= form_for resource, asx: resource_name, url: password_path(resource_name), html: {method: :post} , remote: true do |f| %>
             <div class="input-group">
               <div class="_column-positioner _vcenter-positioner">
                 <!-- 이메일 -->

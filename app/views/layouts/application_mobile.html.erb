@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Livle</title>
-    <%= csrf_meta_tags %>
-    <!-- disable zooming -->
-    <meta name="viewport" content="initial-scale=0.39, maximum-scale=0.39, user-scalable=no" />
 
-    <!-- jQuery -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<head>
+  <title>Livle</title>
+  <%= csrf_meta_tags %>
+  <!-- disable zooming -->
+  <meta name="viewport" content="initial-scale=0.39, maximum-scale=0.39, user-scalable=no" />
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
+  <!-- jQuery -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
 
-    <!-- Web Fonts -->
-    <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
-    <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare-base64.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  </head>
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <body>
-  <!-- Bottom Navbar -->
-  <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
-  <% if @disable_background_image %>
-      <div class="_body-no-background-m"></div>
-  <% else %>
-      <div class="_body-background-m"></div>
-  <% end %>
-  <%= render partial: 'mypage/top_mobile', locals: {title: @title, back_url: @back_url} if @title %>
+  <!-- Web Fonts -->
+  <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
+  <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare-base64.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
 
-  <%= yield %>
-  <% unless @disable_nav %>
-      <div style="padding: 4rem; background: none;"></div>
-  <% end %>
-  </body>
+<body>
+<!-- Render 우선순위로 나열 -->
+<%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
+<% if @disable_background_image %>
+    <div class="_body-no-background-m"></div>
+<% else %>
+    <div class="_body-background-m"></div>
+<% end %>
+<%= render partial: "mypage/top_mobile", locals: {title: @title, back_url: @back_url} if @title %>
+
+<%= yield %>
+<% unless @disable_nav %>
+    <div style="padding: 4rem; background: none;"></div>
+<% end %>
+</body>
+
 </html>

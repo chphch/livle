@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         respond_with resource do |format|
-          format.js {render js: "window.location = '#{mypage_index_path}';"}
+          format.js { render "successful_signup_#{device_suffix}.js.erb" }
         end
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
