@@ -79,6 +79,9 @@
 
   .official-button {
     @include size(5rem, 100%);
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .show-button {
@@ -96,11 +99,10 @@
 #feeds-index {
   background: $black;
 
-  .curation-container {
+  .official-container {
     position: relative;
-    top: 0; left: 0; right: 0;
-    height: 36rem;
-    background: $gray;
+    top: 0;
+    @include size(100%, 36rem);
   }
 
   .feed-container {
@@ -173,7 +175,7 @@
   .related-video-background {
     position: absolute;
     @include position(2rem);
-    z-index: $z-back;
+    z-index: $z-burrow;
     overflow: hidden;
     border: none;
     @include border-radius($br-image);

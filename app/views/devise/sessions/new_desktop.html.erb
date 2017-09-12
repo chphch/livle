@@ -1,14 +1,11 @@
-<div id="device-new">
+<div id="devise-new">
   <% @enable_transparent = true %>
-  <div class="_devise-background">
-    <div class="_devise-filter"></div>
-  </div>
-  <div class="_full-container _hcenter-positioner">
-    <div class="_desktop-session-container _column-positioner _hcenter-positioner">
-      <div class="moto-container _text-center _no-p-margin">
-        <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
-        <p class="moto-margin _fs-5 _white _f-letter">Life is live</p>
-      </div>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <p class="moto-margin _fs-5 _white _f-letter" id="login-error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
       <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
         <!-- Facebook Login -->
         <div class="button-container">
@@ -27,8 +24,6 @@
           </div>
           <div class="hr"></div>
         </div>
-
-        <div id="login-error-message" class="_fs-4 _white _text-center"></div>
 
         <%= form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f| %>
             <%= f.hidden_field :remote_new_session %>
@@ -86,10 +81,10 @@
 <%= render partial: 'onclick_facebook_button', locals: {url: user_facebook_omniauth_authorize_path, remote: true} %>
 
 <script>
-// Press enter to submit
-$('input').keydown(function(e) {
-  if (e.keyCode == 13) {
-    $('#sign-in').trigger('click');
-  }
-});
+    // Press enter to submit
+    $('input').keydown(function(e) {
+        if (e.keyCode == 13) {
+            $('#sign-in').trigger('click');
+        }
+    });
 </script>

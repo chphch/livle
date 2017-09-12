@@ -1,7 +1,9 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
-  <div class="curation-container">
-    <%= render partial: "index_official_desktop", locals: {feed: @officials.sample} if @officials.size > 0 %>
+
+  <div class="official-container _vcenter-positioner">
+    <!-- append on s_feed_desktop.js -->
+    <%= render partial: "index_official_desktop", collection: @officials, as: :feed %>
   </div>
 
   <div class="feed-container _column-positioner _vcenter-positioner">
@@ -9,7 +11,7 @@
       <p class="_fs-title _light-gray _flex-grow-1"
          style="margin-left: 1rem;">추천 라이브</p>
       <div class="scroll-button prev-button _vcenter-positioner _hcenter-positioner"
-        style="display: none">
+           style="display: none">
         <%= image_tag "icon_back", class: "arrow-button" %>
       </div>
       <div class="scroll-button next-button _vcenter-positioner _hcenter-positioner">

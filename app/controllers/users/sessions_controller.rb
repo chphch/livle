@@ -23,8 +23,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     user = User.where(email: params[:user][:email]).take
     if user && !user.confirmed_at
-      # TODO 모달을 하든가 합시다
-      render js: "$('#login-error-message').text('이메일 인증해주세요');"
+      render js: "$('#login-error-message').text('이메일 인증 후 로그인이 가능합니다');$('#login-error-message').css('color','#9BFFCC');"
       # 메일 인증 안된 경우 아래에서 401 status error 떠서 그전에 해줘야함
       # warden.authenticate 코드가 어디있는 메서드인지 못찾겠음
       return
@@ -49,10 +48,9 @@ class Users::SessionsController < Devise::SessionsController
       end
     else
       set_flash_message!(:alert, :not_found_in_database, {scope: "devise.failure"})
-      render js: "$('#login-error-message').text('#{flash[:alert]}');"
+      render js: "$('#login-error-message').text('#{flash[:alert]}');$('#login-error-message').css('color','#9BFFCC');"
     end
   end
-
 
   # DELETE /users/sign_out
   # def destroy

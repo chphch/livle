@@ -6,9 +6,15 @@
     <p class="_fs-4-mobile _white _icon-text-margin-m"><%= comment.user.nickname %></p>
     <p class="_fs-5-mobile _light-gray _icon-text-margin-m"><%= comment.created_time %></p>
   </div>
-  <div class="_comment-content-container-m">
-    <p class="_fs-5-mobile _white">
-      <%= comment.content %>
-    </p>
+  <div class="_comment-content-container-m _row-positioner">
+    <p class="_fs-5-mobile _white _flex-grow-1"><%= comment.content %></p>
+    <% if user_signed_in? %>
+        <% if comment.user.id == current_user.id %>
+            <%= link_to comment.model.to_s == 'FeedComment' ? "/feeds/#{comment.parent_id}/feed_comments/#{comment.id}" :
+                            "/upcomings/#{comment.parent_id}/upcoming_comments/#{comment.id}", class: "_comment-delete-container-m", method: :delete do %>
+                  <%= image_tag "icon_close", class: "_comment-icon-m" %>
+            <% end %>
+        <% end %>
+    <% end %>
   </div>
 </div>

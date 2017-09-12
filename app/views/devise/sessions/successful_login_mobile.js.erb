@@ -1,11 +1,15 @@
 $('body').append(
-    '<div id="successful-login-modal" class="modal">\
-<%= j render partial: "devise/sessions/successful_login_modal_mobile", locals: {message: flash[:notice]} %>\
-</body>'
+    '<div id="successful-login-modal" class="modal">\n' +
+    '    <%= render partial: "partial_views/check_modal_mobile", locals:{text: flash[:notice]} %>' +
+    '</div>'
 );
+
 var successfulLoginModal = $('#successful-login-modal');
 successfulLoginModal.modal();
-setTimeout(function() {successfulLoginModal.modal('hide')}, 1500);
+
+setTimeout(function() {
+    successfulLoginModal.modal('hide')
+}, 1500);
 successfulLoginModal.on('hide.bs.modal', function() {
     successfulLoginModal.remove();
     if (isfacebookLoginCallbackTrue) {

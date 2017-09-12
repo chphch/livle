@@ -1,0 +1,9 @@
+$('body').append(
+    '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
+      '<%= j render partial: "partial_views/check_modal_desktop", locals: {message: "회원가입이 완료되었습니다"} %>' +
+    '</div>'
+);
+
+setTimeout(function () {
+    window.location = "<%= mypage_index_path %>";
+}, 1500);

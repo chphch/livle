@@ -1,5 +1,27 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    //DESKTOP
+    //DESKTOP OFFICIAL
+    var curPos = 0;
+    var max = 6;
+    $officialCard(curPos).show();
+
+    for(i = 0; i < max; i ++) {
+        $('#prev-button-'+i).on('click', function () {
+            if (curPos > 0) {
+                $officialCard(curPos - 1).show();
+                $officialCard(curPos).hide();
+                curPos -= 1;
+            }
+        });
+        $('#next-button-'+i).on('click', function () {
+            if (curPos < max-1) {
+                $officialCard(curPos + 1).show();
+                $officialCard(curPos).hide();
+                curPos += 1;
+            }
+        });
+    }
+
+    //DESKTOP COMMON
     $this = $('#scroll-target');
     $cardWidth = $('.feed-card-group ._column-positioner').width();
     var isLoading = false;
@@ -24,21 +46,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
     });
-
-    function scrollMove(click) {
-        var dir = click === 'left' ? '-=' : '+=';
-        var $scroll = dir + ($cardWidth * 3);
-
-        $this.stop().animate({
-            'scrollLeft': $scroll
-        }, {
-            duration: 350,
-            complete: function () {
-                scrolling();
-            }
-        });
-    }
 });
+
+function $officialCard(pos) {
+    return $('.official-'+pos);
+}
+
+function scrollMove(click) {
+    var dir = click === 'left' ? '-=' : '+=';
+    var $scroll = dir + ($cardWidth * 3);
+
+    $this.stop().animate({
+        'scrollLeft': $scroll
+    }, {
+        duration: 350,
+        complete: function () {
+            scrolling();
+        }
+    });
+}
 
 function scrolling() {
     // console.log("cur pos: "+ $this.scrollLeft());
