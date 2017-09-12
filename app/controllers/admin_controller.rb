@@ -14,6 +14,11 @@ class AdminController < ApplicationController
     render_by_device
   end
 
+  def temporary_upcoming
+    @temp_upcomings = TemporaryUpcoming.all
+    render_by_device
+  end
+
   def connect
     @connects = ConnectUrl.all
     render_by_device
