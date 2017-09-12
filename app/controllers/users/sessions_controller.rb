@@ -29,6 +29,8 @@ class Users::SessionsController < Devise::SessionsController
       return
     end
 
+    params[:user].merge!(remember_me: 1) # Auto remember
+
     self.resource = warden.authenticate(auth_options)
     if resource && resource.active_for_authentication?
       set_flash_message!(:notice, :signed_in)
