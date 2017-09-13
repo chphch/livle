@@ -1,0 +1,99 @@
+<!-- Side Navbar -->
+<%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="black-desktop-title">Upcoming Lists</p>
+  <table>
+    <tr>
+      <td>
+        <p class="black-desktop-content">index</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Title</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Place</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">시작일</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">종료일</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Artists</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Ticket Provider</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">Ticket Url</p>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+
+    <% @temp_upcomings.each do |temp_upcoming| %>
+      <tr>
+        <td>
+            <p class="black-desktop-content"><%= temp_upcoming.id %></p>
+        </td>
+          <%= form_for temp_upcoming, method: :patch do |f| %>
+            <td>
+              <p class="black-desktop-content">
+              <%= f.text_field :title %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%= f.text_field :place %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%=f.date_field :start_date %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%=f.date_field :end_date %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%=temp_upcoming.artist_info%>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%=f.text_field :provider, readonly: true %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
+              <%=f.text_field :ticket_url %> <%=link_to temp_upcoming.ticket_url, target: :_blank do%>바로가기<% end %>
+              </p>
+            </td>
+            <td>
+              <%= f.submit '승격' %>
+            </td>
+          <% end %>
+          <td>
+            <%=form_tag "/temporary_upcomings/#{temp_upcoming.id}/merge" do %>
+              <%=text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'Upcoming의 Id' %>
+              <%=submit_tag '합치기' %>
+          <% end %>
+          </td>
+          <td>
+            <%= link_to temporary_upcoming_path(temp_upcoming.id), method: :delete do %>
+              <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
