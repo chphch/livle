@@ -107,24 +107,39 @@ function onPlaybackQualityChange(event) {
 // after all players are ready - set click listeners
 // TODO: how to move these methods into onPlayerReady()
 function onAllPlayerReady() {
+    var lastTouchEnd = 0;
+    var delayTime = 240;
     players.forEach(function(player){
         player.playButton.on("click", function() {
             onClickPlayButton(player);
         });
-        player.progressLeft.on("dblclick", function () {
-            onDoubleclickProgress(player, 'left');
+        player.progressLeft.on('click', function (e) {
+            var now = Date.now(); //현재시각
+            console.log(now);
+            if (now - lastTouchEnd <= delayTime) {
+                e.preventDefault();
+                onDoubleTabProgress(player, 'left');
+            } else {
+                onClickContainer(player); //filter event
+            }
+            lastTouchEnd = now; //update lastTouchEnd
         });
-        player.progressRight.on("dblclick", function () {
-            onDoubleclickProgress(player, 'right');
+        player.progressRight.on('click', function (e) {
+            var now = Date.now(); //현재시각
+            console.log(now);
+            if (now - lastTouchEnd <= delayTime) {
+                e.preventDefault();
+                onDoubleTabProgress(player, 'right');
+            } else {
+                onClickContainer(player); //filter event
+            }
+            lastTouchEnd = now; //update lastTouchEnd
         });
         player.qualityButton.on("click", function() {
             onClickQualityButton(player);
         });
         player.fullScreenButton.on("click", function() {
             onClickFullscreenButton(player);
-        });
-        player.container.on("click", function() {
-            onClickContainer(player);
         });
     });
 
@@ -146,9 +161,8 @@ function onClickPlayButton(player) {
 }
 
 // on dblclick progress time
-function onDoubleclickProgress(player, dir) {
+function onDoubleTabProgress(player, dir) {
     var curTime = player.getCurrentTime();
-    console.log("double tap! " + curTime);
 
     if (dir === 'left') {
         player.seekTo(curTime - 10);
