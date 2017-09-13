@@ -1,0 +1,48 @@
+@import "globals/colors";
+@import "globals/sizes";
+@import "globals/mixins";
+
+#mailer {
+  width: 100%;
+  background: $dark-gray;
+  $padding: 2rem 4rem;
+
+  .mailer-container {
+    @include size(52rem, auto);
+  }
+  .mailer-header {
+    background: $black;
+    padding: $padding;
+    .hr-bar {
+      @include size(100%, .6rem);
+      padding:  1rem 0 1rem 10%;
+      background: $white;
+    }
+
+    .title-container {
+      @include size(100%, 6rem);
+      .mailer-logo {
+        @include size(auto, 100%);
+        margin: 0 3rem 0 0;
+      }
+    }
+    .message-container {
+      @include size(100%, auto);
+      padding: 6rem 0;
+    }
+  }
+
+  .mailer-button-container {
+    background: $white;
+    padding: $padding 0;
+    .mailer-button {
+      border: 1px solid $black;
+      @include border-radius($br-image);
+    }
+  }
+
+  .mailer-notice-container {
+    @include size(100%, auto);
+    padding: 2rem 0 0;
+  }
+}
