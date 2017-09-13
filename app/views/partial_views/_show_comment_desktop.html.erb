@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && comments.first %>
     <!-- TODO: Form Helper 완성시키기 -->
     <% model = comments.first.model %>
     <%= form_for model.new, url: model.to_s == 'FeedComment' ? feed_feed_comments_path(parent_id) :
