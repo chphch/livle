@@ -85,10 +85,10 @@ function updateProgressBar(player){
 function onPlayerStateChange(event) {
     var player = event.target;
     if (event.data === YT.PlayerState.PLAYING) {
-        player.playButton.attr('src', "/assets/icon_pause");
+        player.playButton.attr('src', "/icon_pause.png");
         hideFilter(player);
     } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.BUFFERING || event.data === YT.PlayerState.CUED) {
-        player.playButton.attr('src', "/assets/icon_play");
+        player.playButton.attr('src', "/icon_play.png");
     }
 }
 
