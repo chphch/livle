@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             player.container = $(this);
             player.playButton = $(this).find('.play-button');
             player.qualityButton = $(this).find('.hd-button');
-            player.fullScreenButton = $(this).find('.fullscreen-button');
+            // player.fullScreenButton = $(this).find('.fullscreen-button');
             player.filter = $(this).find('.youtube-player-filter');
             player.remainingTimer = $(this).find('.remaining-timer');
             player.progressBar = $(this).find('#progress-bar-' + id);
@@ -129,23 +129,15 @@ function onAllPlayerReady() {
             }
             lastTouchEnd = now; //update lastTouchEnd
         });
-        player.container.on('click', function () {
-            // setTimeout(function () {
-            //     var now = Date.now(); //현재시각
-            //     var calcTerm = now-lastTouchEnd-delayTime;
-            //     console.log('term: ' + calcTerm);
-            //     if (-10 < calcTerm && calcTerm < 10) {
-            //         onClickContainer(player); //filter event
-            //     }
-            // }, delayTime);
+        player.container.on('click', function (e) {
             onClickContainer(player); //filter event
         });
         player.qualityButton.on("click", function() {
             onClickQualityButton(player);
         });
-        player.fullScreenButton.on("click", function() {
-            onClickFullscreenButton(player);
-        });
+        // player.fullScreenButton.on("click", function() {
+        //     onClickFullscreenButton(player);
+        // });
     });
 
     // set onclick lineup buttons
@@ -168,7 +160,6 @@ function onClickPlayButton(player) {
 // on dblclick progress time
 function onDoubleTabProgress(player, dir) {
     var curTime = player.getCurrentTime();
-
     if (dir === 'left') {
         player.seekTo(curTime - 10);
     } else {
@@ -187,25 +178,20 @@ function onClickQualityButton(player) {
 }
 
 // on click fullscreen button
-function onClickFullscreenButton(player) {
-    var iframeTag = player.a;
-    if (iframeTag.requestFullScreen) {
-        iframeTag.requestFullScreen();
-    } else if (iframeTag.webkitRequestFullScreen) {
-        iframeTag.webkitRequestFullScreen();
-    } else if (iframeTag.msRequestFullScreen) {
-        iframeTag.msRequestFullScreen();
-    } else if (iframeTag.mozRequestFullScreen) {
-        iframeTag.mozRequestFullScreen();
-    }
-}
+// function onClickFullscreenButton(player) {
+//     var iframeTag = player.a;
+//     var requestFullScreen = iframeTag.requestFullScreen || iframeTag.webkitRequestFullScreen ||
+//         iframeTag.msRequestFullScreen || iframeTag.mozRequestFullScreen;
+//     if (requestFullScreen) {
+//         requestFullScreen.bind(iframeTag)();
+//     }
+// }
 
 // on click container show filter, buttons, progress-bar, timer
 function onClickContainer(player) {
     if (player.filter.is(':visible') === true &&
         event.target != player.playButton[0] &&
-        event.target != player.qualityButton[0] &&
-        event.target != player.fullScreenButton[0]) {
+        event.target != player.qualityButton[0]) {
         hideFilter(player);
     } else {
         showFilter(player);
@@ -220,7 +206,7 @@ function showFilter(player) {
     }
     player.remainingTimer.show();
     player.qualityButton.show();
-    player.fullScreenButton.show();
+    // player.fullScreenButton.show();
 }
 function hideFilter(player) {
     player.filter.hide();
@@ -230,7 +216,7 @@ function hideFilter(player) {
     }
     player.remainingTimer.hide();
     player.qualityButton.hide();
-    player.fullScreenButton.hide();
+    // player.fullScreenButton.hide();
 }
 
 // on click lineup button(profile)

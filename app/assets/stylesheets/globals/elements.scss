@@ -121,7 +121,7 @@ textarea {
 
 //icon
 ._thumbnail-info-icon-m {
-  @include size(auto, 4rem);
+  @include size(auto, 100%);
   margin: 0 $thumbnail-info-mh-m 0 0;
 }
 
