@@ -108,32 +108,37 @@ function onPlaybackQualityChange(event) {
 // TODO: how to move these methods into onPlayerReady()
 function onAllPlayerReady() {
     var lastTouchEnd = 0;
-    var delayTime = 240;
+    var delayTime = 300;
     players.forEach(function(player){
         player.playButton.on("click", function() {
             onClickPlayButton(player);
         });
-        player.progressLeft.on('click', function (e) {
+        player.progressLeft.on('touchend', function (e) {
             var now = Date.now(); //현재시각
-            console.log(now);
             if (now - lastTouchEnd <= delayTime) {
                 e.preventDefault();
                 onDoubleTabProgress(player, 'left');
-            } else {
-                onClickContainer(player); //filter event
             }
             lastTouchEnd = now; //update lastTouchEnd
         });
-        player.progressRight.on('click', function (e) {
+        player.progressRight.on('touchend', function (e) {
             var now = Date.now(); //현재시각
-            console.log(now);
             if (now - lastTouchEnd <= delayTime) {
                 e.preventDefault();
                 onDoubleTabProgress(player, 'right');
-            } else {
-                onClickContainer(player); //filter event
             }
             lastTouchEnd = now; //update lastTouchEnd
+        });
+        player.container.on('click', function () {
+            // setTimeout(function () {
+            //     var now = Date.now(); //현재시각
+            //     var calcTerm = now-lastTouchEnd-delayTime;
+            //     console.log('term: ' + calcTerm);
+            //     if (-10 < calcTerm && calcTerm < 10) {
+            //         onClickContainer(player); //filter event
+            //     }
+            // }, delayTime);
+            onClickContainer(player); //filter event
         });
         player.qualityButton.on("click", function() {
             onClickQualityButton(player);

@@ -376,6 +376,8 @@ textarea {
 ._video-player {
   position: relative;
   @include video-player;
+  -ms-touch-action: none;
+  touch-action: none;
 }
 
 ._thumbnail-image {
