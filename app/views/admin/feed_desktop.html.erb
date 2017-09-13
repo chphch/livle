@@ -65,7 +65,7 @@
             </p>
           </td>
           <td>
-            <p class="black-desktop-content" style="overflow-x: scroll"><%= feed.rank %></p>
+            <p class="black-desktop-content" style="overflow-x: scroll"><%= feed.rank.round(2) %></p>
           </td>
           <td>
             <%=f.select :valuation, 1..5 %>
