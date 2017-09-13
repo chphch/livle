@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   private
 
   def full_filename(filename, args)

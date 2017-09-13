@@ -14,4 +14,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def get_thumbnail_image(youtube_id)
+    return "http://img.youtube.com/vi/#{youtube_id}/mqdefault.jpg"
+  end
 end
