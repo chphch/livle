@@ -44,7 +44,7 @@ class MypageController < ApplicationController
 
   def terms_of_use
     @disable_nav = true
-    @title = "약관"
+    @title = "이용약관"
     @back_url = mypage_settings_path
     @enable_footer = true #for desktop
     render_by_device
