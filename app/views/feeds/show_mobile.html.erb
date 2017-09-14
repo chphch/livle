@@ -1,5 +1,5 @@
 <div id="feeds-show-mobile">
-  <%= render partial: '/partial_views/youtube_player_mobile', locals: { feed: @feed, artists: @feed.artists, autoplay: true } %>
+  <%= render partial: 'partial_views/youtube_player_mobile', locals: { feed: @feed, artists: @feed.artists, autoplay: true } %>
 
   <!-- back button -->
   <%= link_to :back, class: "_link-back-container-m", id: 'back' do %>

@@ -39,9 +39,17 @@
     <div class="_show-progress-container-m _hcenter-positioner _vcenter-positioner youtube-player-buttons">
       <p class="_show-progress-margin-m _fs-4-mobile _white remaining-timer">0:00</p>
     </div>
-    <div class="_show-progress-container-m _vcenter-positioner">
-      <div class="_show-progress-controller-m _flex-grow-1" id="progress-left"></div>
-      <div class="_show-progress-controller-m _flex-grow-1" id="progress-right"></div>
+    <div class="_full-container _vcenter-positioner">
+      <div class="_show-progress-controller-m _show-icon-container-m _vcenter-positioner _hright-positioner _flex-grow-1" id="progress-left">
+        <% 2.downto(1) do |i| %>
+            <%= image_tag "icon_left_filled", class: "_show-progress-icon-m arrow-left-#{i}" %>
+        <% end %>
+      </div>
+      <div class="_show-progress-controller-m _show-icon-container-m _vcenter-positioner _flex-grow-1" id="progress-right">
+        <% for i in 1..2 %>
+            <%= image_tag "icon_right_filled", class: "_show-progress-icon-m arrow-right-#{i}" %>
+        <% end %>
+      </div>
     </div>
     <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
       <p class="_fs-3-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 0 3% 0 0;">HD</p>

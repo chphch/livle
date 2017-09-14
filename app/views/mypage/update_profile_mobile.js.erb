@@ -1,7 +1,7 @@
 $('#mypage-title').text("<%= @user.nickname %>");
 $('body').append(
     '<div id="successful-update-profile-modal" class="modal">\
-      <%= j render partial: "successful_update_profile_modal_mobile" %>\
+      <%= j render partial: "partial_views/check_modal_mobile", locals: {message: '프로필이 저장되었습니다'} %>\
     </div>'
 );
 var alertModal = $('#successful-update-profile-modal');

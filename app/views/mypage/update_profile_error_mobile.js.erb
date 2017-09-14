@@ -1,6 +1,6 @@
 $('body').append(
     '<div id="update-profile-error-modal" class="modal">\
-<%= j render partial: "update_profile_error_modal_mobile" %>\
+<%= j render partial: "partial_views/error_modal_mobile", locals:{message: '이미 사용중인 닉네임입니다'} %>\
 </div>'
 );
 var alertModal = $('#update-profile-error-modal');

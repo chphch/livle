@@ -1,6 +1,6 @@
 <% if feed %>
 <div class="_card-container-m">
-  <%= link_to feed_path(feed.id) do %>
+  <%= link_to feed_path(feed.id), "data-turbolinks": false do %>
       <div class="_thumbnail-container-m">
         <%= image_tag get_thumbnail_image(feed.video_id), class: "_thumbnail-image-m", id: "feed-#{feed.id}" %>
         <div class="_thumbnail-filter-m"></div>

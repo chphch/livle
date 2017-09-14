@@ -1,10 +1,16 @@
 @import "sizes";
 @import "colors";
 @import "mixins";
+@import "keyframe";
 
 //########################
 //#         BOTH         #
 //########################
+//default
+body {
+  background: $black !important;
+}
+
 //containers
 ._full-container {
   position: absolute;
@@ -93,7 +99,7 @@
 ._modal-background {
   position: absolute;
   @include position(0);
-  background-color: rgba(82, 82, 82, .9);
+  background-color: $white;
   border-radius: 6rem;
 }
 /* support backdrop-filter */
@@ -172,6 +178,17 @@
   ._show-progress-controller-m {
     position: relative;
     height: 100%;
+  }
+
+  ._show-icon-container-m {
+    padding: 0 18%;
+    ._show-progress-icon-m {
+      @include size(auto, 8%);
+    }
+  }
+  @for $i from 1 through 2 {
+    .arrow-left-#{$i} { opacity: 0; }
+    .arrow-right-#{$i} { opacity: 0; }
   }
 }
 
@@ -400,7 +417,7 @@
   @include border-radius($br-min);
   z-index: $z-most-important;
   .modal-icon {
-    @include size(auto, 6rem);
+    @include size(auto, 8rem);
     margin: 0 0 4rem;
   }
   .modal-button-container {
@@ -411,11 +428,17 @@
     @include size(48%, 4rem);
     border: 1px solid $black;
     @include border-radius($br-min);
+    .button-icon {
+      @include size(auto, 2rem);
+      margin: 0 1rem 0 0;
+    }
     &:not(:first-child) {
       margin: 0 0 0 4%;
     }
     &:hover {
       cursor: pointer;
+      border: none;
+      background: $light-gray;
     }
   }
 }

@@ -9,8 +9,7 @@
         </div>
         <!-- ticket container with background -->
         <div class="ticket-container _vcenter-positioner">
-          <%= image_tag upcoming_counter%2 != 0 ? "background_ticket_with_line" : "background_ticket",
-                        class: "ticket-img" %>
+          <%= image_tag "background_ticket", class: "ticket-img" %>
           <div class="ticket-video-container">
             <div class="_thumbnail-image-container">
               <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>

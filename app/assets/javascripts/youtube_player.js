@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     // youtube api
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -160,10 +160,24 @@ function onClickPlayButton(player) {
 // on dblclick progress time
 function onDoubleTabProgress(player, dir) {
     var curTime = player.getCurrentTime();
+    function animateLeftArrow(i) {
+        $('.arrow-left-'+i).stop().animate({'opacity': 0}, 100*(i-1)).
+        animate({'opacity': 1}, 400).animate({'opacity': 0}, 400);
+    }
+    function animateRightArrow(i) {
+        $('.arrow-right-'+i).stop().animate({'opacity': 0}, 100*(i-1)).
+        animate({'opacity': 1}, 400).animate({'opacity': 0}, 400);
+    }
     if (dir === 'left') {
         player.seekTo(curTime - 10);
+        for(var i = 1; i < 3; i++) {
+            animateLeftArrow(i);
+        }
     } else {
         player.seekTo(curTime + 10);
+        for(var i = 1; i < 3; i++) {
+            animateRightArrow(i);
+        }
     }
 }
 

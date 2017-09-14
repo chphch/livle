@@ -1,15 +1,15 @@
 <div class="_small-modal">
   <div class="_modal-background _column-positioner _hcenter-positioner">
     <div class="_small-modal-title text-center">
-      <%= image_tag "icon_qna", class: "_modal-big-icon-m" %>
-      <p class="_fs-4-mobile _white _f-letter-mobile" id="modal-msg">라이블에게 문의하기</p>
+      <%= image_tag "icon_qna_black", class: "_modal-big-icon-m" %>
+      <p class="_fs-4-mobile _black _f-letter-mobile" id="modal-msg">라이블에게 문의하기</p>
     </div>
     <div class="_small-modal-button _vcenter-positioner _hcenter-positioner _no-p-margin">
       <div class="devider _hcenter-positioner" id="selector-email">
         <div class="_modal-icon-container">
-          <%= image_tag "icon_mail", class: "_modal-icon-m" %>
+          <%= image_tag "icon_mail_black", class: "_modal-icon-m" %>
         </div>
-        <p class="_fs-3-mobile _white">이메일</p>
+        <p class="_fs-3-mobile _black">이메일</p>
       </div>
       <div class="_small-modal-partision"></div>
       <div class="devider _hcenter-positioner">
@@ -17,7 +17,7 @@
           <%= image_tag "icon_messenger", class: '_modal-icon-m' %>
         </div>
         <%= link_to 'https://m.me/Livlemusic' do %>
-            <p class="_fs-3-mobile _white">페이스북 메세지</p>
+            <p class="_fs-3-mobile _black">페이스북 메세지</p>
         <% end %>
       </div>
     </div>
@@ -33,7 +33,7 @@
               $modalMsg.text("이메일이 클립보드에 복사되었습니다");
               setTimeout(function () {
                   $modalMsg.text(original);
-              }, 1200);
+              }, 1500);
           }
       });
   </script>
