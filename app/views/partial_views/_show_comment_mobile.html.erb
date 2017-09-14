@@ -1,13 +1,11 @@
 <div class="_show-comments-m">
-  <%= form_for model.new, url: model.to_s == 'FeedComment' ? feed_feed_comments_path(parent_id) :
-                                   upcoming_upcoming_comments_path(parent_id), remote: true do |f| %>
+  <% model = belongs_to.class == Feed ? FeedComment : (belongs_to.class == Upcoming ? UpcomingComment : nil ) %>
+  <%= form_for [belongs_to, model.new], remote: true do |f| %>
       <div class="_row-positioner">
         <div class="_profile-container-m">
           <%= image_tag user_signed_in? ? current_user.profile_img : "", class: "_profile-img" %>
         </div>
         <div class="_comment-edit-container-m _vcenter-positioner _flex-grow-1 _no-p-margin">
-          <%= f.hidden_field :model_id, value: parent_id %>
-          <%= f.hidden_field :user_id, value: user_signed_in? ? current_user.id : -1 %>
           <div class="input-container _vcenter-positioner">
             <%= f.text_area :content, class: "autosize input-text _fs-4-mobile _white _flex-grow-1", rows: 1 ,
                             placeholder: user_signed_in? ? "댓글을 입력해주세요!" : "로그인 후 작성할 수 있습니다" %>

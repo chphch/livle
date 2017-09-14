@@ -1,11 +1,7 @@
-<% if user_signed_in? && comments.first %>
-    <!-- TODO: Form Helper 완성시키기 -->
-    <% model = comments.first.model %>
-    <%= form_for model.new, url: model.to_s == 'FeedComment' ? feed_feed_comments_path(parent_id) :
-                                    upcoming_upcoming_comments_path(parent_id), remote: true do |f| %>
+<% if user_signed_in? %>
+    <% model = belongs_to.class == Feed ? FeedComment : (belongs_to.class == Upcoming ? UpcomingComment : nil ) %>
+    <%= form_for [belongs_to, model.new], remote: true do |f| %>
         <div class="_comment-container _vcenter-positioner">
-          <%= f.hidden_field :model_id, value: parent_id %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
           <div class="_comment-profile-container">
             <%= image_tag current_user.profile_img, class: "_profile-img" %>
           </div>
@@ -16,8 +12,10 @@
         <script>
             //enter-> submit, shift+enter-> newline
             $('textarea').on('keydown', function(event) {
-                if (event.keyCode == 13 && !event.shiftKey)
-                    $(':submit').click();
+              if (event.keyCode == 13 && !event.shiftKey) {
+                event.preventDefault();
+                $(':submit').click();
+              }
             });
         </script>
     <% end %>

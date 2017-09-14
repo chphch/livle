@@ -22,14 +22,14 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :create, :show, :update, :destroy]
 
   resources :feeds do
-    resources :feed_comments, only: [:create, :update, :destroy]
+    resources :feed_comments, only: [:create, :update, :destroy], shallow: true
     resources :feed_artists, only: [:create, :destroy], shallow: true
     get 'toggle_like'
   end
   get 'feeds/toggle_like/:player_id' => 'feeds#toggle_like'
 
   resources :upcomings do
-    resources :upcoming_comments, only: [:create, :update, :destroy]
+    resources :upcoming_comments, only: [:create, :update, :destroy], shallow: true
     resources :upcoming_artists, only: [:create, :destroy], shallow: true
     get 'toggle_like'
   end

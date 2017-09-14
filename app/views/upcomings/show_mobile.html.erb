@@ -85,7 +85,7 @@
   <hr>
 
   <!-- Comments -->
-  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments, model: UpcomingComment, parent_id: @upcoming.id} %>
+  <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments, belongs_to: @upcoming} %>
 
   <!-- Modals -->
   <div id ="ticket-link-modal" class="modal">
