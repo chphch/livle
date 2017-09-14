@@ -15,17 +15,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     //search autocomplete
-    $('#search').keypress(function() {
+    $('#search').autocomplete( {
+      appendTo: '#search-autocomplete',
+      select: function(event, ui) {
+        $('#search').val(ui.item.label);
+        $('#search').closest('form').submit();
+        console.log(ui.item.label);
+      }
+    });
+
+    $('#search').keyup(function() {
         $.ajax({
             url: '/search/autocomplete',
             data: {
                 key: $(this).val()
             },
             success: function(data) {
-                $('#search').autocomplete({
-                    //UI: .ui-autocomplete
-                    source: data
-                });
+              $('#search').autocomplete('option', 'source', data);
             }
         });
     });
