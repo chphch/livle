@@ -377,10 +377,11 @@
   }
 }
 
+#mypage-about,
 #mypage-terms-of-use,
 #mypage-privacy-policy {
   background: $black;
-  min-height: 70em;
+  min-height: 60em;
   .title-container {
     padding: 4rem 0;
   }
@@ -389,6 +390,9 @@
     &:not(:last-of-type) {
       border-bottom: 1px solid $dark-gray;
     }
+  }
+  .text-container {
+    margin: 4rem 0;
   }
 }
 

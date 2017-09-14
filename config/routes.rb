@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   post 'temporary_upcomings/:id/merge' => 'temporary_upcomings#merge'
 
   get 'mypage/index'
+  get 'mypage/about'
   get 'mypage/edit_profile'
   patch 'mypage/update_profile' => 'mypage#update_profile'
   get 'mypage/settings'
