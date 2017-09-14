@@ -1,21 +1,21 @@
 <div class="admin-desktop-nav-box">
   <ul class="nav nav-pills nav-stacked">
-    <%= link_to admin_feed_path do %>
+    <%= link_to admin_feed_path, data: { turbolinks: false } do %>
         <li>Feed</li>
     <% end %>
-    <%= link_to admin_artist_path do %>
+    <%= link_to admin_artist_path, data: { turbolinks: false } do %>
         <li>Artist</li>
     <% end %>
-    <%= link_to admin_upcoming_path do %>
+    <%= link_to admin_upcoming_path, data: { turbolinks: false } do %>
         <li>Upcoming</li>
     <% end %>
-    <%= link_to admin_temporary_upcoming_path do %>
+    <%= link_to admin_temporary_upcoming_path, data: { turbolinks: false } do %>
         <li>TemporaryUpcoming</li>
     <% end %>
-    <%= link_to admin_connect_path do %>
+    <%= link_to admin_connect_path, data: { turbolinks: false } do %>
         <li>Connect</li>
     <% end %>
-    <%= link_to admin_user_list_path do %>
+    <%= link_to admin_user_list_path, data: { turbolinks: false } do %>
         <li>User List</li>
     <% end %>
     <%= link_to admin_data_path do %>
