@@ -45,7 +45,7 @@ textarea {
 }
 
 a:hover {
-  img:not(._profile-img) {
+  img:not(._profile-img):not(._logo-livle) {
     opacity: .6;
   }
 }
@@ -53,9 +53,10 @@ a:hover {
 //loading animation
 ._loading-wave-container {
   position: fixed;
-  top: $navbar-h + 1rem;
+  top: $navbar-h + 2rem;
   left: 0; right: 0;
   z-index: $z-most-important;
+
   ._loading-wave-group {
     $rectCount: 5;
     $animationDuration: 1.2s;
@@ -142,6 +143,11 @@ a:hover {
   @include background-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%);
   /* align to bottom */
   @include align-items(flex-end);
+  a:hover {
+    img {
+      opacity: 1;
+    }
+  }
 }
 
 //image
@@ -304,7 +310,32 @@ a:hover {
     height: 100%;
   }
   ._navbar-button {
+    position: relative;
     padding: 0 1rem;
+    ._navbar-button-hover {
+      display: none;
+      position: absolute;
+      top: $navbar-h + 1.5rem;
+      right: 0;
+      padding: .8rem 1rem;
+      background: $white;
+      @include border-radius($br-min);
+      &:before {
+        $width: .6rem;
+        $height: 1rem;
+        position: absolute;
+        top: -$height; right: 2.3rem;
+        content: "";
+        border-left: $width solid transparent;
+        border-bottom: $height solid $white;
+        border-right: $width solid transparent;
+      }
+    }
+    &:hover {
+      ._navbar-button-hover {
+        display: block;
+      }
+    }
   }
   ._navbar-icon {
     @include size(auto, $navbar-h);

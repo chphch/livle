@@ -22,6 +22,9 @@
               <%= image_tag "icon_home_empty", class: "_navbar-icon" %>
           <% end %>
       <% end %>
+      <div class="_navbar-button-hover _no-p-margin">
+        <p class="_fs-3 _black">HOME</p>
+      </div>
     </div>
     <div class="_navbar-button">
       <%= link_to upcomings_path do %>
@@ -31,6 +34,9 @@
               <%= image_tag "icon_ticket_empty", class: "_navbar-icon" %>
           <% end %>
       <% end %>
+      <div class="_navbar-button-hover _no-p-margin">
+        <p class="_fs-3 _black">UPCOMING</p>
+      </div>
     </div>
     <div class="_navbar-button">
       <%= link_to connect_urls_path do %>
@@ -40,6 +46,9 @@
               <%= image_tag "icon_connect_empty", class: "_navbar-icon" %>
           <% end %>
       <% end %>
+      <div class="_navbar-button-hover _no-p-margin">
+        <p class="_fs-3 _black">CONNECT</p>
+      </div>
     </div>
     <% if !user_signed_in? %>
         <%= link_to new_user_session_path, class: "_text-center" do %>
