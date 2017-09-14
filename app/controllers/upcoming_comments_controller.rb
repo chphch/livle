@@ -2,7 +2,7 @@ class UpcomingCommentsController < ApplicationController
   def create
     params.require(:upcoming_comment).permit(:content)
     if current_user
-      @comment = UpcomingComment.new(content: params[:upcoming_comment][:content], upcoming_id: params[:upcoming_id]
+      @comment = UpcomingComment.new(content: params[:upcoming_comment][:content], upcoming_id: params[:upcoming_id],
                                      user_id: current_user.id)
       @comment.save
       respond_to do |format|
