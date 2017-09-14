@@ -15,10 +15,10 @@
       </div>
 
       <div class="text-padding _vcenter-positioner _flex-grow-1 _no-p-margin">
-        <div class="_show-text-container-m _column-positioner _vcenter-positioner">
-          <div class="text-row _vcenter-positioner">
-            <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_thumbnail-info-icon-m", style: "margin-top: -1%" %>
-            <p class="_fs-3-mobile _white"><%= @feed.user.nickname %></p>
+        <div class="_show-text-container-m _column-positioner _hcenter-positioner">
+          <div class="_vcenter-positioner">
+            <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_show-icon-m", style: "margin-top: -1%" %>
+            <p class="_fs-3-mobile _white _flex-grow-1"><%= @feed.user.nickname %></p>
           </div>
           <div class="text-row">
             <p class="_fs-4-mobile _light-gray"><%= @feed.user.introduce %></p>

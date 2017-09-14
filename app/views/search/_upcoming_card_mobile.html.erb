@@ -2,7 +2,7 @@
   <%= link_to upcomings_path(upcoming.id) do %>
       <div class="_row-positioner">
         <div class="_thumbnail-container-m card-devider">
-          <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image-m" %>
+          <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image-m" %>
         </div>
 
         <div class="card-text card-devider">

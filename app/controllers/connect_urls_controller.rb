@@ -20,9 +20,9 @@ class ConnectUrlsController < ApplicationController
           @disable_nav = true
           render_by_device
         }
-        format.js { render js: "window.location = '#{new_connect_url_path}?video_url=#{params[:video_url]}';" }
       end
     else
+      # 로그인 후 이용 가능하다는 모달이 없음..!
       redirect_to new_user_session_path
     end
   end

@@ -1,6 +1,6 @@
 <div class="_desktop-modal _column-positioner _hcenter-positioner _vcenter-positioner">
-  <%= image_tag "icon_check_black", class: "modal-icon" %>
+  <%= image_tag "icon_qna_black", class: "modal-icon" %>
   <% if defined?(message) %>
-      <p class="_fs-2 _black _text-center"><%= message %></p>
+      <%= simple_format message, class: "_fs-2 _black _text-center" %>
   <% end %>
 </div>

@@ -1,7 +1,6 @@
-TODO 인증메일 디자인
+<% button = '인증하기' %>
+<% redirect_path = confirmation_url(@resource, confirmation_token: @token) %>
+<% message = '라이블의 모든 기능을 사용하기 위해<br />입력하신 이메일 인증이 필요합니다.<br />아래 인증하기 버튼을 눌러주세요!' %>
+<% notice = '본인이 가입한 정보가 아니라면 카카오톡 플러스친구 \'@Livle\'로 문의 바랍니다.' %>
 
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%= render partial: "mailer-form", locals: {button: button, redirect_path: redirect_path, message: message, notice: notice} %>

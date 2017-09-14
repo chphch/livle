@@ -2,8 +2,7 @@
 <% player_display_none = defined?(player_display_none) && player_display_none ? "_display-none" : "" %>
 <div class="_show-video-container-m show-video-container-js <%= player_display_none %>" data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
   <iframe id="youtube-player-<%= player_id %>" type="text/html" src="https://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=0&rel=0&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1"
-          webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1" frameborder="0"></iframe>
 
   <div class="youtube-player-filter">
     <div class="_show-video-filter-m"></div>
@@ -45,8 +44,8 @@
       <div class="_show-progress-controller-m _flex-grow-1" id="progress-right"></div>
     </div>
     <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-      <p class="_fs-4-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 1% 3% 0 0;">HD</p>
-      <%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>
+      <p class="_fs-3-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 0 3% 0 0;">HD</p>
+      <!--<%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>-->
     </div>
     <%= image_tag "icon_play", class: "_show-play-button youtube-player-buttons play-button" %>
   </div>
