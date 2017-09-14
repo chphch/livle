@@ -2,7 +2,7 @@ class CreateFeeds < ActiveRecord::Migration[5.1]
   def change
     create_table :feeds do |t|
       t.belongs_to :user
-      t.boolean :is_curation
+      t.boolean :is_curation, default: false
       t.string :title
       t.string :youtube_url
       t.text :content
