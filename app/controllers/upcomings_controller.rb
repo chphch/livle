@@ -1,4 +1,6 @@
 class UpcomingsController < ApplicationController
+  before_action :is_admin, only: [:update, :destroy]
+
   def index
     today = DateTime.now
     @upcomings = Upcoming.where('start_date >= ?', today).order('start_date ASC')

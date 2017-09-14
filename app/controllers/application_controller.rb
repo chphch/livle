@@ -48,4 +48,11 @@ class ApplicationController < ActionController::Base
       return "/layouts/#{args[:layout_name].to_s}_#{device_suffix}.html.erb"
     end
   end
+
+  def is_admin
+    unless current_user && current_user.is_admin
+      render html: "권한이 없습니다."
+    end
+  end
+
 end

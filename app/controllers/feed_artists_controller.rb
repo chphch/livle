@@ -1,4 +1,5 @@
 class FeedArtistsController < ApplicationController
+  before_action :is_admin
 
   def create
     if Artist.exists?(params[:artist_id])
