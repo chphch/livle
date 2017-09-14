@@ -93,9 +93,12 @@
   </table>
   <%= will_paginate @feeds %>
 </div>
+<div id="artist-autocomplete">
+</div>
 
 
-      <script>
+<script>
+// TODO : js 파일로 뺴주세요
 $(".new-feed_artist").click(function(e) {
   e.preventDefault();
   var $new = $(this).prev();
@@ -103,7 +106,35 @@ $(".new-feed_artist").click(function(e) {
   $(this).text( $new.is(":visible") ? "Click to cancel" : "Click to add" );
 });
 
-$('.artist_name').keypress(function() {
+$('.artist_name').autocomplete( {
+  appendTo: "#artist-autocomplete",
+  select: function(event, ui) {
+    var id = $(this).data('id');
+    $('input:hidden[data-id=' + id + ']').val(ui.item.id);
+    $('form[data-id=' + id + ']').submit();
+    return false;
+  }
+}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+  return $( "<li>" )
+    .append( "<div><img src='" + item.image_url + "' style='width: 50px; height: 50px'/>" + item.label + "</div>" )
+    .appendTo( ul );
+};
+
+$('.artist_name').autocomplete( {
+  appendTo: "#artist-autocomplete",
+  select: function(event, ui) {
+    var id = $(this).data('id');
+    $('input:hidden[data-id=' + id + ']').val(ui.item.id);
+    $('form[data-id=' + id + ']').submit();
+    return false;
+  }
+}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+  return $( "<li>" )
+    .append( "<div><img src='" + item.image_url + "' style='width: 50px; height: 50px'/>" + item.label + "</div>" )
+    .appendTo( ul );
+};
+
+$('.artist_name').keyup(function() {
   $.ajax({
     url: '/artists/autocomplete',
     data: {
@@ -111,29 +142,10 @@ $('.artist_name').keypress(function() {
     },
     context: this,
     success: function(data) {
-
-      names = data.map(function(a) { return a.name });
-
-      // TODO: 이상하게 다 지워야만 창이 나옴 왜그럴까
-      $(this).autocomplete({
-        //UI: .ui-autocomplete
-        minLength: 0,
-        source: data,
-        select: function(event, ui) {
-          console.log(ui);
-          console.log(ui.item.id);
-          var id = $(this).data('id');
-          $('input:hidden[data-id=' + id + ']').val(ui.item.id);
-          $('form[data-id=' + id + ']').submit();
-          return false;
-        }
-      }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-        return $( "<li>" )
-          .append( "<div><img src='" + item.image_url.url + "' style='width: 50px; height: 50px'/>" + item.name + "</div>" )
-          .appendTo( ul );
-      };
-
+      data = data.map(function(a) { return { id: a.id, label: a.name, image_url : a.image_url.url }; });
+      $(this).autocomplete("option", "source", data);
+      $(this).autocomplete("search", $(this).val());
     }
   });
 });
-      </script>
+</script>
