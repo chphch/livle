@@ -313,16 +313,15 @@ a:hover {
     position: relative;
     padding: 0 1rem;
     ._navbar-button-hover {
-      display: none;
+      opacity: 0;
+      @include transition(opacity 300ms 200ms);
       position: absolute;
-      top: $navbar-h + 1.5rem;
-      right: 0;
-      padding: .8rem 1rem;
+      top: $navbar-h + 1.5rem; right: 0;
       background: $white;
+      padding: .8rem 1rem;
       @include border-radius($br-min);
       &:before {
-        $width: .6rem;
-        $height: 1rem;
+        $width: .6rem; $height: 1rem;
         position: absolute;
         top: -$height; right: 2.3rem;
         content: "";
@@ -333,7 +332,7 @@ a:hover {
     }
     &:hover {
       ._navbar-button-hover {
-        display: block;
+        opacity: 1;
       }
     }
   }
