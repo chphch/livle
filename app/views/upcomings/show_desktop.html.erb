@@ -88,7 +88,7 @@
         <hr>
 
         <!-- Comments -->
-        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @upcoming.upcoming_comments, parent_id: @upcoming.id} %>
+        <%= render partial: "partial_views/show_comment_desktop", locals: {comments: @upcoming.upcoming_comments, belongs_to: @upcoming} %>
       </div>
 
       <!-- Reated Video -->

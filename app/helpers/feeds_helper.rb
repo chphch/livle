@@ -1,5 +1,9 @@
 module FeedsHelper
   def content_shorten(content)
+    unless content
+      return ""
+    end
+
     lines = content.split(/\n+/)
 
     if lines.size > 2

@@ -75,7 +75,7 @@
             </td>
             <td>
               <p class="black-desktop-content">
-              <%= upcoming.rank %>
+              <%= upcoming.rank.round(2) %>
               </p>
             </td>
             <td>
@@ -99,6 +99,7 @@
       </tr>
     <% end %>
   </table>
+  <%= will_paginate @upcomings %>
 </div>
 
       <script>

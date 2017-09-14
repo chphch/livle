@@ -5,6 +5,7 @@ class TemporaryUpcomingsController < ApplicationController
     uc.place = params[:temporary_upcoming][:place]
     uc.start_date = params[:temporary_upcoming][:start_date]
     uc.end_date = params[:temporary_upcoming][:end_date]
+    uc.image_url = params[:temporary_upcoming][:image_url]
     if uc.save
       ticket = UpcomingTicketUrl.new
       ticket.upcoming_id = uc.id

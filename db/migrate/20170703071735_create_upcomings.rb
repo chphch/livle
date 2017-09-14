@@ -3,12 +3,13 @@ class CreateUpcomings < ActiveRecord::Migration[5.1]
     create_table :upcomings do |t|
       t.string :title
       t.string :place
+      t.string :image_url
       t.string :main_youtube_url
       t.date :start_date
       t.date :end_date
-      t.integer :count_view
-      t.integer :count_share
-      t.integer :rank
+      t.integer :count_view, default: 0
+      t.integer :count_share, default: 0
+      t.float :rank, default: 0.0
 
       t.timestamps
     end

@@ -24,6 +24,9 @@
         <p class="black-desktop-content">Artists</p>
       </td>
       <td>
+        <p class="black-desktop-content">대표 이미지</p>
+      </td>
+      <td>
         <p class="black-desktop-content">Ticket Provider</p>
       </td>
       <td>
@@ -70,6 +73,12 @@
             </td>
             <td>
               <p class="black-desktop-content">
+              <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
+              <%=f.file_field :image_url %>
+              </p>
+            </td>
+            <td>
+              <p class="black-desktop-content">
               <%=f.text_field :provider, readonly: true %>
               </p>
             </td>
@@ -96,4 +105,5 @@
       </tr>
     <% end %>
   </table>
+  <%= will_paginate @temp_upcomings %>
 </div>

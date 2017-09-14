@@ -24,6 +24,6 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.get_youtube_video_id(youtube_video_url)
-    youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '')
+    youtube_video_url ? youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') : ''
   end
 end

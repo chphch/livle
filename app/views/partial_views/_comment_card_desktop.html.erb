@@ -21,16 +21,7 @@
       //TODO: js.erb나 js 파일로 옮기기!
       $button = $('#comment-edit-<%= comment.id %>');
       $button.on('click', function () {
-          $('._comment-edit-container').append(
-              '<div class="_comment-edit-modal _desktop-small-modal">\n' +
-                '<div class="_column-positioner _vcenter-positioner">\n' +
-                  '<%= link_to comment.model.to_s == 'FeedComment' ? "/feeds/#{comment.parent_id}/feed_comments/#{comment.id}" :
-                   "/upcomings/#{comment.parent_id}/upcoming_comments/#{comment.id}", method: :delete do %>' +
-                      '<p class="_fs-3 _black">삭제</p>' +
-                  '<% end %>' +
-                '</div>' +
-              '</div>'
-          );
+          $('._comment-edit-container').append("<%=j(render partial: "partial_views/comment_edit_modal_desktop", locals: {comment: comment})%>");
       });
 
       $('._comment-container, ._comment-edit-modal').mouseleave(function () {

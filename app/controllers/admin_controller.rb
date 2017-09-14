@@ -1,31 +1,31 @@
 class AdminController < ApplicationController
   def feed
-    @feeds = Feed.all
+    @feeds = Feed.order('rank DESC').paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
   def artist
-    @artists = Artist.all
+    @artists = Artist.paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
   def upcoming
-    @upcomings = Upcoming.all
+    @upcomings = Upcoming.order('rank DESC').paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
   def temporary_upcoming
-    @temp_upcomings = TemporaryUpcoming.all
+    @temp_upcomings = TemporaryUpcoming.paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
   def connect
-    @connects = ConnectUrl.all
+    @connects = ConnectUrl.paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
   def user_list
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 30)
     render_by_device
   end
 
