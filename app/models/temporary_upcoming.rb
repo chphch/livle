@@ -1,4 +1,5 @@
 class TemporaryUpcoming < ApplicationRecord
+  mount_uploader :image_url, S3Uploader
   validate :check_duplicate
   def check_duplicate
     if UpcomingTicketUrl.exists?(ticket_url: self.ticket_url)
