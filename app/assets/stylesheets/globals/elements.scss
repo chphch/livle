@@ -492,6 +492,14 @@ a:hover {
   background: none;
   border: 1px solid $white;
   @include border-radius($br-image);
+  &:hover {
+    border: 1px solid $light-gray;
+    background: $light-gray;
+    color: $black;
+    p {
+      color: $black;
+    }
+  }
 }
 
 #share-button {

@@ -1,4 +1,4 @@
-//keyframes
+//box
 @keyframes event {
   0%   {box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);}
   20%  {box-shadow: 0px 9px 14px 0px rgba(50, 50, 50, 0.6);}
@@ -16,6 +16,7 @@
   100% { opacity: 0;}
 }
 
+//loading
 @keyframes sk-wave-stretch-delay {
   0%, 40%, 100% {
     transform: scaleY(0.4);

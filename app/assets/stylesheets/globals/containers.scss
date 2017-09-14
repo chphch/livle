@@ -428,6 +428,8 @@
     }
     &:hover {
       cursor: pointer;
+      border: none;
+      background: $light-gray;
     }
   }
 }
