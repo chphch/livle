@@ -15,7 +15,7 @@
 
 #feeds-show-mobile {
   .info-container {
-    padding: $list-container-pv-m $list-container-ph-m;
+    padding: $list-container-pv-m+2% $list-container-ph-m;
     background: $dark-dark-gray;
   }
 
@@ -26,7 +26,7 @@
 
   .text-row {
     width: 100%;
-    padding: 2% 0;
+    padding: 4% 0 0;
   }
 
   .describe-container {

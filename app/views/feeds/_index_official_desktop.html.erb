@@ -1,6 +1,6 @@
 <div class="official-<%= feed_counter %> _full-container _vcenter-positioner" id="official-card" style="display: none">
   <div class="official-background _full-container">
-    <%= image_tag "http://img.youtube.com/vi/#{feed.video_id}/maxresdefault.jpg", class: "_thumbnail-blur-img" %>
+    <%= image_tag get_thumbnail_image(feed.video_id), class: "_thumbnail-blur-img" %>
   </div>
 
   <div class="official-filter _full-container _hcenter-positioner">

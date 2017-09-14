@@ -66,20 +66,17 @@
               <% end %>
             </li>
             <li>
-              <%= link_to mypage_edit_profile_path, class: "_text-center" do %>
-                  <p class="_fs-4 _white">프로필 설정</p>
-              <% end %>
-            </li>
-            <li>
               <%= link_to destroy_user_session_path, method: :delete, class: "_text-center" do %>
                   <p class="_fs-4 _white">로그아웃</p>
               <% end %>
             </li>
-            <li>
-              <%= link_to admin_feed_path, class: "_text-center" do %>
-                  <p class="_fs-4 _white">관리자 설정</p>
-              <% end %>
-            </li>
+            <% if current_user.is_admin %>
+                <li>
+                  <%= link_to admin_feed_path, class: "_text-center" do %>
+                      <p class="_fs-4 _white">관리자 설정</p>
+                  <% end %>
+                </li>
+            <% end %>
           </ul>
         </div>
     <% end %>

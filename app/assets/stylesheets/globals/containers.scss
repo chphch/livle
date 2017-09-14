@@ -133,8 +133,9 @@
 
 ._thumbnail-button-container-m {
   position: absolute;
-  bottom: 3%; left: 1%;
-  @include size(100%, 7%);
+  bottom: 3%; left: 0;
+  padding: 0 1%;
+  @include size(100%, 3em);
 }
 
 ._describe-container-m {

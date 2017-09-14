@@ -13,7 +13,7 @@
                         class: "ticket-img" %>
           <div class="ticket-video-container">
             <div class="_thumbnail-image-container">
-              <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>
+              <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>
             </div>
             <div class="thumbnail-filter _vbottom-positioner">
               <div class="_flex-grow-1">
@@ -77,7 +77,7 @@
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
               '<div class="_thumbnail-image-container">\n' +
-              '    <%= image_tag "http://img.youtube.com/vi/#{upcoming.main_video_id}/maxresdefault.jpg", class: "_thumbnail-image" %>\n' +
+              '    <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>\n' +
               '</div>' +
               '<div class="thumbnail-filter _vbottom-positioner">\n' +
               '    <div class="_flex-grow-1">\n' +

@@ -1,0 +1,27 @@
+<div id="mailer" class="_hcenter-positioner">
+  <div class="mailer-container">
+    <div class="mailer-header">
+      <div class="hr-bar"></div>
+      <div class="title-container _row-positioner">
+        <%= image_tag "logo_livle", class: "mailer-logo" %>
+        <p class="_fs-3 _white">Welcome To Livle</p>
+      </div>
+      <div class="message-container _hcenter-positioner">
+        <p class="_fs-4 _light-gray _text-center"><%= message %></p>
+      </div>
+    </div>
+
+    <div class="mailer-button-container _hcenter-positioner _no-p-margin">
+      <%= link_to redirect_path, class: "mailer-button _vcenter-positioner _hcenter-positioner" do %>
+          <p class="_fs-1 _black"><%= button %></p>
+      <% end %>
+    </div>
+
+    <% if notice %>
+        <hr>
+        <div class="mailer-notice-container _text-center">
+          <p class="_fs-4 _light-gray"><%= notice %></p>
+        </div>
+    <% end %>
+  </div>
+</div>
