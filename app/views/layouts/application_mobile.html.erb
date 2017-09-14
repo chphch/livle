@@ -30,11 +30,7 @@
 <body>
 <!-- Render 우선순위로 나열 -->
 <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
-<% if @disable_background_image %>
-    <div class="_body-no-background-m"></div>
-<% else %>
-    <div class="_body-background-m"></div>
-<% end %>
+<div class="<%= @disable_background_image ? "_body-no-background-m" : "_body-background-m"%>"></div>
 <%= render partial: "mypage/top_mobile", locals: {title: @title, back_url: @back_url} if @title %>
 
 <%= yield %>

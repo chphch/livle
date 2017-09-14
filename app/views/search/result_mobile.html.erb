@@ -21,7 +21,7 @@
     <%= render partial: "upcoming_card_mobile", collection: @upcoming_results, as: :upcoming %>
   </div>
 
-  <div class="info-text-container _column-positioner _hcenter-positioner">
+  <div class="<%= @result_size == 0 ? "_full-container" : "info-text-container" %> _text-center _column-positioner _hcenter-positioner">
     <p class="_fs-1-mobile _white _hcenter-positioner text-spacing">
       <%= user_signed_in? ? current_user.nickname+'님' : "당신" %>이 느꼈던 전율의 순간.<br>
       그 떨림을 전해주세요

@@ -200,7 +200,8 @@ body {
 }
 
 ._show-text-container-m {
-  @include size(100%);
+  width: 100%;
+  padding: 1% 0 0;
 }
 
 ._show-buttons-container-m {
@@ -221,7 +222,7 @@ body {
   background: $black;
   ._comment-edit-container-m {
     height: auto;
-    padding: 2% 0 2% 2%;
+    padding: 1% 0 2% 4%;
     .input-container {
       @include size(100%);
       border: 1px solid $white;
@@ -229,12 +230,12 @@ body {
     }
     .input-text {
       @include size(100%);
-      padding: 2% 4%;
+      padding: 4% 4%;
       background: none;
       border: none;
     }
     .submit-container {
-      padding: 0 3rem;
+      padding: 0 2%;
     }
   }
 

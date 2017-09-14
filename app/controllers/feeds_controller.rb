@@ -23,7 +23,8 @@ class FeedsController < ApplicationController
     @feed.increase_count_view
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
-    @disable_nav = true
+    @disable_nav = true #for mobile
+    @disable_background_image = true #for mobile
     render_by_device
   end
 

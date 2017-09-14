@@ -34,6 +34,7 @@ class SearchController < ApplicationController
       operator: "or",
       match: :word_middle
     )
+    @result_size = @feed_results.size + @upcoming_results.size
     render_by_device
   end
 
