@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     //DESKTOP OFFICIAL
     var curPos = 0;
     var max = 6;

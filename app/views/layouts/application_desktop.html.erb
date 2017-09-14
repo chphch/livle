@@ -40,6 +40,8 @@
 
 <body>
 <!-- Render 우선순위로 나열 -->
+<%= render partial: "partial_views/loading_modal" %>
+
 <%= render partial: "partial_views/navbar_desktop"%>
 <% unless @enable_transparent %>
     <div style="padding: 2.5rem; background: #121212;"></div>

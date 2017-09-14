@@ -11,6 +11,28 @@
 // about supported directives.
 //
 //= require rails-ujs
-// require turbolinks
+//= require turbolinks
 //= require_tree .
 //= require social-share-button
+
+//render loading event
+document.addEventListener("turbolinks:before-cache", function () {
+    $('._loading-wave-container').show();
+});
+document.addEventListener("turbolinks:load", function () {
+    setTimeout(function () {
+        $('._loading-wave-container').hide();
+    }, 150);
+
+    // show spinner on AJAX start
+    $(document).ajaxStart(function () {
+        $('._loading-wave-container').show();
+    });
+
+    // hide spinner on AJAX stop
+    $(document).ajaxStop(function () {
+        setTimeout(function () {
+            $('._loading-wave-container').hide();
+        }, 150);
+    });
+});

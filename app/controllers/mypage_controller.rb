@@ -1,9 +1,15 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :edit_profile, :update_profile, :settings]
 
   def index
     @title = current_user.nickname
     @like_size = current_user.feed_likes.size
+    @enable_footer = true #for desktop
+    render_by_device
+  end
+
+  def about
+    #회사 소개페이지를 위한 액션
     @enable_footer = true #for desktop
     render_by_device
   end
@@ -38,8 +44,9 @@ class MypageController < ApplicationController
 
   def terms_of_use
     @disable_nav = true
-    @title = "약관"
+    @title = "이용약관"
     @back_url = mypage_settings_path
+    @enable_footer = true #for desktop
     render_by_device
   end
 
@@ -47,6 +54,7 @@ class MypageController < ApplicationController
     @disable_nav = true
     @title = "개인정보처리방침"
     @back_url = mypage_settings_path
+    @enable_footer = true #for desktop
     render_by_device
   end
 

@@ -44,6 +44,46 @@ textarea {
   resize: none;
 }
 
+a:hover {
+  img:not(._profile-img):not(._logo-livle) {
+    opacity: .6;
+  }
+}
+
+//loading animation
+._loading-wave-container {
+  position: fixed;
+  top: $navbar-h + 2rem;
+  left: 0; right: 0;
+  z-index: $z-most-important;
+
+  ._loading-wave-group {
+    $rectCount: 5;
+    $animationDuration: 1.2s;
+    $delayRange: 0.4s;
+    $spinkit-size: 3em !default;
+    $spinkit-spinner-color: $white !default;
+
+    width: $spinkit-size * 1.5;
+    height: $spinkit-size;
+    margin: auto;
+    text-align: center;
+
+    .loading-rect {
+      background-color: $spinkit-spinner-color;
+      height: 100%;
+      width: .5em;
+      display: inline-block;
+      border-radius: 3em !important;
+      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
+    }
+
+    @for $i from 1 through $rectCount {
+      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
+    }
+  }
+}
+
 ._no-p-margin {
   p { margin: 0; }
 }
@@ -82,6 +122,14 @@ textarea {
   border: 0.2rem $light-green solid;
 }
 
+//triggers
+.clicked {
+  animation: event 1.4s;
+  .response-layer {
+    animation: response 1.6s;
+  }
+}
+
 //########################
 //#        MOBILE        #
 //########################
@@ -95,6 +143,11 @@ textarea {
   @include background-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%);
   /* align to bottom */
   @include align-items(flex-end);
+  a:hover {
+    img {
+      opacity: 1;
+    }
+  }
 }
 
 //image
@@ -169,7 +222,7 @@ textarea {
 ._small-modal-button {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  border-top: 2px solid $white;
+  border-top: 2px solid $black;
   .devider {
     width: 49.2%;
     padding: 4rem 0;
@@ -178,7 +231,7 @@ textarea {
 
 ._small-modal-partision {
   @include size(0.2rem, 8rem);
-  background: #ffffff;
+  background: $black;
 }
 
 ////margin, padding
@@ -257,7 +310,31 @@ textarea {
     height: 100%;
   }
   ._navbar-button {
+    position: relative;
     padding: 0 1rem;
+    ._navbar-button-hover {
+      opacity: 0;
+      @include transition(opacity 300ms 200ms);
+      position: absolute;
+      top: $navbar-h + 1.5rem; right: 0;
+      background: $white;
+      padding: .8rem 1rem;
+      @include border-radius($br-min);
+      &:before {
+        $width: .6rem; $height: 1rem;
+        position: absolute;
+        top: -$height; right: 2.3rem;
+        content: "";
+        border-left: $width solid transparent;
+        border-bottom: $height solid $white;
+        border-right: $width solid transparent;
+      }
+    }
+    &:hover {
+      ._navbar-button-hover {
+        opacity: 1;
+      }
+    }
   }
   ._navbar-icon {
     @include size(auto, $navbar-h);
@@ -292,16 +369,16 @@ textarea {
 
 #footer-modal {
   position: absolute;
-  left: 6rem; bottom: 20rem;
+  left: 6rem; bottom: 26rem;
 }
 
 //footer
 ._footer {
   position: relative;
-  @include size(100%, 18rem);
+  @include size(100%, 26rem);
   background: #000000;
   $height: 3rem;
-  $margin: 2rem 6rem 0;
+  $margin: 3rem 6rem 0;
 
   ._describe-container {
     position: absolute;
@@ -310,19 +387,7 @@ textarea {
     margin: $margin;
     p:hover {
       cursor: pointer;
-    }
-  }
-
-  ._sns-container {
-    position: relative;
-    top: 0; left: 0; right: 0;
-    padding: $margin;
-    ._logo-container {
-      height: $height;
-      padding: 0 1rem;
-    }
-    ._logo-image {
-      @include size(auto, 2rem);
+      opacity: .6;
     }
   }
 
@@ -331,11 +396,27 @@ textarea {
     top: 0; right: 0;
     height: $height;
     margin: $margin;
+    a:hover {
+      opacity: .6;
+    }
   }
 
-  ._location-container {
+  ._info-container {
     position: relative;
+    top: 5rem; left: 0; right: 0;
     padding: $margin;
+  }
+
+  ._contact-container {
+    position: relative;
+  }
+  ._logo-image {
+    @include size(auto, 2rem);
+    margin: 0 1rem;
+  }
+
+  ._sns-container {
+    margin: 1rem 0.4rem;
   }
 
   ._text-margin-right {
@@ -411,6 +492,14 @@ textarea {
   background: none;
   border: 1px solid $white;
   @include border-radius($br-image);
+  &:hover {
+    border: 1px solid $light-gray;
+    background: $light-gray;
+    color: $black;
+    p {
+      color: $black;
+    }
+  }
 }
 
 #share-button {
