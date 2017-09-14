@@ -99,7 +99,7 @@ body {
 ._modal-background {
   position: absolute;
   @include position(0);
-  background-color: rgba(82, 82, 82, .9);
+  background-color: $white;
   border-radius: 6rem;
 }
 /* support backdrop-filter */

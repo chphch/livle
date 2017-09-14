@@ -1,9 +1,9 @@
 <div class="_small-modal">
   <div class="_modal-background _column-positioner _hcenter-positioner">
     <div class="_small-modal-title text-center">
-      <%= image_tag "icon_check_black", class: "_modal-big-icon-m" %>
+      <%= image_tag "icon_qna_black", class: "_modal-big-icon-m" %>
       <% if defined?(message) %>
-          <p class="_fs-4-mobile _black _f-letter-mobile _text-center"><%= message %></p>
+          <%= simple_format message, class: "_fs-4-mobile _black _f-letter-mobile _f-line-mobile _text-center" %>
       <% end %>
     </div>
   </div>
