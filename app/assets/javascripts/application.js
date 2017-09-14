@@ -17,11 +17,9 @@
 
 //render loading event
 document.addEventListener("turbolinks:before-cache", function () {
-    console.log("fetching");
     $('._loading-wave-container').show();
 });
 document.addEventListener("turbolinks:load", function () {
-    console.log("loaded");
     setTimeout(function () {
         $('._loading-wave-container').hide();
     }, 150);

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     //navbar_desktop.html.erb
     $(window).on('scroll', function() {
         if( $(window).scrollTop() > $(window).height() * 0.02 ) {

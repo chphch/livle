@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
+    console.log("youtube_player.js loaded");
     // youtube api
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";

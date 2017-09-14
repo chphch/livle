@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     //focus 하기
     $('#search-bar-mobile .search-input-field, ._navbar-serach-container').click(function () {
         $('#search-bar-mobile .input-field, ._navbar-search-input').focus();

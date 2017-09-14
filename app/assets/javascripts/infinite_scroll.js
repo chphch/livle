@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     var isLoading = false;
         if ($('#infinite-scrolling').length > 0) {
         $(window).on('scroll', function() {
