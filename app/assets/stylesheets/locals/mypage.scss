@@ -382,17 +382,24 @@
 #mypage-privacy-policy {
   background: $black;
   min-height: 60em;
-  .title-container {
-    padding: 4rem 0;
+  .text-container {
+    margin: 4rem 0;
   }
-  .content-container {
-    padding: 2rem 0;
+
+  .content-block {
+    padding: 4rem 0;
+    .content {
+      &:not(:last-of-type) {
+        padding: 0 0 4rem;
+      }
+    }
     &:not(:last-of-type) {
       border-bottom: 1px solid $dark-gray;
     }
   }
-  .text-container {
-    margin: 4rem 0;
+
+  .content-padding {
+    padding: 0 0 12rem;
   }
 }
 
