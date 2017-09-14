@@ -44,6 +44,45 @@ textarea {
   resize: none;
 }
 
+a:hover {
+  img:not(._profile-img) {
+    opacity: .6;
+  }
+}
+
+//loading animation
+._loading-wave-container {
+  position: fixed;
+  top: $navbar-h + 1rem;
+  left: 0; right: 0;
+  z-index: $z-most-important;
+  ._loading-wave-group {
+    $rectCount: 5;
+    $animationDuration: 1.2s;
+    $delayRange: 0.4s;
+    $spinkit-size: 3em !default;
+    $spinkit-spinner-color: $white !default;
+
+    width: $spinkit-size * 1.5;
+    height: $spinkit-size;
+    margin: auto;
+    text-align: center;
+
+    .loading-rect {
+      background-color: $spinkit-spinner-color;
+      height: 100%;
+      width: .5em;
+      display: inline-block;
+      border-radius: 3em !important;
+      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
+    }
+
+    @for $i from 1 through $rectCount {
+      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
+    }
+  }
+}
+
 ._no-p-margin {
   p { margin: 0; }
 }
@@ -80,6 +119,14 @@ textarea {
 ._profile-border-green {
   @include border-radius(50%);
   border: 0.2rem $light-green solid;
+}
+
+//triggers
+.clicked {
+  animation: event 1.4s;
+  .response-layer {
+    animation: response 1.6s;
+  }
 }
 
 //########################
@@ -310,6 +357,7 @@ textarea {
     margin: $margin;
     p:hover {
       cursor: pointer;
+      opacity: .6;
     }
   }
 
@@ -331,6 +379,9 @@ textarea {
     top: 0; right: 0;
     height: $height;
     margin: $margin;
+    a:hover {
+      opacity: .6;
+    }
   }
 
   ._location-container {

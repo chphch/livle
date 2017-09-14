@@ -1,7 +1,7 @@
 <div id="feeds-index">
   <% @disable_nav = true %>
 
-  <div class="official-container _vcenter-positioner">
+  <div class="official-container _vcenter-positioner" data-turbolinks="false">
     <!-- append on s_feed_desktop.js -->
     <%= render partial: "index_official_desktop", collection: @officials, as: :feed %>
   </div>

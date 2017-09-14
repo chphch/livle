@@ -87,6 +87,11 @@
 #upcoming-ticket-card {
   $collab-width: 6rem;
 
+  a:hover {
+    img {
+      opacity: 1;
+    }
+  }
   .card-container {
     padding: 2rem 0;
   }

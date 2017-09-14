@@ -1,4 +1,5 @@
-<nav class="_vcenter-positioner _navbar">
+<nav class="_row-positioner _navbar">
+  <!-- load with paginate => must do "data-turbolinks": false -->
   <% control = controller.class.name.split("::").first.to_s %>
   <!-- search-bar -->
   <div class="_hcenter-positioner">
@@ -7,7 +8,7 @@
 
   <!-- LIVLE logo -->
   <div class="_navbar-logo-container _vcenter-positioner">
-    <%= link_to feeds_path do %>
+    <%= link_to feeds_path, "data-turbolinks": false do %>
         <%= image_tag "logo_livle", class: "_logo-livle" %>
     <% end %>
   </div>
@@ -15,7 +16,7 @@
   <div class="_navbar-buttons-container _vcenter-positioner _no-p-margin">
     <!-- buttons -->
     <div class="_navbar-button">
-      <%= link_to feeds_path do %>
+      <%= link_to feeds_path, "data-turbolinks": false do %>
           <% if control == 'FeedsController' %>
               <%= image_tag "icon_home_filled", class: "_navbar-icon" %>
           <% else %>
@@ -24,7 +25,7 @@
       <% end %>
     </div>
     <div class="_navbar-button">
-      <%= link_to upcomings_path do %>
+      <%= link_to upcomings_path, "data-turbolinks": false do %>
           <% if control == 'UpcomingsController' %>
               <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
           <% else %>
