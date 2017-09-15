@@ -9,26 +9,26 @@
   <!-- Video info -->
   <div class="_show-player-padding-m"></div>
   <div class="info-container">
-    <div class="_vcenter-positioner">
+    <div class="userinfo-container _row-positioner">
       <div class="_profile-container-m _profile-border-green">
         <%= image_tag "#{@feed.user.profile_img}", class: "_profile-img" %>
       </div>
 
-      <div class="text-padding _vcenter-positioner _flex-grow-1 _no-p-margin">
-        <div class="_show-text-container-m _column-positioner _hcenter-positioner">
+      <div class="text-padding _flex-grow-1 _no-p-margin <%= @feed.user.introduce == nil ? "_vcenter-positioner" : "" %>">
+        <div class="_show-text-container-m">
           <div class="_vcenter-positioner">
             <%= image_tag @feed.is_curation ? "icon_crown_gold" : "icon_crown", class: "_show-icon-m", style: "margin-top: -1%" %>
-            <p class="_fs-3-mobile _white _flex-grow-1"><%= @feed.user.nickname %></p>
+            <p class="_fs-0-mobile _white _flex-grow-1"><%= @feed.user.nickname %></p>
           </div>
           <div class="text-row">
-            <p class="_fs-4-mobile _light-gray"><%= @feed.user.introduce %></p>
+            <p class="_fs-3-mobile _light-gray"><%= @feed.user.introduce %></p>
           </div>
         </div>
       </div>
     </div>
     <div class="describe-container _row-positioner">
-      <p class="_fs-3-mobile _white"><%= @feed.title %> -&nbsp</p>
-      <p class="_fs-4-mobile _light-gray">
+      <p class="_fs-2-mobile _white"><%= @feed.title %> -&nbsp</p>
+      <p class="_fs-3-mobile _light-gray">
         <% @feed.artists.each_with_index do |artist, index| %>
             <% unless index == 0 %>,&nbsp<% end %>
             <%= artist.name %>
@@ -36,7 +36,7 @@
       </p>
     </div>
     <div class="describe-container">
-      <%= simple_format @feed.content, class:"_fs-4-mobile _light-gray _f-line-mobile" %>
+      <%= simple_format @feed.content, class:"_fs-2-mobile _light-gray _f-line-mobile" %>
     </div>
   </div>
 
@@ -48,15 +48,15 @@
           <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m #{@like_true ? '_display_none' : ''}" %>
           <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m #{@like_true ? '' : '_display_none'}" %>
         </div>
-        <p class="_fs-4-mobile _white">좋아요</p>
+        <p class="_fs-1-mobile _white">좋아요</p>
     <% end %>
     <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" onclick="$('#feed_comment_content').focus();">
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white">댓글</p>
+      <p class="_fs-1-mobile _white">댓글</p>
     </div>
     <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white">공유</p>
+      <p class="_fs-1-mobile _white">공유</p>
     </div>
   </div>
   <hr>

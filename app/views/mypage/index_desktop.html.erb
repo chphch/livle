@@ -10,19 +10,21 @@
                   <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
                                 class: "_profile-img" %>
                 </div>
-                <div class="_vcenter-positioner _hcenter-positioner">
-                  <%= image_tag "icon_crown", class: "mypage-icon", style: "margin-top: -1.5rem" %>
+                <div class="_vcenter-positioner _hcenter-positioner _no-p-margin">
+                  <%= image_tag "icon_crown", class: "mypage-icon", style: "margin-top: -0.6rem" %>
                   <p class="_fs-3 _f-family-tmon _white"><%= current_user.nickname %></p>
                 </div>
             <% end %>
           </div>
-          <p class="_fs-5 _white"><%= user_signed_in? ? current_user.email : "contact@livle.co.kr" %></p>
-          <p class="_fs-5 _white"><%= user_signed_in? ? current_user.introduce : "자기소개를 해주세요." %></p>
-          <p class="_fs-5">
-            <span class="_white">좋아요 수</span>
-            <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
-                current_user.feed_likes.size : 0 %></span>
-          </p>
+          <div class="_flex-grow-1 _column-positioner _vcenter-positioner _hcenter-positioner">
+            <p class="_fs-5 _white"><%= current_user.email.size != 0 ? current_user.email : "contact@livle.co.kr" %></p>
+            <p class="_fs-5 _light-gray"><%= current_user.introduce.size != 0 ? current_user.introduce : "자기소개를 입력해주세요." %></p>
+            <p class="_fs-5" style="margin: 0;">
+              <span class="_white">좋아요 수</span>
+              <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
+                  current_user.feed_likes.size : 0 %></span>
+            </p>
+          </div>
           <%= link_to mypage_edit_profile_path, class: "button-container _vcenter-positioner _hcenter-positioner _no-p-margin", remote: true do %>
               <%= image_tag "icon_settings", class: "mypage-icon", style: "margin-top: -0.5rem;" %>
               <p class="_fs-4 _white">프로필 설정</p>
@@ -30,7 +32,7 @@
         </div>
         <!-- 찜 목록 -->
         <div class="mypage-info-container _no-p-margin">
-          <div class="_vcenter-positioner">
+          <div class="mypage-info-title _vcenter-positioner">
             <%= image_tag "icon_hand_empty", class: "mypage-icon" %>
             <p class="_fs-2 _white">찜 목록</p>
           </div>
@@ -53,7 +55,7 @@
         </div>
         <!-- 구매내역 -->
         <div class="mypage-info-container _no-p-margin">
-          <div class="_vcenter-positioner">
+          <div class="mypage-info-title _vcenter-positioner">
             <%= image_tag "icon_ticket_empty", class: "mypage-icon" %>
             <p class="_fs-2 _white">구매내역</p>
           </div>

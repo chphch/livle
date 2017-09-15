@@ -23,11 +23,11 @@
     <% unless defined?(no_thumbnail_button) %>
         <div class="_thumbnail-button-container-m _vcenter-positioner _no-p-margin">
           <%= image_tag("icon_view_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white"><%= feed.count_view %></p>
+          <p class="_fs-3-mobile _white"><%= feed.count_view %></p>
           <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white post-like-count"><%= feed.feed_likes.size %></p>
+          <p class="_fs-3-mobile _white post-like-count"><%= feed.feed_likes.size %></p>
           <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-5-mobile _white"><%= feed.count_share %></p>
+          <p class="_fs-3-mobile _white"><%= feed.count_share %></p>
         </div>
     <% end %>
   </div>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
-      <p class="_fs-3-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 0 3% 0 0;">HD</p>
+      <p class="_fs-1-mobile _light-gray _thumbnail-elem-margin-m hd-button" style="margin: 0 3% 0 0;">HD</p>
       <!--<%= image_tag "icon_fullscreen_white", class: "_thumbnail-info-icon-m fullscreen-button" %>-->
     </div>
     <%= image_tag "icon_play", class: "_show-play-button youtube-player-buttons play-button" %>

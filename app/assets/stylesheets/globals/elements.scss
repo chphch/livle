@@ -230,7 +230,7 @@ a:hover {
 }
 
 ._small-modal-partision {
-  @include size(0.2rem, 8rem);
+  @include size(0.2rem, 10rem);
   background: $black;
 }
 
@@ -257,6 +257,7 @@ a:hover {
 
 ._small-modal-title {
   padding: 0 0 6%;
+  z-index: $z-most-important;
 }
 
 //########################
@@ -467,7 +468,7 @@ a:hover {
 }
 
 ._thumbnail-blur-img {
-  @include size(100%);
+  @include size(110%);
   object-fit: cover;
   @include filter($blur);
 }
