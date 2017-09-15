@@ -1,7 +1,7 @@
 $('body').append(
-    '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
-    '    <%= render partial: "partial_views/check_modal_desktop", locals:{message: flash[:notice]} %>' +
-    '</div>'
+    '<div class="_full-container _vcenter-positioner _hcenter-positioner">\
+     <%= j render partial: "partial_views/check_modal_desktop", locals:{message: flash[:notice]} %>\
+    </div>'
 );
 
 setTimeout(function() {

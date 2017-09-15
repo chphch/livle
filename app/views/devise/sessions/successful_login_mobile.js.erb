@@ -1,7 +1,7 @@
 $('body').append(
-    '<div id="successful-login-modal" class="modal">\n' +
-    '    <%= render partial: "partial_views/check_modal_mobile", locals:{message: flash[:notice]} %>' +
-    '</div>'
+    '<div id="successful-login-modal" class="modal">\
+      <%= j render partial: "partial_views/check_modal_mobile", locals:{message: flash[:notice]} %>\
+    </div>'
 );
 
 var successfulLoginModal = $('#successful-login-modal');

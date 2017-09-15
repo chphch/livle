@@ -12,7 +12,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       sign_in(@user, scope: :user)
       set_flash_message(:notice, :signed_in, scope: "devise.sessions") if is_navigational_format?
-      render_by_device 'sessions/successful_login', format: :js
+
+      # TODO refactor these parts, render_by_device is not working well
+      if browser.device.mobile?
+        render 'devise/sessions/successful_login_mobile'
+      else
+        render 'devise/sessions/successful_login_desktop'
+      end
     else
       # TODO When is this exception-handling-block executed?
       puts "===============FACEBOOK LOGIN ERROR================="
