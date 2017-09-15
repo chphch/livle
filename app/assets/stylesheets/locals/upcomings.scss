@@ -111,8 +111,8 @@
     }
     .ticket-video-container {
       position: absolute;
-      @include size(64%, auto);
-      margin: -1% 0 0 1%;
+      @include size(63%, auto);
+      margin: -1.2% 0 0 0;
     }
     .thumbnail-filter {
       position: absolute;

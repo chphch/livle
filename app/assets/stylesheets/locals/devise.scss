@@ -91,6 +91,7 @@
 #devise-new,
 #devise-signup,
 #devise-passwords-new,
+#devise-passwords-after-create,
 #devise-password-edit {
   .moto-container {
     width: 36rem;
@@ -191,6 +192,7 @@
 }
 #devise-signup,
 #devise-passwords-new,
+#devise-passwords-after-create,
 #devise-password-edit {
   .input-group {
     @include flex-grow(1);
