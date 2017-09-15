@@ -222,7 +222,7 @@ a:hover {
 ._small-modal-button {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  border-top: 2px solid $black;
+  border-top: 2px solid $white;
   .devider {
     width: 49.2%;
     padding: 4rem 0;
@@ -230,8 +230,8 @@ a:hover {
 }
 
 ._small-modal-partision {
-  @include size(0.2rem, 8rem);
-  background: $black;
+  @include size(0.2rem, 10rem);
+  background: $white;
 }
 
 ////margin, padding
@@ -257,6 +257,7 @@ a:hover {
 
 ._small-modal-title {
   padding: 0 0 6%;
+  z-index: $z-most-important;
 }
 
 //########################

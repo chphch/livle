@@ -99,8 +99,17 @@ body {
 ._modal-background {
   position: absolute;
   @include position(0);
-  background-color: $white;
-  border-radius: 6rem;
+  background: inherit;
+  @include border-radius($br-image-m);
+  overflow: hidden;
+  &::before {
+    position: absolute;
+    @include position(-20%);
+    visibility: visible;
+    content: '';
+    background: url(asset-path("background_modal.jpg")) no-repeat center center; background-size: cover;
+    @include filter(blur(12px));
+  }
 }
 /* support backdrop-filter */
 @supports ( (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)) ) {
@@ -272,8 +281,9 @@ body {
   position: relative;
   height: 120rem;
   margin: 0 8rem;
-  background: $dark-dark-gray;
+  background: $black-opacity;
   border-radius: 6rem;
+  overflow: hidden;
 }
 
 ._small-modal {
