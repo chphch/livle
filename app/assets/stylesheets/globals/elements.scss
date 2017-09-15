@@ -468,7 +468,7 @@ a:hover {
 }
 
 ._thumbnail-blur-img {
-  @include size(100%);
+  @include size(110%);
   object-fit: cover;
   @include filter($blur);
 }
