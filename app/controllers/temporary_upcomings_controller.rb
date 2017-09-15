@@ -1,4 +1,6 @@
 class TemporaryUpcomingsController < ApplicationController
+  before_action :is_admin
+
   def update
     uc = Upcoming.new
     uc.title = params[:temporary_upcoming][:title]

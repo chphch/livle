@@ -1,6 +1,8 @@
 require 'will_paginate/array'
 
 class FeedsController < ApplicationController
+  before_action :is_admin, only: [:update, :destroy]
+
   def index
     official_feeds = Feed.where(is_curation: true).order('created_at DESC')
     common_feeds = Feed.where(is_curation: false).order('created_at DESC')

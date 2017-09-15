@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :is_admin
+
   def feed
     @feeds = Feed.order('rank DESC').paginate(page: params[:page], per_page: 30)
     render_by_device

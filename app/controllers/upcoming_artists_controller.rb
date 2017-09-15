@@ -1,4 +1,6 @@
 class UpcomingArtistsController < ApplicationController
+  before_action :is_admin
+
   def create
     if Artist.exists?(params[:artist_id])
       if UpcomingArtist.exists?(upcoming_id: params[:upcoming_id], artist_id: params[:artist_id])

@@ -1,6 +1,8 @@
 class ArtistsController < ApplicationController
+  before_action :is_admin, only: [:update, :destroy]
+
   def update
-    @artist = Artist.find_by(id: params[:id])
+    @artist = Artist.find(params[:id])
     if @artist.update(image_url: params[:artist][:image_url], name: params[:artist][:name])
       redirect_back(fallback_location: root_path)
     else

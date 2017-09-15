@@ -57,10 +57,10 @@
           <td>
             <%= submit_tag("수정", class: "btn btn-outline-primary") %>
           </td>
-        <% end %>
+          <% end %>
         <td>
           <%= link_to artist_path(artist.id), method: :delete do %>
-            <button type="button" class="btn btn-outline-primary">삭제</button>
+            <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
           <% end %>
         </td>
       </tr>
