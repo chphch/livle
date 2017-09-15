@@ -21,7 +21,7 @@ class Upcoming < ApplicationRecord
   end
 
   def main_video
-    if self.main_youtube_url
+    if self.main_youtube_url && self.main_youtube_url.length > 0
       main_video = Feed.new(
           id: self.class.main_video_id,
           video_id: self.main_video_id,
