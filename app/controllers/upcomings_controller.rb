@@ -19,7 +19,8 @@ class UpcomingsController < ApplicationController
     @main_video_id = Upcoming.main_video_id
     @like_true = user_signed_in? &&
         UpcomingLike.where(upcoming_id: params[:id], user_id: current_user.id).take
-    @disable_nav = true
+    @disable_nav = true #for mobile
+    @disable_background_image = true #for mobile
     render_by_device
   end
 

@@ -18,19 +18,19 @@
   <div class="_show-player-padding-m">
     <div class="info-container">
       <div class="_show-text-container-m _row-positioner">
-        <p class="_flex-grow-1 _fs-1-mobile _white">
+        <p class="_flex-grow-1 _fs-0-mobile _white">
           <%= @upcoming.title %>
         </p>
         <div class="width-devision _hright-positioner">
-          <p class="_fs-1-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
+          <p class="_fs-0-mobile _white _f-letter-mobile"><strong>D<%= @upcoming.d_day %></strong></p>
         </div>
       </div>
       <div class="describe-padding">
-        <p class="_fs-1-mobile _white"><%= @upcoming.place %></p>
+        <p class="_fs-0-mobile _white"><%= @upcoming.place %></p>
       </div>
       <div class="describe-padding _vcenter-positioner">
-        <div class="describe-date">
-          <p class="_fs-3-mobile _light-gray">
+        <div class="describe-date _no-p-margin">
+          <p class="_fs-2-mobile _light-gray">
             <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
           </p>
         </div>
@@ -50,7 +50,7 @@
     <div class="_show-text-container-m _row-positioner">
       <p class="_flex-grow-1 _fs-3-mobile _white">LINE - UP</p>
       <div class="_flex-grow-1 _hright-positioner">
-        <p class="_fs-3-mobile _white">전체보기</p>
+        <!--<p class="_fs-3-mobile _white">전체보기</p>-->
       </div>
     </div>
   </div>
@@ -71,15 +71,15 @@
           <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
           <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>
         </div>
-        <p class="_fs-4-mobile _white _icon-text-margin-m">좋아요</p>
+        <p class="_fs-1-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
     <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" onclick="$('#upcoming_comment_content').focus();">
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white">댓글</p>
+      <p class="_fs-1-mobile _white">댓글</p>
     </div>
     <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
-      <p class="_fs-4-mobile _white">공유</p>
+      <p class="_fs-1-mobile _white">공유</p>
     </div>
   </div>
   <hr>

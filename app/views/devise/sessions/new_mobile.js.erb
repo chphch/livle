@@ -1,7 +1,9 @@
 $('body').append(
     '<div id="login-modal" class="modal">\
-      <div class="_big-modal">\
-      <%= j render file: "devise/sessions/new_mobile.html.erb" %>\
+      <div class="_big-modal _modal-background">\
+        <div class="_modal-filter">\
+          <%= j render file: "devise/sessions/new_mobile.html.erb" %>\
+        </div>\
       </div>\
     </div>'
 );

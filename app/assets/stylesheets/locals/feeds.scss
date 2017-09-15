@@ -19,8 +19,12 @@
     background: $dark-dark-gray;
   }
 
+  .userinfo-container {
+    padding: 0 0 2%;
+  }
+
   .text-padding {
-    @include size(75%, 12rem);
+    width: 75%;
     padding: 0 0 0 $list-container-ph-m;
   }
 

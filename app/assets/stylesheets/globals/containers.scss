@@ -99,23 +99,32 @@ body {
 ._modal-background {
   position: absolute;
   @include position(0);
-  background-color: $white;
-  border-radius: 6rem;
-}
-/* support backdrop-filter */
-@supports ( (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)) ) {
-  ._modal-background {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+  background: inherit;
+  @include border-radius($br-image-m);
+  overflow: hidden;
+  &::before {
+    position: absolute;
+    @include position(-20%);
+    visibility: visible;
+    content: '';
+    background: url(asset-path("background_modal.jpg")) no-repeat center center; background-size: cover;
+    @include filter(blur(12px));
   }
 }
-/* no support backdrop-filter */
-//@supports ( not ( (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)) ) ) {
-//  ._modal-background {
-//    -webkit-filter: url(#backdrop-filter-blur);
-//    filter: url(#backdrop-filter-blur);
-//  }
-//}
+._modal-filter {
+  position: absolute;
+  @include position(0);
+  background: rgba(0, 0, 0, .08);
+  @include border-radius($br-image-m);
+  overflow: hidden;
+}
+._modal-white-background-m {
+  position: absolute;
+  @include position(0);
+  background: $white;
+  @include border-radius($br-image-m);
+  overflow: hidden;
+}
 
 //containers
 ._logo-container-m {
@@ -146,7 +155,7 @@ body {
 
 ._describe-container-m {
   position: absolute;
-  bottom: 10%; left: 0;
+  bottom: 14%; left: 0;
   padding: 0 $thumbnail-elem-mh-m;
 }
 
@@ -200,7 +209,8 @@ body {
 }
 
 ._show-text-container-m {
-  @include size(100%);
+  width: 100%;
+  padding: 1% 0 0;
 }
 
 ._show-buttons-container-m {
@@ -221,7 +231,7 @@ body {
   background: $black;
   ._comment-edit-container-m {
     height: auto;
-    padding: 2% 0 2% 2%;
+    padding: 1% 0 2% 4%;
     .input-container {
       @include size(100%);
       border: 1px solid $white;
@@ -229,12 +239,12 @@ body {
     }
     .input-text {
       @include size(100%);
-      padding: 2% 4%;
+      padding: 4% 4%;
       background: none;
       border: none;
     }
     .submit-container {
-      padding: 0 3rem;
+      padding: 0 2%;
     }
   }
 
@@ -271,8 +281,9 @@ body {
   position: relative;
   height: 120rem;
   margin: 0 8rem;
-  background: $dark-dark-gray;
+  background: $black-opacity;
   border-radius: 6rem;
+  overflow: hidden;
 }
 
 ._small-modal {
@@ -443,6 +454,7 @@ body {
   }
 }
 
+//modal
 ._desktop-small-modal {
   min-width: 8rem; height: auto;
   background: $white;
