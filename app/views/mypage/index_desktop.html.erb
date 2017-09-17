@@ -21,8 +21,7 @@
             <p class="_fs-5 _light-gray"><%= current_user.introduce.size != 0 ? current_user.introduce : "자기소개를 입력해주세요." %></p>
             <p class="_fs-5" style="margin: 0;">
               <span class="_white">좋아요 수</span>
-              <span class="_light-gray"><%= user_signed_in? ? current_user.upcoming_likes.size +
-                  current_user.feed_likes.size : 0 %></span>
+              <span class="_light-gray"><%= user_signed_in? ? current_user.feed_likes.size : 0 %></span>
             </p>
           </div>
           <%= link_to mypage_edit_profile_path, class: "button-container _vcenter-positioner _hcenter-positioner _no-p-margin", remote: true do %>
