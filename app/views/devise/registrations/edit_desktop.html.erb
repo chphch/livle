@@ -1,0 +1,69 @@
+<div id="devise-password-edit">
+  <% @enable_transparent = true %>
+  <div class="_devise-background _column-positioner _vcenter-positioner _hcenter-positioner">
+    <div class="moto-container _text-center _no-p-margin">
+      <p class="_fs-5 _white _text-center">
+        기존에 사용하신 비밀번호와 새로운 비밀번호를 입력해주세요
+      </p>
+    </div>
+    <div class="moto-container _text-center _no-p-margin">
+      <%= image_tag "logo_livle", class: "moto-margin _logo-livle" %>
+      <p class="moto-margin _fs-5 _white _f-letter" id="error-message">Life is live</p>
+    </div>
+    <div class="filter-container">
+      <div class="login-container _column-positioner _hcenter-positioner _no-p-margin">
+        <%= form_for current_user, url: user_registration_path, remote: true do |f| %>
+            <div class="input-group">
+              <div class="_column-positioner _vcenter-positioner">
+                <!-- 비밀번호 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :current_password, placeholder: "기존 비밀번호를 입력해주세요", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
+                </div>
+                <!-- 비밀번호 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password, placeholder: "새로운 비밀번호를 입력해주세요", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
+                </div>
+                <!-- 비밀번호 확인 -->
+                <div class="login-input-container _vcenter-positioner">
+                  <div class="icon-container _vcenter-positioner _hcenter-positioner">
+                    <%= image_tag "icon_lock", class: "input-icon" %>
+                  </div>
+                  <div class="input-container">
+                    <%= f.password_field :password_confirmation, placeholder: "새로운 비밀번호를 다시 입력해주세요", autocomplete: "off", class: "input-field _fs-4 _white" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <div class="_vcenter-positioner">
+                <%= link_to mypage_index_path, class: "button-width _submit-button _text-center" do %>
+                    <p class="_fs-3 _white">취소</p>
+                <% end %>
+                <div class="button-margin"></div>
+                <%= f.submit "변경하기", class: "button-width _submit-button _fs-3 _white" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    // Press enter to submit
+    $('input').keydown(function(e) {
+        if (e.keyCode == 13) {
+            $('#sign-up').trigger('click');
+        }
+    });
+</script>
