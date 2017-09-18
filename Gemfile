@@ -36,6 +36,8 @@ gem 'social-share-button'
 # gem for copy text to clipboard
 gem 'clipboard'
 
+gem 'google-api-client'
+
 ###############################################
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
