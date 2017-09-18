@@ -11,6 +11,8 @@ class Artist < ApplicationRecord
   end
 
   def popular_feed_artist
-    FeedArtist.where(artist_id: self.id, feed_id: popular_feed.id).take
+    if popular_feed
+      FeedArtist.where(artist_id: self.id, feed_id: popular_feed.id).take
+    end
   end
 end

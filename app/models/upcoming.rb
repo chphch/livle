@@ -14,8 +14,10 @@ class Upcoming < ApplicationRecord
 
   def wrap_artists(user)
     self.artists.each do |artist|
-      popular_feed = artist.popular_feed
-      popular_feed.count_like = popular_feed.feed_likes.size
+      if artist.popular_feed
+        popular_feed = artist.popular_feed
+        popular_feed.count_like = popular_feed.feed_likes.size
+      end
     end
     return self.artists
   end
