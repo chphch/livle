@@ -23,7 +23,7 @@ class Upcoming < ApplicationRecord
   end
 
   def main_video
-    self.main_youtube_url ? Feed.new(
+    self.main_youtube_url && self.main_youtube_url.length > 0 ? Feed.new(
       youtube_url: self.main_youtube_url,
       title: "#{self.title} - Main Video"
     ) : sample_artist_feed(self.artists)
@@ -50,15 +50,16 @@ class Upcoming < ApplicationRecord
   end
 
   def related_upcomings
-    upcoming_list = []
+    upcoming_list = Set.new
     self.artists.each do |artist|
       artist.upcomings.each do |upcoming|
-        if upcoming.id != self.id
-          upcoming_list.push(upcoming)
-        end
+        upcoming_list.add(upcoming)
       end
     end
-    return upcoming_list.sample(10)
+    if upcoming_list.include?(self)
+      upcoming_list = upcoming_list.delete(self)
+    end
+    return upcoming_list.to_a.sample(10)
   end
 
   def d_day
