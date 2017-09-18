@@ -76,6 +76,8 @@ Rails.application.configure do
 
   config.action_mailer.default :charset => "utf-8"
 
+  config.action_mailer.asset_host = 'http://livle.vb9qxcpfgz.ap-northeast-2.elasticbeanstalk.com'
+
   config.action_mailer.smtp_settings = {
     address: "email-smtp.us-west-2.amazonaws.com",
     port: 587,
