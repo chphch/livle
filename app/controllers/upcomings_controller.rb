@@ -16,7 +16,6 @@ class UpcomingsController < ApplicationController
     @artists = @upcoming.wrap_artists(current_user)
     @main_video = @upcoming.main_video
     @main_video_image_url = Upcoming.main_video_image_url
-    @main_video_id = Upcoming.main_video_id
     @like_true = user_signed_in? &&
         UpcomingLike.where(upcoming_id: params[:id], user_id: current_user.id).take
     @disable_nav = true #for mobile
@@ -39,7 +38,8 @@ class UpcomingsController < ApplicationController
   def update
     @upcoming = Upcoming.find(params[:id])
     if @upcoming.update(title: params[:upcoming][:title], place: params[:upcoming][:place],
-                        main_youtube_url: params[:upcoming][:main_youtube_url])
+                        main_youtube_url: params[:upcoming][:main_youtube_url],
+                      start_date: params[:upcoming][:start_date], end_date: params[:upcoming][:end_date])
       redirect_back(fallback_location: root_path)
     else
       render text: @upcoming.errors.messages
