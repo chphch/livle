@@ -8,10 +8,10 @@
       <%= image_tag "icon_back", class: "arrow-button" %>
     </div>
 
-    <div class="official-video-container _vcenter-positioner">
+    <div class="official-video-container _vcenter-positioner" data-player-id="<%= feed_counter %>">
       <div class="_video-player">
         <!-- Youtube Video Player -->
-        <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+        <iframe id="youtube-player-<%= feed_counter %>" type="text/html" src="http://www.youtube.com/embed/<%= feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
         autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= feed.video_id %>"
                 webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
       </div>

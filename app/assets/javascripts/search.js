@@ -57,25 +57,8 @@ document.addEventListener("turbolinks:load", function(event) {
     });
 
     //Scroll Event
-    $(window).scroll(function () {
-        scrolling();
-    });
-    new ResizeSensor($('#search-list-group-m'), function () {
-        $(window).scroll(function () {
-            scrolling();
-        });
-    });
-
-    //Result action
-    $('#feeds-selector').click(function () {
-        renderResult("feed");
-    });
-    $('#upcomings-selector').click(function () {
-        renderResult("upcoming");
-    });
-
     var lastScrollPos = 0;
-    function scrolling() {
+    setInterval(function () {
         var curScrollPos = $(this).scrollTop();
         if (curScrollPos > lastScrollPos) {
             //Scrolling Down
@@ -85,7 +68,15 @@ document.addEventListener("turbolinks:load", function(event) {
             $('.search-container').removeClass('search-bar-up');
         }
         lastScrollPos = curScrollPos;
-    }
+    }, 400);
+
+    //Result action
+    $('#feeds-selector').click(function () {
+        renderResult("feed");
+    });
+    $('#upcomings-selector').click(function () {
+        renderResult("upcoming");
+    });
 });
 
 function onfocus(status) {

@@ -7,14 +7,14 @@
 
   <!-- LIVLE logo -->
   <div class="_navbar-logo-container _vcenter-positioner">
-    <%= link_to feeds_path do %>
+    <%= link_to feeds_path, onclick: "sendClickTab('feed')" do %>
         <%= image_tag "logo_livle", class: "_logo-livle" %>
     <% end %>
   </div>
 
   <div class="_navbar-buttons-container _vcenter-positioner _no-p-margin">
     <!-- buttons -->
-    <div class="_navbar-button">
+    <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to feeds_path do %>
           <% if control == 'FeedsController' %>
               <%= image_tag "icon_home_filled", class: "_navbar-icon" %>
@@ -26,7 +26,7 @@
         <p class="_fs-3 _black">HOME</p>
       </div>
     </div>
-    <div class="_navbar-button">
+    <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to upcomings_path do %>
           <% if control == 'UpcomingsController' %>
               <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
@@ -38,7 +38,7 @@
         <p class="_fs-3 _black">UPCOMING</p>
       </div>
     </div>
-    <div class="_navbar-button">
+    <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to connect_urls_path do %>
           <% if control == 'ConnectUrlsController' %>
               <%= image_tag "icon_connect_filled", class: "_navbar-icon" %>
@@ -69,7 +69,7 @@
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li>
+            <li onclick="sendClickTab('mypage')">
               <%= link_to mypage_index_path, class: "_text-center" do %>
                   <p class="_fs-4 _white">마이페이지</p>
               <% end %>

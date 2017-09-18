@@ -45,42 +45,8 @@ textarea {
 }
 
 a:hover {
-  img:not(._profile-img):not(._logo-livle) {
+  img:not(._profile-img):not(._logo-livle):not(._show-icon-m) {
     opacity: .6;
-  }
-}
-
-//loading animation
-._loading-wave-container {
-  position: fixed;
-  top: $navbar-h + 2rem;
-  left: 0; right: 0;
-  z-index: $z-most-important;
-
-  ._loading-wave-group {
-    $rectCount: 5;
-    $animationDuration: 1.2s;
-    $delayRange: 0.4s;
-    $spinkit-size: 3em !default;
-    $spinkit-spinner-color: $white !default;
-
-    width: $spinkit-size * 1.5;
-    height: $spinkit-size;
-    margin: auto;
-    text-align: center;
-
-    .loading-rect {
-      background-color: $spinkit-spinner-color;
-      height: 100%;
-      width: .5em;
-      display: inline-block;
-      border-radius: 3em !important;
-      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
-    }
-
-    @for $i from 1 through $rectCount {
-      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
-    }
   }
 }
 
@@ -122,11 +88,53 @@ a:hover {
   border: 0.2rem $light-green solid;
 }
 
-//triggers
+//transitions
+._loading-wave-container {
+  position: fixed;
+  top: $navbar-h + 2rem;
+  left: 0; right: 0;
+  z-index: $z-most-important;
+
+  ._loading-wave-group {
+    $rectCount: 5;
+    $animationDuration: 1.2s;
+    $delayRange: 0.4s;
+    $spinkit-size: 3em !default;
+    $spinkit-spinner-color: $white !default;
+
+    width: $spinkit-size * 1.5;
+    height: $spinkit-size;
+    margin: auto;
+    text-align: center;
+
+    .loading-rect {
+      background-color: $spinkit-spinner-color;
+      height: 100%;
+      width: .5em;
+      display: inline-block;
+      border-radius: 3em !important;
+      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
+    }
+
+    @for $i from 1 through $rectCount {
+      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
+    }
+  }
+}
+
 .clicked {
   animation: event 1.4s;
   .response-layer {
     animation: response 1.6s;
+  }
+}
+
+._button-effect {
+  background: $white;
+  @include transition(background 300ms);
+  &:hover {
+    background: $light-gray;
+    p { color: $white; }
   }
 }
 

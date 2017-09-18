@@ -2,6 +2,7 @@ var emptyLikeIcon = $('#icon-<%= @like_type %>-empty');
 var filledLikeIcon = $('#icon-<%= @like_type %>-filled');
 
 <% if @like_true %>
+  sendClickButton('like');
   emptyLikeIcon.addClass("_display-none");
   filledLikeIcon.removeClass("_display-none");
 <% else %>

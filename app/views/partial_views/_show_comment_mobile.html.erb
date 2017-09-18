@@ -3,7 +3,7 @@
   <%= form_for [belongs_to, model.new], remote: true do |f| %>
       <div class="_row-positioner">
         <div class="_profile-container-m">
-          <%= image_tag user_signed_in? ? current_user.profile_img : "", class: "_profile-img" %>
+          <%= image_tag user_signed_in? ? current_user.profile_img : "default_profile_img", class: "_profile-img" %>
         </div>
         <div class="_comment-edit-container-m _vcenter-positioner _flex-grow-1 _no-p-margin">
           <div class="input-container _vcenter-positioner">

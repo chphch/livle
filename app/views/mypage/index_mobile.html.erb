@@ -39,8 +39,8 @@
           <div class="list-text-container">
             <p class="_fs-4-mobile _white">찜 목록</p>
           </div>
-          <% if current_user.upcoming_likes.size != 0 %>
-              <% current_user.upcoming_likes.each do |like| %>
+          <% if @upcoming_likes.size != 0 %>
+              <% @upcoming_likes.each do |like| %>
                   <%= link_to upcoming_path(like.upcoming.id) do %>
                       <div class="list-text-container _vcenter-positioner">
                         <p class="_flex-grow-1 _fs-4-mobile _white"><%= like.upcoming.title %></p>
@@ -53,7 +53,7 @@
           <% end %>
         </div>
       </div>
-      <% if current_user.upcoming_likes.size == 0 %>
+      <% if @upcoming_likes.size == 0 %>
           <div class="info-text-container _text-center">
             <p class="_fs-4-mobile _white">
               내가 찜한 영상을 모아볼 수 있어요.
@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <% if current_user.feed_likes.size == 0 %>
+    <% if @feed_likes.size == 0 %>
         <div class="info-text-container _text-center">
           <p class="_fs-4-mobile _white">
             내가 좋아요한 영상을 모아볼 수 있어요.
@@ -79,7 +79,7 @@
         </div>
     <% else %>
         <div id="mypage-mylist-mobile">
-          <% current_user.feed_likes.each do |like| %>
+          <% @feed_likes.each do |like| %>
               <%= render partial: "search/feed_card_mobile", locals: {feed: like.feed} %>
           <% end %>
         </div>
