@@ -5,8 +5,10 @@ document.addEventListener("turbolinks:load", function(event) {
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // create player object list when iframeAPI is ready
     window.onYouTubeIframeAPIReady = function() {
+        ///////////////////////////////////
+        //             mobile            //
+        ///////////////////////////////////
         $('.show-video-container-js').each(function() {
             var id = $(this).data("playerId");
             var player = new YT.Player('youtube-player-' + id, {
@@ -16,6 +18,7 @@ document.addEventListener("turbolinks:load", function(event) {
                     'onPlaybackQualityChange': onPlaybackQualityChange
                 }
             });
+            player.device = 'mobile';
             player.id = id;
             player.autoplay = $(this).data('autoplay');
             player.container = $(this);
@@ -39,6 +42,20 @@ document.addEventListener("turbolinks:load", function(event) {
             }
             players.push(player);
         });
+        ////////////////////////////////////
+        //             desktop            //
+        ////////////////////////////////////
+        $('.official-video-container').each(function() {
+            var id = $(this).data("playerId");
+            var player = new YT.Player('youtube-player-' + id, {
+               events: {
+                   'onReady': onPlayerReady
+               }
+            });
+            player.device = 'desktop';
+            player.id = id;
+            players.push(player);
+        });
     };
 });
 
@@ -48,16 +65,23 @@ var readyPlayerSize = 0;
 // on each player ready
 function onPlayerReady(event) {
     player = event.target;
-    updateTimerDisplay(player);
-    if (player.progressBar.length) {
-        updateProgressBar(player);
+    var videoSize;
+
+    if (player.device === 'mobile') {
+        videoSize = $('.show-video-container-js').length;
+        updateTimerDisplay(player);
+        if (player.progressBar.length) {
+            updateProgressBar(player);
+        }
+        if (player.autoplay) {
+            player.playVideo();
+        }
+    } else {
+        videoSize = $('.official-video-container').length;
     }
-    if (player.autoplay) {
-        player.playVideo();
-    }
+
     readyPlayerSize++;
-    var videoSize = $('.show-video-container-js').length;
-    if (readyPlayerSize == videoSize) {
+    if (readyPlayerSize === videoSize) {
         onAllPlayerReady();
     }
 }
@@ -110,34 +134,43 @@ function onAllPlayerReady() {
     var lastTouchEnd = 0;
     var delayTime = 300;
     players.forEach(function(player){
-        player.playButton.on("click", function() {
-            onClickPlayButton(player);
-        });
-        player.progressLeft.on('touchend', function (e) {
-            var now = Date.now(); //현재시각
-            if (now - lastTouchEnd <= delayTime) {
-                e.preventDefault();
-                onDoubleTabProgress(player, 'left');
-            }
-            lastTouchEnd = now; //update lastTouchEnd
-        });
-        player.progressRight.on('touchend', function (e) {
-            var now = Date.now(); //현재시각
-            if (now - lastTouchEnd <= delayTime) {
-                e.preventDefault();
-                onDoubleTabProgress(player, 'right');
-            }
-            lastTouchEnd = now; //update lastTouchEnd
-        });
-        player.container.on('click', function (e) {
-            onClickContainer(player); //filter event
-        });
-        player.qualityButton.on("click", function() {
-            onClickQualityButton(player);
-        });
-        // player.fullScreenButton.on("click", function() {
-        //     onClickFullscreenButton(player);
-        // });
+        if (player.device === 'mobile') {
+            player.playButton.on("click", function() {
+                onClickPlayButton(player);
+            });
+            player.progressLeft.on('touchend', function (e) {
+                var now = Date.now(); //현재시각
+                if (now - lastTouchEnd <= delayTime) {
+                    e.preventDefault();
+                    onDoubleTabProgress(player, 'left');
+                }
+                lastTouchEnd = now; //update lastTouchEnd
+            });
+            player.progressRight.on('touchend', function (e) {
+                var now = Date.now(); //현재시각
+                if (now - lastTouchEnd <= delayTime) {
+                    e.preventDefault();
+                    onDoubleTabProgress(player, 'right');
+                }
+                lastTouchEnd = now; //update lastTouchEnd
+            });
+            player.container.on('click', function (e) {
+                onClickContainer(player); //filter event
+            });
+            player.qualityButton.on("click", function() {
+                onClickQualityButton(player);
+            });
+            // player.fullScreenButton.on("click", function() {
+            //     onClickFullscreenButton(player);
+            // });
+        } else {
+            $('#prev-button-'+player.id).on('click', function () {
+                player.pauseVideo();
+            });
+            $('#next-button-'+player.id).on('click', function () {
+                player.pauseVideo();
+            });
+        }
     });
 
     // set onclick lineup buttons

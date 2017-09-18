@@ -39,6 +39,24 @@
   <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
   <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare-base64.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <!-- clipboard.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104199726-1"></script>
+  <script>
+      function redir(category, action, label, value, where) {
+          ga('send', 'event', category, action, label, value);
+          (window.location=where);
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-104199726-1');
+  </script>
 </head>
 
 <body>

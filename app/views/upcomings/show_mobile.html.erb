@@ -35,8 +35,8 @@
           </p>
         </div>
         <div class="describe-icons _vcenter-positioner _hright-positioner">
-          <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding", onclick: "$('#ticket-link-modal').modal();" %>
-          <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+          <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding", onclick: "$('#ticket-link-modal').modal(); sendClickButton('ticketPage');" %>
+          <%= link_to upcoming_toggle_like_path(@upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
               <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
               <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
           <% end %>
@@ -77,7 +77,7 @@
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-1-mobile _white">댓글</p>
     </div>
-    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal(); sendClickButton('share');">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-1-mobile _white">공유</p>
     </div>
