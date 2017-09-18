@@ -23,16 +23,17 @@ class Upcoming < ApplicationRecord
   end
 
   def main_video
-    if self.main_youtube_url
-      main_video = Feed.new(
-          id: self.class.main_video_id,
-          video_id: self.main_video_id,
-          title: "#{self.title} - Main Video"
-      )
-    else
-      main_video = nil
-    end
-    return main_video
+    self.main_youtube_url ? Feed.new(
+      youtube_url: self.main_youtube_url,
+      title: "#{self.title} - Main Video"
+    ) : sample_artist_feed(self.artists)
+  end
+
+  def sample_artist_feed(artists)
+    return nil if artists.size == 0
+    feed = artists.sample.popular_feed
+    return feed if feed
+    sample_artist_feed(artists.drop(artist))
   end
 
   def main_video_id

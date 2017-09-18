@@ -4,10 +4,9 @@ class Artist < ApplicationRecord
   has_many :upcoming_artists
   has_many :upcomings, through: :upcoming_artists
   mount_uploader :image_url, S3Uploader
-  attr_accessor :popular_feed
 
   def popular_feed
-    self.feeds.take
+    self.feeds.order('rank DESC').first
   end
 
   def popular_feed_artist
