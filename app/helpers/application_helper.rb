@@ -18,4 +18,11 @@ module ApplicationHelper
   def get_thumbnail_image(youtube_id)
     return "http://img.youtube.com/vi/#{youtube_id}/mqdefault.jpg"
   end
+
+  def raw_text(text, class_method)
+    context = text.gsub(/\n/, '<br />')
+    puts "text: "+context
+    result = '<p class="'+class_method+'">'+context+'</p>'
+    return result.html_safe
+  end
 end

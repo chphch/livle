@@ -46,7 +46,7 @@
         </p>
       </div>
       <div class="official-text-container">
-        <%= simple_format feed.content, class: "_fs-4 _light-gray _f-line-mobile" %>
+        <%= raw_text feed.content, "_fs-4 _light-gray _f-line-mobile" %>
       </div>
       <%= link_to feed_path(feed.id), class: "show-button _vcenter-positioner
           _hcenter-positioner _no-p-margin" do %>

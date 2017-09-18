@@ -49,7 +49,7 @@
         </div>
 
         <div class="text-container">
-          <%= simple_format @feed.content, class: "_fs-4 _light-gray _f-line" %>
+          <%= raw_text @feed.content, "_fs-4 _light-gray _f-line" %>
         </div>
 
         <!-- Like, Comment, Share Buttons -->
