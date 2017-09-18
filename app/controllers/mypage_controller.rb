@@ -2,8 +2,15 @@ class MypageController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit_profile, :update_profile, :settings]
 
   def index
+    today = DateTime.now
     @title = current_user.nickname
-    @like_size = current_user.feed_likes.size
+    @feed_likes = current_user.feed_likes
+    @upcoming_likes = []
+    current_user.upcoming_likes.each do |like|
+      if like.upcoming.start_date >= today
+        @upcoming_likes.push(like)
+      end
+    end
     @enable_footer = true #for desktop
     render_by_device
   end
