@@ -30,9 +30,9 @@
 
             <div class="button-container">
               <div class="_vcenter-positioner">
-                <div class="button-width _submit-button _fs-3 _white _text-center">
-                  <%= link_to "취소", mypage_index_path %>
-                </div>
+                <%= link_to mypage_index_path, class: "button-width _submit-button _text-center" do %>
+                    <p class="_fs-3 _white">취소</p>
+                <% end %>
                 <div class="button-margin"></div>
                 <%= f.submit "확인", class: "button-width _submit-button _fs-3 _white" %>
               </div>

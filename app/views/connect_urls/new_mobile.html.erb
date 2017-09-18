@@ -2,7 +2,7 @@
   <div class="_body-background-m"></div>
   <div class="_show-video-container-m">
 
-    <%= render partial: '/partial_views/youtube_player', locals: { feed: @connect_feed, autoplay: true, no_thumbnail_button: true } %>
+    <%= render partial: '/partial_views/youtube_player_mobile', locals: { feed: @connect_feed, autoplay: true, no_thumbnail_button: true } %>
 
     <!-- back button -->
     <%= link_to :back, class: "_link-back-container-m" do %>
@@ -24,4 +24,17 @@
       <% end %>
     </div>
   </div>
+  <!-- TODO: controller로 옮기기 -->
+  <% unless @video_url =~ /youtu.?be/ %>
+      <script>
+          $('body').append(
+              '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
+              '    <%= j render partial: "partial_views/error_modal_mobile", locals:{message: "Youtube 링크가 아니거나 잘못된 영상입니다\n다른 Youtube 영상을 알려주세요"} %>' +
+              '</div>'
+          );
+          setTimeout(function () {
+              window.location = "<%= connect_urls_path %>";
+          }, 1500);
+      </script>
+  <% end %>
 </div>

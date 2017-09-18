@@ -92,6 +92,7 @@
   }
 
   #mypage-mylist-mobile {
+    width: 100%;
     padding: 0 2%;
 
     .search-card-mobile {
@@ -378,6 +379,11 @@
     background: none;
     border: 2px solid $dark-dark-gray;
     @include border-radius($br-min);
+    @include transition(background 300ms);
+    &:hover {
+      background: $dark-dark-gray;
+      color: $white;
+    }
   }
 }
 

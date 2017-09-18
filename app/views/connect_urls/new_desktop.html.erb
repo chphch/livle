@@ -33,7 +33,6 @@
   <!-- TODO: controller로 옮기기 -->
   <% unless @video_url =~ /youtu.?be/ %>
       <script>
-        console.log('its true!');
         $('body').append(
             '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
             '    <%= j render partial: "partial_views/error_modal_desktop", locals:{message: "Youtube 링크가 아니거나 잘못된 영상입니다\n다른 Youtube 영상을 알려주세요"} %>' +
