@@ -37,7 +37,7 @@
               </div>
             </div>
             <%= image_tag "icon_ticket_empty", class: "upcoming-icon" %>
-            <%= link_to upcoming_toggle_like_path(@upcoming.id), remote: true do %>
+            <%= link_to upcoming_toggle_like_path(@upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
                 <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none upcoming-icon" : "upcoming-icon" %>
                 <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "upcoming-icon" : "_display-none upcoming-icon" %>
             <% end %>
@@ -117,13 +117,13 @@
   </div>
   <script>
       $('#share-button').on('click', function () {
+          sendClickButton('share');
           $('._share-container').append(
               '<div class="_share-modal _desktop-small-modal" id="share-modal">' +
                 '<p class="_fs-3 _black">공유하기</p>' +
                 '<p class="_fs-3 _dark-gray">페이스북 트위터</p>' +
               '</div>'
           );
-//          '<= render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>' +
       });
 
       //works like modal

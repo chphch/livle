@@ -8,6 +8,8 @@ class FeedCommentsController < ApplicationController
       respond_to do |format|
         format.js { render 'xhrs/append_comment_' + device_suffix }
       end
+    else
+      redirect_to new_user_session_path
     end
   end
 

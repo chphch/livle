@@ -33,8 +33,6 @@ gem 'faraday_middleware-aws-signers-v4'
 gem 'whenever', :require => false
 # social-share-button
 gem 'social-share-button'
-# gem for copy text to clipboard
-gem 'clipboard'
 
 ###############################################
 

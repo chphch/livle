@@ -54,7 +54,7 @@
       <%= image_tag "icon_comment_white", class: "_show-icon-m" %>
       <p class="_fs-1-mobile _white">댓글</p>
     </div>
-    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal();">
+    <div class="_flex-grow-1 _hcenter-positioner _vcenter-positioner" id="share-modal-button" onclick="$('#share-modal').modal(); sendClickButton('share');">
       <%= image_tag "icon_share_white", class: "_show-icon-m" %>
       <p class="_fs-1-mobile _white">공유</p>
     </div>
@@ -70,13 +70,13 @@
   </div>
 </div>
 <script>
-$("#back").click(function(e) {
-  e.preventDefault();
-  if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
-    window.history.back();
-  }
-  else {
-    window.location = '/feeds';
-  }
-});
+    $("#back").click(function(e) {
+        e.preventDefault();
+        if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
+            window.history.back();
+        }
+        else {
+            window.location = '/feeds';
+        }
+    });
 </script>

@@ -45,7 +45,7 @@ textarea {
 }
 
 a:hover {
-  img:not(._profile-img):not(._logo-livle) {
+  img:not(._profile-img):not(._logo-livle):not(._show-icon-m) {
     opacity: .6;
   }
 }

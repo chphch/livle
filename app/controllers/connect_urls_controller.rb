@@ -6,7 +6,6 @@ class ConnectUrlsController < ApplicationController
     @bakckground_video_id = 'DSwd9Mng6uE' #for desktop
     @enable_transparent = true #for desktop
     @enable_footer = true #for desktop
-
     render_by_device
   end
 
@@ -17,7 +16,7 @@ class ConnectUrlsController < ApplicationController
           @connect_url = ConnectUrl.new
           @video_url = params[:video_url]
           @connect_feed = Feed.new(youtube_url: params[:video_url])
-          @disable_nav = true
+          @disable_nav = true #for mobile
           render_by_device
         }
       end
@@ -41,4 +40,6 @@ class ConnectUrlsController < ApplicationController
   def connect_url_params
     params.require(:connect_url).permit(:video_url, :describe, :user_id)
   end
+
+
 end
