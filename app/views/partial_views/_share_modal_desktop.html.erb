@@ -1,9 +1,9 @@
 <div class="_share-modal _desktop-small-modal" id="share-modal">
   <p class="_fs-3 _black" id="modal-msg">공유</p>
   <div class="_vcenter-positioner">
-    <div class="social-share-button" data-title="Fly Like A Bird" data-img="" data-url="<%=request.original_url%>" data-desc="" data-via="">
+    <div class="social-share-button" data-title="<%=post.title%>" data-id="<%=post.id%>" data-url="<%=request.original_url%>">
       <a class="_fs-3 _dark-gray" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)">페이스북</a>
-      <a class="_fs-3 _dark-gray" rel="nofollow" data-site="twitter" onclick="return SocialShareButton.share(this);" href="#">트위터</a>
+      <a class="_fs-3 _dark-gray" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)">트위터</a>
     </div>
   </div>
 </div>

@@ -29,7 +29,7 @@
             <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
             <p id="like-count" class="_fs-5 _white"><%= @feed.feed_likes.size %></p>
             <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-            <p class="_fs-5 _white"><%= @feed.count_share %></p>
+            <p id="share-count" class="_fs-5 _white"><%= @feed.count_share %></p>
           </div>
         </div>
 
@@ -107,19 +107,6 @@
     );
   });
 
-  function shareOnFacebook(button) {
-    url = $(button).closest('.social-share-button').data('url');
-
-    FB.ui(
-      {
-        method: 'share',
-        href: url
-      }, function(response) {
-        console.log("SHARED");
-        console.log(response);
-      });
-    };
-
     //works like modal
     $('body').click(function (e) {
       if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
@@ -127,5 +114,42 @@
     }).find('#share-button').on('click', function (e) {
       e.stopPropagation();
     });
+
+
+function shareOnFacebook(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+
+  FB.ui(
+    {
+      method: 'share',
+      href: url
+    }, function(response) {
+      incrementShare(id);
+    }
+  );
+}
+
+
+function shareOnTwitter(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+  title = $container.data('title');
+  window.open("https://twitter.com/share?url=" + url + "&text=" + title, '_blank');
+  incrementShare(id);
+}
+
+function incrementShare(id) {
+  $.ajax({
+    url: '/feeds/' + id + '/share',
+    method: 'post',
+    success: function(data) {
+      // TODO 공유되었습니다 띄우려면 여기서
+      $('#share-count').text(data);
+    }
+  });
+}
     </script>
   </div>
