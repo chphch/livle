@@ -14,4 +14,7 @@ class UserMailer < Devise::Mailer
   # def unlock_instructions(record, token, opts={})
   #   super
   # end
+  def successful_signup_instructions(user)
+    @user = user
+  end
 end

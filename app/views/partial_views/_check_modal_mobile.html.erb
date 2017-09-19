@@ -3,7 +3,7 @@
     <div class="_small-modal-title text-center">
       <%= image_tag "icon_check_black", class: "_modal-big-icon-m" %>
       <% if defined?(message) %>
-          <p class="_fs-4-mobile _black _f-letter-mobile _text-center"><%= message %></p>
+          <%= raw_text message, "_fs-4-mobile _black _f-letter-mobile _text-center" %>
       <% end %>
     </div>
   </div>

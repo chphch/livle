@@ -4,7 +4,7 @@ module FeedsHelper
       return ""
     end
 
-    marking = '<span style="color: #9BFFCC"> more..</span>'
+    marking = '<span style="color: #dfdfdf;">.. 더 보기</span>'
     lines = content.split(/\n+/)
     if lines.size > 2
       if lines[0].length > 38
@@ -14,8 +14,6 @@ module FeedsHelper
       else
         m_content = lines[0] + "<br />" + lines[1] + marking
       end
-
-      puts "shorten: " + m_content
       return m_content
     else
       puts "original: " + content

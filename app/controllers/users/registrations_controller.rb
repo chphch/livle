@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
     @disable_nav = true
-    @title = "회원가입"
+    @title = "회원가입" #for mobile
     respond_with resource do |format|
       format.html { render_by_device }
     end
@@ -20,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
+        UserMailer.successful_signup_instructions(resource).deliver #send successful mail
         respond_with resource do |format|
           format.js { render "successful_signup_#{device_suffix}.js.erb" }
         end
