@@ -10,11 +10,11 @@
         <!-- Facebook Login -->
         <div class="button-container">
           <div id="device-link" style="cursor: pointer;">
-            <%- if devise_mapping.omniauthable? %>
-                <a onclick="onClickFacebookLoginButton();">
-                  <div class="facebook-button _submit-button _fs-4 _white _text-center">페이스북으로 3초만에 로그인</div>
-                </a>
-            <% end -%>
+            <% if devise_mapping.omniauthable? %>
+            <%=link_to user_facebook_omniauth_authorize_path do %>
+            <div class="facebook-button _submit-button _fs-4 _white _text-center">페이스북으로 3초만에 로그인</div>
+            <% end %>
+            <% end %>
           </div>
         </div>
         <div class="hr-container _vcenter-positioner">
@@ -78,7 +78,7 @@
   </div>
 </div>
 
-<%= render partial: 'onclick_facebook_button', locals: {url: user_facebook_omniauth_authorize_path, remote: true} %>
+<%#= render partial: 'onclick_facebook_button', locals: {url: user_facebook_omniauth_authorize_path, remote: true} %>
 
 <script>
     // Press enter to submit

@@ -14,11 +14,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :signed_in, scope: "devise.sessions") if is_navigational_format?
 
       # TODO refactor these parts, render_by_device is not working well
-      if browser.device.mobile?
-        render 'devise/sessions/successful_login_mobile'
-      else
-        render 'devise/sessions/successful_login_desktop'
+      respond_to do |format|
+        format.js {
+          render (browser.device.mobile?) ? 'devise/sessions/successful_login_mobile' : 'devise/sessions/successful_login_desktop'
+        }
+        format.html { redirect_to mypage_index_path }
       end
+      # if browser.device.mobile?
+      #   render 'mypage/index_mobile'
+      #   #render 'devise/sessions/successful_login_mobile'
+      # else
+      #   redirect_to mypage_index_path
+      #   #render 'devise/sessions/successful_login_desktop'
+      # end
     else
       # TODO When is this exception-handling-block executed?
       puts "===============FACEBOOK LOGIN ERROR================="

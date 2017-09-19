@@ -1,3 +1,7 @@
+<%
+# Deprecation by jaeseong
+# text/html response cannot be handled by ajax
+if false %>
 <script>
     function onClickFacebookLoginButton() {
         $.ajax({
@@ -13,3 +17,4 @@
     // for facebook login callback function
     var isfacebookLoginCallbackTrue = <%= remote %>;
 </script>
+<% end %>
