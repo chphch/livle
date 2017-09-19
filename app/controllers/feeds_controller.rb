@@ -23,7 +23,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
-    @feed.increase_count_view
+    @feed.increment!(:count_view)
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true #for mobile
@@ -48,6 +48,13 @@ class FeedsController < ApplicationController
     else
       redirect_to new_user_session_path
     end
+  end
+
+  def share
+    # 로그인 체크 해야 하나 ?
+    feed = Feed.find(params[:id])
+    feed.increment!(:count_share)
+    render json: feed.count_share
   end
 
   def update

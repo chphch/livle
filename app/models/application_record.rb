@@ -1,10 +1,11 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def increase_count_view
-    self.count_view += 1
-    self.save
-  end
+  # 이렇게 하면 isolation 버그남
+  # def increase_count_view
+  #   self.count_view += 1
+  #   self.save
+  # end
 
   # only for FeedLike and UpcomingLike classes
   def self.toggle_like(post, user)
