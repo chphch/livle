@@ -6,7 +6,7 @@ class Feed < ApplicationRecord
   has_many :feed_likes
   has_many :feed_comments
   has_many :connect_urls
-  attr_accessor :id, :video_id, :like_true, :count_like
+  attr_accessor :id, :like_true, :count_like
 
   def prev(feeds)
     # 나중에 생성된 feed
@@ -40,11 +40,9 @@ class Feed < ApplicationRecord
     attributes.merge(artists_names: self.artists.map(&:name))
   end
 
+  # 이거 역할이 뭐야?
   def id
     @id || self[:id]
   end
 
-  def video_id
-    @video_id || self.class.get_youtube_video_id(self.youtube_url)
-  end
 end

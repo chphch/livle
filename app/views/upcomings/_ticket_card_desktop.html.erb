@@ -11,16 +11,7 @@
         <div class="ticket-container _vcenter-positioner">
           <%= image_tag "background_ticket", class: "ticket-img" %>
           <div class="ticket-video-container">
-            <div class="_thumbnail-image-container">
-              <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>
-            </div>
-            <div class="thumbnail-filter _vbottom-positioner">
-              <div class="_flex-grow-1">
-                <p class="_fs-3 _white"><%= upcoming.main_video.title %></p>
-                <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
-              </div>
-              <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
-            </div>
+            <%= render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>
           </div>
           <div class="info-container _column-positioner _hcenter-positioner">
             <div class="_flex-grow-1">
@@ -62,29 +53,13 @@
       $cur.mouseenter(function () {
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').remove();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
-              '<div class="_video-player">' +
-              '   <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= upcoming.main_video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&\n' +
-              '   autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= upcoming.main_video_id %>"\n' +
-              '   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>' +
-              '   <div class="thumbnail-filter _vbottom-positioner _hright-positioner">\n' +
-              '       <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>' +
-              '   </div>' +
-              '</div>'
+            '<%=j render partial: 'ticket_video_desktop', locals: {upcoming: upcoming} %>'
           );
       });
       $cur.mouseleave(function () {
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
-              '<div class="_thumbnail-image-container">\n' +
-              '    <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>\n' +
-              '</div>' +
-              '<div class="thumbnail-filter _vbottom-positioner">\n' +
-              '    <div class="_flex-grow-1">\n' +
-              '        <p class="_fs-3 _white"><%= upcoming.main_video.title %></p>\n' +
-              '        <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>\n' +
-              '    </div>\n' +
-              '    <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>' +
-              '</div>'
+            '<%=j render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>'
           );
       });
   </script>

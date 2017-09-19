@@ -14,23 +14,26 @@ class Upcoming < ApplicationRecord
 
   def wrap_artists(user)
     self.artists.each do |artist|
-      popular_feed = artist.popular_feed
-      popular_feed.count_like = popular_feed.feed_likes.size
+      if artist.popular_feed
+        popular_feed = artist.popular_feed
+        popular_feed.count_like = popular_feed.feed_likes.size
+      end
     end
     return self.artists
   end
 
   def main_video
-    if self.main_youtube_url && self.main_youtube_url.length > 0
-      main_video = Feed.new(
-          id: self.class.main_video_id,
-          video_id: self.main_video_id,
-          title: "#{self.title} - Main Video"
-      )
-    else
-      main_video = nil
-    end
-    return main_video
+    self.main_youtube_url && self.main_youtube_url.length > 0 ? Feed.new(
+      youtube_url: self.main_youtube_url,
+      title: "#{self.title} - Main Video"
+    ) : sample_artist_feed(self.artists)
+  end
+
+  def sample_artist_feed(artists)
+    return nil if artists.size == 0
+    feed = artists.sample.popular_feed
+    return feed if feed
+    sample_artist_feed(artists.drop(artist))
   end
 
   def main_video_id
@@ -47,15 +50,16 @@ class Upcoming < ApplicationRecord
   end
 
   def related_upcomings
-    upcoming_list = []
+    upcoming_list = Set.new
     self.artists.each do |artist|
       artist.upcomings.each do |upcoming|
-        if upcoming.id != self.id
-          upcoming_list.push(upcoming)
-        end
+        upcoming_list.add(upcoming)
       end
     end
-    return upcoming_list.sample(10)
+    if upcoming_list.include?(self)
+      upcoming_list = upcoming_list.delete(self)
+    end
+    return upcoming_list.to_a.sample(10)
   end
 
   def d_day

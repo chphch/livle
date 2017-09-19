@@ -4,8 +4,9 @@ class FeedsController < ApplicationController
   before_action :is_admin, only: [:update, :destroy]
 
   def index
-    official_feeds = Feed.where(is_curation: true).order('created_at DESC')
-    common_feeds = Feed.where(is_curation: false).order('created_at DESC')
+    # TODO : 30 is an arbitrary number, can be removed once the rank values get set
+    official_feeds = Feed.where(is_curation: true).order('((rank + 30) * RANDOM()) DESC')
+    common_feeds = Feed.where(is_curation: false).order('((rank + 30) * RANDOM()) DESC')
     merged_feeds = common_feeds.each_slice(4).zip(official_feeds).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 10) #for mobile
 

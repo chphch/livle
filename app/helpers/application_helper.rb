@@ -15,7 +15,15 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def get_thumbnail_image(youtube_id)
+  def get_thumbnail_from_id(youtube_id)
     return "http://img.youtube.com/vi/#{youtube_id}/mqdefault.jpg"
+  end
+
+  def get_thumbnail_from_url(youtube_video_url)
+    get_thumbnail_from_id(get_youtube_video_id(youtube_video_url))
+  end
+
+  def get_youtube_video_id(youtube_video_url)
+    youtube_video_url ? youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') : ''
   end
 end

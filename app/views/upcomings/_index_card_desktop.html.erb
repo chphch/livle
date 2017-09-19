@@ -1,7 +1,9 @@
+<% # Deprecated
+if false  %>
 <div id="upcoming-index-card">
   <%= link_to upcoming_path(upcoming.id), method: :get do %>
       <div class="_thumbnail-image-container">
-        <%= image_tag get_thumbnail_image(upcoming.main_video_id), class: "_thumbnail-image" %>
+        <%= image_tag get_thumbnail_from_url(upcoming.main_video.youtube_url), class: "_thumbnail-image" %>
       </div>
       <div class="_text-container _no-p-margin">
         <p class="_fs-4 _white">
@@ -17,3 +19,4 @@
       </div>
   <% end %>
 </div>
+<% end %>
