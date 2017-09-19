@@ -20,8 +20,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        #send welcome mail
-        UserMailer.welcome_instructions(resource).deliver_now
+        # TODO: send welcome mail
+        # UserMailer.welcome_instructions(resource).deliver_now
         respond_with resource do |format|
           format.js { render "successful_signup_#{device_suffix}.js.erb" }
         end

@@ -1,6 +1,7 @@
+var message = '입력하신 계정으로 메일이 전송되었습니다!\n메일을 인증해주세요';
 $('body').append(
     '<div id="confirmation-email-sent-mobile" class="modal">' +
-    '    <%= j render partial: "partial_views/check_modal_mobile", locals: {message: '입력하신 계정으로 메일이 전송되었습니다!\n메일을 인증해주세요'} %>' +
+    '    <%= j render partial: "partial_views/check_modal_mobile", locals: {message: message} %>' +
     '</div>'
 );
 var alertModal = $('#confirmation-email-sent-mobile');
