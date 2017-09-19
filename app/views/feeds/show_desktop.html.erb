@@ -100,19 +100,32 @@
   </div>
 
   <script>
-      $('#share-button').on('click', function () {
-          sendClickButton('share');
-          $('._share-container').append(
-          '<%= j render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>'
-          );
-      });
+  $('#share-button').on('click', function () {
+    sendClickButton('share');
+    $('._share-container').append(
+      '<%= j render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>'
+    );
+  });
 
-      //works like modal
-      $('body').click(function (e) {
-          if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
-              $('#share-modal').remove();
-      }).find('#share-button').on('click', function (e) {
-          e.stopPropagation();
+  function shareOnFacebook(button) {
+    url = $(button).closest('.social-share-button').data('url');
+
+    FB.ui(
+      {
+        method: 'share',
+        href: url
+      }, function(response) {
+        console.log("SHARED");
+        console.log(response);
       });
-  </script>
-</div>
+    };
+
+    //works like modal
+    $('body').click(function (e) {
+      if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
+      $('#share-modal').remove();
+    }).find('#share-button').on('click', function (e) {
+      e.stopPropagation();
+    });
+    </script>
+  </div>
