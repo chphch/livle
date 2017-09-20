@@ -1,10 +1,12 @@
 <div class="_thumbnail-image-container">
-  <%= image_tag (upcoming.main_video ? get_thumbnail_from_url(upcoming.main_video.youtube_url) : 'icon_qna'), class: "_thumbnail-image" %>
+  <%= image_tag (upcoming.main_video ? get_thumbnail_from_url(upcoming.main_video.youtube_url) : 'thumbnail_livle'), class: "_thumbnail-image" %>
 </div>
 <div class="thumbnail-filter _vbottom-positioner">
   <div class="_flex-grow-1">
     <p class="_fs-3 _white"><%= upcoming.main_video ? upcoming.main_video.title : "NO" %></p>
     <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
   </div>
-  <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
+  <div id="upcoming-like-button">
+    <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
+  </div>
 </div>

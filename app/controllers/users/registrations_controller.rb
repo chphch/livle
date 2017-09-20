@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
     @disable_nav = true
-    @title = "회원가입"
+    @title = "회원가입" #for mobile
     respond_with resource do |format|
       format.html { render_by_device }
     end
@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     if resource.persisted?
       if resource.active_for_authentication?
+        # 바로 가입될 경우 불리는 부분, 현재는 confirmation 과정 있어서 여기로 들어오지 않음
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         respond_with resource do |format|
@@ -27,9 +28,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
         render_by_device 'registrations/confirmation_email_sent'
-        #respond_with resource do |format|
-        #  format.js {render 'confirmation_email_sent_mobile' }
-        #end
         #respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else

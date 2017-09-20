@@ -89,6 +89,7 @@
 //#       DESKTOP        #
 //########################
 #devise-new,
+#devise-new-modal,
 #devise-signup,
 #devise-passwords-new,
 #devise-passwords-after-create,
@@ -98,22 +99,6 @@
     padding: 0 0 4rem;
     .moto-margin {
       margin: 0.8rem 0;
-    }
-  }
-
-  .filter-container {
-    position: relative;
-    @include size(36rem, auto);
-    @include border-radius($br-image);
-    background: inherit;
-    overflow: hidden;
-    &::before {
-      position: absolute;
-      @include position(-100%);
-      visibility: visible;
-      content: '';
-      background: inherit;
-      @include filter(blur(10px));
     }
   }
 
@@ -183,7 +168,49 @@
   }
 }
 
-#devise-new {
+#devise-new,
+#devise-signup,
+#devise-passwords-new,
+#devise-passwords-after-create,
+#devise-password-edit {
+  .filter-container {
+    position: relative;
+    @include size(36rem, auto);
+    @include border-radius($br-image);
+    background: inherit;
+    overflow: hidden;
+    &::before {
+      position: absolute;
+      @include position(-100%);
+      visibility: visible;
+      content: '';
+      background: inherit;
+      @include filter(blur(10px));
+    }
+  }
+}
+
+#devise-new-modal {
+  background: $black-opacity;
+  .filter-container {
+    position: relative;
+    @include size(36rem, auto);
+    @include border-radius($br-image);
+    background: inherit;
+    overflow: hidden;
+    &::before {
+      position: absolute;
+      @include position(-100%);
+      visibility: visible;
+      content: '';
+      background: url(asset-path("background_concert.jpg")) no-repeat center center; background-size: cover;
+      @include filter(blur(10px));
+    }
+  }
+}
+
+#devise-new,
+#devise-new-modal {
   .input-group {
     @include flex-grow(1);
     @include size(100%, auto);

@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load", function(event) {
 
     window.onYouTubeIframeAPIReady = function() {
         ///////////////////////////////////
-        //             mobile            //
+        //             partial           //
         ///////////////////////////////////
         $('.show-video-container-js').each(function() {
             var id = $(this).data("playerId");
@@ -18,7 +18,7 @@ document.addEventListener("turbolinks:load", function(event) {
                     'onPlaybackQualityChange': onPlaybackQualityChange
                 }
             });
-            player.device = 'mobile';
+            player.device = 'partial';
             player.id = id;
             player.autoplay = $(this).data('autoplay');
             player.container = $(this);
@@ -44,7 +44,7 @@ document.addEventListener("turbolinks:load", function(event) {
             currentPlayer = players[0];
         });
         ////////////////////////////////////
-        //             desktop            //
+        //        official desktop        //
         ////////////////////////////////////
         $('.official-video-container').each(function() {
             var id = $(this).data("playerId");
@@ -53,7 +53,7 @@ document.addEventListener("turbolinks:load", function(event) {
                    'onReady': onPlayerReady
                }
             });
-            player.device = 'desktop';
+            player.device = 'official_desktop';
             player.id = id;
             players.push(player);
             // TODO : 데스크탑에서도 이거 안 불리고 위에 모바일 버전 불리넹
@@ -71,7 +71,7 @@ function onPlayerReady(event) {
     player = event.target;
     var videoSize;
 
-    if (player.device === 'mobile') {
+    if (player.device === 'partial') {
         videoSize = $('.show-video-container-js').length;
         updateTimerDisplay(player);
         if (player.progressBar.length) {
@@ -138,7 +138,7 @@ function onAllPlayerReady() {
     var lastTouchEnd = 0;
     var delayTime = 300;
     players.forEach(function(player){
-        if (player.device === 'mobile') {
+        if (player.device === 'partial') {
             player.playButton.on("click", function() {
                 onClickPlayButton(player);
             });

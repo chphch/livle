@@ -1,113 +1,132 @@
-<div id="mailer" class="_hcenter-positioner">
-  <div class="mailer-container">
-    <div class="mailer-header">
-      <div class="hr-bar"></div>
-      <div class="title-container _row-positioner">
-        <img class="mailer-logo" src="<%= Rails.public_path.join('logo_livle.svg') %>">
-        <p class="_fs-3 _white">Welcome To Livle</p>
-      </div>
-      <div class="message-container _hcenter-positioner">
-        <p class="_fs-4 _light-gray _text-center"><%= message %></p>
-      </div>
-    </div>
-
-    <div class="mailer-button-container _hcenter-positioner _no-p-margin">
-      <%= link_to redirect_path, class: "mailer-button _vcenter-positioner _hcenter-positioner" do %>
-          <p class="_fs-1 _black"><%= button %></p>
-      <% end %>
-    </div>
-
-    <% if notice != 'none' %>
-        <hr>
-        <div class="mailer-notice-container _text-center">
-          <p class="_fs-4 _light-gray"><%= notice %></p>
-        </div>
-    <% end %>
-  </div>
-  <style>
-    #mailer {
-      width: 100%;
-      background: #525252;
-    }
-    .mailer-container {
-      width: 52rem; height: auto;
-    }
-    .mailer-header {
-      background: #121212;
-      padding: 2rem 4rem;
-    }
-    .hr-bar {
-      width: 100%; height: .6rem;
-      padding:  1rem 0 1rem 10%;
-      background: #ffffff;
-    }
-    .title-container {
-      width: 100%;
-      height: 6rem;
-    }
-    .mailer-logo {
-      width: auto; height: 100%;
-      margin: 0 3rem 0 0;
-    }
-    .message-container {
-      width: 100%;
-      height: auto;
-      padding: 6rem 0;
-    }
-    .mailer-button-container {
-      background: #ffffff;
-      padding: 2rem 4rem 0;
-    }
-    .mailer-button {
-      border: 1px solid #121212;
-      border-radius: 1rem;
-    }
-    .mailer-notice-container {
-      width: 100%; height: auto;
-      padding: 2rem 0 0;
-    }
-
-    /*positioners*/
-    ._hcenter-positioner {
-      display: flex;
-      width: 100%;
-      /* align horizontal */
-      justify-content: center;
-    }
-    ._row-positioner {
-      display: flex;
-      flex-direction: row;
-    }
-    ._no-p-margin p {
-      margin: 0;
-    }
-    ._text-center {
-      text-align: center;
-    }
-
-    /*font sizes*/
-    ._fs-1 {
-      font-size: 1.6rem;
-    }
-    ._fs-2 {
-      font-size: 1.5rem;
-    }
-    ._fs-3 {
-      font-size: 1.4rem;
-    }
-    ._fs-4 {
-      font-size: 1.3rem;
-    }
-
-    /*colors*/
-    ._black {
-      color: #121212;
-    }
-    ._light-gray {
-      color: #bfbfbf;
-    }
-    ._white {
-      color: #ffffff;
-    }
-  </style>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr>
+    <td align="center" valign="top" bgcolor="#f7f7f7" style="padding-top: 20px; padding-bottom: 20px; border-collapse: collapse;">
+      <table width="600" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td valign="top" bgcolor="#ffffff">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <!-- header -->
+              <tr>
+                <td valign="top" validation="top" style="padding-top: 36px; background-color: #121212; border-collapse: collapse;">
+                  <table align="right" width="90%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #ffffff;"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding-top: 20px; padding-right: 40px; padding-bottom: 20px; padding-left: 40px; background-color: #121212; border-collapse: collapse;">
+                  <table align="right" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="100%;">
+                        <table>
+                          <tr>
+                            <td>
+                              <%= image_tag "logo_livle", style: "width: auto; height: 40px; padding-right: 20px;" %>
+                            </td>
+                            <td valign="top" style="font-size: 12pt; color: #ffffff;">
+                              Welcome To LIVLE
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding-top: 60px; padding-bottom: 60px; font-size: 12pt; color: #999999;">
+                        <pre><%= message %></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-top: 50px; padding-right: 40px; padding-bottom: 50px; padding-left: 40px; background-color: #ffffff; border-collapse: collapse;">
+                  <table width="60%;" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="center">
+                        <%= link_to button, redirect_url, style: "padding: 16px 52px; border-width: 1px; border-style: solid; border-color: #121212; text-decoration: none; border-radius: 12px; font-size: 16pt; color: #121212;" %>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- END header -->
+              <% if notice != 'none' %>
+                  <tr>
+                    <td>
+                      <table align="center" width="100%;" cellspacing="0" cellpadding="0" style="padding-right: 40px; padding-left: 40px; background: #ffffff;">
+                        <tr>
+                          <td style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #999999;"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-top: 36px; padding-right: 40px; padding-bottom: 48px; padding-left: 40px; background-color: #ffffff; border-collapse: collapse;">
+                      <table width="100%;" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td style="font-size: 12pt; color: #666666;"><%= notice %></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+              <% end %>
+              <!-- footer -->
+              <tr>
+                <td align="center" style="padding-top: 20px; background: #000000;">
+                  <table cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td valign="center" align="center">
+                        <%= link_to "https://www.facebook.com/Livlemusic/" do %>
+                            <%= image_tag "logo_facebook_gray", style: "width: auto; height: 22px; padding-right: 16px;" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= link_to "http://blog.naver.com/livle" do %>
+                            <%= image_tag "logo_blog_gray", style: "width: auto; height: 22px; padding-left: 16px;" %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-top: 20px; padding-bottom: 30px; background: #000000;">
+                  <table cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
+                        라이블 | www.livle.kr | contacts@livle.kr
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
+                        경기도 성남시 분당구 판교로89번길 20, 스타트업캠퍼스 8층
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
+                        Copyright @ Livle All Rights Reserved | 고객센터 : 070-8163-4068
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- END footer -->
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
