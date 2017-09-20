@@ -72,7 +72,7 @@
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner _no-p-margin">
     <%= link_to "", remote: true, id: "video-like-button", class: "_flex-grow-1
-    _hcenter-positioner _vcenter-positioner" do %>
+    _hcenter-positioner _vcenter-positioner #{@has_main_video ? "_display-none" : ""}" do %>
         <div class="_show-icon-m show-like">
           <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
           <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>
