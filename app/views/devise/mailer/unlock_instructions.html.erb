@@ -1,7 +1,6 @@
-<p>Hello <%= @resource.email %>!</p>
+<% button = '계정잠금 해제하기' %>
+<% redirect_url = unlock_url(@resource, unlock_token: @token) %>
+<% message = '잘못된 로그인 시도로 고객님의 계정이 일시적으로 잠겼습니다.
+아래 버튼을 클릭해 잠금을 해제한 후 이용해주세요' %>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
-
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<%= render partial: "mailer-form", locals: {button: button, redirect_url: redirect_url, message: message, notice: 'none'} %>
