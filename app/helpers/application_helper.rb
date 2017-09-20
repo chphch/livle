@@ -24,6 +24,7 @@ module ApplicationHelper
     puts "text: "+context
     result = '<p class="'+class_method+'">'+context+'</p>'
     return result.html_safe
+  end
     
   def get_thumbnail_from_url(youtube_video_url)
     get_thumbnail_from_id(get_youtube_video_id(youtube_video_url))

@@ -6,5 +6,7 @@
     <p class="_fs-3 _white"><%= upcoming.main_video ? upcoming.main_video.title : "NO" %></p>
     <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
   </div>
-  <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
+  <div id="upcoming-like-button">
+    <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon" %>
+  </div>
 </div>
