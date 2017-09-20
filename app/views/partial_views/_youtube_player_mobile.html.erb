@@ -2,7 +2,8 @@
 <% player_display_none = defined?(player_display_none) && player_display_none ? "_display-none" : "" %>
 <% video_id = get_youtube_video_id(feed.youtube_url) %>
 <div class="_show-video-container-m show-video-container-js <%= player_display_none %>"
-  data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
+  data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>"
+  data-main-video="<%=defined?(main_video)%>">
   <iframe id="youtube-player-<%= player_id %>" type="text/html" src="https://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=0&rel=0&showinfo=0&
     autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1" frameborder="0"></iframe>
 

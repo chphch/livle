@@ -5,14 +5,14 @@
       <div class="show-video-container _no-p-margin">
         <!-- TODO Handling when there is no video to show -->
         <!-- Youtube Video Player -->
-        <% if @main_video %>
-            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: get_youtube_video_id(@main_video.youtube_url), feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
+        <% if @has_main_video %>
+            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: get_youtube_video_id(@main_video.youtube_url), feed: @main_video, autoplay: true, no_thumbnail_button: true, main_video: true } %>
         <% end %>
         <% @artists.each_with_index do |artist, index|
           if artist.popular_feed
           %>
-            <% player_display_none = index != 0 || @main_video %>
-            <% autoplay = index == 0 && !@main_video %>
+            <% player_display_none = index != 0 || @has_main_video %>
+            <% autoplay = index == 0 && !@has_main_video %>
             <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: artist.popular_feed_artist.id, feed: artist.popular_feed, player_display_none: player_display_none, autoplay: autoplay}%>
             <%
           end
@@ -63,7 +63,7 @@
 
         <!--line up-->
         <div class="line-up-container _vcenter-positioner">
-          <% if @main_video %>
+          <% if @has_main_video %>
               <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video" } %>
           <% end %>
           <% @artists.each do |artist| %>
@@ -78,7 +78,8 @@
             <%= image_tag "icon_comment_white", class: "_show-icon" %>
             <p class="_fs-4 _white">댓글 (<%= @upcoming.upcoming_comments.size %>)</p>
           </div>
-          <%= link_to "", id: "video-like-button", remote: true, class: "_vcenter-positioner _show-button-padding" do %>
+          <%= link_to "", id: "video-like-button", remote: true, class: "_vcenter-positioner _show-button-padding
+          #{@has_main_video ? "_display-none" : ""}" do %>
               <div class="show-like">
                 <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon" %>
                 <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon" %>

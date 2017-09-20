@@ -1,0 +1,16 @@
+var emptyLikeIcon = $('#icon-<%= @like_type %>-empty');
+var filledLikeIcon = $('#icon-<%= @like_type %>-filled');
+
+<% if @like_true %>
+  emptyLikeIcon.addClass("_display-none");
+  filledLikeIcon.removeClass("_display-none");
+<% else %>
+  emptyLikeIcon.removeClass("_display-none");
+  filledLikeIcon.addClass("_display-none");
+<% end %>
+
+var container = $('.show-video-container').children().filter(function(index, container) {
+    return $(container).data("playerId") == "<%= @player_id %>";
+});
+container.find('.post-like-count').text("<%= @like_count %>");
+container.data("like-true", <%= @like_true %>);
