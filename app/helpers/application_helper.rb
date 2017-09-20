@@ -1,3 +1,5 @@
+require 'net/http'
+
 module ApplicationHelper
   def resource_name
     :user
