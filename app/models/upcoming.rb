@@ -31,9 +31,10 @@ class Upcoming < ApplicationRecord
 
   def sample_artist_feed(artists)
     return nil if artists.size == 0
-    feed = artists.sample.popular_feed
+    artist = artists.sample
+    feed = artist.popular_feed
     return feed if feed
-    sample_artist_feed(artists.drop(artist))
+    sample_artist_feed(artists.drop(artist.id))
   end
 
   def main_video_id

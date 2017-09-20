@@ -5,8 +5,8 @@ class FeedsController < ApplicationController
 
   def index
     # TODO : 30 is an arbitrary number, can be removed once the rank values get set
-    official_feeds = Feed.where(is_curation: true).order('((rank + 30) * RANDOM()) DESC')
-    common_feeds = Feed.where(is_curation: false).order('((rank + 30) * RANDOM()) DESC')
+    official_feeds = Feed.where(is_curation: true).order('((rank + 30) * RAND()) DESC')
+    common_feeds = Feed.where(is_curation: false).order('((rank + 30) * RAND()) DESC')
     merged_feeds = common_feeds.each_slice(4).zip(official_feeds).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 10) #for mobile
 
@@ -23,7 +23,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
-    @feed.increase_count_view
+    @feed.increment!(:count_view)
     @like_true = user_signed_in? &&
         FeedLike.where(feed_id: params[:id], user_id: current_user.id).take
     @disable_nav = true #for mobile
@@ -48,6 +48,13 @@ class FeedsController < ApplicationController
     else
       redirect_to new_user_session_path
     end
+  end
+
+  def share
+    # 로그인 체크 해야 하나 ?
+    feed = Feed.find(params[:id])
+    feed.increment!(:count_share)
+    render json: feed.count_share
   end
 
   def update

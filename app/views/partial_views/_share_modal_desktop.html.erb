@@ -1,6 +1,9 @@
-<div class="_small-modal-title _text-center">
-  <p class="_fs-4 _black _f-letter" id="modal-msg">공유하기</p>
-</div>
-<div class="_vcenter-positioner">
-  <%= social_share_button_tag(post.title, "data-twitter-title": post.title, 'url': "#{request.original_url}") %>
+<div class="_share-modal _desktop-small-modal" id="share-modal">
+  <p class="_fs-3 _black" id="modal-msg">공유</p>
+  <div class="_vcenter-positioner">
+    <div class="social-share-button" data-title="<%=post.title%>" data-id="<%=post.id%>" data-url="<%=request.original_url%>">
+      <a class="_fs-3 _dark-gray" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)">페이스북</a>
+      <a class="_fs-3 _dark-gray" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)">트위터</a>
+    </div>
+  </div>
 </div>

@@ -29,7 +29,7 @@
           <%= image_tag("icon_like_filled", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
           <p class="_fs-3-mobile _white post-like-count"><%= feed.feed_likes.size %></p>
           <%= image_tag("icon_share_white", class: "_thumbnail-info-icon-m _thumbnail-elem-margin-m") %>
-          <p class="_fs-3-mobile _white"><%= feed.count_share %></p>
+          <p id="share-count" class="_fs-3-mobile _white"><%= feed.count_share %></p>
         </div>
     <% end %>
   </div>
