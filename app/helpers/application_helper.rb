@@ -17,6 +17,15 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def thumbnail_tag(youtube_url)
+    return "<div style='
+    width: 100%;
+    height: 0;
+    padding-bottom: 67%;
+    background:url(\"#{get_thumbnail_from_url(youtube_url)}\") no-repeat center center;
+    background-size: cover'></div>".html_safe
+  end
+
   def raw_text(text, class_method)
     context = text.gsub(/\n/, '<br />')
     puts "text: "+context
