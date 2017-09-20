@@ -17,7 +17,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-
   def raw_text(text, class_method)
     context = text.gsub(/\n/, '<br />')
     puts "text: "+context

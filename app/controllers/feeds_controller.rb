@@ -5,8 +5,8 @@ class FeedsController < ApplicationController
 
   def index
     # TODO : 30 is an arbitrary number, can be removed once the rank values get set
-    official_feeds = Feed.where(is_curation: true).order('((rank + 30) * RAND()) DESC')
-    common_feeds = Feed.where(is_curation: false).order('((rank + 30) * RAND()) DESC')
+    official_feeds = Feed.where(is_curation: true).order('((rank + 30) * RANDOM()) DESC')
+    common_feeds = Feed.where(is_curation: false).order('((rank + 30) * RANDOM()) DESC')
     merged_feeds = common_feeds.each_slice(4).zip(official_feeds).flatten
     @feeds = merged_feeds.paginate(page: params[:page], per_page: 10) #for mobile
 
