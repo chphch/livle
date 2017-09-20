@@ -3,7 +3,9 @@
 
 <!--TODO remove span tag, the top div class must be show-video-container, move all elements in there -->
 
-<span class="show-video-container-js <%= player_display_none %>" data-player-id="<%= player_id %>" data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>">
+<span class="show-video-container-js <%= player_display_none %>" data-player-id="<%= player_id %>"
+  data-like-true="<%= feed.like_true(current_user) %>" data-autoplay="<%= autoplay %>"
+  data-main-video="<%=defined?(main_video) ? 'true' : 'false'%>">
   <div class="_video-player">
     <iframe id="youtube-player-<%= player_id %>" type="text/html" src="https://www.youtube.com/embed/<%=get_youtube_video_id(feed.youtube_url)%>?version=3&enablejsapi=1&controls=2&rel=0&showinfo=0&
     autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1"
