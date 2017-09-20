@@ -34,6 +34,8 @@ gem 'whenever', :require => false
 # social-share-button
 gem 'social-share-button'
 
+gem 'google-api-client'
+
 ###############################################
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -67,7 +69,6 @@ group :production do
 end
 
 group :development do
-  gem 'google-api-client'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
