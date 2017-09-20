@@ -1,10 +1,9 @@
 <div id="connect-index">
   <div class="connect-background">
     <div class="video-player">
-      <!-- Youtube Video Player -->
-      <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @bakckground_video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @bakckground_video_id %>"
-              webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+      <video poster="<%=asset_path 'connect_bg'%>" id="bgvid" style="width:100%" playsinline autoplay muted loop>
+        <source src="<%=asset_path 'connect_bgvid.mp4'%>" type="video/mp4">
+      </video>
     </div>
     <div class="_full-container _vcenter-positioner _hcenter-positioner">
       <div class="connect-title-container _hcenter-positioner">
