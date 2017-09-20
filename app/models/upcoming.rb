@@ -16,7 +16,7 @@ class Upcoming < ApplicationRecord
     self.artists.each do |artist|
       if artist.popular_feed
         popular_feed = artist.popular_feed
-        popular_feed.count_like = popular_feed.feed_likes.size
+        # popular_feed.count_like = popular_feed.feed_likes.size
       end
     end
     return self.artists
