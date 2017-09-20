@@ -44,11 +44,14 @@
         </div>
         <!-- poster container -->
         <div class="poster-container _vcenter-positioner">
-          <%= image_tag "image_poster", class: "poster-img" %>
+          <%= image_tag upcoming.image_url, class: "poster-img", style: "width: 218px; height: 280px"
+          # TODO JIWOON sizing
+          %>
         </div>
       </div>
   <% end %>
   <script>
+  <% if upcoming.main_video %>
       $cur = $('#ticket-<%= upcoming.id %>');
       $cur.mouseenter(function () {
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').remove();
@@ -62,5 +65,6 @@
             '<%=j render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>'
           );
       });
+  <% end %>
   </script>
 </div>
