@@ -10,9 +10,4 @@ class UserMailerPreview < ActionMailer::Preview
   def unlock_instructions
     UserMailer.unlock_instructions(User.first, "faketoken")
   end
-
-  # TODO: Add welcome mail
-  # def welcome_instructions
-  #   UserMailer.welcome_instructions(User.first)
-  # end
 end

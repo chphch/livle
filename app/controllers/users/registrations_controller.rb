@@ -20,8 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        # TODO: send welcome mail
-        # UserMailer.welcome_instructions(resource).deliver_now
+        # TODO: send welcome mail not working..
+        puts "############# mail shows!!"
+        ApplicationMailer.welcome_instructions(resource).deliver
         respond_with resource do |format|
           format.js { render "successful_signup_#{device_suffix}.js.erb" }
         end
@@ -29,9 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
         render_by_device 'registrations/confirmation_email_sent'
-        #respond_with resource do |format|
-        #  format.js {render 'confirmation_email_sent_mobile' }
-        #end
         #respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else

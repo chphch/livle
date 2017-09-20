@@ -13,9 +13,4 @@ class UserMailer < Devise::Mailer
   # def unlock_instructions(record, token, opts={})
   #   super
   # end
-
-  # TODO: method를 추가한 후, registrations_controller#new에서 호출
-  # def welcome_instructions(user)
-  #   Devise::Mailer(to: user.email, subject: '라이블에 오신 것을 환영합니다!')
-  # end
 end
