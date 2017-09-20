@@ -56,11 +56,8 @@ document.addEventListener("turbolinks:load", function(event) {
             player.device = 'official_desktop';
             player.id = id;
             players.push(player);
-            // TODO : 데스크탑에서도 이거 안 불리고 위에 모바일 버전 불리넹
-            currentPlayer = players[0];
         });
     };
-
 });
 
 var players = [];
