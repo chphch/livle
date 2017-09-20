@@ -1,10 +1,11 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def increase_count_view
-    self.count_view += 1
-    self.save
-  end
+  # 이렇게 하면 isolation 버그남
+  # def increase_count_view
+  #   self.count_view += 1
+  #   self.save
+  # end
 
   # only for FeedLike and UpcomingLike classes
   def self.toggle_like(post, user)
@@ -21,9 +22,5 @@ class ApplicationRecord < ActiveRecord::Base
       like.save
       return true
     end
-  end
-
-  def self.get_youtube_video_id(youtube_video_url)
-    youtube_video_url ? youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') : ''
   end
 end

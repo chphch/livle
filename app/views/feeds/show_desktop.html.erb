@@ -4,9 +4,10 @@
       <!-- Main -->
       <div class="show-video-container _no-p-margin">
         <div class="_video-player">
+          <% video_id = get_youtube_video_id(@feed.youtube_url) %>
           <!-- Youtube Video Player -->
-          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @feed.video_id %>"
+          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
                   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
         </div>
         <div class="text-container _vcenter-positioner">
@@ -28,7 +29,7 @@
             <%= image_tag "icon_like_filled", class: "_video-info-icon _thumbnail-elem-margin" %>
             <p id="like-count" class="_fs-5 _white"><%= @feed.feed_likes.size %></p>
             <%= image_tag "icon_share_white", class: "_video-info-icon _thumbnail-elem-margin" %>
-            <p class="_fs-5 _white"><%= @feed.count_share %></p>
+            <p id="share-count" class="_fs-5 _white"><%= @feed.count_share %></p>
           </div>
         </div>
 
@@ -83,7 +84,7 @@
       <div class="related-video-container">
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
-            <%= image_tag get_thumbnail_image(@feed.video_id), class: "_thumbnail-blur-img" %>
+            <%= image_tag get_thumbnail_from_url(@feed.youtube_url), class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 
@@ -99,23 +100,56 @@
   </div>
 
   <script>
-      $('#share-button').on('click', function () {
-          sendClickButton('share');
-          $('._share-container').append(
-              '<div class="_share-modal _desktop-small-modal" id="share-modal">' +
-                '<p class="_fs-3 _black">공유하기</p>' +
-                '<p class="_fs-3 _dark-gray">페이스북 트위터</p>' +
-              '</div>'
-          );
-//          '<= render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>' +
-      });
+  $('#share-button').on('click', function () {
+    sendClickButton('share');
+    $('._share-container').append(
+      '<%= j render partial: "partial_views/share_modal_desktop", locals: {post: @feed} %>'
+    );
+  });
 
-      //works like modal
-      $('body').click(function (e) {
-          if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
-              $('#share-modal').remove();
-      }).find('#share-button').on('click', function (e) {
-          e.stopPropagation();
-      });
-  </script>
-</div>
+    //works like modal
+    $('body').click(function (e) {
+      if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
+      $('#share-modal').remove();
+    }).find('#share-button').on('click', function (e) {
+      e.stopPropagation();
+    });
+
+
+function shareOnFacebook(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+
+  FB.ui(
+    {
+      method: 'share',
+      href: url
+    }, function(response) {
+      incrementShare(id);
+    }
+  );
+}
+
+
+function shareOnTwitter(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+  title = $container.data('title');
+  window.open("https://twitter.com/share?url=" + url + "&text=" + title, '_blank');
+  incrementShare(id);
+}
+
+function incrementShare(id) {
+  $.ajax({
+    url: '/feeds/' + id + '/share',
+    method: 'post',
+    success: function(data) {
+      // TODO 공유되었습니다 띄우려면 여기서
+      $('#share-count').text(data);
+    }
+  });
+}
+    </script>
+  </div>

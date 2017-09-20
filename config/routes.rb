@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'toggle_like'
   end
   get 'feeds/toggle_like/:player_id' => 'feeds#toggle_like'
+  post 'feeds/:id/share' => 'feeds#share'
 
   resources :upcomings do
     resources :upcoming_comments, only: [:create, :update, :destroy], shallow: true
