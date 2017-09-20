@@ -1,0 +1,11 @@
+$('body').append(
+    '<div id="devise-new-modal" class="_full-container _vcenter-positioner _hcenter-positioner">\n' +
+    '  <%= j render partial: "devise/sessions/new_modal_desktop" %>\n' +
+    '</div>'
+);
+//works like modal
+$('body').on('click', function (e) {
+    $('#devise-new-modal').remove();
+}).find('.filter-container').on('click', function (e) {
+    e.stopPropagation();
+});
