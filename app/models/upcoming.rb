@@ -41,10 +41,6 @@ class Upcoming < ApplicationRecord
     sample_artist_feed(artists.drop(artist.id))
   end
 
-  def main_video_id
-    self.class.get_youtube_video_id(self.main_youtube_url)
-  end
-
   def self.main_video_image_url
     Faker::LoremPixel.image("50x60")
   end
