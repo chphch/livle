@@ -13,7 +13,7 @@ namespace :youtube do
 
     count = 0
     err_count = 0
-    
+
     Feed.all.each do |f|
       youtube_id = f.youtube_url.split('/').last
       service.list_videos("statistics", id: youtube_id) { |result, err|
@@ -40,6 +40,51 @@ namespace :youtube do
     end
 
     puts "Completed #{count} items with #{err_count} errors"
+  end
+
+  task prune: :environment do
+    file_loc = '/Users/js/livle_prune.csv'
+    log = CSV.open(file_loc, 'a')
+    removal_count = 0
+    count = 0
+    err_count = 0
+
+    log.puts ["deleted_at", "reason", "id", "user_id", "is_curation", "title",
+      "youtube_url", "content", "count_view", "count_share", "rank",
+      "valuation", "created_at", "updated_at",
+      "feed_artists", "feed_likes", "feed_comments", "connect_urls"]
+
+    Feed.all.each do |f|
+      youtube_id = f.youtube_url.split('/').last
+      service.list_videos("status", id: youtube_id) { |result, err|
+        if result
+          result.items.each do |i|
+            unless i.status.embeddable
+              log.puts [ DateTime.now, "not embeddable", f.id, f.user_id, f.is_curation, f.title,
+                f.youtube_url, f.content, f.count_view, f.count_share, f.rank,
+                f.valuation, f.created_at, f.updated_at,
+                f.feed_artists.size, f.feed_likes.size, f.feed_comments.size, f.connect_urls.size ]
+              if f.destroy
+                puts "Destroyed"
+                removal_count = removal_count + 1
+              else
+                puts "ERROR while destroying"
+              end
+            end
+          end
+        else
+          puts err
+          err_count = err_count + 1
+        end
+      }
+
+      count = count + 1
+      puts "#{count} processed"
+    end
+
+    log.close
+    print "#{removal_count} records removed, with #{err_count} errors"
+
   end
 
   task status_check: :environment do
