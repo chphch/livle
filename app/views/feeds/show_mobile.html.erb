@@ -70,13 +70,49 @@
   </div>
 </div>
 <script>
-    $("#back").click(function(e) {
-        e.preventDefault();
-        if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
-            window.history.back();
-        }
-        else {
-            window.location = '/feeds';
-        }
-    });
+$("#back").click(function(e) {
+  e.preventDefault();
+  if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
+    window.history.back();
+  }
+  else {
+    window.location = '/feeds';
+  }
+});
+
+function shareOnFacebook(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+
+  FB.ui(
+    {
+      method: 'share',
+      href: url
+    }, function(response) {
+      incrementShare(id);
+    }
+  );
+}
+
+
+function shareOnTwitter(button) {
+  $container = $(button).closest('.social-share-button');
+  url = $container.data('url');
+  id = $container.data('id');
+  title = $container.data('title');
+  window.open("https://twitter.com/share?url=" + url + "&text=" + title, '_blank');
+  incrementShare(id);
+}
+
+function incrementShare(id) {
+  $.ajax({
+    url: '/feeds/' + id + '/share',
+    method: 'post',
+    success: function(data) {
+      // TODO 공유되었습니다 띄우려면 여기서
+      $('#share-count').text(data);
+    }
+  });
+}
 </script>
