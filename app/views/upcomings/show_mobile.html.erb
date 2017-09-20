@@ -1,13 +1,13 @@
-<div id="upcomings-show-mobile">
+<div id="upcomings-show-mobile" class="show-video-container">
   <!-- Youtube Video Player -->
-  <% if @main_video %>
+  <% if @has_main_video %>
       <%= render partial: 'partial_views/youtube_player_mobile', locals: { player_id: get_youtube_video_id(@main_video.youtube_url), feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
   <% end %>
   <% @artists.each_with_index do |artist, index|
     if artist.popular_feed
       %>
-      <% player_display_none = index != 0 || @main_video %>
-      <% autoplay = index == 0 && !@main_video %>
+      <% player_display_none = index != 0 || @has_main_video %>
+      <% autoplay = index == 0 && !@has_main_video %>
       <%= render partial: 'partial_views/youtube_player_mobile', locals: { player_id: artist.popular_feed_artist.id, feed: artist.popular_feed, player_display_none: player_display_none, autoplay: autoplay}%>
       <%
     end
@@ -59,7 +59,7 @@
     </div>
   </div>
   <div class="line-up-group-container">
-    <% if @main_video %>
+    <% if @has_main_video %>
         <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video" } %>
     <% end %>
     <% @artists.each do |artist| %>
