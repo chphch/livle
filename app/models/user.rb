@@ -36,4 +36,9 @@ class User < ApplicationRecord
   def isFacebook?
     self.provider == "facebook";
   end
+
+  # Override confirmation.rb
+  def after_confirmation
+    ApplicationMailer.welcome_instructions(self).deliver_now
+  end
 end

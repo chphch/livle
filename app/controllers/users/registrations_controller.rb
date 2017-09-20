@@ -18,11 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     if resource.persisted?
       if resource.active_for_authentication?
+        # 바로 가입될 경우 불리는 부분, 현재는 confirmation 과정 있어서 여기로 들어오지 않음
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        # TODO: send welcome mail not working..
-        puts "############# mail shows!!"
-        ApplicationMailer.welcome_instructions(resource).deliver
         respond_with resource do |format|
           format.js { render "successful_signup_#{device_suffix}.js.erb" }
         end
