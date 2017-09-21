@@ -15,10 +15,14 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def thumbnail_tag(youtube_url)
+  def thumbnail_tag(youtube_url, options = {})
+    video_id = get_youtube_video_id(youtube_url)
     # TODO : youtube-thumbnail 클래스에 인라인 스타일 옮기기
-    return "<div class='youtube-thumbnail'
-    data-youtube-id='#{get_youtube_video_id(youtube_url)}'
+    return "<div
+    class='youtube-thumbnail #{options[:class] if options[:class]}
+    #{'loaded' if video_id.length == 0}'
+    #{'id = ' + options[:id] if options[:id]}
+    data-youtube-id='#{video_id}'
      style='
     width: 100%;
     height: 0;
@@ -28,10 +32,12 @@ module ApplicationHelper
   end
 
   def raw_text(text, class_method)
-    context = text.gsub(/\n/, '<br />')
-    puts "text: "+context
-    result = '<p class="'+class_method+'">'+context+'</p>'
-    return result.html_safe
+    if text
+      context = text.gsub(/\n/, '<br />')
+      puts "text: "+context
+      result = '<p class="'+class_method+'">'+context+'</p>'
+      return result.html_safe
+    end
   end
 
   # def get_thumbnail_from_url(youtube_video_url)
