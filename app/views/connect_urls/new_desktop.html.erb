@@ -16,8 +16,8 @@
           <div class="new-video-container">
             <div class="_video-player">
               <!-- Youtube Video Player -->
-              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @connect_feed.video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @connect_feed.video_id %>"
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= get_youtube_video_id(@video_url) %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= get_youtube_video_id(@video_url) %>"
                       webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
             </div>
           </div>
