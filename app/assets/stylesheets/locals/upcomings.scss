@@ -38,6 +38,7 @@
 
   .describe-icons {
     @include flex-grow(4);
+    opacity: 1 !important;
   }
 
   .icon-padding {

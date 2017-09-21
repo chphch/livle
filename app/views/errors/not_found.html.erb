@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Livle : 요청하신 페이지가 없습니다..</title>
+  <meta charset="utf-8">
+  <meta name="Description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
+  <meta property="og:title" content="Livle : 요청하신 페이지가 없습니다..">
+  <meta property="og:description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
+  <meta property="og:image" content="<%=request.base_url%>/logo_og.jpg" />
+
+  <link rel="shortcut icon" href="/favicon.ico?">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+  <!-- jQuery -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Web Fonts -->
+  <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
+  <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare-base64.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+<div class="_body-no-background-m"></div>
+<div id="error-not-found">
+  <div class="_full-container _vcenter-positioner _hcenter-positioner">
+    <div class="error-container _desktop-container _vcenter-positioner">
+      <%= image_tag "icon_404", class: "error-icon" %>
+      <div class="vertical-bar"></div>
+      <div class="text-container _column-positioner _hcenter-positioner">
+        <p class="_fs-about _white"><b>죄송합니다.</b></p>
+        <p class="_fs-title _light-gray">요청하신 페이지를 찾을 수 없습니다 ㅠㅠ</p>
+        <%= link_to :back, class: "redirect-button _no-p-margin _vcenter-positioner _hcenter-positioner" do %>
+            <p class="_fs-3 _white">이전 페이지로 돌아가기</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
