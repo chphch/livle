@@ -1,3 +1,4 @@
+// Used in mobile
 document.addEventListener("turbolinks:load", function(event) {
   var isLoading = false;
   if ($('#infinite-scrolling').length > 0) {
@@ -8,6 +9,7 @@ document.addEventListener("turbolinks:load", function(event) {
         isLoading = true;
         $.getScript(more_contents_url).done(function (data,textStatus,jqxhr) {
           isLoading = false;
+          loadThumbnails();
         }).fail(function() {
           isLoading = false;
         });
