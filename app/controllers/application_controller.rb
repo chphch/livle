@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 
   def get_best_thumbnail(youtube_id)
     url = "http://img.youtube.com/vi/#{youtube_id}/maxresdefault.jpg"
-    get_response(url).class == Net::HTTPNotFound ? get_hq_thumbnail(youtube_id) : url
+    get_response(url).class == Net::HTTPNotFound ? get_mq_thumbnail(youtube_id) : url
   end
 
   def get_hq_thumbnail(youtube_id)
