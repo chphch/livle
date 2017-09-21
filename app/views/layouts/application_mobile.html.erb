@@ -5,9 +5,7 @@
   <title>Livle : Life is live</title>
   <meta charset="utf-8">
   <meta name="Description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
-  <meta property="og:title" content="Livle : Life is live">
-  <meta property="og:description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
-  <meta property="og:image" content="<%=request.base_url%>/logo_og.jpg" />
+  <%=yield_opengraph%>
 
   <link rel="shortcut icon" href="/favicon.ico?">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -80,7 +78,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   </script>
-  
+
 <!-- Render 우선순위로 나열 -->
 <%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
 <div class="<%= @disable_background_image ? "_body-no-background-m" : "_body-background-m"%>"></div>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :upcoming_likes
   has_many :upcoming_comments
   has_many :connect_urls
-  has_many :recent_keywords
+  has_many :recent_keywords, dependent: :destroy
   mount_uploader :profile_img, S3Uploader
   attr_accessor :remote_new_session
 

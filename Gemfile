@@ -34,6 +34,8 @@ gem 'whenever', :require => false
 # social-share-button
 gem 'social-share-button'
 
+gem 'google-api-client'
+
 ###############################################
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

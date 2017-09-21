@@ -1,12 +1,11 @@
 class Feed < ApplicationRecord
   searchkick callbacks: :async, word_middle: [:artists_names, :title, :user_nickname]
   belongs_to :user
-  has_many :feed_artists
+  has_many :feed_artists, dependent: :destroy
   has_many :artists, through: :feed_artists
-  has_many :feed_likes
-  has_many :feed_comments
+  has_many :feed_likes, dependent: :destroy
+  has_many :feed_comments, dependent: :destroy
   has_many :connect_urls
-  attr_accessor :id, :like_true, :count_like
 
   def prev(feeds)
     # 나중에 생성된 feed
