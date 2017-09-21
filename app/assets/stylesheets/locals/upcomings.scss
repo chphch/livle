@@ -215,13 +215,17 @@
 
     $line-up-height: 12rem;
     .line-up-container {
-      @include size(100%, $line-up-height);
+      @include size(100%, auto);
       margin: 1rem 0;
     }
     .line-up-card {
       position: relative;
       @include size($line-up-height);
       margin: 0 2rem 0 0;
+      &:hover {
+        border: solid 1px #ffffff;
+        box-shadow: 0 2px 16px 10px #ffffff;
+      }
     }
   }
 
