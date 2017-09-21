@@ -64,14 +64,13 @@ class Upcoming < ApplicationRecord
   end
 
   def d_day
-    start_day = self.start_date.strftime('%Q').to_i
-    today = DateTime.now.strftime('%Q').to_i
-    day_to_millisec = 1000*60*60*24
-    d_day = ((start_day - today)/day_to_millisec).floor
+    today = Time.now.to_date
+    d_day = (self.start_date - today).to_i
     if d_day == 0
-      return "-day"
+      return "-day #{upcoming.start_date}"
     else
       return -d_day
     end
   end
+
 end
