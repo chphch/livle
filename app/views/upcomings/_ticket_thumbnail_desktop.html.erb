@@ -1,3 +1,3 @@
 <div class="_thumbnail-image-container">
-  <%= image_tag (upcoming.main_video ? get_thumbnail_from_url(upcoming.main_video.youtube_url) : 'thumbnail_livle'), class: "_thumbnail-image" %>
+  <%= thumbnail_tag (upcoming.main_video ? upcoming.main_video.youtube_url : ''), class: "_thumbnail-image" %>
 </div>

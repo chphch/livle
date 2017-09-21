@@ -84,7 +84,7 @@
       <div class="related-video-container">
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
-            <%= image_tag get_thumbnail_from_url(@feed.youtube_url), class: "_thumbnail-blur-img" %>
+            <%= thumbnail_tag @feed.youtube_url, class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 

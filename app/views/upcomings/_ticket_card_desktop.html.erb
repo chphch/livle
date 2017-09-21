@@ -1,5 +1,5 @@
 <div id="upcoming-ticket-card">
-  <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-#{upcoming.id}" class="ticket-item">
+  <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-<%=upcoming.id%>" class="ticket-item">
       <div class="card-container _vcenter-positioner _no-p-margin">
         <!-- collab text conatiner -->
         <div class="collab-conatiner _vcenter-positioner">
@@ -65,16 +65,14 @@
       $cur = $('#ticket-<%= upcoming.id %>');
   <% if upcoming.main_video %>
       $cur.mouseenter(function () {
-          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').remove();
+          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').hide();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
             '<%=j render partial: 'ticket_video_desktop', locals: {upcoming: upcoming} %>'
           );
       });
       $cur.mouseleave(function () {
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
-          $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
-            '<%=j render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>'
-          );
+          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').show();
       });
   <% end %>
   </script>

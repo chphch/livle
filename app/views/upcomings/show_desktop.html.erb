@@ -104,12 +104,12 @@
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
             <!-- TODO Handling when there is no video to show -->
-            <%= image_tag (@upcoming.main_video ? get_thumbnail_from_url(@upcoming.main_video.youtube_url) : 'icon_comment_white'), class: "_thumbnail-blur-img" %>
+            <%= thumbnail_tag (@upcoming.main_video ? @upcoming.main_video.youtube_url : ''), class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 
           <div class="card-container">
-            <p class="_fs-4 _white">관련영상</p>
+            <p class="_fs-4 _white">관련공연</p>
             <% @upcoming.related_upcomings.each do |upcoming| %>
                 <%= render partial: "index_card_desktop", locals: {upcoming: upcoming} %>
             <% end %>
