@@ -26,6 +26,7 @@
 
 # Ignore application configuration
 /config/application.yml
+/config/database.yml
 
 #### Created by https://www.gitignore.io/api/macos,rails,rubymine
 
@@ -70,7 +71,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
-livle_dev
+/livle_dev
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb

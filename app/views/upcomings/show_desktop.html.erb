@@ -41,7 +41,9 @@
                 <p class="_fs-3 _light-gray"><%= @upcoming.start_date %></p>
               </div>
             </div>
-            <%= image_tag "icon_ticket_empty", class: "upcoming-icon" %>
+            <div class="ticket-container">
+              <%= image_tag "icon_ticket_empty", id:"ticket-button", class: "upcoming-icon" %>
+            </div>
             <%= link_to upcoming_toggle_like_path(@upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
                 <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none upcoming-icon" : "upcoming-icon" %>
                 <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "upcoming-icon" : "_display-none upcoming-icon" %>
@@ -123,21 +125,45 @@
     <%= render partial: 'partial_views/ticket_link_desktop', locals: {upcoming: @upcoming} %>
   </div>
   <script>
+      $('#ticket-button').on('click', function () {
+          $('.ticket-container').append(
+              '<div class="ticket-modal _desktop-modal _column-positioner _vcenter-positioner">\n' +
+              '  <div class="ticket-modal-title">\n' +
+              '    <p class="_fs-title _f-family-tmon _dark-gray">티켓 바로가기</p>\n' +
+              '  </div>\n' +
+              '  <hr style="width: 100%">\n' +
+              '  <div class="ticket-button-group _column-positioner _vcenter-positioner _hcenter-positioner">\n' +
+              '    <% @upcoming.upcoming_ticket_urls.each_with_index do |ticket, i| %>' +
+              '      <% ticket.provider = i %>' +
+              '      <%= link_to ticket.ticket_url, class: "ticket-button _vcenter-positioner _hcenter-positioner" do %>' +
+              '          <%= image_tag "logo_#{ticket.provider}", class: "ticket-logo" %>\n' +
+              '      <% end %>' +
+              '    <% end %>' +
+              '  </div>\n' +
+              '</div>'
+          );
+      });
+
       $('#share-button').on('click', function () {
           sendClickButton('share');
           $('._share-container').append(
-              '<div class="_share-modal _desktop-small-modal" id="share-modal">' +
-                '<p class="_fs-3 _black">공유하기</p>' +
-                '<p class="_fs-3 _dark-gray">페이스북 트위터</p>' +
+              '<div class="_share-modal _desktop-small-modal">\n' +
+              '  <p class="_fs-3 _black">공유하기</p>\n' +
+              '  <p class="_fs-3 _dark-gray">페이스북 트위터</p>\n' +
               '</div>'
           );
       });
 
       //works like modal
       $('body').click(function (e) {
-          if(!$(e.target).is('._desktop-small-modal, ._desktop-small-modal *'))
-              $('#share-modal').remove();
-      }).find('#share-button').on('click', function (e) {
+          var $target = $(e.target);
+          if(!$target.is('._desktop-small-modal, ._desktop-small-modal *')) {
+              $('._share-modal').remove();
+          }
+          if (!$target.is('.ticket-modal, .ticket-modal *')) {
+              $('.ticket-modal').remove();
+          }
+      }).find('#ticket-button, #share-button').on('click', function (e) {
           e.stopPropagation();
       });
   </script>

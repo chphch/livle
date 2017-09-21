@@ -82,6 +82,39 @@
     @include size(auto, 4rem);
     padding: 0 1.2rem;
   }
+
+  .ticket-container {
+    position: relative;
+    .ticket-modal {
+      position: absolute;
+      bottom: 0; right: 6rem;
+    }
+    .ticket-modal-title {
+      padding: 0 0 1rem;
+    }
+    .ticket-button-group {
+      @include size(70%, 28rem);
+    }
+    .ticket-button {
+      height: 5.5rem;
+      border: 2px solid $gray;
+      @include border-radius($br-min);
+      padding: 0 1rem;
+      &:not(:last-of-type) {
+        margin: 0 0 2rem;
+      }
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    .ticket-logo {
+      @include size(10rem, auto);
+    }
+    #ticket-button:hover {
+      cursor: pointer;
+      opacity: .6;
+    }
+  }
 }
 
 #upcoming-ticket-card {
