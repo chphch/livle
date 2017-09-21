@@ -93,8 +93,8 @@
   <%= render partial: "partial_views/show_comment_mobile", locals: {comments: @upcoming.upcoming_comments, belongs_to: @upcoming} %>
 
   <!-- Modals -->
-  <div id ="ticket-link-modal" class="modal">
-    <%= render partial: 'partial_views/ticket_link_mobile', locals: {upcoming: @upcoming} %>
+  <div id="ticket-link-modal" class="modal">
+    <%= render partial: 'ticket_link_mobile', locals: {upcoming: @upcoming} %>
   </div>
   <div id="share-modal" class="modal">
     <%= render partial: 'partial_views/share_modal_mobile', locals: {post: @upcoming} %>
