@@ -15,7 +15,6 @@ class ConnectUrlsController < ApplicationController
         format.html {
           @connect_url = ConnectUrl.new
           @video_url = params[:video_url]
-          @connect_feed = Feed.new(youtube_url: params[:video_url])
           @disable_nav = true #for mobile
           render_by_device
         }
@@ -27,9 +26,12 @@ class ConnectUrlsController < ApplicationController
   end
 
   def create
-    connectUrl = ConnectUrl.new(connect_url_params)
-    connectUrl.save
-    render_by_device
+    if current_user
+      connectUrl = ConnectUrl.new(connect_url_params)
+      connectUrl.user_id = current_user.id
+      connectUrl.save
+      render_by_device
+    end
   end
 
   def destroy
@@ -38,7 +40,7 @@ class ConnectUrlsController < ApplicationController
 
   private
   def connect_url_params
-    params.require(:connect_url).permit(:video_url, :describe, :user_id)
+    params.require(:connect_url).permit(:video_url, :describe)
   end
 
 

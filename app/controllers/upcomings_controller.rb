@@ -14,8 +14,11 @@ class UpcomingsController < ApplicationController
   def show
     @upcoming = Upcoming.find(params[:id])
     @artists = @upcoming.wrap_artists(current_user)
-    @main_video = @upcoming.main_video
-    @main_video_image_url = Upcoming.main_video_image_url
+    @has_main_video = @upcoming.has_main_video
+    if @has_main_video
+      @main_video = @upcoming.main_video
+      @main_video_image_url = Upcoming.main_video_image_url
+    end
     @like_true = user_signed_in? &&
         UpcomingLike.where(upcoming_id: params[:id], user_id: current_user.id).take
     @disable_nav = true #for mobile

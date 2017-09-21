@@ -1,13 +1,15 @@
-<div id="upcomings-show-mobile">
+<% opengraph(@upcoming) %>
+<div id="upcomings-show-mobile" class="show-video-container">
   <!-- Youtube Video Player -->
-  <% if @main_video %>
-      <%= render partial: 'partial_views/youtube_player_mobile', locals: { player_id: get_youtube_video_id(@main_video.youtube_url), feed: @main_video, autoplay: true, no_thumbnail_button: true } %>
+  <% if @has_main_video %>
+      <%= render partial: 'partial_views/youtube_player_mobile',
+      locals: { player_id: get_youtube_video_id(@main_video.youtube_url), feed: @main_video, autoplay: true, no_thumbnail_button: true, main_video: true} %>
   <% end %>
   <% @artists.each_with_index do |artist, index|
     if artist.popular_feed
       %>
-      <% player_display_none = index != 0 || @main_video %>
-      <% autoplay = index == 0 && !@main_video %>
+      <% player_display_none = index != 0 || @has_main_video %>
+      <% autoplay = index == 0 && !@has_main_video %>
       <%= render partial: 'partial_views/youtube_player_mobile', locals: { player_id: artist.popular_feed_artist.id, feed: artist.popular_feed, player_display_none: player_display_none, autoplay: autoplay}%>
       <%
     end
@@ -59,8 +61,8 @@
     </div>
   </div>
   <div class="line-up-group-container">
-    <% if @main_video %>
-        <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video" } %>
+    <% if @has_main_video %>
+        <%= render partial: 'lineup_profile_mobile', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video", main_video: true } %>
     <% end %>
     <% @artists.each do |artist| %>
     <%= render partial: 'lineup_profile_mobile',
@@ -71,7 +73,7 @@
   <!-- Like, Comment, Share Buttons -->
   <div class="_show-buttons-container-m _row-positioner _no-p-margin">
     <%= link_to "", remote: true, id: "video-like-button", class: "_flex-grow-1
-    _hcenter-positioner _vcenter-positioner" do %>
+    _hcenter-positioner _vcenter-positioner #{@has_main_video ? "_display-none" : ""}" do %>
         <div class="_show-icon-m show-like">
           <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
           <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>

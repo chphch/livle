@@ -1,5 +1,5 @@
 <div id="upcoming-ticket-card">
-  <%= link_to upcoming_path(upcoming.id), id: "ticket-#{upcoming.id}", method: :get do %>
+  <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-<%=upcoming.id%>" class="ticket-item">
       <div class="card-container _vcenter-positioner _no-p-margin">
         <!-- collab text conatiner -->
         <div class="collab-conatiner _vcenter-positioner">
@@ -12,6 +12,17 @@
           <%= image_tag "background_ticket", class: "ticket-img" %>
           <div class="ticket-video-container">
             <%= render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>
+            <div class="thumbnail-filter _vbottom-positioner">
+              <div class="_flex-grow-1">
+                <p class="_fs-3 _white"><%= upcoming.main_video ? upcoming.main_video.title : "NO" %></p>
+                <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
+              </div>
+              <div class="upcoming-like-button">
+                <%= link_to upcoming_toggle_like_path(upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
+                <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+                <% end %>
+              </div>
+            </div>
           </div>
           <div class="info-container _column-positioner _hcenter-positioner">
             <div class="_flex-grow-1">
@@ -44,23 +55,25 @@
         </div>
         <!-- poster container -->
         <div class="poster-container _vcenter-positioner">
-          <%= image_tag "image_poster", class: "poster-img" %>
+          <%= image_tag upcoming.image_url, class: "poster-img", style: "width: 218px; height: 280px"
+          # TODO JIWOON sizing
+          %>
         </div>
       </div>
-  <% end %>
+    </div>
   <script>
       $cur = $('#ticket-<%= upcoming.id %>');
+  <% if upcoming.main_video %>
       $cur.mouseenter(function () {
-          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').remove();
+          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').hide();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
             '<%=j render partial: 'ticket_video_desktop', locals: {upcoming: upcoming} %>'
           );
       });
       $cur.mouseleave(function () {
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
-          $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
-            '<%=j render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>'
-          );
+          $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').show();
       });
+  <% end %>
   </script>
 </div>

@@ -36,3 +36,24 @@ document.addEventListener("turbolinks:load", function () {
         }, 150);
     });
 });
+
+function loadThumbnails() {
+  $('.youtube-thumbnail:not(.loaded)').each(function() {
+    const youtube_id = $(this).data('youtube-id');
+    $.ajax({
+      url: '/thumbnail/' + youtube_id,
+      context: this,
+      method: 'get',
+      success: function(data) {
+        if(data) {
+          $(this).css('background-image', 'url(' + data + ')');
+          $(this).addClass('loaded');
+        }
+      }
+    });
+  });
+}
+
+document.addEventListener("turbolinks:load", function(event) {
+  loadThumbnails();
+});

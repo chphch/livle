@@ -30,6 +30,7 @@ document.addEventListener("turbolinks:load", function(event) {
             player.progressBar = $(this).find('#progress-bar-' + id);
             player.progressLeft = $(this).find('#progress-left');
             player.progressRight = $(this).find('#progress-right');
+            player.isMain = $(this).data('main-video');
             if (player.progressBar.length) {
                 player.progressBarController = new ProgressBar.Circle('#progress-bar-' + id, {
                     strokeWidth: 4,
@@ -41,7 +42,6 @@ document.addEventListener("turbolinks:load", function(event) {
                 });
             }
             players.push(player);
-            currentPlayer = players[0];
         });
         ////////////////////////////////////
         //        official desktop        //
@@ -57,6 +57,8 @@ document.addEventListener("turbolinks:load", function(event) {
             player.id = id;
             players.push(player);
         });
+
+        currentPlayer = players[0];
     };
 });
 
@@ -280,7 +282,12 @@ function onClickLineupButton(lineupButton) {
     switchVideoDisplay(targetContainer, currentContainer);
     switchVideoStatus(targetPlayer);
     switchLikebuttonColor(likeTrue);
-    switchLikebuttonUrl(targetContainer);
+    if (targetPlayer.isMain) {
+      $('#video-like-button').addClass('_display-none');
+    }
+    else {
+      switchLikebuttonUrl(targetContainer);
+    }
     currentPlayer = targetPlayer;
 }
 
@@ -303,5 +310,6 @@ function switchLikebuttonColor(likeTrue) {
 }
 function switchLikebuttonUrl(targetContainer) {
     var player_id = targetContainer.data("playerId");
+    $('#video-like-button').removeClass('_display-none');
     $('#video-like-button').attr("href", "/feeds/toggle_like/" + player_id);
 }

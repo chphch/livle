@@ -1,3 +1,4 @@
+<% opengraph(@feed) %>
 <div id="feeds-show">
   <div class="_hcenter-positioner">
     <div class="_desktop-container _row-positioner">
@@ -50,7 +51,7 @@
         </div>
 
         <div class="text-container">
-          <%= raw_text @feed.content, "_fs-4 _light-gray _f-line" %>
+          <%= raw_text @feed.content, "_fs-4 _light-gray _f-line" if @feed.content %>
         </div>
 
         <!-- Like, Comment, Share Buttons -->
@@ -84,7 +85,7 @@
       <div class="related-video-container">
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
-            <%= image_tag get_thumbnail_from_url(@feed.youtube_url), class: "_thumbnail-blur-img" %>
+            <%= thumbnail_tag @feed.youtube_url, class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 

@@ -1,7 +1,7 @@
 <div class="_card-container-m">
-  <%= link_to upcoming_path(upcoming.id), method: :get do %>
+  <div data-location="<%=upcoming_path(upcoming.id)%>" class="ticket-item">
       <div class="_thumbnail-container-m">
-        <%= image_tag (upcoming.main_video ? get_thumbnail_from_url(upcoming.main_video.youtube_url) : 'icon_qna'), class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
+        <%= thumbnail_tag (upcoming.main_video ? upcoming.main_video.youtube_url : ''), class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
         <div class="_thumbnail-filter-m"></div>
 
         <div class="describe-container">
@@ -26,8 +26,10 @@
         </div>
 
         <div class="describe-icon">
-          <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m" %>
+          <%= link_to upcoming_toggle_like_path(upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
+          <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+          <% end %>
         </div>
       </div>
-  <% end %>
+    </div>
 </div>

@@ -158,7 +158,7 @@ a:hover {
 ._thumbnail-image-m {
   position: relative;
   top: 0; left: 0; right: 0;
-  @include size(100%, auto);
+  // @include size(100%, auto);
 }
 
 //filter
@@ -467,13 +467,15 @@ a:hover {
 }
 
 ._thumbnail-image {
-  @include size(100%, auto);
-  object-fit: cover;
+  // @include size(100%, auto);
+  // object-fit: cover;
+  padding-bottom: 56.25% !important;
 }
 
 ._thumbnail-blur-img {
-  @include size(110%);
-  object-fit: cover;
+  // @include size(110%);
+  // object-fit: cover;
+  width: 110% !important;
   @include filter($blur);
 }
 
