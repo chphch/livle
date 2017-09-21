@@ -77,6 +77,22 @@
   }
 }
 
+@mixin flex-wrap {
+  @include display-flex;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  @each $prefix in -moz-, -webkit-, null {
+   #{$prefix}flex-wrap: wrap;
+  }
+}
+
+@mixin flex-basis($param) {
+  @include flex-grow(0);
+  @each $prefix in -moz-, -webkit-, null {
+    #{$prefix}flex-basis: $param;
+  }
+}
+
 @mixin border-radius($size) {
   @each $prefix in -moz-, -webkit-, null {
     #{$prefix}border-radius: $size;
