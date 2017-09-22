@@ -1,0 +1,14 @@
+<div class="_small-modal">
+  <div class="_modal-white-background-m _column-positioner _vcenter-positioner">
+    <div class="_small-modal-title _text-center _no-p-margin">
+      <p class="_fs-1-mobile _black">티켓 바로가기</p>
+    </div>
+    <% @upcoming.upcoming_ticket_urls.each_with_index do |ticket, i| %>
+        <% ticket.provider = i %>
+        <hr style="width: 96%">
+        <%= link_to ticket.ticket_url, class: "ticket-button-m _vcenter-positioner _hcenter-positioner" do %>
+            <%= image_tag "logo_#{ticket.provider}", class: "ticket-logo-m" %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

@@ -67,7 +67,7 @@ class Upcoming < ApplicationRecord
     today = Time.now.to_date
     d_day = (self.start_date - today).to_i
     if d_day == 0
-      return "-day #{upcoming.start_date}"
+      return "-day"
     else
       return -d_day
     end

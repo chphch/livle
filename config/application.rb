@@ -21,5 +21,7 @@ module Livle
 
     # set default locale
     config.i18n.default_locale = :ko
+
+    config.exceptions_app = self.routes
   end
 end

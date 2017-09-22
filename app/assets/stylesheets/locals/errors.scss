@@ -1,0 +1,38 @@
+// Place all the styles related to the errors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'globals/mixins';
+@import 'globals/colors';
+@import 'globals/sizes';
+
+#error-not-found {
+  .error-container {
+    height: 24rem;
+  }
+
+  .error-icon {
+    @include size(auto, 90%);
+  }
+
+  .vertical-bar {
+    @include size(2px, 100%);
+    margin: 0 8rem;
+    background: $white;
+  }
+
+  .text-container {
+    height: 100%;
+  }
+
+  .redirect-button {
+    @include size(20rem, 4rem);
+    border: 2px solid $white;
+    @include border-radius($br-min);
+    margin: 2rem 0 0;
+    &:hover {
+      background: $white;
+      p { color: $black; }
+    }
+  }
+}
+

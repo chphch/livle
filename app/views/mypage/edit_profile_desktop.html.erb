@@ -17,7 +17,7 @@
               </div>
             </div>
         <% end %>
-        <p class="_fs-3 _dark-gray _f-family-tmon"><%= current_user.nickname %></p>
+        <p class="_fs-1 _dark-gray _f-family-tmon"><%= current_user.nickname %></p>
 
         <div class="edit-input-group _flex-grow-1 _hcenter-positioner _column-positioner">
           <div class="edit-input-container _vcenter-positioner">
@@ -36,7 +36,7 @@
             <%= f.text_field :introduce, class: "input-field _fs-3 _black",
                              placeholder: "상태메세지를 적어주세요", value: "#{current_user.introduce}" %>
           </div>
-          <%= link_to edit_user_registration_path, method: :get do %>
+          <%= link_to edit_user_registration_path, method: "GET", remote: true do %>
               <div class="edit-input-container _button-effect _vcenter-positioner _hcenter-positioner">
                 <p class="_fs-3 _dark-gray">비밀번호 변경</p>
               </div>

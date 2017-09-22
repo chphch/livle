@@ -2,10 +2,12 @@
 <html>
 
 <head>
-  <title>Livle : Life is live</title>
+  <title>Livle : 요청하신 페이지가 없습니다..</title>
   <meta charset="utf-8">
   <meta name="Description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
-  <%=yield_opengraph%>
+  <meta property="og:title" content="Livle : 요청하신 페이지가 없습니다..">
+  <meta property="og:description" content="라이블은 라이브 음악을 쉽고 재밌게 즐기는 방법을 제공하는 라이브 음악 플랫폼입니다. 질좋은 라이브 음악 영상을 감상하고 콘서트 티켓을 쉽게 구매할 수 있습니다." />
+  <meta property="og:image" content="<%=request.base_url%>/logo_og.jpg" />
 
   <link rel="shortcut icon" href="/favicon.ico?">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -16,17 +18,14 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
 
-  <!-- disable zooming -->
-  <meta name="viewport" content="width=device-width, initial-scale=0.39, maximum-scale=0.39, user-scalable=no" />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
 
   <!-- jQuery -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
 
   <!-- Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -37,59 +36,25 @@
   <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
   <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare-base64.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-  <!-- clipboard.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-
-  <script>
-      function redir(category, action, label, value, where) {
-          ga('send', 'event', category, action, label, value);
-          (window.location=where);
-      }
-
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-104199726-1', 'auto');
-      ga('require', 'linkid', 'linkid.js');
-      ga('require', 'displayfeatures');
-      ga('send', 'pageview');
-  </script>
 </head>
 
 <body>
-  <!-- Facebook Inclusion -->
-  <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '<%=ENV["Facebook_Key"]%>',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v2.10'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-<!-- Render 우선순위로 나열 -->
-<%= render partial: "partial_views/navbar_mobile" unless @disable_nav %>
-<div class="<%= @disable_background_image ? "_body-no-background-m" : "_body-background-m"%>"></div>
-<%= render partial: "mypage/top_mobile", locals: {title: @title, back_url: @back_url} if @title %>
-
-<%= yield %>
-<% unless @disable_nav %>
-    <div style="padding: 4rem; background: none;"></div>
-<% end %>
+<div class="_body-no-background-m"></div>
+<div id="error-not-found">
+  <div class="_full-container _vcenter-positioner _hcenter-positioner">
+    <div class="error-container _desktop-container _vcenter-positioner">
+      <%= image_tag "icon_404", class: "error-icon" %>
+      <div class="vertical-bar"></div>
+      <div class="text-container _column-positioner _hcenter-positioner">
+        <p class="_fs-about _white"><b>죄송합니다.</b></p>
+        <p class="_fs-title _light-gray">요청하신 페이지를 찾을 수 없습니다 ㅠㅠ</p>
+        <%= link_to :back, class: "redirect-button _no-p-margin _vcenter-positioner _hcenter-positioner" do %>
+            <p class="_fs-3 _white">이전 페이지로 돌아가기</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>

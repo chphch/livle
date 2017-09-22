@@ -45,10 +45,11 @@
 
 //for multiple browser
 @mixin display-flex {
-  display: flex;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 @mixin justify-content($pos) {
@@ -59,7 +60,7 @@
 }
 
 @mixin flex-direction($dir) {
-  @each $prefix in -ms-, -webkit-, null {
+  @each $prefix in -ms-, -moz-, -webkit-, null {
     #{$prefix}flex-direction: $dir;
   }
 }
@@ -71,8 +72,24 @@
 }
 
 @mixin flex-grow($size) {
-  @each $prefix in -ms-, -webkit-, null {
+  @each $prefix in -ms-, -moz-, -webkit-, null {
     #{$prefix}flex-grow: $size;
+  }
+}
+
+@mixin flex-wrap {
+  @include display-flex;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  @each $prefix in -moz-, -webkit-, null {
+   #{$prefix}flex-wrap: wrap;
+  }
+}
+
+@mixin flex-basis($param) {
+  @include flex-grow(0);
+  @each $prefix in -moz-, -webkit-, null {
+    #{$prefix}flex-basis: $param;
   }
 }
 

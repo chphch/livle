@@ -54,6 +54,10 @@ a:hover {
   p { margin: 0; }
 }
 
+._white-space-nowrap {
+  white-space: nowrap;
+}
+
 ._no-background-border {
   background: none;
   border: none;
@@ -77,10 +81,6 @@ a:hover {
   @include size(100%);
   @include border-radius($br-image);
   object-fit: cover;
-  &:hover {
-    border: solid 1px #ffffff;
-    box-shadow: 0 2px 16px 10px #ffffff;
-  }
 }
 
 ._profile-border-green {
@@ -264,7 +264,7 @@ a:hover {
 }
 
 ._small-modal-title {
-  padding: 0 0 6%;
+  padding: 6% 0;
   z-index: $z-most-important;
 }
 
