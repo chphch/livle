@@ -3,7 +3,7 @@ $('body').append(
       <%= j render partial: "partial_views/check_modal_desktop", locals: {message: "#{current_user.nickname}님의 라이브가 전달되었습니다!"} %>\
     </div>'
 );
-ga('send', { 'hitType': 'pageview', 'page': window.location.href });
+sendConnectEvent(window.location.href+'&status=send');
 
 window.setTimeout(function() {
     window.location = "<%= connect_urls_path %>";

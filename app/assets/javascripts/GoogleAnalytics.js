@@ -7,6 +7,11 @@ function sendClickButton(button, type) {
 }
 
 function sendScrollEvent($location, url) {
-    console.log("full url: " + $location.attr("href") + url);
     ga('send', { 'hitType': 'pageview', 'page': $location.attr("href") + url });
+    console.log("full url: " + $location.attr("href") + url);
+}
+
+function sendConnectEvent(url) {
+    ga('send', { 'hitType': 'pageview', 'page': url });
+    console.log('url: '+url);
 }
