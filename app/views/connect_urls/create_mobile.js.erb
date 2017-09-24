@@ -4,6 +4,8 @@ $('body').append(
     </div>'
 );
 $('#done-modal').modal();
+ga('send', { 'hitType': 'pageview', 'page': window.location.href });
+
 window.setTimeout(function() {
     window.location = "<%= connect_urls_path %>";
 }, 1500);
