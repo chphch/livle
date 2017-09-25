@@ -1,10 +1,10 @@
 class TemporaryUpcomingsController < ApplicationController
-  before_action :is_admin
+  before_action :is_admin, except: [:create]
 
   def create
     title = params[:title]
     place = params[:place]
-    start_date = params[:start_date]
+    start_date = params[:start_date] #yyyy-mm-dd hh:mm:ss OR yyyy-mm-dd
     end_date = params[:end_date]
     image_url = params[:image_url]
     provider = params[:provider]
@@ -14,28 +14,28 @@ class TemporaryUpcomingsController < ApplicationController
 
     # Input validation
     unless key == "livlecreatingtempupcoming"
-      render status: 403, json: "Unauthorized key"
+      render status: 403, json: {success: false, msg: "Unauthorized key"}
       return
     end
     if !title || !start_date || !end_date || !provider || !ticket_url
-      render status: 405, json: "Title, start_date, end_date, provider and ticket_url should be given"
+      render status: 405, json: {success: false, msg: "Title, start_date, end_date, provider and ticket_url should be given"}
       return
     end
     if !UpcomingTicketUrl.providers.include?(provider)
-      render status: 405, json: "Provider does not match any - it should be one of #{UpcomingTicketUrl.providers}"
+      render status: 405, json: {success: false, msg: "Provider does not match any - it should be one of #{UpcomingTicketUrl.providers}"}
       return
     end
     if TemporaryUpcoming.exists?(ticket_url: ticket_url) || UpcomingTicketUrl.exists?(ticket_url: ticket_url)
-      render status: 200, json: "An upcoming with the same url exists"
+      render status: 200, json: {success: true, msg: "An upcoming with the same url exists"}
       return
     end
 
     tu = TemporaryUpcoming.new(title: title, place: place, start_date: start_date, end_date: end_date,
     image_url: image_url, provider: provider, ticket_url: ticket_url, artist_info: artist_info)
     if tu.save
-      render status: 201, json: "Success"
+      render status: 201, json: {success: true, msg: "Success"}
     else
-      render status: 405, json: "Unexpected error occured while saving #{tu}"
+      render status: 405, json: {success: false, msg: "Unexpected error occured while saving #{tu}"}
     end
   end
 
