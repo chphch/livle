@@ -16,12 +16,12 @@ document.addEventListener("turbolinks:load", function(event) {
 
     //search autocomplete
     $('#search').autocomplete( {
-      appendTo: '#search-autocomplete',
-      select: function(event, ui) {
-        $('#search').val(ui.item.label);
-        $('#search').closest('form').submit();
-        console.log(ui.item.label);
-      }
+        appendTo: '#search-autocomplete',
+        select: function(event, ui) {
+            $('#search').val(ui.item.label);
+            $('#search').closest('form').submit();
+            console.log(ui.item.label);
+        }
     });
 
     $('#search').keyup(function() {
@@ -31,7 +31,7 @@ document.addEventListener("turbolinks:load", function(event) {
                 key: $(this).val()
             },
             success: function(data) {
-              $('#search').autocomplete('option', 'source', data);
+                $('#search').autocomplete('option', 'source', data);
             }
         });
     });
@@ -57,18 +57,21 @@ document.addEventListener("turbolinks:load", function(event) {
     });
 
     //Scroll Event
-    var lastScrollPos = 0;
-    setInterval(function () {
-        var curScrollPos = $(this).scrollTop();
-        if (curScrollPos > lastScrollPos) {
-            //Scrolling Down
+    var ts;
+    $(document).bind('touchstart', function(e) {
+        ts = e.originalEvent.touches[0].clientY;
+    });
+
+    $(document).bind('touchmove', function(e) {
+        var te = e.originalEvent.changedTouches[0].clientY;
+        if (ts > te) {
+            //scroll down
             $('.search-container').addClass('search-bar-up');
         } else {
-            //Scrolling Up
+            //scroll up
             $('.search-container').removeClass('search-bar-up');
         }
-        lastScrollPos = curScrollPos;
-    }, 400);
+    });
 
     //Result action
     $('#feeds-selector').click(function () {
