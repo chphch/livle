@@ -410,10 +410,8 @@ body {
 
   &:hover {
     ._comment-edit-container {
+      @include cursor-pointer;
       display: block;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
 }

@@ -113,9 +113,7 @@
       &:not(:last-of-type) {
         margin: 0 0 2rem;
       }
-      &:hover{
-        cursor: pointer;
-      }
+      @include cursor-pointer;
     }
     .ticket-logo {
       @include size(10rem, auto);
@@ -129,6 +127,7 @@
 
 #upcoming-ticket-card {
   $collab-width: 6rem;
+  @include cursor-pointer;
 
   a:hover {
     img {
@@ -189,6 +188,12 @@
     }
     .line-up-text {
       padding: 4% 0 0;
+    }
+    @media (max-width: $desktop) {
+      .line-up-container {
+        @include size(100%, 29%);
+        overflow: hidden;
+      }
     }
   }
   .poster-container {
@@ -262,9 +267,7 @@
       .arrow-button {
         @include size(auto, 3rem);
       }
-      &:hover {
-        cursor: pointer;
-      }
+      @include cursor-pointer;
     }
   }
 

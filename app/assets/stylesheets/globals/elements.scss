@@ -515,7 +515,5 @@ a:hover {
 
 #share-button {
   position: relative;
-  &:hover {
-    cursor: pointer;
-  }
+  @include cursor-pointer;
 }
