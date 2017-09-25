@@ -1,81 +1,81 @@
 <div id="upcoming-ticket-card">
   <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-<%=upcoming.id%>" class="ticket-item">
-      <div class="card-container _vcenter-positioner _no-p-margin">
-        <!-- collab text conatiner -->
-        <div class="collab-conatiner _vcenter-positioner">
-          <% if upcoming.upcoming_ticket_urls.where(provider: '1') != nil %>
-              <p class="_fs-title _white _f-family-tmon _white-space-nowrap">
-                라이블 X <%= upcoming.title %>
-              </p>
-          <% end %>
-        </div>
-        <!-- ticket container with background -->
-        <div class="ticket-container _vcenter-positioner">
-          <%= image_tag "background_ticket", class: "ticket-img" %>
-          <div class="ticket-video-container">
-            <%= render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>
-            <div class="thumbnail-filter _vbottom-positioner">
-              <div class="_flex-grow-1">
-                <p class="_fs-3 _white"><%= upcoming.main_video ? upcoming.main_video.title : "NO" %></p>
-                <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
-              </div>
-              <div class="upcoming-like-button">
-                <%= link_to upcoming_toggle_like_path(upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
-                <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="info-container _column-positioner _hcenter-positioner">
+    <div class="card-container _vcenter-positioner _no-p-margin">
+      <!-- collab text conatiner -->
+      <div class="collab-conatiner _vcenter-positioner">
+        <% if upcoming.upcoming_ticket_urls.where(provider: '1') != nil %>
+            <p class="_fs-title _white _f-family-tmon _white-space-nowrap">
+              라이블 X <%= upcoming.title %>
+            </p>
+        <% end %>
+      </div>
+      <!-- ticket container with background -->
+      <div class="ticket-container _vcenter-positioner">
+        <%= image_tag "background_ticket", class: "ticket-img" %>
+        <div class="ticket-video-container">
+          <%= render partial: 'ticket_thumbnail_desktop', locals: {upcoming: upcoming} %>
+          <div class="thumbnail-filter _vbottom-positioner">
             <div class="_flex-grow-1">
-              <div class="text-container">
-                <p class="_fs-0 _black _f-family-tmon"><%= upcoming.title %></p>
-              </div>
-              <div class="text-container">
-                <p class="_fs-1 _dark-dark-gray _f-family-tmon"><%= upcoming.place %></p>
-              </div>
-              <div class="text-container">
-                <p class="_fs-2 _light-gray _f-family-tmon"><%= upcoming.start_date %></p>
-              </div>
-              <p class="_fs-d-day _dark-gray _f-family-tmon">D<%= upcoming.d_day %></p>
+              <p class="_fs-3 _white"><%= upcoming.main_video ? upcoming.main_video.title : "NO" %></p>
+              <p class="_fs-3 _white">조회수 <%= upcoming.count_view %></p>
             </div>
-
-            <div class="line-up-container">
-              <p class="_fs-4 _black _f-family-tmon">LINE-UP</p>
-              <div class="line-up-text">
-                <p class="_fs-5 _dark-gray">
-                  <!-- artist name -->
-                  <% upcoming.artists.each_with_index do |artist, i| %>
-                      <%= artist.name %>
-                      <% break if upcoming.artists[i+1] == nil %>
-                      ,&nbsp
-                  <% end %>
-                </p>
-              </div>
+            <div class="upcoming-like-button">
+              <%= link_to upcoming_toggle_like_path(upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
+                  <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+              <% end %>
             </div>
           </div>
         </div>
-        <!-- poster container -->
-        <div class="poster-container _vcenter-positioner">
-          <%= image_tag upcoming.image_url, class: "poster-img", style: "width: 218px; height: 280px"
-          # TODO JIWOON sizing
-          %>
+        <div class="info-container _column-positioner _hcenter-positioner">
+          <div class="_flex-grow-1">
+            <div class="text-container">
+              <p class="_fs-0 _black _f-family-tmon"><%= upcoming.title %></p>
+            </div>
+            <div class="text-container">
+              <p class="_fs-1 _dark-dark-gray _f-family-tmon"><%= upcoming.place %></p>
+            </div>
+            <div class="text-container">
+              <p class="_fs-2 _light-gray _f-family-tmon"><%= upcoming.start_date %></p>
+            </div>
+            <p class="_fs-d-day _dark-gray _f-family-tmon">D<%= upcoming.d_day %></p>
+          </div>
+
+          <div class="line-up-container">
+            <p class="_fs-4 _black _f-family-tmon">LINE-UP</p>
+            <div class="line-up-text">
+              <p class="_fs-5 _dark-gray">
+                <!-- artist name -->
+                <% upcoming.artists.each_with_index do |artist, i| %>
+                    <%= artist.name %>
+                    <% break if upcoming.artists[i+1] == nil %>
+                    ,&nbsp
+                <% end %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- poster container -->
+      <div class="poster-container _vcenter-positioner">
+        <%= image_tag upcoming.image_url, class: "poster-img", style: "width: 218px; height: 280px"
+            # TODO JIWOON sizing
+        %>
+      </div>
     </div>
+  </div>
   <script>
       $cur = $('#ticket-<%= upcoming.id %>');
-  <% if upcoming.main_video %>
+      <% if upcoming.main_video %>
       $cur.mouseenter(function () {
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').hide();
           $('#ticket-<%= upcoming.id %> .ticket-video-container').append(
-            '<%=j render partial: 'ticket_video_desktop', locals: {upcoming: upcoming} %>'
+              '<%=j render partial: 'ticket_video_desktop', locals: {upcoming: upcoming} %>'
           );
       });
       $cur.mouseleave(function () {
           $('#ticket-<%= upcoming.id %> ._video-player').remove();
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').show();
       });
-  <% end %>
+      <% end %>
   </script>
 </div>
