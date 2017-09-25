@@ -286,6 +286,7 @@ body {
   position: relative;
   height: 120rem;
   margin: 0 8rem;
+  z-index: 9999;
   background: $black-opacity;
   border-radius: 6rem;
   overflow: hidden;
@@ -294,6 +295,7 @@ body {
 ._small-modal {
   position: absolute;
   @include position(0);
+  z-index: 9999;
   margin: 30em 8rem;
   background: none;
   border-radius: 6rem;
@@ -432,7 +434,7 @@ body {
   background: $white;
   padding: 2rem;
   @include border-radius($br-min);
-  z-index: $z-most-important;
+  z-index: 9999;
   .modal-icon {
     @include size(auto, 8rem);
     margin: 0 0 4rem;
@@ -464,6 +466,6 @@ body {
   min-width: 8rem; height: auto;
   background: $white;
   padding: 1rem;
+  z-index: 9999;
   @include border-radius($br-min);
-  z-index: $z-most-important;
 }
