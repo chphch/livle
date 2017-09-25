@@ -3,7 +3,7 @@ class UpcomingsController < ApplicationController
 
   def index
     today = DateTime.now
-    @upcomings = Upcoming.where('start_date >= ?', today).order('start_date ASC')
+    @upcomings = Upcoming.where('end_date >= ?', today).order('start_date ASC')
                      .paginate(page: params[:page], per_page: 8)
     respond_to do |format|
       format.html { render_by_device }
