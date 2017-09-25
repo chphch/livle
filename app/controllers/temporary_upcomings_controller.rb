@@ -49,4 +49,9 @@ class TemporaryUpcomingsController < ApplicationController
       render text: "해당하는 Upcoming이 없습니다."
     end
   end
+
+  def automatch
+    # TODO jaeseong
+
+  end
 end

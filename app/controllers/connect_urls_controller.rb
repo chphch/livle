@@ -3,7 +3,7 @@ class ConnectUrlsController < ApplicationController
 
   def index
     @nickname = user_signed_in? ? "#{current_user.nickname}님" : "당신"
-    @bakckground_video_id = 'DSwd9Mng6uE' #for desktop
+#    @bakckground_video_id = 'DSwd9Mng6uE' #for desktop
     @enable_transparent = true #for desktop
     @enable_footer = true #for desktop
     render_by_device
