@@ -120,22 +120,14 @@
   </div>
   <script>
       $('#ticket-button').on('click', function () {
-          $('.ticket-container').append(
-              '<div class="ticket-modal _desktop-modal _column-positioner _vcenter-positioner">\n' +
-              '  <div class="ticket-modal-title">\n' +
-              '    <p class="_fs-title _f-family-tmon _dark-gray">티켓 바로가기</p>\n' +
-              '  </div>\n' +
-              '  <hr style="width: 100%">\n' +
-              '  <div class="ticket-button-group _column-positioner _vcenter-positioner _hcenter-positioner">\n' +
-              '    <% @upcoming.upcoming_ticket_urls.each_with_index do |ticket, i| %>' +
-              '      <% ticket.provider = i %>' +
-              '      <%= link_to ticket.ticket_url, class: "ticket-button _vcenter-positioner _hcenter-positioner" do %>' +
-              '          <%= image_tag "logo_#{ticket.provider}", class: "ticket-logo" %>\n' +
-              '      <% end %>' +
-              '    <% end %>' +
-              '  </div>\n' +
-              '</div>'
-          );
+        sendClickButton('ticketPage');
+        <% if @upcoming.upcoming_ticket_urls.size == 1 %>
+        window.open("<%=@upcoming.upcoming_ticket_urls.first.ticket_url%>", '_blank');
+        <% else %>
+        $('.ticket-container').append(
+          "<%=j render partial: 'ticket_link_desktop', locals: {upcoming: @upcoming}%>"
+        );
+        <% end %>
       });
 
       $('#share-button').on('click', function () {

@@ -41,7 +41,7 @@
           </p>
         </div>
         <div class="describe-icons _vcenter-positioner _hright-positioner">
-          <%= image_tag "icon_ticket_empty", class: "_upcoming-like-icon-m icon-padding", onclick: "$('#ticket-link-modal').modal(); sendClickButton('ticketPage');" %>
+          <%= image_tag "icon_ticket_empty", id: "ticket-button", class: "_upcoming-like-icon-m icon-padding" %>
           <%= link_to upcoming_toggle_like_path(@upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
               <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
               <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
@@ -103,6 +103,14 @@
   </div>
 </div>
 <script>
+$('#ticket-button').click(function(e) {
+  sendClickButton('ticketPage');
+  <% if @upcoming.upcoming_ticket_urls.size == 1 %>
+  window.open("<%=@upcoming.upcoming_ticket_urls.first.ticket_url%>", '_blank');
+  <% else %>
+  $('#ticket-link-modal').modal();
+  <% end %>
+});
 $("#back").click(function(e) {
   e.preventDefault();
   if(document.referrer && (document.referrer.includes('livle') || document.referrer.includes('localhost')) ) {
