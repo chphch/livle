@@ -8,7 +8,7 @@ development:
   encoding: utf8
   database: livle_dev
   username: root
-  password: dnjswldns96
+  password: <%=ENV["LOCAL_MYSQL_PASSWORD"]%>
   host: localhost
   port: 3306
   socket: /tmp/mysql.sock
