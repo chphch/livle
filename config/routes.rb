@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'feeds#index'
 
+  post 'insert' => 'temporary_upcomings#create'
   # Admin page
   get 'admin/feed', as: :admin_feed
   get 'admin/artist', as: :admin_artist

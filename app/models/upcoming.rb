@@ -66,7 +66,7 @@ class Upcoming < ApplicationRecord
   def d_day
     today = Time.now.to_date
     d_day = (self.start_date - today).to_i
-    if d_day == 0
+    if d_day <= 0
       return "-day"
     else
       return -d_day

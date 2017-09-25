@@ -9,7 +9,13 @@ $('body').on('click', function (e) {
     $target = $('#edit-profile-modal');
     $target.remove();
 }).find('#mypage-edit-profile').on('click', function (e) {
+  e = e || window.event;
+  var targ = e.target || e.srcElement;
+  if (targ.nodeType == 3) targ = targ.parentNode; // defeat Safari bug
+  // a 태그의 children이 아닐 경우에만 stopPropagation
+  if($(targ).parents('a').length == 0) {
     e.stopPropagation();
+  }
 });
 
 //change profile image event
