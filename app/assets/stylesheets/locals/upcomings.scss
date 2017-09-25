@@ -136,6 +136,7 @@
     }
   }
   .card-container {
+    position: relative;
     padding: 2rem 0;
     &:hover {
       .poster-img {
@@ -146,8 +147,14 @@
 
   .collab-conatiner {
     position: absolute;
+    @include size(0);
+    top: 30rem; left: 2rem;
     @include transform(rotate(270deg));
-    left: -13rem;
+  }
+  @media (max-width: $desktop) {
+    .collab-conatiner {
+      top: 26rem;
+    }
   }
   .ticket-container {
     position: relative;
@@ -159,8 +166,8 @@
     }
     .ticket-video-container {
       position: absolute;
+      top: 2.2%; left: 0.2%;
       @include size(63%, auto);
-      margin: -1.2% 0 0 0.1%;
     }
     .thumbnail-filter {
       position: absolute;
@@ -171,7 +178,7 @@
   }
   .info-container {
     position: absolute;
-    right: 0;
+    top: 0; right: 0;
     @include size(25.3%, 100%);
     padding: 3% 4% 4% 0;
     .text-container {
@@ -215,16 +222,46 @@
 
     $line-up-height: 12rem;
     .line-up-container {
-      @include size(100%, auto);
-      margin: 1rem 0;
+      position: relative;
+      left: -1.7rem;
+      @include size(103.5%, auto);
+      padding: 1.7rem;
+      overflow-x: visible;
+      .scroll-target {
+        overflow-y: scroll;
+      }
     }
     .line-up-card {
       position: relative;
+      min-width: $line-up-height;
       @include size($line-up-height);
       margin: 0 2rem 0 0;
+      @include border-radius($br-image);
       &:hover {
         border: solid 1px #ffffff;
         box-shadow: 0 2px 16px 10px #ffffff;
+        cursor: pointer;
+      }
+    }
+    .prev-filter {
+      display: none;
+      left: 0;
+      @include background-gradient(left, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
+    }
+    .next-filter {
+      right: 0;
+      @include background-gradient(right, rgba(18,18,18,1) 30%, rgba(18,18,18,0.8) 85%, rgba(18,18,18,0) 100%);
+    }
+    .prev-filter,
+    .next-filter {
+      position: absolute;
+      top: 0;
+      @include size(5rem, 100%);
+      .arrow-button {
+        @include size(auto, 3rem);
+      }
+      &:hover {
+        cursor: pointer;
       }
     }
   }

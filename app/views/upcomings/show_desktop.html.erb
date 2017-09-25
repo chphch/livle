@@ -62,14 +62,26 @@
           </p>
         </div>
 
-        <div class="line-up-container _vcenter-positioner">
-          <% if @has_main_video %>
-              <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video" } %>
-          <% end %>
-          <% @artists.each do |artist| %>
-              <%= render partial: 'lineup_profile_desktop',
-                         locals: {target_player_id: artist.popular_feed_artist ? artist.popular_feed_artist.id : 0, image_url: artist.image_url , name: artist.name } %>
-          <% end %>
+        <div class="line-up-container">
+          <div class="scroll-target _vcenter-positioner">
+            <% if @has_main_video %>
+                <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: get_youtube_video_id(@main_video.youtube_url), image_url: @main_video_image_url, name: "Main Video" } %>
+            <% end %>
+            <% @artists.each do |artist| %>
+                <%= render partial: 'lineup_profile_desktop',
+                           locals: {target_player_id: artist.popular_feed_artist ? artist.popular_feed_artist.id : 0, image_url: artist.image_url , name: artist.name } %>
+            <% end %>
+          </div>
+          <div class="prev-filter">
+            <div class="_full-container _vcenter-positioner _hcenter-positioner">
+              <%= image_tag "icon_back", class: "arrow-button" %>
+            </div>
+          </div>
+          <div class="next-filter">
+            <div class="_full-container _vcenter-positioner _hcenter-positioner">
+              <%= image_tag "icon_next", class: "arrow-button" %>
+            </div>
+          </div>
         </div>
 
         <!-- Like, Comment, Share Buttons -->
