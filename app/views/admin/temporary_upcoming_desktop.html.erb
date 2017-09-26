@@ -2,11 +2,15 @@
 <%= render partial: "side_navbar_desktop" %>
 
 <div class="admin-desktop-container">
+  <%=link_to '/temporary_upcomings/destroy_all', method: :delete, data: {confirm: '정말 삭제하시겠습니까?'} do %>전부 삭제<% end %>
   <p class="_fs-1 _white">Upcoming Lists</p>
   <table>
     <tr>
       <td>
         <p class="_fs-2 _light-gray">index</p>
+      </td>
+      <td>
+        <p class="_fs-2 _light-gray">대표 이미지</p>
       </td>
       <td>
         <p class="_fs-2 _light-gray">Title</p>
@@ -22,9 +26,6 @@
       </td>
       <td>
         <p class="_fs-2 _light-gray">Artists</p>
-      </td>
-      <td>
-        <p class="_fs-2 _light-gray">대표 이미지</p>
       </td>
       <td>
         <p class="_fs-2 _light-gray">Ticket Provider</p>
@@ -45,7 +46,14 @@
         <td>
             <p class="_fs-3 _light-gray"><%= temp_upcoming.id %></p>
         </td>
-          <%= form_for temp_upcoming, method: :patch do |f| %>
+          <%= form_for temp_upcoming, method: :patch, multipart: true do |f| %>
+            <td>
+              <p class="_fs-3 _light-gray">
+              <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
+              <%=f.file_field :image_url %>
+              <%=f.hidden_field :remote_image_url_url %>
+              </p>
+            </td>
             <td>
               <p class="_fs-3 _light-gray">
               <%= f.text_field :title %>
@@ -68,13 +76,7 @@
             </td>
             <td>
               <p class="_fs-3 _light-gray">
-              <%=temp_upcoming.artist_info%>
-              </p>
-            </td>
-            <td>
-              <p class="_fs-3 _light-gray">
-              <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
-              <%=f.file_field :image_url %>
+              <%=f.text_field :artist_info%>
               </p>
             </td>
             <td>

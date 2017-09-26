@@ -1,0 +1,14 @@
+<div>
+  <%= form_for @artist, method: :post, multipart: true do |f| %>
+  <div>
+    <label>아티스트 이미지</label>
+    <%=f.file_field :image_url %>
+  </div>
+  <div>
+    <%=f.text_field :name, placeholder: "아티스트 이름" %>
+  </div>
+  <div>
+    <%=f.submit %>
+  </div>
+  <% end %>
+</div>
