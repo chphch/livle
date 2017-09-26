@@ -65,11 +65,12 @@ module ApplicationHelper
     background-size: cover'></div>".html_safe
   end
 
-  def raw_text(text, class_method)
+  def raw_text(text, options = {})
     if text
       context = text.gsub(/\n/, '<br />')
       puts "text: "+context
-      result = '<p class="'+class_method+'">'+context+'</p>'
+      result = "<p class='#{options[:class] if options[:class]}'
+        id='#{options[:id] if options[:id]}'>"+context+'</p>'
       return result.html_safe
     end
   end

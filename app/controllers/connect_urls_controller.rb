@@ -34,6 +34,23 @@ class ConnectUrlsController < ApplicationController
     end
   end
 
+  def merge #move to feed
+    connect = ConnectUrl.find(params[:id])
+    new_feed = Feed.new
+    new_feed_artist = FeedArtist.new
+
+    new_feed.user = connect.user
+    new_feed.youtube_url = connect.video_url
+    new_feed.content = connect.describe
+    new_feed.title = params[:feed_title]
+    new_feed_artist.feed = new_feed
+    # new_feed_artist.artist = Artist.find_by(name: params[:feed_artist])
+
+    if new_feed.save && new_feed_artist.save
+      connect.update(feed: new_feed, is_confirmed: true)
+    end
+  end
+
   def destroy
 
   end
@@ -42,6 +59,4 @@ class ConnectUrlsController < ApplicationController
   def connect_url_params
     params.require(:connect_url).permit(:video_url, :describe)
   end
-
-
 end

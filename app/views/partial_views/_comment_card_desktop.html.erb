@@ -7,7 +7,7 @@
     <p class="_fs-5 _light-gray _white-space-nowrap"><%= comment.created_time %></p>
   </div>
   <div class="_comment-content-container _flex-grow-1 _row-positioner">
-    <%= raw_text comment.content, "_fs-4 _white _flex-grow-1" %>
+    <%= raw_text comment.content, class: "_fs-4 _white _flex-grow-1" %>
     <% if user_signed_in? %>
         <% if comment.user.id == current_user.id %>
             <div class="_comment-edit-container" id="comment-edit-<%= comment.id %>">

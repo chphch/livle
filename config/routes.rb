@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   end
 
   resources :connect_urls, only: [:index, :new, :create, :destroy]
+  post 'connect_urls/:id/merge' => 'connect_urls#merge'
+
   resources :recent_keywords, only: [:create, :destroy]
   resources :notices, only: [:index, :create, :destroy]
 

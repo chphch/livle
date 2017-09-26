@@ -7,7 +7,7 @@
     <p class="_fs-4-mobile _light-gray _icon-text-margin-m"><%= comment.created_time %></p>
   </div>
   <div class="_comment-content-container-m _row-positioner _no-p-margin">
-    <%= raw_text comment.content, "_fs-2-mobile _white _flex-grow-1" %>
+    <%= raw_text comment.content, class: "_fs-2-mobile _white _flex-grow-1" %>
     <% if user_signed_in? %>
         <% if comment.user.id == current_user.id %>
             <%= link_to comment, class: "_comment-delete-container-m", method: :delete do %>
