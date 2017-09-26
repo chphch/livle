@@ -1,6 +1,6 @@
 $('body').append(
     '<div id="done-modal" class="modal">\
-      <%= j render partial: "partial_views/check_modal_mobile", locals: {message: "#{current_user.nickname}님의 라이브가 전달되었습니다!"} %>\
+      <%= j render partial: "partial_views/check_modal_mobile", locals: {message: "보내주신 영상은 라이블에서 큐레이션 후 메인 홈에 업로드됩니다."} %>\
     </div>'
 );
 $('#done-modal').modal();

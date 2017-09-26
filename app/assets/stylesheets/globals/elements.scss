@@ -208,7 +208,7 @@ a:hover {
 
 //social button icon size
 .social-share-button {
-  .ssb-icon {
+  .ssb-icon-m {
     $icon-size: 12rem;
     background-size: $icon-size !important;
     @include size($icon-size !important);
@@ -376,12 +376,24 @@ a:hover {
   }
 }
 
+//social button icon size
+.social-share-button {
+  padding: 1rem 0;
+  .ssb-icon {
+    $icon-size: 4rem;
+    background-size: $icon-size !important;
+    @include size($icon-size !important);
+    margin: 0 1rem;
+    @include cursor-pointer;
+  }
+}
+
+//footer
 #footer-modal {
   position: absolute;
   left: 6rem; bottom: 26rem;
 }
 
-//footer
 ._footer {
   position: relative;
   @include size(100%, 26rem);

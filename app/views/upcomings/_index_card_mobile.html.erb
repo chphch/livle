@@ -1,35 +1,35 @@
 <div class="_card-container-m">
   <div data-location="<%=upcoming_path(upcoming.id)%>" class="ticket-item">
-      <div class="_thumbnail-container-m">
-        <%= thumbnail_tag (upcoming.main_video ? upcoming.main_video.youtube_url : ''), class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
-        <div class="_thumbnail-filter-m"></div>
+    <div class="_thumbnail-container-m">
+      <%= thumbnail_tag (upcoming.main_video ? upcoming.main_video.youtube_url : ''), class: "_thumbnail-image-m", id: "upcoming-#{upcoming.id}" %>
+      <div class="_thumbnail-filter-m"></div>
 
-        <div class="describe-container">
-          <p class="_fs-2-mobile _white">
-            <%= upcoming.title %> (<%= upcoming.place %>)
-          </p>
-          <p class="_fs-3-mobile _light-gray">
-            <%= upcoming.start_date %> - <%= upcoming.end_date %>
-          </p>
-          <p class="_fs-3-mobile _light-gray">
-            <!-- artist name -->
-            <% upcoming.artists.each_with_index do |artist, i| %>
-                <%= artist.name %>
-                <% break if upcoming.artists[i+1] == nil %>
-                ,&nbsp
-            <% end %>
-          </p>
-        </div>
-
-        <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner">
-          <p class="_fs-2-mobile _white _f-letter-mobile _thumbnail-margin-right-m"><strong>D<%= upcoming.d_day %></strong></p>
-        </div>
-
-        <div class="describe-icon">
-          <%= link_to upcoming_toggle_like_path(upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
-          <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+      <div class="describe-container">
+        <p class="_fs-2-mobile _white">
+          <%= upcoming.title %> (<%= upcoming.place %>)
+        </p>
+        <p class="_fs-3-mobile _light-gray">
+          <%= upcoming.start_date %> - <%= upcoming.end_date %>
+        </p>
+        <p class="_fs-3-mobile _light-gray">
+          <!-- artist name -->
+          <% upcoming.artists.each_with_index do |artist, i| %>
+              <%= artist.name %>
+              <% break if upcoming.artists[i+1] == nil %>
+              ,&nbsp
           <% end %>
-        </div>
+        </p>
+      </div>
+
+      <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner">
+        <p class="_fs-2-mobile _white _f-letter-mobile _thumbnail-margin-right-m"><strong>D<%= upcoming.d_day %></strong></p>
+      </div>
+
+      <div class="describe-icon">
+        <%= link_to upcoming_toggle_like_path(upcoming.id), remote: true do %>
+            <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>

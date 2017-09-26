@@ -160,7 +160,7 @@
                   <table width="80%" valign="center" cellspacing="0" cellpadding="0">
                     <tr>
                       <td style="width: 60%; font-size: 12pt; color: #666666; line-height: 24px;">
-                        <span style="color: #000000;">5. Mypage</span><br />
+                        <span style="color: #000000;">5. My page</span><br />
                         좋아하는 영상을 모아서 볼 수 있고,<br />
                         찜한 콘서트가 날짜 순서대로 보여집니다.<br />
                         프로필 설정 및 환경설정이 가능합니다.
@@ -173,47 +173,7 @@
                 </td>
               </tr>
               <!-- END content -->
-              <!-- footer -->
-              <tr>
-                <td align="center" style="padding-top: 20px; background: #000000;">
-                  <table cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td valign="center" align="center">
-                        <%= link_to "https://www.facebook.com/Livlemusic/" do %>
-                            <%= image_tag "logo_facebook_gray", style: "width: auto; height: 22px; padding-right: 16px;" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <%= link_to "http://blog.naver.com/livle" do %>
-                            <%= image_tag "logo_blog_gray", style: "width: auto; height: 22px; padding-left: 16px;" %>
-                        <% end %>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" style="padding-top: 20px; padding-bottom: 30px; background: #000000;">
-                  <table cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
-                        라이블 | www.livle.kr | contacts@livle.kr
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
-                        경기도 성남시 분당구 판교로89번길 20, 스타트업캠퍼스 8층
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="center" style="padding-top: 5px; padding-bottom: 5px; font-size: 12pt; color: #b3b3b3;">
-                        Copyright @ Livle All Rights Reserved | 고객센터 : 070-8163-4068
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <!-- END footer -->
+              <%= render partial: "devise/mailer/footer_form" %>
             </table>
           </td>
         </tr>

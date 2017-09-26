@@ -424,8 +424,19 @@ body {
   }
 }
 
+._modal-dismiss-container {
+  position: absolute;
+  top: 0; right: 0;
+  padding: 1rem;
+  .dismiss-icon {
+    @include size(auto, 1.5rem);
+  }
+  @include cursor-pointer;
+}
+
 //modals
 ._desktop-modal {
+  position: relative;
   width: 32rem;
   min-height: 36rem;
   max-height: 52rem;
@@ -461,6 +472,7 @@ body {
 }
 
 ._desktop-small-modal {
+  position: relative;
   min-width: 8rem; height: auto;
   background: $white;
   padding: 1rem;
