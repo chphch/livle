@@ -188,6 +188,7 @@ a:hover {
 
 ._upcoming-like-icon-m {
   @include size(auto, 8rem);
+  opacity: 1 !important;
 }
 
 ._show-icon-m {

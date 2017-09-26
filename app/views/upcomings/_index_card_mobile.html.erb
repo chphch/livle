@@ -27,7 +27,7 @@
 
       <div class="describe-icon">
         <%= link_to upcoming_toggle_like_path(upcoming.id), remote: true do %>
-            <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m upcoming-icon #{like_true(upcoming.id) ? 'filled' : ''}" %>
+            <%= image_tag like_true(upcoming.id) ? "icon_hand_filled" : "icon_hand_empty", class: "_upcoming-like-icon-m #{like_true(upcoming.id) ? 'filled' : ''}" %>
         <% end %>
       </div>
     </div>

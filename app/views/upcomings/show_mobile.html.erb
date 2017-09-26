@@ -43,8 +43,8 @@
         <div class="describe-icons _vcenter-positioner _hright-positioner">
           <%= image_tag "icon_ticket_empty", id: "ticket-button", class: "_upcoming-like-icon-m icon-padding" %>
           <%= link_to upcoming_toggle_like_path(@upcoming.id), onclick: "sendClickButton('upcomingLike');", remote: true do %>
-              <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: @like_true ? "_display-none _upcoming-like-icon-m" : "_upcoming-like-icon-m" %>
-              <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: @like_true ? "_upcoming-like-icon-m" : "_display-none _upcoming-like-icon-m" %>
+              <%= image_tag "icon_hand_empty", id: "icon-hand-empty", class: "_upcoming-like-icon-m #{@like_true ? '_display-none' : ''}" %>
+              <%= image_tag "icon_hand_filled", id: "icon-hand-filled", class: "_upcoming-like-icon-m #{@like_true ? '' : '_display-none'}" %>
           <% end %>
         </div>
       </div>
@@ -75,8 +75,8 @@
     <%= link_to "", remote: true, id: "video-like-button", class: "_flex-grow-1
     _hcenter-positioner _vcenter-positioner #{@has_main_video ? "_display-none" : ""}" do %>
         <div class="_show-icon-m show-like">
-          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m" %>
-          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_display-none _show-icon-m" %>
+          <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon-m #{@like_true ? '_display_none' : ''}" %>
+          <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_show-icon-m #{@like_true ? '' : '_display_none'}" %>
         </div>
         <p class="_fs-1-mobile _white _icon-text-margin-m">좋아요</p>
     <% end %>
