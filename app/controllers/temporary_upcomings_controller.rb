@@ -1,6 +1,11 @@
 class TemporaryUpcomingsController < ApplicationController
   before_action :is_admin, except: [:create]
 
+  def destroy_all
+    TemporaryUpcoming.destroy_all
+    redirect_back(fallback_location: root_path)
+  end
+
   def create
     title = params[:title]
     place = params[:place]
@@ -31,7 +36,8 @@ class TemporaryUpcomingsController < ApplicationController
     end
 
     tu = TemporaryUpcoming.new(title: title, place: place, start_date: start_date, end_date: end_date,
-    image_url: image_url, provider: provider, ticket_url: ticket_url, artist_info: artist_info)
+      provider: provider, ticket_url: ticket_url, artist_info: artist_info)
+    tu.remote_image_url_url = image_url if image_url
     if tu.save
       render status: 201, json: {success: true, msg: "Success"}
     else

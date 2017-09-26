@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'toggle_like'
   end
 
+  delete 'temporary_upcomings/destroy_all'
   resources :temporary_upcomings, only: [:update, :destroy]
   post 'temporary_upcomings/:id/merge' => 'temporary_upcomings#merge'
 
