@@ -1,10 +1,10 @@
 class Upcoming < ApplicationRecord
   searchkick callbacks: :async, word_middle: [:artists_names, :title, :place]
-  has_many :upcoming_artists
+  has_many :upcoming_artists, dependent: :destroy
   has_many :artists, through: :upcoming_artists
-  has_many :upcoming_likes
-  has_many :upcoming_comments
-  has_many :upcoming_ticket_urls
+  has_many :upcoming_likes, dependent: :destroy
+  has_many :upcoming_comments, dependent: :destroy
+  has_many :upcoming_ticket_urls, dependent: :destroy
   mount_uploader :image_url, S3Uploader
 
   # merge related model fields for searchkick indexing
