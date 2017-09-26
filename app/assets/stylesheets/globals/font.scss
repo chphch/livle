@@ -3,10 +3,10 @@
 
 @font-face {
   font-family: 'TmonMonsori';
-  src: url('TmonMonsori.eot');
-  src: url('TmonMonsori.eot?#iefix') format('embedded-opentype'),
-  url('TmonMonsori.ttf') format('truetype'),
-  url('TmonMonsori.otf') format('opentype');
+  src: font-url('TmonMonsori.eot');
+  src: font-url('TmonMonsori.eot?#iefix') format('embedded-opentype'),
+  font-url('TmonMonsori.ttf') format('truetype'),
+  font-url('TmonMonsori.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
