@@ -34,6 +34,13 @@ class ConnectUrlsController < ApplicationController
     end
   end
 
+  def merge #move to feed
+    connect = ConnectUrl.find(params[:id])
+    new_feed = Feed.new
+    new_feed.user = connect.user
+
+  end
+
   def destroy
 
   end
@@ -42,6 +49,4 @@ class ConnectUrlsController < ApplicationController
   def connect_url_params
     params.require(:connect_url).permit(:video_url, :describe)
   end
-
-
 end

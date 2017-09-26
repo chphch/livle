@@ -93,8 +93,8 @@
           <%= link_to "", id: "video-like-button", remote: true, class: "_vcenter-positioner _show-button-padding
           #{@has_main_video ? "_display-none" : ""}" do %>
               <div class="show-like">
-                <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon #{@like_true ? '_display_none' : ''}" %>
-                <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_show-icon #{@like_true ? '' : '_display_none'}" %>
+                <%= image_tag "icon_like_empty", id: "icon-like-empty", class: "_show-icon #{@like_true ? '_display-none' : ''}" %>
+                <%= image_tag "icon_like_filled", id: "icon-like-filled", class: "_show-icon #{@like_true ? '' : '_display-none'}" %>
               </div>
               <p class="_fs-4 _white">좋아요</p>
           <% end %>

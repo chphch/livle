@@ -1,1 +1,39 @@
 <%= render partial: "side_navbar_desktop" %>
+
+<div class="admin-desktop-container">
+  <p class="_fs-1 _white">Connect</p>
+  <table>
+    <tr>
+      <th>
+        <p class="_fs-2 _light-gray">Video</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">User</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">Content</p>
+      </th>
+    </tr>
+
+    <% @connects.each do |connect| %>
+        <% video_id = get_youtube_video_id(connect.video_url) %>
+        <tr>
+          <th>
+            <!-- Youtube Video Player -->
+            <iframe type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+        autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+                    webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+          </th>
+          <th>
+            <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
+          </th>
+          <th>
+            <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
+          </th>
+          <th>
+
+          </th>
+        </tr>
+    <% end %>
+  </table>
+</div>
