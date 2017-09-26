@@ -150,11 +150,6 @@
     top: 30rem; left: 2rem;
     @include transform(rotate(270deg));
   }
-  @media (max-width: $desktop) {
-    .collab-conatiner {
-      top: 26rem;
-    }
-  }
   .ticket-container {
     position: relative;
     @include flex-grow(0.9);
@@ -199,11 +194,20 @@
   .poster-container {
     position: relative;
     @include flex-grow(0.1);
-    height: 100%;
     padding: 0 0 0 4%;
     .poster-img {
       opacity: 0;
-      @include size(auto, 100%);
+      @include size(18rem, auto);
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: $desktop) {
+    .card-container {
+      padding: 1rem 0;
+    }
+    .collab-conatiner {
+      top: 26rem;
     }
   }
 }
