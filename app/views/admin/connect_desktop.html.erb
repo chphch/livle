@@ -50,7 +50,7 @@
               </td>
           <% end %>
           <td>
-            <%= link_to connect_url_path(connect.id), method: :destroy do %>
+            <%= link_to connect_url_path(connect.id), method: :delete do %>
                 <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
           </td>
@@ -111,7 +111,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to connect_url_path(connect.id), method: :destroy do %>
+            <%= link_to connect_url_path(connect.id), method: :delete do %>
                 <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
           </td>

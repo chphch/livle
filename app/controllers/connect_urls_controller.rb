@@ -61,7 +61,10 @@ class ConnectUrlsController < ApplicationController
 
   def destroy #for Admin
     connect = ConnectUrl.find(params[:id])
-    if connect.feed.destroy && connect.destroy
+    if connect.destroy
+      if connect.feed
+        connect.feed.destroy
+      end
       redirect_back(fallback_location: root_path)
     else
       render text: "Connect를 삭제하는데 실패했습니다."
