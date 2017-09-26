@@ -2,26 +2,26 @@
 <%= render partial: "side_navbar_desktop" %>
 
 <div class="admin-desktop-container">
-  <p class="black-desktop-title">Artist Lists</p>
+  <p class="_fs-1 _white">Artist Lists</p>
   <table>
     <tr>
       <th>
-        <p class="black-desktop-content">index</p>
+        <p class="_fs-2 _light-gray">index</p>
       </th>
       <th>
-        <p class="black-desktop-content">Profile Image</p>
+        <p class="_fs-2 _light-gray">Profile Image</p>
       </th>
       <th>
-        <p class="black-desktop-content">Name</p>
+        <p class="_fs-2 _light-gray">Name</p>
       </th>
       <th>
-        <p class="black-desktop-content">On Feeds</p>
+        <p class="_fs-2 _light-gray">On Feeds</p>
       </th>
       <th>
-        <p class="black-desktop-content">On Curations</p>
+        <p class="_fs-2 _light-gray">On Curations</p>
       </th>
       <th>
-        <p class="black-desktop-content">On Upcomings</p>
+        <p class="_fs-2 _light-gray">On Upcomings</p>
       </th>
       <th>
       </th>
@@ -30,26 +30,26 @@
     <% @artists.each do |artist| %>
       <tr>
         <td>
-          <p class="black-desktop-content"><%= artist.id %></p>
+          <p class="_fs-3 _light-gray"><%= artist.id %></p>
         </td>
         <%= form_for artist, method: :patch, multipart: true do |f| %>
           <td>
             <label for="profile<%= artist.id %>">
-              <%=image_tag artist.image_url, style: "width: 100px; height: 100px"%>
-              <%=f.file_field :image_url %>
+              <%= image_tag artist.image_url, style: "width: 100px; height: 100px"%>
+              <%= f.file_field :image_url %>
             </label>
           </td>
           <td>
             <%=f.text_field :name %>
           </td>
           <td>
-            <p class="black-desktop-content"><%= artist.feeds.where(is_curation: false).size %></p>
+            <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: false).size %></p>
           </td>
           <td>
-            <p class="black-desktop-content"><%= artist.feeds.where(is_curation: true).size %></p>
+            <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: true).size %></p>
           </td>
           <td>
-            <p class="black-desktop-content"><%= artist.upcomings.size %></p>
+            <p class="_fs-3 _light-gray"><%= artist.upcomings.size %></p>
           </td>
           <td>
             <!-- TODO: 뭐 넣을지 생각해보기 -->
