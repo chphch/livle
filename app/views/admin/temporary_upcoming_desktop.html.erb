@@ -2,11 +2,15 @@
 <%= render partial: "side_navbar_desktop" %>
 
 <div class="admin-desktop-container">
+  <%=link_to '/temporary_upcomings/destroy_all', method: :delete, data: {confirm: '정말 삭제하시겠습니까?'} do %>전부 삭제<% end %>
   <p class="black-desktop-title">Upcoming Lists</p>
   <table>
     <tr>
       <td>
         <p class="black-desktop-content">index</p>
+      </td>
+      <td>
+        <p class="black-desktop-content">대표 이미지</p>
       </td>
       <td>
         <p class="black-desktop-content">Title</p>
@@ -22,9 +26,6 @@
       </td>
       <td>
         <p class="black-desktop-content">Artists</p>
-      </td>
-      <td>
-        <p class="black-desktop-content">대표 이미지</p>
       </td>
       <td>
         <p class="black-desktop-content">Ticket Provider</p>
@@ -45,7 +46,14 @@
         <td>
             <p class="black-desktop-content"><%= temp_upcoming.id %></p>
         </td>
-          <%= form_for temp_upcoming, method: :patch do |f| %>
+          <%= form_for temp_upcoming, method: :patch, multipart: true do |f| %>
+            <td>
+              <p class="black-desktop-content">
+              <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
+              <%=f.file_field :image_url %>
+              <%=f.hidden_field :remote_image_url_url %>
+              </p>
+            </td>
             <td>
               <p class="black-desktop-content">
               <%= f.text_field :title %>
@@ -68,13 +76,7 @@
             </td>
             <td>
               <p class="black-desktop-content">
-              <%=temp_upcoming.artist_info%>
-              </p>
-            </td>
-            <td>
-              <p class="black-desktop-content">
-              <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
-              <%=f.file_field :image_url %>
+              <%=f.text_field :artist_info%>
               </p>
             </td>
             <td>
