@@ -1,5 +1,5 @@
 <% if @like_true %>
-  sendClickButton('upcomingLike');
+  sendClickButton(<%= @like_type == 'like' ? 'like' : 'upcomingLike' %>);
 <% end %>
 
 <%= render file: 'xhrs/sync_like.js.erb' %>
