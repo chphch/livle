@@ -1,7 +1,7 @@
 <div id="mypage-edit-profile" class="_desktop-modal _column-positioner _hcenter-positioner">
   <%= render partial: "partial_views/dismiss_modal_button" %>
   <div class="_text-center">
-    <p class="_fs-1 _dark-dark-gray _f-letter _f-family-tmon">프로필 변경하기</p>
+    <p class="_fs-1 _dark-gray _f-letter _f-family-tmon">프로필 변경하기</p>
   </div>
   <%= form_for @user, url: mypage_update_profile_path, html: {multipart: true, remote: true, id: "update-profile"} do |f| %>
       <div class="edit-profile-container _column-positioner _vcenter-positioner _no-p-margin">
