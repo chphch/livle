@@ -193,7 +193,7 @@ namespace :livle_db do
     Artist.create(name: 'Zedd', alternative_name: 'Zedd')
   end
 
-  desc 'feed official data insertion : should link with artist data'
+  desc 'feed official data insertion : should type title & link with artist data'
   task feed_officials: :environment do
     # Facebook Data
     Feed.create(user_id: 6, is_curation: true, youtube_url: 'https://youtu.be/u4r1dfmc3sQ', content: '조회수 1위 5,889,178 (네이버 tv 캐스트 12/29 기준)
