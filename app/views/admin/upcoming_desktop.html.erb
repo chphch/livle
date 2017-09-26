@@ -9,6 +9,9 @@
         <p class="black-desktop-content">index</p>
       </td>
       <td>
+        <p class="black-desktop-content">포스터</p>
+      </td>
+      <td>
         <p class="black-desktop-content">Title</p>
       </td>
       <td>
@@ -42,6 +45,12 @@
             <p class="black-desktop-content"><%= upcoming.id %></p>
         </td>
           <%= form_for upcoming, method: :patch do |f| %>
+            <td>
+              <p class="black-desktop-content">
+              <%=image_tag upcoming.image_url, style: "width: 100px; height: 100px"%>
+              <%=f.file_field :image_url %>
+              </p>
+            </td>
             <td>
               <p class="black-desktop-content">
               <%= f.text_field :title %>
@@ -105,7 +114,7 @@
           <% end %>
           <td>
             <%= link_to upcoming_path(upcoming.id), method: :delete do %>
-              <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
+              <button type="button" class="btn btn-outline-primary">삭제</button>
             <% end %>
             <!-- Nested form이 불가능해서 여기다 빼놓음 -->
             <%= form_tag upcoming_upcoming_artists_path(upcoming.id), data: { id: upcoming.id }, method: :post do %>

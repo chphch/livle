@@ -46,20 +46,27 @@ class TemporaryUpcomingsController < ApplicationController
   end
 
   def update
+    tu = TemporaryUpcoming.find(params[:id])
     uc = Upcoming.new
     uc.title = params[:temporary_upcoming][:title]
     uc.place = params[:temporary_upcoming][:place]
     uc.start_date = params[:temporary_upcoming][:start_date]
     uc.end_date = params[:temporary_upcoming][:end_date]
-    uc.image_url = params[:temporary_upcoming][:image_url]
+    image = params[:temporary_upcoming][:image_url]
+    uc.image_url = image ? image : tu.image_url
     if uc.save
+      if params[:temporary_upcoming][:artist_info]
+        params[:temporary_upcoming][:artist_info].split(',').each do |artist_name|
+          if Artist.exists?(name: artist_name)
+            UpcomingArtist.create(artist_id: Artist.where(name: artist_name).take.id, upcoming_id: uc.id)
+          end
+        end
+      end
       ticket = UpcomingTicketUrl.new
       ticket.upcoming_id = uc.id
       ticket.provider = params[:temporary_upcoming][:provider]
       ticket.ticket_url = params[:temporary_upcoming][:ticket_url]
-      if ticket.save
-        tu = TemporaryUpcoming.find(params[:id])
-        tu.destroy
+      if ticket.save && tu.destroy
         redirect_back(fallback_location: root_path)
       else
         render text: "TicketUrl을 연결하는 데 실패했습니다."
