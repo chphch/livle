@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'thumbnail/:youtube_id' => 'application#thumbnail'
 
-  resources :artists, only: [:index, :create, :show, :update, :destroy]
+  resources :artists, only: [:new, :index, :create, :show, :update, :destroy]
 
   resources :feeds do
     resources :feed_comments, only: [:create, :update, :destroy], shallow: true

@@ -1,5 +1,19 @@
 class ArtistsController < ApplicationController
-  before_action :is_admin, only: [:update, :destroy]
+  before_action :is_admin, except: [:autocomplete]
+
+  def new
+    @artist = Artist.new
+    render 'admin/artist_new_desktop'
+  end
+
+  def create
+    @artist = Artist.new(image_url: params[:artist][:image_url], name: params[:artist][:name])
+    if @artist.save
+      redirect_to '/admin/artist'
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   def update
     @artist = Artist.find(params[:id])
