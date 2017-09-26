@@ -3,10 +3,12 @@
     <div class="_small-modal-title _text-center _no-p-margin">
       <p class="_fs-1-mobile _black">티켓 바로가기</p>
     </div>
-    <% @upcoming.upcoming_ticket_urls.each do |ticket| %>
-        <hr style="width: 96%">
-        <%= link_to ticket.ticket_url, target: :_blank, class: "ticket-button-m _vcenter-positioner _hcenter-positioner" do %>
-            <%= image_tag "logo_#{ticket.provider}", class: "ticket-logo-m" %>
+    <% upcoming.upcoming_ticket_urls.each do |ticket| %>
+        <% if ticket.provider != nil %>
+            <hr style="width: 96%">
+            <%= link_to ticket.ticket_url, target: :_blank, class: "ticket-button-m _vcenter-positioner _hcenter-positioner" do %>
+                <%= image_tag "logo_#{ticket.provider}", class: "ticket-logo-m" %>
+            <% end %>
         <% end %>
     <% end %>
   </div>

@@ -209,11 +209,9 @@
 
   .selector-container {
     @include size(45%, auto);
+    @include cursor-pointer;
     .button-container {
       @include size(50%, 6rem);
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
   .selector-bar-container {

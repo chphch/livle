@@ -286,6 +286,7 @@ body {
   position: relative;
   height: 120rem;
   margin: 0 8rem;
+  z-index: 9999;
   background: $black-opacity;
   border-radius: 6rem;
   overflow: hidden;
@@ -294,6 +295,7 @@ body {
 ._small-modal {
   position: absolute;
   @include position(0);
+  z-index: 9999;
   margin: 30em 8rem;
   background: none;
   border-radius: 6rem;
@@ -408,10 +410,8 @@ body {
 
   &:hover {
     ._comment-edit-container {
+      @include cursor-pointer;
       display: block;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
 }
@@ -424,15 +424,26 @@ body {
   }
 }
 
+._modal-dismiss-container {
+  position: absolute;
+  top: 0; right: 0;
+  padding: 1rem;
+  .dismiss-icon {
+    @include size(auto, 1.5rem);
+  }
+  @include cursor-pointer;
+}
+
 //modals
 ._desktop-modal {
+  position: relative;
   width: 32rem;
   min-height: 36rem;
   max-height: 52rem;
   background: $white;
   padding: 2rem;
   @include border-radius($br-min);
-  z-index: $z-most-important;
+  z-index: 9999;
   .modal-icon {
     @include size(auto, 8rem);
     margin: 0 0 4rem;
@@ -461,9 +472,10 @@ body {
 }
 
 ._desktop-small-modal {
+  position: relative;
   min-width: 8rem; height: auto;
   background: $white;
   padding: 1rem;
+  z-index: 9999;
   @include border-radius($br-min);
-  z-index: $z-most-important;
 }

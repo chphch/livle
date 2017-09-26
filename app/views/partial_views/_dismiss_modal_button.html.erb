@@ -1,0 +1,8 @@
+<div class="_modal-dismiss-container">
+  <%= image_tag "icon_close", class: "dismiss-icon" %>
+</div>
+<script>
+  $('._modal-dismiss-container').on('click', function () {
+    $('._desktop-modal, ._desktop-small-modal').remove();
+  });
+</script>

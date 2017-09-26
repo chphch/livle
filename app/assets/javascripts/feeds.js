@@ -35,7 +35,7 @@ document.addEventListener("turbolinks:load", function(event) {
         if ($('#infinite-scrolling').length > 0) {
             var more_contents_url = $('.pagination a.next_page').attr('href');
             if (!isLoading && more_contents_url &&
-                    $this.scrollLeft() + $('._desktop-container').width() > $this[0].scrollWidth - $cardWidth*3) {
+                $this.scrollLeft() + $('._desktop-container').width() > $this[0].scrollWidth - $cardWidth*3) {
                 sendScrollEvent($(location), more_contents_url);
                 isLoading = true;
                 $.getScript(more_contents_url).done(function (data,textStatus,jqxhr) {
@@ -62,13 +62,18 @@ function scrollMove(click) {
     }, {
         duration: 350,
         complete: function () {
-            scrolling();
+            // scrolling();
+            if ($this.scrollLeft() > 0) {
+                $('.prev-button, .prev-filter').show();
+            } else {
+                $('.prev-button, .prev-filter').hide();
+            }
         }
     });
 }
 
 function scrolling() {
-    // console.log("cur pos: "+ $this.scrollLeft());
+    console.log("cur pos: "+ $this.scrollLeft());
     if ($this.scrollLeft() > 0) {
         $('.prev-button, .prev-filter').show();
     } else {
