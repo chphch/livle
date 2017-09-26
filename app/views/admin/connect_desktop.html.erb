@@ -32,7 +32,7 @@
                     webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
           </td>
           <td>
-            <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
+            <p class="_fs-3 _light-gray"><%= connect.user.nickname if defined?(connect.user.nickname) %></p>
           </td>
           <td>
             <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
@@ -46,7 +46,7 @@
                 <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
               </td>
               <td>
-                <%= submit_tag '합치기' %>
+                <%= submit_tag '확인' %>
               </td>
           <% end %>
           <td>
@@ -102,7 +102,7 @@
                 <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
               </td>
               <td>
-                <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
+                <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
               </td>
           <% end %>
           <td>

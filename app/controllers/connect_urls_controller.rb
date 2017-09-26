@@ -34,7 +34,7 @@ class ConnectUrlsController < ApplicationController
     end
   end
 
-  def merge #move to feed
+  def merge #for Admin
     connect = ConnectUrl.find(params[:id])
     new_feed = Feed.new
     new_feed_artist = FeedArtist.new
@@ -44,15 +44,28 @@ class ConnectUrlsController < ApplicationController
     new_feed.content = connect.describe
     new_feed.title = params[:feed_title]
     new_feed_artist.feed = new_feed
-    # new_feed_artist.artist = Artist.find_by(name: params[:feed_artist])
+    new_feed_artist.artist = Artist.find_by(name: params[:feed_artist])
 
-    if new_feed.save && new_feed_artist.save
-      connect.update(feed: new_feed, is_confirmed: true)
+    if new_feed.save
+      if new_feed_artist.artist
+        new_feed_artist.save
+        connect.update(feed: new_feed, is_confirmed: true)
+        redirect_back(fallback_location: root_path)
+      else
+        render text: "해당 이름을 가진 Artist를 찾지 못했습니다."
+      end
+    else
+      render text: "Feed로 보내는데 실패했습니다."
     end
   end
 
-  def destroy
-
+  def destroy #for Admin
+    connect = ConnectUrl.find(params[:id])
+    if connect.feed.destroy && connect.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      render text: "Connect를 삭제하는데 실패했습니다."
+    end
   end
 
   private
