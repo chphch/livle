@@ -44,7 +44,7 @@ class ConnectUrlsController < ApplicationController
     new_feed.content = connect.describe
     new_feed.title = params[:feed_title]
     new_feed_artist.feed = new_feed
-    new_feed_artist.artist = Artist.find_by(name: params[:feed_artist])
+    # new_feed_artist.artist = Artist.find_by(name: params[:feed_artist])
 
     if new_feed.save && new_feed_artist.save
       connect.update(feed: new_feed, is_confirmed: true)
