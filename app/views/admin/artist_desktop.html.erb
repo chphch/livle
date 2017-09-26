@@ -1,6 +1,7 @@
 <!-- Side Navbar -->
 <%= render partial: "side_navbar_desktop" %>
 
+<%=link_to new_artist_path do %>새 아티스트 추가<% end %>
 <div class="admin-desktop-container">
   <p class="_fs-1 _white">Artist Lists</p>
   <table>
@@ -60,7 +61,7 @@
           <% end %>
         <td>
           <%= link_to artist_path(artist.id), method: :delete do %>
-            <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
+            <button type="button" class="btn btn-outline-primary">삭제</button>
           <% end %>
         </td>
       </tr>
