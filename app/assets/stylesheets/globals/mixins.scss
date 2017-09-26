@@ -83,6 +83,7 @@
   @each $prefix in -ms-, -moz-, -webkit-, null {
     #{$prefix}flex-grow: $size;
   }
+  -ms-flex-positive: $size;
 }
 
 @mixin flex-wrap {
