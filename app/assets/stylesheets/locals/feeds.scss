@@ -83,9 +83,7 @@
 
   .official-button {
     @include size(5rem, 100%);
-    &:hover {
-      cursor: pointer;
-    }
+    @include cursor-pointer;
   }
 
   .show-button {
@@ -133,9 +131,7 @@
 
   .scroll-button {
     @include size(6rem, 100%);
-    &:hover {
-      cursor: pointer;
-    }
+    @include cursor-pointer;
   }
 
   .arrow-button {

@@ -1,4 +1,5 @@
 <div class="_desktop-modal _column-positioner _hcenter-positioner _vcenter-positioner">
+  <%= render partial: "partial_views/dismiss_modal_button" %>
   <%= image_tag "icon_qna_black", class: "modal-icon" %>
   <% if defined?(message) %>
       <%= raw_text message, "_fs-2 _black _text-center" %>

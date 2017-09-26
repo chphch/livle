@@ -10,9 +10,9 @@ document.addEventListener("turbolinks:load", function() {
 function upcomingScrollMove(click) {
     var dir = click === 'left' ? '-=' : '+=';
 
-    $cardWidth = $('.scroll-target').find('.line-up-card').width();
+    $target = $('.scroll-target');
+    $cardWidth = $target.find('.line-up-card').width();
     $scroll = dir + ($cardWidth * 3);
-    console.log('scroll: ' + $scroll);
 
     $('.scroll-target').stop().animate({
         'scrollLeft': $scroll
@@ -25,9 +25,15 @@ function upcomingScrollMove(click) {
 }
 
 function scrolling() {
-    if ($('.scroll-target').scrollLeft() > 0) {
+    if ($target.scrollLeft() > 0)
         $('.prev-filter').show();
-    } else {
+    else
         $('.prev-filter').hide();
-    }
+
+    currentScrollRight = parseFloat($target.scrollLeft())+parseFloat($target.width());
+    targetScrollRight = $target[0].scrollWidth - $cardWidth/3;
+    if (currentScrollRight >= targetScrollRight)
+        $('.next-filter').hide();
+    else
+        $('.next-filter').show();
 }
