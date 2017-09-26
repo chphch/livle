@@ -2,6 +2,7 @@
 
 <div class="admin-desktop-container">
   <p class="_fs-1 _white">Connect</p>
+  <p class="_fs-1 _white">Not Confirmed</p>
   <table>
     <tr>
       <th>
@@ -11,28 +12,105 @@
         <p class="_fs-2 _light-gray">User</p>
       </th>
       <th>
-        <p class="_fs-2 _light-gray">Content</p>
+        <p class="_fs-2 _light-gray">내용</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">제목</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">아티스트</p>
       </th>
     </tr>
 
-    <% @connects.each do |connect| %>
+    <% @connects.where("is_confirmed = ?", false).each do |connect| %>
         <% video_id = get_youtube_video_id(connect.video_url) %>
         <tr>
-          <th>
+          <td>
             <!-- Youtube Video Player -->
             <iframe type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
         autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
                     webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-          </th>
-          <th>
+          </td>
+          <td>
             <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
-          </th>
-          <th>
+          </td>
+          <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
+              <td>
+                <%= text_field_tag 'feed_title', nil, placeholder: '제목', class: "_black" %>
+              </td>
+              <td>
+                <!-- TODO: 아티스트 자동완성기능 필요! -->
+                <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
+              </td>
+              <td>
+                <%= submit_tag '합치기' %>
+              </td>
+          <% end %>
+          <td>
+            <%= link_to connect_url_path(connect.id), method: :destroy do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
 
-          </th>
+  <p class="_fs-1 _white">Confirmed</p>
+  <table>
+    <tr>
+      <th>
+        <p class="_fs-2 _light-gray">Video</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">User</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">내용</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">제목</p>
+      </th>
+      <th>
+        <p class="_fs-2 _light-gray">아티스트</p>
+      </th>
+    </tr>
+
+    <% @connects.where("is_confirmed = ?", true).each do |connect| %>
+        <% video_id = get_youtube_video_id(connect.video_url) %>
+        <tr>
+          <td>
+            <!-- Youtube Video Player -->
+            <iframe type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+        autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+                    webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+          </td>
+          <td>
+            <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
+          </td>
+          <td>
+            <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
+          </td>
+          <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
+              <td>
+                <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
+              </td>
+              <td>
+                <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
+              </td>
+          <% end %>
+          <td>
+            <%= link_to feed_path(connect.feed.id) do %>
+                <button type="button" class="btn btn-outline-primary">바로가기</button>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to connect_url_path(connect.id), method: :destroy do %>
+                <button type="button" class="btn btn-outline-primary">삭제</button>
+            <% end %>
+          </td>
         </tr>
     <% end %>
   </table>

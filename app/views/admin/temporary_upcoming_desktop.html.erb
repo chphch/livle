@@ -92,9 +92,9 @@
             </td>
           <% end %>
           <td>
-            <%=form_tag "/temporary_upcomings/#{temp_upcoming.id}/merge" do %>
-              <%=text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'Upcoming의 Id' %>
-              <%=submit_tag '합치기' %>
+            <%= form_tag "/temporary_upcomings/#{temp_upcoming.id}/merge" do %>
+              <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'Upcoming의 Id' %>
+              <%= submit_tag '합치기' %>
           <% end %>
           </td>
           <td>
