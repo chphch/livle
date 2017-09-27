@@ -1,5 +1,5 @@
 <div id="upcoming-ticket-card">
-  <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-<%=upcoming.id%>" class="ticket-item">
+  <div id="ticket-<%=upcoming.id%>" class="ticket-item">
     <div class="card-container _vcenter-positioner _no-p-margin">
       <!-- collab text conatiner -->
       <div class="collab-conatiner _vcenter-positioner">
@@ -61,6 +61,10 @@
   </div>
   <script>
       $cur = $('#ticket-<%= upcoming.id %>');
+      $cur.on('click', function () {
+         window.location = "<%= upcoming_url(upcoming.id) %>";
+      });
+
       <% if upcoming.main_video %>
       $cur.mouseenter(function () {
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').hide();

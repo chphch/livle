@@ -9,16 +9,3 @@
     </div>
   </div>
 </div>
-
-<script>
-$(".ticket-item").on("click", function(event){
-  if(!$(event.target).hasClass('upcoming-icon')) {
-    window.location = $(this).data('location');
-  }
-});
-$(".upcoming-icon").on('click', function(e) {
-  $(this).attr('src',
-  ($(this).hasClass('filled') ? '<%=image_path "icon_hand_empty"%>' : '<%=image_path "icon_hand_filled"%>') );
-  $(this).toggleClass('filled');
-});
-</script>
