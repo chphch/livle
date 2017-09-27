@@ -4,17 +4,17 @@
       <!-- profile, upcoming -->
       <div class="left-group">
         <div class="edit-profile-container _column-positioner _vcenter-positioner _hcenter-positioner">
-          <div class="profile-box _vcenter-positioner _hcenter-positioner">
+          <div class="profile-box _column-positioner _vcenter-positioner _hcenter-positioner">
             <%= link_to mypage_edit_profile_path, remote: true do %>
                 <div class="profile-container _profile-border-green">
                   <%= image_tag user_signed_in? ? current_user.profile_img : "image_profile" ,
                                 class: "_profile-img" %>
                 </div>
-                <div class="_vcenter-positioner _hcenter-positioner _no-p-margin">
-                  <%= image_tag "icon_crown", class: "mypage-icon", style: "margin-top: -0.6rem" %>
-                  <p class="_fs-3 _f-family-tmon _white _white-space-nowrap"><%= current_user.nickname %></p>
-                </div>
             <% end %>
+            <div class="_vcenter-positioner _hcenter-positioner _no-p-margin">
+              <%= image_tag "icon_crown", class: "mypage-icon", style: "margin-top: -0.6rem" %>
+              <p class="_fs-3 _f-family-tmon _white _white-space-nowrap"><%= current_user.nickname %></p>
+            </div>
           </div>
           <div class="_flex-grow-1 _column-positioner _vcenter-positioner _hcenter-positioner">
             <p class="_fs-5 _white _white-space-nowrap"><%= current_user.email.size != 0 ? current_user.email : "contact@livle.co.kr" %></p>
@@ -40,7 +40,7 @@
                   <%= link_to upcoming_path(like.upcoming.id) do %>
                       <div class="list-text-container _vcenter-positioner">
                         <p class="_flex-grow-1 _fs-4 _white"><%= like.upcoming.title %></p>
-                        <p class="_fs-2 _white _f-letter">
+                        <p class="_fs-2 _white _f-letter _whi">
                           D<%= like.upcoming.d_day %>
                         </p>
                       </div>

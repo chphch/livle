@@ -1,7 +1,11 @@
 <div class="_share-modal _desktop-small-modal" id="share-modal">
   <p class="_fs-3 _black" id="modal-msg">공유하기</p>
   <div class="social-share-button _vcenter-positioner" data-title="<%=post.title%>" data-id="<%=post.id%>" data-url="<%=request.original_url%>">
-    <a class="ssb-icon ssb-facebook" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)"></a>
-    <a class="ssb-icon ssb-twitter" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)"></a>
+    <div class="ssb-container">
+      <a class="ssb-icon ssb-facebook" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)"></a>
+    </div>
+    <div class="ssb-container">
+      <a class="ssb-icon ssb-twitter" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)"></a>
+    </div>
   </div>
 </div>
