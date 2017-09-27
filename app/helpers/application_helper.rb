@@ -50,13 +50,12 @@ module ApplicationHelper
   end
 
   def thumbnail_tag(youtube_url, options = {})
-    video_id = get_youtube_video_id(youtube_url)
     # TODO : youtube-thumbnail 클래스에 인라인 스타일 옮기기
     return "<div
     class='youtube-thumbnail #{options[:class] if options[:class]}
-    #{'loaded' if video_id.length == 0}'
+    #{'loaded' if youtube_url.length == 0}'
     #{'id = ' + options[:id] if options[:id]}
-    data-youtube-id='#{video_id}'
+    data-youtube-id='#{youtube_url}'
      style='
     width: 100%;
     height: 0;
