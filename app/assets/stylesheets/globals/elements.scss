@@ -209,11 +209,10 @@ a:hover {
 
 //social button icon size
 .social-share-button {
-  .ssb-icon-m {
+  .ssb-container-m {
     $icon-size: 12rem;
-    background-size: $icon-size !important;
-    @include size($icon-size !important);
-    margin: 0 2rem;
+    @include size($icon-size);
+    margin: 0 4rem;
   }
 }
 //button
@@ -380,11 +379,15 @@ a:hover {
 //social button icon size
 .social-share-button {
   padding: 1rem 0;
-  .ssb-icon {
+  .ssb-container {
     $icon-size: 4rem;
-    background-size: $icon-size !important;
-    @include size($icon-size !important);
+    @include size($icon-size);
     margin: 0 1rem;
+  }
+
+  .ssb-icon {
+    background-size: 100% !important;
+    @include size(100% !important);
     @include cursor-pointer;
   }
 }

@@ -4,10 +4,12 @@
       <%= image_tag "icon_qna_black", class: "_modal-big-icon-m" %>
       <p class="_fs-4-mobile _black _f-letter-mobile" id="modal-msg">공유하기</p>
     </div>
-    <div class="_hcenter-positioner">
-      <div class="social-share-button" data-title="<%=post.title%>" data-id="<%=post.id%>" data-url="<%=request.original_url%>">
-        <a class="ssb-icon-m ssb-facebook" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)"></a>
-        <a class="ssb-icon-m ssb-twitter" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)"></a>
+    <div class="social-share-button _hcenter-positioner" data-title="<%=post.title%>" data-id="<%=post.id%>" data-url="<%=request.original_url%>">
+      <div class="ssb-container-m">
+        <a class="ssb-icon ssb-facebook" rel="nofollow" data-site="facebook" onclick="shareOnFacebook(this)"></a>
+      </div>
+      <div class="ssb-container-m">
+        <a class="ssb-icon ssb-twitter" rel="nofollow" data-site="twitter" onclick="shareOnTwitter(this)"></a>
       </div>
     </div>
   </div>
