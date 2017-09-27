@@ -1,12 +1,14 @@
 <div id="upcoming-ticket-card">
-  <div data-location="<%=upcoming_path(upcoming.id)%>" id="ticket-<%=upcoming.id%>" class="ticket-item">
+  <div id="ticket-<%=upcoming.id%>" class="ticket-item">
     <div class="card-container _vcenter-positioner _no-p-margin">
       <!-- collab text conatiner -->
-      <div class="collab-conatiner _vcenter-positioner">
-        <p class="_fs-title _white _f-family-tmon _white-space-nowrap">
-          <%= "라이블 X #{upcoming.title}" if upcoming.upcoming_ticket_urls.find_by(provider: 1) != nil %>
-        </p>
-      </div>
+      <% if upcoming.upcoming_ticket_urls.find_by(provider: 1) %>
+          <div class="collab-conatiner _vcenter-positioner">
+            <p class="_fs-title _white _f-family-tmon _white-space-nowrap">
+              <%= "라이블 X #{upcoming.title}" %>
+            </p>
+          </div>
+      <% end %>
       <!-- ticket container with background -->
       <div class="ticket-container _vcenter-positioner">
         <%= image_tag "background_ticket", class: "ticket-img" %>
@@ -61,6 +63,10 @@
   </div>
   <script>
       $cur = $('#ticket-<%= upcoming.id %>');
+      $cur.on('click', function () {
+          window.location = "<%= upcoming_url(upcoming.id) %>";
+      });
+
       <% if upcoming.main_video %>
       $cur.mouseenter(function () {
           $('#ticket-<%= upcoming.id %> ._thumbnail-image-container').hide();
