@@ -4,7 +4,7 @@
 
     <%
       temp_feed = Feed.new
-      temp_feed.youtube_url = @video_url
+      temp_feed.youtube_url = get_youtube_video_id(@video_url)
     %>
     <%= render partial: '/partial_views/youtube_player_mobile', locals: { feed: temp_feed, autoplay: true, no_thumbnail_button: true } %>
 
@@ -14,7 +14,7 @@
     <% end %>
   </div>
 
-  <div class="_full-container _vcenter-positioner _hcenter-positioner">
+  <div class="_hcenter-positioner">
     <div class="connect-input-container">
       <%= form_for @connect_url, id: "connect-form", remote: true do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
