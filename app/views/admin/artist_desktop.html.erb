@@ -1,8 +1,10 @@
 <!-- Side Navbar -->
 <%= render partial: "side_navbar_desktop" %>
 
-<%=link_to new_artist_path do %>새 아티스트 추가<% end %>
 <div class="admin-desktop-container">
+  <%=link_to new_artist_path do %>
+      <p class="_fs-1 _light-green">새 아티스트 추가</p>
+  <% end %>
   <p class="_fs-1 _white">Artist Lists</p>
   <table>
     <tr>
