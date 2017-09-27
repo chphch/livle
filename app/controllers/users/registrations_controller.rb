@@ -52,7 +52,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       @title = "비밀번호 변경"
       @back_url = mypage_settings_path
-      render_by_device
+      respond_to do |format|
+        format.js {render js: "window.location='#{edit_user_registration_path}';"}
+        format.html {render_by_device}
+      end
     end
   end
 
