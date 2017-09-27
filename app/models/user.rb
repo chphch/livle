@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :email, presence: true, confirmation: true, uniqueness: true
   validates :nickname, presence: true, length: {maximum: 20}, uniqueness: true
   validates :password, presence: true, confirmation: true, on: :update_with_password
+  validates :introduce, length: {maximum: 80}
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, email: auth.info.email).first_or_create do |user|
