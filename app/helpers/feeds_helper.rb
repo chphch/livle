@@ -1,47 +1,23 @@
 module FeedsHelper
-  def content_shorten(content)
-    unless content
-      return ""
-    end
-
-    marking = '<span style="color: #dfdfdf;"> ..more</span>'
+  def crop_lines(content, single_length, max_height)
+    # content: 내용 / single_length: 한 줄에 들어가는 글자수 / max_height: 최대 줄 갯수
     lines = content.split(/\n+/)
-    if lines.size > 2
-      if lines[0].length > 38
-        m_content = lines[0][0..73] + marking
-      elsif lines[1].length > 35
-        m_content = lines[0] + "<br />" + lines[1][0..30] + marking
+    marking = '<span style="color: #dfdfdf;"> ..more</span>'
+    sum_line_height = 0
+    crop_result = ''
+
+    lines.each do |line|
+      cur_line_height = (line.length/single_length) + 1
+      if sum_line_height + cur_line_height > max_height - 1
+        crop_result +=
+            line[0..(single_length*(max_height-sum_line_height)-5)] + marking
+        break
       else
-        m_content = lines[0] + "<br />" + lines[1] + marking
+        sum_line_height += cur_line_height
+        crop_result += line + "<br />"
       end
-      return m_content
-    else
-      return content
-    end
-  end
-
-  def content_shorten_desktop(content)
-    unless content
-      return ""
     end
 
-    marking = '<span style="color: #dfdfdf;"> ..more</span>'
-    lines = content.split(/\n+/)
-
-    base_lines = lines[0] + "<br />" + lines[1] + "<br />" + lines[2]
-    if lines[0].length > 100
-      lines[0][0..195] + marking
-    elsif lines[1].length > 51
-      lines[0] + "<br />" + lines[1][0..146] + marking
-    elsif lines[2].length > 51
-      m_content = lines[0] + "<br />" + lines[1] + "<br />" +
-          lines[2][0..98] + marking
-    elsif lines[3].length > 51
-      m_content = base_lines + lines[3][0..48] + marking
-    else
-      m_content = base_lines + "<br />" + lines[3] + marking
-    end
-
-    return m_content
+    return crop_result
   end
 end

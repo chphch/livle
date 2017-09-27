@@ -31,7 +31,7 @@
             <% end %>
           </p>
           <!-- Content -->
-          <%= raw_text content_shorten(feed.content), class: "_describe-text-container-m _fs-curation-mobile
+          <%= raw_text crop_lines(feed.content, 38, 2), class: "_describe-text-container-m _fs-curation-mobile
                _light-gray _f-line-mobile" %>
         </div>
       </div>

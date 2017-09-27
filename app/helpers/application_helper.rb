@@ -68,7 +68,6 @@ module ApplicationHelper
   def raw_text(text, options = {})
     if text
       context = text.gsub(/\n/, '<br />')
-      puts "text: "+context
       result = "<p class='#{options[:class] if options[:class]}'
         id='#{options[:id] if options[:id]}'>"+context+'</p>'
       return result.html_safe
