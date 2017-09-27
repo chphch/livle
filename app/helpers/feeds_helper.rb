@@ -29,7 +29,9 @@ module FeedsHelper
     lines = content.split(/\n+/)
 
     base_lines = lines[0] + "<br />" + lines[1] + "<br />" + lines[2]
-    if lines[1].length > 51
+    if lines[0].length > 100
+      lines[0][0..195] + marking
+    elsif lines[1].length > 51
       lines[0] + "<br />" + lines[1][0..146] + marking
     elsif lines[2].length > 51
       m_content = lines[0] + "<br />" + lines[1] + "<br />" +
