@@ -282,6 +282,7 @@
 
     .edit-profile-container {
       @include size(100%, 36rem);
+
       border-top: 2px solid $white;
       padding: 2rem;
     }
@@ -355,14 +356,13 @@
   }
 
   .edit-input-group {
-    border-top: 1px solid $dark-gray;
     width: 100%;
     margin: 1rem 0;
   }
 
   .edit-input-container {
     width: 100%;
-    border-bottom: 1px solid $light-gray;
+    border-top: 1px solid $light-gray;
     padding: 1rem;
     .input-field {
       @include flex-grow(1);
@@ -371,7 +371,17 @@
       background: none;
       border: none;
     }
+    &:last-of-type {
+      border-bottom: 1px solid $light-gray;
+    }
   }
+
+  .edit-error-container {
+    width: 100%;
+    padding: .2rem 1rem;
+  }
+  #error-introduce { display: none; }
+
 
   .submit-button {
     width: 40%;

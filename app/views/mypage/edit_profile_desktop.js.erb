@@ -32,3 +32,12 @@ function updateImg(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+//input introduce length limit
+$('#user_introduce').on("change paste keyup", function () {
+    if ($(this).val().length > 78) {
+        $('#error-introduce').show();
+    } else {
+        $('#error-introduce').hide();
+    }
+});
