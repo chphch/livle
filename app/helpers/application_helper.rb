@@ -69,7 +69,7 @@ module ApplicationHelper
       context = text.gsub(/\n/, '<br />')
       result = "<p class='#{options[:class] if options[:class]}'
         id='#{options[:id] if options[:id]}'>"+context+'</p>'
-      return result.html_safe
+      result.html_safe
     end
   end
 
