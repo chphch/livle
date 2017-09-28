@@ -29,7 +29,7 @@
     </div>
     <div class="describe-container _row-positioner _no-p-margin">
       <p class="_fs-2-mobile _white"><%= @feed.title %> -&nbsp</p>
-      <p class="_fs-3-mobile _light-gray">
+      <p class="_fs-2-mobile _light-gray">
         <% @feed.artists.each_with_index do |artist, index| %>
             <% unless index == 0 %>,&nbsp<% end %>
             <%= artist.name %>

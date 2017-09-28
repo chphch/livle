@@ -1,6 +1,6 @@
 <div class="official-<%= feed_counter %> _full-container _vcenter-positioner" id="official-card" style="display: none">
   <div class="official-background _full-container">
-    <%= thumbnail_tag feed.youtube_url, class: "_thumbnail-blur-img" %>
+    <%= thumbnail_tag feed.youtube_id, class: "_thumbnail-blur-img" %>
   </div>
 
   <div class="official-filter _full-container _hcenter-positioner">
@@ -8,7 +8,7 @@
       <%= image_tag "icon_back", class: "arrow-button" %>
     </div>
 
-    <% video_id = get_youtube_video_id(feed.youtube_url) %>
+    <% video_id = get_youtube_video_id(feed.youtube_id) %>
     <div class="official-video-container _vcenter-positioner" data-player-id="<%= feed_counter %>">
       <div class="_video-player">
         <!-- Youtube Video Player -->

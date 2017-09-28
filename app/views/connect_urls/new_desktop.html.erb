@@ -8,7 +8,8 @@
                 <%= image_tag "icon_video_cam", class: "input-icon" %>
               </div>
               <p class="_fs-4 _white"><%= @video_url %></p>
-              <%= f.hidden_field :video_url, value: @video_url %>
+              <% youtube_id = get_youtube_video_id(@video_url) %>
+              <%= f.hidden_field :youtube_id, value: youtube_id %>
             </div>
 
             <%= f.submit "보내기", class: "submit-button _vcenter-positioner _hcenter-positioner _fs-3 _white" %>
@@ -17,9 +18,8 @@
           <div class="new-video-container">
             <div class="_video-player">
               <!-- Youtube Video Player -->
-              <% video_id = get_youtube_video_id(@video_url) %>
-              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%=video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=video_id%>"></iframe>
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%=youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=youtube_id%>"></iframe>
             </div>
           </div>
 
@@ -32,14 +32,14 @@
   <!-- TODO: controller로 옮기기 -->
   <% unless @video_url =~ /youtu.?be/ %>
       <script>
-        $('body').append(
-            '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
-            '    <%= j render partial: "partial_views/error_modal_desktop", locals:{message: "Youtube 링크가 아니거나 잘못된 영상입니다\n다른 Youtube 영상을 알려주세요"} %>' +
-            '</div>'
-        );
-        setTimeout(function () {
-            window.location = "<%= connect_urls_path %>";
-        }, 1500);
+          $('body').append(
+              '<div class="_full-container _vcenter-positioner _hcenter-positioner">' +
+              '    <%= j render partial: "partial_views/error_modal_desktop", locals:{message: "Youtube 링크가 아니거나 잘못된 영상입니다\n다른 Youtube 영상을 알려주세요"} %>' +
+              '</div>'
+          );
+          setTimeout(function () {
+              window.location = "<%= connect_urls_path %>";
+          }, 1500);
       </script>
   <% end %>
 </div>
