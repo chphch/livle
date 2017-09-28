@@ -4,7 +4,7 @@
 
     <%
       temp_feed = Feed.new
-      temp_feed.youtube_url = get_youtube_video_id(@video_url)
+      temp_feed.youtube_id = get_youtube_video_id(@video_url)
     %>
     <%= render partial: '/partial_views/youtube_player_mobile', locals: { feed: temp_feed, autoplay: true, no_thumbnail_button: true } %>
 
@@ -18,7 +18,7 @@
     <div class="connect-input-container">
       <%= form_for @connect_url, id: "connect-form", remote: true do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :video_url, value: get_youtube_video_id(@video_url) %>
+          <%= f.hidden_field :youtube_id, value: get_youtube_video_id(@video_url) %>
           <div class="input-container">
             <%= f.text_area :describe, class: "autosize input-field _f-letter-mobile _fs-3-mobile _white", placeholder: "영상에 대해 알려주세요" %>
           </div>

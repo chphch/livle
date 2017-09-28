@@ -35,11 +35,11 @@ module ApplicationHelper
     if content.class == Feed
       content_for :opengraph, "#{og_title(content.title)}
       #{og_description(content.content)}
-      #{og_image(content.youtube_url)}".html_safe
+      #{og_image(content.youtube_id)}".html_safe
     elsif content.class == Upcoming
       content_for :opengraph, "#{og_title(content.title)}
       #{og_description}
-      #{og_image(content.main_video ? content.main_video.youtube_url : content.image_url)}".html_safe
+      #{og_image(content.main_video ? content.main_video.youtube_id : content.image_url)}".html_safe
     end
   end
 
@@ -49,13 +49,13 @@ module ApplicationHelper
     #{og_image(nil)}".html_safe
   end
 
-  def thumbnail_tag(youtube_url, options = {})
+  def thumbnail_tag(youtube_id, options = {})
     # TODO : youtube-thumbnail 클래스에 인라인 스타일 옮기기
     return "<div
     class='youtube-thumbnail #{options[:class] if options[:class]}
-    #{'loaded' if youtube_url.length == 0}'
+    #{'loaded' if youtube_id.length == 0}'
     #{'id = ' + options[:id] if options[:id]}
-    data-youtube-id='#{youtube_url}'
+    data-youtube-id='#{youtube_id}'
      style='
     width: 100%;
     height: 0;

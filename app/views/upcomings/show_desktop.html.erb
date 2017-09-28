@@ -7,7 +7,7 @@
         <!-- TODO Handling when there is no video to show -->
         <!-- Youtube Video Player -->
         <% if @has_main_video %>
-            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: @main_video.youtube_url, feed: @main_video, autoplay: true, no_thumbnail_button: true, main_video: true } %>
+            <%= render partial: 'partial_views/youtube_player_desktop', locals: { player_id: @main_video.youtube_id, feed: @main_video, autoplay: true, no_thumbnail_button: true, main_video: true } %>
         <% end %>
         <% @artists.each_with_index do |artist, index| %>
             <% if artist.popular_feed %>
@@ -65,7 +65,7 @@
         <div class="line-up-container">
           <div class="scroll-target _vcenter-positioner">
             <% if @has_main_video %>
-                <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: @main_video.youtube_url, image_url: @main_video_image_url, name: "Main Video" } %>
+                <%= render partial: 'lineup_profile_desktop', locals: {target_player_id: @main_video.youtube_id, image_url: @main_video_image_url, name: "Main Video" } %>
             <% end %>
             <% @artists.each do |artist| %>
                 <%= render partial: 'lineup_profile_desktop',
@@ -116,7 +116,7 @@
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
             <!-- TODO Handling when there is no video to show -->
-            <%= thumbnail_tag (@upcoming.main_video ? @upcoming.main_video.youtube_url : ''), class: "_thumbnail-blur-img" %>
+            <%= thumbnail_tag (@upcoming.main_video ? @upcoming.main_video.youtube_id : ''), class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 

@@ -8,8 +8,8 @@
                 <%= image_tag "icon_video_cam", class: "input-icon" %>
               </div>
               <p class="_fs-4 _white"><%= @video_url %></p>
-              <% video_id = get_youtube_video_id(@video_url) %>
-              <%= f.hidden_field :video_url, value: video_id %>
+              <% youtube_id = get_youtube_video_id(@video_url) %>
+              <%= f.hidden_field :youtube_id, value: youtube_id %>
             </div>
 
             <%= f.submit "보내기", class: "submit-button _vcenter-positioner _hcenter-positioner _fs-3 _white" %>
@@ -18,8 +18,8 @@
           <div class="new-video-container">
             <div class="_video-player">
               <!-- Youtube Video Player -->
-              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%=video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=video_id%>"></iframe>
+              <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%=youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=youtube_id%>"></iframe>
             </div>
           </div>
 
