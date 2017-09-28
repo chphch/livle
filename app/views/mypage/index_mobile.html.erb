@@ -10,7 +10,7 @@
         <p class="_fs-2-mobile _white _white-space-nowrap"><%= current_user.email %></p>
       </div>
       <div class="info-text-container">
-        <p class="_fs-4-mobile _light-gray">자기소개를 입력해주세요</p>
+        <p class="_fs-4-mobile _light-gray _white-space-nowrap"><%= current_user.introduce ? current_user.introduce : "자기소개를 입력해주세요." %></p>
       </div>
       <div class="info-text-container _hcenter-positioner">
         <p class="_fs-4-mobile _white">좋아요 수</p>
