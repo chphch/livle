@@ -5,10 +5,9 @@
       <!-- Main -->
       <div class="show-video-container _no-p-margin">
         <div class="_video-player">
-          <% video_id = get_youtube_video_id(@feed.youtube_url) %>
           <!-- Youtube Video Player -->
-          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= video_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
-    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= video_id %>"
+          <iframe id="youtube-player" type="text/html" src="http://www.youtube.com/embed/<%= @feed.youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&autoplay=1&showinfo=0&
+    autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= @feed.youtube_id %>"
                   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
         </div>
         <div class="text-container _vcenter-positioner">
@@ -85,7 +84,7 @@
       <div class="related-video-container">
         <div class="related-card-container _hcenter-positioner">
           <div class="related-video-background">
-            <%= thumbnail_tag @feed.youtube_url, class: "_thumbnail-blur-img" %>
+            <%= thumbnail_tag @feed.youtube_id, class: "_thumbnail-blur-img" %>
             <div class="related-video-filter _full-container"></div>
           </div>
 

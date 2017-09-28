@@ -23,12 +23,12 @@ class Upcoming < ApplicationRecord
   end
 
   def has_main_video
-    self.main_youtube_url && self.main_youtube_url.length > 0
+    self.main_youtube_id && self.main_youtube_id.length > 0
   end
 
   def main_video
     has_main_video ? Feed.new(
-      youtube_url: self.main_youtube_url,
+      youtube_id: self.main_youtube_id,
       title: "#{self.title} - Main Video"
     ) : sample_artist_feed(self.artists)
   end

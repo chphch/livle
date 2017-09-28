@@ -40,7 +40,7 @@ class ConnectUrlsController < ApplicationController
     new_feed_artist = FeedArtist.new
 
     new_feed.user = connect.user
-    new_feed.youtube_url = connect.video_url
+    new_feed.youtube_id = connect.youtube_id
     new_feed.content = connect.describe
     new_feed.title = params[:feed_title]
     new_feed_artist.feed = new_feed
@@ -73,6 +73,6 @@ class ConnectUrlsController < ApplicationController
 
   private
   def connect_url_params
-    params.require(:connect_url).permit(:video_url, :describe)
+    params.require(:connect_url).permit(:youtube_id, :describe)
   end
 end

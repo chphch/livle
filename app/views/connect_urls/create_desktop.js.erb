@@ -1,6 +1,6 @@
 $('body').append(
     '<div class="_full-container _vcenter-positioner _hcenter-positioner">\
-      <%= j render partial: "partial_views/check_modal_desktop", locals: {message: "보내주신 영상은 라이블에서 큐레이션 후 메인 홈에 업로드됩니다."} %>\
+      <%= j render partial: "partial_views/check_modal_desktop", locals: {message: "보내주신 영상은 라이블에서 큐레이션 후<br />메인 홈에 업로드됩니다."} %>\
     </div>'
 );
 sendConnectEvent(window.location.href+'&status=send');

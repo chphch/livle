@@ -1,7 +1,7 @@
 <div id="feed-index-card">
   <%= link_to feed_path(feed.id) do %>
       <div class="_thumbnail-image-container">
-        <%= thumbnail_tag feed.youtube_url %>
+        <%= thumbnail_tag feed.youtube_id %>
         <% if @show_curator %>
             <div class="thumbnail-filter _no-p-margin _vbottom-positioner">
               <div class="thumbnail-content _vcenter-positioner">

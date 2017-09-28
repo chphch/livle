@@ -8,8 +8,8 @@
 
 SIZE_1 = 60
 SIZE_2 = 5
-youtube_url_list = ["https://www.youtube.com/watch?v=mHr2-0hCiqg", "https://www.youtube.com/watch?v=6XJjw7sWj84",
-                    "https://youtu.be/Xvjnoagk6GU", "https://www.youtube.com/watch?v=_gWn2xRfE90", "https://youtu.be/si_TE3iKjEQ"]
+youtube_id_list = ["mHr2-0hCiqg", "6XJjw7sWj84",
+                    "Xvjnoagk6GU", "_gWn2xRfE90", "si_TE3iKjEQ"]
 ticket_url_list = ["http://www.interpark.com/malls/index.html", "http://www.auction.co.kr/?redirect=1&pid=346", "http://pc.shopping2.naver.com/home/p/index.nhn"]
 
 def random_sample(range = 1..SIZE_1, size = SIZE_2)
@@ -42,7 +42,7 @@ for i in 1..SIZE_1
       user_id: rand(1..SIZE_1),
       is_curation: [false, false, false, true].sample,
       title: "feed_" + i.to_s,
-      youtube_url: youtube_url_list.sample,
+      youtube_id: youtube_id_list.sample,
       content: Faker::Hacker.say_something_smart,
       count_view: rand(1..100),
       count_share: rand(1..100),
@@ -70,7 +70,7 @@ for i in 1..SIZE_1
   upcoming = Upcoming.create(
       title: "upcoming_" + i.to_s,
       place: Faker::Space.galaxy,
-      main_youtube_url: youtube_url_list.sample,
+      main_youtube_id: youtube_id_list.sample,
       start_date: Date.new(2017,rand(8..12),rand(1..30)),
       end_date: Date.new(2017,rand(8..12),rand(1..30)),
   )

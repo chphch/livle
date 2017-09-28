@@ -1,8 +1,8 @@
 <div class="_video-player">
-  <% if upcoming.main_video
-   main_video_id = get_youtube_video_id(upcoming.main_video.youtube_url) %>
+  <% if upcoming.main_video %>
   <iframe id="youtube-player" type="text/html"
-  src="http://www.youtube.com/embed/<%= main_video_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=main_video_id%>"
+  src="http://www.youtube.com/embed/<%= upcoming.main_video.youtube_id %>?version=3&enablejsapi=1&controls=0&rel=0&autoplay=1&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%=upcoming.main_video.youtube_id
+  %>"
   webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
   <% end %>
   <div class="thumbnail-filter _vbottom-positioner _hright-positioner">

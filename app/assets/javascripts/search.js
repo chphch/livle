@@ -116,12 +116,10 @@ function onfocus(status) {
 
 function renderResult(params) {
     if(params === "feed") {
-        console.log("feed selected");
         $('#result-list-feed-m, #result-list-feed').show();
         $('#result-list-upcoming-m, #result-list-upcoming').hide();
         $('.selector-bar-container').css('margin-left', 0);
     } else {
-        console.log("upcoming selected");
         $('#result-list-feed-m, #result-list-feed').hide();
         $('#result-list-upcoming-m, #result-list-upcoming').show();
         $('.selector-bar-container').css('margin-left', '50%');
