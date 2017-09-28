@@ -35,11 +35,11 @@ module ApplicationHelper
     if content.class == Feed
       content_for :opengraph, "#{og_title(content.title)}
       #{og_description(content.content)}
-      #{og_image(content.youtube_id)}".html_safe
+      #{og_image(get_full_url_from_id(content.youtube_id))}".html_safe
     elsif content.class == Upcoming
       content_for :opengraph, "#{og_title(content.title)}
       #{og_description}
-      #{og_image(content.main_video ? content.main_video.youtube_id : content.image_url)}".html_safe
+      #{og_image(content.main_video ? get_full_url_from_id(content.main_video.youtube_id) : content.image_url)}".html_safe
     end
   end
 
@@ -73,15 +73,13 @@ module ApplicationHelper
     end
   end
 
-  # def get_thumbnail_from_url(youtube_video_url)
-  #   get_thumbnail_from_id(get_youtube_video_id(youtube_video_url))
-  # end
-
   def get_youtube_video_id(youtube_video_url)
     youtube_video_url ? youtube_video_url.gsub(/https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\//, '') : ''
   end
 
-  # def get_thumbnail_from_id(youtube_id)
-  #   return get_best_thumbnail(youtube_id)
-  # end
+  private
+
+  def get_full_url_from_id(youtube_id)
+    "https://youtu.be/#{youtube_id}"
+  end
 end
