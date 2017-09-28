@@ -1,5 +1,5 @@
 <div class="search-card-mobile">
-  <%= link_to upcoming_path(upcoming.id) do %>
+  <%= link_to upcoming_path(upcoming.id), data: {turbolinks: false} do %>
       <div class="_row-positioner">
         <div class="_thumbnail-container-m card-devider">
           <%= thumbnail_tag upcoming.main_video.youtube_id, class: "_thumbnail-image-m" %>
