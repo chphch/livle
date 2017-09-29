@@ -81,7 +81,7 @@
       </th>
     </tr>
 
-    <% @connects.where("is_confirmed = ?", true).each do |connect| %>
+    <% @connects.where("is_confirmed = ?", true).order('created_at DESC').each do |connect| %>
         <tr>
           <td>
             <!-- Youtube Video Player -->
