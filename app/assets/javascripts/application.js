@@ -17,22 +17,22 @@
 
 //render loading event
 document.addEventListener("turbolinks:before-cache", function () {
-    $('._loading-wave-container').show();
+    showLoadingBar();
 });
 document.addEventListener("turbolinks:load", function () {
     setTimeout(function () {
-        $('._loading-wave-container').hide();
+        hideLoadingBar();
     }, 150);
 
     // show spinner on AJAX start
     $(document).ajaxStart(function () {
-        $('._loading-wave-container').show();
+        showLoadingBar();
     });
 
     // hide spinner on AJAX stop
     $(document).ajaxStop(function () {
         setTimeout(function () {
-            $('._loading-wave-container').hide();
+            hideLoadingBar();
         }, 150);
     });
 });
@@ -52,6 +52,13 @@ function loadThumbnails() {
       }
     });
   });
+}
+
+function showLoadingBar() {
+    $('._loading-wave-container, ._loading-wave-container-m').show();
+}
+function hideLoadingBar() {
+    $('._loading-wave-container, ._loading-wave-container-m').hide();
 }
 
 document.addEventListener("turbolinks:load", function(event) {

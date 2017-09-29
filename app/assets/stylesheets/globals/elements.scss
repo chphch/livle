@@ -89,39 +89,6 @@ a:hover {
 }
 
 //transitions
-._loading-wave-container {
-  position: fixed;
-  top: $navbar-h + 2rem;
-  left: 0; right: 0;
-  z-index: $z-most-important;
-
-  ._loading-wave-group {
-    $rectCount: 5;
-    $animationDuration: 1.2s;
-    $delayRange: 0.4s;
-    $spinkit-size: 3em !default;
-    $spinkit-spinner-color: $white !default;
-
-    width: $spinkit-size * 1.5;
-    height: $spinkit-size;
-    margin: auto;
-    text-align: center;
-
-    .loading-rect {
-      background-color: $spinkit-spinner-color;
-      height: 100%;
-      width: .5em;
-      display: inline-block;
-      border-radius: 3em !important;
-      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
-    }
-
-    @for $i from 1 through $rectCount {
-      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
-    }
-  }
-}
-
 .clicked {
   animation: event 1.4s;
   .response-layer {
@@ -266,6 +233,40 @@ a:hover {
 ._small-modal-title {
   padding: 0 0 10rem;
   z-index: $z-most-important;
+}
+
+//transition
+._loading-wave-container-m {
+  position: fixed;
+  top: 12rem;
+  left: 0; right: 0;
+  z-index: $z-most-important;
+
+  ._loading-wave-group {
+    $rectCount: 5;
+    $animationDuration: 1.2s;
+    $delayRange: 0.4s;
+    $spinkit-size: 11rem !default;
+    $spinkit-spinner-color: $white !default;
+
+    width: $spinkit-size * 1.5;
+    height: $spinkit-size;
+    margin: auto;
+    text-align: center;
+
+    .loading-rect {
+      background-color: $spinkit-spinner-color;
+      height: 100%;
+      width: 1.5rem;
+      display: inline-block;
+      border-radius: 3rem !important;
+      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
+    }
+
+    @for $i from 1 through $rectCount {
+      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
+    }
+  }
 }
 
 //########################
@@ -540,4 +541,38 @@ a:hover {
   padding-bottom: 67%;
   background:image-url("thumbnail_livle_basic") no-repeat center center;
   background-size: cover;;;;
+}
+
+//transition
+._loading-wave-container {
+  position: fixed;
+  top: $navbar-h + 2rem;
+  left: 0; right: 0;
+  z-index: $z-most-important;
+
+  ._loading-wave-group {
+    $rectCount: 5;
+    $animationDuration: 1.2s;
+    $delayRange: 0.4s;
+    $spinkit-size: 3em !default;
+    $spinkit-spinner-color: $white !default;
+
+    width: $spinkit-size * 1.5;
+    height: $spinkit-size;
+    margin: auto;
+    text-align: center;
+
+    .loading-rect {
+      background-color: $spinkit-spinner-color;
+      height: 100%;
+      width: .5em;
+      display: inline-block;
+      border-radius: 3em !important;
+      animation: sk-wave-stretch-delay $animationDuration infinite ease-in-out;
+    }
+
+    @for $i from 1 through $rectCount {
+      .sk-rect-#{$i} { animation-delay: - $animationDuration + $delayRange / ($rectCount - 1) * ($i - 1); }
+    }
+  }
 }
