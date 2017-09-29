@@ -143,16 +143,16 @@ function onAllPlayerReady() {
             });
             player.progressLeft.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
-                e.preventDefault();
                 if (now - lastTouchEnd <= delayTime) {
+                    e.preventDefault(); //prevent zoomIn
                     onDoubleTabProgress(player, 'left');
                 }
                 lastTouchEnd = now; //update lastTouchEnd
             });
             player.progressRight.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
-                e.preventDefault();
                 if (now - lastTouchEnd <= delayTime) {
+                    e.preventDefault(); //prevent zoomIn
                     onDoubleTabProgress(player, 'right');
                 }
                 lastTouchEnd = now; //update lastTouchEnd
