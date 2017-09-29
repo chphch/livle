@@ -50,18 +50,12 @@ module ApplicationHelper
   end
 
   def thumbnail_tag(youtube_id, options = {})
-    # TODO : youtube-thumbnail 클래스에 인라인 스타일 옮기기
     return "<div
     class='youtube-thumbnail #{options[:class] if options[:class]}
     #{'loaded' if youtube_id.length == 0}'
     #{'id = ' + options[:id] if options[:id]}
     data-youtube-id='#{youtube_id}'
-     style='
-    width: 100%;
-    height: 0;
-    padding-bottom: 67%;
-    background:url(\"#{options[:wide] ? asset_url('thumbnail_livle_wide') : asset_url('thumbnail_livle_basic')}\") no-repeat center center;
-    background-size: cover'></div>".html_safe
+     style='#{options[:style] if options[:style]} #{"background-image: '#{asset_url('thumbnail_livle_wide')}'" if options[:wide]}'></div>".html_safe
   end
 
   def raw_text(text, options = {})
