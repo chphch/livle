@@ -34,7 +34,9 @@
   </div>
   <script>
     $('#card-<%= upcoming.id %>').on('click', function () {
-       window.location = "<%= upcoming_path(upcoming.id) %>";
+      if(!$(event.target).hasClass('_upcoming-like-icon-m')) {
+        window.location = "<%= upcoming_path(upcoming.id) %>";
+      }
     });
   </script>
 </div>

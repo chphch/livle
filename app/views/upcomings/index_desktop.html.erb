@@ -9,3 +9,15 @@
     </div>
   </div>
 </div>
+
+<script>
+$('.upcoming-icon').on('click', function(e) {
+  if($(this).hasClass('filled')) {
+    $(this).attr('src', '<%=asset_path 'icon_hand_empty' %>')
+  }
+  else {
+    $(this).attr('src', '<%=asset_path 'icon_hand_filled' %>')
+  }
+  $(this).toggleClass('filled');
+});
+</script>

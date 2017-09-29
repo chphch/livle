@@ -11,3 +11,15 @@
     <%= will_paginate @upcomings %>
   </div>
 </div>
+
+<script>
+$('._upcoming-like-icon-m').on('click', function(e) {
+  if($(this).hasClass('filled')) {
+    $(this).attr('src', '<%=asset_path 'icon_hand_empty' %>')
+  }
+  else {
+    $(this).attr('src', '<%=asset_path 'icon_hand_filled' %>')
+  }
+  $(this).toggleClass('filled');
+});
+</script>
