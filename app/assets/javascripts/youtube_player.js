@@ -143,7 +143,7 @@ function onAllPlayerReady() {
             });
             player.progressLeft.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
-                e.stopPropagation();
+                e.preventDefault();
                 if (now - lastTouchEnd <= delayTime) {
                     onDoubleTabProgress(player, 'left');
                 }
@@ -151,7 +151,7 @@ function onAllPlayerReady() {
             });
             player.progressRight.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
-                e.stopPropagation();
+                e.preventDefault();
                 if (now - lastTouchEnd <= delayTime) {
                     onDoubleTabProgress(player, 'right');
                 }
