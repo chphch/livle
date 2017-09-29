@@ -194,10 +194,17 @@ body {
     height: 100%;
   }
 
+  ._show-skip-timer-m {
+    margin: 28% 36% 0;
+    .left-skip-timer { opacity: 0; }
+    .right-skip-timer { opacity: 0; }
+  }
+
   ._show-icon-container-m {
     padding: 0 18%;
     ._show-progress-icon-m {
       @include size(auto, 8%);
+      margin: 0 2%;
     }
   }
   @for $i from 1 through 2 {

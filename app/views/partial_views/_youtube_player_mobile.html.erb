@@ -45,11 +45,17 @@
         <% 2.downto(1) do |i| %>
             <%= image_tag "icon_left_filled", class: "_show-progress-icon-m arrow-left-#{i}" %>
         <% end %>
+        <div class="_full-container _show-skip-timer-m _vcenter-positioner _hright-positioner">
+          <p class="_fs-3-mobile _white left-skip-timer"><span class="left-skip-time"></span>초</p>
+        </div>
       </div>
       <div class="_show-progress-controller-m _show-icon-container-m _vcenter-positioner _flex-grow-1" id="progress-right">
         <% for i in 1..2 %>
             <%= image_tag "icon_right_filled", class: "_show-progress-icon-m arrow-right-#{i}" %>
         <% end %>
+        <div class="_full-container _show-skip-timer-m _vcenter-positioner">
+          <p class="_fs-3-mobile _white right-skip-timer"><span class="right-skip-time"></span>초</p>
+        </div>
       </div>
     </div>
     <div class="_thumbnail-button-container-m _vcenter-positioner _hright-positioner youtube-player-buttons">
