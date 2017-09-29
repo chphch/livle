@@ -70,18 +70,17 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
-  # TODO
-  #config.action_mailer.default_url_options = { host: 'livle.co.kr' }
-  config.action_mailer.default_url_options = { host: 'livle.vb9qxcpfgz.ap-northeast-2.elasticbeanstalk.com' }
+
+  config.action_mailer.default_url_options = { host: 'livle.kr' }
 
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.asset_host = 'http://livle.vb9qxcpfgz.ap-northeast-2.elasticbeanstalk.com'
+  config.action_mailer.asset_host = 'http://livle.kr'
 
   config.action_mailer.smtp_settings = {
     address: "email-smtp.us-west-2.amazonaws.com",
     port: 587,
-    domain: 'livle.co.kr',
+    domain: 'livle.kr',
     authentication: :login,
     enable_starttls_auto: true,
     user_name: ENV["AWS_SES_KEY"],
