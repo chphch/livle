@@ -144,7 +144,7 @@ function onAllPlayerReady() {
             player.progressLeft.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
                 if (now - lastTouchEnd <= delayTime) {
-                    e.preventDefault();
+                    e.preventDefault(); //prevent zoomIn
                     onDoubleTabProgress(player, 'left');
                 }
                 lastTouchEnd = now; //update lastTouchEnd
@@ -152,7 +152,7 @@ function onAllPlayerReady() {
             player.progressRight.on('touchend', function (e) {
                 var now = Date.now(); //현재시각
                 if (now - lastTouchEnd <= delayTime) {
-                    e.preventDefault();
+                    e.preventDefault(); //prevent zoomIn
                     onDoubleTabProgress(player, 'right');
                 }
                 lastTouchEnd = now; //update lastTouchEnd
@@ -194,27 +194,55 @@ function onClickPlayButton(player) {
 }
 
 // on dblclick progress time
+var lt, rt, isAnimation = false;
 function onDoubleTabProgress(player, dir) {
     var curTime = player.getCurrentTime();
-    function animateLeftArrow(i) {
-        $('.arrow-left-'+i).stop().animate({'opacity': 0}, 100*(i-1)).
-        animate({'opacity': 1}, 400).animate({'opacity': 0}, 400);
+    var arrow_num = 2;
+
+    player.seekTo(dir === 'left' ? curTime - 10 : curTime + 10);
+    getSkipTime(dir);
+    for(var i = 1; i <= arrow_num; i++) {
+        animateArrow(i, dir);
     }
-    function animateRightArrow(i) {
-        $('.arrow-right-'+i).stop().animate({'opacity': 0}, 100*(i-1)).
-        animate({'opacity': 1}, 400).animate({'opacity': 0}, 400);
-    }
+}
+function animateArrow(i, dir) {
+    if (dir === 'left') $arrow = $('.arrow-left-'+i);
+    else $arrow = $('.arrow-right-'+i);
+
+    $arrow.stop(true, true).animate({'opacity': 0}, 100*(i-1)).
+    animate({'opacity': 1}, 400).animate({'opacity': 0}, 400);
+
+}
+function getSkipTime(dir) {
+    var $time, $timer;
     if (dir === 'left') {
-        player.seekTo(curTime - 10);
-        for(var i = 1; i < 3; i++) {
-            animateLeftArrow(i);
-        }
+        $time = $('.left-skip-time');
+        $timer = $('.left-skip-timer');
+        window.clearTimeout(lt);
     } else {
-        player.seekTo(curTime + 10);
-        for(var i = 1; i < 3; i++) {
-            animateRightArrow(i);
-        }
+        $time = $('.right-skip-time');
+        $timer = $('.right-skip-timer');
+        window.clearTimeout(rt);
     }
+
+    if (isAnimation) {
+        current_skip_time = $time.html()*1 + 10;
+        $time.text(current_skip_time);
+    } else {
+        $time.text(10);
+    }
+
+    isAnimation = true;
+    $timer.stop(true, true).animate({'opacity': 1}, 50)
+        .delay(750).animate({'opacity': 0}, 200);
+    if (dir === 'left') lt = window.setTimeout(function () {
+        isAnimation = false;
+        $time.text(10);
+    }, 1500);
+    else rt = window.setTimeout(function () {
+        isAnimation = false;
+        $time.text(10);
+    }, 1500);
 }
 
 // on click quality button
