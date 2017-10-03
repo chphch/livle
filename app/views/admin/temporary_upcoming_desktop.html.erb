@@ -1,109 +1,54 @@
 <div class="_row-positioner">
   <%= render partial: "side_navbar_desktop" %>
-  <div class="admin-desktop-container">
-    <%=link_to '/temporary_upcomings/destroy_all', method: :delete, data: {confirm: '정말 삭제하시겠습니까?'} do %>전부 삭제<% end %>
-    <p class="_fs-1 _white">Upcoming Lists</p>
+  <div class="admin-desktop-container _flex-grow-1">
+    <div class="_vcenter-positioner">
+      <div class="_flex-grow-1">
+        <p class="_fs-1 _white">Temporary Upcoming Lists</p>
+      </div>
+      <%= link_to '/temporary_upcomings/destroy_all', method: :delete, class: "button _no-p-margin", data: {confirm: '정말 삭제하시겠습니까?'} do %>
+          <p class="_fs-3 _white">전체 삭제</p>
+      <% end %>
+    </div>
+
     <table>
+      <thead>
       <tr>
-        <td>
+        <th>
           <p class="_fs-2 _light-gray">index</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">대표 이미지</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">Title</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">Place</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">시작일</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">종료일</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">Artists</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">Ticket Provider</p>
-        </td>
-        <td>
-          <p class="_fs-2 _light-gray">Ticket Url</p>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">포스터</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">제목</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">장소</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">공연 시작일</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">공연 종료일</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Ticket 업체</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Ticket URL</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Line-Up</p>
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
+      </thead>
 
       <% @temp_upcomings.each do |temp_upcoming| %>
-          <tr>
-            <td>
-              <p class="_fs-3 _light-gray"><%= temp_upcoming.id %></p>
-            </td>
-            <%= form_for temp_upcoming, method: :patch, multipart: true do |f| %>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=image_tag temp_upcoming.image_url, style: "width: 100px; height: 100px"%>
-                    <%=f.file_field :image_url %>
-                    <%=f.hidden_field :remote_image_url_url %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%= f.text_field :title %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%= f.text_field :place %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=f.date_field :start_date %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=f.date_field :end_date %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=f.text_field :artist_info%>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=f.text_field :provider, readonly: true %>
-                  </p>
-                </td>
-                <td>
-                  <p class="_fs-3 _light-gray">
-                    <%=f.text_field :ticket_url %> <%=link_to temp_upcoming.ticket_url, target: :_blank do%>바로가기<% end %>
-                  </p>
-                </td>
-                <td>
-                  <%= f.submit '승격' %>
-                </td>
-            <% end %>
-            <td>
-              <%= form_tag "/temporary_upcomings/#{temp_upcoming.id}/merge" do %>
-                  <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'Upcoming의 Id' %>
-                  <%= submit_tag '합치기' %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to temporary_upcoming_path(temp_upcoming.id), method: :delete do %>
-                  <button type="button" class="btn btn-outline-primary">삭제</button>
-              <% end %>
-            </td>
-          </tr>
+          <%= render partial: "temp_upcoming_card", locals: {upcoming: temp_upcoming} %>
       <% end %>
     </table>
     <%= will_paginate @temp_upcomings %>
