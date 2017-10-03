@@ -1,0 +1,87 @@
+<tr>
+  <td align="center">
+    <p class="_fs-3 _light-gray"><%= upcoming.id %></p>
+  </td>
+  <%= form_for upcoming, method: :patch, multipart: true do |f| %>
+      <td class="_display-none">
+        <%= f.file_field :image_url, id: "temporary_upcoming_image_url_#{upcoming.id}", accept: "image/*" %>
+      </td>
+      <td rowspan="2" align="center">
+        <%= f.label "image_url_#{upcoming.id}" do %>
+            <%= image_tag upcoming.image_url, class: "admin-image", id: "upcoming_poster_#{upcoming.id}" %>
+        <% end %>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :title %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :place %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.date_field :start_date %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.date_field :end_date %>
+        </p>
+      </td>
+      <!-- 티켓 회사, URL, youtube_id, artist -->
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :provider, readonly: true %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :ticket_url %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <%= f.text_field :artist_info, class: "_fs-3 _light-gray" %>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <%= link_to upcoming.ticket_url do %>
+            <p class="_fs-3 _light-green">티켓 바로가기</p>
+        <% end %>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <%= f.submit '승격', class: "button _fs-3 _white" %>
+      </td>
+  <% end %>
+  <td class="td-border-bottom">
+    <%= link_to temporary_upcoming_path(upcoming.id), method: :delete do %>
+        <button type="button" class="button _fs-3 _white">삭제</button>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <%= form_tag "/temporary_upcomings/#{upcoming.id}/merge" do %>
+      <td>
+        <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'upcoming_index' %>
+      </td>
+      <td>
+        <%= submit_tag '기존 데이터와 합치기', class: "button _fs-3 _white" %>
+      </td>
+  <% end %>
+</tr>
+<script>
+    $('#temporary_upcoming_image_url_<%= upcoming.id %>').change(function () {
+        updatePoster(this, <%= upcoming.id %>);
+    });
+    function updatePoster(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#upcoming_poster_"+id).attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

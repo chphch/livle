@@ -16,11 +16,7 @@
     <!-- buttons -->
     <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to feeds_path do %>
-          <% if control == 'FeedsController' %>
-              <%= image_tag "icon_home_filled", class: "_navbar-icon" %>
-          <% else %>
-              <%= image_tag "icon_home_empty", class: "_navbar-icon" %>
-          <% end %>
+          <%= image_tag "#{control == 'FeedsController' ? 'icon_home_filled' : 'icon_home_empty'}", class: "_navbar-icon" %>
       <% end %>
       <div class="_navbar-button-hover _no-p-margin">
         <p class="_fs-3 _black">HOME</p>
@@ -28,11 +24,7 @@
     </div>
     <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to upcomings_path do %>
-          <% if control == 'UpcomingsController' %>
-              <%= image_tag "icon_ticket_filled", class: "_navbar-icon" %>
-          <% else %>
-              <%= image_tag "icon_ticket_empty", class: "_navbar-icon" %>
-          <% end %>
+          <%= image_tag "#{control == 'UpcomingsController' ? 'icon_ticket_filled' : 'icon_ticket_empty'}", class: "_navbar-icon" %>
       <% end %>
       <div class="_navbar-button-hover _no-p-margin">
         <p class="_fs-3 _black">UPCOMING</p>
@@ -40,11 +32,7 @@
     </div>
     <div class="_navbar-button" onclick="sendClickTab('feed')">
       <%= link_to connect_urls_path do %>
-          <% if control == 'ConnectUrlsController' %>
-              <%= image_tag "icon_connect_filled", class: "_navbar-icon" %>
-          <% else %>
-              <%= image_tag "icon_connect_empty", class: "_navbar-icon" %>
-          <% end %>
+          <%= image_tag "#{control == 'ConnectUrlsController' ? 'icon_connect_filled' : 'icon_connect_empty'}", class: "_navbar-icon" %>
       <% end %>
       <div class="_navbar-button-hover _no-p-margin">
         <p class="_fs-3 _black">CONNECT</p>

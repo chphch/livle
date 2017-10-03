@@ -1,0 +1,109 @@
+<tr>
+  <td align="center">
+    <p class="_fs-3 _light-gray"><%= upcoming.id %></p>
+  </td>
+  <%= form_for upcoming, method: :patch, multipart: true do |f| %>
+      <td class="_display-none">
+        <%= f.file_field :image_url, id: "upcoming_image_url_#{upcoming.id}", accept: "image/*" %>
+      </td>
+      <td rowspan="2" align="center">
+        <%= f.label "image_url_#{upcoming.id}" do %>
+            <%= image_tag upcoming.image_url, class: "admin-image", id: "upcoming_poster_#{upcoming.id}" %>
+        <% end %>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :title %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :place %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.date_field :start_date %>
+        </p>
+      </td>
+      <td class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.date_field :end_date %>
+        </p>
+      </td>
+
+      <!-- 티켓 회사: URL, youtube_id, 랭킹 -->
+      <td class="td-border-bottom">
+        <ul>
+          <% upcoming.upcoming_ticket_urls.each do |t| %>
+              <li class="_fs-3 _light-gray">
+                <%= t.provider %>: <%= t.ticket_url %>
+              </li>
+          <% end %>
+        </ul>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= f.text_field :main_youtube_id %>
+        </p>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <p class="_fs-3 _light-gray">
+          <%= upcoming.rank.round(2) %>
+        </p>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <%= link_to upcoming_path(upcoming.id) do %>
+            <p class="_fs-3 _light-green">바로가기</p>
+        <% end %>
+      </td>
+      <td align="center" class="td-border-bottom">
+        <%= f.submit '저장', class: "button _fs-3 _white" %>
+      </td>
+  <% end %>
+  <td class="td-border-bottom">
+    <%= link_to upcoming_path(upcoming.id), method: :delete do %>
+        <button type="button" class="button _fs-3 _white">삭제</button>
+    <% end %>
+    <!-- Nested form이 불가능해서 여기다 빼놓음 -->
+    <%= form_tag upcoming_upcoming_artists_path(upcoming.id), data: { id: upcoming.id }, method: :post do %>
+        <%= hidden_field_tag :artist_id, nil, data: { id: upcoming.id } %>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td align="left" valign="center" colspan="10" class="td-border-bottom">
+    <ul>
+      <% upcoming.upcoming_artists.each_with_index do |ua, index| %>
+          <li class="_fs-3 _light-gray" style="float: left">
+            <%= ua.artist.name if ua.artist %>
+            <%= link_to ua, method: :delete do %>
+                <%= image_tag "icon_close", class: "delete-icon" %>
+            <% end %>
+            <% if upcoming.upcoming_artists[index+1] %>
+                ,&nbsp&nbsp
+            <% end %>
+          </li>
+      <% end %>
+      <li style="display:none; float: left;">
+        <%= text_field_tag :artist_name, nil, class: 'artist_name', placeholder: 'Click artist to submit', data: {id: upcoming.id} %>
+      </li>
+      <button class="new-upcoming-artist button button-margin" style="float: left">Click to add</button>
+    </ul>
+  </td>
+</tr>
+<script>
+    $('#upcoming_image_url_<%= upcoming.id %>').change(function () {
+        updatePoster(this, <%= upcoming.id %>);
+    });
+    function updatePoster(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#upcoming_poster_"+id).attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

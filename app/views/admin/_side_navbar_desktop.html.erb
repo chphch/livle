@@ -1,28 +1,28 @@
 <div class="admin-desktop-nav-box">
   <ul class="nav nav-pills nav-stacked">
     <%= link_to admin_feed_path, data: { turbolinks: false } do %>
-        <li>Feed</li>
+        <li class="<%= action_name == 'feed' ? '_white' : '_gray' %>">Feed</li>
     <% end %>
     <%= link_to admin_artist_path, data: { turbolinks: false } do %>
-        <li>Artist</li>
+        <li class="<%= action_name == 'artist' ? '_white' : '_gray' %>">Artist</li>
     <% end %>
     <%= link_to admin_upcoming_path, data: { turbolinks: false } do %>
-        <li>Upcoming</li>
+        <li class="<%= action_name == 'upcoming' ? '_white' : '_gray' %>">Upcoming</li>
     <% end %>
     <%= link_to admin_temporary_upcoming_path, data: { turbolinks: false } do %>
-        <li>TemporaryUpcoming</li>
+        <li class="<%= action_name == 'temporary_upcoming' ? '_white' : '_gray' %>">TemporaryUpcoming</li>
     <% end %>
     <%= link_to admin_connect_path, data: { turbolinks: false } do %>
-        <li>Connect</li>
+        <li class="<%= action_name == 'connect' ? '_white' : '_gray' %>">Connect</li>
     <% end %>
     <%= link_to admin_user_list_path, data: { turbolinks: false } do %>
-        <li>User List</li>
+        <li class="<%= action_name == 'user_list' ? '_white' : '_gray' %>">User List</li>
     <% end %>
     <%= link_to admin_data_path do %>
-        <li>Data</li>
+        <li class="<%= action_name == 'data' ? '_white' : '_gray' %>">Data</li>
     <% end %>
     <%= link_to admin_notice_path do %>
-        <li>공지사항</li>
+        <li class="<%= action_name == 'notice' ? '_white' : '_gray' %>">공지사항</li>
     <% end %>
   </ul>
 </div>

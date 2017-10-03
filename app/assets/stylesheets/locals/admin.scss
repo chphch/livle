@@ -1,42 +1,87 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'globals/colors';
+@import 'globals/sizes';
+@import 'globals/mixins';
+
 .admin-desktop-nav-box {
-  float: left;
-  width: 12%;
-  height: 60%;
-  background-color: rgba(240, 240, 240, 0.45);
+  min-width: 20rem;
+  @include size(20rem, 80%);
+  background: $dark-gray;
   li {
-    padding-left : 12%;
-    padding-right: 12%;
-    padding-top: 6%;
-    padding-bottom: 6%;
+    padding: 8% 16%;
   }
 }
 
 .admin-desktop-container {
-  float: left;
-  width: 88%;
-  padding-top: 4%;
-  padding-left: 6%;
-  padding-right: 6%;
-  padding-bottom: 4%;
+  padding: 2% 4%;
+  label {
+    width: 10rem;
+  }
+
+  .button-margin {
+    margin: 0 1rem;
+  }
+  .button {
+    @include cursor-pointer;
+    background: $dark-gray;
+    padding: .8rem 1.6rem;
+    border: none;
+    @include border-radius($br-min);
+    &:hover {
+      background: $gray;
+    }
+  }
+  .button-select {
+    background: $white !important;
+    p { color: $black !important }
+  }
+
+  .admin-image {
+    @include size(10rem);
+    @include cursor-pointer;
+    object-fit: cover;
+  }
+  .delete-icon {
+    @include size(auto, 1.2rem);
+    margin: 0 0 0 .4rem;
+  }
 }
 
-td {
-  padding: 0 .5rem !important;
-  white-space: nowrap;
+table {
+ margin: 2rem 0 0;
+}
+thead {
+  th {
+    text-align: center !important;
+    border-top: 2px solid $white;
+    border-bottom: 2px solid $white;
+    padding: 2rem .5rem;
+    white-space: nowrap;
+    p { margin: 0; }
+  }
+}
+tbody {
+  td {
+    padding: 1rem .5rem !important;
+    white-space: nowrap;
+    p { margin: 0; }
+  }
+
+  input {
+    min-width: 100%;
+  }
+  ul {
+    list-style-type: none;
+  }
+  .td-border-bottom {
+    border-bottom: 1px solid $gray;
+  }
 }
 
 .admin-desktop-content-box {
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   border-bottom: 1px solid #000000;
-}
-
-.admin-desktop-image-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }

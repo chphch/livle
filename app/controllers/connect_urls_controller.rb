@@ -65,7 +65,7 @@ class ConnectUrlsController < ApplicationController
       if connect.feed
         connect.feed.destroy
       end
-      redirect_back(fallback_location: root_path)
+      redirect_to admin_connect_path
     else
       render text: "Connect를 삭제하는데 실패했습니다."
     end

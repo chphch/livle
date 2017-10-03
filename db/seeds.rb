@@ -9,7 +9,7 @@
 SIZE_1 = 60
 SIZE_2 = 5
 youtube_id_list = ["mHr2-0hCiqg", "6XJjw7sWj84",
-                    "Xvjnoagk6GU", "_gWn2xRfE90", "si_TE3iKjEQ"]
+                   "Xvjnoagk6GU", "_gWn2xRfE90", "si_TE3iKjEQ"]
 ticket_url_list = ["http://www.interpark.com/malls/index.html", "http://www.auction.co.kr/?redirect=1&pid=346", "http://pc.shopping2.naver.com/home/p/index.nhn"]
 
 def random_sample(range = 1..SIZE_1, size = SIZE_2)
@@ -71,8 +71,8 @@ for i in 1..SIZE_1
       title: "upcoming_" + i.to_s,
       place: Faker::Space.galaxy,
       main_youtube_id: youtube_id_list.sample,
-      start_date: Date.new(2017,rand(8..12),rand(1..30)),
-      end_date: Date.new(2017,rand(8..12),rand(1..30)),
+      start_date: Date.new(2017,rand(10..12),rand(1..30)),
+      end_date: Date.new(2017,rand(10..12),rand(1..30)),
   )
   random_sample(0..2, 3).each do |ri|
     UpcomingTicketUrl.create(
@@ -96,6 +96,18 @@ for i in 1..SIZE_1
         user_id: ri
     )
   end
+end
+
+for i in 1..SIZE_2
+  TemporaryUpcoming.create(
+      title: "temp_upcoming_" + i.to_s,
+      place: Faker::Space.galaxy,
+      start_date: Date.new(2017,rand(10..12),rand(1..30)),
+      end_date: Date.new(2017,rand(10..12),rand(1..30)),
+      provider: 0,
+      ticket_url: "http://www.google.com",
+      artist_info: "artist_1"
+  )
 end
 
 for i in 1..SIZE_2

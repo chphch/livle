@@ -1,248 +1,69 @@
-<!-- Side Navbar -->
-<%= render partial: "side_navbar_desktop" %>
+<div class="_row-positioner">
+  <%= render partial: "side_navbar_desktop" %>
+  <div class="admin-desktop-container _flex-grow-1">
+    <div class="_vcenter-positioner">
+      <div class="_flex-grow-1">
+        <p class="_fs-1 _white">Feed List</p>
+      </div>
+      <div class="official-button button button-margin _no-p-margin">
+        <p class="_fs-3 _white">Official</p>
+      </div>
+      <div class="common-button button button-margin _no-p-margin">
+        <p class="_fs-3 _white">Common</p>
+      </div>
+    </div>
+    <table width="100%">
+      <thead>
+      <tr>
+        <th>
+          <p class="_fs-2 _light-gray">Index</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">작성자</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">제목</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">아티스트</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Youtube ID</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Ranking</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">가산점</p>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+      </tr>
+      </thead>
 
-<div class="admin-desktop-container">
-  <p class="_fs-1 _white">Feed</p>
-  <p class="_fs-1 _white">Official</p>
-  <table>
-    <tr>
-      <th>
-        <p class="_fs-2 _light-gray">index</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Title</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Artists</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">User</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Youtube ID</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">계산점수</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">주관적점수</p>
-      </th>
-      <th>
-      </th>
-      <th>
-      </th>
-    </tr>
+      <tbody class="official-group">
+      <% @official_feeds.each do |feed| %>
+          <%= render partial: "feed_card", locals: {feed: feed} %>
+      <% end %>
+      </tbody>
 
-    <% @official_feeds.each do |feed| %>
-        <tr>
-          <td>
-            <p class="_fs-3 _light-gray"><%= feed.id %></p>
-          </td>
-          <%= form_for feed, method: :patch do |f| %>
-              <td>
-                <p class="_fs-3 _light-gray">
-                  <%= f.text_field :title %>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray">
-                <ul>
-                  <% feed.feed_artists.each do |fa| %>
-                      <li class="_fs-3 _light-gray">
-                        <%= fa.artist.name if fa.artist %> <%=link_to fa, method: :delete do %>(Click to remove)<%end%>
-                      </li>
-                  <% end %>
-                  <li style="display:none">
-                    <%= text_field_tag :artist_name, nil, class: 'artist_name', placeholder: 'Click artist to submit', data: {id: feed.id} %>
-                  </li>
-                  <button class="new-feed_artist">Click to add</button>
-                </ul>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray"><%= feed.user.nickname %></p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray">
-                  <%=f.text_field :youtube_id %>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray" style="overflow-x: scroll"><%= feed.rank.round(2) %></p>
-              </td>
-              <td>
-                <%=f.select :valuation, 1..5 %>
-              </td>
-              <td>
-                <%= link_to "/feeds/#{feed.id}" do %>
-                    <button type="button" class="btn btn-outline-primary">바로가기</button>
-                <% end %>
-              </td>
-              <td>
-                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
-              </td>
-          <% end %>
-          <td>
-            <%= link_to feed_path(feed.id), method: :delete do %>
-                <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
-            <% end %>
-            <!-- Nested form이 불가능해서 여기다 빼놓음 -->
-            <%= form_tag feed_feed_artists_path(feed.id), data: { id: feed.id }, method: :post do %>
-                <%= hidden_field_tag :artist_id, nil, data: { id: feed.id } %>
-            <% end %>
-          </td>
-        </tr>
-    <% end %>
-  </table>
-  <%= will_paginate @official_feeds %>
-
-  <p class="_fs-1 _white">Common</p>
-  <table>
-    <tr>
-      <th>
-        <p class="_fs-2 _light-gray">index</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Title</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Artists</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">User</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Youtube ID</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">계산점수</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">주관적점수</p>
-      </th>
-      <th>
-      </th>
-      <th>
-      </th>
-    </tr>
-
-    <% @common_feeds.each do |feed| %>
-        <tr>
-          <td>
-            <p class="_fs-3 _light-gray"><%= feed.id %></p>
-          </td>
-          <%= form_for feed, method: :patch do |f| %>
-              <td>
-                <p class="_fs-3 _light-gray">
-                  <%= f.text_field :title %>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray">
-                <ul>
-                  <% feed.feed_artists.each do |fa| %>
-                      <li class="_fs-3 _light-gray">
-                        <%= fa.artist.name if fa.artist %> <%=link_to fa, method: :delete do %>(Click to remove)<%end%>
-                      </li>
-                  <% end %>
-                  <li style="display:none">
-                    <%= text_field_tag :artist_name, nil, class: 'artist_name', placeholder: 'Click artist to submit', data: {id: feed.id} %>
-                  </li>
-                  <button class="new-feed_artist">Click to add</button>
-                </ul>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray"><%= feed.user.nickname %></p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray">
-                  <%=f.text_field :youtube_id %>
-                </p>
-              </td>
-              <td>
-                <p class="_fs-3 _light-gray" style="overflow-x: scroll"><%= feed.rank.round(2) %></p>
-              </td>
-              <td>
-                <%=f.select :valuation, 1..5 %>
-              </td>
-              <td>
-                <%= link_to "/feeds/#{feed.id}" do %>
-                    <button type="button" class="btn btn-outline-primary">바로가기</button>
-                <% end %>
-              </td>
-              <td>
-                <%= submit_tag("수정", class: "btn btn-outline-primary") %>
-              </td>
-          <% end %>
-          <td>
-            <%= link_to feed_path(feed.id), method: :delete do %>
-                <button type="button" class="btn btn-outline-primary" disabled>삭제</button>
-            <% end %>
-            <!-- Nested form이 불가능해서 여기다 빼놓음 -->
-            <%= form_tag feed_feed_artists_path(feed.id), data: { id: feed.id }, method: :post do %>
-                <%= hidden_field_tag :artist_id, nil, data: { id: feed.id } %>
-            <% end %>
-          </td>
-        </tr>
-    <% end %>
-  </table>
-  <%= will_paginate @common_feeds %>
+      <tbody class="common-group">
+      <% @common_feeds.each do |feed| %>
+          <%= render partial: "feed_card", locals: {feed: feed} %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="official-group _hcenter-positioner">
+      <%= will_paginate @official_feeds %>
+    </div>
+    <div class="common-group _hcenter-positioner">
+      <%= will_paginate @common_feeds %>
+    </div>
+    <div id="artist-autocomplete">
+    </div>
+  </div>
 </div>
-
-
-<div id="artist-autocomplete">
-</div>
-
-<script>
-    // TODO : js 파일로 뺴주세요
-    $(".new-feed_artist").click(function(e) {
-        e.preventDefault();
-        var $new = $(this).prev();
-        $new.toggle();
-        $(this).text( $new.is(":visible") ? "Click to cancel" : "Click to add" );
-    });
-
-    $('.artist_name').autocomplete( {
-        appendTo: "#artist-autocomplete",
-        select: function(event, ui) {
-            var id = $(this).data('id');
-            $('input:hidden[data-id=' + id + ']').val(ui.item.id);
-            $('form[data-id=' + id + ']').submit();
-            return false;
-        }
-    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-        return $( "<li>" )
-            .append( "<div><img src='" + item.image_url + "' style='width: 50px; height: 50px'/>" + item.label + "</div>" )
-            .appendTo( ul );
-    };
-
-    $('.artist_name').autocomplete( {
-        appendTo: "#artist-autocomplete",
-        select: function(event, ui) {
-            var id = $(this).data('id');
-            $('input:hidden[data-id=' + id + ']').val(ui.item.id);
-            $('form[data-id=' + id + ']').submit();
-            return false;
-        }
-    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-        return $( "<li>" )
-            .append( "<div><img src='" + item.image_url + "' style='width: 50px; height: 50px'/>" + item.label + "</div>" )
-            .appendTo( ul );
-    };
-
-    $('.artist_name').keyup(function() {
-        $.ajax({
-            url: '/artists/autocomplete',
-            data: {
-                key: $(this).val()
-            },
-            context: this,
-            success: function(data) {
-                data = data.map(function(a) { return { id: a.id, label: a.name, image_url : a.image_url.url }; });
-                $(this).autocomplete("option", "source", data);
-                $(this).autocomplete("search", $(this).val());
-            }
-        });
-    });
-</script>
