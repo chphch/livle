@@ -2,51 +2,31 @@
   <% control = controller.class.name.split("::").first.to_s %>
   <%= link_to feeds_path, class: "_flex-grow-1" do %>
       <div class="_text-center" onclick="sendClickTab('feed')">
-        <% if control == 'FeedsController'%>
-            <%= image_tag("icon_home_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
-        <% else %>
-            <%= image_tag("icon_home_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
-        <% end %>
+        <%= image_tag "#{control == 'FeedsController' ? 'icon_home_filled' : 'icon_home_empty'}", style: "width: auto; height: 7rem; margin-bottom: 3%;" %>
         <p class="_fs-navbar-mobile _white">Home</p>
       </div>
   <% end %>
   <%= link_to upcomings_path, class: "_flex-grow-1" do %>
       <div class="_text-center" onclick="sendClickTab('upcoming')">
-        <% if control == 'UpcomingsController'%>
-            <%= image_tag("icon_ticket_filled", style: "width: auto; height: 8rem;") %>
-        <% else %>
-            <%= image_tag("icon_ticket_empty", style: "width: auto; height: 8rem;") %>
-        <% end %>
+        <%= image_tag "#{control == 'UpcomingsController' ? 'icon_ticket_filled' : 'icon_ticket_empty'}", style: "width: auto; height: 8rem;" %>
         <p class="_fs-navbar-mobile _white">Upcoming</p>
       </div>
   <% end %>
   <%= link_to search_path, class: "_flex-grow-1" do %>
       <div class="_text-center" onclick="sendClickTab('search')">
-        <% if control == 'SearchController'%>
-            <%= image_tag("icon_search_filled", style: "width: auto; height: 7rem; margin-bottom: 2%;") %>
-        <% else %>
-            <%= image_tag("icon_search_empty", style: "width: auto; height: 7rem; margin-bottom: 2%;") %>
-        <% end %>
+        <%= image_tag "#{control == 'SearchController' ? 'icon_search_filled' : 'icon_search_empty'}", style: "width: auto; height: 7rem; margin-bottom: 2%;" %>
         <p class="_fs-navbar-mobile _white">Search</p>
       </div>
   <% end %>
   <%= link_to connect_urls_path, class: "_flex-grow-1" do %>
       <div class="_text-center" onclick="sendClickTab('connect')">
-        <% if control == 'ConnectUrlsController'%>
-            <%= image_tag("icon_connect_filled", style: "width: auto; height: 8rem;") %>
-        <% else %>
-            <%= image_tag("icon_connect_empty", style: "width: auto; height: 8rem;") %>
-        <% end %>
+        <%= image_tag "#{control == 'ConnectUrlsController' ? 'icon_connect_filled' : 'icon_connect_empty'}", style: "width: auto; height: 8rem;" %>
         <p class="_fs-navbar-mobile _white">Connect</p>
       </div>
   <% end %>
   <%= link_to mypage_index_path, class: "_flex-grow-1" do %>
       <div class="_text-center" onclick="sendClickTab('mypage')">
-        <% if control == 'MypageController'%>
-            <%= image_tag("icon_mypage_filled", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
-        <% else %>
-            <%= image_tag("icon_mypage_empty", style: "width: auto; height: 7rem; margin-bottom: 3%;") %>
-        <% end %>
+        <%= image_tag "#{control == 'MypageController' ? 'icon_mypage_filled' : 'icon_mypage_empty'}", style: "width: auto; height: 7rem; margin-bottom: 3%;" %>
         <p class="_fs-navbar-mobile _white">My page</p>
       </div>
   <% end %>

@@ -1,119 +1,120 @@
-<%= render partial: "side_navbar_desktop" %>
+<div class="_row-positioner">
+  <%= render partial: "side_navbar_desktop" %>
+  <div class="admin-desktop-container">
+    <p class="_fs-1 _white">Connect</p>
+    <p class="_fs-1 _white">Not Confirmed</p>
+    <table>
+      <tr>
+        <th>
+          <p class="_fs-2 _light-gray">Video</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">User</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">내용</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">제목</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">아티스트</p>
+        </th>
+      </tr>
 
-<div class="admin-desktop-container">
-  <p class="_fs-1 _white">Connect</p>
-  <p class="_fs-1 _white">Not Confirmed</p>
-  <table>
-    <tr>
-      <th>
-        <p class="_fs-2 _light-gray">Video</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">User</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">내용</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">제목</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">아티스트</p>
-      </th>
-    </tr>
-
-    <% @connects.where("is_confirmed = ?", false).each do |connect| %>
-        <tr>
-          <td>
-            <!-- Youtube Video Player -->
-            <iframe type="text/html" src="http://www.youtube.com/embed/<%= connect.youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+      <% @connects.where("is_confirmed = ?", false).each do |connect| %>
+          <tr>
+            <td>
+              <!-- Youtube Video Player -->
+              <iframe type="text/html" src="http://www.youtube.com/embed/<%= connect.youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&
         autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= connect.youtube_id %>"
-                    webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-          </td>
-          <td>
-            <p class="_fs-3 _light-gray"><%= connect.user.nickname if defined?(connect.user.nickname) %></p>
-          </td>
-          <td>
-            <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
-          </td>
-          <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
-              <td>
-                <%= text_field_tag 'feed_title', nil, placeholder: '제목', class: "_black" %>
-              </td>
-              <td>
-                <!-- TODO: 아티스트 자동완성기능 필요! -->
-                <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
-              </td>
-              <td>
-                <%= submit_tag '확인' %>
-              </td>
-          <% end %>
-          <td>
-            <%= link_to connect_url_path(connect.id), method: :delete do %>
-                <button type="button" class="btn btn-outline-primary">삭제</button>
+                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </td>
+            <td>
+              <p class="_fs-3 _light-gray"><%= connect.user.nickname if defined?(connect.user.nickname) %></p>
+            </td>
+            <td>
+              <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
+            </td>
+            <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
+                <td>
+                  <%= text_field_tag 'feed_title', nil, placeholder: '제목', class: "_black" %>
+                </td>
+                <td>
+                  <!-- TODO: 아티스트 자동완성기능 필요! -->
+                  <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
+                </td>
+                <td>
+                  <%= submit_tag '확인' %>
+                </td>
             <% end %>
-          </td>
-        </tr>
-    <% end %>
-  </table>
+            <td>
+              <%= link_to connect_url_path(connect.id), method: :delete do %>
+                  <button type="button" class="btn btn-outline-primary">삭제</button>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
 
-  <p class="_fs-1 _white">Confirmed</p>
-  <table>
-    <tr>
-      <th>
-        <p class="_fs-2 _light-gray">Video</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">User</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">내용</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">제목</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">아티스트</p>
-      </th>
-      <th>
-      </th>
-      <th>
-      </th>
-    </tr>
+    <p class="_fs-1 _white">Confirmed</p>
+    <table>
+      <tr>
+        <th>
+          <p class="_fs-2 _light-gray">Video</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">User</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">내용</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">제목</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">아티스트</p>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+      </tr>
 
-    <% @connects.where("is_confirmed = ?", true).order('created_at DESC').each do |connect| %>
-        <tr>
-          <td>
-            <!-- Youtube Video Player -->
-            <iframe type="text/html" src="http://www.youtube.com/embed/<%= connect.youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&
+      <% @connects.where("is_confirmed = ?", true).order('created_at DESC').each do |connect| %>
+          <tr>
+            <td>
+              <!-- Youtube Video Player -->
+              <iframe type="text/html" src="http://www.youtube.com/embed/<%= connect.youtube_id %>?version=3&enablejsapi=1&controls=2&rel=0&
         autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= connect.youtube_id %>"
-                    webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
-          </td>
-          <td>
-            <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
-          </td>
-          <td>
-            <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
-          </td>
-          <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
-              <td>
-                <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
-              </td>
-              <td>
-                <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
-              </td>
-          <% end %>
-          <td>
-            <%= link_to feed_path(connect.feed.id) do %>
-                <button type="button" class="btn btn-outline-primary">바로가기</button>
+                      webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
+            </td>
+            <td>
+              <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
+            </td>
+            <td>
+              <%= raw_text connect.describe, class: "_fs-3 _light-gray" %>
+            </td>
+            <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
+                <td>
+                  <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
+                </td>
+                <td>
+                  <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
+                </td>
             <% end %>
-          </td>
-          <td>
-            <%= link_to connect_url_path(connect.id), method: :delete do %>
-                <button type="button" class="btn btn-outline-primary">삭제</button>
-            <% end %>
-          </td>
-        </tr>
-    <% end %>
-  </table>
+            <td>
+              <%= link_to feed_path(connect.feed.id) do %>
+                  <button type="button" class="btn btn-outline-primary">바로가기</button>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to connect_url_path(connect.id), method: :delete do %>
+                  <button type="button" class="btn btn-outline-primary">삭제</button>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

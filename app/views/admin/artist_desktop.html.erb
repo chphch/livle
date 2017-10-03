@@ -1,73 +1,82 @@
-<!-- Side Navbar -->
-<%= render partial: "side_navbar_desktop" %>
-
-<div class="admin-desktop-container">
-  <%=link_to new_artist_path do %>
-      <p class="_fs-1 _light-green">새 아티스트 추가</p>
-  <% end %>
-  <p class="_fs-1 _white">Artist Lists</p>
-  <table>
-    <tr>
-      <th>
-        <p class="_fs-2 _light-gray">index</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Profile Image</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">Name</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">On Feeds</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">On Curations</p>
-      </th>
-      <th>
-        <p class="_fs-2 _light-gray">On Upcomings</p>
-      </th>
-      <th>
-      </th>
-    </tr>
-
-    <% @artists.each do |artist| %>
+<div class="_row-positioner">
+  <%= render partial: "side_navbar_desktop" %>
+  <div class="admin-desktop-container _flex-grow-1">
+    <div class="_vcenter-positioner">
+      <div class="_flex-grow-1">
+        <p class="_fs-1 _white">Artist Lists</p>
+      </div>
+      <%= link_to new_artist_path, class: "button button-margin _no-p-margin" do %>
+          <p class="_fs-3 _white">새 아티스트 추가</p>
+      <% end %>
+    </div>
+    <table width="100%">
+      <thead>
       <tr>
-        <td>
-          <p class="_fs-3 _light-gray"><%= artist.id %></p>
-        </td>
-        <%= form_for artist, method: :patch, multipart: true do |f| %>
-          <td>
-            <label for="profile<%= artist.id %>">
-              <%= image_tag artist.image_url, style: "width: 100px; height: 100px"%>
-              <%= f.file_field :image_url %>
-            </label>
-          </td>
-          <td>
-            <%=f.text_field :name %>
-          </td>
-          <td>
-            <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: false).size %></p>
-          </td>
-          <td>
-            <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: true).size %></p>
-          </td>
-          <td>
-            <p class="_fs-3 _light-gray"><%= artist.upcomings.size %></p>
-          </td>
-          <td>
-            <!-- TODO: 뭐 넣을지 생각해보기 -->
-          </td>
-          <td>
-            <%= submit_tag("수정", class: "btn btn-outline-primary") %>
-          </td>
-          <% end %>
-        <td>
-          <%= link_to artist_path(artist.id), method: :delete do %>
-            <button type="button" class="btn btn-outline-primary">삭제</button>
-          <% end %>
-        </td>
+        <th>
+          <p class="_fs-2 _light-gray">Index</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">Profile</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">이름</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">On Feeds</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">On Curations</p>
+        </th>
+        <th>
+          <p class="_fs-2 _light-gray">On Upcomings</p>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
       </tr>
-    <% end %>
-  </table>
-  <%= will_paginate @artists %>
+      </thead>
+
+      <tbody>
+      <% @artists.each do |artist| %>
+          <tr>
+            <td align="center">
+              <p class="_fs-3 _light-gray"><%= artist.id %></p>
+            </td>
+            <%= form_for artist, method: :patch, multipart: true do |f| %>
+                <td align="center">
+                  <label for="profile<%= artist.id %>">
+                    <%= image_tag artist.image_url, style: "width: 100px; height: 100px"%>
+                    <%= f.file_field :image_url %>
+                  </label>
+                </td>
+                <td>
+                  <%= f.text_field :name %>
+                </td>
+                <td align="center">
+                  <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: false).size %></p>
+                </td>
+                <td align="center">
+                  <p class="_fs-3 _light-gray"><%= artist.feeds.where(is_curation: true).size %></p>
+                </td>
+                <td align="center">
+                  <p class="_fs-3 _light-gray"><%= artist.upcomings.size %></p>
+                </td>
+                <td>
+                  <%= submit_tag "저장", class: "button _fs-3 _white" %>
+                </td>
+            <% end %>
+            <td align="center">
+              <%= link_to artist_path(artist.id), method: :delete do %>
+                  <button type="button" class="button _fs-3 _white">삭제</button>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="_hcenter-positioner">
+      <%= will_paginate @artists %>
+    </div>
+  </div>
 </div>
