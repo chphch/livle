@@ -47,7 +47,7 @@
       </td>
       <td align="center" class="td-border-bottom">
         <%= link_to upcoming.ticket_url do %>
-            <p class="_fs-3 _light-green">바로가기</p>
+            <p class="_fs-3 _light-green">티켓 바로가기</p>
         <% end %>
       </td>
       <td align="center" class="td-border-bottom">
@@ -64,10 +64,10 @@
   <td></td>
   <%= form_tag "/temporary_upcomings/#{upcoming.id}/merge" do %>
       <td>
-        <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'Upcoming의 Id' %>
+        <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'upcoming_index' %>
       </td>
       <td>
-        <%= submit_tag '합치기', class: "button _fs-3 _white" %>
+        <%= submit_tag '기존 데이터와 합치기', class: "button _fs-3 _white" %>
       </td>
   <% end %>
 </tr>

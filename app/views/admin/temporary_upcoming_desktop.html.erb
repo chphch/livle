@@ -43,14 +43,17 @@
         <th></th>
         <th></th>
         <th></th>
-        <th></th>
       </tr>
       </thead>
 
+      <tbody>
       <% @temp_upcomings.each do |temp_upcoming| %>
           <%= render partial: "temp_upcoming_card", locals: {upcoming: temp_upcoming} %>
       <% end %>
+      </tbody>
     </table>
-    <%= will_paginate @temp_upcomings %>
+    <div class="_hcenter-positioner">
+      <%= will_paginate @temp_upcomings %>
+    </div>
   </div>
 </div>

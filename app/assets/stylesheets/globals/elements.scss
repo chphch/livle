@@ -105,6 +105,23 @@ a:hover {
   }
 }
 
+//pagination
+.pagination {
+  .previous_page,
+  .next_page {
+    font-size: $fs-3 !important;
+    color: $light-green !important;
+  }
+  em {
+    font-size: $fs-2;
+    color: $white;
+  }
+  a {
+    font-size: $fs-2;
+    color: $gray;
+  }
+}
+
 //########################
 //#        MOBILE        #
 //########################
