@@ -46,7 +46,7 @@
             <%= form_for artist, method: :patch, multipart: true do |f| %>
                 <td align="center">
                   <label for="profile<%= artist.id %>">
-                    <%= image_tag artist.image_url, style: "width: 100px; height: 100px"%>
+                    <%= image_tag artist.image_url, class: "admin-image" %>
                     <%= f.file_field :image_url %>
                   </label>
                 </td>

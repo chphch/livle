@@ -16,6 +16,10 @@
 
 .admin-desktop-container {
   padding: 2% 4%;
+  label {
+    width: 10rem;
+  }
+
   .button-margin {
     margin: 0 1rem;
   }
@@ -33,14 +37,15 @@
     background: $white !important;
     p { color: $black !important }
   }
+
+  .admin-image {
+    @include size(10rem);
+    @include cursor-pointer;
+    object-fit: cover;
+  }
   .delete-icon {
     @include size(auto, 1.2rem);
-    margin: 0 0 0 1rem;
-  }
-
-  //artist
-  label {
-    width: 10rem;
+    margin: 0 0 0 .4rem;
   }
 }
 
@@ -65,13 +70,13 @@ tbody {
   }
 
   input {
-    width: 100%;
+    min-width: 100%;
   }
   ul {
     list-style-type: none;
   }
   .td-border-bottom {
-    border-bottom: 1px solid $light-gray;
+    border-bottom: 1px solid $gray;
   }
 }
 
