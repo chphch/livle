@@ -23,13 +23,34 @@
 
   .upcoming-info-container {
     @include size(100%, 31rem);
+    padding: 2rem 6rem;
     background: $dark-dark-gray;
     border: 1px solid $light-gray;
     @include border-radius($br-min);
+    .info-poster {
+      @include size(auto, 100%);
+    }
+    .info-text {
+      @include size(100%);
+      padding: 0 0 0 6rem;
+    }
+    .row-container {
+      @include size(8rem, auto);
+    }
   }
 
   .remain-ticket-container {
     padding: 2rem 0;
+    .book-button {
+      background: $white;
+      padding: 1.5rem 3rem;
+      border: none;
+      @include border-radius($br-min);
+    }
+    .ticket-icon {
+      @include size(auto, 3rem);
+      margin: 0 1rem 0 0;
+    }
   }
 
   .detail-container {
