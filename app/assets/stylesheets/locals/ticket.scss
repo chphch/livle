@@ -34,6 +34,26 @@
       z-index: $z-front;
     }
   }
+
+  .upcoming-content-container-m {
+    padding: 5% 8%;
+    .row-container {
+      max-width: 24%;
+      @include size(24%, auto);
+    }
+  }
+
+  .detail-container-m {
+    .detail-selector-m {
+      @include size(100%, 12rem);
+      border-bottom: 1px solid $gray;
+    }
+    .selector-bar {
+      @include size(50%, 3px);
+      background: $white;
+      @include transition(margin 400ms);
+    }
+  }
 }
 
 

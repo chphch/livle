@@ -21,4 +21,51 @@
   <%= link_to :back, class: "_link-back-container-m", id: 'back' do %>
       <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
   <% end %>
+
+  <div class="upcoming-content-container-m">
+    <div class="_vcenter-positioner">
+      <div class="row-container">
+        <p class="_fs-2-mobile _white">공연 장소</p>
+      </div>
+      <p class="_fs-3-mobile _light-gray"><%= @upcoming.place %></p>
+    </div>
+    <div class="_vcenter-positioner">
+      <div class="row-container">
+        <p class="_fs-2-mobile _white">공연 기간</p>
+      </div>
+      <p class="_fs-3-mobile _light-gray"><%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %></p>
+    </div>
+    <div class="_vcenter-positioner">
+      <div class="row-container">
+        <p class="_fs-2-mobile _white">라인업</p>
+      </div>
+      <p class="_fs-3-mobile _light-gray">
+        <% @upcoming.artists.each_with_index do |artist, i| %>
+            <%= artist.name %>
+            <% break if @upcoming.artists[i+1] == nil %>
+            ,&nbsp
+        <% end %>
+      </p>
+    </div>
+    <div class="_vcenter-positioner">
+      <div class="row-container">
+        <p class="_fs-2-mobile _white">관람 시간</p>
+      </div>
+      <p class="_fs-3-mobile _light-gray"><!-- TODO: 관람시간 --></p>
+    </div>
+  </div>
+
+  <div class="detail-container-m">
+    <div class="_vcenter-positioner _no-p-margin">
+      <div class="detail-info detail-selector-m _flex-grow-1 _vcenter-positioner _hcenter-positioner">
+        <p class="_fs-2-mobile _white">상세정보</p>
+      </div>
+      <div class="detail-notice detail-selector-m _flex-grow-1 _vcenter-positioner _hcenter-positioner">
+        <p class="_fs-2-mobile _white">예매 유의사항</p>
+      </div>
+    </div>
+    <div class="_vcenter-positioner">
+      <div class="selector-bar"></div>
+    </div>
+  </div>
 </div>

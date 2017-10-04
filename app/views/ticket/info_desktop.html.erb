@@ -18,7 +18,7 @@
             <div class="row-container">
               <p class="_fs-3 _white">공연 기간</p>
             </div>
-            <p class="_fs-3 _light-gray"><%= @upcoming.start_date %> - <%= @upcoming.end_date %></p>
+            <p class="_fs-3 _light-gray"><%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %></p>
           </div>
           <div class="_vcenter-positioner">
             <div class="row-container">
