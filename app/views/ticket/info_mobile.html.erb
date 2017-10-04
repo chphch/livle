@@ -1,0 +1,24 @@
+<div id="ticket-info-m">
+  <div class="upcoming-info-container-m _vcenter-positioner">
+    <div class="info-background-m"></div>
+    <div class="info-filter-m"></div>
+    <%= image_tag @upcoming.image_url, class: "info-poster-m" %>
+    <div class="info-text-container-m _column-positioner _hcenter-positioner">
+      <div class="_flex-grow-1">
+        <p class="_fs-1-mobile _white"><%= @upcoming.title %></p>
+      </div>
+      <p class="_fs-2-mobile _white"><!-- TODO: 콘서트 소개 --></p>
+    </div>
+    <script>
+        $('.info-background-m').css({
+            'background': 'url(\'<%= @upcoming.image_url %>\') no-repeat center center',
+            'background-size': 'cover'
+        });
+        $('.info-text-container-m').css('height', $('.info-poster-m').height());
+    </script>
+  </div>
+  <!-- back button -->
+  <%= link_to :back, class: "_link-back-container-m", id: 'back' do %>
+      <%= image_tag("icon_back", style: "width: 4rem; height: auto;") %>
+  <% end %>
+</div>

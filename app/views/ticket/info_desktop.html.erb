@@ -3,7 +3,7 @@
     <div class="_desktop-container _column-positioner _vcenter-positioner">
       <div class="upcoming-info-container _vcenter-positioner">
         <%= image_tag @upcoming.image_url, class: "info-poster" %>
-        <div class="info-text _flex-grow-1 _column-positioner _hcenter-positioner">
+        <div class="info-text-container _flex-grow-1 _column-positioner _hcenter-positioner">
           <div class="_flex-grow-1">
             <p class="_fs-title _white"><%= @upcoming.title %></p>
             <p class="_fs-1 _white"><!-- TODO: 콘서트 소개 --></p>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="remain-ticket-container">
-        <%= link_to "ticket/@upcoming.id/book", class: "book-button _vcenter-positioner
+        <%= link_to "/ticket/#{@upcoming.id}/book", class: "book-button _vcenter-positioner
          _hcenter-positioner _no-p-margin" do %>
             <%= image_tag "icon_ticket_black", class: "ticket-icon" %>
             <p class="_fs-title _black"><strong>예매하기</strong></p>

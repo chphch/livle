@@ -9,7 +9,31 @@
 //#        MOBILE        #
 //########################
 #ticket-info-m {
-
+  .upcoming-info-container-m {
+    position: relative;
+    width: 100%;
+    padding: 4% 12%;
+    .info-background-m {
+      position: absolute;
+      @include position(0);
+      z-index: $z-burrow;
+    }
+    .info-filter-m {
+      position: absolute;
+      @include position(0);
+      z-index: $z-back;
+      background: $black-opacity;
+    }
+    .info-poster-m {
+      @include size(45%, auto);
+      z-index: $z-front;
+    }
+    .info-text-container-m {
+      @include size(50%, 100%); //get height dynamically
+      padding: 0 0 0 5%;
+      z-index: $z-front;
+    }
+  }
 }
 
 
@@ -30,7 +54,7 @@
     .info-poster {
       @include size(auto, 100%);
     }
-    .info-text {
+    .info-text-container {
       @include size(100%);
       padding: 0 0 0 6rem;
     }
