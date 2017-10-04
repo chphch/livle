@@ -1,0 +1,58 @@
+// Place all the styles related to the ticket controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals/colors";
+@import "globals/sizes";
+@import "globals/mixins";
+
+//########################
+//#        MOBILE        #
+//########################
+#ticket-info-m {
+
+}
+
+
+//########################
+//#       DESKTOP        #
+//########################
+#ticket-info {
+  .info-container {
+    padding: 4rem 0;
+  }
+
+  .upcoming-info-container {
+    @include size(100%, 31rem);
+    background: $dark-dark-gray;
+    border: 1px solid $light-gray;
+    @include border-radius($br-min);
+  }
+
+  .remain-ticket-container {
+    padding: 2rem 0;
+  }
+
+  .detail-container {
+    @include size(100%, auto);
+    padding: 2rem 0;
+    .detail-selector {
+      @include size(100%, 4rem);
+      @include cursor-pointer;
+      border-bottom: 1px solid $gray;
+    }
+    .selector-bar {
+      @include size(50%, 3px);
+      background: $white;
+      @include transition(margin 400ms);
+    }
+    .detail-info-container,
+    .detail-notice-container {
+      width: 100%;
+      padding: 3rem 0;
+    }
+    .text-container {
+      width: 60%;
+      padding: 2rem 0;
+    }
+  }
+}

@@ -49,11 +49,11 @@
                   <!-- TODO: 아티스트 자동완성기능 필요! -->
                   <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
                 </td>
-                <td class="td-border-bottom">
+                <td align="center" class="td-border-bottom">
                   <%= submit_tag '승인', class: "button _fs-3 _white" %>
                 </td>
             <% end %>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to connect_url_path(connect.id), method: :delete do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>
@@ -112,16 +112,16 @@
                 <td class="td-border-bottom">
                   <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
                 </td>
-                <td class="td-border-bottom">
+                <td align="center" class="td-border-bottom">
                   <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
                 </td>
             <% end %>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to feed_path(connect.feed.id) do %>
                   <button type="button" class="button _fs-3 _white">바로가기</button>
               <% end %>
             </td>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to connect_url_path(connect.id), method: :delete do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>

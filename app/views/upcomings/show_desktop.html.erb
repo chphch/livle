@@ -132,14 +132,14 @@
   </div>
   <script>
       $('#ticket-button').on('click', function () {
-        sendClickButton('ticketPage');
-        <% if @upcoming.upcoming_ticket_urls.size == 1 %>
-        window.open("<%=@upcoming.upcoming_ticket_urls.first.ticket_url%>", '_blank');
-        <% else %>
-        $('.ticket-container').append(
-          "<%=j render partial: 'ticket_link_desktop', locals: {upcoming: @upcoming}%>"
-        );
-        <% end %>
+          sendClickButton('ticketPage');
+          <% if @upcoming.upcoming_ticket_urls.size == 1 %>
+              window.open("<%= @upcoming.upcoming_ticket_urls.first.ticket_url %>", '_blank');
+          <% else %>
+          $('.ticket-container').append(
+              "<%= j render partial: 'ticket_link_desktop', locals: {upcoming: @upcoming} %>"
+          );
+          <% end %>
       });
 
       $('#share-button').on('click', function () {

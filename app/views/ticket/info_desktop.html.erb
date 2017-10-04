@@ -1,0 +1,85 @@
+<div id="ticket-info">
+  <div class="info-container _hcenter-positioner">
+    <div class="_desktop-container _column-positioner _vcenter-positioner">
+      <div class="upcoming-info-container">
+
+      </div>
+      <div class="remain-ticket-container">
+
+      </div>
+
+      <div class="detail-container">
+        <div class="_vcenter-positioner">
+          <div class="detail-info detail-selector _flex-grow-1 _hcenter-positioner">
+            <p class="_fs-1 _white">상세정보</p>
+          </div>
+          <div class="detail-notice detail-selector _flex-grow-1 _hcenter-positioner">
+            <p class="_fs-1 _white">예매유의사항</p>
+          </div>
+        </div>
+        <div class="_vcenter-positioner">
+          <div class="selector-bar"></div>
+        </div>
+
+        <div class="detail-info-container">
+          <div class="_column-positioner _vcenter-positioner">
+            <div class="text-container">
+              <p class="_fs-1 _white">예매정보</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  공연일시: <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
+                </p>
+                <p class="_fs-3 _light-gray">
+                  예매 가능시간: 공연 1일 전 까지
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="_fs-1 _white">관람정보</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  관람등급:
+                </p>
+                <p class="_fs-3 _light-gray">
+                  공연시간:
+                </p>
+                <p class="_fs-3 _light-gray">
+                  티켓수령:
+                </p>
+                <p class="_fs-3 _light-gray">
+                  티켓교환:
+                </p>
+                <p class="_fs-3 _light-gray">
+                  입장시간:
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="_fs-1 _white">주의사항</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  ※당일 관람티켓 취소/환불/변경 불가 - 신중히 구매해주세요.
+                </p>
+                <p class="_fs-3 _light-gray">
+                  지각으로 관람하지 못할 시 취소/환불/변경 불가
+                </p>
+                <p class="_fs-3 _light-gray">
+                  일회용 용기에 싸온 음식물 반입 금지(도시락을 이용해주세요)
+                </p>
+                <p class="_fs-3 _light-gray">
+                  공연 취소/변경 발생시, 개별 연락을 드릴 수 있습니다.
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <%= image_tag "#{@upcoming.image_url}" %>
+            </div>
+          </div>
+        </div>
+        <div class="detail-notice-container" style="display: none;">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
