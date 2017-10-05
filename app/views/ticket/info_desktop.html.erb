@@ -1,0 +1,130 @@
+<div id="ticket-info">
+  <div class="info-container _hcenter-positioner">
+    <div class="_desktop-container _column-positioner _vcenter-positioner">
+      <div class="ticket-info-container _vcenter-positioner">
+        <%= image_tag @upcoming.image_url, class: "info-poster" %>
+        <div class="info-text-container _flex-grow-1 _column-positioner _hcenter-positioner">
+          <div class="_flex-grow-1">
+            <p class="_fs-title _white"><%= @upcoming.title %></p>
+            <p class="_fs-1 _white"><!-- TODO: 콘서트 소개 --></p>
+          </div>
+          <div class="_vcenter-positioner">
+            <div class="row-container">
+              <p class="_fs-3 _white">공연 장소</p>
+            </div>
+            <p class="_fs-3 _light-gray"><%= @upcoming.place %></p>
+          </div>
+          <div class="_vcenter-positioner">
+            <div class="row-container">
+              <p class="_fs-3 _white">공연 기간</p>
+            </div>
+            <p class="_fs-3 _light-gray"><%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %></p>
+          </div>
+          <div class="_vcenter-positioner">
+            <div class="row-container">
+              <p class="_fs-3 _white">라인업</p>
+            </div>
+            <p class="_fs-3 _light-gray">
+              <% @upcoming.artists.each_with_index do |artist, i| %>
+                  <%= artist.name %>
+                  <% break if @upcoming.artists[i+1] == nil %>
+                  ,&nbsp
+              <% end %>
+            </p>
+          </div>
+          <div class="_vcenter-positioner">
+            <div class="row-container">
+              <p class="_fs-3 _white">관람 시간</p>
+            </div>
+            <p class="_fs-3 _light-gray"><!-- TODO: 관람시간 --></p>
+          </div>
+        </div>
+        <script>
+            $('.info-text-container').css('height', $('.info-poster').height());
+        </script>
+      </div>
+
+      <div class="remain-ticket-container">
+        <%= link_to "/ticket/#{@upcoming.id}/book", class: "book-button _vcenter-positioner
+         _hcenter-positioner _no-p-margin" do %>
+            <%= image_tag "icon_ticket_black", class: "ticket-icon" %>
+            <p class="_fs-title _black"><strong>예매하기</strong></p>
+        <% end %>
+      </div>
+
+      <div class="detail-container">
+        <div class="_vcenter-positioner">
+          <div class="detail-info detail-selector _flex-grow-1 _hcenter-positioner">
+            <p class="_fs-1 _white">상세정보</p>
+          </div>
+          <div class="detail-notice detail-selector _flex-grow-1 _hcenter-positioner">
+            <p class="_fs-1 _white">예매유의사항</p>
+          </div>
+        </div>
+        <div class="_vcenter-positioner">
+          <div class="selector-bar"></div>
+        </div>
+
+        <div class="detail-info-container">
+          <div class="_column-positioner _vcenter-positioner">
+            <div class="text-container">
+              <p class="_fs-1 _white">예매정보</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  공연일시: <%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %>
+                </p>
+                <p class="_fs-3 _light-gray">
+                  예매 가능시간: 공연 1일 전 까지
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="_fs-1 _white">관람정보</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  관람등급: <!-- TODO: 관람등급 -->
+                </p>
+                <p class="_fs-3 _light-gray">
+                  공연시간: <!-- TODO: 공연시간 -->
+                </p>
+                <p class="_fs-3 _light-gray">
+                  티켓수령: <!-- TODO: 티켓수령 -->
+                </p>
+                <p class="_fs-3 _light-gray">
+                  티켓교환: <!-- TODO: 티켓교환 -->
+                </p>
+                <p class="_fs-3 _light-gray">
+                  입장시간: <!-- TODO: 입장시간 -->
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <p class="_fs-1 _white">주의사항</p>
+              <div class="_no-p-margin">
+                <p class="_fs-3 _light-gray">
+                  ※당일 관람티켓 취소/환불/변경 불가 - 신중히 구매해주세요.
+                </p>
+                <p class="_fs-3 _light-gray">
+                  지각으로 관람하지 못할 시 취소/환불/변경 불가
+                </p>
+                <p class="_fs-3 _light-gray">
+                  일회용 용기에 싸온 음식물 반입 금지(도시락을 이용해주세요)
+                </p>
+                <p class="_fs-3 _light-gray">
+                  공연 취소/변경 발생시, 개별 연락을 드릴 수 있습니다.
+                </p>
+              </div>
+            </div>
+            <div class="text-container">
+              <!-- TODO: Full size poster -->
+              <%= image_tag @upcoming.image_url %>
+            </div>
+          </div>
+        </div>
+        <div class="detail-notice-container" style="display: none;">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

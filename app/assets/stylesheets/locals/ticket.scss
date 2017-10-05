@@ -1,0 +1,151 @@
+// Place all the styles related to the ticket controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "globals/colors";
+@import "globals/sizes";
+@import "globals/mixins";
+
+//########################
+//#        MOBILE        #
+//########################
+#ticket-info-m {
+  .upcoming-info-container-m {
+    position: relative;
+    width: 100%;
+    padding: 4% 12%;
+    .info-background-m {
+      position: absolute;
+      @include position(0);
+      z-index: $z-burrow;
+    }
+    .info-filter-m {
+      position: absolute;
+      @include position(0);
+      z-index: $z-back;
+      background: $black-opacity;
+    }
+    .info-poster-m {
+      @include size(45%, auto);
+      z-index: $z-front;
+    }
+    .info-text-container-m {
+      @include size(50%, 100%); //get height dynamically
+      padding: 0 0 0 5%;
+      z-index: $z-front;
+    }
+  }
+
+  .upcoming-content-container-m {
+    padding: 5% 8%;
+    .row-container {
+      max-width: 24%;
+      @include size(24%, auto);
+    }
+  }
+
+  .detail-container-m {
+    .detail-selector-m {
+      @include size(100%, 12rem);
+      border-bottom: 1px solid $gray;
+    }
+    .selector-bar {
+      @include size(50%, 3px);
+      background: $white;
+      @include transition(margin 400ms);
+    }
+
+    .detail-info-container,
+    .detail-notice-container {
+      padding: 5% 8%;
+    }
+
+    .text-container-m {
+      padding: 4% 0;
+    }
+  }
+
+  .book-ticket-container {
+    position: fixed;
+    left: 0; bottom: 0; right: 0;
+    height: 8%;
+    z-index: $z-important;
+    background: $white;
+    .book-button-m {
+      @include size(100%);
+    }
+    .ticket-icon-m {
+      @include size(auto, 6em);
+      margin: 0 4% 0 0;
+    }
+  }
+}
+
+
+//########################
+//#       DESKTOP        #
+//########################
+#ticket-info,
+#ticket-book {
+  .ticket-info-container {
+    @include size(100%, auto);
+    padding: 2rem 6rem;
+    background: $dark-dark-gray;
+    border: 1px solid $light-gray;
+    @include border-radius($br-min);
+  }
+}
+
+#ticket-info {
+  .info-container {
+    padding: 4rem 0;
+  }
+
+  .info-poster {
+    @include size(24rem, auto);
+  }
+  .info-text-container {
+    @include size(100%); //get height dynamically
+    padding: 0 0 0 6rem;
+  }
+  .row-container {
+    @include size(8rem, auto);
+  }
+
+  .remain-ticket-container {
+    padding: 2rem 0;
+    .book-button {
+      background: $white;
+      padding: 1.5rem 3rem;
+      border: none;
+      @include border-radius($br-min);
+    }
+    .ticket-icon {
+      @include size(auto, 3rem);
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  .detail-container {
+    @include size(100%, auto);
+    padding: 2rem 0;
+    .detail-selector {
+      @include size(100%, 4rem);
+      @include cursor-pointer;
+      border-bottom: 1px solid $gray;
+    }
+    .selector-bar {
+      @include size(50%, 3px);
+      background: $white;
+      @include transition(margin 400ms);
+    }
+    .detail-info-container,
+    .detail-notice-container {
+      width: 100%;
+      padding: 3rem 0;
+    }
+    .text-container {
+      width: 60%;
+      padding: 2rem 0;
+    }
+  }
+}

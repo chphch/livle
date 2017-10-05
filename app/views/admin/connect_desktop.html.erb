@@ -49,11 +49,11 @@
                   <!-- TODO: 아티스트 자동완성기능 필요! -->
                   <%= text_field_tag 'feed_artist', nil, placeholder: '아티스트', class: "_black" %>
                 </td>
-                <td class="td-border-bottom">
+                <td align="center" class="td-border-bottom">
                   <%= submit_tag '승인', class: "button _fs-3 _white" %>
                 </td>
             <% end %>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to connect_url_path(connect.id), method: :delete do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>
@@ -88,6 +88,9 @@
         <th>
           <p class="_fs-2 _light-gray">아티스트</p>
         </th>
+        <th>
+          <p class="_fs-2 _light-gray">공식 큐레이션</p>
+        </th>
         <th></th>
         <th></th>
       </tr>
@@ -105,23 +108,26 @@
         autoplay=0&showinfo=0&autohide=1&playsinline=1&iv_load_policy=3&modestbranding=1&loop=1&playlist=<%= connect.youtube_id %>"
                       webkitallowfullscreen mozallowfullscreen allowFullScreen frameborder="0"></iframe>
             </td>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <p class="_fs-3 _light-gray"><%= connect.user.nickname %></p>
             </td>
-            <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
-                <td class="td-border-bottom">
-                  <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
-                </td>
-                <td class="td-border-bottom">
-                  <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
+            <td align="center" class="td-border-bottom">
+              <p class="_fs-3 _light-gray"><%= connect.feed.title %></p>
+            </td>
+            <td align="center" class="td-border-bottom">
+              <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
+            </td>
+            <%= form_for connect.feed, method: :patch do |f| %>
+                <td align="center">
+                  <%= f.check_box :is_curation, data: {id: "#{connect.feed.id}"}, id: "feed_is_curation_#{connect.feed.id}", class: "is_curation" %>
                 </td>
             <% end %>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to feed_path(connect.feed.id) do %>
                   <button type="button" class="button _fs-3 _white">바로가기</button>
               <% end %>
             </td>
-            <td class="td-border-bottom">
+            <td align="center" class="td-border-bottom">
               <%= link_to connect_url_path(connect.id), method: :delete do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>

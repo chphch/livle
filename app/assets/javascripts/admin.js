@@ -1,4 +1,9 @@
 document.addEventListener("turbolinks:load", function () {
+    $('.is_curation').change(function () {
+        var id = $(this).data('id');
+        $('#edit_feed_'+id).submit();
+    });
+
     $(".new-feed_artist, .new-upcoming-artist").on('click', function(e) {
         e.preventDefault();
         var $new = $(this).prev();
@@ -63,21 +68,6 @@ document.addEventListener("turbolinks:load", function () {
         } else {
             $officialButton.removeClass('button-select');
             $commonButton.addClass('button-select');
-        }
-    }
-
-    //upcoming
-    $(':file').change(function () {
-        updatePoster(this);
-    });
-
-    function updatePoster(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#upload-profile-img').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
         }
     }
 });
