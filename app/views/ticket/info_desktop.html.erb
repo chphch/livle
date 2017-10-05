@@ -68,7 +68,7 @@
               <p class="_fs-1 _white">예매정보</p>
               <div class="_no-p-margin">
                 <p class="_fs-3 _light-gray">
-                  공연일시: <%= @upcoming.start_date %> - <%= @upcoming.end_date %>
+                  공연일시: <%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %>
                 </p>
                 <p class="_fs-3 _light-gray">
                   예매 가능시간: 공연 1일 전 까지

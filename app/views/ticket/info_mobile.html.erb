@@ -67,5 +67,72 @@
     <div class="_vcenter-positioner">
       <div class="selector-bar"></div>
     </div>
+
+    <div class="detail-info-container">
+      <div class="text-container-m">
+        <p class="_fs-2-mobile _white">예매 정보</p>
+        <div class="_no-p-margin">
+          <p class="_fs-3-mobile _light-gray">
+            공연 일시: <%= @upcoming.start_date %><%= " - #{@upcoming.end_date}" if @upcoming.end_date != @upcoming.start_date %>
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            예매 가능시간: 공연 1일 전 까지
+          </p>
+        </div>
+      </div>
+      <div class="text-container-m">
+        <p class="_fs-2-mobile _white">관람 정보</p>
+        <div class="_no-p-margin">
+          <p class="_fs-3-mobile _light-gray">
+            관람등급: <!-- TODO: 관람등급 -->
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            공연시간: <!-- TODO: 공연시간 -->
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            티켓수령: <!-- TODO: 티켓수령 -->
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            티켓교환: <!-- TODO: 티켓교환 -->
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            입장시간: <!-- TODO: 입장시간 -->
+          </p>
+        </div>
+      </div>
+      <div class="text-container-m">
+        <p class="_fs-2-mobile _white">주의사항</p>
+        <div class="_no-p-margin">
+          <p class="_fs-3-mobile _light-gray">
+            ※당일 관람티켓 취소/환불/변경 불가 - 신중히 구매해주세요.
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            지각으로 관람하지 못할 시 취소/환불/변경 불가
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            일회용 용기에 싸온 음식물 반입 금지(도시락을 이용해주세요)
+          </p>
+          <p class="_fs-3-mobile _light-gray">
+            공연 취소/변경 발생시, 개별 연락을 드릴 수 있습니다.
+          </p>
+        </div>
+      </div>
+      <div class="text-container-m">
+        <!-- TODO: Full size poster -->
+        <%= image_tag @upcoming.image_url %>
+      </div>
+    </div>
+    <div class="detail-notice-container" style="display: none;">
+
+    </div>
+  </div>
+
+  <div style="padding: 0 0 8%;"></div>
+  <div class="book-ticket-container">
+    <%= link_to "/ticket/#{@upcoming.id}/book", class: "book-button-m _vcenter-positioner
+         _hcenter-positioner _no-p-margin" do %>
+        <%= image_tag "icon_ticket_black", class: "ticket-icon-m" %>
+        <p class="_fs-0-mobile _black"><strong>예매하기</strong></p>
+    <% end %>
   </div>
 </div>

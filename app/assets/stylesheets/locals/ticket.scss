@@ -53,6 +53,30 @@
       background: $white;
       @include transition(margin 400ms);
     }
+
+    .detail-info-container,
+    .detail-notice-container {
+      padding: 5% 8%;
+    }
+
+    .text-container-m {
+      padding: 4% 0;
+    }
+  }
+
+  .book-ticket-container {
+    position: fixed;
+    left: 0; bottom: 0; right: 0;
+    height: 8%;
+    z-index: $z-important;
+    background: $white;
+    .book-button-m {
+      @include size(100%);
+    }
+    .ticket-icon-m {
+      @include size(auto, 6em);
+      margin: 0 4% 0 0;
+    }
   }
 }
 
