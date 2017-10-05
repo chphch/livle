@@ -43,7 +43,8 @@ class UpcomingsController < ApplicationController
     if @upcoming.update(title: params[:upcoming][:title], image_url: params[:upcoming][:image_url],
                         place: params[:upcoming][:place], main_youtube_id: params[:upcoming][:main_youtube_id],
                       start_date: params[:upcoming][:start_date], end_date: params[:upcoming][:end_date])
-      redirect_back(fallback_location: root_path)
+      @message = "저장되었습니다"
+      render '/xhrs/alert'
     else
       render text: @upcoming.errors.messages
     end
@@ -51,7 +52,8 @@ class UpcomingsController < ApplicationController
 
   def destroy
     if Upcoming.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: @upcoming.errors.messages
     end

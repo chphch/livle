@@ -22,7 +22,8 @@ class UpcomingArtistsController < ApplicationController
 
   def destroy
     if UpcomingArtist.find(params[:id]).destroy
-      redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: 'Error destroying upcoming_artist'
     end

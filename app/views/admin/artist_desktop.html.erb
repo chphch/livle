@@ -39,11 +39,11 @@
 
       <tbody>
       <% @artists.each do |artist| %>
-          <tr>
+          <tr id="artist-<%= artist.id %>">
             <td align="center">
               <p class="_fs-3 _light-gray"><%= artist.id %></p>
             </td>
-            <%= form_for artist, method: :patch, multipart: true do |f| %>
+            <%= form_for artist, method: :patch, multipart: true, remote: true do |f| %>
                 <td align="center">
                   <label for="profile<%= artist.id %>">
                     <%= image_tag artist.image_url, class: "admin-image" %>
@@ -67,7 +67,7 @@
                 </td>
             <% end %>
             <td align="center">
-              <%= link_to artist_path(artist.id), method: :delete do %>
+              <%= link_to artist_path(artist.id), method: :delete, remote: true, onclick: "$('#artist-#{artist.id}').remove();" do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>
             </td>

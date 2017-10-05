@@ -67,7 +67,8 @@ class TemporaryUpcomingsController < ApplicationController
       ticket.provider = params[:temporary_upcoming][:provider]
       ticket.ticket_url = params[:temporary_upcoming][:ticket_url]
       if ticket.save && tu.destroy
-        redirect_back(fallback_location: root_path)
+        @message = "저장되었습니다"
+        render '/xhrs/alert'
       else
         render text: "TicketUrl을 연결하는 데 실패했습니다."
       end
@@ -78,7 +79,8 @@ class TemporaryUpcomingsController < ApplicationController
 
   def destroy
     if TemporaryUpcoming.find(params[:id]).destroy
-        redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: "삭제에 실패했습니다."
     end
@@ -92,7 +94,8 @@ class TemporaryUpcomingsController < ApplicationController
       ticket.provider = temp.provider
       ticket.ticket_url = temp.ticket_url
       if ticket.save && temp.destroy
-        redirect_back(fallback_location: root_path)
+        @message = "병합되었습니다"
+        render '/xhrs/alert'
       else
         render text: "실패했습니다."
       end

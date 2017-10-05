@@ -1,6 +1,6 @@
 class FeedStatus
   def initialize  #construct
-    @status = 'official'
+    @status = 'official' if @status == nil
   end
 
   def get_status

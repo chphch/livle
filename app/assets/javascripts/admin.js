@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function () {
     $('.is_curation').change(function () {
         var id = $(this).data('id');
-        $('#edit_feed_'+id).submit();
+        $('#feed_submit_'+id).click();
     });
 
     $(".new-feed_artist, .new-upcoming-artist").on('click', function(e) {
