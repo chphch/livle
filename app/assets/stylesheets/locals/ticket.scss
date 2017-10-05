@@ -84,27 +84,31 @@
 //########################
 //#       DESKTOP        #
 //########################
+#ticket-info,
+#ticket-book {
+  .ticket-info-container {
+    @include size(100%, auto);
+    padding: 2rem 6rem;
+    background: $dark-dark-gray;
+    border: 1px solid $light-gray;
+    @include border-radius($br-min);
+  }
+}
+
 #ticket-info {
   .info-container {
     padding: 4rem 0;
   }
 
-  .upcoming-info-container {
-    @include size(100%, 31rem);
-    padding: 2rem 6rem;
-    background: $dark-dark-gray;
-    border: 1px solid $light-gray;
-    @include border-radius($br-min);
-    .info-poster {
-      @include size(auto, 100%);
-    }
-    .info-text-container {
-      @include size(100%);
-      padding: 0 0 0 6rem;
-    }
-    .row-container {
-      @include size(8rem, auto);
-    }
+  .info-poster {
+    @include size(24rem, auto);
+  }
+  .info-text-container {
+    @include size(100%); //get height dynamically
+    padding: 0 0 0 6rem;
+  }
+  .row-container {
+    @include size(8rem, auto);
   }
 
   .remain-ticket-container {

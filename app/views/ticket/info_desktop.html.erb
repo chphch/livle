@@ -1,7 +1,7 @@
 <div id="ticket-info">
   <div class="info-container _hcenter-positioner">
     <div class="_desktop-container _column-positioner _vcenter-positioner">
-      <div class="upcoming-info-container _vcenter-positioner">
+      <div class="ticket-info-container _vcenter-positioner">
         <%= image_tag @upcoming.image_url, class: "info-poster" %>
         <div class="info-text-container _flex-grow-1 _column-positioner _hcenter-positioner">
           <div class="_flex-grow-1">
@@ -39,6 +39,9 @@
             <p class="_fs-3 _light-gray"><!-- TODO: 관람시간 --></p>
           </div>
         </div>
+        <script>
+            $('.info-text-container').css('height', $('.info-poster').height());
+        </script>
       </div>
 
       <div class="remain-ticket-container">
