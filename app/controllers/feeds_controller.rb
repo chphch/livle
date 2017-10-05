@@ -59,10 +59,13 @@ class FeedsController < ApplicationController
 
   def update
     @feed = Feed.find(params[:id])
-    if @feed.update(title: params[:feed][:title], youtube_url: params[:feed][:youtube_url], valuation: params[:feed][:valuation])
-      redirect_back(fallback_location: root_path)
+    if params[:feed][:title]
+      action = @feed.update(title: params[:feed][:title], youtube_id: params[:feed][:youtube_id],
+                            valuation: params[:feed][:valuation], is_curation: params[:feed][:is_curation])
+      check_update(action, @feed)
     else
-      render text: @feed.errors.messages
+      action = @feed.update(is_curation: params[:feed][:is_curation])
+      check_update(action, @feed)
     end
   end
 
@@ -71,6 +74,16 @@ class FeedsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       render text: @feed.errors.messages
+    end
+  end
+
+  private
+
+  def check_update(update, feed)
+    if update
+      redirect_back(fallback_location: root_path)
+    else
+      render text: feed.errors.messages
     end
   end
 end

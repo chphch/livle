@@ -40,6 +40,9 @@
       <td align="center" class="td-border-bottom">
         <%=f.select :valuation, 1..5 %>
       </td>
+      <td align="center" class="td-border-bottom">
+        <%= f.check_box :is_curation, data: {id: "#{feed.id}"}, id: "feed_is_curation_#{feed.id}", class: "is_curation" %>
+      </td>
       <td class="td-border-bottom">
         <%= link_to feed_path(feed.id) do %>
             <p class="_fs-3 _light-green">바로가기</p>
