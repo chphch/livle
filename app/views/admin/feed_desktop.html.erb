@@ -69,4 +69,42 @@
     <div id="artist-autocomplete">
     </div>
   </div>
+  <script>
+      const $officialButton = $('.official-button');
+      const $commonButton = $('.common-button');
+      var official = 'official';
+      var common = 'common';
+
+      setFeedView('<%= get_feed_status %>');
+
+      $officialButton.on('click', function () {
+          setFeedView(official);
+          <% set_feed_status('official') %>
+      });
+      $commonButton.on('click', function () {
+          setFeedView(common);
+          <% set_feed_status('common') %>
+      });
+
+      function setFeedView(type) {
+          toggleFeedGroup(type); //default
+          toggleFeedButton(type); //default
+      }
+
+      function toggleFeedGroup(group) {
+          $officialGroup = $('.official-group');
+          $commonGroup = $('.common-group');
+          group === official ? $officialGroup.show() : $officialGroup.hide();
+          group === common ? $commonGroup.show() : $commonGroup.hide();
+      }
+      function toggleFeedButton(group) {
+          if (group === official) {
+              $officialButton.addClass('button-select');
+              $commonButton.removeClass('button-select');
+          } else {
+              $officialButton.removeClass('button-select');
+              $commonButton.addClass('button-select');
+          }
+      }
+  </script>
 </div>
