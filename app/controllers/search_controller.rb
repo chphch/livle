@@ -41,12 +41,13 @@ class SearchController < ApplicationController
   # Should return an array of strings
   def autocomplete
     key = params[:key]
-    feeds = Feed.select('title').where('title LIKE ?', "%#{key}%").limit(10).map { |f| f.title }
+    feeds = Feed.select('title').where('title LIKE ?', "%#{key}%").limit(5).map { |f| f.title }
     upcomings = Upcoming.select('title').where('title LIKE ?',"%#{key}%").limit(5).map { |u| u.title }
-    result = feeds + upcomings
+    artists = Artist.select('name').where('name LIKE ?',"%#{key}%").limit(5).map { |u| u.name }
+    result = feeds + upcomings + artists
 
     respond_to do |format|
-      format.json { render json: result }
+      format.json { render json: result.shuffle }
     end
   end
 
