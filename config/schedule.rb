@@ -23,7 +23,7 @@
 set :output, {error: "log/cron_error_log.log", standard: "log/cron_log.log"}
 
 # Code is in lib/tasts/update_ranks.rake
-every 12.hours do
+every 2.minutes do
   rake 'update_ranks:feed_ranks'
   rake 'update_ranks:upcoming_ranks'
 end
