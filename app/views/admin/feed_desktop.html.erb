@@ -75,23 +75,18 @@
       var official = 'official';
       var common = 'common';
 
-      console.log('<%= get_feed_status %>');
-      setFeedView('<%= get_feed_status %>');
+      setFeedView(official); //default
 
       $officialButton.on('click', function () {
           setFeedView(official);
-          <% set_feed_status('official') %>
-          console.log('<%= get_feed_status %>');
       });
       $commonButton.on('click', function () {
           setFeedView(common);
-          <% set_feed_status('common') %>
-          console.log('<%= get_feed_status %>');
       });
 
       function setFeedView(type) {
-          toggleFeedGroup(type); //default
-          toggleFeedButton(type); //default
+          toggleFeedGroup(type);
+          toggleFeedButton(type);
       }
 
       function toggleFeedGroup(group) {
