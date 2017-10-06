@@ -20,7 +20,8 @@
 # Learn more: http://github.com/javan/whenever
 
 # set :environment, "development"
-set :output, {error: "log/cron_error_log.log", standard: "log/cron_log.log"}
+home_path = "/var/app/current"
+set :output, {error: "#{home_path}/log/cron_error_log.log", standard: "#{home_path}/log/cron_log.log"}
 
 # Code is in lib/tasts/update_ranks.rake
 every 6.hours do
