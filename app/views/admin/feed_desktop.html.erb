@@ -70,12 +70,13 @@
     </div>
   </div>
   <script>
-      const $officialButton = $('.official-button');
-      const $commonButton = $('.common-button');
-      var official = 'official';
-      var common = 'common';
+      var status;
+      $officialButton = $('.official-button');
+      $commonButton = $('.common-button');
+      official = 'official';
+      common = 'common';
 
-      setFeedView(official); //default
+      setFeedView(status ? status : official); //default
 
       $officialButton.on('click', function () {
           setFeedView(official);
@@ -87,6 +88,8 @@
       function setFeedView(type) {
           toggleFeedGroup(type);
           toggleFeedButton(type);
+          status = type;
+          console.log(status);
       }
 
       function toggleFeedGroup(group) {
