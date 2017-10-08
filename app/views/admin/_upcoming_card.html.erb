@@ -1,8 +1,8 @@
-<tr>
+<tr id="upcoming-<%= upcoming.id %>">
   <td align="center">
     <p class="_fs-3 _light-gray"><%= upcoming.id %></p>
   </td>
-  <%= form_for upcoming, method: :patch, multipart: true do |f| %>
+  <%= form_for upcoming, method: :patch, multipart: true, remote: true do |f| %>
       <td class="_display-none">
         <%= f.file_field :image_url, id: "upcoming_image_url_#{upcoming.id}", accept: "image/*" %>
       </td>
@@ -62,11 +62,11 @@
       </td>
   <% end %>
   <td class="td-border-bottom">
-    <%= link_to upcoming_path(upcoming.id), method: :delete do %>
+    <%= link_to upcoming_path(upcoming.id), method: :delete, remote: true, onclick: "$('#upcoming-#{upcoming.id}').remove();" do %>
         <button type="button" class="button _fs-3 _white">삭제</button>
     <% end %>
     <!-- Nested form이 불가능해서 여기다 빼놓음 -->
-    <%= form_tag upcoming_upcoming_artists_path(upcoming.id), data: { id: upcoming.id }, method: :post do %>
+    <%= form_tag upcoming_upcoming_artists_path(upcoming.id), data: { id: upcoming.id }, method: :post, remote: true do %>
         <%= hidden_field_tag :artist_id, nil, data: { id: upcoming.id } %>
     <% end %>
   </td>
@@ -78,7 +78,7 @@
       <% upcoming.upcoming_artists.each_with_index do |ua, index| %>
           <li class="_fs-3 _light-gray" style="float: left">
             <%= ua.artist.name if ua.artist %>
-            <%= link_to ua, method: :delete do %>
+            <%= link_to ua, method: :delete, remote: true, onclick: "$(this).parent().remove();" do %>
                 <%= image_tag "icon_close", class: "delete-icon" %>
             <% end %>
             <% if upcoming.upcoming_artists[index+1] %>

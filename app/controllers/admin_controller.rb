@@ -2,7 +2,6 @@ class AdminController < ApplicationController
   before_action :is_admin
 
   def feed
-    # @feeds = Feed.order('rank DESC').paginate(page: params[:page], per_page: 30)
     @official_feeds =  Feed.where(is_curation: true).order('rank DESC').paginate(page: params[:page], per_page: 30)
     @common_feeds = Feed.where(is_curation: false).order('rank DESC').paginate(page: params[:page], per_page: 30)
     render_by_device

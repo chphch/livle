@@ -18,7 +18,8 @@ class ArtistsController < ApplicationController
   def update
     @artist = Artist.find(params[:id])
     if @artist.update(image_url: params[:artist][:image_url], name: params[:artist][:name])
-      redirect_back(fallback_location: root_path)
+      @message = "저장되었습니다"
+      render '/xhrs/alert'
     else
       render text: @artist.errors.messages
     end
@@ -26,7 +27,8 @@ class ArtistsController < ApplicationController
 
   def destroy
     if Artist.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: @artist.errors.messages
     end

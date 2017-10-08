@@ -74,6 +74,6 @@ module ApplicationHelper
   private
 
   def get_full_url_from_id(youtube_id)
-    "https://youtu.be/#{youtube_id}"
+    "https://www.youtube.com/watch?v=#{youtube_id}"
   end
 end

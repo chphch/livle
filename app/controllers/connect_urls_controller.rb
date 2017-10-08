@@ -65,7 +65,8 @@ class ConnectUrlsController < ApplicationController
       if connect.feed
         connect.feed.destroy
       end
-      redirect_to admin_connect_path
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: "Connect를 삭제하는데 실패했습니다."
     end

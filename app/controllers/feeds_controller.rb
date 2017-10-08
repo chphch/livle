@@ -71,7 +71,8 @@ class FeedsController < ApplicationController
 
   def destroy
     if Feed.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: @feed.errors.messages
     end
@@ -81,7 +82,9 @@ class FeedsController < ApplicationController
 
   def check_update(update, feed)
     if update
-      redirect_back(fallback_location: root_path)
+      @message = "저장되었습니다"
+      render '/xhrs/alert'
+      # redirect_back(fallback_location: root_path)
     else
       render text: feed.errors.messages
     end

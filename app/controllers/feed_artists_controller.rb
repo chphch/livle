@@ -22,7 +22,8 @@ class FeedArtistsController < ApplicationController
 
   def destroy
     if FeedArtist.find(params[:id]).destroy
-      redirect_back(fallback_location: root_path)
+      @message = "삭제되었습니다"
+      render '/xhrs/alert'
     else
       render text: 'Error destroying feed_artist'
     end

@@ -1,8 +1,8 @@
-<tr>
+<tr id="temp-<%= upcoming.id %>">
   <td align="center">
     <p class="_fs-3 _light-gray"><%= upcoming.id %></p>
   </td>
-  <%= form_for upcoming, method: :patch, multipart: true do |f| %>
+  <%= form_for upcoming, method: :patch, multipart: true, remote: true do |f| %>
       <td class="_display-none">
         <%= f.file_field :image_url, id: "temporary_upcoming_image_url_#{upcoming.id}", accept: "image/*" %>
       </td>
@@ -54,14 +54,14 @@
       </td>
   <% end %>
   <td class="td-border-bottom">
-    <%= link_to temporary_upcoming_path(upcoming.id), method: :delete do %>
+    <%= link_to temporary_upcoming_path(upcoming.id), method: :delete, remote: true, onclick: "$('#temp-#{upcoming.id}').remove();" do %>
         <button type="button" class="button _fs-3 _white">삭제</button>
     <% end %>
   </td>
 </tr>
 <tr>
   <td></td>
-  <%= form_tag "/temporary_upcomings/#{upcoming.id}/merge" do %>
+  <%= form_tag "/temporary_upcomings/#{upcoming.id}/merge", remote: true do %>
       <td>
         <%= text_field_tag 'upcoming_id', nil, size: 10, placeholder: 'upcoming_index' %>
       </td>

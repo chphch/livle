@@ -1,11 +1,11 @@
-<tr>
+<tr id="feed-<%= feed.id %>">
   <td>
     <p class="_fs-3 _light-gray"><%= feed.id %></p>
   </td>
   <td>
     <p class="_fs-3 _light-gray"><%= feed.user.nickname %></p>
   </td>
-  <%= form_for feed, method: :patch do |f| %>
+  <%= form_for feed, method: :patch, remote: true do |f| %>
       <td class="td-border-bottom">
         <p class="_fs-3 _light-gray">
           <%= f.text_field :title %>
@@ -17,7 +17,7 @@
           <% feed.feed_artists.each do |fa| %>
               <li class="_fs-3 _light-gray">
                 <%= fa.artist.name if fa.artist %>
-                <%= link_to fa, method: :delete do %>
+                <%= link_to fa, method: :delete, remote: true, onclick: "$(this).parent().remove();" do %>
                     <%= image_tag "icon_close", class: "delete-icon" %>
                 <% end %>
               </li>
@@ -41,7 +41,7 @@
         <%=f.select :valuation, 1..5 %>
       </td>
       <td align="center" class="td-border-bottom">
-        <%= f.check_box :is_curation, data: {id: "#{feed.id}"}, id: "feed_is_curation_#{feed.id}", class: "is_curation" %>
+        <%= f.check_box :is_curation, data: {id: "#{feed.id}"}, class: "is_curation" %>
       </td>
       <td class="td-border-bottom">
         <%= link_to feed_path(feed.id) do %>
@@ -49,15 +49,15 @@
         <% end %>
       </td>
       <td class="td-border-bottom">
-        <%= submit_tag "저장", class: "button _fs-3 _white" %>
+        <%= f.submit "저장", class: "button _fs-3 _white", id: "feed_submit_#{feed.id}" %>
       </td>
   <% end %>
   <td class="td-border-bottom">
-    <%= link_to feed_path(feed.id), method: :delete do %>
+    <%= link_to feed_path(feed.id), method: :delete, remote: true, onclick: "$('#feed-#{feed.id}').remove();" do %>
         <button type="button" class="button _fs-3 _white">삭제</button>
     <% end %>
     <!-- Nested form이 불가능해서 여기다 빼놓음 -->
-    <%= form_tag feed_feed_artists_path(feed.id), data: { id: feed.id }, method: :post do %>
+    <%= form_tag feed_feed_artists_path(feed.id), data: { id: feed.id }, method: :post, remote: true do %>
         <%= hidden_field_tag :artist_id, nil, data: { id: feed.id } %>
     <% end %>
   </td>

@@ -28,7 +28,7 @@
 
       <tbody>
       <% @connects.where("is_confirmed = ?", false).each do |connect| %>
-          <tr>
+          <tr id="not-confirmed-<%= connect.id %>">
             <td align="center">
               <p class="_fs-3 _light-gray"><%= connect.id %></p>
             </td>
@@ -41,7 +41,7 @@
             <td class="td-border-bottom">
               <p class="_fs-3 _light-gray"><%= connect.user.nickname if defined?(connect.user.nickname) %></p>
             </td>
-            <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post do %>
+            <%= form_tag "/connect_urls/#{connect.id}/merge", method: :post, remote: true do %>
                 <td class="td-border-bottom">
                   <%= text_field_tag 'feed_title', nil, placeholder: '제목', class: "_black" %>
                 </td>
@@ -54,7 +54,7 @@
                 </td>
             <% end %>
             <td align="center" class="td-border-bottom">
-              <%= link_to connect_url_path(connect.id), method: :delete do %>
+              <%= link_to connect_url_path(connect.id), method: :delete, onclick: "$('#not-confirmed-#{connect.id}').remove();" do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>
             </td>
@@ -98,7 +98,7 @@
 
       <tbody>
       <% @connects.where("is_confirmed = ?", true).order('created_at DESC').each do |connect| %>
-          <tr>
+          <tr id="confirmed-<%= connect.feed.id %>">
             <td align="center">
               <p class="_fs-3 _light-gray"><%= connect.feed.id %></p>
             </td>
@@ -117,9 +117,12 @@
             <td align="center" class="td-border-bottom">
               <%= raw_text connect.feed.artists.first.name, class: "_fs-3 _light-gray" %>
             </td>
-            <%= form_for connect.feed, method: :patch do |f| %>
+            <%= form_for connect.feed, method: :patch, remote: true do |f| %>
                 <td align="center">
-                  <%= f.check_box :is_curation, data: {id: "#{connect.feed.id}"}, id: "feed_is_curation_#{connect.feed.id}", class: "is_curation" %>
+                  <%= f.check_box :is_curation, data: {id: "#{connect.feed.id}"}, class: "is_curation" %>
+                </td>
+                <td>
+                  <%= f.submit nil, class: "_display-none", id: "feed_submit_#{connect.feed.id}" %>
                 </td>
             <% end %>
             <td align="center" class="td-border-bottom">
@@ -128,7 +131,7 @@
               <% end %>
             </td>
             <td align="center" class="td-border-bottom">
-              <%= link_to connect_url_path(connect.id), method: :delete do %>
+              <%= link_to connect_url_path(connect.id), method: :delete, remote: true, onclick: "$('#confirmed-#{connect.feed.id}').remove();" do %>
                   <button type="button" class="button _fs-3 _white">삭제</button>
               <% end %>
             </td>
