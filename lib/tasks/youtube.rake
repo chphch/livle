@@ -9,13 +9,24 @@ namespace :youtube do
   service = Youtube::YouTubeService.new
   service.key = DEVELOPER_KEY
 
+  task extract_key: :environment do
+    Feed.all.each do |f|
+      if !f.youtube_url || f.youtube_url.split('/').size < 1
+        puts "Invalid url #{f.id} - #{f.youtube_url}"
+      elsif f.youtube_url.length > 11
+        youtube_id = f.youtube_url.split('/').last.split('=').last
+        f.update(youtube_url: youtube_id)
+        puts youtube_id
+      end
+    end
+  end
+
   task initial_weight: :environment do
 
     count = 0
     err_count = 0
 
     Feed.all.each do |f|
-      youtube_id = f.youtube_url.split('/').last
       service.list_videos("statistics", id: youtube_id) { |result, err|
         if result
           result.items.each do |i|
@@ -42,6 +53,20 @@ namespace :youtube do
     puts "Completed #{count} items with #{err_count} errors"
   end
 
+  task test: :environment do
+    youtube_id = 'ltu3bSxoMgc'
+    service.list_videos("status", id: youtube_id) { |result, err|
+      if result
+        puts result.items.size
+      elsif err
+        puts "Error occurred : #{err}"
+      else
+        puts "No result"
+      end
+    }
+
+  end
+
   task prune: :environment do
     file_loc = '/Users/js/livle_prune.csv'
     log = CSV.open(file_loc, 'a')
@@ -50,31 +75,39 @@ namespace :youtube do
     err_count = 0
 
     log.puts ["deleted_at", "reason", "id", "user_id", "is_curation", "title",
-      "youtube_url", "content", "count_view", "count_share", "rank",
+      "youtube_id", "content", "count_view", "count_share", "rank",
       "valuation", "created_at", "updated_at",
       "feed_artists", "feed_likes", "feed_comments", "connect_urls"]
 
     Feed.all.each do |f|
-      youtube_id = f.youtube_url.split('/').last
-      service.list_videos("status", id: youtube_id) { |result, err|
+      destroy_reason = nil
+      service.list_videos("status", id: f.youtube_id) { |result, err|
         if result
-          result.items.each do |i|
-            unless i.status.embeddable
-              log.puts [ DateTime.now, "not embeddable", f.id, f.user_id, f.is_curation, f.title,
-                f.youtube_url, f.content, f.count_view, f.count_share, f.rank,
-                f.valuation, f.created_at, f.updated_at,
-                f.feed_artists.size, f.feed_likes.size, f.feed_comments.size, f.connect_urls.size ]
-              if f.destroy
-                puts "Destroyed"
-                removal_count = removal_count + 1
-              else
-                puts "ERROR while destroying"
+          if result.items.size == 0
+            destroy_reason = "not found"
+          else
+            result.items.each do |i|
+              unless i.status.embeddable
+                destroy_reason = "not embeddable"
               end
             end
           end
         else
           puts err
           err_count = err_count + 1
+        end
+
+        if destroy_reason
+          log.puts [ DateTime.now, destroy_reason, f.id, f.user_id, f.is_curation, f.title,
+            f.youtube_id, f.content, f.count_view, f.count_share, f.rank,
+            f.valuation, f.created_at, f.updated_at,
+            f.feed_artists.size, f.feed_likes.size, f.feed_comments.size, f.connect_urls.size ]
+          if f.destroy
+            puts "Destroyed with reason : #{destroy_reason}, and youtube_id : #{f.youtube_id}"
+            removal_count = removal_count + 1
+          else
+            puts "ERROR while destroying"
+          end
         end
       }
 
@@ -100,7 +133,6 @@ namespace :youtube do
     count = 0
 
     Feed.all.each do |f|
-      youtube_id = f.youtube_url.split('/').last
       service.list_videos("statistics, status", id: youtube_id) { |result, err|
         if result
           result.items.each do |i|
